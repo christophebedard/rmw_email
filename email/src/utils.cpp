@@ -12,27 +12,29 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// #include <cstdio>
-
 #include <iostream>
-#include <string>
 #include <optional>
+#include <string>
 
-#include <email/email_receiver.hpp>
 #include <email/utils.hpp>
 
-int main(int argc, char ** argv)
+namespace email
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
-    return 1;
+namespace utils
+{
+
+std::optional<struct UserConnectionInfo> parse_user_connection_info(int argc, char ** argv)
+{
+  if (4 != argc) {
+    std::cerr << "usage: email password url" << std::endl;
+    return std::nullopt;
   }
-  struct email::UserConnectionInfo info = info_opt.value();
-  EmailReceiver receiver(info);
-  std::optional<std::string> response = receiver.get_email();
-  if (!response) {
-    return 1;
-  }
-  std::cout << "response!" << std::endl << response.value() << std::endl;
-  return 0;
+  struct UserConnectionInfo info;
+  info.username = std::string(argv[1]);
+  info.password = std::string(argv[2]);
+  info.url = std::string(argv[3]);
+  return info;
 }
+
+}  // namespace utils
+}  // namespace email

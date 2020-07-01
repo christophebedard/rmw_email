@@ -50,7 +50,7 @@ static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void 
 }
 
 EmailSender::EmailSender(
-  struct UserConnectionInfo user_info,
+  struct email::UserConnectionInfo user_info,
   bool debug)
 : context_(user_info, {"smtps", 465}, debug),
   debug_(debug)
@@ -106,7 +106,7 @@ std::string EmailSender::build_payload(
   const std::string & subject,
   const std::string & body)
 {
-  return email::string_format(
+  return email::utils::string_format(
     "To: %s\r\nSubject: %s\r\n\r\n%s\r\n",
     to.c_str(), subject.c_str(), body.c_str());
 }

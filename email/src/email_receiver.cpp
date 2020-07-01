@@ -32,7 +32,7 @@ static size_t write_callback(void *contents, size_t size, size_t nmemb, void *us
 }
 
 EmailReceiver::EmailReceiver(
-  struct UserConnectionInfo user_info,
+  struct email::UserConnectionInfo user_info,
   bool debug)
 : context_(user_info, {"imaps", 993}, debug),
   debug_(debug)

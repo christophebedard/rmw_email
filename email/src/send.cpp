@@ -15,15 +15,15 @@
 #include <string>
 
 #include <email/email_sender.hpp>
+#include <email/utils.hpp>
 
 int main(int argc, char ** argv)
 {
-  (void)argc;
-  (void)argv;
-  struct UserConnectionInfo info;
-  info.url = "imap.gmail.com";
-  info.username = "";
-  info.password = "";
+  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
+  if (!info_opt) {
+    return 1;
+  }
+  struct email::UserConnectionInfo info = info_opt.value();
   EmailSender sender(info);
   const std::string to = "bedard.christophe@gmail.com";
   const std::string subject = "this is the subject";

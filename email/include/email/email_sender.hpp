@@ -31,7 +31,7 @@ struct email_upload {
 class EmailSender {
 public:
   explicit EmailSender(
-    struct UserConnectionInfo user_info,
+    struct email::UserConnectionInfo user_info,
     bool debug = true);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();

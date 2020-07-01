@@ -25,6 +25,8 @@
 
 #include <curl/curl.h>
 
+#include <email/utils.hpp>
+
 struct ProtocolConnectionInfo {
   // Protocol, i.e. <protocol>://
   std::string protocol;
@@ -32,19 +34,10 @@ struct ProtocolConnectionInfo {
   int port;
 };
 
-struct UserConnectionInfo {
-  // URL without the port or <protocol>://
-  std::string url;
-  // Username (i.e. email)
-  std::string username;
-  // Password
-  std::string password;
-};
-
 class CurlContext {
 public:
   explicit CurlContext(
-    struct UserConnectionInfo user_info,
+    struct email::UserConnectionInfo user_info,
     struct ProtocolConnectionInfo protocol_info,
     bool debug = true)
   : user_info_(user_info),
@@ -97,7 +90,7 @@ public:
     return full_url_;
   }
 
-  struct UserConnectionInfo & get_user_info()
+  struct email::UserConnectionInfo & get_user_info()
   {
     return user_info_;
   }
@@ -109,7 +102,7 @@ private:
   //   std::optional<std::string> custom_request) = 0;
 
   CURL * handle_;
-  struct UserConnectionInfo user_info_;
+  struct email::UserConnectionInfo user_info_;
   struct ProtocolConnectionInfo protocol_info_;
   std::string full_url_;
   bool debug_;

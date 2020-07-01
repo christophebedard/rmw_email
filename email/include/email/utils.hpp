@@ -16,10 +16,23 @@
 #define EMAIL__UTILS_HPP_
 
 #include <memory>
-#include <string>
+#include <optional>
 #include <stdexcept>
+#include <string>
 
 namespace email
+{
+
+struct UserConnectionInfo {
+  // URL without the port or '<protocol>://'
+  std::string url;
+  // Username (i.e. email)
+  std::string username;
+  // Password
+  std::string password;
+};
+
+namespace utils
 {
 
 template<typename ... Args>
@@ -34,6 +47,9 @@ std::string string_format(const std::string & format, Args... args)
   return std::string(buf.get(), buf.get() + size + 1);
 }
 
+std::optional<struct UserConnectionInfo> parse_user_connection_info(int argc, char ** argv);
+
+}  // namespace utils
 }  // namespace email
 
 #endif  // EMAIL__UTILS_HPP_

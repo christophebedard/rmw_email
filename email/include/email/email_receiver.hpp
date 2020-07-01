@@ -30,7 +30,7 @@
 class EmailReceiver {
 public:
   explicit EmailReceiver(
-    struct UserConnectionInfo user_info,
+    struct email::UserConnectionInfo user_info,
     bool debug = true);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
