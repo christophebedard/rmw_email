@@ -20,6 +20,7 @@
 #include <cstdlib>
 
 #include <iostream>
+#include <regex>
 #include <string>
 #include <optional>
 
@@ -42,8 +43,13 @@ private:
     std::optional<std::string> url_options,
     std::optional<std::string> custom_request);
 
+  std::optional<int> get_nextuid_from_response(const std::string & response);
+  std::optional<int> get_nextuid();
+
   CurlContext context_;
   bool debug_;
+
+  static const std::regex regex_nextuid;
 
 };
 

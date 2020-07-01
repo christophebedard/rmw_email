@@ -17,6 +17,7 @@
 #include <cstdlib>
 
 #include <iostream>
+#include <regex>
 #include <string>
 #include <optional>
 
@@ -48,8 +49,36 @@ EmailReceiver::~EmailReceiver()
 
 std::optional<std::string> EmailReceiver::get_email()
 {
+  std::optional<int> next_uid = get_nextuid();
+  if (next_uid) {
+    std::cout << "nextuid=" << next_uid.value() << std::endl;
+  }
+  return "";
+}
+
+std::optional<int> EmailReceiver::get_nextuid()
+{
   std::optional<std::string> response = execute(std::nullopt, "EXAMINE INBOX");
-  return response;
+  if (!response) {
+    return std::nullopt;
+  }
+  std::optional<int> next_uid = get_nextuid_from_response(response.value());
+  return next_uid;
+}
+
+const std::regex EmailReceiver::regex_nextuid(".*OK \\[UIDNEXT (.*)\\] Predicted next UID.*", std::regex::extended);
+
+std::optional<int> EmailReceiver::get_nextuid_from_response(const std::string & response)
+{
+  std::smatch matches;
+  if (!std::regex_search(response, matches, EmailReceiver::regex_nextuid)) {
+    return std::nullopt;
+  }
+  // Only 1 match besides the first global match itself
+  if (matches.size() != 2) {
+    return std::nullopt;
+  }
+  return std::stoi(matches[1].str());
 }
 
 std::optional<std::string> EmailReceiver::execute(
