@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>email</name>
+  <version>0.0.1</version>
+  <description>Library for sending and reading emails.</description>
+  <maintainer email="bedard.christophe@gmail.com">Christophe Bedard</maintainer>
+  <license>Apache License 2.0</license>
+  <author>Christophe Bedard</author>
+
+  <buildtool_depend>ament_cmake_ros</buildtool_depend>
+
+  <!-- <build_depend>rcpputils</build_depend>
+  <build_depend>rcutils</build_depend> -->
+
+  <!-- <build_export_depend>rcpputils</build_export_depend> -->
+  <!-- <build_export_depend>rcutils</build_export_depend> -->
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
