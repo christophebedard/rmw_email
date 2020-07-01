@@ -22,7 +22,8 @@ find_package(CURL REQUIRED)
 
 # Lib
 set(SOURCES
-  src/email.cpp
+  src/email_sender.cpp
+  src/email_receiver.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
@@ -46,14 +47,14 @@ install(TARGETS
   send
   DESTINATION lib/${PROJECT_NAME}
 )
-add_executable(get
+add_executable(receive
   src/receive.cpp
 )
-target_link_libraries(get
+target_link_libraries(receive
   ${PROJECT_NAME}
 )
 install(TARGETS
-  get
+  receive
   DESTINATION lib/${PROJECT_NAME}
 )
 

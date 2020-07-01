@@ -14,19 +14,23 @@
 
 #include <string>
 
-#include <email/email.hpp>
+#include <email/email_sender.hpp>
 
 int main(int argc, char ** argv)
 {
   (void)argc;
   (void)argv;
-  std::string content = "this is some content";
-  bool ret = send_email(
-    "",
-    "",
-    "",
-    "",
-    "this is the subject",
-    content);
+  struct UserConnectionInfo info;
+  info.url = "imap.gmail.com";
+  info.username = "";
+  info.password = "";
+  EmailSender sender(info);
+  const std::string to = "bedard.christophe@gmail.com";
+  const std::string subject = "this is the subject";
+  const std::string body = "this is the body!";
+  bool ret = sender.send(
+    to,
+    subject,
+    body);
   return ret ? 0 : 1;
 }

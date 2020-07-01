@@ -12,12 +12,15 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#ifndef EMAIL__UTILS_HPP_
+#define EMAIL__UTILS_HPP_
+
 #include <memory>
 #include <string>
 #include <stdexcept>
 
-// namespace email
-// {
+namespace email
+{
 
 template<typename ... Args>
 std::string string_format(const std::string & format, Args... args)
@@ -31,4 +34,6 @@ std::string string_format(const std::string & format, Args... args)
   return std::string(buf.get(), buf.get() + size + 1);
 }
 
-// }  // namespace email
+}  // namespace email
+
+#endif  // EMAIL__UTILS_HPP_
