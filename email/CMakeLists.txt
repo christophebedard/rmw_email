@@ -46,6 +46,16 @@ install(TARGETS
   send
   DESTINATION lib/${PROJECT_NAME}
 )
+add_executable(get
+  src/receive.cpp
+)
+target_link_libraries(get
+  ${PROJECT_NAME}
+)
+install(TARGETS
+  get
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 install(
   TARGETS ${PROJECT_NAME}
