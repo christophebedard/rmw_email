@@ -46,6 +46,8 @@ private:
   std::optional<int> get_nextuid_from_response(const std::string & response);
   std::optional<int> get_nextuid();
 
+  std::optional<std::string> get_email_from_uid(int uid);
+
   CurlContext context_;
   bool debug_;
 

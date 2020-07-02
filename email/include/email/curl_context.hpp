@@ -74,7 +74,7 @@ public:
   {
     CURLcode res = curl_easy_perform(handle_);
     if (CURLE_OK != res) {
-      fprintf(stderr, "curl_easy_perform() failed: %s\n", curl_easy_strerror(res));
+      fprintf(stderr, "curl_easy_perform() failed: %d=%s\n", (int)res, curl_easy_strerror(res));
       return false;
     }
     return true;

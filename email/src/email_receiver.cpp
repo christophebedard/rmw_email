@@ -50,10 +50,21 @@ EmailReceiver::~EmailReceiver()
 std::optional<std::string> EmailReceiver::get_email()
 {
   std::optional<int> next_uid = get_nextuid();
-  if (next_uid) {
-    std::cout << "nextuid=" << next_uid.value() << std::endl;
+  if (!next_uid) {
+    return std::nullopt;
   }
-  return "";
+  std::cout << "nextuid=" << next_uid.value() << std::endl;
+  std::optional<std::string> next_email;
+  // Try until we get an email
+  while (!next_email) {
+    next_email = get_email_from_uid(next_uid.value());
+  }
+  return next_email;
+}
+
+std::optional<std::string> EmailReceiver::get_email_from_uid(int uid)
+{
+  return execute("INBOX/;UID=" + std::to_string(uid), std::nullopt);
 }
 
 std::optional<int> EmailReceiver::get_nextuid()
@@ -92,6 +103,9 @@ std::optional<std::string> custom_request)
   curl_easy_setopt(context_.get_handle(), CURLOPT_URL, request_url.c_str());
   if (custom_request) {
     curl_easy_setopt(context_.get_handle(), CURLOPT_CUSTOMREQUEST, custom_request.value().c_str());
+  } else {
+    // Unset the option in case it was set previously
+    curl_easy_setopt(context_.get_handle(), CURLOPT_CUSTOMREQUEST, NULL);
   }
 
   if (debug_) {
