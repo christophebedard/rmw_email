@@ -39,46 +39,15 @@ public:
   explicit CurlContext(
     struct email::UserConnectionInfo user_info,
     struct ProtocolConnectionInfo protocol_info,
-    bool debug = true)
-  : user_info_(user_info),
-    protocol_info_(protocol_info),
-    debug_(debug)
-  {
-    full_url_ = protocol_info_.protocol + "://" + user_info_.url + ":" + std::to_string(protocol_info_.port) + "/";
-  }
+    bool debug = true);
   CurlContext(const CurlContext &) = delete;
-  virtual ~CurlContext() {}
+  virtual ~CurlContext();
 
-  bool init()
-  {
-    handle_ = curl_easy_init();
-    if (!handle_) {
-      fprintf(stderr, "curl_easy_init() failed\n");
-      return false;
-    }
-    curl_easy_setopt(handle_, CURLOPT_USERAGENT, "libcurl-agent/1.0");
-    curl_easy_setopt(handle_, CURLOPT_USERNAME, user_info_.username.c_str());
-    curl_easy_setopt(handle_, CURLOPT_PASSWORD, user_info_.password.c_str());
-    if (debug_) {
-      curl_easy_setopt(handle_, CURLOPT_VERBOSE, 1L);
-    }
-    return true;
-  }
+  bool init();
 
-  void fini()
-  {
-    curl_easy_cleanup(handle_);
-  }
+  void fini();
 
-  bool execute()
-  {
-    CURLcode res = curl_easy_perform(handle_);
-    if (CURLE_OK != res) {
-      fprintf(stderr, "curl_easy_perform() failed: %d=%s\n", (int)res, curl_easy_strerror(res));
-      return false;
-    }
-    return true;
-  }
+  bool execute();
 
   CURL * get_handle()
   {

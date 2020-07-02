@@ -22,6 +22,7 @@ find_package(CURL REQUIRED)
 
 # Lib
 set(SOURCES
+  src/curl_context.cpp
   src/email_receiver.cpp
   src/email_sender.cpp
   src/utils.cpp
