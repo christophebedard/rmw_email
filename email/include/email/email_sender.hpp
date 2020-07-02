@@ -17,27 +17,29 @@
 
 #include <string>
 
-#include <email/curl_context.hpp>
-#include <email/visibility_control.hpp>
+#include "email/curl_context.hpp"
+#include "email/visibility_control.hpp"
 
 // namespace email
 // {
 
-struct email_upload {
+struct UploadData
+{
   const char * payload;
   int lines_read;
 };
 
-class EmailSender {
+class EmailSender
+{
 public:
   explicit EmailSender(
-    struct email::UserConnectionInfo user_info,
+    struct email::UserInfo user_info,
+    const std::string & to,
     bool debug = true);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
 
   bool send(
-    const std::string & to,
     const std::string & subject,
     const std::string & body);
 
@@ -48,8 +50,10 @@ private:
     const std::string & body);
 
   CurlContext context_;
+  struct curl_slist * recipients_;
+  struct UploadData upload_ctx_;
+  const std::string email_to_;
   bool debug_;
-
 };
 
 // }  // namespace email

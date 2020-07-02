@@ -13,23 +13,23 @@
 // limitations under the License.
 
 #include <iostream>
-#include <optional>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
-#include <email/utils.hpp>
+#include "email/utils.hpp"
 
 namespace email
 {
 namespace utils
 {
 
-std::optional<struct UserConnectionInfo> parse_user_connection_info(int argc, char ** argv)
+std::optional<struct UserInfo> parse_user_connection_info(int argc, char ** argv)
 {
   if (4 != argc) {
     std::cerr << "usage: email password url" << std::endl;
     return std::nullopt;
   }
-  struct UserConnectionInfo info;
+  struct UserInfo info;
   info.username = std::string(argv[1]);
   info.password = std::string(argv[2]);
   info.url = std::string(argv[3]);

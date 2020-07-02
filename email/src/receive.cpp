@@ -14,10 +14,10 @@
 
 #include <iostream>
 #include <string>
-#include <optional>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
-#include <email/email_receiver.hpp>
-#include <email/utils.hpp>
+#include "email/email_receiver.hpp"
+#include "email/utils.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -25,7 +25,7 @@ int main(int argc, char ** argv)
   if (!info_opt) {
     return 1;
   }
-  struct email::UserConnectionInfo info = info_opt.value();
+  struct email::UserInfo info = info_opt.value();
   EmailReceiver receiver(info);
   std::optional<std::string> response = receiver.get_email();
   if (!response) {

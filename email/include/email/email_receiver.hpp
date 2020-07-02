@@ -15,23 +15,20 @@
 #ifndef EMAIL__EMAIL_RECEIVER_HPP_
 #define EMAIL__EMAIL_RECEIVER_HPP_
 
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-
-#include <iostream>
-#include <regex>
-#include <string>
-#include <optional>
-
 #include <curl/curl.h>
 
-#include <email/curl_context.hpp>
+#include <iostream>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <regex>
+#include <string>
 
-class EmailReceiver {
+#include "email/curl_context.hpp"
+
+class EmailReceiver
+{
 public:
   explicit EmailReceiver(
-    struct email::UserConnectionInfo user_info,
+    struct email::UserInfo user_info,
     bool debug = true);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
@@ -49,10 +46,10 @@ private:
   std::optional<std::string> get_email_from_uid(int uid);
 
   CurlContext context_;
+  std::string read_buffer_;
   bool debug_;
 
   static const std::regex regex_nextuid;
-
 };
 
 #endif  // EMAIL__EMAIL_RECEIVER_HPP_

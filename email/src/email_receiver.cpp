@@ -12,34 +12,37 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <curl/curl.h>
+
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-
 #include <iostream>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
-#include <optional>
 
-#include <curl/curl.h>
+#include "email/email_receiver.hpp"
 
-#include <email/email_receiver.hpp>
-
-// Move to class?
-static size_t write_callback(void *contents, size_t size, size_t nmemb, void *userp)
+// TODO(christophebedard) move to class?
+static size_t write_callback(void * contents, size_t size, size_t nmemb, void * userp)
 {
-  ((std::string *)userp)->append((char *)contents, size * nmemb);
+  (static_cast<std::string *>(userp))->append(static_cast<char *>(contents), size * nmemb);
   return size * nmemb;
 }
 
 EmailReceiver::EmailReceiver(
-  struct email::UserConnectionInfo user_info,
+  struct email::UserInfo user_info,
   bool debug)
 : context_(user_info, {"imaps", 993}, debug),
+  read_buffer_(),
   debug_(debug)
 {
-  // Extract to method, because we need to check if it's successful
+  // TODO(christophebedard) extract to method, because we need to check if it's successful
   context_.init();
+  // Recurrent options
+  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEFUNCTION, write_callback);
+  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEDATA, static_cast<void *>(&read_buffer_));
 }
 
 EmailReceiver::~EmailReceiver()
@@ -77,7 +80,9 @@ std::optional<int> EmailReceiver::get_nextuid()
   return next_uid;
 }
 
-const std::regex EmailReceiver::regex_nextuid(".*OK \\[UIDNEXT (.*)\\] Predicted next UID.*", std::regex::extended);
+const std::regex EmailReceiver::regex_nextuid(
+  ".*OK \\[UIDNEXT (.*)\\] Predicted next UID.*",
+  std::regex::extended);
 
 std::optional<int> EmailReceiver::get_nextuid_from_response(const std::string & response)
 {
@@ -93,8 +98,8 @@ std::optional<int> EmailReceiver::get_nextuid_from_response(const std::string & 
 }
 
 std::optional<std::string> EmailReceiver::execute(
-std::optional<std::string> url_options,
-std::optional<std::string> custom_request)
+  std::optional<std::string> url_options,
+  std::optional<std::string> custom_request)
 {
   std::string request_url(context_.get_full_url());
   if (url_options) {
@@ -104,7 +109,7 @@ std::optional<std::string> custom_request)
   if (custom_request) {
     curl_easy_setopt(context_.get_handle(), CURLOPT_CUSTOMREQUEST, custom_request.value().c_str());
   } else {
-    // Unset the option in case it was set previously
+    // Unset the option in case it was set during a previous call
     curl_easy_setopt(context_.get_handle(), CURLOPT_CUSTOMREQUEST, NULL);
   }
 
@@ -114,12 +119,8 @@ std::optional<std::string> custom_request)
       "\tcommand: " << (custom_request ? custom_request.value() : "") << std::endl;
   }
 
-  std::string buffer;
-  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEFUNCTION, write_callback);
-  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEDATA, (void *)&buffer);
-
   if (!context_.execute()) {
     return std::nullopt;
   }
-  return buffer;
+  return read_buffer_;
 }

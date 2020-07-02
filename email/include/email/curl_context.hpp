@@ -15,30 +15,19 @@
 #ifndef EMAIL__CURL_CONTEXT_HPP_
 #define EMAIL__CURL_CONTEXT_HPP_
 
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
-
-#include <iostream>
-#include <string>
-#include <optional>
-
 #include <curl/curl.h>
 
-#include <email/utils.hpp>
+#include <string>
+// #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
-struct ProtocolConnectionInfo {
-  // Protocol, i.e. <protocol>://
-  std::string protocol;
-  // Port
-  int port;
-};
+#include "email/utils.hpp"
 
-class CurlContext {
+class CurlContext
+{
 public:
   explicit CurlContext(
-    struct email::UserConnectionInfo user_info,
-    struct ProtocolConnectionInfo protocol_info,
+    struct email::UserInfo user_info,
+    struct email::ProtocolInfo protocol_info,
     bool debug = true);
   CurlContext(const CurlContext &) = delete;
   virtual ~CurlContext();
@@ -59,23 +48,21 @@ public:
     return full_url_;
   }
 
-  struct email::UserConnectionInfo & get_user_info()
+  struct email::UserInfo & get_user_info()
   {
     return user_info_;
   }
 
 private:
-
   // virtual std::optional<std::string> execute(
   //   std::optional<std::string> url_options,
   //   std::optional<std::string> custom_request) = 0;
 
   CURL * handle_;
-  struct email::UserConnectionInfo user_info_;
-  struct ProtocolConnectionInfo protocol_info_;
+  struct email::UserInfo user_info_;
+  struct email::ProtocolInfo protocol_info_;
   std::string full_url_;
   bool debug_;
-
 };
 
 #endif  // EMAIL__CURL_CONTEXT_HPP_

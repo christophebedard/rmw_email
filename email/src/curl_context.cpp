@@ -12,28 +12,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <cstdio>
-#include <cstring>
-#include <cstdlib>
+#include <curl/curl.h>
 
 #include <iostream>
 #include <string>
-#include <optional>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
-#include <curl/curl.h>
-
-#include <email/utils.hpp>
-#include <email/curl_context.hpp>
+#include "email/curl_context.hpp"
+#include "email/utils.hpp"
 
 CurlContext::CurlContext(
-  struct email::UserConnectionInfo user_info,
-  struct ProtocolConnectionInfo protocol_info,
+  struct email::UserInfo user_info,
+  struct email::ProtocolInfo protocol_info,
   bool debug)
 : user_info_(user_info),
   protocol_info_(protocol_info),
   debug_(debug)
 {
-  full_url_ = protocol_info_.protocol + "://" + user_info_.url + ":" + std::to_string(protocol_info_.port) + "/";
+  full_url_ = protocol_info_.protocol + "://" +
+    user_info_.url + ":" + std::to_string(protocol_info_.port) + "/";
 }
 CurlContext::~CurlContext() {}
 
@@ -41,7 +38,7 @@ bool CurlContext::init()
 {
   handle_ = curl_easy_init();
   if (!handle_) {
-    fprintf(stderr, "curl_easy_init() failed\n");
+    std::cerr << "curl_easy_init() failed" << std::endl;
     return false;
   }
   curl_easy_setopt(handle_, CURLOPT_USERAGENT, "libcurl-agent/1.0");
@@ -62,7 +59,8 @@ bool CurlContext::execute()
 {
   CURLcode res = curl_easy_perform(handle_);
   if (CURLE_OK != res) {
-    fprintf(stderr, "curl_easy_perform() failed: %d=%s\n", (int)res, curl_easy_strerror(res));
+    std::cerr << "curl_easy_perform() failed: " << static_cast<int>(res) <<
+      "=" << curl_easy_strerror(res) << std::endl;
     return false;
   }
   return true;

@@ -16,14 +16,15 @@
 #define EMAIL__UTILS_HPP_
 
 #include <memory>
-#include <optional>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <stdexcept>
 #include <string>
 
 namespace email
 {
 
-struct UserConnectionInfo {
+struct UserInfo
+{
   // URL without the port or '<protocol>://'
   std::string url;
   // Username (i.e. email)
@@ -32,22 +33,30 @@ struct UserConnectionInfo {
   std::string password;
 };
 
+struct ProtocolInfo
+{
+  // Protocol, i.e. <protocol>://
+  std::string protocol;
+  // Port
+  int port;
+};
+
 namespace utils
 {
 
 template<typename ... Args>
 std::string string_format(const std::string & format, Args... args)
 {
-  size_t size = snprintf(nullptr, 0, format.c_str(), args...) + 1;
+  size_t size = snprintf(nullptr, 0, format.c_str(), args ...) + 1;
   if (size <= 0) {
     throw std::runtime_error("Error during formatting.");
   }
   std::unique_ptr<char[]> buf(new char[size]);
-  snprintf(buf.get(), size, format.c_str(), args...);
+  snprintf(buf.get(), size, format.c_str(), args ...);
   return std::string(buf.get(), buf.get() + size + 1);
 }
 
-std::optional<struct UserConnectionInfo> parse_user_connection_info(int argc, char ** argv);
+std::optional<struct UserInfo> parse_user_connection_info(int argc, char ** argv);
 
 }  // namespace utils
 }  // namespace email

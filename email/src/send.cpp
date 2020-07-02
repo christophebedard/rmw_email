@@ -14,8 +14,8 @@
 
 #include <string>
 
-#include <email/email_sender.hpp>
-#include <email/utils.hpp>
+#include "email/email_sender.hpp"
+#include "email/utils.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -23,13 +23,12 @@ int main(int argc, char ** argv)
   if (!info_opt) {
     return 1;
   }
-  struct email::UserConnectionInfo info = info_opt.value();
-  EmailSender sender(info);
+  struct email::UserInfo info = info_opt.value();
   const std::string to = "bedard.christophe@gmail.com";
+  EmailSender sender(info, to);
   const std::string subject = "this is the subject";
   const std::string body = "this is the body!";
   bool ret = sender.send(
-    to,
     subject,
     body);
   return ret ? 0 : 1;
