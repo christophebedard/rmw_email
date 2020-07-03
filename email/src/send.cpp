@@ -15,6 +15,7 @@
 #include <string>
 
 #include "email/email_sender.hpp"
+#include "email/types.hpp"
 #include "email/utils.hpp"
 
 int main(int argc, char ** argv)

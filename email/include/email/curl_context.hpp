@@ -20,6 +20,7 @@
 #include <string>
 // #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
+#include "email/types.hpp"
 #include "email/utils.hpp"
 
 class CurlContext

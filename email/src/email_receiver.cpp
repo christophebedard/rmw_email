@@ -23,6 +23,7 @@
 #include <string>
 
 #include "email/email_receiver.hpp"
+#include "email/types.hpp"
 
 // TODO(christophebedard) move to class?
 static size_t write_callback(void * contents, size_t size, size_t nmemb, void * userp)

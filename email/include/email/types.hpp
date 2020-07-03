@@ -12,26 +12,32 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
+#ifndef EMAIL__TYPES_HPP_
+#define EMAIL__TYPES_HPP_
+
 #include <string>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
-#include "email/email_receiver.hpp"
-#include "email/types.hpp"
-#include "email/utils.hpp"
-
-int main(int argc, char ** argv)
+namespace email
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
-    return 1;
-  }
-  struct email::UserInfo info = info_opt.value();
-  EmailReceiver receiver(info);
-  std::optional<std::string> response = receiver.get_email();
-  if (!response) {
-    return 1;
-  }
-  std::cout << "response!" << std::endl << response.value() << std::endl;
-  return 0;
-}
+
+struct UserInfo
+{
+  // URL without the port or '<protocol>://'
+  std::string url;
+  // Username (i.e. email)
+  std::string username;
+  // Password
+  std::string password;
+};
+
+struct ProtocolInfo
+{
+  // Protocol, i.e. <protocol>://
+  std::string protocol;
+  // Port
+  int port;
+};
+
+}  // namespace email
+
+#endif  // EMAIL__TYPES_HPP_

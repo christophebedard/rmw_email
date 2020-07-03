@@ -19,7 +19,7 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
 #include "email/curl_context.hpp"
-#include "email/utils.hpp"
+#include "email/types.hpp"
 
 CurlContext::CurlContext(
   struct email::UserInfo user_info,

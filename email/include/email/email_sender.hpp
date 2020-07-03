@@ -18,6 +18,7 @@
 #include <string>
 
 #include "email/curl_context.hpp"
+#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 // namespace email

@@ -23,6 +23,7 @@
 #include <string>
 
 #include "email/curl_context.hpp"
+#include "email/types.hpp"
 
 class EmailReceiver
 {

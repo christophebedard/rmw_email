@@ -20,26 +20,10 @@
 #include <stdexcept>
 #include <string>
 
+#include "email/types.hpp"
+
 namespace email
 {
-
-struct UserInfo
-{
-  // URL without the port or '<protocol>://'
-  std::string url;
-  // Username (i.e. email)
-  std::string username;
-  // Password
-  std::string password;
-};
-
-struct ProtocolInfo
-{
-  // Protocol, i.e. <protocol>://
-  std::string protocol;
-  // Port
-  int port;
-};
 
 namespace utils
 {

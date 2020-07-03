@@ -22,6 +22,7 @@
 
 #include "email/email_sender.hpp"
 #include "email/utils.hpp"
+#include "email/types.hpp"
 
 // namespace email
 // {
