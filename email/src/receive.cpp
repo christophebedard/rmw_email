@@ -28,6 +28,9 @@ int main(int argc, char ** argv)
   }
   struct email::UserInfo info = info_opt.value();
   EmailReceiver receiver(info);
+  if (!receiver.init()) {
+    return 1;
+  }
   std::optional<std::string> response = receiver.get_email();
   if (!response) {
     return 1;

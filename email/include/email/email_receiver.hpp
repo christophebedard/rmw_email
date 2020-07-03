@@ -22,10 +22,10 @@
 #include <regex>
 #include <string>
 
-#include "email/curl_context.hpp"
+#include "email/curl_executor.hpp"
 #include "email/types.hpp"
 
-class EmailReceiver
+class EmailReceiver : public CurlExecutor
 {
 public:
   explicit EmailReceiver(
@@ -35,6 +35,9 @@ public:
   virtual ~EmailReceiver();
 
   std::optional<std::string> get_email();
+
+protected:
+  virtual bool init_options();
 
 private:
   virtual std::optional<std::string> execute(
@@ -46,9 +49,7 @@ private:
 
   std::optional<std::string> get_email_from_uid(int uid);
 
-  CurlContext context_;
   std::string read_buffer_;
-  bool debug_;
 
   static const std::regex regex_nextuid;
 };

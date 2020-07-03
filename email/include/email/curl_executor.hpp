@@ -12,28 +12,35 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <string>
+#ifndef EMAIL__CURL_EXECUTOR_HPP_
+#define EMAIL__CURL_EXECUTOR_HPP_
 
-#include "email/email_sender.hpp"
+#include "email/curl_context.hpp"
 #include "email/types.hpp"
-#include "email/utils.hpp"
 
-int main(int argc, char ** argv)
+// namespace email
+// {
+
+class CurlExecutor
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
-    return 1;
-  }
-  struct email::UserInfo info = info_opt.value();
-  const std::string to = "bedard.christophe@gmail.com";
-  EmailSender sender(info, to);
-  if (!sender.init()) {
-    return 1;
-  }
-  const std::string subject = "this is the subject";
-  const std::string body = "this is the body!";
-  bool ret = sender.send(
-    subject,
-    body);
-  return ret ? 0 : 1;
-}
+public:
+
+  bool init();
+
+protected:
+  explicit CurlExecutor(
+    struct email::UserInfo user_info,
+    struct email::ProtocolInfo protocol_info,
+    bool debug);
+  CurlExecutor(const CurlExecutor &) = delete;
+  virtual ~CurlExecutor();
+
+  virtual bool init_options() =0;
+
+  CurlContext context_;
+  bool debug_;
+};
+
+// }  // namespace email
+
+#endif  // EMAIL__CURL_EXECUTOR_HPP_

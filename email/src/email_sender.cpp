@@ -21,6 +21,7 @@
 #include <stdexcept>
 
 #include "email/email_sender.hpp"
+#include "email/curl_executor.hpp"
 #include "email/utils.hpp"
 #include "email/types.hpp"
 
@@ -52,15 +53,20 @@ EmailSender::EmailSender(
   struct email::UserInfo user_info,
   const std::string & to,
   bool debug)
-: context_(user_info, {"smtps", 465}, debug),
+: CurlExecutor(user_info, {"smtps", 465}, debug),
   recipients_(nullptr),
   upload_ctx_(),
-  email_to_(to),
-  debug_(debug)
+  email_to_(to)
+{}
+
+EmailSender::~EmailSender()
 {
-  // TODO(christophebedard) extract to method, because we need to check if it's successful
-  context_.init();
-  // Recurrent options
+  curl_slist_free_all(recipients_);
+  recipients_ = nullptr;
+}
+
+bool EmailSender::init_options()
+{
   curl_easy_setopt(context_.get_handle(), CURLOPT_URL, context_.get_full_url().c_str());
   // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYPEER, 0L);
   // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYHOST, 0L);
@@ -75,13 +81,7 @@ EmailSender::EmailSender(
   if (debug_) {
     curl_easy_setopt(context_.get_handle(), CURLOPT_VERBOSE, 1L);
   }
-}
-
-EmailSender::~EmailSender()
-{
-  curl_slist_free_all(recipients_);
-  recipients_ = nullptr;
-  context_.fini();
+  return true;
 }
 
 bool EmailSender::send(

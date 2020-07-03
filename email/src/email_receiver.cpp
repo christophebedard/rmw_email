@@ -22,6 +22,7 @@
 #include <regex>
 #include <string>
 
+#include "email/curl_executor.hpp"
 #include "email/email_receiver.hpp"
 #include "email/types.hpp"
 
@@ -35,20 +36,18 @@ static size_t write_callback(void * contents, size_t size, size_t nmemb, void * 
 EmailReceiver::EmailReceiver(
   struct email::UserInfo user_info,
   bool debug)
-: context_(user_info, {"imaps", 993}, debug),
-  read_buffer_(),
-  debug_(debug)
-{
-  // TODO(christophebedard) extract to method, because we need to check if it's successful
-  context_.init();
-  // Recurrent options
-  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEFUNCTION, write_callback);
-  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEDATA, static_cast<void *>(&read_buffer_));
-}
+: CurlExecutor(user_info, {"imaps", 993}, debug),
+  read_buffer_()
+{}
 
 EmailReceiver::~EmailReceiver()
+{}
+
+bool EmailReceiver::init_options()
 {
-  context_.fini();
+  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEFUNCTION, write_callback);
+  curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEDATA, static_cast<void *>(&read_buffer_));
+  return true;
 }
 
 std::optional<std::string> EmailReceiver::get_email()

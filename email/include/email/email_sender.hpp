@@ -17,7 +17,7 @@
 
 #include <string>
 
-#include "email/curl_context.hpp"
+#include "email/curl_executor.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -30,7 +30,7 @@ struct UploadData
   int lines_read;
 };
 
-class EmailSender
+class EmailSender : public CurlExecutor
 {
 public:
   explicit EmailSender(
@@ -44,17 +44,18 @@ public:
     const std::string & subject,
     const std::string & body);
 
+protected:
+  virtual bool init_options();
+
 private:
   static std::string build_payload(
     const std::string & to,
     const std::string & subject,
     const std::string & body);
 
-  CurlContext context_;
   struct curl_slist * recipients_;
   struct UploadData upload_ctx_;
   const std::string email_to_;
-  bool debug_;
 };
 
 // }  // namespace email

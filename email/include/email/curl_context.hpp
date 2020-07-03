@@ -29,7 +29,7 @@ public:
   explicit CurlContext(
     struct email::UserInfo user_info,
     struct email::ProtocolInfo protocol_info,
-    bool debug = true);
+    bool debug);
   CurlContext(const CurlContext &) = delete;
   virtual ~CurlContext();
 

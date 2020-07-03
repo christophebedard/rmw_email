@@ -12,28 +12,23 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <string>
-
-#include "email/email_sender.hpp"
+#include "email/curl_executor.hpp"
 #include "email/types.hpp"
-#include "email/utils.hpp"
 
-int main(int argc, char ** argv)
+CurlExecutor::CurlExecutor(
+  struct email::UserInfo user_info,
+  struct email::ProtocolInfo protocol_info,
+  bool debug)
+: context_(user_info, protocol_info, debug),
+  debug_(debug)
+{}
+
+CurlExecutor::~CurlExecutor()
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
-    return 1;
-  }
-  struct email::UserInfo info = info_opt.value();
-  const std::string to = "bedard.christophe@gmail.com";
-  EmailSender sender(info, to);
-  if (!sender.init()) {
-    return 1;
-  }
-  const std::string subject = "this is the subject";
-  const std::string body = "this is the body!";
-  bool ret = sender.send(
-    subject,
-    body);
-  return ret ? 0 : 1;
+  context_.fini();
+}
+
+bool CurlExecutor::init()
+{
+  return context_.init() && init_options();
 }
