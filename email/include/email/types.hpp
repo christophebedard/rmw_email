@@ -16,6 +16,7 @@
 #define EMAIL__TYPES_HPP_
 
 #include <string>
+#include <vector>
 
 namespace email
 {
@@ -37,6 +38,29 @@ struct ProtocolInfo
   // Port
   int port;
 };
+
+struct EmailRecipients
+{
+  std::vector<std::string> to;
+  std::vector<std::string> cc;
+  std::vector<std::string> bcc;
+};
+
+struct EmailContent
+{
+  // Subject, which should be one line without any newlines
+  std::string subject;
+  // Body/content, which may have multiple lines
+  std::string body;
+};
+
+// struct Email
+// {
+//   // Recipients of the email
+//   struct EmailRecipients recipients;
+//   // Content of the email
+//   struct EmailContent content;
+// };
 
 }  // namespace email
 

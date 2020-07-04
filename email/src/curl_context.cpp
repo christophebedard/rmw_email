@@ -22,10 +22,11 @@
 #include "email/types.hpp"
 
 CurlContext::CurlContext(
-  struct email::UserInfo user_info,
-  struct email::ProtocolInfo protocol_info,
-  bool debug)
-: user_info_(user_info),
+  const struct email::UserInfo & user_info,
+  const struct email::ProtocolInfo & protocol_info,
+  const bool debug)
+: handle_(nullptr),
+  user_info_(user_info),
   protocol_info_(protocol_info),
   debug_(debug)
 {

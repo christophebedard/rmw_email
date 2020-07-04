@@ -16,6 +16,7 @@
 #define EMAIL__EMAIL_SENDER_HPP_
 
 #include <string>
+#include <vector>
 
 #include "email/curl_executor.hpp"
 #include "email/types.hpp"
@@ -34,28 +35,27 @@ class EmailSender : public CurlExecutor
 {
 public:
   explicit EmailSender(
-    struct email::UserInfo user_info,
-    const std::string & to,
-    bool debug = true);
+    const struct email::UserInfo & user_info,
+    const struct email::EmailRecipients & recipients,
+    const bool debug = true);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
 
-  bool send(
-    const std::string & subject,
-    const std::string & body);
+  bool send(const struct email::EmailContent & content);
 
 protected:
   virtual bool init_options();
 
 private:
-  static std::string build_payload(
-    const std::string & to,
-    const std::string & subject,
-    const std::string & body);
+  static const std::string build_payload(
+    const struct email::EmailRecipients & recipients,
+    const struct email::EmailContent & content);
+  static const std::string join_list(
+    const std::vector<std::string> & list);
 
-  struct curl_slist * recipients_;
+  const struct email::EmailRecipients recipients_;
+  struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;
-  const std::string email_to_;
 };
 
 // }  // namespace email

@@ -24,16 +24,14 @@ int main(int argc, char ** argv)
   if (!info_opt) {
     return 1;
   }
-  struct email::UserInfo info = info_opt.value();
-  const std::string to = "bedard.christophe@gmail.com";
-  EmailSender sender(info, to);
+  const struct email::UserInfo info = info_opt.value();
+  const struct email::EmailRecipients recipients = {{"bedard.christophe@gmail.com"}, {}, {}};
+  EmailSender sender(info, recipients);
   if (!sender.init()) {
     return 1;
   }
   const std::string subject = "this is the subject";
   const std::string body = "this is the body!";
-  bool ret = sender.send(
-    subject,
-    body);
+  bool ret = sender.send({subject, body});
   return ret ? 0 : 1;
 }

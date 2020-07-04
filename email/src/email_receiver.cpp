@@ -34,8 +34,8 @@ static size_t write_callback(void * contents, size_t size, size_t nmemb, void * 
 }
 
 EmailReceiver::EmailReceiver(
-  struct email::UserInfo user_info,
-  bool debug)
+  const struct email::UserInfo & user_info,
+  const bool debug)
 : CurlExecutor(user_info, {"imaps", 993}, debug),
   read_buffer_()
 {}
