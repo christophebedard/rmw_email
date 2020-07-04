@@ -26,8 +26,8 @@
 #include "email/utils.hpp"
 #include "email/types.hpp"
 
-// namespace email
-// {
+namespace email
+{
 
 static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp)
 {
@@ -51,8 +51,8 @@ static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void 
 }
 
 EmailSender::EmailSender(
-  const struct email::UserInfo & user_info,
-  const struct email::EmailRecipients & recipients,
+  const struct UserInfo & user_info,
+  const struct EmailRecipients & recipients,
   const bool debug)
 : CurlExecutor(user_info, {"smtps", 465}, debug),
   recipients_(recipients),
@@ -95,14 +95,14 @@ bool EmailSender::init_options()
 }
 
 bool EmailSender::send(
-  const struct email::EmailContent & content)
+  const struct EmailContent & content)
 {
   if (!is_valid()) {
     std::cerr << "not initialized!" << std::endl;
     return false;
   }
 
-  const std::string payload = email::utils::PayloadUtils::build_payload(recipients_, content);
+  const std::string payload = utils::PayloadUtils::build_payload(recipients_, content);
   if (debug_) {
     std::cout << "payload:" << std::endl << payload << std::endl;
   }
@@ -117,4 +117,4 @@ bool EmailSender::send(
   return true;
 }
 
-// }  // namespace email
+}  // namespace email

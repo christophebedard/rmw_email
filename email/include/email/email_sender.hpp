@@ -22,8 +22,8 @@
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
-// namespace email
-// {
+namespace email
+{
 
 struct UploadData
 {
@@ -35,23 +35,23 @@ class EmailSender : public CurlExecutor
 {
 public:
   explicit EmailSender(
-    const struct email::UserInfo & user_info,
-    const struct email::EmailRecipients & recipients,
+    const struct UserInfo & user_info,
+    const struct EmailRecipients & recipients,
     const bool debug = true);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
 
-  bool send(const struct email::EmailContent & content);
+  bool send(const struct EmailContent & content);
 
 protected:
   virtual bool init_options();
 
 private:
-  const struct email::EmailRecipients recipients_;
+  const struct EmailRecipients recipients_;
   struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;
 };
 
-// }  // namespace email
+}  // namespace email
 
 #endif  // EMAIL__EMAIL_SENDER_HPP_

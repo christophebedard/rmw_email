@@ -18,8 +18,8 @@
 #include "email/curl_context.hpp"
 #include "email/types.hpp"
 
-// namespace email
-// {
+namespace email
+{
 
 class CurlExecutor
 {
@@ -28,8 +28,8 @@ public:
 
 protected:
   explicit CurlExecutor(
-    const struct email::UserInfo & user_info,
-    const struct email::ProtocolInfo & protocol_info,
+    const struct UserInfo & user_info,
+    const struct ProtocolInfo & protocol_info,
     const bool debug);
   CurlExecutor(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();
@@ -45,6 +45,6 @@ private:
   bool is_valid_;
 };
 
-// }  // namespace email
+}  // namespace email
 
 #endif  // EMAIL__CURL_EXECUTOR_HPP_

@@ -27,7 +27,7 @@ int main(int argc, char ** argv)
     return 1;
   }
   struct email::UserInfo info = info_opt.value();
-  EmailReceiver receiver(info);
+  email::EmailReceiver receiver(info);
   if (!receiver.init()) {
     return 1;
   }

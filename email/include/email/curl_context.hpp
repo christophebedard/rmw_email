@@ -18,17 +18,19 @@
 #include <curl/curl.h>
 
 #include <string>
-// #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
 #include "email/types.hpp"
 #include "email/utils.hpp"
+
+namespace email
+{
 
 class CurlContext
 {
 public:
   explicit CurlContext(
-    const struct email::UserInfo & user_info,
-    const struct email::ProtocolInfo & protocol_info,
+    const struct UserInfo & user_info,
+    const struct ProtocolInfo & protocol_info,
     const bool debug);
   CurlContext(const CurlContext &) = delete;
   virtual ~CurlContext();
@@ -49,21 +51,19 @@ public:
     return full_url_;
   }
 
-  const struct email::UserInfo & get_user_info()
+  const struct UserInfo & get_user_info()
   {
     return user_info_;
   }
 
 private:
-  // virtual std::optional<std::string> execute(
-  //   std::optional<std::string> url_options,
-  //   std::optional<std::string> custom_request) = 0;
-
   CURL * handle_;
-  const struct email::UserInfo user_info_;
-  const struct email::ProtocolInfo protocol_info_;
+  const struct UserInfo user_info_;
+  const struct ProtocolInfo protocol_info_;
   std::string full_url_;
   bool debug_;
 };
+
+}  // namespace email
 
 #endif  // EMAIL__CURL_CONTEXT_HPP_

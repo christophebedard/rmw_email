@@ -21,9 +21,12 @@
 #include "email/curl_context.hpp"
 #include "email/types.hpp"
 
+namespace email
+{
+
 CurlContext::CurlContext(
-  const struct email::UserInfo & user_info,
-  const struct email::ProtocolInfo & protocol_info,
+  const struct UserInfo & user_info,
+  const struct ProtocolInfo & protocol_info,
   const bool debug)
 : handle_(nullptr),
   user_info_(user_info),
@@ -66,3 +69,5 @@ bool CurlContext::execute()
   }
   return true;
 }
+
+}  // namespace email

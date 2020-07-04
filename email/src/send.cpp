@@ -26,7 +26,7 @@ int main(int argc, char ** argv)
   }
   const struct email::UserInfo info = info_opt.value();
   const struct email::EmailRecipients recipients = {{"bedard.christophe@gmail.com"}, {}, {}};
-  EmailSender sender(info, recipients);
+  email::EmailSender sender(info, recipients);
   if (!sender.init()) {
     return 1;
   }
