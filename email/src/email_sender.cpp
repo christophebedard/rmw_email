@@ -17,11 +17,13 @@
 #include <cstring>
 #include <iostream>
 #include <memory>
-#include <string>
+#include <numeric>
 #include <stdexcept>
+#include <string>
+#include <vector>
 
-#include "email/email_sender.hpp"
 #include "email/curl_executor.hpp"
+#include "email/email_sender.hpp"
 #include "email/utils.hpp"
 #include "email/types.hpp"
 
@@ -50,19 +52,19 @@ static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void 
 }
 
 EmailSender::EmailSender(
-  struct email::UserInfo user_info,
-  const std::string & to,
-  bool debug)
+  const struct email::UserInfo & user_info,
+  const struct email::EmailRecipients & recipients,
+  const bool debug)
 : CurlExecutor(user_info, {"smtps", 465}, debug),
-  recipients_(nullptr),
-  upload_ctx_(),
-  email_to_(to)
+  recipients_(recipients),
+  recipients_list_(nullptr),
+  upload_ctx_()
 {}
 
 EmailSender::~EmailSender()
 {
-  curl_slist_free_all(recipients_);
-  recipients_ = nullptr;
+  curl_slist_free_all(recipients_list_);
+  recipients_list_ = nullptr;
 }
 
 bool EmailSender::init_options()
@@ -72,9 +74,18 @@ bool EmailSender::init_options()
   // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYHOST, 0L);
   curl_easy_setopt(
     context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_user_info().username.c_str());
-  recipients_ = curl_slist_append(recipients_, email_to_.c_str());
-  // recipients_ = curl_slist_append(recipients_, CC);
-  curl_easy_setopt(context_.get_handle(), CURLOPT_MAIL_RCPT, recipients_);
+  // Add all destination emails to the list of recipients
+  for (auto & email_to : recipients_.to) {
+    recipients_list_ = curl_slist_append(recipients_list_, email_to.c_str());
+  }
+  for (auto & email_cc : recipients_.cc) {
+    recipients_list_ = curl_slist_append(recipients_list_, email_cc.c_str());
+  }
+  for (auto & email_bcc : recipients_.bcc) {
+    recipients_list_ = curl_slist_append(recipients_list_, email_bcc.c_str());
+  }
+  // recipients_list_ = curl_slist_append(recipients_list_, CC);
+  curl_easy_setopt(context_.get_handle(), CURLOPT_MAIL_RCPT, recipients_list_);
   curl_easy_setopt(context_.get_handle(), CURLOPT_READFUNCTION, read_payload_callback);
   curl_easy_setopt(context_.get_handle(), CURLOPT_READDATA, static_cast<void *>(&upload_ctx_));
   curl_easy_setopt(context_.get_handle(), CURLOPT_UPLOAD, 1L);
@@ -85,15 +96,14 @@ bool EmailSender::init_options()
 }
 
 bool EmailSender::send(
-  const std::string & subject,
-  const std::string & body)
+  const struct email::EmailContent & content)
 {
   if (!is_valid()) {
     std::cerr << "not initialized!" << std::endl;
     return false;
   }
 
-  const std::string payload = build_payload(email_to_, subject, body);
+  const std::string payload = build_payload(recipients_, content);
   if (debug_) {
     std::cout << "payload:" << std::endl << payload << std::endl;
   }
@@ -108,14 +118,32 @@ bool EmailSender::send(
   return true;
 }
 
-std::string EmailSender::build_payload(
-  const std::string & to,
-  const std::string & subject,
-  const std::string & body)
+const std::string EmailSender::build_payload(
+  const struct email::EmailRecipients & recipients,
+  const struct email::EmailContent & content)
 {
+  // TODO(christophebedard) validate subject (one line, no newline)
+  // TODO(christophebedard) validate/format body (replace all \n with \r\n)
   return email::utils::string_format(
-    "To: %s\r\nSubject: %s\r\n\r\n%s\r\n",
-    to.c_str(), subject.c_str(), body.c_str());
+    "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
+    join_list(recipients.to).c_str(),
+    join_list(recipients.cc).c_str(),
+    join_list(recipients.bcc).c_str(),
+    content.subject.c_str(),
+    content.body.c_str());
+}
+
+const std::string EmailSender::join_list(
+  const std::vector<std::string> & list)
+{
+  // From: https://stackoverflow.com/a/12155571/6476709
+  return std::accumulate(
+    list.begin(),
+    list.end(),
+    std::string(),
+    [](const std::string & a, const std::string & b) -> std::string {
+      return a + (a.length() > 0 ? ", " : "") + b;
+    });
 }
 
 // }  // namespace email

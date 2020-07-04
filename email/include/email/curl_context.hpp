@@ -27,9 +27,9 @@ class CurlContext
 {
 public:
   explicit CurlContext(
-    struct email::UserInfo user_info,
-    struct email::ProtocolInfo protocol_info,
-    bool debug);
+    const struct email::UserInfo & user_info,
+    const struct email::ProtocolInfo & protocol_info,
+    const bool debug);
   CurlContext(const CurlContext &) = delete;
   virtual ~CurlContext();
 
@@ -49,7 +49,7 @@ public:
     return full_url_;
   }
 
-  struct email::UserInfo & get_user_info()
+  const struct email::UserInfo & get_user_info()
   {
     return user_info_;
   }
@@ -60,8 +60,8 @@ private:
   //   std::optional<std::string> custom_request) = 0;
 
   CURL * handle_;
-  struct email::UserInfo user_info_;
-  struct email::ProtocolInfo protocol_info_;
+  const struct email::UserInfo user_info_;
+  const struct email::ProtocolInfo protocol_info_;
   std::string full_url_;
   bool debug_;
 };

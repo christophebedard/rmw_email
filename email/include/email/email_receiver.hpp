@@ -29,8 +29,8 @@ class EmailReceiver : public CurlExecutor
 {
 public:
   explicit EmailReceiver(
-    struct email::UserInfo user_info,
-    bool debug = true);
+    const struct email::UserInfo & user_info,
+    const bool debug = true);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
 

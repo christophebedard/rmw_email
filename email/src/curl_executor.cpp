@@ -16,9 +16,9 @@
 #include "email/types.hpp"
 
 CurlExecutor::CurlExecutor(
-  struct email::UserInfo user_info,
-  struct email::ProtocolInfo protocol_info,
-  bool debug)
+  const struct email::UserInfo & user_info,
+  const struct email::ProtocolInfo & protocol_info,
+  const bool debug)
 : context_(user_info, protocol_info, debug),
   debug_(debug),
   is_valid_(false)

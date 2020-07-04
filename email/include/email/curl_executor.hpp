@@ -28,9 +28,9 @@ public:
 
 protected:
   explicit CurlExecutor(
-    struct email::UserInfo user_info,
-    struct email::ProtocolInfo protocol_info,
-    bool debug);
+    const struct email::UserInfo & user_info,
+    const struct email::ProtocolInfo & protocol_info,
+    const bool debug);
   CurlExecutor(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();
 
@@ -39,7 +39,7 @@ protected:
   bool is_valid() const;
 
   CurlContext context_;
-  bool debug_;
+  const bool debug_;
 
 private:
   bool is_valid_;
