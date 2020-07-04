@@ -15,7 +15,13 @@ endif()
 
 find_package(ament_cmake_ros REQUIRED)
 
-find_package(CURL REQUIRED)
+set(CURL_USE_VENDOR FALSE)
+find_package(CURL)
+if(NOT CURL_FOUND)
+  message(STATUS "libcurl not found; using libcurl_vendor")
+  find_package(libcurl_vendor REQUIRED)
+  set(CURL_USE_VENDOR TRUE)
+endif()
 # message(STATUS "Found CURL version: ${CURL_VERSION_STRING}")
 # message(STATUS "Using CURL include dir(s): ${CURL_INCLUDE_DIRS}")
 # message(STATUS "Using CURL lib(s): ${CURL_LIBRARIES}")
@@ -30,14 +36,22 @@ set(SOURCES
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
-target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
+if(CURL_USE_VENDOR)
+  ament_target_dependencies(${PROJECT_NAME} libcurl_vendor)
+else()
+  target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
+endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:include>"
 )
 ament_export_include_directories(include)
 ament_export_targets(${PROJECT_NAME}_export HAS_LIBRARY_TARGET)
-ament_export_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
+if(CURL_USE_VENDOR)
+  ament_export_dependencies(libcurl_vendor)
+else()
+  ament_export_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
+endif()
 
 # Tools for sending/receiving emails (& testing the lib)
 add_executable(send
