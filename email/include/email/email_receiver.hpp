@@ -47,22 +47,11 @@ private:
     std::optional<std::string> url_options,
     std::optional<std::string> custom_request);
 
-  std::optional<int> get_nextuid_from_response(const std::string & response);
   std::optional<int> get_nextuid();
 
   std::optional<struct EmailContent> get_email_from_uid(int uid);
 
-  std::optional<struct EmailContent> result_to_email_content(const std::string & curl_result);
-
-  std::optional<std::string> get_first_match_group(
-    const std::string & string,
-    const std::regex & regex);
-
   std::string read_buffer_;
-
-  static const std::regex regex_nextuid;
-  static const std::regex regex_subject;
-  static const std::regex regex_body;
 };
 
 }  // namespace email
