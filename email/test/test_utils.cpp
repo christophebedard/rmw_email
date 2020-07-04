@@ -91,6 +91,7 @@ TEST(TestUtils, join_list) {
 }
 
 TEST(TestUtils, build_payload) {
+  // Check handling of multiple recipients
   std::string payload_one_recipient = \
     "To: my@email.com\r\n" \
     "Cc: \r\n" \
@@ -118,8 +119,35 @@ TEST(TestUtils, build_payload) {
     payload_multiple_recipients,
     email::utils::PayloadUtils::build_payload(recipients_multiple, content_one_line));
 
-  // TODO(christophebedard) add test to check that the subject
-  // string is properly handled if it contains a newline,
-  // and another test that checks that newlines in the content
-  // string are replaced with \r\n
+  // Check that a subject with a newline gets cut
+  const struct email::EmailContent content_multiple_lines = {
+    {"this is my awesome subject that stops here\nor not!"},
+    {"this is the email's body\non multiple lines!"}};
+  std::string payload_multiple_recipients_newlines = \
+    "To: my@email.com, another@email.com\r\n" \
+    "Cc: onecc@email.ca\r\n" \
+    "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \
+    "Subject: this is my awesome subject that stops here\r\n\r\n" \
+    "this is the email's body\non multiple lines!\r\n";
+  EXPECT_EQ(
+    payload_multiple_recipients_newlines,
+    email::utils::PayloadUtils::build_payload(recipients_multiple, content_multiple_lines));
+}
+
+TEST(TestUtils, cut_string_if_newline) {
+  std::string no_newline = "this is a string without any newline";
+  EXPECT_EQ(no_newline, email::utils::PayloadUtils::cut_string_if_newline(no_newline));
+
+  EXPECT_STREQ(
+    "this is the first line",
+    email::utils::PayloadUtils::cut_string_if_newline(
+      "this is the first line\nthis is the second one").c_str());
+  EXPECT_STREQ(
+    "this is the first line...",
+    email::utils::PayloadUtils::cut_string_if_newline(
+      "this is the first line...\r\nthis is the second one\nthis is a third one!").c_str());
+  EXPECT_STREQ(
+    "this is the first line!?!?!?!?!",
+    email::utils::PayloadUtils::cut_string_if_newline(
+      "this is the first line!?!?!?!?!\r<--not sure this would happen, but\n\rwhy not").c_str());
 }

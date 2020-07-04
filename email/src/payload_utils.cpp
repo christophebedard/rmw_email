@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <numeric>
+#include <regex>
 #include <string>
 #include <vector>
 
@@ -29,14 +30,15 @@ const std::string PayloadUtils::build_payload(
   const struct email::EmailRecipients & recipients,
   const struct email::EmailContent & content)
 {
-  // TODO(christophebedard) validate subject (one line, no newline)
-  // TODO(christophebedard) validate/format body (replace all \n with \r\n)
+  // Subjects containing newlines will have the second+ line(s) be moved to the body,
+  // but for the sake of simplicity, we will cut it out. As for the body, curl
+  // seems to handle it correctly even if it contains "\n" instead of "\r\n"
   return email::utils::string_format(
     "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
     join_list(recipients.to).c_str(),
     join_list(recipients.cc).c_str(),
     join_list(recipients.bcc).c_str(),
-    content.subject.c_str(),
+    cut_string_if_newline(content.subject).c_str(),
     content.body.c_str());
 }
 
@@ -52,6 +54,14 @@ const std::string PayloadUtils::join_list(
       return a + (a.length() > 0 ? ", " : "") + b;
     });
 }
+
+std::string PayloadUtils::cut_string_if_newline(
+  const std::string & string)
+{
+  return std::regex_replace(string, regex_newline, "");
+}
+
+const std::regex PayloadUtils::regex_newline("[\r\n].*", std::regex::extended);
 
 }  // namespace utils
 }  // namespace email

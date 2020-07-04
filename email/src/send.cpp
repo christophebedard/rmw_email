@@ -30,8 +30,8 @@ int main(int argc, char ** argv)
   if (!sender.init()) {
     return 1;
   }
-  const std::string subject = "this is the subject";
-  const std::string body = "this is the body!";
+  const std::string subject = "this is the subject\nwoopsies";
+  const std::string body = "this is the body!\nthis is on another line";
   bool ret = sender.send({subject, body});
   return ret ? 0 : 1;
 }
