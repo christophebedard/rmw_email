@@ -33,6 +33,7 @@ set(SOURCES
   src/email_receiver.cpp
   src/email_sender.cpp
   src/payload_utils.cpp
+  src/response_utils.cpp
   src/utils.cpp
 )
 

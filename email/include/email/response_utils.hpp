@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__PAYLOAD_UTILS_HPP_
-#define EMAIL__PAYLOAD_UTILS_HPP_
+#ifndef EMAIL__RESPONSE_UTILS_HPP_
+#define EMAIL__RESPONSE_UTILS_HPP_
 
+#include <optional>
 #include <regex>
 #include <string>
-#include <vector>
 
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
@@ -28,30 +28,32 @@ namespace utils
 {
 
 /**
- * Utilities for building email payloads according to RFC 5322.
+ * Utilities for extracting information from an email formatted according to RFC 5322.
  *
  * See: https://tools.ietf.org/html/rfc5322
  */
-class PayloadUtils
+class ResponseUtils
 {
 public:
-  PayloadUtils() = delete;
-  ~PayloadUtils() = delete;
+  ResponseUtils() = delete;
+  ~ResponseUtils() = delete;
 
-  static const std::string build_payload(
-    const struct EmailRecipients & recipients,
-    const struct EmailContent & content);
+  static std::optional<int> get_nextuid_from_response(const std::string & response);
 
-  static const std::string join_list(
-    const std::vector<std::string> & list);
-
-  static std::string cut_string_if_newline(const std::string & string);
+  static std::optional<struct EmailContent> get_email_content_from_response(
+    const std::string & curl_result);
 
 private:
-  static const std::regex regex_newline;
+  static std::optional<std::string> get_first_match_group(
+    const std::string & string,
+    const std::regex & regex);
+
+  static const std::regex regex_nextuid;
+  static const std::regex regex_subject;
+  static const std::regex regex_body;
 };
 
 }  // namespace utils
 }  // namespace email
 
-#endif  // EMAIL__PAYLOAD_UTILS_HPP_
+#endif  // EMAIL__RESPONSE_UTILS_HPP_
