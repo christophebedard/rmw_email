@@ -20,7 +20,8 @@ CurlExecutor::CurlExecutor(
   struct email::ProtocolInfo protocol_info,
   bool debug)
 : context_(user_info, protocol_info, debug),
-  debug_(debug)
+  debug_(debug),
+  is_valid_(false)
 {}
 
 CurlExecutor::~CurlExecutor()
@@ -30,5 +31,11 @@ CurlExecutor::~CurlExecutor()
 
 bool CurlExecutor::init()
 {
-  return context_.init() && init_options();
+  is_valid_ |= context_.init() && init_options();
+  return is_valid_;
+}
+
+bool CurlExecutor::is_valid() const
+{
+  return is_valid_;
 }

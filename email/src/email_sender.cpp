@@ -88,6 +88,11 @@ bool EmailSender::send(
   const std::string & subject,
   const std::string & body)
 {
+  if (!is_valid()) {
+    std::cerr << "not initialized!" << std::endl;
+    return false;
+  }
+
   const std::string payload = build_payload(email_to_, subject, body);
   if (debug_) {
     std::cout << "payload:" << std::endl << payload << std::endl;

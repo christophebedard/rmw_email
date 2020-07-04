@@ -24,7 +24,6 @@
 class CurlExecutor
 {
 public:
-
   bool init();
 
 protected:
@@ -35,10 +34,15 @@ protected:
   CurlExecutor(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();
 
-  virtual bool init_options() =0;
+  virtual bool init_options() = 0;
+
+  bool is_valid() const;
 
   CurlContext context_;
   bool debug_;
+
+private:
+  bool is_valid_;
 };
 
 // }  // namespace email

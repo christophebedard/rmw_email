@@ -52,6 +52,11 @@ bool EmailReceiver::init_options()
 
 std::optional<std::string> EmailReceiver::get_email()
 {
+  if (!is_valid()) {
+    std::cerr << "not initialized!" << std::endl;
+    return std::nullopt;
+  }
+
   std::optional<int> next_uid = get_nextuid();
   if (!next_uid) {
     return std::nullopt;
