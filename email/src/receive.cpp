@@ -31,10 +31,12 @@ int main(int argc, char ** argv)
   if (!receiver.init()) {
     return 1;
   }
-  std::optional<std::string> response = receiver.get_email();
+  std::optional<struct email::EmailContent> response = receiver.get_email();
   if (!response) {
     return 1;
   }
-  std::cout << "response!" << std::endl << response.value() << std::endl;
+  std::cout << "response!" << std::endl <<
+    response.value().subject << std::endl << std::endl <<
+    response.value().body << std::endl;
   return 0;
 }
