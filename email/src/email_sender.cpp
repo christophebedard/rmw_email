@@ -17,13 +17,12 @@
 #include <cstring>
 #include <iostream>
 #include <memory>
-#include <numeric>
 #include <stdexcept>
 #include <string>
-#include <vector>
 
 #include "email/curl_executor.hpp"
 #include "email/email_sender.hpp"
+#include "email/payload_utils.hpp"
 #include "email/utils.hpp"
 #include "email/types.hpp"
 
@@ -103,7 +102,7 @@ bool EmailSender::send(
     return false;
   }
 
-  const std::string payload = build_payload(recipients_, content);
+  const std::string payload = email::utils::PayloadUtils::build_payload(recipients_, content);
   if (debug_) {
     std::cout << "payload:" << std::endl << payload << std::endl;
   }
@@ -116,34 +115,6 @@ bool EmailSender::send(
     return false;
   }
   return true;
-}
-
-const std::string EmailSender::build_payload(
-  const struct email::EmailRecipients & recipients,
-  const struct email::EmailContent & content)
-{
-  // TODO(christophebedard) validate subject (one line, no newline)
-  // TODO(christophebedard) validate/format body (replace all \n with \r\n)
-  return email::utils::string_format(
-    "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
-    join_list(recipients.to).c_str(),
-    join_list(recipients.cc).c_str(),
-    join_list(recipients.bcc).c_str(),
-    content.subject.c_str(),
-    content.body.c_str());
-}
-
-const std::string EmailSender::join_list(
-  const std::vector<std::string> & list)
-{
-  // From: https://stackoverflow.com/a/12155571/6476709
-  return std::accumulate(
-    list.begin(),
-    list.end(),
-    std::string(),
-    [](const std::string & a, const std::string & b) -> std::string {
-      return a + (a.length() > 0 ? ", " : "") + b;
-    });
 }
 
 // }  // namespace email

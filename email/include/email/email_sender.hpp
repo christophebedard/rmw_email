@@ -47,12 +47,6 @@ protected:
   virtual bool init_options();
 
 private:
-  static const std::string build_payload(
-    const struct email::EmailRecipients & recipients,
-    const struct email::EmailContent & content);
-  static const std::string join_list(
-    const std::vector<std::string> & list);
-
   const struct email::EmailRecipients recipients_;
   struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;

@@ -12,37 +12,41 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__UTILS_HPP_
-#define EMAIL__UTILS_HPP_
+#ifndef EMAIL__PAYLOAD_UTILS_HPP_
+#define EMAIL__PAYLOAD_UTILS_HPP_
 
-#include <memory>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
-#include <stdexcept>
 #include <string>
+#include <vector>
 
 #include "email/types.hpp"
+#include "email/utils.hpp"
+#include "email/visibility_control.hpp"
 
 namespace email
 {
-
 namespace utils
 {
 
-template<typename ... Args>
-std::string string_format(const std::string & format, Args... args)
+/**
+ * Utilities for building email payloads according to RFC 5322.
+ *
+ * See: https://tools.ietf.org/html/rfc5322
+ */
+class PayloadUtils
 {
-  size_t size = snprintf(nullptr, 0, format.c_str(), args ...) + 1;
-  if (size <= 0) {
-    throw std::runtime_error("Error during formatting.");
-  }
-  std::unique_ptr<char[]> buf(new char[size]);
-  snprintf(buf.get(), size, format.c_str(), args ...);
-  return std::string(buf.get(), buf.get() + size - 1);
-}
+public:
+  PayloadUtils() = delete;
+  ~PayloadUtils() = delete;
 
-std::optional<struct UserInfo> parse_user_connection_info(int argc, char ** argv);
+  static const std::string build_payload(
+    const struct email::EmailRecipients & recipients,
+    const struct email::EmailContent & content);
+
+  static const std::string join_list(
+    const std::vector<std::string> & list);
+};
 
 }  // namespace utils
 }  // namespace email
 
-#endif  // EMAIL__UTILS_HPP_
+#endif  // EMAIL__PAYLOAD_UTILS_HPP_
