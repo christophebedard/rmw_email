@@ -63,8 +63,11 @@ bool CurlContext::execute()
 {
   CURLcode res = curl_easy_perform(handle_);
   if (CURLE_OK != res) {
-    std::cerr << "curl_easy_perform() failed: " << static_cast<int>(res) <<
-      "=" << curl_easy_strerror(res) << std::endl;
+    // Some error codes are "expected," i.e. they're not real failures
+    if (debug_ || CURLE_REMOTE_FILE_NOT_FOUND != res) {
+      std::cerr << "curl_easy_perform() failed: " << static_cast<int>(res) <<
+        "=" << curl_easy_strerror(res) << std::endl;
+    }
     return false;
   }
   return true;
