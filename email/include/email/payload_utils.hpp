@@ -15,6 +15,7 @@
 #ifndef EMAIL__PAYLOAD_UTILS_HPP_
 #define EMAIL__PAYLOAD_UTILS_HPP_
 
+#include <regex>
 #include <string>
 #include <vector>
 
@@ -44,6 +45,11 @@ public:
 
   static const std::string join_list(
     const std::vector<std::string> & list);
+
+  static std::string cut_string_if_newline(const std::string & string);
+
+private:
+  static const std::regex regex_newline;
 };
 
 }  // namespace utils
