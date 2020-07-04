@@ -53,7 +53,7 @@ bool EmailReceiver::init_options()
   return true;
 }
 
-std::optional<std::string> EmailReceiver::get_email()
+std::optional<struct EmailContent> EmailReceiver::get_email()
 {
   if (!is_valid()) {
     std::cerr << "not initialized!" << std::endl;
@@ -65,7 +65,7 @@ std::optional<std::string> EmailReceiver::get_email()
     return std::nullopt;
   }
   std::cout << "nextuid=" << next_uid.value() << std::endl;
-  std::optional<std::string> next_email;
+  std::optional<struct EmailContent> next_email;
   // Try until we get an email
   while (!next_email) {
     next_email = get_email_from_uid(next_uid.value());
@@ -73,9 +73,27 @@ std::optional<std::string> EmailReceiver::get_email()
   return next_email;
 }
 
-std::optional<std::string> EmailReceiver::get_email_from_uid(int uid)
+std::optional<struct EmailContent> EmailReceiver::get_email_from_uid(int uid)
 {
-  return execute("INBOX/;UID=" + std::to_string(uid), std::nullopt);
+  auto execute_result = execute("INBOX/;UID=" + std::to_string(uid), std::nullopt);
+  if (!execute_result) {
+    return std::nullopt;
+  }
+  return result_to_email_content(execute_result.value());
+}
+
+std::optional<struct EmailContent> EmailReceiver::result_to_email_content(
+  const std::string & curl_result)
+{
+  auto match_group_subject = get_first_match_group(curl_result, EmailReceiver::regex_subject);
+  auto match_group_body = get_first_match_group(curl_result, EmailReceiver::regex_body);
+  if (!match_group_subject || !match_group_body) {
+    return std::nullopt;
+  }
+  struct EmailContent content;
+  content.subject = match_group_subject.value();
+  content.body = match_group_body.value();
+  return content;
 }
 
 std::optional<int> EmailReceiver::get_nextuid()
@@ -88,21 +106,13 @@ std::optional<int> EmailReceiver::get_nextuid()
   return next_uid;
 }
 
-const std::regex EmailReceiver::regex_nextuid(
-  ".*OK \\[UIDNEXT (.*)\\] Predicted next UID.*",
-  std::regex::extended);
-
 std::optional<int> EmailReceiver::get_nextuid_from_response(const std::string & response)
 {
-  std::smatch matches;
-  if (!std::regex_search(response, matches, EmailReceiver::regex_nextuid)) {
+  auto match_group = get_first_match_group(response, EmailReceiver::regex_nextuid);
+  if (!match_group) {
     return std::nullopt;
   }
-  // Only 1 match besides the first global match itself
-  if (matches.size() != 2) {
-    return std::nullopt;
-  }
-  return std::stoi(matches[1].str());
+  return std::stoi(match_group.value());
 }
 
 std::optional<std::string> EmailReceiver::execute(
@@ -132,5 +142,28 @@ std::optional<std::string> EmailReceiver::execute(
   }
   return read_buffer_;
 }
+
+std::optional<std::string> EmailReceiver::get_first_match_group(
+  const std::string & string,
+  const std::regex & regex)
+{
+  std::smatch matches;
+  if (!std::regex_search(string, matches, regex)) {
+    return std::nullopt;
+  }
+  // Only expecting one group besides the first global match itself
+  if (matches.size() != 2) {
+    return std::nullopt;
+  }
+  return matches[1].str();
+}
+
+const std::regex EmailReceiver::regex_nextuid(
+  R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
+  std::regex::extended);
+const std::regex EmailReceiver::regex_subject(
+  R"(Subject: (.*)\r?\n)");
+const std::regex EmailReceiver::regex_body(
+  R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
 
 }  // namespace email
