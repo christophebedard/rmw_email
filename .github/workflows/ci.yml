@@ -1,0 +1,15 @@
+name: Test
+on:
+  pull_request:
+  push:
+    branches:
+      - master
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: ros-tooling/setup-ros@0.0.25
+    - uses: christophebedard/action-ros-ci@import-token-private-repo
+      with:
+        package-name: email
+        import-token: ${{ secrets.REPO_TOKEN }}
