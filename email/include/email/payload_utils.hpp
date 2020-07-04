@@ -40,8 +40,8 @@ public:
   ~PayloadUtils() = delete;
 
   static const std::string build_payload(
-    const struct email::EmailRecipients & recipients,
-    const struct email::EmailContent & content);
+    const struct EmailRecipients & recipients,
+    const struct EmailContent & content);
 
   static const std::string join_list(
     const std::vector<std::string> & list);

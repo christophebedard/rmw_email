@@ -25,11 +25,14 @@
 #include "email/curl_executor.hpp"
 #include "email/types.hpp"
 
+namespace email
+{
+
 class EmailReceiver : public CurlExecutor
 {
 public:
   explicit EmailReceiver(
-    const struct email::UserInfo & user_info,
+    const struct UserInfo & user_info,
     const bool debug = true);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
@@ -53,5 +56,7 @@ private:
 
   static const std::regex regex_nextuid;
 };
+
+}  // namespace email
 
 #endif  // EMAIL__EMAIL_RECEIVER_HPP_

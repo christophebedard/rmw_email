@@ -15,9 +15,12 @@
 #include "email/curl_executor.hpp"
 #include "email/types.hpp"
 
+namespace email
+{
+
 CurlExecutor::CurlExecutor(
-  const struct email::UserInfo & user_info,
-  const struct email::ProtocolInfo & protocol_info,
+  const struct UserInfo & user_info,
+  const struct ProtocolInfo & protocol_info,
   const bool debug)
 : context_(user_info, protocol_info, debug),
   debug_(debug),
@@ -39,3 +42,5 @@ bool CurlExecutor::is_valid() const
 {
   return is_valid_;
 }
+
+}  // namespace email

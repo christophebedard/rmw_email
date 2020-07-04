@@ -27,13 +27,13 @@ namespace utils
 {
 
 const std::string PayloadUtils::build_payload(
-  const struct email::EmailRecipients & recipients,
-  const struct email::EmailContent & content)
+  const struct EmailRecipients & recipients,
+  const struct EmailContent & content)
 {
   // Subjects containing newlines will have the second+ line(s) be moved to the body,
   // but for the sake of simplicity, we will cut it out. As for the body, curl
   // seems to handle it correctly even if it contains "\n" instead of "\r\n"
-  return email::utils::string_format(
+  return utils::string_format(
     "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
     join_list(recipients.to).c_str(),
     join_list(recipients.cc).c_str(),

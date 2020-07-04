@@ -26,6 +26,9 @@
 #include "email/email_receiver.hpp"
 #include "email/types.hpp"
 
+namespace email
+{
+
 // TODO(christophebedard) move to class?
 static size_t write_callback(void * contents, size_t size, size_t nmemb, void * userp)
 {
@@ -34,7 +37,7 @@ static size_t write_callback(void * contents, size_t size, size_t nmemb, void * 
 }
 
 EmailReceiver::EmailReceiver(
-  const struct email::UserInfo & user_info,
+  const struct UserInfo & user_info,
   const bool debug)
 : CurlExecutor(user_info, {"imaps", 993}, debug),
   read_buffer_()
@@ -129,3 +132,5 @@ std::optional<std::string> EmailReceiver::execute(
   }
   return read_buffer_;
 }
+
+}  // namespace email
