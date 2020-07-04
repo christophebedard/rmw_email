@@ -1,0 +1,125 @@
+// Copyright 2020 Christophe Bedard
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+#include <gtest/gtest.h>
+
+#include <optional> // NOLINT cpplint mistakes <optional> for a C system header
+#include <string>
+#include <vector>
+
+#include "email/payload_utils.hpp"
+#include "email/utils.hpp"
+
+// For the sake of simplicity
+#pragma GCC diagnostic ignored "-Wwrite-strings"
+
+/*
+  Testing parsing of user connection info.
+ */
+TEST(TestUtils, parse_user_connection_info) {
+  char * argv_1[] = {
+    "theexecutable"
+  };
+  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(1, argv_1));
+
+  char * argv_2[] = {
+    "theexecutable",
+    "email"
+  };
+  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(2, argv_2));
+
+  char * argv_3[] = {
+    "theexecutable",
+    "email",
+    "password"
+  };
+  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(3, argv_3));
+
+  char * argv_5[] = {
+    "theexecutable",
+    "email",
+    "password",
+    "url.com",
+    "extraarg"
+  };
+  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(5, argv_5));
+
+  char * argv_valid[] = {
+    "theexecutable",
+    "myemail",
+    "mypassword",
+    "the.url.com"
+  };
+  auto test_info = email::utils::parse_user_connection_info(4, argv_valid);
+  EXPECT_TRUE(test_info.has_value());
+  struct email::UserInfo info = {"the.url.com", "myemail", "mypassword"};
+  EXPECT_EQ(info.url, test_info.value().url);
+  EXPECT_EQ(info.username, test_info.value().username);
+  EXPECT_EQ(info.password, test_info.value().password);
+}
+
+#pragma GCC diagnostic pop
+
+TEST(TestUtils, join_list) {
+  const std::vector<std::string> vect_empty = {};
+  EXPECT_EQ("", email::utils::PayloadUtils::join_list(vect_empty));
+
+  const std::vector<std::string> vect_single = {"myelement"};
+  EXPECT_EQ("myelement", email::utils::PayloadUtils::join_list(vect_single));
+
+  const std::vector<std::string> vect_two = {"myelement", "asecondelement@email.com"};
+  EXPECT_EQ(
+    "myelement, asecondelement@email.com",
+    email::utils::PayloadUtils::join_list(vect_two));
+
+  const std::vector<std::string> vect_three = {
+    "myelement", "asecondelement@email.com", "athird@one.com"};
+  EXPECT_EQ(
+    "myelement, asecondelement@email.com, athird@one.com",
+    email::utils::PayloadUtils::join_list(vect_three));
+}
+
+TEST(TestUtils, build_payload) {
+  std::string payload_one_recipient = \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  const struct email::EmailRecipients recipients_one = {{"my@email.com"}, {}, {}};
+  const struct email::EmailContent content_one_line = {
+    {"this is my awesome subject"}, {"this is the email's body"}};
+  EXPECT_EQ(
+    payload_one_recipient,
+    email::utils::PayloadUtils::build_payload(recipients_one, content_one_line));
+
+  std::string payload_multiple_recipients = \
+    "To: my@email.com, another@email.com\r\n" \
+    "Cc: onecc@email.ca\r\n" \
+    "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  const struct email::EmailRecipients recipients_multiple = {
+    {"my@email.com", "another@email.com"},
+    {"onecc@email.ca"},
+    {"first@email.ca", "second@email.net", "third@email.de"}};
+  EXPECT_EQ(
+    payload_multiple_recipients,
+    email::utils::PayloadUtils::build_payload(recipients_multiple, content_one_line));
+
+  // TODO(christophebedard) add test to check that the subject
+  // string is properly handled if it contains a newline,
+  // and another test that checks that newlines in the content
+  // string are replaced with \r\n
+}
