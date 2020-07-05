@@ -21,6 +21,7 @@
 #include "email/curl_context.hpp"
 #include "email/email_receiver.hpp"
 #include "email/email_sender.hpp"
+#include "email/options.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -46,11 +47,14 @@ public:
 
   // bool is_valid();
 
+  std::shared_ptr<Options> get_options();
+
   std::shared_ptr<EmailReceiver> get_receiver();
   std::shared_ptr<EmailSender> get_sender();
 
 private:
-  std::shared_ptr<struct UserInfo> user_info_;
+  std::shared_ptr<Options> options_;
+  bool is_valid_;
 };
 
 std::shared_ptr<Context> get_global_context();

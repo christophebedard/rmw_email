@@ -15,7 +15,7 @@
 #include <iostream>
 #include <string>
 
-#include "email/context.hpp"
+#include "email/init.hpp"
 #include "email/subscriber.hpp"
 
 int main(int argc, char ** argv)

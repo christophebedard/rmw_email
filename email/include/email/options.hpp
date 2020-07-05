@@ -12,36 +12,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
-#include <string>
+#ifndef EMAIL__OPTIONS_HPP_
+#define EMAIL__OPTIONS_HPP_
 
-#include "email/context.hpp"
-#include "email/email_sender.hpp"
-#include "email/publisher.hpp"
+#include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+
 #include "email/types.hpp"
 
 namespace email
 {
 
-Publisher::Publisher(
-  const std::string & topic)
-: topic_(topic),
-  sender_(get_global_context()->get_sender())
+class Options
 {
-  // TODO(christophebedard) validate topic name (no newline)
-}
+public:
+  Options(
+    std::shared_ptr<struct UserInfo> user_info,
+    std::optional<std::shared_ptr<struct EmailRecipients>> recipients,
+    bool debug);
+  ~Options();
 
-Publisher::~Publisher() {}
+  std::shared_ptr<struct UserInfo> get_user_info() const;
+  std::optional<std::shared_ptr<struct EmailRecipients>> get_recipients() const;
+  bool debug() const;
 
-void Publisher::publish(const std::string & message)
-{
-  struct EmailContent content;
-  content.subject = topic_;
-  content.body = message;
-  if (!sender_->send(content)) {
-    std::cerr << "publish() failed" << std::endl;
-  }
-}
+private:
+  std::shared_ptr<struct UserInfo> user_info_;
+  std::optional<std::shared_ptr<struct EmailRecipients>> recipients_;
+  bool debug_;
+};
+
+std::optional<std::shared_ptr<Options>> parse_options(int argc, char const * const argv[]);
 
 }  // namespace email
+
+#endif  // EMAIL__OPTIONS_HPP_

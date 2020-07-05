@@ -15,17 +15,19 @@
 #include <string>
 
 #include "email/email_sender.hpp"
+#include "email/init.hpp"
 #include "email/types.hpp"
-#include "email/utils.hpp"
+#include "email/options.hpp"
 
 int main(int argc, char ** argv)
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
+  email::init(argc, argv);
+  auto options = email::parse_options(argc, argv);
+  if (!options || !options.value()->get_recipients().has_value()) {
     return 1;
   }
-  const struct email::UserInfo info = info_opt.value();
-  const struct email::EmailRecipients recipients = {{"bedard.christophe@gmail.com"}, {}, {}};
+  const struct email::UserInfo info = *options.value()->get_user_info().get();
+  const struct email::EmailRecipients recipients = *options.value()->get_recipients().value().get();
   email::EmailSender sender(info, recipients);
   if (!sender.init()) {
     return 1;

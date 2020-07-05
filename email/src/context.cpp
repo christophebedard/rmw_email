@@ -28,18 +28,9 @@ std::shared_ptr<Context> get_global_context()
   return global_context;
 }
 
-void init(int argc, char const * const argv[])
-{
-  get_global_context()->init(argc, argv);
-}
-
-bool shutdown()
-{
-  return true;
-}
-
 Context::Context()
-: user_info_(nullptr)
+: options_(nullptr),
+  is_valid_(false)
 {}
 
 Context::~Context()
@@ -47,19 +38,34 @@ Context::~Context()
 
 void Context::init(int argc, char const * const argv[])
 {
-  // TODO(christophebedard) change this to generic "options"
-  auto info_opt = utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
+  if (is_valid_) {
+    throw std::runtime_error("Context already initialized");
+  }
+  // TODO(christophebedard) get recipients from argc/argv
+  auto options = parse_options(argc, argv);
+  if (!options) {
     throw std::runtime_error("Context::init() failed");
   }
-  user_info_ = std::make_shared<struct UserInfo>(info_opt.value());
+  options_ = options.value();
+  is_valid_ = true;
+}
+
+std::shared_ptr<Options> Context::get_options()
+{
+  if (!is_valid_) {
+    throw std::runtime_error("Context not initialized");
+  }
+  return options_;
 }
 
 std::shared_ptr<EmailReceiver> Context::get_receiver()
 {
+  if (!is_valid_) {
+    throw std::runtime_error("Context not initialized");
+  }
   // TODO(christophebedard) have classes use the UserInfo shared_ptr
   static std::shared_ptr<EmailReceiver> receiver = std::make_shared<EmailReceiver>(
-    *user_info_.get());
+    *options_->get_user_info().get());
   if (!receiver->is_valid()) {
     receiver->init();
   }
@@ -68,16 +74,20 @@ std::shared_ptr<EmailReceiver> Context::get_receiver()
 
 std::shared_ptr<EmailSender> Context::get_sender()
 {
-  // TODO(christophebedard) build/extract recipients in init()
-  static const struct EmailRecipients recipients = {{"bedard.christophe@gmail.com"}, {}, {}};
-  // TODO(christophebedard) have classes use the UserInfo shared_ptr
+  if (!is_valid_) {
+    throw std::runtime_error("Context not initialized");
+  }
+  if (!options_->get_recipients().has_value()) {
+    throw std::runtime_error("no recipients");
+  }
+  // TODO(christophebedard) have classes use the shared_ptrs
   static std::shared_ptr<EmailSender> sender = std::make_shared<EmailSender>(
-    *user_info_.get(), recipients);
+    *options_->get_user_info().get(),
+    *options_->get_recipients().value().get());
   if (!sender->is_valid()) {
     sender->init();
   }
   return sender;
 }
-
 
 }  // namespace email

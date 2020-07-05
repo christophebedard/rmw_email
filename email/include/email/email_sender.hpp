@@ -36,8 +36,7 @@ class EmailSender : public CurlExecutor
 public:
   explicit EmailSender(
     const struct UserInfo & user_info,
-    const struct EmailRecipients & recipients,
-    const bool debug = true);
+    const struct EmailRecipients & recipients);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
 

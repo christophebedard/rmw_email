@@ -52,9 +52,8 @@ static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void 
 
 EmailSender::EmailSender(
   const struct UserInfo & user_info,
-  const struct EmailRecipients & recipients,
-  const bool debug)
-: CurlExecutor(user_info, {"smtps", 465}, debug),
+  const struct EmailRecipients & recipients)
+: CurlExecutor(user_info, {"smtps", 465}),
   recipients_(recipients),
   recipients_list_(nullptr),
   upload_ctx_()

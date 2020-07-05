@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "email/context.hpp"
 #include "email/curl_executor.hpp"
 #include "email/types.hpp"
 
@@ -25,6 +26,12 @@ CurlExecutor::CurlExecutor(
 : context_(user_info, protocol_info, debug),
   debug_(debug),
   is_valid_(false)
+{}
+
+CurlExecutor::CurlExecutor(
+  const struct UserInfo & user_info,
+  const struct ProtocolInfo & protocol_info)
+: CurlExecutor(user_info, protocol_info, get_global_context()->get_options()->debug())
 {}
 
 CurlExecutor::~CurlExecutor()
