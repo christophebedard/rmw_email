@@ -23,8 +23,8 @@
 #include <string>
 
 #include "email/curl/executor.hpp"
-#include "email/email_receiver.hpp"
-#include "email/response_utils.hpp"
+#include "email/email/receiver.hpp"
+#include "email/email/response_utils.hpp"
 #include "email/types.hpp"
 
 namespace email

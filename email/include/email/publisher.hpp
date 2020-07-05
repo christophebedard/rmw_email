@@ -18,7 +18,7 @@
 #include <memory>
 #include <string>
 
-#include "email/email_sender.hpp"
+#include "email/email/sender.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 

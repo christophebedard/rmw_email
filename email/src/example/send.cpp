@@ -14,7 +14,7 @@
 
 #include <string>
 
-#include "email/email_sender.hpp"
+#include "email/email/sender.hpp"
 #include "email/init.hpp"
 #include "email/types.hpp"
 #include "email/options.hpp"

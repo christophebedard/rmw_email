@@ -19,8 +19,8 @@
 #include <string>
 
 #include "email/curl/context.hpp"
-#include "email/email_receiver.hpp"
-#include "email/email_sender.hpp"
+#include "email/email/receiver.hpp"
+#include "email/email/sender.hpp"
 #include "email/options.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
