@@ -17,8 +17,8 @@
 #include <string>
 #include <vector>
 
-#include "email/types.hpp"
 #include "email/email/payload_utils.hpp"
+#include "email/types.hpp"
 #include "email/utils.hpp"
 
 namespace email

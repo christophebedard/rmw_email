@@ -16,8 +16,8 @@
 #include <regex>
 #include <string>
 
-#include "email/types.hpp"
 #include "email/email/response_utils.hpp"
+#include "email/types.hpp"
 
 namespace email
 {
