@@ -31,13 +31,13 @@ set(SOURCES
   src/context.cpp
   src/curl/context.cpp
   src/curl/executor.cpp
-  src/email_receiver.cpp
-  src/email_sender.cpp
+  src/email/payload_utils.cpp
+  src/email/receiver.cpp
+  src/email/response_utils.cpp
+  src/email/sender.cpp
   src/init.cpp
   src/options.cpp
-  src/payload_utils.cpp
   src/publisher.cpp
-  src/response_utils.cpp
   src/subscriber.cpp
   src/utils.cpp
 )

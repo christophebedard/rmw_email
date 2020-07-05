@@ -17,7 +17,7 @@
 #include <string>
 
 #include "email/types.hpp"
-#include "email/response_utils.hpp"
+#include "email/email/response_utils.hpp"
 
 namespace email
 {

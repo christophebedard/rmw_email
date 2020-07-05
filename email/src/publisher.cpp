@@ -17,7 +17,7 @@
 #include <string>
 
 #include "email/context.hpp"
-#include "email/email_sender.hpp"
+#include "email/email/sender.hpp"
 #include "email/publisher.hpp"
 #include "email/types.hpp"
 
