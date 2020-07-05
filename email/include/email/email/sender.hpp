@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__EMAIL_SENDER_HPP_
-#define EMAIL__EMAIL_SENDER_HPP_
+#ifndef EMAIL__EMAIL__SENDER_HPP_
+#define EMAIL__EMAIL__SENDER_HPP_
 
 #include <string>
 #include <vector>
@@ -53,4 +53,4 @@ private:
 
 }  // namespace email
 
-#endif  // EMAIL__EMAIL_SENDER_HPP_
+#endif  // EMAIL__EMAIL__SENDER_HPP_

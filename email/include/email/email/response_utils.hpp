@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__RESPONSE_UTILS_HPP_
-#define EMAIL__RESPONSE_UTILS_HPP_
+#ifndef EMAIL__EMAIL__RESPONSE_UTILS_HPP_
+#define EMAIL__EMAIL__RESPONSE_UTILS_HPP_
 
 #include <optional>
 #include <regex>
@@ -56,4 +56,4 @@ private:
 }  // namespace utils
 }  // namespace email
 
-#endif  // EMAIL__RESPONSE_UTILS_HPP_
+#endif  // EMAIL__EMAIL__RESPONSE_UTILS_HPP_

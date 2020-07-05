@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__EMAIL_RECEIVER_HPP_
-#define EMAIL__EMAIL_RECEIVER_HPP_
+#ifndef EMAIL__EMAIL__RECEIVER_HPP_
+#define EMAIL__EMAIL__RECEIVER_HPP_
 
 #include <curl/curl.h>
 
@@ -55,4 +55,4 @@ private:
 
 }  // namespace email
 
-#endif  // EMAIL__EMAIL_RECEIVER_HPP_
+#endif  // EMAIL__EMAIL__RECEIVER_HPP_
