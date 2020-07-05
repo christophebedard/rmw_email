@@ -15,6 +15,7 @@
 #ifndef EMAIL__SUBSCRIBER_HPP_
 #define EMAIL__SUBSCRIBER_HPP_
 
+#include <memory>
 #include <string>
 
 #include "email/email_receiver.hpp"
@@ -28,8 +29,7 @@ class Subscriber
 {
 public:
   Subscriber(
-    const std::string & topic,
-    EmailReceiver & receiver);
+    const std::string & topic);
   Subscriber(const Subscriber &) = delete;
   ~Subscriber();
 
@@ -37,7 +37,7 @@ public:
 
 private:
   const std::string topic_;
-  EmailReceiver & receiver_;
+  std::shared_ptr<EmailReceiver> receiver_;
 };
 
 }  // namespace email

@@ -28,6 +28,7 @@ endif()
 
 # Lib
 set(SOURCES
+  src/context.cpp
   src/curl_context.cpp
   src/curl_executor.cpp
   src/email_receiver.cpp

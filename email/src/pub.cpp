@@ -14,24 +14,13 @@
 
 #include <string>
 
-#include "email/email_sender.hpp"
+#include "email/context.hpp"
 #include "email/publisher.hpp"
-#include "email/types.hpp"
-#include "email/utils.hpp"
 
 int main(int argc, char ** argv)
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
-    return 1;
-  }
-  const struct email::UserInfo info = info_opt.value();
-  const struct email::EmailRecipients recipients = {{"bedard.christophe@gmail.com"}, {}, {}};
-  email::EmailSender sender(info, recipients, false);
-  if (!sender.init()) {
-    return 1;
-  }
-  email::Publisher pub("/my_topic", sender);
+  email::init(argc, argv);
+  email::Publisher pub("/my_topic");
   pub.publish("my awesome message!");
   return 0;
 }

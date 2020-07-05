@@ -16,6 +16,7 @@
 #include <string>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
+#include "email/context.hpp"
 #include "email/email_receiver.hpp"
 #include "email/subscriber.hpp"
 #include "email/types.hpp"
@@ -24,10 +25,9 @@ namespace email
 {
 
 Subscriber::Subscriber(
-  const std::string & topic,
-  EmailReceiver & receiver)
+  const std::string & topic)
 : topic_(topic),
-  receiver_(receiver)
+  receiver_(get_global_context()->get_receiver())
 {
   // TODO(christophebedard) validate topic name (no newline)
 }
@@ -41,7 +41,7 @@ std::string Subscriber::get_message()
   std::string subject = "";
   while (subject != topic_) {
     while (!email) {
-      email = receiver_.get_email();
+      email = receiver_->get_email();
     }
     subject = email.value().subject;
     std::cout << "got email with subject: " << subject << std::endl;

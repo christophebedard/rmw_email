@@ -24,7 +24,7 @@ namespace email
 namespace utils
 {
 
-std::optional<struct UserInfo> parse_user_connection_info(int argc, char ** argv)
+std::optional<struct UserInfo> parse_user_connection_info(int argc, char const * const argv[])
 {
   if (4 != argc) {
     std::cerr << "usage: email password url" << std::endl;

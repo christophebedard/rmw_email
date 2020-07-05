@@ -26,6 +26,8 @@ class CurlExecutor
 public:
   bool init();
 
+  bool is_valid() const;
+
 protected:
   explicit CurlExecutor(
     const struct UserInfo & user_info,
@@ -35,8 +37,6 @@ protected:
   virtual ~CurlExecutor();
 
   virtual bool init_options() = 0;
-
-  bool is_valid() const;
 
   CurlContext context_;
   const bool debug_;
