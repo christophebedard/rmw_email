@@ -18,7 +18,7 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
-#include "email/curl_context.hpp"
+#include "email/curl/context.hpp"
 #include "email/types.hpp"
 
 namespace email

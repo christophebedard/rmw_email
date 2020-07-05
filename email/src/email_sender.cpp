@@ -20,7 +20,7 @@
 #include <stdexcept>
 #include <string>
 
-#include "email/curl_executor.hpp"
+#include "email/curl/executor.hpp"
 #include "email/email_sender.hpp"
 #include "email/payload_utils.hpp"
 #include "email/utils.hpp"

@@ -15,7 +15,7 @@
 #ifndef EMAIL__CURL_EXECUTOR_HPP_
 #define EMAIL__CURL_EXECUTOR_HPP_
 
-#include "email/curl_context.hpp"
+#include "email/curl/context.hpp"
 #include "email/types.hpp"
 
 namespace email

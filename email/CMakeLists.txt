@@ -29,8 +29,8 @@ endif()
 # Lib
 set(SOURCES
   src/context.cpp
-  src/curl_context.cpp
-  src/curl_executor.cpp
+  src/curl/context.cpp
+  src/curl/executor.cpp
   src/email_receiver.cpp
   src/email_sender.cpp
   src/init.cpp
@@ -60,9 +60,9 @@ else()
   ament_export_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 endif()
 
-# Tools for sending/receiving emails (& testing the lib)
+# Examples & executables for testing the lib
 add_executable(send
-  src/send.cpp
+  src/example/send.cpp
 )
 target_link_libraries(send
   ${PROJECT_NAME}
@@ -72,7 +72,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 add_executable(receive
-  src/receive.cpp
+  src/example/receive.cpp
 )
 target_link_libraries(receive
   ${PROJECT_NAME}
@@ -82,7 +82,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 add_executable(pub
-  src/pub.cpp
+  src/example/pub.cpp
 )
 target_link_libraries(pub
   ${PROJECT_NAME}
@@ -92,7 +92,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 add_executable(sub
-  src/sub.cpp
+  src/example/sub.cpp
 )
 target_link_libraries(sub
   ${PROJECT_NAME}

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include "email/context.hpp"
-#include "email/curl_executor.hpp"
+#include "email/curl/executor.hpp"
 #include "email/types.hpp"
 
 namespace email
