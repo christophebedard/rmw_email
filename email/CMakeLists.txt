@@ -33,7 +33,9 @@ set(SOURCES
   src/email_receiver.cpp
   src/email_sender.cpp
   src/payload_utils.cpp
+  src/publisher.cpp
   src/response_utils.cpp
+  src/subscriber.cpp
   src/utils.cpp
 )
 
@@ -74,6 +76,26 @@ target_link_libraries(receive
 )
 install(TARGETS
   receive
+  DESTINATION lib/${PROJECT_NAME}
+)
+add_executable(pub
+  src/pub.cpp
+)
+target_link_libraries(pub
+  ${PROJECT_NAME}
+)
+install(TARGETS
+  pub
+  DESTINATION lib/${PROJECT_NAME}
+)
+add_executable(sub
+  src/sub.cpp
+)
+target_link_libraries(sub
+  ${PROJECT_NAME}
+)
+install(TARGETS
+  sub
   DESTINATION lib/${PROJECT_NAME}
 )
 
