@@ -65,7 +65,9 @@ std::optional<struct EmailContent> EmailReceiver::get_email()
   if (!next_uid) {
     return std::nullopt;
   }
-  std::cout << "nextuid=" << next_uid.value() << std::endl;
+  if (debug_) {
+    std::cout << "nextuid=" << next_uid.value() << std::endl;
+  }
   std::optional<struct EmailContent> next_email;
   // Try until we get an email
   while (!next_email) {
