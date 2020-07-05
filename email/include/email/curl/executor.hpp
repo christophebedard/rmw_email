@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__CURL_EXECUTOR_HPP_
-#define EMAIL__CURL_EXECUTOR_HPP_
+#ifndef EMAIL__CURL__EXECUTOR_HPP_
+#define EMAIL__CURL__EXECUTOR_HPP_
 
 #include "email/curl/context.hpp"
 #include "email/types.hpp"
@@ -50,4 +50,4 @@ private:
 
 }  // namespace email
 
-#endif  // EMAIL__CURL_EXECUTOR_HPP_
+#endif  // EMAIL__CURL__EXECUTOR_HPP_

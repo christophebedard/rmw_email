@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__CURL_CONTEXT_HPP_
-#define EMAIL__CURL_CONTEXT_HPP_
+#ifndef EMAIL__CURL__CONTEXT_HPP_
+#define EMAIL__CURL__CONTEXT_HPP_
 
 #include <curl/curl.h>
 
@@ -66,4 +66,4 @@ private:
 
 }  // namespace email
 
-#endif  // EMAIL__CURL_CONTEXT_HPP_
+#endif  // EMAIL__CURL__CONTEXT_HPP_
