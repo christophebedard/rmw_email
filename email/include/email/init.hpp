@@ -12,14 +12,19 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "email/utils.hpp"
+#ifndef EMAIL__INIT_HPP_
+#define EMAIL__INIT_HPP_
+
+#include "email/visibility_control.hpp"
 
 namespace email
 {
-namespace utils
-{
 
-// TODO(christophebedard) remove if unused
+// void init();
+void init(int argc, char const * const argv[]);
 
-}  // namespace utils
+bool shutdown();
+
 }  // namespace email
+
+#endif  // EMAIL__INIT_HPP_

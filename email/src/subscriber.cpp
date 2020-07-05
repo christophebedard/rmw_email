@@ -13,8 +13,8 @@
 // limitations under the License.
 
 #include <iostream>
-#include <string>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <string>
 
 #include "email/context.hpp"
 #include "email/email_receiver.hpp"

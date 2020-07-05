@@ -33,6 +33,8 @@ set(SOURCES
   src/curl_executor.cpp
   src/email_receiver.cpp
   src/email_sender.cpp
+  src/init.cpp
+  src/options.cpp
   src/payload_utils.cpp
   src/publisher.cpp
   src/response_utils.cpp

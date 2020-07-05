@@ -12,15 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <iostream>
 #include <string>
 
-#include "email/context.hpp"
+#include "email/init.hpp"
 #include "email/publisher.hpp"
 
 int main(int argc, char ** argv)
 {
   email::init(argc, argv);
   email::Publisher pub("/my_topic");
+  std::cout << "publishing message" << std::endl;
   pub.publish("my awesome message!");
   return 0;
 }

@@ -13,20 +13,22 @@
 // limitations under the License.
 
 #include <iostream>
-#include <string>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <string>
 
 #include "email/email_receiver.hpp"
+#include "email/init.hpp"
+#include "email/options.hpp"
 #include "email/types.hpp"
-#include "email/utils.hpp"
 
 int main(int argc, char ** argv)
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
+  email::init(argc, argv);
+  auto options = email::parse_options(argc, argv);
+  if (!options) {
     return 1;
   }
-  struct email::UserInfo info = info_opt.value();
+  const struct email::UserInfo info = *options.value()->get_user_info().get();
   email::EmailReceiver receiver(info);
   if (!receiver.init()) {
     return 1;

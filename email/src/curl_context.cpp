@@ -15,8 +15,8 @@
 #include <curl/curl.h>
 
 #include <iostream>
-#include <string>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <string>
 
 #include "email/curl_context.hpp"
 #include "email/types.hpp"

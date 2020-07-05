@@ -12,36 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
-#include <string>
-
 #include "email/context.hpp"
-#include "email/email_sender.hpp"
-#include "email/publisher.hpp"
-#include "email/types.hpp"
+#include "email/init.hpp"
 
 namespace email
 {
 
-Publisher::Publisher(
-  const std::string & topic)
-: topic_(topic),
-  sender_(get_global_context()->get_sender())
+void init(int argc, char const * const argv[])
 {
-  // TODO(christophebedard) validate topic name (no newline)
+  get_global_context()->init(argc, argv);
 }
 
-Publisher::~Publisher() {}
-
-void Publisher::publish(const std::string & message)
+bool shutdown()
 {
-  struct EmailContent content;
-  content.subject = topic_;
-  content.body = message;
-  if (!sender_->send(content)) {
-    std::cerr << "publish() failed" << std::endl;
-  }
+  // TODO(christophebedard) actually do something with this
+  return true;
 }
 
 }  // namespace email

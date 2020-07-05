@@ -19,57 +19,7 @@
 #include <vector>
 
 #include "email/payload_utils.hpp"
-#include "email/utils.hpp"
-
-// For the sake of simplicity
-#pragma GCC diagnostic ignored "-Wwrite-strings"
-
-/*
-  Testing parsing of user connection info.
- */
-TEST(TestUtils, parse_user_connection_info) {
-  char * argv_1[] = {
-    "theexecutable"
-  };
-  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(1, argv_1));
-
-  char * argv_2[] = {
-    "theexecutable",
-    "email"
-  };
-  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(2, argv_2));
-
-  char * argv_3[] = {
-    "theexecutable",
-    "email",
-    "password"
-  };
-  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(3, argv_3));
-
-  char * argv_5[] = {
-    "theexecutable",
-    "email",
-    "password",
-    "url.com",
-    "extraarg"
-  };
-  EXPECT_EQ(std::nullopt, email::utils::parse_user_connection_info(5, argv_5));
-
-  char * argv_valid[] = {
-    "theexecutable",
-    "myemail",
-    "mypassword",
-    "the.url.com"
-  };
-  auto test_info = email::utils::parse_user_connection_info(4, argv_valid);
-  EXPECT_TRUE(test_info.has_value());
-  struct email::UserInfo info = {"the.url.com", "myemail", "mypassword"};
-  EXPECT_EQ(info.url, test_info.value().url);
-  EXPECT_EQ(info.username, test_info.value().username);
-  EXPECT_EQ(info.password, test_info.value().password);
-}
-
-#pragma GCC diagnostic pop
+// #include "email/utils.hpp"
 
 TEST(TestUtils, join_list) {
   const std::vector<std::string> vect_empty = {};
