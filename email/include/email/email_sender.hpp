@@ -18,7 +18,7 @@
 #include <string>
 #include <vector>
 
-#include "email/curl_executor.hpp"
+#include "email/curl/executor.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 

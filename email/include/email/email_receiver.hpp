@@ -22,7 +22,7 @@
 #include <regex>
 #include <string>
 
-#include "email/curl_executor.hpp"
+#include "email/curl/executor.hpp"
 #include "email/types.hpp"
 
 namespace email
