@@ -12,36 +12,49 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
-#include <string>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#ifndef EMAIL__CONTEXT_HPP_
+#define EMAIL__CONTEXT_HPP_
 
-#include "email/context.hpp"
+#include <memory>
+#include <string>
+
+#include "email/curl_context.hpp"
+#include "email/email_receiver.hpp"
 #include "email/email_sender.hpp"
-#include "email/publisher.hpp"
 #include "email/types.hpp"
+#include "email/visibility_control.hpp"
 
 namespace email
 {
 
-Publisher::Publisher(
-  const std::string & topic)
-: topic_(topic),
-  sender_(get_global_context()->get_sender())
-{
-  // TODO(christophebedard) validate topic name (no newline)
-}
+// void init();
+void init(int argc, char const * const argv[]);
 
-Publisher::~Publisher() {}
+bool shutdown();
 
-void Publisher::publish(const std::string & message)
+class Context
 {
-  struct EmailContent content;
-  content.subject = topic_;
-  content.body = message;
-  if (!sender_->send(content)) {
-    std::cerr << "publish() failed" << std::endl;
-  }
-}
+public:
+  Context();
+  Context(const Context &) = delete;
+  ~Context();
+
+  // void init();
+  void init(int argc, char const * const argv[]);
+
+  bool shutdown();
+
+  // bool is_valid();
+
+  std::shared_ptr<EmailReceiver> get_receiver();
+  std::shared_ptr<EmailSender> get_sender();
+
+private:
+  std::shared_ptr<struct UserInfo> user_info_;
+};
+
+std::shared_ptr<Context> get_global_context();
 
 }  // namespace email
+
+#endif  // EMAIL__CONTEXT_HPP_

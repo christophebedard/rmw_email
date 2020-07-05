@@ -34,7 +34,9 @@ CurlExecutor::~CurlExecutor()
 
 bool CurlExecutor::init()
 {
-  is_valid_ |= context_.init() && init_options();
+  if (!is_valid_) {
+    is_valid_ |= context_.init() && init_options();
+  }
   return is_valid_;
 }
 

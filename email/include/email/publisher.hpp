@@ -15,6 +15,7 @@
 #ifndef EMAIL__PUBLISHER_HPP_
 #define EMAIL__PUBLISHER_HPP_
 
+#include <memory>
 #include <string>
 
 #include "email/email_sender.hpp"
@@ -28,8 +29,7 @@ class Publisher
 {
 public:
   Publisher(
-    const std::string & topic,
-    EmailSender & sender);
+    const std::string & topic);
   Publisher(const Publisher &) = delete;
   ~Publisher();
 
@@ -37,7 +37,7 @@ public:
 
 private:
   const std::string topic_;
-  EmailSender & sender_;
+  std::shared_ptr<EmailSender> sender_;
 };
 
 }  // namespace email

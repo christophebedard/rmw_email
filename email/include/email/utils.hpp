@@ -39,7 +39,7 @@ std::string string_format(const std::string & format, Args... args)
   return std::string(buf.get(), buf.get() + size - 1);
 }
 
-std::optional<struct UserInfo> parse_user_connection_info(int argc, char ** argv);
+std::optional<struct UserInfo> parse_user_connection_info(int argc, char const * const argv[]);
 
 }  // namespace utils
 }  // namespace email

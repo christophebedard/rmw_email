@@ -15,23 +15,14 @@
 #include <iostream>
 #include <string>
 
-#include "email/email_receiver.hpp"
+#include "email/context.hpp"
 #include "email/subscriber.hpp"
-#include "email/types.hpp"
-#include "email/utils.hpp"
 
 int main(int argc, char ** argv)
 {
-  auto info_opt = email::utils::parse_user_connection_info(argc, argv);
-  if (!info_opt) {
-    return 1;
-  }
-  const struct email::UserInfo info = info_opt.value();
-  email::EmailReceiver receiver(info, false);
-  if (!receiver.init()) {
-    return 1;
-  }
-  email::Subscriber sub("/my_topic", receiver);
+  email::init(argc, argv);
+  email::Subscriber sub("/my_topic");
+  std::cout << "getting message..." << std::endl;
   const std::string message = sub.get_message();
   std::cout << "got message: " << message << std::endl;
   return 0;
