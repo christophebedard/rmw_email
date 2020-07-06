@@ -20,7 +20,8 @@
 namespace email
 {
 
-// void init();
+void init();
+
 void init(int argc, char const * const argv[]);
 
 bool shutdown();

@@ -14,6 +14,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 endif()
 
 find_package(ament_cmake_ros REQUIRED)
+find_package(rcpputils REQUIRED)
 
 set(CURL_USE_VENDOR FALSE)
 find_package(CURL)
@@ -48,6 +49,7 @@ if(CURL_USE_VENDOR)
 else()
   target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 endif()
+ament_target_dependencies(${PROJECT_NAME} rcpputils)
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:include>"

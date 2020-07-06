@@ -15,7 +15,12 @@
 #include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <regex>
 #include <string>
+#include <vector>
+
+#include "rcpputils/get_env.hpp"
+#include "rcpputils/split.hpp"
 
 #include "email/options.hpp"
 #include "email/types.hpp"
@@ -51,8 +56,10 @@ bool Options::debug() const
   return debug_;
 }
 
-std::optional<std::shared_ptr<Options>> parse_options(int argc, char const * const argv[])
+std::optional<std::shared_ptr<Options>>
+Options::parse_options_from_args(int argc, char const * const argv[])
 {
+  // TODO(christophebedard) remove completely or refactor/extract parsing logic
   if (argc <= 1) {
     std::cerr << "usage: --user email password url [--recipient TO] [-d|--debug]" << std::endl;
     return std::nullopt;
@@ -97,5 +104,54 @@ std::optional<std::shared_ptr<Options>> parse_options(int argc, char const * con
     recipients,
     debug);
 }
+
+std::optional<std::shared_ptr<Options>>
+Options::parse_options_from_file()
+{
+  std::string options_file_path = rcpputils::get_env_var(Options::env_var_options_file);
+  if (options_file_path.empty()) {
+    std::cerr << "'" << Options::env_var_options_file << "'" <<
+      " env var not found or empty" << std::endl;
+    return std::nullopt;
+  }
+  auto content = utils::read_file(options_file_path);
+  if (!content) {
+    std::cerr << "could not read options file from path: " << options_file_path << std::endl;
+    return std::nullopt;
+  }
+  std::smatch matches;
+  if (!std::regex_search(content.value(), matches, regex_params_file)) {
+    std::cerr << "invalid options file" << std::endl;
+    return std::nullopt;
+  }
+  // 6 groups besides the global match itself
+  if (matches.size() != 7) {
+    std::cerr << "invalid options file" << std::endl;
+    return std::nullopt;
+  }
+  std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
+  user_info->url = matches[1].str();
+  user_info->username = matches[2].str();
+  user_info->password = matches[3].str();
+  std::string list_to = matches[4].str();
+  std::string list_cc = matches[5].str();
+  std::string list_bcc = matches[6].str();
+  std::vector<std::string> to = rcpputils::split(list_to, ',', true);
+  std::vector<std::string> cc = rcpputils::split(list_cc, ',', true);
+  std::vector<std::string> bcc = rcpputils::split(list_bcc, ',', true);
+  std::shared_ptr<struct EmailRecipients> recipients = std::make_shared<struct EmailRecipients>();
+  recipients->to = to;
+  recipients->cc = cc;
+  recipients->bcc = bcc;
+  const std::string debug_env_var = rcpputils::get_env_var(Options::env_var_debug);
+  return std::make_shared<Options>(
+    user_info,
+    recipients,
+    !debug_env_var.empty());
+}
+
+// See: regexr.com/57stl
+const std::regex Options::regex_params_file(
+  R"(email:\n  user:\n    url: (.*)\n    username: (.*)\n    password: (.*)\n  recipients:\n    to:[ ]?(.*)\n    cc:[ ]?(.*)\n    bcc:[ ]?(.*)[\n]?)");  // NOLINT
 
 }  // namespace email

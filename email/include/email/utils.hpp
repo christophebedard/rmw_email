@@ -16,6 +16,7 @@
 #define EMAIL__UTILS_HPP_
 
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <stdexcept>
 #include <string>
 
@@ -36,6 +37,7 @@ std::string string_format(const std::string & format, Args... args)
   return std::string(buf.get(), buf.get() + size - 1);
 }
 
+std::optional<std::string> read_file(const std::string & path);
 
 }  // namespace utils
 }  // namespace email

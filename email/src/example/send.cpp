@@ -12,8 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
 #include <string>
 
+#include "email/context.hpp"
 #include "email/email/sender.hpp"
 #include "email/init.hpp"
 #include "email/types.hpp"
@@ -22,13 +24,13 @@
 int main(int argc, char ** argv)
 {
   email::init(argc, argv);
-  auto options = email::parse_options(argc, argv);
-  if (!options || !options.value()->get_recipients().has_value()) {
+  std::shared_ptr<email::Options> options = email::get_global_context()->get_options();
+  if (!options->get_recipients().has_value()) {
     return 1;
   }
-  const struct email::UserInfo info = *options.value()->get_user_info().get();
-  const struct email::EmailRecipients recipients = *options.value()->get_recipients().value().get();
-  email::EmailSender sender(info, recipients);
+  email::EmailSender sender(
+    *options->get_user_info().get(),
+    *options->get_recipients().value().get());
   if (!sender.init()) {
     return 1;
   }

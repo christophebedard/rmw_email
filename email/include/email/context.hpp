@@ -40,7 +40,8 @@ public:
   Context(const Context &) = delete;
   ~Context();
 
-  // void init();
+  void init();
+
   void init(int argc, char const * const argv[]);
 
   bool shutdown();

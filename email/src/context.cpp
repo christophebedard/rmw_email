@@ -36,13 +36,25 @@ Context::Context()
 Context::~Context()
 {}
 
+void Context::init()
+{
+  if (is_valid_) {
+    throw std::runtime_error("Context already initialized");
+  }
+  auto options = Options::parse_options_from_file();
+  if (!options) {
+    throw std::runtime_error("Context::init() failed");
+  }
+  options_ = options.value();
+  is_valid_ = true;
+}
+
 void Context::init(int argc, char const * const argv[])
 {
   if (is_valid_) {
     throw std::runtime_error("Context already initialized");
   }
-  // TODO(christophebedard) get recipients from argc/argv
-  auto options = parse_options(argc, argv);
+  auto options = Options::parse_options_from_args(argc, argv);
   if (!options) {
     throw std::runtime_error("Context::init() failed");
   }
