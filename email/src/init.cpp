@@ -30,8 +30,7 @@ void init(int argc, char const * const argv[])
 
 bool shutdown()
 {
-  // TODO(christophebedard) actually do something with this
-  return true;
+  return get_global_context()->shutdown();
 }
 
 }  // namespace email

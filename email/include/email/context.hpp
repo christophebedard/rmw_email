@@ -46,7 +46,7 @@ public:
 
   bool shutdown();
 
-  // bool is_valid();
+  bool is_valid() const;
 
   std::shared_ptr<Options> get_options();
 
