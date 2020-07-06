@@ -13,17 +13,15 @@
 // limitations under the License.
 
 #include <iostream>
-#include <string>
 
 #include "email/init.hpp"
 #include "email/subscriber.hpp"
 
-int main(int argc, char ** argv)
+int main()
 {
-  email::init(argc, argv);
+  email::init();
   email::Subscriber sub("/my_topic");
   std::cout << "getting message..." << std::endl;
-  const std::string message = sub.get_message();
-  std::cout << "got message: " << message << std::endl;
+  std::cout << "got message: " << sub.get_message() << std::endl;
   return 0;
 }

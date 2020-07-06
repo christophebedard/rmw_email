@@ -13,9 +13,10 @@
 // limitations under the License.
 
 #include <iostream>
+#include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
-#include <string>
 
+#include "email/context.hpp"
 #include "email/email/receiver.hpp"
 #include "email/init.hpp"
 #include "email/options.hpp"
@@ -24,12 +25,8 @@
 int main(int argc, char ** argv)
 {
   email::init(argc, argv);
-  auto options = email::parse_options(argc, argv);
-  if (!options) {
-    return 1;
-  }
-  const struct email::UserInfo info = *options.value()->get_user_info().get();
-  email::EmailReceiver receiver(info);
+  std::shared_ptr<email::Options> options = email::get_global_context()->get_options();
+  email::EmailReceiver receiver(*options->get_user_info().get());
   if (!receiver.init()) {
     return 1;
   }

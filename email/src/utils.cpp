@@ -12,6 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <fstream>
+#include <sstream>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <string>
+
 #include "email/utils.hpp"
 
 namespace email
@@ -19,7 +24,14 @@ namespace email
 namespace utils
 {
 
-// TODO(christophebedard) remove if unused
+std::optional<std::string> read_file(const std::string & path)
+{
+  // TODO(christophebedard) handle possible failure
+  std::ifstream stream(path);
+  std::stringstream buffer;
+  buffer << stream.rdbuf();
+  return buffer.str();
+}
 
 }  // namespace utils
 }  // namespace email

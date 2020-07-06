@@ -17,6 +17,8 @@
 
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <regex>
+#include <string>
 
 #include "email/types.hpp"
 
@@ -36,13 +38,23 @@ public:
   std::optional<std::shared_ptr<struct EmailRecipients>> get_recipients() const;
   bool debug() const;
 
+  static
+  std::optional<std::shared_ptr<Options>>
+  parse_options_from_args(int argc, char const * const argv[]);
+
+  static
+  std::optional<std::shared_ptr<Options>>
+  parse_options_from_file();
+
 private:
   std::shared_ptr<struct UserInfo> user_info_;
   std::optional<std::shared_ptr<struct EmailRecipients>> recipients_;
   bool debug_;
-};
 
-std::optional<std::shared_ptr<Options>> parse_options(int argc, char const * const argv[]);
+  static const std::regex regex_params_file;
+  static constexpr const char * env_var_debug = "EMAIL_DEBUG";
+  static constexpr const char * env_var_options_file = "EMAIL_OPTIONS_FILE";
+};
 
 }  // namespace email
 

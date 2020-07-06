@@ -13,14 +13,13 @@
 // limitations under the License.
 
 #include <iostream>
-#include <string>
 
 #include "email/init.hpp"
 #include "email/publisher.hpp"
 
-int main(int argc, char ** argv)
+int main()
 {
-  email::init(argc, argv);
+  email::init();
   email::Publisher pub("/my_topic");
   std::cout << "publishing message" << std::endl;
   pub.publish("my awesome message!");
