@@ -34,7 +34,11 @@ Context::Context()
 {}
 
 Context::~Context()
-{}
+{
+  if (!is_valid_) {
+    (void)shutdown();
+  }
+}
 
 void Context::init()
 {
@@ -60,6 +64,20 @@ void Context::init(int argc, char const * const argv[])
   }
   options_ = options.value();
   is_valid_ = true;
+}
+
+bool Context::shutdown()
+{
+  if (!is_valid_) {
+    return false;
+  }
+  // TODO(christophebedard) actually do something
+  return true;
+}
+
+bool Context::is_valid() const
+{
+  return is_valid_;
 }
 
 std::shared_ptr<Options> Context::get_options()
