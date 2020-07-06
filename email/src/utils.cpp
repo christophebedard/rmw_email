@@ -16,6 +16,9 @@
 #include <sstream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <vector>
+
+#include "rcpputils/split.hpp"
 
 #include "email/utils.hpp"
 
@@ -31,6 +34,11 @@ std::optional<std::string> read_file(const std::string & path)
   std::stringstream buffer;
   buffer << stream.rdbuf();
   return buffer.str();
+}
+
+std::vector<std::string> split_email_list(const std::string & list)
+{
+  return rcpputils::split(list, ',', true);
 }
 
 }  // namespace utils

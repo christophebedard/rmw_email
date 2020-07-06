@@ -19,6 +19,7 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <stdexcept>
 #include <string>
+#include <vector>
 
 namespace email
 {
@@ -38,6 +39,8 @@ std::string string_format(const std::string & format, Args... args)
 }
 
 std::optional<std::string> read_file(const std::string & path);
+
+std::vector<std::string> split_email_list(const std::string & list);
 
 }  // namespace utils
 }  // namespace email

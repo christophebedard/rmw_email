@@ -20,7 +20,6 @@
 #include <vector>
 
 #include "rcpputils/get_env.hpp"
-#include "rcpputils/split.hpp"
 
 #include "email/options.hpp"
 #include "email/types.hpp"
@@ -133,16 +132,10 @@ Options::parse_options_from_file()
   user_info->url = matches[1].str();
   user_info->username = matches[2].str();
   user_info->password = matches[3].str();
-  std::string list_to = matches[4].str();
-  std::string list_cc = matches[5].str();
-  std::string list_bcc = matches[6].str();
-  std::vector<std::string> to = rcpputils::split(list_to, ',', true);
-  std::vector<std::string> cc = rcpputils::split(list_cc, ',', true);
-  std::vector<std::string> bcc = rcpputils::split(list_bcc, ',', true);
   std::shared_ptr<struct EmailRecipients> recipients = std::make_shared<struct EmailRecipients>();
-  recipients->to = to;
-  recipients->cc = cc;
-  recipients->bcc = bcc;
+  recipients->to = utils::split_email_list(matches[4].str());
+  recipients->cc = utils::split_email_list(matches[5].str());
+  recipients->bcc = utils::split_email_list(matches[6].str());
   const std::string debug_env_var = rcpputils::get_env_var(Options::env_var_debug);
   return std::make_shared<Options>(
     user_info,
