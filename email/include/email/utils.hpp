@@ -38,6 +38,12 @@ std::string string_format(const std::string & format, Args... args)
   return std::string(buf.get(), buf.get() + size - 1);
 }
 
+std::string get_env_var(const std::string & env_var);
+
+std::string get_env_var_or_default(
+  const std::string & env_var,
+  const std::string & default_value);
+
 std::optional<std::string> read_file(const std::string & path);
 
 std::vector<std::string> split_email_list(const std::string & list);

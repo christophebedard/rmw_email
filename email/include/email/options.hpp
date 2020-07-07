@@ -51,9 +51,10 @@ private:
   std::optional<std::shared_ptr<struct EmailRecipients>> recipients_;
   bool debug_;
 
-  static const std::regex regex_params_file;
-  static constexpr const char * env_var_debug = "EMAIL_DEBUG";
-  static constexpr const char * env_var_options_file = "EMAIL_OPTIONS_FILE";
+  static const std::regex REGEX_CONFIG_FILE;
+  static constexpr const char * ENV_VAR_DEBUG = "EMAIL_DEBUG";
+  static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";
+  static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT = "email.yml";
 };
 
 }  // namespace email
