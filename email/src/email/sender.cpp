@@ -29,27 +29,6 @@
 namespace email
 {
 
-static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp)
-{
-  const size_t max_size = size * nmemb;
-  if ((size == 0) || (nmemb == 0) || ((max_size) < 1)) {
-    return 0;
-  }
-  struct UploadData * upload_ctx = (struct UploadData *)userp;
-  const char * data = &upload_ctx->payload[upload_ctx->lines_read];
-  if (data) {
-    size_t len = strlen(data);
-    if (len > max_size) {
-      len = max_size;
-      std::cerr << "truncated to len=" << len << std::endl;
-    }
-    memcpy(ptr, data, len);
-    upload_ctx->lines_read += len;
-    return len;
-  }
-  return 0;
-}
-
 EmailSender::EmailSender(
   const struct UserInfo & user_info,
   const struct EmailRecipients & recipients)
@@ -63,6 +42,27 @@ EmailSender::~EmailSender()
 {
   curl_slist_free_all(recipients_list_);
   recipients_list_ = nullptr;
+}
+
+size_t EmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp)
+{
+  const size_t max_size = size * nmemb;
+  if ((0 == size) || (0 == nmemb) || (1 > max_size)) {
+    return 0;
+  }
+  struct UploadData * upload_ctx = (struct UploadData *)userp;
+  const char * data = &upload_ctx->payload[upload_ctx->lines_read];
+  if (!data) {
+    return 0;
+  }
+  size_t len = strlen(data);
+  if (len > max_size) {
+    len = max_size;
+    std::cerr << "truncated to len=" << len << std::endl;
+  }
+  memcpy(ptr, data, len);
+  upload_ctx->lines_read += len;
+  return len;
 }
 
 bool EmailSender::init_options()
@@ -82,14 +82,10 @@ bool EmailSender::init_options()
   for (auto & email_bcc : recipients_.bcc) {
     recipients_list_ = curl_slist_append(recipients_list_, email_bcc.c_str());
   }
-  // recipients_list_ = curl_slist_append(recipients_list_, CC);
   curl_easy_setopt(context_.get_handle(), CURLOPT_MAIL_RCPT, recipients_list_);
   curl_easy_setopt(context_.get_handle(), CURLOPT_READFUNCTION, read_payload_callback);
   curl_easy_setopt(context_.get_handle(), CURLOPT_READDATA, static_cast<void *>(&upload_ctx_));
   curl_easy_setopt(context_.get_handle(), CURLOPT_UPLOAD, 1L);
-  if (debug_) {
-    curl_easy_setopt(context_.get_handle(), CURLOPT_VERBOSE, 1L);
-  }
   return true;
 }
 

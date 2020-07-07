@@ -30,13 +30,6 @@
 namespace email
 {
 
-// TODO(christophebedard) move to class?
-static size_t write_callback(void * contents, size_t size, size_t nmemb, void * userp)
-{
-  (static_cast<std::string *>(userp))->append(static_cast<char *>(contents), size * nmemb);
-  return size * nmemb;
-}
-
 EmailReceiver::EmailReceiver(
   const struct UserInfo & user_info)
 : CurlExecutor(user_info, {"imaps", 993}),
@@ -45,6 +38,12 @@ EmailReceiver::EmailReceiver(
 
 EmailReceiver::~EmailReceiver()
 {}
+
+size_t EmailReceiver::write_callback(void * contents, size_t size, size_t nmemb, void * userp)
+{
+  (static_cast<std::string *>(userp))->append(static_cast<char *>(contents), size * nmemb);
+  return size * nmemb;
+}
 
 bool EmailReceiver::init_options()
 {

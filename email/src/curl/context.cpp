@@ -20,6 +20,7 @@
 
 #include "email/curl/context.hpp"
 #include "email/types.hpp"
+#include "email/utils.hpp"
 
 namespace email
 {
@@ -33,8 +34,10 @@ CurlContext::CurlContext(
   protocol_info_(protocol_info),
   debug_(debug)
 {
-  full_url_ = protocol_info_.protocol + "://" +
-    user_info_.url + ":" + std::to_string(protocol_info_.port) + "/";
+  full_url_ = utils::full_url(
+    protocol_info_.protocol,
+    user_info_.url,
+    protocol_info_.port);
 }
 CurlContext::~CurlContext() {}
 

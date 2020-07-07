@@ -41,5 +41,13 @@ std::vector<std::string> split_email_list(const std::string & list)
   return rcpputils::split(list, ',', true);
 }
 
+std::string full_url(
+  const std::string & protocol,
+  const std::string & host,
+  const int port)
+{
+  return protocol + "://" + host + ":" + std::to_string(port) + "/";
+}
+
 }  // namespace utils
 }  // namespace email

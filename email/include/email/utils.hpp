@@ -42,6 +42,11 @@ std::optional<std::string> read_file(const std::string & path);
 
 std::vector<std::string> split_email_list(const std::string & list);
 
+std::string full_url(
+  const std::string & protocol,
+  const std::string & host,
+  const int port);
+
 }  // namespace utils
 }  // namespace email
 
