@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
@@ -44,7 +43,6 @@ std::string Subscriber::get_message()
       email = receiver_->get_email();
     }
     subject = email.value().subject;
-    std::cout << "got email with subject: " << subject << std::endl;
   }
   return email.value().body;
 }

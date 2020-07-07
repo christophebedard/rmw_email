@@ -32,7 +32,9 @@ namespace email
 
 EmailReceiver::EmailReceiver(
   const struct UserInfo & user_info)
-: CurlExecutor(user_info, {"imaps", 993}),
+: CurlExecutor(
+    {user_info.host_imap, user_info.username, user_info.password},
+    {"imaps", 993}),
   read_buffer_()
 {}
 

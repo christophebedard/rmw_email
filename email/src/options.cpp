@@ -60,7 +60,9 @@ Options::parse_options_from_args(int argc, char const * const argv[])
 {
   // TODO(christophebedard) remove completely or refactor/extract parsing logic
   if (argc <= 1) {
-    std::cerr << "usage: --user email password url [--recipient TO] [-d|--debug]" << std::endl;
+    std::cerr <<
+      "usage: --user HOST_SMTP HOST_IMAP EMAIL PASSWORD [--recipient TO] [-d|--debug]" <<
+      std::endl;
     return std::nullopt;
   }
   std::optional<struct UserInfo> user_info_opt = std::nullopt;
@@ -68,14 +70,16 @@ Options::parse_options_from_args(int argc, char const * const argv[])
   bool debug = false;
   for (int i = 1; i < argc; i++) {
     std::string arg = argv[i];
-    if ("--user" == arg && (argc - i) >= (3 + 1)) {
+    if ("--user" == arg && (argc - i) >= (4 + 1)) {
       struct UserInfo info;
+      i++;
+      info.host_smtp = std::string(argv[i]);
+      i++;
+      info.host_imap = std::string(argv[i]);
       i++;
       info.username = std::string(argv[i]);
       i++;
       info.password = std::string(argv[i]);
-      i++;
-      info.url = std::string(argv[i]);
       user_info_opt = info;
     } else if ("--recipient" == arg && (argc - i) >= (1 + 1)) {
       i++;
@@ -88,9 +92,10 @@ Options::parse_options_from_args(int argc, char const * const argv[])
     return std::nullopt;
   }
   std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
+  user_info->host_smtp = user_info_opt.value().host_smtp;
+  user_info->host_imap = user_info_opt.value().host_imap;
   user_info->username = user_info_opt.value().username;
   user_info->password = user_info_opt.value().password;
-  user_info->url = user_info_opt.value().url;
   std::optional<std::shared_ptr<struct EmailRecipients>> recipients = std::nullopt;
   if (recipients_opt) {
     recipients = std::make_shared<struct EmailRecipients>();
@@ -123,19 +128,20 @@ Options::parse_options_from_file()
     std::cerr << "invalid options file" << std::endl;
     return std::nullopt;
   }
-  // 6 groups besides the global match itself
-  if (matches.size() != 7) {
+  // 7 groups besides the global match itself
+  if (matches.size() != 8) {
     std::cerr << "invalid options file" << std::endl;
     return std::nullopt;
   }
   std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
-  user_info->url = matches[1].str();
-  user_info->username = matches[2].str();
-  user_info->password = matches[3].str();
+  user_info->host_smtp = matches[1].str();
+  user_info->host_imap = matches[2].str();
+  user_info->username = matches[3].str();
+  user_info->password = matches[4].str();
   std::shared_ptr<struct EmailRecipients> recipients = std::make_shared<struct EmailRecipients>();
-  recipients->to = utils::split_email_list(matches[4].str());
-  recipients->cc = utils::split_email_list(matches[5].str());
-  recipients->bcc = utils::split_email_list(matches[6].str());
+  recipients->to = utils::split_email_list(matches[5].str());
+  recipients->cc = utils::split_email_list(matches[6].str());
+  recipients->bcc = utils::split_email_list(matches[7].str());
   const std::string debug_env_var = rcpputils::get_env_var(Options::env_var_debug);
   return std::make_shared<Options>(
     user_info,
@@ -143,8 +149,8 @@ Options::parse_options_from_file()
     !debug_env_var.empty());
 }
 
-// See: regexr.com/57stl
+// See: https://regexr.com/580va
 const std::regex Options::regex_params_file(
-  R"(email:\n  user:\n    url: (.*)\n    username: (.*)\n    password: (.*)\n  recipients:\n    to:[ ]?(.*)\n    cc:[ ]?(.*)\n    bcc:[ ]?(.*)[\n]?)");  // NOLINT
+  R"(email:\n  user:\n    url-smtp:[ ]?(.*)\n    url-imap:[ ]?(.*)\n    username: (.*)\n    password: (.*)\n  recipients:\n    to:[ ]?(.*)\n    cc:[ ]?(.*)\n    bcc:[ ]?(.*)[\n]?)");  // NOLINT
 
 }  // namespace email

@@ -32,7 +32,9 @@ namespace email
 EmailSender::EmailSender(
   const struct UserInfo & user_info,
   const struct EmailRecipients & recipients)
-: CurlExecutor(user_info, {"smtps", 465}),
+: CurlExecutor(
+    {user_info.host_smtp, user_info.username, user_info.password},
+    {"smtps", 465}),
   recipients_(recipients),
   recipients_list_(nullptr),
   upload_ctx_()
@@ -71,7 +73,7 @@ bool EmailSender::init_options()
   // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYPEER, 0L);
   // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYHOST, 0L);
   curl_easy_setopt(
-    context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_user_info().username.c_str());
+    context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_connection_info().username.c_str());
   // Add all destination emails to the list of recipients
   for (auto & email_to : recipients_.to) {
     recipients_list_ = curl_slist_append(recipients_list_, email_to.c_str());

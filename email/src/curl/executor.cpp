@@ -20,18 +20,18 @@ namespace email
 {
 
 CurlExecutor::CurlExecutor(
-  const struct UserInfo & user_info,
+  const struct ConnectionInfo & connection_info,
   const struct ProtocolInfo & protocol_info,
   const bool debug)
-: context_(user_info, protocol_info, debug),
+: context_(connection_info, protocol_info, debug),
   debug_(debug),
   is_valid_(false)
 {}
 
 CurlExecutor::CurlExecutor(
-  const struct UserInfo & user_info,
+  const struct ConnectionInfo & connection_info,
   const struct ProtocolInfo & protocol_info)
-: CurlExecutor(user_info, protocol_info, get_global_context()->get_options()->debug())
+: CurlExecutor(connection_info, protocol_info, get_global_context()->get_options()->debug())
 {}
 
 CurlExecutor::~CurlExecutor()
