@@ -19,8 +19,6 @@
 #include <string>
 #include <vector>
 
-#include "rcpputils/get_env.hpp"
-
 #include "email/options.hpp"
 #include "email/types.hpp"
 #include "email/utils.hpp"
@@ -112,25 +110,27 @@ Options::parse_options_from_args(int argc, char const * const argv[])
 std::optional<std::shared_ptr<Options>>
 Options::parse_options_from_file()
 {
-  std::string options_file_path = rcpputils::get_env_var(Options::env_var_options_file);
-  if (options_file_path.empty()) {
-    std::cerr << "'" << Options::env_var_options_file << "'" <<
+  const std::string config_file_path = utils::get_env_var_or_default(
+    Options::ENV_VAR_CONFIG_FILE,
+    Options::ENV_VAR_CONFIG_FILE_DEFAULT);
+  if (config_file_path.empty()) {
+    std::cerr << "'" << Options::ENV_VAR_CONFIG_FILE << "'" <<
       " env var not found or empty" << std::endl;
     return std::nullopt;
   }
-  auto content = utils::read_file(options_file_path);
+  auto content = utils::read_file(config_file_path);
   if (!content) {
-    std::cerr << "could not read options file from path: " << options_file_path << std::endl;
+    std::cerr << "could not read config file from path: " << config_file_path << std::endl;
     return std::nullopt;
   }
   std::smatch matches;
-  if (!std::regex_search(content.value(), matches, regex_params_file)) {
-    std::cerr << "invalid options file" << std::endl;
+  if (!std::regex_search(content.value(), matches, REGEX_CONFIG_FILE)) {
+    std::cerr << "invalid config file" << std::endl;
     return std::nullopt;
   }
   // 7 groups besides the global match itself
   if (matches.size() != 8) {
-    std::cerr << "invalid options file" << std::endl;
+    std::cerr << "invalid config file" << std::endl;
     return std::nullopt;
   }
   std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
@@ -142,7 +142,7 @@ Options::parse_options_from_file()
   recipients->to = utils::split_email_list(matches[5].str());
   recipients->cc = utils::split_email_list(matches[6].str());
   recipients->bcc = utils::split_email_list(matches[7].str());
-  const std::string debug_env_var = rcpputils::get_env_var(Options::env_var_debug);
+  const std::string debug_env_var = utils::get_env_var(Options::ENV_VAR_DEBUG);
   return std::make_shared<Options>(
     user_info,
     recipients,
@@ -150,7 +150,7 @@ Options::parse_options_from_file()
 }
 
 // See: https://regexr.com/580va
-const std::regex Options::regex_params_file(
+const std::regex Options::REGEX_CONFIG_FILE(
   R"(email:\n  user:\n    url-smtp:[ ]?(.*)\n    url-imap:[ ]?(.*)\n    username: (.*)\n    password: (.*)\n  recipients:\n    to:[ ]?(.*)\n    cc:[ ]?(.*)\n    bcc:[ ]?(.*)[\n]?)");  // NOLINT
 
 }  // namespace email

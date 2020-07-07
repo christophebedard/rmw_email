@@ -18,6 +18,7 @@
 #include <string>
 #include <vector>
 
+#include "rcpputils/get_env.hpp"
 #include "rcpputils/split.hpp"
 
 #include "email/utils.hpp"
@@ -26,6 +27,19 @@ namespace email
 {
 namespace utils
 {
+
+std::string get_env_var(const std::string & env_var)
+{
+  return rcpputils::get_env_var(env_var.c_str());
+}
+
+std::string get_env_var_or_default(
+  const std::string & env_var,
+  const std::string & default_value)
+{
+  const std::string value = rcpputils::get_env_var(env_var.c_str());
+  return !value.empty() ? value : default_value;
+}
 
 std::optional<std::string> read_file(const std::string & path)
 {
