@@ -48,9 +48,9 @@ private:
     const std::string & string,
     const std::regex & regex);
 
-  static const std::regex regex_nextuid;
-  static const std::regex regex_subject;
-  static const std::regex regex_body;
+  static const std::regex REGEX_BODY;
+  static const std::regex REGEX_NEXTUID;
+  static const std::regex REGEX_SUBJECT;
 };
 
 }  // namespace utils

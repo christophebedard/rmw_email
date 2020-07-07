@@ -26,7 +26,7 @@ namespace utils
 
 std::optional<int> ResponseUtils::get_nextuid_from_response(const std::string & response)
 {
-  auto match_group = get_first_match_group(response, ResponseUtils::regex_nextuid);
+  auto match_group = get_first_match_group(response, ResponseUtils::REGEX_NEXTUID);
   if (!match_group) {
     return std::nullopt;
   }
@@ -36,8 +36,8 @@ std::optional<int> ResponseUtils::get_nextuid_from_response(const std::string & 
 std::optional<struct EmailContent> ResponseUtils::get_email_content_from_response(
   const std::string & curl_result)
 {
-  auto match_group_subject = get_first_match_group(curl_result, ResponseUtils::regex_subject);
-  auto match_group_body = get_first_match_group(curl_result, ResponseUtils::regex_body);
+  auto match_group_subject = get_first_match_group(curl_result, ResponseUtils::REGEX_SUBJECT);
+  auto match_group_body = get_first_match_group(curl_result, ResponseUtils::REGEX_BODY);
   if (!match_group_subject || !match_group_body) {
     return std::nullopt;
   }
@@ -62,13 +62,13 @@ std::optional<std::string> ResponseUtils::get_first_match_group(
   return matches[1].str();
 }
 
-const std::regex ResponseUtils::regex_nextuid(
+const std::regex ResponseUtils::REGEX_BODY(
+  R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
+const std::regex ResponseUtils::REGEX_NEXTUID(
   R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
   std::regex::extended);
-const std::regex ResponseUtils::regex_subject(
+const std::regex ResponseUtils::REGEX_SUBJECT(
   R"(Subject: (.*)\r?\n)");
-const std::regex ResponseUtils::regex_body(
-  R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
 
 }  // namespace utils
 }  // namespace email

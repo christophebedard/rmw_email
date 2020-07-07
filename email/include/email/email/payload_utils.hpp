@@ -48,7 +48,7 @@ public:
   static std::string cut_string_if_newline(const std::string & string);
 
 private:
-  static const std::regex regex_newline;
+  static const std::regex REGEX_NEWLINE;
 };
 
 }  // namespace utils

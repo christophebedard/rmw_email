@@ -58,10 +58,10 @@ const std::string PayloadUtils::join_list(
 std::string PayloadUtils::cut_string_if_newline(
   const std::string & string)
 {
-  return std::regex_replace(string, regex_newline, "");
+  return std::regex_replace(string, PayloadUtils::REGEX_NEWLINE, "");
 }
 
-const std::regex PayloadUtils::regex_newline("[\r\n].*", std::regex::extended);
+const std::regex PayloadUtils::REGEX_NEWLINE("[\r\n].*", std::regex::extended);
 
 }  // namespace utils
 }  // namespace email

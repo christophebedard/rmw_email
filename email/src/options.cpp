@@ -124,7 +124,7 @@ Options::parse_options_from_file()
     return std::nullopt;
   }
   std::smatch matches;
-  if (!std::regex_search(content.value(), matches, REGEX_CONFIG_FILE)) {
+  if (!std::regex_search(content.value(), matches, Options::REGEX_CONFIG_FILE)) {
     std::cerr << "invalid config file" << std::endl;
     return std::nullopt;
   }
