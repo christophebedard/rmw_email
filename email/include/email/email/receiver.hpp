@@ -50,6 +50,8 @@ private:
 
   std::optional<struct EmailContent> get_email_from_uid(int uid);
 
+  static size_t write_callback(void * contents, size_t size, size_t nmemb, void * userp);
+
   std::string read_buffer_;
 };
 

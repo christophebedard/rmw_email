@@ -25,12 +25,6 @@
 namespace email
 {
 
-struct UploadData
-{
-  const char * payload;
-  int lines_read;
-};
-
 class EmailSender : public CurlExecutor
 {
 public:
@@ -46,6 +40,14 @@ protected:
   virtual bool init_options();
 
 private:
+  static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp);
+
+  struct UploadData
+  {
+    const char * payload;
+    int lines_read;
+  };
+
   const struct EmailRecipients recipients_;
   struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;
