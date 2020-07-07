@@ -29,8 +29,10 @@ namespace utils
 
 std::optional<std::string> read_file(const std::string & path)
 {
-  // TODO(christophebedard) handle possible failure
   std::ifstream stream(path);
+  if (!stream.is_open()) {
+    return std::nullopt;
+  }
   std::stringstream buffer;
   buffer << stream.rdbuf();
   return buffer.str();
@@ -46,6 +48,7 @@ std::string full_url(
   const std::string & host,
   const int port)
 {
+  // protocol://host:port/
   return protocol + "://" + host + ":" + std::to_string(port) + "/";
 }
 
