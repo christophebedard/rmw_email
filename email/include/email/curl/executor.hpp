@@ -30,11 +30,11 @@ public:
 
 protected:
   explicit CurlExecutor(
-    const struct UserInfo & user_info,
+    const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
     const bool debug);
   explicit CurlExecutor(
-    const struct UserInfo & user_info,
+    const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info);
   CurlExecutor(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();

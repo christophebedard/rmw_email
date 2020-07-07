@@ -21,16 +21,18 @@
 namespace email
 {
 
-struct UserInfo
+/// Info for connecting to server.
+struct ConnectionInfo
 {
-  // URL without the port or '<protocol>://'
-  std::string url;
+  // Host name without protocol or port
+  std::string host;
   // Username (i.e. email)
   std::string username;
   // Password
   std::string password;
 };
 
+/// Info for a standard protocol.
 struct ProtocolInfo
 {
   // Protocol, i.e. <protocol>://
@@ -39,6 +41,20 @@ struct ProtocolInfo
   int port;
 };
 
+/// Info for a user.
+struct UserInfo
+{
+  // SMTP host, without the port or protocol
+  std::string host_smtp;
+  // IMAP host, without the port or protocol
+  std::string host_imap;
+  // Username (i.e. email)
+  std::string username;
+  // Password
+  std::string password;
+};
+
+/// Recipients of an email.
 struct EmailRecipients
 {
   std::vector<std::string> to;
@@ -46,6 +62,7 @@ struct EmailRecipients
   std::vector<std::string> bcc;
 };
 
+/// Content of an email.
 struct EmailContent
 {
   // Subject, which should be one line without any newlines
@@ -53,14 +70,6 @@ struct EmailContent
   // Body/content, which may have multiple lines
   std::string body;
 };
-
-// struct Email
-// {
-//   // Recipients of the email
-//   struct EmailRecipients recipients;
-//   // Content of the email
-//   struct EmailContent content;
-// };
 
 }  // namespace email
 

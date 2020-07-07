@@ -29,7 +29,7 @@ class CurlContext
 {
 public:
   explicit CurlContext(
-    const struct UserInfo & user_info,
+    const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
     const bool debug);
   CurlContext(const CurlContext &) = delete;
@@ -41,26 +41,16 @@ public:
 
   bool execute();
 
-  CURL * get_handle()
-  {
-    return handle_;
-  }
+  CURL * get_handle();
 
-  const std::string & get_full_url()
-  {
-    return full_url_;
-  }
+  const std::string & get_full_url() const;
 
-  const struct UserInfo & get_user_info()
-  {
-    return user_info_;
-  }
+  const struct ConnectionInfo & get_connection_info() const;
 
 private:
   CURL * handle_;
-  const struct UserInfo user_info_;
-  const struct ProtocolInfo protocol_info_;
-  std::string full_url_;
+  const struct ConnectionInfo connection_info_;
+  const std::string full_url_;
   bool debug_;
 };
 
