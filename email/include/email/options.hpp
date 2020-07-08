@@ -25,23 +25,62 @@
 namespace email
 {
 
+/// Options container and parsing methods.
+/**
+ * TODO(christophebedard) extract parsing methods into another file/class
+ */
 class Options
 {
 public:
+  /// Constructor.
+  /**
+   * TODO(christophebedard) make private/only callable from the static methods?
+   *
+   * \param user_info the user info
+   * \param recipients the recipients
+   * \param debug the debug status
+   */
   Options(
     std::shared_ptr<struct UserInfo> user_info,
     std::optional<std::shared_ptr<struct EmailRecipients>> recipients,
     bool debug);
   ~Options();
 
-  std::shared_ptr<struct UserInfo> get_user_info() const;
-  std::optional<std::shared_ptr<struct EmailRecipients>> get_recipients() const;
-  bool debug() const;
+  /// Get user information data.
+  /**
+   * \return the `UserInfo` object
+   */
+  std::shared_ptr<struct UserInfo>
+  get_user_info() const;
 
+  /// Get email recipient data.
+  /**
+   * \return the `EmailRecipients` object
+   */
+  std::optional<std::shared_ptr<struct EmailRecipients>>
+  get_recipients() const;
+
+  /// Get the debug status.
+  /**
+   * \return true if debug, false otherwise
+   */
+  bool
+  debug() const;
+
+  /// Parse options from CLI arguments.
+  /**
+   * \param argc the argument count
+   * \param argv the argument vector
+   * \return the resulting `Options` object, or `std::nullopt` if it failed
+   */
   static
   std::optional<std::shared_ptr<Options>>
   parse_options_from_args(int argc, char const * const argv[]);
 
+  /// Parse options from config file.
+  /**
+   * \return the resulting `Options` object, or `std::nullopt` if it failed
+   */
   static
   std::optional<std::shared_ptr<Options>>
   parse_options_from_file();

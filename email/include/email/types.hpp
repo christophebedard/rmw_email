@@ -24,33 +24,33 @@ namespace email
 /// Info for connecting to server.
 struct ConnectionInfo
 {
-  // Host name without protocol or port
+  /// Host name without protocol or port.
   std::string host;
-  // Username (i.e. email)
+  /// Username (i.e. email).
   std::string username;
-  // Password
+  /// Password.
   std::string password;
 };
 
 /// Info for a standard protocol.
 struct ProtocolInfo
 {
-  // Protocol, i.e. <protocol>://
+  /// Protocol, i.e. "<protocol>://".
   std::string protocol;
-  // Port
+  /// Port.
   int port;
 };
 
 /// Info for a user.
 struct UserInfo
 {
-  // SMTP host, without the port or protocol
+  /// SMTP host, without the port or protocol.
   std::string host_smtp;
-  // IMAP host, without the port or protocol
+  /// IMAP host, without the port or protocol.
   std::string host_imap;
-  // Username (i.e. email)
+  /// Username (i.e. email).
   std::string username;
-  // Password
+  /// Password.
   std::string password;
 };
 

@@ -41,7 +41,8 @@ CurlContext::CurlContext(
 
 CurlContext::~CurlContext() {}
 
-bool CurlContext::init()
+bool
+CurlContext::init()
 {
   handle_ = curl_easy_init();
   if (!handle_) {
@@ -62,12 +63,14 @@ bool CurlContext::init()
   return true;
 }
 
-void CurlContext::fini()
+void
+CurlContext::fini()
 {
   curl_easy_cleanup(handle_);
 }
 
-bool CurlContext::execute()
+bool
+CurlContext::execute()
 {
   CURLcode res = curl_easy_perform(handle_);
   if (CURLE_OK != res) {
@@ -81,17 +84,20 @@ bool CurlContext::execute()
   return true;
 }
 
-CURL * CurlContext::get_handle()
+CURL *
+CurlContext::get_handle() const
 {
   return handle_;
 }
 
-const std::string & CurlContext::get_full_url() const
+const std::string &
+CurlContext::get_full_url() const
 {
   return full_url_;
 }
 
-const struct ConnectionInfo & CurlContext::get_connection_info() const
+const struct ConnectionInfo &
+CurlContext::get_connection_info() const
 {
   return connection_info_;
 }

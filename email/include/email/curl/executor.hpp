@@ -21,25 +21,54 @@
 namespace email
 {
 
+/// Abstract class for executing commands using curl.
+/**
+ * Owns a curl context object for setting parameters before executing commands.
+ */
 class CurlExecutor
 {
 public:
-  bool init();
+  /// Initialize executor.
+  /**
+   * \return true if successful, false otherwise
+   */
+  bool
+  init();
 
-  bool is_valid() const;
+  /// Get validity status of the executor.
+  /**
+   * \param true if valid, false otherwise
+   */
+  bool
+  is_valid() const;
 
 protected:
+  /// Constructor.
+  /**
+   * \param connection_info the connection info
+   * \param protocol_info the protocol info
+   * \param debug the debug status
+   */
   explicit CurlExecutor(
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
     const bool debug);
+  // TODO(christophebedard) remove and use the one with debug instead
   explicit CurlExecutor(
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info);
   CurlExecutor(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();
 
-  virtual bool init_options() = 0;
+  /// Initialize concrete options.
+  /**
+   * Inheriting classes should implement this and initialize options specific to them.
+   *
+   * \return true if success, false otherwise
+   */
+  virtual
+  bool
+  init_options() = 0;
 
   CurlContext context_;
   const bool debug_;

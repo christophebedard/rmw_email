@@ -20,11 +20,30 @@
 namespace email
 {
 
-void init();
+/// Initialize context using config file.
+/**
+ * \throw `std::runtime_error` if context initialization failed
+ * \throw `std::runtime_error` if context is already intialized
+ */
+void
+init();
 
-void init(int argc, char const * const argv[]);
+/// Initialize context using commandline arguments.
+/**
+ * \param argc the argument count
+ * \param argv the argument vector
+ * \throw `std::runtime_error` if context initialization failed
+ * \throw `std::runtime_error` if context is already intialized
+ */
+void
+init(int argc, char const * const argv[]);
 
-bool shutdown();
+/// Shut down context.
+/**
+ * \return true if successful, false otherwise
+ */
+bool
+shutdown();
 
 }  // namespace email
 

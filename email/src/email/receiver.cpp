@@ -30,31 +30,32 @@
 namespace email
 {
 
-EmailReceiver::EmailReceiver(
-  const struct UserInfo & user_info)
+EmailReceiver::EmailReceiver(const struct UserInfo & user_info)
 : CurlExecutor(
     {user_info.host_imap, user_info.username, user_info.password},
     {"imaps", 993}),
   read_buffer_()
 {}
 
-EmailReceiver::~EmailReceiver()
-{}
+EmailReceiver::~EmailReceiver() {}
 
-size_t EmailReceiver::write_callback(void * contents, size_t size, size_t nmemb, void * userp)
+size_t
+EmailReceiver::write_callback(void * contents, size_t size, size_t nmemb, void * userp)
 {
   (static_cast<std::string *>(userp))->append(static_cast<char *>(contents), size * nmemb);
   return size * nmemb;
 }
 
-bool EmailReceiver::init_options()
+bool
+EmailReceiver::init_options()
 {
   curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEFUNCTION, write_callback);
   curl_easy_setopt(context_.get_handle(), CURLOPT_WRITEDATA, static_cast<void *>(&read_buffer_));
   return true;
 }
 
-std::optional<struct EmailContent> EmailReceiver::get_email()
+std::optional<struct EmailContent>
+EmailReceiver::get_email()
 {
   if (!is_valid()) {
     std::cerr << "not initialized!" << std::endl;
@@ -76,7 +77,8 @@ std::optional<struct EmailContent> EmailReceiver::get_email()
   return next_email;
 }
 
-std::optional<struct EmailContent> EmailReceiver::get_email_from_uid(int uid)
+std::optional<struct EmailContent>
+EmailReceiver::get_email_from_uid(int uid)
 {
   auto execute_result = execute("INBOX/;UID=" + std::to_string(uid), std::nullopt);
   if (!execute_result) {
@@ -85,7 +87,8 @@ std::optional<struct EmailContent> EmailReceiver::get_email_from_uid(int uid)
   return utils::ResponseUtils::get_email_content_from_response(execute_result.value());
 }
 
-std::optional<int> EmailReceiver::get_nextuid()
+std::optional<int>
+EmailReceiver::get_nextuid()
 {
   std::optional<std::string> response = execute(std::nullopt, "EXAMINE INBOX");
   if (!response) {
@@ -95,7 +98,8 @@ std::optional<int> EmailReceiver::get_nextuid()
   return next_uid;
 }
 
-std::optional<std::string> EmailReceiver::execute(
+std::optional<std::string>
+EmailReceiver::execute(
   std::optional<std::string> url_options,
   std::optional<std::string> custom_request)
 {

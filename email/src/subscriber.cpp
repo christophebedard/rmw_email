@@ -23,8 +23,7 @@
 namespace email
 {
 
-Subscriber::Subscriber(
-  const std::string & topic)
+Subscriber::Subscriber(const std::string & topic)
 : topic_(topic),
   receiver_(get_global_context()->get_receiver())
 {
@@ -33,9 +32,9 @@ Subscriber::Subscriber(
 
 Subscriber::~Subscriber() {}
 
-std::string Subscriber::get_message()
+std::string
+Subscriber::get_message()
 {
-  // TODO(christophebedard) turn this into polling
   std::optional<struct EmailContent> email = std::nullopt;
   std::string subject = "";
   while (subject != topic_) {

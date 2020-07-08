@@ -18,17 +18,20 @@
 namespace email
 {
 
-void init()
+void
+init()
 {
   get_global_context()->init();
 }
 
-void init(int argc, char const * const argv[])
+void
+init(int argc, char const * const argv[])
 {
   get_global_context()->init(argc, argv);
 }
 
-bool shutdown()
+bool
+shutdown()
 {
   return get_global_context()->shutdown();
 }

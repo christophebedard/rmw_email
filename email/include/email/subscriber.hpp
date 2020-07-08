@@ -25,15 +25,29 @@
 namespace email
 {
 
+/// Message subscriber.
+/**
+ * Uses emails, with the topic as the email subject and the data as the email body.
+ */
 class Subscriber
 {
 public:
-  Subscriber(
-    const std::string & topic);
+  /// Constructor.
+  /**
+   * \param topic the topic to subscribe to
+   */
+  explicit Subscriber(const std::string & topic);
   Subscriber(const Subscriber &) = delete;
   ~Subscriber();
 
-  std::string get_message();
+  /// Get a new message.
+  /**
+   * TODO(christophebedard) turn this into polling
+   *
+   * \return the new message
+   */
+  std::string
+  get_message();
 
 private:
   const std::string topic_;

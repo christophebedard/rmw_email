@@ -26,7 +26,8 @@ namespace email
 namespace utils
 {
 
-const std::string PayloadUtils::build_payload(
+const std::string
+PayloadUtils::build_payload(
   const struct EmailRecipients & recipients,
   const struct EmailContent & content)
 {
@@ -42,8 +43,8 @@ const std::string PayloadUtils::build_payload(
     content.body.c_str());
 }
 
-const std::string PayloadUtils::join_list(
-  const std::vector<std::string> & list)
+const std::string
+PayloadUtils::join_list(const std::vector<std::string> & list)
 {
   // From: https://stackoverflow.com/a/12155571/6476709
   return std::accumulate(
@@ -55,8 +56,8 @@ const std::string PayloadUtils::join_list(
     });
 }
 
-std::string PayloadUtils::cut_string_if_newline(
-  const std::string & string)
+std::string
+PayloadUtils::cut_string_if_newline(const std::string & string)
 {
   return std::regex_replace(string, PayloadUtils::REGEX_NEWLINE, "");
 }
