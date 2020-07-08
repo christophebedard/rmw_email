@@ -25,15 +25,27 @@
 namespace email
 {
 
+/// Message publisher.
+/**
+ * Uses emails, with the topic as the email subject and the data as the email body.
+ */
 class Publisher
 {
 public:
-  Publisher(
-    const std::string & topic);
+  /// Constructor.
+  /**
+   * \param topic the topic to publish on
+   */
+  explicit Publisher(const std::string & topic);
   Publisher(const Publisher &) = delete;
   ~Publisher();
 
-  void publish(const std::string & message);
+  /// Publish message.
+  /**
+   * \param message the message
+   */
+  void
+  publish(const std::string & message);
 
 private:
   const std::string topic_;

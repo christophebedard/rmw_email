@@ -28,6 +28,11 @@
 namespace email
 {
 
+/// Context object with global resources.
+/**
+ * It gets initialized only once.
+ * It owns global objects which get created & initialized when needed.
+ */
 class Context
 {
 public:
@@ -35,25 +40,79 @@ public:
   Context(const Context &) = delete;
   ~Context();
 
-  void init();
+  /// Initialize context using config file.
+  /**
+   * Shouldn't be called directly: use `email::init()` instead.
+   *
+   * \throw `std::runtime_error` if context initialization failed
+   * \throw `std::runtime_error` if context is already intialized
+   */
+  void
+  init();
 
+  /// Initialize context using commandline arguments.
+  /**
+   * Shouldn't be called directly: use `email::init(argc, argv)` instead.
+   *
+   * \throw `std::runtime_error` if context initialization failed
+   * \throw `std::runtime_error` if context is already intialized
+   */
   void init(int argc, char const * const argv[]);
 
+  /// Shut down context.
+  /**
+   * Shouldn't be called directly: use `email::shutdown()` instead.
+   *
+   * \return true if successful, false otherwise
+   */
   bool shutdown();
 
-  bool is_valid() const;
+  /// Get context validity status.
+  /**
+   * \return true if valid, false otherwise
+   */
+  bool
+  is_valid() const;
 
-  std::shared_ptr<Options> get_options();
+  /// Get options.
+  /**
+   * \return the options
+   * \throw `std::runtime_error` if context has not been initialized
+   */
+  std::shared_ptr<Options>
+  get_options() const;
 
-  std::shared_ptr<EmailReceiver> get_receiver();
-  std::shared_ptr<EmailSender> get_sender();
+  /// Get the email reception object.
+  /**
+   * Will have been initialized.
+   *
+   * \return the `EmailReceiver` object
+   * \throw `std::runtime_error` if context has not been initialized
+   */
+  std::shared_ptr<EmailReceiver>
+  get_receiver() const;
+
+  /// Get the email sender object.
+  /**
+   * Will have been initialized.
+   *
+   * \return the `EmailSender` object
+   * \throw `std::runtime_error` if context has not been initialized
+   */
+  std::shared_ptr<EmailSender>
+  get_sender() const;
 
 private:
   std::shared_ptr<Options> options_;
   bool is_valid_;
 };
 
-std::shared_ptr<Context> get_global_context();
+/// Get the global context.
+/**
+ * \return the global context, which should have been initialized using `email::init(*)`
+ */
+std::shared_ptr<Context>
+get_global_context();
 
 }  // namespace email
 

@@ -28,29 +28,62 @@
 namespace email
 {
 
+/// Email reception wrapper for curl.
+/**
+ * Sets the options and executes the commands to receive emails.
+ */
 class EmailReceiver : public CurlExecutor
 {
 public:
-  explicit EmailReceiver(
-    const struct UserInfo & user_info);
+  /// Constructor.
+  /**
+   * \param user_info the user information
+   */
+  explicit EmailReceiver(const struct UserInfo & user_info);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
 
-  std::optional<struct EmailContent> get_email();
+  /// Get a new email.
+  /**
+   * \return the new email, or `std::nullopt` if it failed
+   */
+  std::optional<struct EmailContent>
+  get_email();
 
 protected:
-  virtual bool init_options();
+  virtual
+  bool
+  init_options();
 
 private:
-  std::optional<std::string> execute(
-    std::optional<std::string> url_options,
-    std::optional<std::string> custom_request);
+  /// Get the NEXTUID value.
+  /**
+   * \return the NEXTUID, or `std::nullopt` if it failed
+   */
+  std::optional<int>
+  get_nextuid();
 
-  std::optional<int> get_nextuid();
+  /// Get an email from its UID.
+  /**
+   * \param uid the UID
+   * \return the content of the email, or `std::nullopt` if it failed
+   */
+  std::optional<struct EmailContent>
+  get_email_from_uid(int uid);
 
-  std::optional<struct EmailContent> get_email_from_uid(int uid);
+  /// Execute curl command.
+  /**
+   * \param url_options the options to append to the request URL, or `std::nullopt`
+   * \param custom_request the custom IMAP request, or `std::nullopt`
+   * \return the response, or `std::nullopt` if it failed
+   */
+  std::optional<std::string>
+  execute(std::optional<std::string> url_options, std::optional<std::string> custom_request);
 
-  static size_t write_callback(void * contents, size_t size, size_t nmemb, void * userp);
+  /// Write callback for curl download/response reception.
+  static
+  size_t
+  write_callback(void * contents, size_t size, size_t nmemb, void * userp);
 
   std::string read_buffer_;
 };

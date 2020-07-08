@@ -39,7 +39,8 @@ CurlExecutor::~CurlExecutor()
   context_.fini();
 }
 
-bool CurlExecutor::init()
+bool
+CurlExecutor::init()
 {
   if (!is_valid_) {
     is_valid_ |= context_.init() && init_options();
@@ -47,7 +48,8 @@ bool CurlExecutor::init()
   return is_valid_;
 }
 
-bool CurlExecutor::is_valid() const
+bool
+CurlExecutor::is_valid() const
 {
   return is_valid_;
 }

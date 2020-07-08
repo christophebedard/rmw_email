@@ -24,7 +24,8 @@ namespace email
 namespace utils
 {
 
-std::optional<int> ResponseUtils::get_nextuid_from_response(const std::string & response)
+std::optional<int>
+ResponseUtils::get_nextuid_from_response(const std::string & response)
 {
   auto match_group = get_first_match_group(response, ResponseUtils::REGEX_NEXTUID);
   if (!match_group) {
@@ -33,8 +34,8 @@ std::optional<int> ResponseUtils::get_nextuid_from_response(const std::string & 
   return std::stoi(match_group.value());
 }
 
-std::optional<struct EmailContent> ResponseUtils::get_email_content_from_response(
-  const std::string & curl_result)
+std::optional<struct EmailContent>
+ResponseUtils::get_email_content_from_response(const std::string & curl_result)
 {
   auto match_group_subject = get_first_match_group(curl_result, ResponseUtils::REGEX_SUBJECT);
   auto match_group_body = get_first_match_group(curl_result, ResponseUtils::REGEX_BODY);
@@ -47,9 +48,8 @@ std::optional<struct EmailContent> ResponseUtils::get_email_content_from_respons
   return content;
 }
 
-std::optional<std::string> ResponseUtils::get_first_match_group(
-  const std::string & string,
-  const std::regex & regex)
+std::optional<std::string>
+ResponseUtils::get_first_match_group(const std::string & string, const std::regex & regex)
 {
   std::smatch matches;
   if (!std::regex_search(string, matches, regex)) {

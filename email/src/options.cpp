@@ -35,20 +35,22 @@ Options::Options(
   debug_(debug)
 {}
 
-Options::~Options()
-{}
+Options::~Options() {}
 
-std::shared_ptr<struct UserInfo> Options::get_user_info() const
+std::shared_ptr<struct UserInfo>
+Options::get_user_info() const
 {
   return user_info_;
 }
 
-std::optional<std::shared_ptr<struct EmailRecipients>> Options::get_recipients() const
+std::optional<std::shared_ptr<struct EmailRecipients>>
+Options::get_recipients() const
 {
   return recipients_;
 }
 
-bool Options::debug() const
+bool
+Options::debug() const
 {
   return debug_;
 }
@@ -94,6 +96,7 @@ Options::parse_options_from_args(int argc, char const * const argv[])
   user_info->host_imap = user_info_opt.value().host_imap;
   user_info->username = user_info_opt.value().username;
   user_info->password = user_info_opt.value().password;
+  // TODO(christophebedard) make recipients not optional, update Options & Context to reflect that
   std::optional<std::shared_ptr<struct EmailRecipients>> recipients = std::nullopt;
   if (recipients_opt) {
     recipients = std::make_shared<struct EmailRecipients>();

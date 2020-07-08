@@ -25,6 +25,12 @@
 namespace email
 {
 
+/// Email sending wrapper for curl.
+/**
+ * Sets the options and executes commands to send emails with curl.
+ * The recipients are always the same.
+ * Only the email subject & body can change from one sent email to another.
+ */
 class EmailSender : public CurlExecutor
 {
 public:
@@ -34,14 +40,26 @@ public:
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
 
-  bool send(const struct EmailContent & content);
+  /// Send an email.
+  /**
+   * \param content the content
+   * \return true if successful, false otherwise
+   */
+  bool
+  send(const struct EmailContent & content);
 
 protected:
-  virtual bool init_options();
+  virtual
+  bool
+  init_options();
 
 private:
-  static size_t read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp);
+  /// Read callback for curl upload.
+  static
+  size_t
+  read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp);
 
+  /// Utility struct for uploading data with curl.
   struct UploadData
   {
     const char * payload;

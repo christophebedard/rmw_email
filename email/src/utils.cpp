@@ -28,20 +28,21 @@ namespace email
 namespace utils
 {
 
-std::string get_env_var(const std::string & env_var)
+std::string
+get_env_var(const std::string & env_var)
 {
   return rcpputils::get_env_var(env_var.c_str());
 }
 
-std::string get_env_var_or_default(
-  const std::string & env_var,
-  const std::string & default_value)
+std::string
+get_env_var_or_default(const std::string & env_var, const std::string & default_value)
 {
   const std::string value = rcpputils::get_env_var(env_var.c_str());
   return !value.empty() ? value : default_value;
 }
 
-std::optional<std::string> read_file(const std::string & path)
+std::optional<std::string>
+read_file(const std::string & path)
 {
   std::ifstream stream(path);
   if (!stream.is_open()) {
@@ -52,17 +53,15 @@ std::optional<std::string> read_file(const std::string & path)
   return buffer.str();
 }
 
-std::vector<std::string> split_email_list(const std::string & list)
+std::vector<std::string>
+split_email_list(const std::string & list)
 {
   return rcpputils::split(list, ',', true);
 }
 
-std::string full_url(
-  const std::string & protocol,
-  const std::string & host,
-  const int port)
+std::string
+full_url(const std::string & protocol, const std::string & host, const int port)
 {
-  // protocol://host:port/
   return protocol + "://" + host + ":" + std::to_string(port) + "/";
 }
 

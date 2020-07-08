@@ -22,7 +22,8 @@
 namespace email
 {
 
-std::shared_ptr<Context> get_global_context()
+std::shared_ptr<Context>
+get_global_context()
 {
   static std::shared_ptr<Context> global_context = std::make_shared<Context>();
   return global_context;
@@ -40,7 +41,8 @@ Context::~Context()
   }
 }
 
-void Context::init()
+void
+Context::init()
 {
   if (is_valid_) {
     throw std::runtime_error("Context already initialized");
@@ -53,7 +55,8 @@ void Context::init()
   is_valid_ = true;
 }
 
-void Context::init(int argc, char const * const argv[])
+void
+Context::init(int argc, char const * const argv[])
 {
   if (is_valid_) {
     throw std::runtime_error("Context already initialized");
@@ -66,7 +69,8 @@ void Context::init(int argc, char const * const argv[])
   is_valid_ = true;
 }
 
-bool Context::shutdown()
+bool
+Context::shutdown()
 {
   if (!is_valid_) {
     return false;
@@ -75,12 +79,14 @@ bool Context::shutdown()
   return true;
 }
 
-bool Context::is_valid() const
+bool
+Context::is_valid() const
 {
   return is_valid_;
 }
 
-std::shared_ptr<Options> Context::get_options()
+std::shared_ptr<Options>
+Context::get_options() const
 {
   if (!is_valid_) {
     throw std::runtime_error("Context not initialized");
@@ -88,7 +94,8 @@ std::shared_ptr<Options> Context::get_options()
   return options_;
 }
 
-std::shared_ptr<EmailReceiver> Context::get_receiver()
+std::shared_ptr<EmailReceiver>
+Context::get_receiver() const
 {
   if (!is_valid_) {
     throw std::runtime_error("Context not initialized");
@@ -102,7 +109,8 @@ std::shared_ptr<EmailReceiver> Context::get_receiver()
   return receiver;
 }
 
-std::shared_ptr<EmailSender> Context::get_sender()
+std::shared_ptr<EmailSender>
+Context::get_sender() const
 {
   if (!is_valid_) {
     throw std::runtime_error("Context not initialized");

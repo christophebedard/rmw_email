@@ -25,27 +25,69 @@
 namespace email
 {
 
+/// Basic context wrapper for curl.
+/**
+ * Wraps the init/fini functions.
+ * Takes care of setting the common options.
+ */
 class CurlContext
 {
 public:
+  /// Constructor.
+  /**
+   * \param connection_info the connection information
+   * \param protocol_info the protocol information
+   * \param debug the debug status
+   */
   explicit CurlContext(
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
     const bool debug);
   CurlContext(const CurlContext &) = delete;
-  virtual ~CurlContext();
+  ~CurlContext();
 
-  bool init();
+  /// Initialize context.
+  /**
+   * \return true if successful, false otherwise
+   */
+  bool
+  init();
 
-  void fini();
+  /// Finalize context.
+  void
+  fini();
 
-  bool execute();
+  /// Execute command.
+  /**
+   * The right command/params must have been set using the handle beforehand.
+   *
+   * \return true if successful, false otherwise
+   */
+  bool
+  execute();
 
-  CURL * get_handle();
+  /// Get the curl handle.
+  /**
+   * To be used for setting params before executing a command.
+   *
+   * \return the curl handle
+   */
+  CURL *
+  get_handle() const;
 
-  const std::string & get_full_url() const;
+  /// Get the full URL.
+  /**
+   * \return the full URL
+   */
+  const std::string &
+  get_full_url() const;
 
-  const struct ConnectionInfo & get_connection_info() const;
+  /// Get the connection info.
+  /**
+   * \return the connection info
+   */
+  const struct ConnectionInfo &
+  get_connection_info() const;
 
 private:
   CURL * handle_;

@@ -27,10 +27,10 @@ namespace email
 namespace utils
 {
 
+/// Utilities for extracting information from an email formatted according to RFC 5322.
 /**
- * Utilities for extracting information from an email formatted according to RFC 5322.
- *
  * See: https://tools.ietf.org/html/rfc5322
+ * Static utility class only.
  */
 class ResponseUtils
 {
@@ -38,15 +38,29 @@ public:
   ResponseUtils() = delete;
   ~ResponseUtils() = delete;
 
-  static std::optional<int> get_nextuid_from_response(const std::string & response);
+  /// Extract UID from request response.
+  /**
+   * \param response the response
+   * \return the UID, or `std::nullopt` if it failed
+   */
+  static
+  std::optional<int>
+  get_nextuid_from_response(const std::string & response);
 
-  static std::optional<struct EmailContent> get_email_content_from_response(
-    const std::string & curl_result);
+  /// Get email content from raw request response.
+  /**
+   * \param curl_result the result of the request
+   * \return the email content, or `std::nullopt` if it failed
+   */
+  static
+  std::optional<struct EmailContent>
+  get_email_content_from_response(const std::string & curl_result);
 
 private:
-  static std::optional<std::string> get_first_match_group(
-    const std::string & string,
-    const std::regex & regex);
+  /// Get first match group for a string given a regex.
+  static
+  std::optional<std::string>
+  get_first_match_group(const std::string & string, const std::regex & regex);
 
   static const std::regex REGEX_BODY;
   static const std::regex REGEX_NEXTUID;

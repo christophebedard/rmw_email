@@ -48,7 +48,8 @@ EmailSender::~EmailSender()
   }
 }
 
-size_t EmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp)
+size_t
+EmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp)
 {
   const size_t max_size = size * nmemb;
   if ((0 == size) || (0 == nmemb) || (1 > max_size)) {
@@ -69,11 +70,10 @@ size_t EmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb,
   return len;
 }
 
-bool EmailSender::init_options()
+bool
+EmailSender::init_options()
 {
   curl_easy_setopt(context_.get_handle(), CURLOPT_URL, context_.get_full_url().c_str());
-  // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYPEER, 0L);
-  // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYHOST, 0L);
   curl_easy_setopt(
     context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_connection_info().username.c_str());
   // Add all destination emails to the list of recipients
@@ -94,11 +94,13 @@ bool EmailSender::init_options()
   curl_easy_setopt(context_.get_handle(), CURLOPT_READFUNCTION, read_payload_callback);
   curl_easy_setopt(context_.get_handle(), CURLOPT_READDATA, static_cast<void *>(&upload_ctx_));
   curl_easy_setopt(context_.get_handle(), CURLOPT_UPLOAD, 1L);
+  // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYPEER, 0L);
+  // curl_easy_setopt(context_.get_handle(), CURLOPT_SSL_VERIFYHOST, 0L);
   return true;
 }
 
-bool EmailSender::send(
-  const struct EmailContent & content)
+bool
+EmailSender::send(const struct EmailContent & content)
 {
   if (!is_valid()) {
     std::cerr << "not initialized!" << std::endl;
