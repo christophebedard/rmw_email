@@ -42,8 +42,10 @@ EmailSender::EmailSender(
 
 EmailSender::~EmailSender()
 {
-  curl_slist_free_all(recipients_list_);
-  recipients_list_ = nullptr;
+  if (recipients_list_) {
+    curl_slist_free_all(recipients_list_);
+    recipients_list_ = nullptr;
+  }
 }
 
 size_t EmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp)
