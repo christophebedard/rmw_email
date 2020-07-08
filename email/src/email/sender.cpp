@@ -75,6 +75,10 @@ bool EmailSender::init_options()
   curl_easy_setopt(
     context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_connection_info().username.c_str());
   // Add all destination emails to the list of recipients
+  if (0 == recipients_.to.size() + recipients_.cc.size() + recipients_.bcc.size()) {
+    std::cerr << "no recipients for EmailSender" << std::endl;
+    return false;
+  }
   for (auto & email_to : recipients_.to) {
     recipients_list_ = curl_slist_append(recipients_list_, email_to.c_str());
   }
