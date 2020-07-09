@@ -95,7 +95,7 @@ private:
   static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";
   static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT = "email.yml";
   static constexpr const char * USAGE_CLI_ARGS =
-    "usage: --user HOST_SMTP HOST_IMAP EMAIL PASSWORD --recipient TO [-d|--debug]";
+    "usage: HOST_SMTP HOST_IMAP EMAIL PASSWORD EMAIL_TO [-d|--debug]";
 };
 
 }  // namespace email
