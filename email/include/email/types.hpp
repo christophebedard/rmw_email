@@ -52,14 +52,36 @@ struct UserInfo
   std::string username;
   /// Password.
   std::string password;
+  /// Constructor.
+  UserInfo(
+    const std::string & host_smtp_,
+    const std::string & host_imap_,
+    const std::string & username_,
+    const std::string & password_)
+  : host_smtp(host_smtp_), host_imap(host_imap_), username(username_), password(password_)
+  {}
 };
 
 /// Recipients of an email.
 struct EmailRecipients
 {
-  std::vector<std::string> to;
-  std::vector<std::string> cc;
-  std::vector<std::string> bcc;
+  /// The "to" emails.
+  const std::vector<std::string> to;
+  /// The "cc" emails.
+  const std::vector<std::string> cc;
+  /// The "bcc" emails.
+  const std::vector<std::string> bcc;
+  /// Default constructor.
+  EmailRecipients(
+    const std::vector<std::string> & to_,
+    const std::vector<std::string> & cc_,
+    const std::vector<std::string> & bcc_)
+  : to(to_), cc(cc_), bcc(bcc_)
+  {}
+  /// Constructor with only a single "to" email.
+  explicit EmailRecipients(const std::string & to_)
+  : to({to_}), cc(), bcc()
+  {}
 };
 
 /// Content of an email.
