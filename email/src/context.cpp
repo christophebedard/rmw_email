@@ -100,7 +100,6 @@ Context::get_receiver() const
   if (!is_valid()) {
     throw ContextNotInitializedError();
   }
-  // TODO(christophebedard) have classes use the UserInfo shared_ptr
   static std::shared_ptr<EmailReceiver> receiver = std::make_shared<EmailReceiver>(
     options_->get_user_info(),
     options_->debug());
@@ -116,7 +115,6 @@ Context::get_sender() const
   if (!is_valid()) {
     throw ContextNotInitializedError();
   }
-  // TODO(christophebedard) have classes use the shared_ptrs
   static std::shared_ptr<EmailSender> sender = std::make_shared<EmailSender>(
     options_->get_user_info(),
     options_->get_recipients(),
