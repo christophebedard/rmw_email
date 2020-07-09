@@ -42,7 +42,7 @@ public:
    */
   Options(
     std::shared_ptr<struct UserInfo> user_info,
-    std::optional<std::shared_ptr<struct EmailRecipients>> recipients,
+    std::shared_ptr<struct EmailRecipients> recipients,
     bool debug);
   ~Options();
 
@@ -57,7 +57,7 @@ public:
   /**
    * \return the `EmailRecipients` object
    */
-  std::optional<std::shared_ptr<struct EmailRecipients>>
+  std::shared_ptr<struct EmailRecipients>
   get_recipients() const;
 
   /// Get the debug status.
@@ -87,13 +87,15 @@ public:
 
 private:
   std::shared_ptr<struct UserInfo> user_info_;
-  std::optional<std::shared_ptr<struct EmailRecipients>> recipients_;
+  std::shared_ptr<struct EmailRecipients> recipients_;
   bool debug_;
 
   static const std::regex REGEX_CONFIG_FILE;
   static constexpr const char * ENV_VAR_DEBUG = "EMAIL_DEBUG";
   static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";
   static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT = "email.yml";
+  static constexpr const char * USAGE_CLI_ARGS =
+    "usage: --user HOST_SMTP HOST_IMAP EMAIL PASSWORD --recipient TO [-d|--debug]";
 };
 
 }  // namespace email
