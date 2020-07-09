@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
 #include <numeric>
 #include <regex>
 #include <string>
@@ -28,7 +29,7 @@ namespace utils
 
 const std::string
 PayloadUtils::build_payload(
-  const struct EmailRecipients & recipients,
+  std::shared_ptr<const struct EmailRecipients> recipients,
   const struct EmailContent & content)
 {
   // Subjects containing newlines will have the second+ line(s) be moved to the body,
@@ -36,9 +37,9 @@ PayloadUtils::build_payload(
   // seems to handle it correctly even if it contains "\n" instead of "\r\n"
   return utils::string_format(
     "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
-    join_list(recipients.to).c_str(),
-    join_list(recipients.cc).c_str(),
-    join_list(recipients.bcc).c_str(),
+    join_list(recipients->to).c_str(),
+    join_list(recipients->cc).c_str(),
+    join_list(recipients->bcc).c_str(),
     cut_string_if_newline(content.subject).c_str(),
     content.body.c_str());
 }

@@ -18,6 +18,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <iostream>
+#include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
@@ -30,9 +31,11 @@
 namespace email
 {
 
-EmailReceiver::EmailReceiver(const struct UserInfo & user_info, const bool debug)
+EmailReceiver::EmailReceiver(
+  std::shared_ptr<const struct UserInfo> user_info,
+  const bool debug)
 : CurlExecutor(
-    {user_info.host_imap, user_info.username, user_info.password},
+    {user_info->host_imap, user_info->username, user_info->password},
     {"imaps", 993},
     debug),
   read_buffer_()

@@ -14,6 +14,7 @@
 
 #include <gtest/gtest.h>
 
+#include <memory>
 #include <optional> // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <vector>
@@ -48,7 +49,8 @@ TEST(TestUtils, build_payload) {
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the email's body\r\n";
-  const struct email::EmailRecipients recipients_one = {{"my@email.com"}, {}, {}};
+  std::shared_ptr<const struct email::EmailRecipients> recipients_one =
+    std::make_shared<const struct email::EmailRecipients>("my@email.com");
   const struct email::EmailContent content_one_line = {
     {"this is my awesome subject"}, {"this is the email's body"}};
   EXPECT_EQ(
@@ -61,10 +63,11 @@ TEST(TestUtils, build_payload) {
     "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the email's body\r\n";
-  const struct email::EmailRecipients recipients_multiple = {
-    {"my@email.com", "another@email.com"},
-    {"onecc@email.ca"},
-    {"first@email.ca", "second@email.net", "third@email.de"}};
+  std::shared_ptr<const struct email::EmailRecipients> recipients_multiple =
+    std::make_shared<const struct email::EmailRecipients>(
+    std::vector<std::string>{"my@email.com", "another@email.com"},
+    std::vector<std::string>{"onecc@email.ca"},
+    std::vector<std::string>{"first@email.ca", "second@email.net", "third@email.de"});
   EXPECT_EQ(
     payload_multiple_recipients,
     email::utils::PayloadUtils::build_payload(recipients_multiple, content_one_line));

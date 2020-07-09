@@ -15,6 +15,7 @@
 #ifndef EMAIL__EMAIL__PAYLOAD_UTILS_HPP_
 #define EMAIL__EMAIL__PAYLOAD_UTILS_HPP_
 
+#include <memory>
 #include <regex>
 #include <string>
 #include <vector>
@@ -46,7 +47,9 @@ public:
    */
   static
   const std::string
-  build_payload(const struct EmailRecipients & recipients, const struct EmailContent & content);
+  build_payload(
+    std::shared_ptr<const struct EmailRecipients> recipients,
+    const struct EmailContent & content);
 
   /// Create a string list of emails.
   /**

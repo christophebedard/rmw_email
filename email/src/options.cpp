@@ -27,8 +27,8 @@ namespace email
 {
 
 Options::Options(
-  std::shared_ptr<struct UserInfo> user_info,
-  std::shared_ptr<struct EmailRecipients> recipients,
+  std::shared_ptr<const struct UserInfo> user_info,
+  std::shared_ptr<const struct EmailRecipients> recipients,
   bool debug)
 : user_info_(user_info),
   recipients_(recipients),
@@ -37,13 +37,13 @@ Options::Options(
 
 Options::~Options() {}
 
-std::shared_ptr<struct UserInfo>
+std::shared_ptr<const struct UserInfo>
 Options::get_user_info() const
 {
   return user_info_;
 }
 
-std::shared_ptr<struct EmailRecipients>
+std::shared_ptr<const struct EmailRecipients>
 Options::get_recipients() const
 {
   return recipients_;
@@ -63,13 +63,13 @@ Options::parse_options_from_args(int argc, char const * const argv[])
     std::cerr << Options::USAGE_CLI_ARGS << std::endl;
     return std::nullopt;
   }
-  std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
-  user_info->host_smtp = std::string(argv[1]);
-  user_info->host_imap = std::string(argv[2]);
-  user_info->username = std::string(argv[3]);
-  user_info->password = std::string(argv[4]);
-  std::shared_ptr<struct EmailRecipients> recipients = std::make_shared<struct EmailRecipients>();
-  recipients->to = {std::string(argv[5])};
+  std::shared_ptr<const struct UserInfo> user_info = std::make_shared<const struct UserInfo>(
+    std::string(argv[1]),
+    std::string(argv[2]),
+    std::string(argv[3]),
+    std::string(argv[4]));
+  std::shared_ptr<const struct EmailRecipients> recipients =
+    std::make_shared<const struct EmailRecipients>(std::string(argv[5]));
   bool debug = false;
   if (7 == argc) {
     const std::string argv6 = std::string(argv[6]);
@@ -109,15 +109,16 @@ Options::parse_options_from_file()
     std::cerr << "invalid config file" << std::endl;
     return std::nullopt;
   }
-  std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
-  user_info->host_smtp = matches[1].str();
-  user_info->host_imap = matches[2].str();
-  user_info->username = matches[3].str();
-  user_info->password = matches[4].str();
-  std::shared_ptr<struct EmailRecipients> recipients = std::make_shared<struct EmailRecipients>();
-  recipients->to = utils::split_email_list(matches[5].str());
-  recipients->cc = utils::split_email_list(matches[6].str());
-  recipients->bcc = utils::split_email_list(matches[7].str());
+  std::shared_ptr<const struct UserInfo> user_info = std::make_shared<const struct UserInfo>(
+    matches[1].str(),
+    matches[2].str(),
+    matches[3].str(),
+    matches[4].str());
+  std::shared_ptr<const struct EmailRecipients> recipients =
+    std::make_shared<const struct EmailRecipients>(
+    utils::split_email_list(matches[5].str()),
+    utils::split_email_list(matches[6].str()),
+    utils::split_email_list(matches[7].str()));
   const std::string debug_env_var = utils::get_env_var(Options::ENV_VAR_DEBUG);
   return std::make_shared<Options>(
     user_info,

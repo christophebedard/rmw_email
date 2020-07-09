@@ -30,11 +30,11 @@ namespace email
 {
 
 EmailSender::EmailSender(
-  const struct UserInfo & user_info,
-  const struct EmailRecipients & recipients,
+  std::shared_ptr<const struct UserInfo> user_info,
+  std::shared_ptr<const struct EmailRecipients> recipients,
   const bool debug)
 : CurlExecutor(
-    {user_info.host_smtp, user_info.username, user_info.password},
+    {user_info->host_smtp, user_info->username, user_info->password},
     {"smtps", 465},
     debug),
   recipients_(recipients),
@@ -79,17 +79,17 @@ EmailSender::init_options()
   curl_easy_setopt(
     context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_connection_info().username.c_str());
   // Add all destination emails to the list of recipients
-  if (0 == recipients_.to.size() + recipients_.cc.size() + recipients_.bcc.size()) {
+  if (0 == recipients_->to.size() + recipients_->cc.size() + recipients_->bcc.size()) {
     std::cerr << "no recipients for EmailSender" << std::endl;
     return false;
   }
-  for (auto & email_to : recipients_.to) {
+  for (auto & email_to : recipients_->to) {
     recipients_list_ = curl_slist_append(recipients_list_, email_to.c_str());
   }
-  for (auto & email_cc : recipients_.cc) {
+  for (auto & email_cc : recipients_->cc) {
     recipients_list_ = curl_slist_append(recipients_list_, email_cc.c_str());
   }
-  for (auto & email_bcc : recipients_.bcc) {
+  for (auto & email_bcc : recipients_->bcc) {
     recipients_list_ = curl_slist_append(recipients_list_, email_bcc.c_str());
   }
   curl_easy_setopt(context_.get_handle(), CURLOPT_MAIL_RCPT, recipients_list_);

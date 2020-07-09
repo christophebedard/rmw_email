@@ -15,6 +15,7 @@
 #ifndef EMAIL__EMAIL__SENDER_HPP_
 #define EMAIL__EMAIL__SENDER_HPP_
 
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -41,8 +42,8 @@ public:
    * \param debug the debug status
    */
   explicit EmailSender(
-    const struct UserInfo & user_info,
-    const struct EmailRecipients & recipients,
+    std::shared_ptr<const struct UserInfo> user_info,
+    std::shared_ptr<const struct EmailRecipients> recipients,
     const bool debug);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
@@ -73,7 +74,7 @@ private:
     int lines_read;
   };
 
-  const struct EmailRecipients recipients_;
+  std::shared_ptr<const struct EmailRecipients> recipients_;
   struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;
 };

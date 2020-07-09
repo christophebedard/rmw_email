@@ -18,6 +18,7 @@
 #include <curl/curl.h>
 
 #include <iostream>
+#include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
@@ -40,7 +41,9 @@ public:
    * \param user_info the user information for receiving emails
    * \param debug the debug status
    */
-  explicit EmailReceiver(const struct UserInfo & user_info, const bool debug);
+  explicit EmailReceiver(
+    std::shared_ptr<const struct UserInfo> user_info,
+    const bool debug);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
 
