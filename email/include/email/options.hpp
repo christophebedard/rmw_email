@@ -34,7 +34,7 @@ class Options
 public:
   /// Constructor.
   /**
-   * TODO(christophebedard) make private/only callable from the static methods?
+   * Not to be called directly: use `parse_options_from_*()` instead.
    *
    * \param user_info the user info
    * \param recipients the recipients
