@@ -28,7 +28,7 @@ namespace email
 
 Options::Options(
   std::shared_ptr<struct UserInfo> user_info,
-  std::optional<std::shared_ptr<struct EmailRecipients>> recipients,
+  std::shared_ptr<struct EmailRecipients> recipients,
   bool debug)
 : user_info_(user_info),
   recipients_(recipients),
@@ -43,7 +43,7 @@ Options::get_user_info() const
   return user_info_;
 }
 
-std::optional<std::shared_ptr<struct EmailRecipients>>
+std::shared_ptr<struct EmailRecipients>
 Options::get_recipients() const
 {
   return recipients_;
@@ -60,9 +60,7 @@ Options::parse_options_from_args(int argc, char const * const argv[])
 {
   // TODO(christophebedard) remove completely or refactor/extract parsing logic
   if (argc <= 1) {
-    std::cerr <<
-      "usage: --user HOST_SMTP HOST_IMAP EMAIL PASSWORD [--recipient TO] [-d|--debug]" <<
-      std::endl;
+    std::cerr << Options::USAGE_CLI_ARGS << std::endl;
     return std::nullopt;
   }
   std::optional<struct UserInfo> user_info_opt = std::nullopt;
@@ -88,7 +86,8 @@ Options::parse_options_from_args(int argc, char const * const argv[])
       debug = true;
     }
   }
-  if (!user_info_opt) {
+  if (!user_info_opt || !recipients_opt) {
+    std::cerr << Options::USAGE_CLI_ARGS << std::endl;
     return std::nullopt;
   }
   std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
@@ -96,14 +95,10 @@ Options::parse_options_from_args(int argc, char const * const argv[])
   user_info->host_imap = user_info_opt.value().host_imap;
   user_info->username = user_info_opt.value().username;
   user_info->password = user_info_opt.value().password;
-  // TODO(christophebedard) make recipients not optional, update Options & Context to reflect that
-  std::optional<std::shared_ptr<struct EmailRecipients>> recipients = std::nullopt;
-  if (recipients_opt) {
-    recipients = std::make_shared<struct EmailRecipients>();
-    recipients.value()->to = recipients_opt.value().to;
-    recipients.value()->cc = recipients_opt.value().cc;
-    recipients.value()->bcc = recipients_opt.value().bcc;
-  }
+  std::shared_ptr<struct EmailRecipients> recipients = std::make_shared<struct EmailRecipients>();
+  recipients->to = recipients_opt.value().to;
+  recipients->cc = recipients_opt.value().cc;
+  recipients->bcc = recipients_opt.value().bcc;
   return std::make_shared<Options>(
     user_info,
     recipients,
