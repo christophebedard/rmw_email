@@ -63,6 +63,10 @@ public:
 class Context
 {
 public:
+  /// Constructor.
+  /**
+   * Not to be used directly: use `get_global_context()` instead.
+   */
   Context();
   Context(const Context &) = delete;
   ~Context();
@@ -71,8 +75,8 @@ public:
   /**
    * Shouldn't be called directly: use `email::init()` instead.
    *
-   * \throw `std::runtime_error` if context initialization failed
-   * \throw `std::runtime_error` if context is already intialized
+   * \throw `ContextInitFailedError` if context initialization failed
+   * \throw `ContextAlreadyInitializedError` if context is already intialized
    */
   void
   init();
@@ -81,8 +85,8 @@ public:
   /**
    * Shouldn't be called directly: use `email::init(argc, argv)` instead.
    *
-   * \throw `std::runtime_error` if context initialization failed
-   * \throw `std::runtime_error` if context is already intialized
+   * \throw `ContextInitFailedError` if context initialization failed
+   * \throw `ContextAlreadyInitializedError` if context is already intialized
    */
   void init(int argc, char const * const argv[]);
 
@@ -104,7 +108,7 @@ public:
   /// Get options.
   /**
    * \return the options
-   * \throw `std::runtime_error` if context has not been initialized
+   * \throw `ContextNotInitializedError` if context has not been initialized
    */
   std::shared_ptr<Options>
   get_options() const;
@@ -114,7 +118,7 @@ public:
    * Will have been initialized.
    *
    * \return the `EmailReceiver` object
-   * \throw `std::runtime_error` if context has not been initialized
+   * \throw `ContextNotInitializedError` if context has not been initialized
    */
   std::shared_ptr<EmailReceiver>
   get_receiver() const;
@@ -124,7 +128,7 @@ public:
    * Will have been initialized.
    *
    * \return the `EmailSender` object
-   * \throw `std::runtime_error` if context has not been initialized
+   * \throw `ContextNotInitializedError` if context has not been initialized
    */
   std::shared_ptr<EmailSender>
   get_sender() const;
