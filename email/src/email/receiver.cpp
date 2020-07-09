@@ -32,7 +32,7 @@ namespace email
 {
 
 EmailReceiver::EmailReceiver(
-  std::shared_ptr<const struct UserInfo> user_info,
+  UserInfo::SharedPtrConst user_info,
   const bool debug)
 : CurlExecutor(
     {user_info->host_imap, user_info->username, user_info->password},

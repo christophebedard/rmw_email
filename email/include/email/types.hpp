@@ -15,6 +15,10 @@
 #ifndef EMAIL__TYPES_HPP_
 #define EMAIL__TYPES_HPP_
 
+#define SHARED_PTR_CONST(name) \
+  using SharedPtrConst = std::shared_ptr<const struct name>;
+
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -60,6 +64,7 @@ struct UserInfo
     const std::string & password_)
   : host_smtp(host_smtp_), host_imap(host_imap_), username(username_), password(password_)
   {}
+  SHARED_PTR_CONST(UserInfo)
 };
 
 /// Recipients of an email.
@@ -82,6 +87,7 @@ struct EmailRecipients
   explicit EmailRecipients(const std::string & to_)
   : to({to_}), cc(), bcc()
   {}
+  SHARED_PTR_CONST(EmailRecipients)
 };
 
 /// Content of an email.

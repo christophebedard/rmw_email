@@ -49,7 +49,7 @@ TEST(TestUtils, build_payload) {
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the email's body\r\n";
-  std::shared_ptr<const struct email::EmailRecipients> recipients_one =
+  email::EmailRecipients::SharedPtrConst recipients_one =
     std::make_shared<const struct email::EmailRecipients>("my@email.com");
   const struct email::EmailContent content_one_line = {
     {"this is my awesome subject"}, {"this is the email's body"}};
@@ -63,7 +63,7 @@ TEST(TestUtils, build_payload) {
     "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the email's body\r\n";
-  std::shared_ptr<const struct email::EmailRecipients> recipients_multiple =
+  email::EmailRecipients::SharedPtrConst recipients_multiple =
     std::make_shared<const struct email::EmailRecipients>(
     std::vector<std::string>{"my@email.com", "another@email.com"},
     std::vector<std::string>{"onecc@email.ca"},

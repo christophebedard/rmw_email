@@ -30,8 +30,8 @@ namespace email
 {
 
 EmailSender::EmailSender(
-  std::shared_ptr<const struct UserInfo> user_info,
-  std::shared_ptr<const struct EmailRecipients> recipients,
+  UserInfo::SharedPtrConst user_info,
+  EmailRecipients::SharedPtrConst recipients,
   const bool debug)
 : CurlExecutor(
     {user_info->host_smtp, user_info->username, user_info->password},

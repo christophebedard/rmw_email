@@ -42,8 +42,8 @@ public:
    * \param debug the debug status
    */
   explicit EmailSender(
-    std::shared_ptr<const struct UserInfo> user_info,
-    std::shared_ptr<const struct EmailRecipients> recipients,
+    UserInfo::SharedPtrConst user_info,
+    EmailRecipients::SharedPtrConst recipients,
     const bool debug);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
@@ -74,7 +74,7 @@ private:
     int lines_read;
   };
 
-  std::shared_ptr<const struct EmailRecipients> recipients_;
+  EmailRecipients::SharedPtrConst recipients_;
   struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;
 };

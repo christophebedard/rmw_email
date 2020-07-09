@@ -27,8 +27,8 @@ namespace email
 {
 
 Options::Options(
-  std::shared_ptr<const struct UserInfo> user_info,
-  std::shared_ptr<const struct EmailRecipients> recipients,
+  UserInfo::SharedPtrConst user_info,
+  EmailRecipients::SharedPtrConst recipients,
   bool debug)
 : user_info_(user_info),
   recipients_(recipients),
@@ -37,13 +37,13 @@ Options::Options(
 
 Options::~Options() {}
 
-std::shared_ptr<const struct UserInfo>
+UserInfo::SharedPtrConst
 Options::get_user_info() const
 {
   return user_info_;
 }
 
-std::shared_ptr<const struct EmailRecipients>
+EmailRecipients::SharedPtrConst
 Options::get_recipients() const
 {
   return recipients_;
@@ -63,12 +63,12 @@ Options::parse_options_from_args(int argc, char const * const argv[])
     std::cerr << Options::USAGE_CLI_ARGS << std::endl;
     return std::nullopt;
   }
-  std::shared_ptr<const struct UserInfo> user_info = std::make_shared<const struct UserInfo>(
+  UserInfo::SharedPtrConst user_info = std::make_shared<const struct UserInfo>(
     std::string(argv[1]),
     std::string(argv[2]),
     std::string(argv[3]),
     std::string(argv[4]));
-  std::shared_ptr<const struct EmailRecipients> recipients =
+  EmailRecipients::SharedPtrConst recipients =
     std::make_shared<const struct EmailRecipients>(std::string(argv[5]));
   bool debug = false;
   if (7 == argc) {
@@ -109,12 +109,12 @@ Options::parse_options_from_file()
     std::cerr << "invalid config file" << std::endl;
     return std::nullopt;
   }
-  std::shared_ptr<const struct UserInfo> user_info = std::make_shared<const struct UserInfo>(
+  UserInfo::SharedPtrConst user_info = std::make_shared<const struct UserInfo>(
     matches[1].str(),
     matches[2].str(),
     matches[3].str(),
     matches[4].str());
-  std::shared_ptr<const struct EmailRecipients> recipients =
+  EmailRecipients::SharedPtrConst recipients =
     std::make_shared<const struct EmailRecipients>(
     utils::split_email_list(matches[5].str()),
     utils::split_email_list(matches[6].str()),

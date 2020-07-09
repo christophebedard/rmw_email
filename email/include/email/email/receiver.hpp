@@ -42,7 +42,7 @@ public:
    * \param debug the debug status
    */
   explicit EmailReceiver(
-    std::shared_ptr<const struct UserInfo> user_info,
+    UserInfo::SharedPtrConst user_info,
     const bool debug);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
