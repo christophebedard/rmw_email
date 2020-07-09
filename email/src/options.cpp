@@ -59,46 +59,24 @@ std::optional<std::shared_ptr<Options>>
 Options::parse_options_from_args(int argc, char const * const argv[])
 {
   // TODO(christophebedard) remove completely or refactor/extract parsing logic
-  if (argc <= 1) {
-    std::cerr << Options::USAGE_CLI_ARGS << std::endl;
-    return std::nullopt;
-  }
-  std::optional<struct UserInfo> user_info_opt = std::nullopt;
-  std::optional<struct EmailRecipients> recipients_opt = std::nullopt;
-  bool debug = false;
-  for (int i = 1; i < argc; i++) {
-    std::string arg = argv[i];
-    if ("--user" == arg && (argc - i) >= (4 + 1)) {
-      struct UserInfo info;
-      i++;
-      info.host_smtp = std::string(argv[i]);
-      i++;
-      info.host_imap = std::string(argv[i]);
-      i++;
-      info.username = std::string(argv[i]);
-      i++;
-      info.password = std::string(argv[i]);
-      user_info_opt = info;
-    } else if ("--recipient" == arg && (argc - i) >= (1 + 1)) {
-      i++;
-      recipients_opt = {{std::string(argv[i])}, {}, {}};
-    } else if ("-d" == arg || "--debug" == arg) {
-      debug = true;
-    }
-  }
-  if (!user_info_opt || !recipients_opt) {
+  if (6 == argc || 7 == argc) {
     std::cerr << Options::USAGE_CLI_ARGS << std::endl;
     return std::nullopt;
   }
   std::shared_ptr<struct UserInfo> user_info = std::make_shared<struct UserInfo>();
-  user_info->host_smtp = user_info_opt.value().host_smtp;
-  user_info->host_imap = user_info_opt.value().host_imap;
-  user_info->username = user_info_opt.value().username;
-  user_info->password = user_info_opt.value().password;
+  user_info->host_smtp = std::string(argv[1]);
+  user_info->host_imap = std::string(argv[2]);
+  user_info->username = std::string(argv[3]);
+  user_info->password = std::string(argv[4]);
   std::shared_ptr<struct EmailRecipients> recipients = std::make_shared<struct EmailRecipients>();
-  recipients->to = recipients_opt.value().to;
-  recipients->cc = recipients_opt.value().cc;
-  recipients->bcc = recipients_opt.value().bcc;
+  recipients->to = {std::string(argv[5])};
+  bool debug = false;
+  if (7 == argc) {
+    const std::string argv6 = std::string(argv[6]);
+    if ("-d" == argv6 || "--debug" == argv6) {
+      debug = true;
+    }
+  }
   return std::make_shared<Options>(
     user_info,
     recipients,
