@@ -26,7 +26,7 @@ int main(int argc, char ** argv)
 {
   email::init(argc, argv);
   std::shared_ptr<email::Options> options = email::get_global_context()->get_options();
-  email::EmailReceiver receiver(*options->get_user_info().get());
+  email::EmailReceiver receiver(*options->get_user_info().get(), options->debug());
   if (!receiver.init()) {
     return 1;
   }

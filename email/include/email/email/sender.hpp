@@ -34,9 +34,16 @@ namespace email
 class EmailSender : public CurlExecutor
 {
 public:
+  /// Constructor.
+  /**
+   * \param user_info the user information for sending emails
+   * \param recipients the email recipients
+   * \param debug the debug status
+   */
   explicit EmailSender(
     const struct UserInfo & user_info,
-    const struct EmailRecipients & recipients);
+    const struct EmailRecipients & recipients,
+    const bool debug);
   EmailSender(const EmailSender &) = delete;
   virtual ~EmailSender();
 

@@ -31,10 +31,12 @@ namespace email
 
 EmailSender::EmailSender(
   const struct UserInfo & user_info,
-  const struct EmailRecipients & recipients)
+  const struct EmailRecipients & recipients,
+  const bool debug)
 : CurlExecutor(
     {user_info.host_smtp, user_info.username, user_info.password},
-    {"smtps", 465}),
+    {"smtps", 465},
+    debug),
   recipients_(recipients),
   recipients_list_(nullptr),
   upload_ctx_()

@@ -37,9 +37,10 @@ class EmailReceiver : public CurlExecutor
 public:
   /// Constructor.
   /**
-   * \param user_info the user information
+   * \param user_info the user information for receiving emails
+   * \param debug the debug status
    */
-  explicit EmailReceiver(const struct UserInfo & user_info);
+  explicit EmailReceiver(const struct UserInfo & user_info, const bool debug);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
 
