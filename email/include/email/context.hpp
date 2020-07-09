@@ -28,6 +28,33 @@
 namespace email
 {
 
+/// Error when the context is not initialized.
+class ContextNotInitializedError : public std::runtime_error
+{
+public:
+  ContextNotInitializedError()
+  : std::runtime_error("context not initialized")
+  {}
+};
+
+/// Error when the context is already initialized.
+class ContextAlreadyInitializedError : public std::runtime_error
+{
+public:
+  ContextAlreadyInitializedError()
+  : std::runtime_error("context already initialized")
+  {}
+};
+
+/// Error when the context initialization fails.
+class ContextInitFailedError : public std::runtime_error
+{
+public:
+  ContextInitFailedError()
+  : std::runtime_error("context init failed")
+  {}
+};
+
 /// Context object with global resources.
 /**
  * It gets initialized only once.

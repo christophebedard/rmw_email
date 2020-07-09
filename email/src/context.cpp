@@ -36,7 +36,7 @@ Context::Context()
 
 Context::~Context()
 {
-  if (!is_valid_) {
+  if (!is_valid()) {
     (void)shutdown();
   }
 }
@@ -44,12 +44,12 @@ Context::~Context()
 void
 Context::init()
 {
-  if (is_valid_) {
-    throw std::runtime_error("Context already initialized");
+  if (is_valid()) {
+    throw ContextAlreadyInitializedError();
   }
   auto options = Options::parse_options_from_file();
   if (!options) {
-    throw std::runtime_error("Context::init() failed");
+    throw ContextInitFailedError();
   }
   options_ = options.value();
   is_valid_ = true;
@@ -58,12 +58,12 @@ Context::init()
 void
 Context::init(int argc, char const * const argv[])
 {
-  if (is_valid_) {
-    throw std::runtime_error("Context already initialized");
+  if (is_valid()) {
+    throw ContextAlreadyInitializedError();
   }
   auto options = Options::parse_options_from_args(argc, argv);
   if (!options) {
-    throw std::runtime_error("Context::init() failed");
+    throw ContextInitFailedError();
   }
   options_ = options.value();
   is_valid_ = true;
@@ -72,7 +72,7 @@ Context::init(int argc, char const * const argv[])
 bool
 Context::shutdown()
 {
-  if (!is_valid_) {
+  if (!is_valid()) {
     return false;
   }
   // TODO(christophebedard) actually do something
@@ -88,8 +88,8 @@ Context::is_valid() const
 std::shared_ptr<Options>
 Context::get_options() const
 {
-  if (!is_valid_) {
-    throw std::runtime_error("Context not initialized");
+  if (!is_valid()) {
+    throw ContextNotInitializedError();
   }
   return options_;
 }
@@ -97,8 +97,8 @@ Context::get_options() const
 std::shared_ptr<EmailReceiver>
 Context::get_receiver() const
 {
-  if (!is_valid_) {
-    throw std::runtime_error("Context not initialized");
+  if (!is_valid()) {
+    throw ContextNotInitializedError();
   }
   // TODO(christophebedard) have classes use the UserInfo shared_ptr
   static std::shared_ptr<EmailReceiver> receiver = std::make_shared<EmailReceiver>(
@@ -113,8 +113,8 @@ Context::get_receiver() const
 std::shared_ptr<EmailSender>
 Context::get_sender() const
 {
-  if (!is_valid_) {
-    throw std::runtime_error("Context not initialized");
+  if (!is_valid()) {
+    throw ContextNotInitializedError();
   }
   // TODO(christophebedard) have classes use the shared_ptrs
   static std::shared_ptr<EmailSender> sender = std::make_shared<EmailSender>(
