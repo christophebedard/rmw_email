@@ -48,7 +48,7 @@ public:
   static
   const std::string
   build_payload(
-    std::shared_ptr<const struct EmailRecipients> recipients,
+    EmailRecipients::SharedPtrConst recipients,
     const struct EmailContent & content);
 
   /// Create a string list of emails.

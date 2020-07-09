@@ -41,8 +41,8 @@ public:
    * \param debug the debug status
    */
   Options(
-    std::shared_ptr<const struct UserInfo> user_info,
-    std::shared_ptr<const struct EmailRecipients> recipients,
+    UserInfo::SharedPtrConst user_info,
+    EmailRecipients::SharedPtrConst recipients,
     bool debug);
   ~Options();
 
@@ -50,14 +50,14 @@ public:
   /**
    * \return the `UserInfo` object
    */
-  std::shared_ptr<const struct UserInfo>
+  UserInfo::SharedPtrConst
   get_user_info() const;
 
   /// Get email recipient data.
   /**
    * \return the `EmailRecipients` object
    */
-  std::shared_ptr<const struct EmailRecipients>
+  EmailRecipients::SharedPtrConst
   get_recipients() const;
 
   /// Get the debug status.
@@ -86,8 +86,8 @@ public:
   parse_options_from_file();
 
 private:
-  std::shared_ptr<const struct UserInfo> user_info_;
-  std::shared_ptr<const struct EmailRecipients> recipients_;
+  UserInfo::SharedPtrConst user_info_;
+  EmailRecipients::SharedPtrConst recipients_;
   bool debug_;
 
   static const std::regex REGEX_CONFIG_FILE;

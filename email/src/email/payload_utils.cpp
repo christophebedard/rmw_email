@@ -29,7 +29,7 @@ namespace utils
 
 const std::string
 PayloadUtils::build_payload(
-  std::shared_ptr<const struct EmailRecipients> recipients,
+  EmailRecipients::SharedPtrConst recipients,
   const struct EmailContent & content)
 {
   // Subjects containing newlines will have the second+ line(s) be moved to the body,
