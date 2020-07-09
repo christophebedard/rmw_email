@@ -53,10 +53,6 @@ protected:
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
     const bool debug);
-  // TODO(christophebedard) remove and use the one with debug instead
-  explicit CurlExecutor(
-    const struct ConnectionInfo & connection_info,
-    const struct ProtocolInfo & protocol_info);
   CurlExecutor(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();
 

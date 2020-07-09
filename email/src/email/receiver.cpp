@@ -30,10 +30,11 @@
 namespace email
 {
 
-EmailReceiver::EmailReceiver(const struct UserInfo & user_info)
+EmailReceiver::EmailReceiver(const struct UserInfo & user_info, const bool debug)
 : CurlExecutor(
     {user_info.host_imap, user_info.username, user_info.password},
-    {"imaps", 993}),
+    {"imaps", 993},
+    debug),
   read_buffer_()
 {}
 

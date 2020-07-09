@@ -28,12 +28,6 @@ CurlExecutor::CurlExecutor(
   is_valid_(false)
 {}
 
-CurlExecutor::CurlExecutor(
-  const struct ConnectionInfo & connection_info,
-  const struct ProtocolInfo & protocol_info)
-: CurlExecutor(connection_info, protocol_info, get_global_context()->get_options()->debug())
-{}
-
 CurlExecutor::~CurlExecutor()
 {
   context_.fini();
