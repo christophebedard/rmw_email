@@ -38,6 +38,7 @@ set(SOURCES
   src/email/sender.cpp
   src/init.cpp
   src/options.cpp
+  src/pub_sub.cpp
   src/publisher.cpp
   src/subscriber.cpp
   src/utils.cpp
