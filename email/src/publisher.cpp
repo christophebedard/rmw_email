@@ -18,6 +18,7 @@
 
 #include "email/context.hpp"
 #include "email/email/sender.hpp"
+#include "email/pub_sub.hpp"
 #include "email/publisher.hpp"
 #include "email/types.hpp"
 
@@ -25,18 +26,16 @@ namespace email
 {
 
 Publisher::Publisher(const std::string & topic)
-: topic_(topic),
+: PubSubObject(topic),
   sender_(get_global_context()->get_sender())
-{
-  // TODO(christophebedard) validate topic name (no newline)
-}
+{}
 
 Publisher::~Publisher() {}
 
 void
 Publisher::publish(const std::string & message)
 {
-  struct EmailContent content {topic_, message};
+  struct EmailContent content {get_topic(), message};
   if (!sender_->send(content)) {
     std::cerr << "publish() failed" << std::endl;
   }

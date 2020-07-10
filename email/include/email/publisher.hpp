@@ -19,6 +19,7 @@
 #include <string>
 
 #include "email/email/sender.hpp"
+#include "email/pub_sub.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -29,7 +30,7 @@ namespace email
 /**
  * Uses emails, with the topic as the email subject and the data as the email body.
  */
-class Publisher
+class Publisher : public PubSubObject
 {
 public:
   /// Constructor.
@@ -38,7 +39,7 @@ public:
    */
   explicit Publisher(const std::string & topic);
   Publisher(const Publisher &) = delete;
-  ~Publisher();
+  virtual ~Publisher();
 
   /// Publish message.
   /**
@@ -48,7 +49,6 @@ public:
   publish(const std::string & message);
 
 private:
-  const std::string topic_;
   std::shared_ptr<EmailSender> sender_;
 };
 

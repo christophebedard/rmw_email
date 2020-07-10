@@ -16,6 +16,7 @@
 #define EMAIL__CONTEXT_HPP_
 
 #include <memory>
+#include <stdexcept>
 #include <string>
 
 #include "email/curl/context.hpp"

@@ -12,37 +12,39 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <regex>
 #include <string>
 
-#include "email/context.hpp"
-#include "email/email/receiver.hpp"
 #include "email/pub_sub.hpp"
-#include "email/subscriber.hpp"
-#include "email/types.hpp"
 
 namespace email
 {
 
-Subscriber::Subscriber(const std::string & topic)
-: PubSubObject(topic),
-  receiver_(get_global_context()->get_receiver())
-{}
+PubSubObject::PubSubObject(const std::string & topic)
+: topic_(topic)
+{
+  validate_topic(topic_);
+}
 
-Subscriber::~Subscriber() {}
+PubSubObject::~PubSubObject() {}
 
 std::string
-Subscriber::get_message()
+PubSubObject::get_topic() const
 {
-  std::optional<struct EmailContent> email = std::nullopt;
-  std::string subject = "";
-  while (subject != get_topic()) {
-    while (!email) {
-      email = receiver_->get_email();
-    }
-    subject = email.value().subject;
-  }
-  return email.value().body;
+  return topic_;
 }
+
+void
+PubSubObject::validate_topic(const std::string & topic)
+{
+  if (topic.empty()) {
+    throw TopicInvalidError(topic, "empty");
+  }
+  if (std::regex_match(topic, PubSubObject::REGEX_NEWLINE)) {
+    throw TopicInvalidError(topic, "newline");
+  }
+}
+
+const std::regex PubSubObject::REGEX_NEWLINE(".*[\r]?\n.*", std::regex::extended);
 
 }  // namespace email
