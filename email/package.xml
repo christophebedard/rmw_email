@@ -10,12 +10,6 @@
 
   <buildtool_depend>ament_cmake_ros</buildtool_depend>
 
-  <!-- <build_depend>rcpputils</build_depend>
-  <build_depend>rcutils</build_depend> -->
-
-  <!-- <build_export_depend>rcpputils</build_export_depend> -->
-  <!-- <build_export_depend>rcutils</build_export_depend> -->
-
   <!-- Only actually used if libcurl isn't found on the system -->
   <depend>libcurl_vendor</depend>
   <depend>rcpputils</depend>
