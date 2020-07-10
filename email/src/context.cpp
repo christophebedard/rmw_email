@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <cstdlib>
 #include <memory>
 #include <string>
 
@@ -63,7 +64,8 @@ Context::init(int argc, char const * const argv[])
   }
   auto options = Options::parse_options_from_args(argc, argv);
   if (!options) {
-    throw ContextInitFailedError();
+    // Exit with non-zero instead of throwing an exception, since this is CLI args-related
+    exit(1);
   }
   options_ = options.value();
   is_valid_ = true;

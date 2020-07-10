@@ -59,7 +59,7 @@ std::optional<std::shared_ptr<Options>>
 Options::parse_options_from_args(int argc, char const * const argv[])
 {
   // TODO(christophebedard) remove completely or refactor/extract parsing logic
-  if (6 == argc || 7 == argc) {
+  if (!(6 == argc || 7 == argc)) {
     std::cerr << Options::USAGE_CLI_ARGS << std::endl;
     return std::nullopt;
   }
