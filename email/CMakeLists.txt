@@ -124,6 +124,10 @@ if(BUILD_TESTING)
     test/test_utils.cpp
   )
   target_link_libraries(test_utils ${PROJECT_NAME})
+  ament_add_gtest(test_pub_sub
+    test/test_pub_sub.cpp
+  )
+  target_link_libraries(test_pub_sub ${PROJECT_NAME})
 endif()
 
 ament_package()
