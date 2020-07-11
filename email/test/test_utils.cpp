@@ -20,7 +20,7 @@
 #include <vector>
 
 #include "email/email/payload_utils.hpp"
-// #include "email/utils.hpp"
+#include "email/utils.hpp"
 
 TEST(TestUtils, join_list) {
   const std::vector<std::string> vect_empty = {};
@@ -39,6 +39,33 @@ TEST(TestUtils, join_list) {
   EXPECT_EQ(
     "myelement, asecondelement@email.com, athird@one.com",
     email::utils::PayloadUtils::join_list(vect_three));
+}
+
+TEST(TestUtils, split_email_list) {
+  EXPECT_TRUE(email::utils::split_email_list("").empty());
+
+  const std::string list_single = "my@email.com";
+  auto vector_single = email::utils::split_email_list(list_single);
+  EXPECT_EQ(1UL, vector_single.size());
+  EXPECT_EQ("my@email.com", vector_single[0]);
+
+  auto vector_single_space = email::utils::split_email_list(list_single, true);
+  EXPECT_EQ(1UL, vector_single_space.size());
+  EXPECT_EQ("my@email.com", vector_single_space[0]);
+
+  const std::string list_multiple_nospace = "my@email.com,another@email.ca,lastone@geemail.com";
+  auto vector_multiple_nospace = email::utils::split_email_list(list_multiple_nospace);
+  EXPECT_EQ(3UL, vector_multiple_nospace.size());
+  EXPECT_EQ("my@email.com", vector_multiple_nospace[0]);
+  EXPECT_EQ("another@email.ca", vector_multiple_nospace[1]);
+  EXPECT_EQ("lastone@geemail.com", vector_multiple_nospace[2]);
+
+  const std::string list_multiple_space = "my@email.com, another@email.ca, lastone@geemail.com";
+  auto vector_multiple_space = email::utils::split_email_list(list_multiple_space, true);
+  EXPECT_EQ(3UL, vector_multiple_space.size());
+  EXPECT_EQ("my@email.com", vector_multiple_space[0]);
+  EXPECT_EQ("another@email.ca", vector_multiple_space[1]);
+  EXPECT_EQ("lastone@geemail.com", vector_multiple_space[2]);
 }
 
 TEST(TestUtils, build_payload) {
