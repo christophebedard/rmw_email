@@ -14,6 +14,7 @@
 
 #include <memory>
 #include <numeric>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
 #include <vector>
@@ -30,13 +31,17 @@ namespace utils
 const std::string
 PayloadUtils::build_payload(
   EmailRecipients::SharedPtrConst recipients,
-  const struct EmailContent & content)
+  const struct EmailContent & content,
+  std::optional<std::string> reply_ref)
 {
   // Subjects containing newlines will have the second+ line(s) be moved to the body,
   // but for the sake of simplicity, we will cut it out. As for the body, curl
   // seems to handle it correctly even if it contains "\n" instead of "\r\n"
   return utils::string_format(
+    "In-Reply-To: %s\r\nReferences: %s\r\n"
     "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
+    (reply_ref.has_value() ? reply_ref.value().c_str() : ""),
+    (reply_ref.has_value() ? reply_ref.value().c_str() : ""),
     join_list(recipients->to).c_str(),
     join_list(recipients->cc).c_str(),
     join_list(recipients->bcc).c_str(),
