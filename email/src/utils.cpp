@@ -15,6 +15,7 @@
 #include <fstream>
 #include <sstream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+#include <regex>
 #include <string>
 #include <vector>
 
@@ -54,8 +55,12 @@ read_file(const std::string & path)
 }
 
 std::vector<std::string>
-split_email_list(const std::string & list)
+split_email_list(const std::string & list, const bool has_space_after_comma)
 {
+  if (has_space_after_comma) {
+    static std::regex comma_space_regex(", ");
+    return rcpputils::split(std::regex_replace(list, comma_space_regex, ","), ',', true);
+  }
   return rcpputils::split(list, ',', true);
 }
 

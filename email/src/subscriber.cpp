@@ -34,15 +34,15 @@ Subscriber::~Subscriber() {}
 std::string
 Subscriber::get_message()
 {
-  std::optional<struct EmailContent> email = std::nullopt;
+  std::optional<struct EmailData> email_data = std::nullopt;
   std::string subject = "";
   while (subject != get_topic()) {
-    while (!email) {
-      email = receiver_->get_email();
+    while (!email_data) {
+      email_data = receiver_->get_email();
     }
-    subject = email.value().subject;
+    subject = email_data.value().content.subject;
   }
-  return email.value().body;
+  return email_data.value().content.body;
 }
 
 }  // namespace email
