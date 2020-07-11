@@ -16,6 +16,7 @@
 #define EMAIL__EMAIL__PAYLOAD_UTILS_HPP_
 
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
 #include <vector>
@@ -43,13 +44,15 @@ public:
   /**
    * \param recipients the recipients
    * \param content the content of the email
+   * \param reply_ref the reply reference (Message-ID of the email to reply to)
    * \return the payload
    */
   static
   const std::string
   build_payload(
     EmailRecipients::SharedPtrConst recipients,
-    const struct EmailContent & content);
+    const struct EmailContent & content,
+    std::optional<std::string> reply_ref = std::nullopt);
 
   /// Create a string list of emails.
   /**

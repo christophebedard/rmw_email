@@ -56,12 +56,29 @@ public:
   bool
   send(const struct EmailContent & content);
 
+  /// Reply to an email.
+  /**
+   * \param content the content
+   * \param email the email to reply to
+   * \return true if successful, false otherwise
+   */
+  bool
+  reply(const struct EmailContent & content, const struct EmailData & email);
+
 protected:
   virtual
   bool
   init_options();
 
 private:
+  /// Send payload.
+  /**
+   * \param payload the payload
+   * \return true if successful, false otherwise
+   */
+  bool
+  send_payload(const std::string & payload);
+
   /// Read callback for curl upload.
   static
   size_t

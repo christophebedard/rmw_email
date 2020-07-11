@@ -71,6 +71,7 @@ TEST(TestUtils, split_email_list) {
 TEST(TestUtils, build_payload) {
   // Check handling of multiple recipients
   std::string payload_one_recipient = \
+    "In-Reply-To: \r\nReferences: \r\n" \
     "To: my@email.com\r\n" \
     "Cc: \r\n" \
     "Bcc: \r\n" \
@@ -85,6 +86,7 @@ TEST(TestUtils, build_payload) {
     email::utils::PayloadUtils::build_payload(recipients_one, content_one_line));
 
   std::string payload_multiple_recipients = \
+    "In-Reply-To: \r\nReferences: \r\n" \
     "To: my@email.com, another@email.com\r\n" \
     "Cc: onecc@email.ca\r\n" \
     "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \
@@ -104,6 +106,7 @@ TEST(TestUtils, build_payload) {
     {"this is my awesome subject that stops here\nor not!"},
     {"this is the email's body\non multiple lines!"}};
   std::string payload_multiple_recipients_newlines = \
+    "In-Reply-To: \r\nReferences: \r\n" \
     "To: my@email.com, another@email.com\r\n" \
     "Cc: onecc@email.ca\r\n" \
     "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \

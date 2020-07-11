@@ -104,20 +104,28 @@ EmailSender::init_options()
 bool
 EmailSender::send(const struct EmailContent & content)
 {
+  return send_payload(utils::PayloadUtils::build_payload(recipients_, content));
+}
+
+bool
+EmailSender::reply(const struct EmailContent & content, const struct EmailData & email)
+{
+  return send_payload(utils::PayloadUtils::build_payload(recipients_, content, email.message_id));
+}
+
+bool
+EmailSender::send_payload(const std::string & payload)
+{
   if (!is_valid()) {
     std::cerr << "not initialized!" << std::endl;
     return false;
   }
-
-  const std::string payload = utils::PayloadUtils::build_payload(recipients_, content);
   if (debug_) {
-    std::cout << "payload:" << std::endl << payload << std::endl;
+    std::cout << "[PAYLOAD]:" << std::endl << payload << std::endl;
   }
-
   // Reset upload data
   upload_ctx_.payload = payload.c_str();
   upload_ctx_.lines_read = 0;
-
   if (!context_.execute()) {
     return false;
   }
