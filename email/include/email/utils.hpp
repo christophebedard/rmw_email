@@ -78,13 +78,12 @@ read_file(const std::string & path);
 
 /// Split list of emails separated by a comma.
 /**
- * There shouldn't be any space between a comma and the next email.
- *
  * \param list the list of emails
+ * \param has_space_after_comma whether there is a space after the comma, before the next email
  * \return the individual emails as a vector
  */
 std::vector<std::string>
-split_email_list(const std::string & list);
+split_email_list(const std::string & list, const bool has_space_after_comma = false);
 
 /// Build a full URL from the necessary information.
 /**

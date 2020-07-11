@@ -15,7 +15,7 @@
 #ifndef EMAIL__EMAIL__RESPONSE_UTILS_HPP_
 #define EMAIL__EMAIL__RESPONSE_UTILS_HPP_
 
-#include <optional>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
 
@@ -56,15 +56,29 @@ public:
   std::optional<struct EmailContent>
   get_email_content_from_response(const std::string & curl_result);
 
+  /// Get raw email data from raw request response.
+  /**
+   * \param curl_result the result of the request
+   * \return the email data, or `std::nullopt` if it failed
+   */
+  static
+  std::optional<struct EmailData>
+  get_email_data_from_response(const std::string & curl_result);
+
 private:
   /// Get first match group for a string given a regex.
   static
   std::optional<std::string>
   get_first_match_group(const std::string & string, const std::regex & regex);
 
+  static const std::regex REGEX_BCC;
   static const std::regex REGEX_BODY;
+  static const std::regex REGEX_CC;
+  static const std::regex REGEX_FROM;
+  static const std::regex REGEX_MESSAGE_ID;
   static const std::regex REGEX_NEXTUID;
   static const std::regex REGEX_SUBJECT;
+  static const std::regex REGEX_TO;
 };
 
 }  // namespace utils

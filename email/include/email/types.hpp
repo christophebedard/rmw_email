@@ -64,6 +64,8 @@ struct UserInfo
     const std::string & password_)
   : host_smtp(host_smtp_), host_imap(host_imap_), username(username_), password(password_)
   {}
+  /// Copy constructor.
+  UserInfo(const UserInfo &) = default;
   SHARED_PTR_CONST(UserInfo)
 };
 
@@ -71,11 +73,11 @@ struct UserInfo
 struct EmailRecipients
 {
   /// The "to" emails.
-  const std::vector<std::string> to;
+  std::vector<std::string> to;
   /// The "cc" emails.
-  const std::vector<std::string> cc;
+  std::vector<std::string> cc;
   /// The "bcc" emails.
-  const std::vector<std::string> bcc;
+  std::vector<std::string> bcc;
   /// Default constructor.
   EmailRecipients(
     const std::vector<std::string> & to_,
@@ -87,16 +89,49 @@ struct EmailRecipients
   explicit EmailRecipients(const std::string & to_)
   : to({to_}), cc(), bcc()
   {}
+  /// Copy constructor.
+  EmailRecipients(const EmailRecipients &) = default;
   SHARED_PTR_CONST(EmailRecipients)
 };
 
 /// Content of an email.
 struct EmailContent
 {
-  // Subject, which should be one line without any newlines
+  /// Subject, which should be one line without any newlines
   std::string subject;
-  // Body/content, which may have multiple lines
+  /// Body/content, which may have multiple lines
   std::string body;
+  /// Constructor.
+  EmailContent(
+    const std::string & subject_,
+    const std::string & body_)
+  : subject(subject_), body(body_)
+  {}
+  /// Copy constructor.
+  EmailContent(const EmailContent &) = default;
+};
+
+/// Raw email data with headers.
+struct EmailData
+{
+  /// Message ID.
+  std::string message_id;
+  /// Origin email.
+  std::string from;
+  /// Recipients of the email.
+  struct EmailRecipients recipients;
+  /// Content of the email.
+  struct EmailContent content;
+  /// Constructor.
+  EmailData(
+    const std::string & message_id_,
+    const std::string & from_,
+    const struct EmailRecipients & recipients_,
+    const struct EmailContent & content_)
+  : message_id(message_id_), from(from_), recipients(recipients_), content(content_)
+  {}
+  /// Copy constructor.
+  EmailData(const EmailData &) = default;
 };
 
 }  // namespace email

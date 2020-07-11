@@ -58,7 +58,7 @@ EmailReceiver::init_options()
   return true;
 }
 
-std::optional<struct EmailContent>
+std::optional<struct EmailData>
 EmailReceiver::get_email()
 {
   if (!is_valid()) {
@@ -73,7 +73,7 @@ EmailReceiver::get_email()
   if (debug_) {
     std::cout << "nextuid=" << next_uid.value() << std::endl;
   }
-  std::optional<struct EmailContent> next_email;
+  std::optional<struct EmailData> next_email = std::nullopt;
   // Try until we get an email
   while (!next_email) {
     next_email = get_email_from_uid(next_uid.value());
@@ -81,14 +81,14 @@ EmailReceiver::get_email()
   return next_email;
 }
 
-std::optional<struct EmailContent>
+std::optional<struct EmailData>
 EmailReceiver::get_email_from_uid(int uid)
 {
   auto execute_result = execute("INBOX/;UID=" + std::to_string(uid), std::nullopt);
   if (!execute_result) {
     return std::nullopt;
   }
-  return utils::ResponseUtils::get_email_content_from_response(execute_result.value());
+  return utils::ResponseUtils::get_email_data_from_response(execute_result.value());
 }
 
 std::optional<int>
@@ -120,13 +120,16 @@ EmailReceiver::execute(
   }
 
   if (debug_) {
-    std::cout << "execute:" << std::endl <<
+    std::cout << "[EXECUTE]:" << std::endl <<
       "\turl    : " << request_url << std::endl <<
       "\tcommand: " << (custom_request ? custom_request.value() : "") << std::endl;
   }
 
   if (!context_.execute()) {
     return std::nullopt;
+  }
+  if (debug_) {
+    std::cout << "[RESPONSE]:" << std::endl << read_buffer_ << std::endl;
   }
   return read_buffer_;
 }

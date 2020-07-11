@@ -51,7 +51,7 @@ public:
   /**
    * \return the new email, or `std::nullopt` if it failed
    */
-  std::optional<struct EmailContent>
+  std::optional<struct EmailData>
   get_email();
 
 protected:
@@ -70,9 +70,9 @@ private:
   /// Get an email from its UID.
   /**
    * \param uid the UID
-   * \return the content of the email, or `std::nullopt` if it failed
+   * \return the email data, or `std::nullopt` if it failed
    */
-  std::optional<struct EmailContent>
+  std::optional<struct EmailData>
   get_email_from_uid(int uid);
 
   /// Execute curl command.
