@@ -12,13 +12,16 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <utility>
 
 #include "email/context.hpp"
-#include "email/email/receiver.hpp"
 #include "email/pub_sub.hpp"
+#include "email/safe_queue.hpp"
 #include "email/subscriber.hpp"
+#include "email/subscriber_manager.hpp"
 #include "email/types.hpp"
 
 namespace email
@@ -26,23 +29,36 @@ namespace email
 
 Subscriber::Subscriber(const std::string & topic)
 : PubSubObject(topic),
-  receiver_(get_global_context()->get_receiver())
-{}
+  messages_(std::make_shared<SafeQueue<std::string>>())
+{
+  // Register with manager
+  get_global_context()->get_subscriber_manager()->register_subscriber(get_topic(), messages_);
+}
 
 Subscriber::~Subscriber() {}
 
-std::string
+bool
+Subscriber::has_message()
+{
+  return !messages_->empty();
+}
+
+std::optional<std::string>
 Subscriber::get_message()
 {
-  std::optional<struct EmailData> email_data = std::nullopt;
-  std::string subject = "";
-  while (subject != get_topic()) {
-    while (!email_data) {
-      email_data = receiver_->get_email();
-    }
-    subject = email_data.value().content.subject;
+  if (!has_message()) {
+    return std::nullopt;
   }
-  return email_data.value().content.body;
+  return std::move(messages_->dequeue());
+}
+
+std::string
+Subscriber::get_message_and_wait()
+{
+  while (messages_->empty()) {
+    // Nothing
+  }
+  return std::move(messages_->dequeue());
 }
 
 }  // namespace email

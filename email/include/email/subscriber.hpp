@@ -16,10 +16,11 @@
 #define EMAIL__SUBSCRIBER_HPP_
 
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
-#include "email/email/receiver.hpp"
 #include "email/pub_sub.hpp"
+#include "email/safe_queue.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -29,6 +30,7 @@ namespace email
 /// Message subscriber.
 /**
  * Uses emails, with the topic as the email subject and the data as the email body.
+ * TODO(christophebedard) add take to get a vector of all available messages?
  */
 class Subscriber : public PubSubObject
 {
@@ -41,17 +43,32 @@ public:
   Subscriber(const Subscriber &) = delete;
   virtual ~Subscriber();
 
-  /// Get a new message.
+  /// Check if the subscriber has a message.
   /**
-   * TODO(christophebedard) turn this into polling
-   *
-   * \return the new message
+   * \return true if there is a message, false otherwise
    */
-  std::string
+  bool
+  has_message();
+
+  /// Get a message if there is one.
+  /**
+   * \return the message, or `std::nullopt` if there is none
+   */
+  std::optional<std::string>
   get_message();
 
+  /// Get a message, waiting until one is available.
+  /**
+   * TODO(christophebedard) use a timeout
+   * TODO(christophebedard) sleep a bit
+   *
+   * \return the message
+   */
+  std::string
+  get_message_and_wait();
+
 private:
-  std::shared_ptr<EmailReceiver> receiver_;
+  std::shared_ptr<SafeQueue<std::string>> messages_;
 };
 
 }  // namespace email

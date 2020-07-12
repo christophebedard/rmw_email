@@ -17,6 +17,7 @@
 
 #include <curl/curl.h>
 
+#include <atomic>
 #include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -46,6 +47,9 @@ public:
     const bool debug);
   EmailReceiver(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
+
+  void
+  shutdown();
 
   /// Get a new email.
   /**
@@ -90,6 +94,7 @@ private:
   write_callback(void * contents, size_t size, size_t nmemb, void * userp);
 
   std::string read_buffer_;
+  std::atomic_bool do_shutdown_;
 };
 
 }  // namespace email

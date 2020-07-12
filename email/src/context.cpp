@@ -77,7 +77,8 @@ Context::shutdown()
   if (!is_valid()) {
     return false;
   }
-  // TODO(christophebedard) actually do something
+  // TODO(christophebedard) don't call if it hasn't been started?
+  get_subscriber_manager()->shutdown();
   return true;
 }
 
@@ -125,6 +126,21 @@ Context::get_sender() const
     sender->init();
   }
   return sender;
+}
+
+std::shared_ptr<SubscriberManager>
+Context::get_subscriber_manager() const
+{
+  if (!is_valid()) {
+    throw ContextNotInitializedError();
+  }
+  static std::shared_ptr<SubscriberManager> manager = std::make_shared<SubscriberManager>(
+    get_receiver(),
+    options_->debug());
+  if (!manager->has_started()) {
+    manager->start();
+  }
+  return manager;
 }
 
 }  // namespace email

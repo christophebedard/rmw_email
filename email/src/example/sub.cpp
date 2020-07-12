@@ -22,6 +22,8 @@ int main()
   email::init();
   email::Subscriber sub("/my_topic");
   std::cout << "getting message..." << std::endl;
-  std::cout << "got message: " << sub.get_message() << std::endl;
+  auto message = sub.get_message_and_wait();
+  std::cout << "got message: " << message << std::endl;
+  email::shutdown();
   return 0;
 }

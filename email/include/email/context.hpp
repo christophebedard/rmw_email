@@ -23,6 +23,7 @@
 #include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/options.hpp"
+#include "email/subscriber_manager.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -133,6 +134,16 @@ public:
    */
   std::shared_ptr<EmailSender>
   get_sender() const;
+
+  /// Get the subscriber manager.
+  /**
+   * Will have been started.
+   *
+   * \return the `SubscriberManager` object
+   * \throw `ContextNotInitializedError` if context has not been initialized
+   */
+  std::shared_ptr<SubscriberManager>
+  get_subscriber_manager() const;
 
 private:
   std::shared_ptr<Options> options_;

@@ -14,6 +14,7 @@
 
 #include <curl/curl.h>
 
+#include <atomic>
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
@@ -38,7 +39,8 @@ EmailReceiver::EmailReceiver(
     {user_info->host_imap, user_info->username, user_info->password},
     {"imaps", 993},
     debug),
-  read_buffer_()
+  read_buffer_(),
+  do_shutdown_(false)
 {}
 
 EmailReceiver::~EmailReceiver() {}
@@ -58,6 +60,12 @@ EmailReceiver::init_options()
   return true;
 }
 
+void
+EmailReceiver::shutdown()
+{
+  do_shutdown_ = true;
+}
+
 std::optional<struct EmailData>
 EmailReceiver::get_email()
 {
@@ -74,8 +82,8 @@ EmailReceiver::get_email()
     std::cout << "nextuid=" << next_uid.value() << std::endl;
   }
   std::optional<struct EmailData> next_email = std::nullopt;
-  // Try until we get an email
-  while (!next_email) {
+  // Try until we get an email or until we have to stop
+  while (!next_email && !do_shutdown_.load()) {
     next_email = get_email_from_uid(next_uid.value());
   }
   return next_email;
