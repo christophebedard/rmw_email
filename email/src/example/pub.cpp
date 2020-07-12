@@ -23,5 +23,6 @@ int main()
   email::Publisher pub("/my_topic");
   std::cout << "publishing message" << std::endl;
   pub.publish("my awesome message!");
+  email::shutdown();
   return 0;
 }

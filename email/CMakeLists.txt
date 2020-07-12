@@ -41,6 +41,7 @@ set(SOURCES
   src/pub_sub.cpp
   src/publisher.cpp
   src/subscriber.cpp
+  src/subscriber_manager.cpp
   src/utils.cpp
 )
 
