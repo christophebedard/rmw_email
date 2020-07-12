@@ -30,7 +30,9 @@ namespace utils
 
 const std::string
 PayloadUtils::build_payload(
-  EmailRecipients::SharedPtrConst recipients,
+  const std::vector<std::string> & to,
+  const std::vector<std::string> & cc,
+  const std::vector<std::string> & bcc,
   const struct EmailContent & content,
   std::optional<std::string> reply_ref)
 {
@@ -42,11 +44,21 @@ PayloadUtils::build_payload(
     "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
     (reply_ref.has_value() ? reply_ref.value().c_str() : ""),
     (reply_ref.has_value() ? reply_ref.value().c_str() : ""),
-    join_list(recipients->to).c_str(),
-    join_list(recipients->cc).c_str(),
-    join_list(recipients->bcc).c_str(),
+    join_list(to).c_str(),
+    join_list(cc).c_str(),
+    join_list(bcc).c_str(),
     cut_string_if_newline(content.subject).c_str(),
     content.body.c_str());
+}
+
+const std::string
+PayloadUtils::build_payload(
+  EmailRecipients::SharedPtrConst recipients,
+  const struct EmailContent & content,
+  std::optional<std::string> reply_ref)
+{
+  return PayloadUtils::build_payload(
+    recipients->to, recipients->cc, recipients->bcc, content, reply_ref);
 }
 
 const std::string

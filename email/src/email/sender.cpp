@@ -110,7 +110,8 @@ EmailSender::send(const struct EmailContent & content)
 bool
 EmailSender::reply(const struct EmailContent & content, const struct EmailData & email)
 {
-  return send_payload(utils::PayloadUtils::build_payload(recipients_, content, email.message_id));
+  return send_payload(
+    utils::PayloadUtils::build_payload({email.from}, {}, {}, content, email.message_id));
 }
 
 bool
