@@ -24,11 +24,24 @@ namespace email
 {
 namespace utils
 {
+namespace response
+{
+
+static const std::regex REGEX_BCC(R"(Bcc: (.*)\r?\n)");
+static const std::regex REGEX_BODY(R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
+static const std::regex REGEX_CC(R"(Cc: (.*)\r?\n)");
+static const std::regex REGEX_FROM(R"(From: (.*)\r?\n)");
+static const std::regex REGEX_MESSAGE_ID(R"(Message-ID: (.*)\r?\n)");
+static const std::regex REGEX_NEXTUID(
+  R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
+  std::regex::extended);
+static const std::regex REGEX_SUBJECT(R"(Subject: (.*)\r?\n)");
+static const std::regex REGEX_TO(R"(To: (.*)\r?\n)");
 
 std::optional<int>
-ResponseUtils::get_nextuid_from_response(const std::string & response)
+get_nextuid_from_response(const std::string & response)
 {
-  auto match_group = get_first_match_group(response, ResponseUtils::REGEX_NEXTUID);
+  auto match_group = get_first_match_group(response, REGEX_NEXTUID);
   if (!match_group) {
     return std::nullopt;
   }
@@ -36,10 +49,10 @@ ResponseUtils::get_nextuid_from_response(const std::string & response)
 }
 
 std::optional<struct EmailContent>
-ResponseUtils::get_email_content_from_response(const std::string & curl_result)
+get_email_content_from_response(const std::string & curl_result)
 {
-  auto match_subject = get_first_match_group(curl_result, ResponseUtils::REGEX_SUBJECT);
-  auto match_body = get_first_match_group(curl_result, ResponseUtils::REGEX_BODY);
+  auto match_subject = get_first_match_group(curl_result, REGEX_SUBJECT);
+  auto match_body = get_first_match_group(curl_result, REGEX_BODY);
   if (!match_subject || !match_body) {
     return std::nullopt;
   }
@@ -50,17 +63,17 @@ ResponseUtils::get_email_content_from_response(const std::string & curl_result)
 }
 
 std::optional<struct EmailData>
-ResponseUtils::get_email_data_from_response(const std::string & curl_result)
+get_email_data_from_response(const std::string & curl_result)
 {
-  auto match_from = get_first_match_group(curl_result, ResponseUtils::REGEX_FROM);
-  auto match_message_id = get_first_match_group(curl_result, ResponseUtils::REGEX_MESSAGE_ID);
+  auto match_from = get_first_match_group(curl_result, REGEX_FROM);
+  auto match_message_id = get_first_match_group(curl_result, REGEX_MESSAGE_ID);
   auto content_opt = get_email_content_from_response(curl_result);
   if (!match_from || !match_message_id || !content_opt) {
     return std::nullopt;
   }
-  auto match_to = get_first_match_group(curl_result, ResponseUtils::REGEX_TO);
-  auto match_cc = get_first_match_group(curl_result, ResponseUtils::REGEX_CC);
-  auto match_bcc = get_first_match_group(curl_result, ResponseUtils::REGEX_BCC);
+  auto match_to = get_first_match_group(curl_result, REGEX_TO);
+  auto match_cc = get_first_match_group(curl_result, REGEX_CC);
+  auto match_bcc = get_first_match_group(curl_result, REGEX_BCC);
   if (!match_to || !match_cc || !match_bcc) {
     return std::nullopt;
   }
@@ -77,7 +90,7 @@ ResponseUtils::get_email_data_from_response(const std::string & curl_result)
 }
 
 std::optional<std::string>
-ResponseUtils::get_first_match_group(const std::string & string, const std::regex & regex)
+get_first_match_group(const std::string & string, const std::regex & regex)
 {
   std::smatch matches;
   if (!std::regex_search(string, matches, regex)) {
@@ -90,23 +103,6 @@ ResponseUtils::get_first_match_group(const std::string & string, const std::rege
   return matches[1].str();
 }
 
-const std::regex ResponseUtils::REGEX_BCC(
-  R"(Bcc: (.*)\r?\n)");
-const std::regex ResponseUtils::REGEX_BODY(
-  R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
-const std::regex ResponseUtils::REGEX_CC(
-  R"(Cc: (.*)\r?\n)");
-const std::regex ResponseUtils::REGEX_FROM(
-  R"(From: (.*)\r?\n)");
-const std::regex ResponseUtils::REGEX_MESSAGE_ID(
-  R"(Message-ID: (.*)\r?\n)");
-const std::regex ResponseUtils::REGEX_NEXTUID(
-  R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
-  std::regex::extended);
-const std::regex ResponseUtils::REGEX_SUBJECT(
-  R"(Subject: (.*)\r?\n)");
-const std::regex ResponseUtils::REGEX_TO(
-  R"(To: (.*)\r?\n)");
-
+}  // namespace response
 }  // namespace utils
 }  // namespace email

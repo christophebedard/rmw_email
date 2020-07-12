@@ -26,61 +26,43 @@ namespace email
 {
 namespace utils
 {
-
 /// Utilities for extracting information from an email formatted according to RFC 5322.
 /**
  * See: https://tools.ietf.org/html/rfc5322
  * Static utility class only.
  */
-class ResponseUtils
+namespace response
 {
-public:
-  ResponseUtils() = delete;
-  ~ResponseUtils() = delete;
 
-  /// Extract UID from request response.
-  /**
-   * \param response the response
-   * \return the UID, or `std::nullopt` if it failed
-   */
-  static
-  std::optional<int>
-  get_nextuid_from_response(const std::string & response);
+/// Extract UID from request response.
+/**
+ * \param response the response
+ * \return the UID, or `std::nullopt` if it failed
+ */
+std::optional<int>
+get_nextuid_from_response(const std::string & response);
 
-  /// Get email content from raw request response.
-  /**
-   * \param curl_result the result of the request
-   * \return the email content, or `std::nullopt` if it failed
-   */
-  static
-  std::optional<struct EmailContent>
-  get_email_content_from_response(const std::string & curl_result);
+/// Get email content from raw request response.
+/**
+ * \param curl_result the result of the request
+ * \return the email content, or `std::nullopt` if it failed
+ */
+std::optional<struct EmailContent>
+get_email_content_from_response(const std::string & curl_result);
 
-  /// Get raw email data from raw request response.
-  /**
-   * \param curl_result the result of the request
-   * \return the email data, or `std::nullopt` if it failed
-   */
-  static
-  std::optional<struct EmailData>
-  get_email_data_from_response(const std::string & curl_result);
+/// Get raw email data from raw request response.
+/**
+ * \param curl_result the result of the request
+ * \return the email data, or `std::nullopt` if it failed
+ */
+std::optional<struct EmailData>
+get_email_data_from_response(const std::string & curl_result);
 
-private:
-  /// Get first match group for a string given a regex.
-  static
-  std::optional<std::string>
-  get_first_match_group(const std::string & string, const std::regex & regex);
+/// Get first match group for a string given a regex.
+std::optional<std::string>
+get_first_match_group(const std::string & string, const std::regex & regex);
 
-  static const std::regex REGEX_BCC;
-  static const std::regex REGEX_BODY;
-  static const std::regex REGEX_CC;
-  static const std::regex REGEX_FROM;
-  static const std::regex REGEX_MESSAGE_ID;
-  static const std::regex REGEX_NEXTUID;
-  static const std::regex REGEX_SUBJECT;
-  static const std::regex REGEX_TO;
-};
-
+}  // namespace response
 }  // namespace utils
 }  // namespace email
 

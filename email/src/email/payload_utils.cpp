@@ -27,9 +27,11 @@ namespace email
 {
 namespace utils
 {
+namespace payload
+{
 
 const std::string
-PayloadUtils::build_payload(
+build_payload(
   const std::vector<std::string> & to,
   const std::vector<std::string> & cc,
   const std::vector<std::string> & bcc,
@@ -52,17 +54,17 @@ PayloadUtils::build_payload(
 }
 
 const std::string
-PayloadUtils::build_payload(
+build_payload(
   EmailRecipients::SharedPtrConst recipients,
   const struct EmailContent & content,
   std::optional<std::string> reply_ref)
 {
-  return PayloadUtils::build_payload(
+  return build_payload(
     recipients->to, recipients->cc, recipients->bcc, content, reply_ref);
 }
 
 const std::string
-PayloadUtils::join_list(const std::vector<std::string> & list)
+join_list(const std::vector<std::string> & list)
 {
   // From: https://stackoverflow.com/a/12155571/6476709
   return std::accumulate(
@@ -75,12 +77,12 @@ PayloadUtils::join_list(const std::vector<std::string> & list)
 }
 
 std::string
-PayloadUtils::cut_string_if_newline(const std::string & string)
+cut_string_if_newline(const std::string & string)
 {
-  return std::regex_replace(string, PayloadUtils::REGEX_NEWLINE, "");
+  static const std::regex REGEX_NEWLINE_TO_END("[\r\n].*", std::regex::extended);
+  return std::regex_replace(string, REGEX_NEWLINE_TO_END, "");
 }
 
-const std::regex PayloadUtils::REGEX_NEWLINE("[\r\n].*", std::regex::extended);
-
+}  // namespace payload
 }  // namespace utils
 }  // namespace email

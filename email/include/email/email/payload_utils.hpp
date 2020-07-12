@@ -28,72 +28,60 @@ namespace email
 {
 namespace utils
 {
-
 /// Utilities for building email payloads according to RFC 5322.
 /**
  * See: https://tools.ietf.org/html/rfc5322
- * Static utility class only.
  */
-class PayloadUtils
+namespace payload
 {
-public:
-  PayloadUtils() = delete;
-  ~PayloadUtils() = delete;
 
-  /// Build curl email payload from recipients and content.
-  /**
-   * \param to the "TO" recipients
-   * \param cc the "CC" recipients
-   * \param bcc the "BCC" recipients
-   * \param content the content of the email
-   * \param reply_ref the reply reference (Message-ID of the email to reply to)
-   * \return the payload
-   */
-  static
-  const std::string
-  build_payload(
-    const std::vector<std::string> & to,
-    const std::vector<std::string> & cc,
-    const std::vector<std::string> & bcc,
-    const struct EmailContent & content,
-    std::optional<std::string> reply_ref = std::nullopt);
+/// Build curl email payload from recipients and content.
+/**
+ * \param to the "TO" recipients
+ * \param cc the "CC" recipients
+ * \param bcc the "BCC" recipients
+ * \param content the content of the email
+ * \param reply_ref the reply reference (Message-ID of the email to reply to)
+ * \return the payload
+ */
+const std::string
+build_payload(
+  const std::vector<std::string> & to,
+  const std::vector<std::string> & cc,
+  const std::vector<std::string> & bcc,
+  const struct EmailContent & content,
+  std::optional<std::string> reply_ref = std::nullopt);
 
-  /// Build curl email payload from recipients and content.
-  /**
-   * \param recipients the recipients
-   * \param content the content of the email
-   * \param reply_ref the reply reference (Message-ID of the email to reply to)
-   * \return the payload
-   */
-  static
-  const std::string
-  build_payload(
-    EmailRecipients::SharedPtrConst recipients,
-    const struct EmailContent & content,
-    std::optional<std::string> reply_ref = std::nullopt);
+/// Build curl email payload from recipients and content.
+/**
+ * \param recipients the recipients
+ * \param content the content of the email
+ * \param reply_ref the reply reference (Message-ID of the email to reply to)
+ * \return the payload
+ */
+const std::string
+build_payload(
+  EmailRecipients::SharedPtrConst recipients,
+  const struct EmailContent & content,
+  std::optional<std::string> reply_ref = std::nullopt);
 
-  /// Create a string list of emails.
-  /**
-   * \param list the list/vector of emails
-   * \return the list as a string, compatible with RFC 5322
-   */
-  static
-  const std::string
-  join_list(const std::vector<std::string> & list);
+/// Create a string list of emails.
+/**
+ * \param list the list/vector of emails
+ * \return the list as a string, compatible with RFC 5322
+ */
+const std::string
+join_list(const std::vector<std::string> & list);
 
-  /// Cut a string before a newline if needed.
-  /**
-   * \param string the string
-   * \return the string cut before a newline, if needed
-   */
-  static
-  std::string
-  cut_string_if_newline(const std::string & string);
+/// Cut a string before a newline if needed.
+/**
+ * \param string the string
+ * \return the string cut before a newline, if needed
+ */
+std::string
+cut_string_if_newline(const std::string & string);
 
-private:
-  static const std::regex REGEX_NEWLINE;
-};
-
+}  // namespace payload
 }  // namespace utils
 }  // namespace email
 
