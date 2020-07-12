@@ -42,6 +42,24 @@ public:
 
   /// Build curl email payload from recipients and content.
   /**
+   * \param to the "TO" recipients
+   * \param cc the "CC" recipients
+   * \param bcc the "BCC" recipients
+   * \param content the content of the email
+   * \param reply_ref the reply reference (Message-ID of the email to reply to)
+   * \return the payload
+   */
+  static
+  const std::string
+  build_payload(
+    const std::vector<std::string> & to,
+    const std::vector<std::string> & cc,
+    const std::vector<std::string> & bcc,
+    const struct EmailContent & content,
+    std::optional<std::string> reply_ref = std::nullopt);
+
+  /// Build curl email payload from recipients and content.
+  /**
    * \param recipients the recipients
    * \param content the content of the email
    * \param reply_ref the reply reference (Message-ID of the email to reply to)
