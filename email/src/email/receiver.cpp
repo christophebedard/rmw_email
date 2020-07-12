@@ -88,7 +88,7 @@ EmailReceiver::get_email_from_uid(int uid)
   if (!execute_result) {
     return std::nullopt;
   }
-  return utils::ResponseUtils::get_email_data_from_response(execute_result.value());
+  return utils::response::get_email_data_from_response(execute_result.value());
 }
 
 std::optional<int>
@@ -98,7 +98,7 @@ EmailReceiver::get_nextuid()
   if (!response) {
     return std::nullopt;
   }
-  std::optional<int> next_uid = utils::ResponseUtils::get_nextuid_from_response(response.value());
+  std::optional<int> next_uid = utils::response::get_nextuid_from_response(response.value());
   return next_uid;
 }
 
