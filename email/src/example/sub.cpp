@@ -20,10 +20,13 @@
 int main()
 {
   email::init();
-  email::Subscriber sub("/my_topic");
+  email::Subscriber sub1("/my_topic");
+  email::Subscriber sub2("/my_other_topic");
   std::cout << "getting message..." << std::endl;
-  auto message = sub.get_message_and_wait();
-  std::cout << "got message: " << message << std::endl;
+  auto message1 = sub1.get_message_and_wait();
+  std::cout << "got message1: " << message1 << std::endl;
+  auto message2 = sub2.get_message_and_wait();
+  std::cout << "got message2: " << message2 << std::endl;
   email::shutdown();
   return 0;
 }

@@ -39,6 +39,8 @@ EmailReceiver::EmailReceiver(
     {user_info->host_imap, user_info->username, user_info->password},
     {"imaps", 993},
     debug),
+  current_uid_(-1),
+  next_uid_(-1),
   read_buffer_(),
   do_shutdown_(false)
 {}
@@ -73,18 +75,29 @@ EmailReceiver::get_email()
     std::cerr << "not initialized!" << std::endl;
     return std::nullopt;
   }
-
+  // Update next UID
   std::optional<int> next_uid = get_nextuid();
   if (!next_uid) {
     return std::nullopt;
   }
-  if (debug_) {
-    std::cout << "nextuid=" << next_uid.value() << std::endl;
+  next_uid_ = next_uid.value();
+  // Initalize current UID pointer if needed
+  if (0 > current_uid_) {
+    current_uid_ = next_uid_;
   }
-  std::optional<struct EmailData> next_email = std::nullopt;
+  if (debug_) {
+    std::cout << "current_uid=" << current_uid_ << std::endl;
+    std::cout << "next_uid   =" << next_uid_ << std::endl;
+  }
   // Try until we get an email or until we have to stop
+  std::optional<struct EmailData> next_email = std::nullopt;
   while (!next_email && !do_shutdown_.load()) {
-    next_email = get_email_from_uid(next_uid.value());
+    next_email = get_email_from_uid(current_uid_);
+  }
+  // Increment current UID pointer: this allows us to
+  // not miss emails when there are multiple new ones.
+  if (current_uid_ < next_uid_) {
+    current_uid_++;
   }
   return next_email;
 }
@@ -132,6 +145,9 @@ EmailReceiver::execute(
       "\turl    : " << request_url << std::endl <<
       "\tcommand: " << (custom_request ? custom_request.value() : "") << std::endl;
   }
+
+  // Reset read buffer
+  read_buffer_.clear();
 
   if (!context_.execute()) {
     return std::nullopt;

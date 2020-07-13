@@ -20,9 +20,11 @@
 int main()
 {
   email::init();
-  email::Publisher pub("/my_topic");
-  std::cout << "publishing message" << std::endl;
-  pub.publish("my awesome message!");
+  email::Publisher pub1("/my_topic");
+  email::Publisher pub2("/my_other_topic");
+  std::cout << "publishing messages" << std::endl;
+  pub1.publish("my awesome message!");
+  pub2.publish("my other awesome message!");
   email::shutdown();
   return 0;
 }
