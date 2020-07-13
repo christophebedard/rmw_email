@@ -36,8 +36,8 @@ SubscriberManager::SubscriberManager(std::shared_ptr<EmailReceiver> receiver, co
   has_started_(false),
   do_shutdown_(false),
   thread_({}),
-  map_mutex_(),
-  map_()
+  subscribers_mutex_(),
+  subscribers_()
 {}
 
 SubscriberManager::~SubscriberManager() {}
@@ -47,8 +47,8 @@ SubscriberManager::register_subscriber(
   const std::string & topic,
   std::shared_ptr<SafeQueue<std::string>> message_queue)
 {
-  std::lock_guard<std::mutex> lock(map_mutex_);
-  map_.insert({topic, message_queue});
+  std::lock_guard<std::mutex> lock(subscribers_mutex_);
+  subscribers_.insert({topic, message_queue});
 }
 
 bool
@@ -90,13 +90,11 @@ SubscriberManager::poll_thread()
     // TODO(christophebedard) make this better
     {
       // Get queue corresponding to that topic
-      std::lock_guard<std::mutex> lock(map_mutex_);
-      auto it = map_.find(topic);
-      if (it != map_.end()) {
+      std::lock_guard<std::mutex> lock(subscribers_mutex_);
+      auto range = subscribers_.equal_range(topic);
+      for (auto it = range.first; it != range.second; ++it) {
         // Push message content to the queue
         it->second->push(email_data.value().content.body);
-      } else if (debug_) {
-        std::cout << "topic not found: " << topic << std::endl;
       }
     }
   }

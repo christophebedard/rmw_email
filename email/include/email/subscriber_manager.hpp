@@ -49,8 +49,6 @@ public:
 
   /// Register a subscriber with the manager.
   /**
-   * TODO(christophebedard) support multiple subscribers for a topic (using a multimap)
-   *
    * \param topic the topic
    * \param message_queue the message queue of the subscriber
    */
@@ -84,8 +82,8 @@ private:
   bool has_started_;
   std::atomic_bool do_shutdown_;
   std::thread thread_;
-  std::mutex map_mutex_;
-  std::map<std::string, std::shared_ptr<SafeQueue<std::string>>> map_;
+  std::mutex subscribers_mutex_;
+  std::multimap<std::string, std::shared_ptr<SafeQueue<std::string>>> subscribers_;
 
   static constexpr auto POLLING_PERIOD = std::chrono::milliseconds(1);
 };
