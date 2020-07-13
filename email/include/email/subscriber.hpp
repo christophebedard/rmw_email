@@ -15,6 +15,7 @@
 #ifndef EMAIL__SUBSCRIBER_HPP_
 #define EMAIL__SUBSCRIBER_HPP_
 
+#include <chrono>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
@@ -60,7 +61,6 @@ public:
   /// Get a message, waiting until one is available.
   /**
    * TODO(christophebedard) use a timeout?
-   * TODO(christophebedard) sleep a bit?
    *
    * \return the message
    */
@@ -69,6 +69,8 @@ public:
 
 private:
   std::shared_ptr<SafeQueue<std::string>> messages_;
+
+  static constexpr auto WAIT_TIME = std::chrono::milliseconds(1);
 };
 
 }  // namespace email
