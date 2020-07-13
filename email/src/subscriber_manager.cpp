@@ -94,8 +94,7 @@ SubscriberManager::poll_thread()
       auto it = map_.find(topic);
       if (it != map_.end()) {
         // Push message content to the queue
-        // TODO(christophebedard) sync?
-        it->second->push(std::move(email_data.value().content.body));
+        it->second->push(email_data.value().content.body);
       } else if (debug_) {
         std::cout << "topic not found: " << topic << std::endl;
       }

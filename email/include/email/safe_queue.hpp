@@ -48,7 +48,7 @@ public:
   }
 
   void
-  push(const T && element)
+  push(const T & element)
   {
     std::lock_guard<std::mutex> lock(queue_mutex_);
     queue_.push(std::move(element));

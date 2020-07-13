@@ -15,6 +15,7 @@
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <thread>
 #include <utility>
 
 #include "email/context.hpp"
@@ -49,16 +50,16 @@ Subscriber::get_message()
   if (!has_message()) {
     return std::nullopt;
   }
-  return std::move(messages_->dequeue());
+  return messages_->dequeue();
 }
 
 std::string
 Subscriber::get_message_and_wait()
 {
   while (messages_->empty()) {
-    // Nothing
+    std::this_thread::sleep_for(WAIT_TIME);
   }
-  return std::move(messages_->dequeue());
+  return messages_->dequeue();
 }
 
 }  // namespace email

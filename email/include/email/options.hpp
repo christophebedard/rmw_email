@@ -27,7 +27,7 @@ namespace email
 
 /// Options container and parsing methods.
 /**
- * TODO(christophebedard) extract parsing methods into another file/class
+ * Owns the various data objects.
  */
 class Options
 {
