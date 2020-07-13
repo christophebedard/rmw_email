@@ -59,8 +59,8 @@ public:
 
   /// Get a message, waiting until one is available.
   /**
-   * TODO(christophebedard) use a timeout
-   * TODO(christophebedard) sleep a bit
+   * TODO(christophebedard) use a timeout?
+   * TODO(christophebedard) sleep a bit?
    *
    * \return the message
    */

@@ -93,6 +93,8 @@ private:
   size_t
   write_callback(void * contents, size_t size, size_t nmemb, void * userp);
 
+  int current_uid_;
+  int next_uid_;
   std::string read_buffer_;
   std::atomic_bool do_shutdown_;
 };
