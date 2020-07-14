@@ -66,7 +66,7 @@ endif()
 
 # Examples & executables for testing the lib
 add_executable(send
-  src/example/send.cpp
+  example/send.cpp
 )
 target_link_libraries(send
   ${PROJECT_NAME}
@@ -76,7 +76,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 add_executable(receive
-  src/example/receive.cpp
+  example/receive.cpp
 )
 target_link_libraries(receive
   ${PROJECT_NAME}
@@ -86,7 +86,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 add_executable(pub
-  src/example/pub.cpp
+  example/pub.cpp
 )
 target_link_libraries(pub
   ${PROJECT_NAME}
@@ -96,7 +96,7 @@ install(TARGETS
   DESTINATION lib/${PROJECT_NAME}
 )
 add_executable(sub
-  src/example/sub.cpp
+  example/sub.cpp
 )
 target_link_libraries(sub
   ${PROJECT_NAME}
