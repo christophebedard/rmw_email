@@ -41,7 +41,7 @@ public:
   ~SafeQueue() {}
 
   bool
-  empty()
+  empty() const
   {
     std::lock_guard<std::mutex> lock(queue_mutex_);
     return queue_.empty();
@@ -62,7 +62,7 @@ public:
   }
 
   const T &
-  front()
+  front() const
   {
     std::lock_guard<std::mutex> lock(queue_mutex_);
     return queue_.front();
@@ -77,7 +77,7 @@ public:
   }
 
 private:
-  std::mutex queue_mutex_;
+  mutable std::mutex queue_mutex_;
   std::queue<T> queue_;
 };
 
