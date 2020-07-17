@@ -44,6 +44,7 @@ public:
    */
   explicit ServiceServer(const std::string & service_name);
   ServiceServer(const ServiceServer &) = delete;
+  ServiceServer & operator=(const ServiceServer &) = delete;
   ~ServiceServer();
 
   /// Check if the server has a request.

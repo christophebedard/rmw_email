@@ -42,6 +42,7 @@ public:
    */
   explicit Subscriber(const std::string & topic);
   Subscriber(const Subscriber &) = delete;
+  Subscriber & operator=(const Subscriber &) = delete;
   virtual ~Subscriber();
 
   /// Check if the subscriber has a message.

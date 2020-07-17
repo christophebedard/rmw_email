@@ -38,6 +38,7 @@ public:
     queue_()
   {}
   SafeQueue(const SafeQueue &) = delete;
+  SafeQueue & operator=(const SafeQueue &) = delete;
   ~SafeQueue() {}
 
   bool

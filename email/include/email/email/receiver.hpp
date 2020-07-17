@@ -46,6 +46,7 @@ public:
     UserInfo::SharedPtrConst user_info,
     const bool debug);
   EmailReceiver(const EmailReceiver &) = delete;
+  EmailReceiver & operator=(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
 
   void

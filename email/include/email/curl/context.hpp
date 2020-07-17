@@ -44,6 +44,7 @@ public:
     const struct ProtocolInfo & protocol_info,
     const bool debug);
   CurlContext(const CurlContext &) = delete;
+  CurlContext & operator=(const CurlContext &) = delete;
   ~CurlContext();
 
   /// Initialize context.
