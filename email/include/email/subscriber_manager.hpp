@@ -45,6 +45,7 @@ public:
    */
   explicit SubscriberManager(std::shared_ptr<EmailReceiver> receiver, const bool debug);
   SubscriberManager(const SubscriberManager &) = delete;
+  SubscriberManager & operator=(const SubscriberManager &) = delete;
   ~SubscriberManager();
 
   /// Register a subscriber with the manager.

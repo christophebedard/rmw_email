@@ -55,6 +55,7 @@ protected:
    */
   explicit ServiceObject(const std::string & service_name);
   ServiceObject(const ServiceObject &) = delete;
+  ServiceObject & operator=(const ServiceObject &) = delete;
   virtual ~ServiceObject();
 
 private:

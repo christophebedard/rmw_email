@@ -46,6 +46,7 @@ public:
     EmailRecipients::SharedPtrConst recipients,
     const bool debug);
   EmailSender(const EmailSender &) = delete;
+  EmailSender & operator=(const EmailSender &) = delete;
   virtual ~EmailSender();
 
   /// Send an email.

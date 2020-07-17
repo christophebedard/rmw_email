@@ -71,6 +71,7 @@ public:
    */
   Context();
   Context(const Context &) = delete;
+  Context & operator=(const Context &) = delete;
   ~Context();
 
   /// Initialize context using config file.

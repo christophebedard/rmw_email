@@ -39,6 +39,7 @@ public:
    */
   explicit ServiceClient(const std::string & service_name);
   ServiceClient(const ServiceClient &) = delete;
+  ServiceClient & operator=(const ServiceClient &) = delete;
   ~ServiceClient();
 
   /// Send request and get response, waiting for it.

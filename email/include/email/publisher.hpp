@@ -39,6 +39,7 @@ public:
    */
   explicit Publisher(const std::string & topic);
   Publisher(const Publisher &) = delete;
+  Publisher & operator=(const Publisher &) = delete;
   virtual ~Publisher();
 
   /// Publish message.

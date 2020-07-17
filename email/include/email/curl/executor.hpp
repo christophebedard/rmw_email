@@ -54,6 +54,7 @@ protected:
     const struct ProtocolInfo & protocol_info,
     const bool debug);
   CurlExecutor(const CurlExecutor &) = delete;
+  CurlExecutor & operator=(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();
 
   /// Initialize concrete options.

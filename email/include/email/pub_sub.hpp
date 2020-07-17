@@ -55,6 +55,7 @@ protected:
    */
   explicit PubSubObject(const std::string & topic);
   PubSubObject(const PubSubObject &) = delete;
+  PubSubObject & operator=(const PubSubObject &) = delete;
   virtual ~PubSubObject();
 
 private:
