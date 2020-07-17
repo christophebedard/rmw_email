@@ -57,6 +57,11 @@ public:
     const std::string & topic,
     std::shared_ptr<SafeQueue<std::string>> message_queue);
 
+  void
+  register_service_server(
+    const std::string & service,
+    std::shared_ptr<SafeQueue<struct EmailData>> request_queue);
+
   /// Get status.
   /**
    * \return true if it has been started, false otherwise
@@ -84,6 +89,8 @@ private:
   std::thread thread_;
   std::mutex subscribers_mutex_;
   std::multimap<std::string, std::shared_ptr<SafeQueue<std::string>>> subscribers_;
+  std::mutex services_mutex_;
+  std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> services_;
 
   static constexpr auto POLLING_PERIOD = std::chrono::milliseconds(1);
 };

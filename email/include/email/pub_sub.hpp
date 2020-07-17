@@ -48,7 +48,7 @@ public:
 protected:
   /// Constructor.
   /**
-   * Validate the topic.
+   * Validates the topic.
    *
    * \param topic the topic
    * \throw `TopicInvalidError` if the topic is invalid

@@ -40,6 +40,9 @@ set(SOURCES
   src/options.cpp
   src/pub_sub.cpp
   src/publisher.cpp
+  src/service.cpp
+  src/service_client.cpp
+  src/service_server.cpp
   src/subscriber.cpp
   src/subscriber_manager.cpp
   src/utils.cpp
@@ -103,6 +106,26 @@ target_link_libraries(sub
 )
 install(TARGETS
   sub
+  DESTINATION lib/${PROJECT_NAME}
+)
+add_executable(service_client
+  example/service_client.cpp
+)
+target_link_libraries(service_client
+  ${PROJECT_NAME}
+)
+install(TARGETS
+  service_client
+  DESTINATION lib/${PROJECT_NAME}
+)
+add_executable(service_server
+  example/service_server.cpp
+)
+target_link_libraries(service_server
+  ${PROJECT_NAME}
+)
+install(TARGETS
+  service_server
   DESTINATION lib/${PROJECT_NAME}
 )
 

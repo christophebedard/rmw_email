@@ -37,7 +37,9 @@ SubscriberManager::SubscriberManager(std::shared_ptr<EmailReceiver> receiver, co
   do_shutdown_(false),
   thread_({}),
   subscribers_mutex_(),
-  subscribers_()
+  subscribers_(),
+  services_mutex_(),
+  services_()
 {}
 
 SubscriberManager::~SubscriberManager() {}
@@ -49,6 +51,15 @@ SubscriberManager::register_subscriber(
 {
   std::lock_guard<std::mutex> lock(subscribers_mutex_);
   subscribers_.insert({topic, message_queue});
+}
+
+void
+SubscriberManager::register_service_server(
+  const std::string & service,
+  std::shared_ptr<SafeQueue<struct EmailData>> request_queue)
+{
+  std::lock_guard<std::mutex> lock(services_mutex_);
+  services_.insert({service, request_queue});
 }
 
 bool
@@ -86,15 +97,26 @@ SubscriberManager::poll_thread()
     if (do_shutdown_.load()) {
       break;
     }
-    const std::string & topic = email_data.value().content.subject;
-    // TODO(christophebedard) make this better
+    const struct EmailData & data = email_data.value();
+    const std::string & topic = data.content.subject;
+    // Push it to the right queue
+    // TODO(christophebedard) rename this class, or extract thread/polling to another class
     {
-      // Get queue corresponding to that topic
       std::lock_guard<std::mutex> lock(subscribers_mutex_);
       auto range = subscribers_.equal_range(topic);
       for (auto it = range.first; it != range.second; ++it) {
         // Push message content to the queue
-        it->second->push(email_data.value().content.body);
+        it->second->push(data.content.body);
+      }
+    }
+    // Only a service request if it's not a reply email, i.e. if In-Reply-To header is empty
+    if (data.in_reply_to.empty()) {
+      // TODO(christophebedard) exclude emails coming from the sender's email?
+      std::lock_guard<std::mutex> lock(services_mutex_);
+      auto range = services_.equal_range(topic);
+      for (auto it = range.first; it != range.second; ++it) {
+        // Push message content to the queue
+        it->second->push(data);
       }
     }
   }
