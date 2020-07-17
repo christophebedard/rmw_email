@@ -114,8 +114,10 @@ struct EmailContent
 /// Raw email data with headers.
 struct EmailData
 {
-  /// Message ID.
+  /// Message-ID header value.
   std::string message_id;
+  /// In-Reply-To header value.
+  std::string in_reply_to;
   /// Origin email.
   std::string from;
   /// Recipients of the email.
@@ -125,10 +127,15 @@ struct EmailData
   /// Constructor.
   EmailData(
     const std::string & message_id_,
+    const std::string & in_reply_to_,
     const std::string & from_,
     const struct EmailRecipients & recipients_,
     const struct EmailContent & content_)
-  : message_id(message_id_), from(from_), recipients(recipients_), content(content_)
+  : message_id(message_id_),
+    in_reply_to(in_reply_to_),
+    from(from_),
+    recipients(recipients_),
+    content(content_)
   {}
   /// Copy constructor.
   EmailData(const EmailData &) = default;

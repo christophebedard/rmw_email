@@ -31,6 +31,7 @@ static const std::regex REGEX_BCC(R"(Bcc: (.*)\r?\n)");
 static const std::regex REGEX_BODY(R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
 static const std::regex REGEX_CC(R"(Cc: (.*)\r?\n)");
 static const std::regex REGEX_FROM(R"(From: (.*)\r?\n)");
+static const std::regex REGEX_IN_REPLY_TO(R"(In-Reply-To: (.*)\r?\n)");
 static const std::regex REGEX_MESSAGE_ID(R"(Message-ID: (.*)\r?\n)");
 static const std::regex REGEX_NEXTUID(
   R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
@@ -66,9 +67,10 @@ std::optional<struct EmailData>
 get_email_data_from_response(const std::string & curl_result)
 {
   auto match_from = get_first_match_group(curl_result, REGEX_FROM);
+  auto match_in_reply_to = get_first_match_group(curl_result, REGEX_IN_REPLY_TO);
   auto match_message_id = get_first_match_group(curl_result, REGEX_MESSAGE_ID);
   auto content_opt = get_email_content_from_response(curl_result);
-  if (!match_from || !match_message_id || !content_opt) {
+  if (!match_from || !match_in_reply_to || !match_message_id || !content_opt) {
     return std::nullopt;
   }
   auto match_to = get_first_match_group(curl_result, REGEX_TO);
@@ -83,6 +85,7 @@ get_email_data_from_response(const std::string & curl_result)
     split_email_list(match_bcc.value(), true));
   struct EmailData email_data(
     match_message_id.value(),
+    match_in_reply_to.value(),
     match_from.value(),
     recipients,
     content_opt.value());
