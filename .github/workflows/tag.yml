@@ -1,0 +1,13 @@
+name: Tag
+on:
+  push:
+    branches:
+      - master
+jobs:
+  tag:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: christophebedard/tag-version-commit@v1
+      with:
+        token: ${{ secrets.TAG_CREATION_TOKEN }}
