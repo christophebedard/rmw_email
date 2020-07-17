@@ -79,8 +79,10 @@ void
 SubscriberManager::shutdown()
 {
   receiver_->shutdown();
-  do_shutdown_ = true;
-  thread_.join();
+  if (has_started()) {
+    do_shutdown_ = true;
+    thread_.join();
+  }
 }
 
 void
