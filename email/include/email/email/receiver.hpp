@@ -49,6 +49,10 @@ public:
   EmailReceiver & operator=(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
 
+  /// Shut down.
+  /**
+   * Stops any currently-running internal polling loop.
+   */
   void
   shutdown();
 

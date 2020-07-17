@@ -149,6 +149,8 @@ public:
 private:
   std::shared_ptr<Options> options_;
   bool is_valid_;
+  mutable bool is_receiver_init_;
+  mutable bool is_subscriber_manager_init_;
 };
 
 /// Get the global context.

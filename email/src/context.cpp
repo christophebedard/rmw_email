@@ -32,7 +32,9 @@ get_global_context()
 
 Context::Context()
 : options_(nullptr),
-  is_valid_(false)
+  is_valid_(false),
+  is_receiver_init_(false),
+  is_subscriber_manager_init_(false)
 {}
 
 Context::~Context()
@@ -77,8 +79,13 @@ Context::shutdown()
   if (!is_valid()) {
     return false;
   }
-  // TODO(christophebedard) don't call if it hasn't been started?
-  get_subscriber_manager()->shutdown();
+  // Only call shutdown() if they have been init, otherwise they will get initialized
+  if (is_receiver_init_) {
+    get_receiver()->shutdown();
+  }
+  if (is_subscriber_manager_init_) {
+    get_subscriber_manager()->shutdown();
+  }
   return true;
 }
 
@@ -108,6 +115,7 @@ Context::get_receiver() const
     options_->debug());
   if (!receiver->is_valid()) {
     receiver->init();
+    is_receiver_init_ = true;
   }
   return receiver;
 }
@@ -139,6 +147,7 @@ Context::get_subscriber_manager() const
     options_->debug());
   if (!manager->has_started()) {
     manager->start();
+    is_subscriber_manager_init_ = true;
   }
   return manager;
 }
