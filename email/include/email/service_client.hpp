@@ -42,9 +42,24 @@ public:
   ServiceClient & operator=(const ServiceClient &) = delete;
   ~ServiceClient();
 
+  /// Send request.
+  /**
+   * For asynchronous sending of a request.
+   *
+   * \param request the request
+   */
+  void
+  send_request(const std::string & request);
+
+  /// Get a response if there is one.
+  /**
+   * \return the response, or `std::nullopt` if there is none
+   */
+  std::optional<std::string>
+  get_response();
+
   /// Send request and get response, waiting for it.
   /**
-   * TODO(christophebedard) offer async method using SafeQueue for reply
    * TODO(christophebedard) add timeout for response?
    *
    * \param request the request to send

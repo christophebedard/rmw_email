@@ -31,6 +31,18 @@ ServiceClient::ServiceClient(const std::string & service_name)
 
 ServiceClient::~ServiceClient() {}
 
+void
+ServiceClient::send_request(const std::string & request)
+{
+  pub_.publish(request);
+}
+
+std::optional<std::string>
+ServiceClient::get_response()
+{
+  return sub_.get_message();
+}
+
 std::optional<std::string>
 ServiceClient::send_request_and_wait(const std::string & request)
 {
