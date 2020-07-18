@@ -58,7 +58,7 @@ ServiceHandler::handle(const struct EmailData & data)
   // Only a service request if it's not a reply email, i.e. if In-Reply-To header is empty
   if (data.in_reply_to.empty()) {
     std::lock_guard<std::mutex> lock(services_mutex_);
-    const std::string & topic = data.content.body;
+    const std::string & topic = data.content.subject;
     auto range = services_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue

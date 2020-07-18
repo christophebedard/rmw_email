@@ -90,6 +90,9 @@ PollingManager::poll_thread()
     {
       std::lock_guard<std::mutex> lock(handlers_mutex_);
       for (auto it = handlers_.begin(); it != handlers_.end(); ++it) {
+        if (debug_) {
+          std::cout << "[PollingManager] calling handler" << std::endl;
+        }
         it->operator()(data);
       }
     }
