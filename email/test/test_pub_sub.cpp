@@ -21,18 +21,18 @@
 class PubSubObjectStub : public email::PubSubObject
 {
 public:
-  explicit PubSubObjectStub(const std::string & topic)
-  : PubSubObject(topic)
+  explicit PubSubObjectStub(const std::string & topic_name)
+  : PubSubObject(topic_name)
   {}
 };
 
-TEST(TestPubSub, validate_topic) {
-  EXPECT_THROW(PubSubObjectStub(""), email::TopicInvalidError);
-  EXPECT_THROW(PubSubObjectStub("aaa\n"), email::TopicInvalidError);
-  EXPECT_THROW(PubSubObjectStub("\nbbb"), email::TopicInvalidError);
-  EXPECT_THROW(PubSubObjectStub("aaa\nbbb"), email::TopicInvalidError);
-  EXPECT_THROW(PubSubObjectStub("\n"), email::TopicInvalidError);
-  EXPECT_THROW(PubSubObjectStub("aaa\r\n"), email::TopicInvalidError);
-  EXPECT_THROW(PubSubObjectStub("\r\nccc"), email::TopicInvalidError);
-  EXPECT_THROW(PubSubObjectStub("aaa\r\nccc"), email::TopicInvalidError);
+TEST(TestPubSub, validate_topic_name) {
+  EXPECT_THROW(PubSubObjectStub(""), email::TopicNameInvalidError);
+  EXPECT_THROW(PubSubObjectStub("aaa\n"), email::TopicNameInvalidError);
+  EXPECT_THROW(PubSubObjectStub("\nbbb"), email::TopicNameInvalidError);
+  EXPECT_THROW(PubSubObjectStub("aaa\nbbb"), email::TopicNameInvalidError);
+  EXPECT_THROW(PubSubObjectStub("\n"), email::TopicNameInvalidError);
+  EXPECT_THROW(PubSubObjectStub("aaa\r\n"), email::TopicNameInvalidError);
+  EXPECT_THROW(PubSubObjectStub("\r\nccc"), email::TopicNameInvalidError);
+  EXPECT_THROW(PubSubObjectStub("aaa\r\nccc"), email::TopicNameInvalidError);
 }

@@ -44,11 +44,11 @@ SubscriptionHandler::~SubscriptionHandler() {}
 
 void
 SubscriptionHandler::register_subscriber(
-  const std::string & topic,
+  const std::string & topic_name,
   std::shared_ptr<SafeQueue<std::string>> message_queue)
 {
   std::lock_guard<std::mutex> lock(subscribers_mutex_);
-  subscribers_.insert({topic, message_queue});
+  subscribers_.insert({topic_name, message_queue});
 }
 
 void

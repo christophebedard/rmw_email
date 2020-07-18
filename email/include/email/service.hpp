@@ -23,10 +23,10 @@ namespace email
 {
 
 /// Error when a service name is invalid.
-class ServiceInvalidError : public std::runtime_error
+class ServiceNameInvalidError : public std::runtime_error
 {
 public:
-  explicit ServiceInvalidError(const std::string & service_name, const std::string & reason)
+  explicit ServiceNameInvalidError(const std::string & service_name, const std::string & reason)
   : std::runtime_error("service name invalid (" + reason + "): '" + service_name + "'")
   {}
 };
@@ -51,7 +51,7 @@ protected:
    * Validates the service name.
    *
    * \param service_name the service name
-   * \throw `ServiceInvalidError` if the service name is invalid
+   * \throw `ServiceNameInvalidError` if the service name is invalid
    */
   explicit ServiceObject(const std::string & service_name);
   ServiceObject(const ServiceObject &) = delete;

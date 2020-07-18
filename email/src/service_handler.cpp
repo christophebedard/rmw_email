@@ -47,6 +47,7 @@ ServiceHandler::register_service_server(
   const std::string & service,
   std::shared_ptr<SafeQueue<struct EmailData>> request_queue)
 {
+  // TODO(christophebedard) throw/return flag if a service server already exists with the name?
   std::lock_guard<std::mutex> lock(services_mutex_);
   services_.insert({service, request_queue});
 }

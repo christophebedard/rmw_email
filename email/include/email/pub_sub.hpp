@@ -22,12 +22,12 @@
 namespace email
 {
 
-/// Error when a topic is invalid.
-class TopicInvalidError : public std::runtime_error
+/// Error when a topic name is invalid.
+class TopicNameInvalidError : public std::runtime_error
 {
 public:
-  explicit TopicInvalidError(const std::string & topic, const std::string & reason)
-  : std::runtime_error("topic name invalid (" + reason + "): '" + topic + "'")
+  explicit TopicNameInvalidError(const std::string & topic_name, const std::string & reason)
+  : std::runtime_error("topic name invalid (" + reason + "): '" + topic_name + "'")
   {}
 };
 
@@ -38,36 +38,36 @@ public:
 class PubSubObject
 {
 public:
-  /// Get the topic.
+  /// Get the topic name.
   /**
-   * \return the topic
+   * \return the topic name
    */
   std::string
-  get_topic() const;
+  get_topic_name() const;
 
 protected:
   /// Constructor.
   /**
-   * Validates the topic.
+   * Validates the topic name.
    *
-   * \param topic the topic
-   * \throw `TopicInvalidError` if the topic is invalid
+   * \param topic_name the topic name
+   * \throw `TopicNameInvalidError` if the topic name is invalid
    */
-  explicit PubSubObject(const std::string & topic);
+  explicit PubSubObject(const std::string & topic_name);
   PubSubObject(const PubSubObject &) = delete;
   PubSubObject & operator=(const PubSubObject &) = delete;
   virtual ~PubSubObject();
 
 private:
-  /// Validate a topic and throw an error with an explanation if it is not valid.
+  /// Validate a topic name and throw an error with an explanation if it is not valid.
   static
   void
-  validate_topic(const std::string & topic);
+  validate_topic_name(const std::string & topic_name);
 
   /// Regex which matches on a newline, with an optional carriage return before.
   static const std::regex REGEX_NEWLINE;
 
-  const std::string topic_;
+  const std::string topic_name_;
 };
 
 }  // namespace email

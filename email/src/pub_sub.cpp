@@ -20,28 +20,28 @@
 namespace email
 {
 
-PubSubObject::PubSubObject(const std::string & topic)
-: topic_(topic)
+PubSubObject::PubSubObject(const std::string & topic_name)
+: topic_name_(topic_name)
 {
-  validate_topic(topic_);
+  validate_topic_name(topic_name);
 }
 
 PubSubObject::~PubSubObject() {}
 
 std::string
-PubSubObject::get_topic() const
+PubSubObject::get_topic_name() const
 {
-  return topic_;
+  return topic_name_;
 }
 
 void
-PubSubObject::validate_topic(const std::string & topic)
+PubSubObject::validate_topic_name(const std::string & topic_name)
 {
-  if (topic.empty()) {
-    throw TopicInvalidError(topic, "empty");
+  if (topic_name.empty()) {
+    throw TopicNameInvalidError(topic_name, "empty");
   }
-  if (std::regex_match(topic, PubSubObject::REGEX_NEWLINE)) {
-    throw TopicInvalidError(topic, "newline");
+  if (std::regex_match(topic_name, PubSubObject::REGEX_NEWLINE)) {
+    throw TopicNameInvalidError(topic_name, "newline");
   }
 }
 
