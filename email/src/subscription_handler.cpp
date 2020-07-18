@@ -54,13 +54,19 @@ SubscriptionHandler::register_subscriber(
 void
 SubscriptionHandler::handle(const struct EmailData & data)
 {
-  const std::string & topic = data.content.body;
+  if (debug_) {
+    std::cout << "[SubscriptionHandler] handle() called" << std::endl;
+  }
+  const std::string & topic = data.content.subject;
   // Push it to the right queue
   {
     std::lock_guard<std::mutex> lock(subscribers_mutex_);
     auto range = subscribers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
+      if (debug_) {
+        std::cout << "[SubscriptionHandler] pushing body to queue" << std::endl;
+      }
       it->second->push(data.content.body);
     }
   }
