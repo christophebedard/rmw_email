@@ -43,6 +43,16 @@ public:
   SubscriptionHandler & operator=(const SubscriptionHandler &) = delete;
   ~SubscriptionHandler();
 
+  /// Register a subscriber with the handler.
+  /**
+   * \param topic_name the topic name
+   * \param message_queue the subscriber's message queue to push the new message to
+   */
+  void
+  register_subscriber(
+    const std::string & topic_name,
+    std::shared_ptr<SafeQueue<std::string>> message_queue);
+
   /// Handle new email.
   /**
    * To be called by the `PollingManager`.
@@ -51,16 +61,6 @@ public:
    */
   void
   handle(const struct EmailData & data);
-
-  /// Register a subscriber with the handler.
-  /**
-   * \param topic the topic
-   * \param message_queue the message queue of the subscriber
-   */
-  void
-  register_subscriber(
-    const std::string & topic,
-    std::shared_ptr<SafeQueue<std::string>> message_queue);
 
 private:
   bool debug_;

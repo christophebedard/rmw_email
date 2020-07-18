@@ -38,10 +38,10 @@ void
 ServiceObject::validate_service_name(const std::string & service_name)
 {
   if (service_name.empty()) {
-    throw ServiceInvalidError(service_name, "empty");
+    throw ServiceNameInvalidError(service_name, "empty");
   }
   if (std::regex_match(service_name, ServiceObject::REGEX_NEWLINE)) {
-    throw ServiceInvalidError(service_name, "newline");
+    throw ServiceNameInvalidError(service_name, "newline");
   }
 }
 

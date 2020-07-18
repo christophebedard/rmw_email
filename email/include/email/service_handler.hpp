@@ -43,6 +43,16 @@ public:
   ServiceHandler & operator=(const ServiceHandler &) = delete;
   ~ServiceHandler();
 
+  /// Register a service server with the handler.
+  /**
+   * \param service_name the service name
+   * \param request_queue the service server's request queue to push the new request to
+   */
+  void
+  register_service_server(
+    const std::string & service_name,
+    std::shared_ptr<SafeQueue<struct EmailData>> request_queue);
+
   /// Handle new email.
   /**
    * To be called by the `PollingManager`.
@@ -51,12 +61,6 @@ public:
    */
   void
   handle(const struct EmailData & data);
-
-  /// Register a service server with the handler.
-  void
-  register_service_server(
-    const std::string & service,
-    std::shared_ptr<SafeQueue<struct EmailData>> request_queue);
 
 private:
   bool debug_;

@@ -33,7 +33,9 @@ Subscriber::Subscriber(const std::string & topic)
   messages_(std::make_shared<SafeQueue<std::string>>())
 {
   // Register with handler
-  get_global_context()->get_subscription_handler()->register_subscriber(get_topic(), messages_);
+  get_global_context()->get_subscription_handler()->register_subscriber(
+    get_topic_name(),
+    messages_);
 }
 
 Subscriber::~Subscriber() {}

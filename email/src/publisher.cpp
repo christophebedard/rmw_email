@@ -25,8 +25,8 @@
 namespace email
 {
 
-Publisher::Publisher(const std::string & topic)
-: PubSubObject(topic),
+Publisher::Publisher(const std::string & topic_name)
+: PubSubObject(topic_name),
   sender_(get_global_context()->get_sender())
 {}
 
@@ -35,7 +35,7 @@ Publisher::~Publisher() {}
 void
 Publisher::publish(const std::string & message)
 {
-  struct EmailContent content {get_topic(), message};
+  struct EmailContent content {get_topic_name(), message};
   if (!sender_->send(content)) {
     std::cerr << "publish() failed" << std::endl;
   }

@@ -30,7 +30,7 @@ namespace email
 
 /// Message subscriber.
 /**
- * Uses emails, with the topic as the email subject and the data as the email body.
+ * Uses emails, with the topic name as the email subject and the data as the email body.
  * TODO(christophebedard) add take to get a vector of all available messages?
  */
 class Subscriber : public PubSubObject
@@ -38,9 +38,9 @@ class Subscriber : public PubSubObject
 public:
   /// Constructor.
   /**
-   * \param topic the topic to subscribe to
+   * \param topic_name the topic name to subscribe to
    */
-  explicit Subscriber(const std::string & topic);
+  explicit Subscriber(const std::string & topic_name);
   Subscriber(const Subscriber &) = delete;
   Subscriber & operator=(const Subscriber &) = delete;
   virtual ~Subscriber();

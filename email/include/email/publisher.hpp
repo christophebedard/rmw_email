@@ -35,9 +35,9 @@ class Publisher : public PubSubObject
 public:
   /// Constructor.
   /**
-   * \param topic the topic to publish on
+   * \param topic_name the topic name to publish on
    */
-  explicit Publisher(const std::string & topic);
+  explicit Publisher(const std::string & topic_name);
   Publisher(const Publisher &) = delete;
   Publisher & operator=(const Publisher &) = delete;
   virtual ~Publisher();
