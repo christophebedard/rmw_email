@@ -12,30 +12,30 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__SUBSCRIBER_MANAGER_HPP_
-#define EMAIL__SUBSCRIBER_MANAGER_HPP_
+#ifndef EMAIL__EMAIL__POLLING_MANAGER_HPP_
+#define EMAIL__EMAIL__POLLING_MANAGER_HPP_
 
 #include <atomic>
 #include <chrono>
-#include <map>
+#include <functional>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <thread>
+#include <vector>
 
 #include "email/email/receiver.hpp"
-#include "email/safe_queue.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
 {
 
-/// Manager for distributing messages to susbcribers.
+/// Manager for polling for new emails.
 /**
- * Does the polling for new emails and distributes them to the right subscriber(s).
+ * Does the polling for new emails and distributes them to handlers.
  */
-class SubscriberManager
+class PollingManager
 {
 public:
   /// Constructor.
@@ -43,25 +43,22 @@ public:
    * \param receiver the email receiver to use for getting emails
    * \param debug the debug status
    */
-  explicit SubscriberManager(std::shared_ptr<EmailReceiver> receiver, const bool debug);
-  SubscriberManager(const SubscriberManager &) = delete;
-  SubscriberManager & operator=(const SubscriberManager &) = delete;
-  ~SubscriberManager();
+  explicit PollingManager(std::shared_ptr<EmailReceiver> receiver, const bool debug);
+  PollingManager(const PollingManager &) = delete;
+  PollingManager & operator=(const PollingManager &) = delete;
+  ~PollingManager();
 
-  /// Register a subscriber with the manager.
+  /// Alias for handler function.
+  using HandlerFunction = std::function<void (const struct EmailData &)>;
+
+  /// Register a handler with the manager.
   /**
-   * \param topic the topic
-   * \param message_queue the message queue of the subscriber
+   * The handler function will be called when there is a new email.
+   *
+   * \param handler the handler to call with new emails
    */
   void
-  register_subscriber(
-    const std::string & topic,
-    std::shared_ptr<SafeQueue<std::string>> message_queue);
-
-  void
-  register_service_server(
-    const std::string & service,
-    std::shared_ptr<SafeQueue<struct EmailData>> request_queue);
+  register_handler(const HandlerFunction & handler);
 
   /// Get status.
   /**
@@ -88,14 +85,12 @@ private:
   bool has_started_;
   std::atomic_bool do_shutdown_;
   std::thread thread_;
-  std::mutex subscribers_mutex_;
-  std::multimap<std::string, std::shared_ptr<SafeQueue<std::string>>> subscribers_;
-  std::mutex services_mutex_;
-  std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> services_;
+  std::mutex handlers_mutex_;
+  std::vector<HandlerFunction> handlers_;
 
   static constexpr auto POLLING_PERIOD = std::chrono::milliseconds(1);
 };
 
 }  // namespace email
 
-#endif  // EMAIL__SUBSCRIBER_MANAGER_HPP_
+#endif  // EMAIL__EMAIL__POLLING_MANAGER_HPP_

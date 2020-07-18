@@ -19,10 +19,10 @@
 #include <thread>
 
 #include "email/context.hpp"
-#include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service.hpp"
+#include "email/service_handler.hpp"
 #include "email/service_server.hpp"
 #include "email/types.hpp"
 
@@ -34,8 +34,8 @@ ServiceServer::ServiceServer(const std::string & service_name)
   requests_(std::make_shared<SafeQueue<struct EmailData>>()),
   sender_(get_global_context()->get_sender())
 {
-  // Register with manager
-  get_global_context()->get_subscriber_manager()->register_service_server(
+  // Register with handler
+  get_global_context()->get_service_handler()->register_service_server(
     get_service_name(), requests_);
 }
 
