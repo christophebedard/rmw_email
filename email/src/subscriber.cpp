@@ -22,7 +22,7 @@
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
 #include "email/subscriber.hpp"
-#include "email/subscriber_manager.hpp"
+#include "email/subscription_handler.hpp"
 #include "email/types.hpp"
 
 namespace email
@@ -32,8 +32,8 @@ Subscriber::Subscriber(const std::string & topic)
 : PubSubObject(topic),
   messages_(std::make_shared<SafeQueue<std::string>>())
 {
-  // Register with manager
-  get_global_context()->get_subscriber_manager()->register_subscriber(get_topic(), messages_);
+  // Register with handler
+  get_global_context()->get_subscription_handler()->register_subscriber(get_topic(), messages_);
 }
 
 Subscriber::~Subscriber() {}

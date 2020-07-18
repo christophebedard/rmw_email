@@ -20,10 +20,12 @@
 #include <string>
 
 #include "email/curl/context.hpp"
+#include "email/email/polling_manager.hpp"
 #include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/options.hpp"
-#include "email/subscriber_manager.hpp"
+#include "email/service_handler.hpp"
+#include "email/subscription_handler.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -136,21 +138,37 @@ public:
   std::shared_ptr<EmailSender>
   get_sender() const;
 
-  /// Get the subscriber manager.
+  /// Get the polling manager.
   /**
    * Will have been started.
    *
-   * \return the `SubscriberManager` object
+   * \return the `PollingManager` object
    * \throw `ContextNotInitializedError` if context has not been initialized
    */
-  std::shared_ptr<SubscriberManager>
-  get_subscriber_manager() const;
+  std::shared_ptr<PollingManager>
+  get_polling_manager() const;
+
+  /// Get the subscription handler.
+  /**
+   * \return the `SubscriptionHandler` object
+   * \throw `ContextNotInitializedError` if context has not been initialized
+   */
+  std::shared_ptr<SubscriptionHandler>
+  get_subscription_handler() const;
+
+  /// Get the service handler.
+  /**
+   * \return the `ServiceHandler` object
+   * \throw `ContextNotInitializedError` if context has not been initialized
+   */
+  std::shared_ptr<ServiceHandler>
+  get_service_handler() const;
 
 private:
   std::shared_ptr<Options> options_;
   bool is_valid_;
   mutable bool is_receiver_init_;
-  mutable bool is_subscriber_manager_init_;
+  mutable bool is_polling_manager_init_;
 };
 
 /// Get the global context.

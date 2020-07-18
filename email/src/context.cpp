@@ -34,7 +34,7 @@ Context::Context()
 : options_(nullptr),
   is_valid_(false),
   is_receiver_init_(false),
-  is_subscriber_manager_init_(false)
+  is_polling_manager_init_(false)
 {}
 
 Context::~Context()
@@ -83,8 +83,8 @@ Context::shutdown()
   if (is_receiver_init_) {
     get_receiver()->shutdown();
   }
-  if (is_subscriber_manager_init_) {
-    get_subscriber_manager()->shutdown();
+  if (is_polling_manager_init_) {
+    get_polling_manager()->shutdown();
   }
   return true;
 }
@@ -136,20 +136,42 @@ Context::get_sender() const
   return sender;
 }
 
-std::shared_ptr<SubscriberManager>
-Context::get_subscriber_manager() const
+std::shared_ptr<PollingManager>
+Context::get_polling_manager() const
 {
   if (!is_valid()) {
     throw ContextNotInitializedError();
   }
-  static std::shared_ptr<SubscriberManager> manager = std::make_shared<SubscriberManager>(
+  static std::shared_ptr<PollingManager> manager = std::make_shared<PollingManager>(
     get_receiver(),
     options_->debug());
   if (!manager->has_started()) {
     manager->start();
-    is_subscriber_manager_init_ = true;
+    is_polling_manager_init_ = true;
   }
   return manager;
+}
+
+std::shared_ptr<SubscriptionHandler>
+Context::get_subscription_handler() const
+{
+  if (!is_valid()) {
+    throw ContextNotInitializedError();
+  }
+  static std::shared_ptr<SubscriptionHandler> handler = std::make_shared<SubscriptionHandler>(
+    options_->debug());
+  return handler;
+}
+
+std::shared_ptr<ServiceHandler>
+Context::get_service_handler() const
+{
+  if (!is_valid()) {
+    throw ContextNotInitializedError();
+  }
+  static std::shared_ptr<ServiceHandler> handler = std::make_shared<ServiceHandler>(
+    options_->debug());
+  return handler;
 }
 
 }  // namespace email

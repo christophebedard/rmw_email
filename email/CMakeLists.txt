@@ -33,6 +33,7 @@ set(SOURCES
   src/curl/context.cpp
   src/curl/executor.cpp
   src/email/payload_utils.cpp
+  src/email/polling_manager.cpp
   src/email/receiver.cpp
   src/email/response_utils.cpp
   src/email/sender.cpp
@@ -42,9 +43,10 @@ set(SOURCES
   src/publisher.cpp
   src/service.cpp
   src/service_client.cpp
+  src/service_handler.cpp
   src/service_server.cpp
   src/subscriber.cpp
-  src/subscriber_manager.cpp
+  src/subscription_handler.cpp
   src/utils.cpp
 )
 
