@@ -22,6 +22,7 @@
 
 #include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
+#include "email/log.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service.hpp"
 #include "email/subscriber.hpp"
@@ -80,6 +81,7 @@ public:
   send_response(const std::string & response);
 
 private:
+  std::shared_ptr<Logger> logger_;
   std::shared_ptr<SafeQueue<struct EmailData>> requests_;
   std::shared_ptr<EmailSender> sender_;
 

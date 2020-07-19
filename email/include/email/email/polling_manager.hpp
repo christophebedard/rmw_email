@@ -25,6 +25,7 @@
 #include <vector>
 
 #include "email/email/receiver.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -41,9 +42,8 @@ public:
   /// Constructor.
   /**
    * \param receiver the email receiver to use for getting emails
-   * \param debug the debug status
    */
-  explicit PollingManager(std::shared_ptr<EmailReceiver> receiver, const bool debug);
+  explicit PollingManager(std::shared_ptr<EmailReceiver> receiver);
   PollingManager(const PollingManager &) = delete;
   PollingManager & operator=(const PollingManager &) = delete;
   ~PollingManager();
@@ -81,12 +81,12 @@ private:
   poll_thread();
 
   std::shared_ptr<EmailReceiver> receiver_;
-  bool debug_;
   bool has_started_;
   std::atomic_bool do_shutdown_;
   std::thread thread_;
   std::mutex handlers_mutex_;
   std::vector<HandlerFunction> handlers_;
+  std::shared_ptr<Logger> logger_;
 
   static constexpr auto POLLING_PERIOD = std::chrono::milliseconds(1);
 };

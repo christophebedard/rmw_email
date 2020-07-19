@@ -15,6 +15,8 @@ endif()
 
 find_package(ament_cmake_ros REQUIRED)
 find_package(rcpputils REQUIRED)
+find_package(spdlog_vendor REQUIRED)
+find_package(spdlog REQUIRED)
 
 set(CURL_USE_VENDOR FALSE)
 find_package(CURL)
@@ -38,6 +40,7 @@ set(SOURCES
   src/email/response_utils.cpp
   src/email/sender.cpp
   src/init.cpp
+  src/log.cpp
   src/options.cpp
   src/pub_sub.cpp
   src/publisher.cpp
@@ -56,7 +59,8 @@ if(CURL_USE_VENDOR)
 else()
   target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 endif()
-ament_target_dependencies(${PROJECT_NAME} rcpputils)
+ament_target_dependencies(${PROJECT_NAME} rcpputils spdlog)
+target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<INSTALL_INTERFACE:include>"

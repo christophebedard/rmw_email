@@ -29,10 +29,10 @@ namespace email
 Options::Options(
   UserInfo::SharedPtrConst user_info,
   EmailRecipients::SharedPtrConst recipients,
-  bool debug)
+  bool curl_verbose)
 : user_info_(user_info),
   recipients_(recipients),
-  debug_(debug)
+  curl_verbose_(curl_verbose)
 {}
 
 Options::~Options() {}
@@ -50,9 +50,9 @@ Options::get_recipients() const
 }
 
 bool
-Options::debug() const
+Options::curl_verbose() const
 {
-  return debug_;
+  return curl_verbose_;
 }
 
 std::optional<std::shared_ptr<Options>>
@@ -69,17 +69,17 @@ Options::parse_options_from_args(int argc, char const * const argv[])
     std::string(argv[4]));
   EmailRecipients::SharedPtrConst recipients =
     std::make_shared<const struct EmailRecipients>(std::string(argv[5]));
-  bool debug = false;
+  bool curl_verbose = false;
   if (7 == argc) {
     const std::string argv6 = std::string(argv[6]);
-    if ("-d" == argv6 || "--debug" == argv6) {
-      debug = true;
+    if ("-v" == argv6 || "--curl-verbose" == argv6) {
+      curl_verbose = true;
     }
   }
   return std::make_shared<Options>(
     user_info,
     recipients,
-    debug);
+    curl_verbose);
 }
 
 std::optional<std::shared_ptr<Options>>
@@ -118,11 +118,11 @@ Options::parse_options_from_file()
     utils::split_email_list(matches[5].str()),
     utils::split_email_list(matches[6].str()),
     utils::split_email_list(matches[7].str()));
-  const std::string debug_env_var = utils::get_env_var(Options::ENV_VAR_DEBUG);
+  const std::string curl_verbose_env_var = utils::get_env_var(Options::ENV_VAR_CURL_VERBOSE);
   return std::make_shared<Options>(
     user_info,
     recipients,
-    !debug_env_var.empty());
+    !curl_verbose_env_var.empty());
 }
 
 // See: https://regexr.com/580va

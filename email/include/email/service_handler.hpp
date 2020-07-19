@@ -21,6 +21,7 @@
 #include <string>
 
 #include "email/safe_queue.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -35,10 +36,7 @@ class ServiceHandler
 {
 public:
   /// Constructor.
-  /**
-   * \param debug the debug status
-   */
-  explicit ServiceHandler(const bool debug);
+  ServiceHandler();
   ServiceHandler(const ServiceHandler &) = delete;
   ServiceHandler & operator=(const ServiceHandler &) = delete;
   ~ServiceHandler();
@@ -63,7 +61,7 @@ public:
   handle(const struct EmailData & data);
 
 private:
-  bool debug_;
+  std::shared_ptr<Logger> logger_;
   std::mutex services_mutex_;
   std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> services_;
 };

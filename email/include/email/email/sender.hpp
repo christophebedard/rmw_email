@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "email/curl/executor.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -39,12 +40,12 @@ public:
   /**
    * \param user_info the user information for sending emails
    * \param recipients the email recipients
-   * \param debug the debug status
+   * \param curl_verbose the curl verbose status
    */
   explicit EmailSender(
     UserInfo::SharedPtrConst user_info,
     EmailRecipients::SharedPtrConst recipients,
-    const bool debug);
+    const bool curl_verbose);
   EmailSender(const EmailSender &) = delete;
   EmailSender & operator=(const EmailSender &) = delete;
   virtual ~EmailSender();
@@ -92,6 +93,7 @@ private:
     int lines_read;
   };
 
+  std::shared_ptr<Logger> logger_;
   EmailRecipients::SharedPtrConst recipients_;
   struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;

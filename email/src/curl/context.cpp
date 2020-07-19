@@ -14,11 +14,11 @@
 
 #include <curl/curl.h>
 
-#include <iostream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/curl/context.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/utils.hpp"
 
@@ -28,15 +28,16 @@ namespace email
 CurlContext::CurlContext(
   const struct ConnectionInfo & connection_info,
   const struct ProtocolInfo & protocol_info,
-  const bool debug)
-: handle_(nullptr),
+  const bool curl_verbose)
+: logger_(log::get_or_create("CurlContext")),
+  handle_(nullptr),
   connection_info_(connection_info),
   full_url_(
     utils::full_url(
       protocol_info.protocol,
       connection_info_.host,
       protocol_info.port)),
-  debug_(debug)
+  curl_verbose_(curl_verbose)
 {}
 
 CurlContext::~CurlContext() {}
@@ -46,20 +47,21 @@ CurlContext::init()
 {
   handle_ = curl_easy_init();
   if (!handle_) {
-    std::cerr << "curl_easy_init() failed" << std::endl;
+    logger_->critical("curl_easy_init() failed");
     return false;
   }
   // Validate some parameters first
   if (connection_info_.host.empty()) {
-    std::cerr << "host not set for URL: " << full_url_ << std::endl;
+    logger_->critical("host not set for URL: {}", full_url_);
     return false;
   }
   curl_easy_setopt(handle_, CURLOPT_USERAGENT, "libcurl-agent/1.0");
   curl_easy_setopt(handle_, CURLOPT_USERNAME, connection_info_.username.c_str());
   curl_easy_setopt(handle_, CURLOPT_PASSWORD, connection_info_.password.c_str());
-  if (debug_) {
+  if (curl_verbose_) {
     curl_easy_setopt(handle_, CURLOPT_VERBOSE, 1L);
   }
+  logger_->debug("initialized");
   return true;
 }
 
@@ -67,6 +69,7 @@ void
 CurlContext::fini()
 {
   curl_easy_cleanup(handle_);
+  logger_->debug("finalized");
 }
 
 bool
@@ -75,9 +78,11 @@ CurlContext::execute()
   CURLcode res = curl_easy_perform(handle_);
   if (CURLE_OK != res) {
     // Some error codes are "expected," i.e. they're not real failures
-    if (debug_ || CURLE_REMOTE_FILE_NOT_FOUND != res) {
-      std::cerr << "curl_easy_perform() failed: " << static_cast<int>(res) <<
-        "=" << curl_easy_strerror(res) << std::endl;
+    if (CURLE_REMOTE_FILE_NOT_FOUND != res) {
+      logger_->error(
+        "curl_easy_perform() failed: {}={}",
+        static_cast<int>(res),
+        curl_easy_strerror(res));
     }
     return false;
   }

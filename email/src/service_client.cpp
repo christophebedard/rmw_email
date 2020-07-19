@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 

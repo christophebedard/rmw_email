@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
@@ -20,6 +19,7 @@
 
 #include "email/context.hpp"
 #include "email/email/sender.hpp"
+#include "email/log.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service.hpp"
 #include "email/service_handler.hpp"
@@ -31,6 +31,7 @@ namespace email
 
 ServiceServer::ServiceServer(const std::string & service_name)
 : ServiceObject(service_name),
+  logger_(log::create("ServiceServer::" + service_name)),
   requests_(std::make_shared<SafeQueue<struct EmailData>>()),
   sender_(get_global_context()->get_sender())
 {
@@ -70,13 +71,13 @@ ServiceServer::send_response(const std::string & response)
 {
   // TODO(christophebedard) make this better
   if (!has_request()) {
-    std::cerr << "no request to reply to" << std::endl;
+    logger_->warn("no request to reply to");
     return;
   }
   auto request = requests_->dequeue();
   struct EmailContent response_content {get_service_name(), response};
   if (!sender_->reply(response_content, request)) {
-    std::cerr << "send_response() failed" << std::endl;
+    logger_->error("send_response() failed");
   }
 }
 

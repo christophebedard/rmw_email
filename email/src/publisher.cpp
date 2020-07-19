@@ -12,12 +12,12 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/context.hpp"
 #include "email/email/sender.hpp"
+#include "email/log.hpp"
 #include "email/pub_sub.hpp"
 #include "email/publisher.hpp"
 #include "email/types.hpp"
@@ -27,6 +27,7 @@ namespace email
 
 Publisher::Publisher(const std::string & topic_name)
 : PubSubObject(topic_name),
+  logger_(log::create("Publisher::" + topic_name)),
   sender_(get_global_context()->get_sender())
 {}
 
@@ -37,7 +38,7 @@ Publisher::publish(const std::string & message)
 {
   struct EmailContent content {get_topic_name(), message};
   if (!sender_->send(content)) {
-    std::cerr << "publish() failed" << std::endl;
+    logger_->error("publish() failed");
   }
 }
 

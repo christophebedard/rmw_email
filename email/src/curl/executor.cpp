@@ -22,9 +22,8 @@ namespace email
 CurlExecutor::CurlExecutor(
   const struct ConnectionInfo & connection_info,
   const struct ProtocolInfo & protocol_info,
-  const bool debug)
-: context_(connection_info, protocol_info, debug),
-  debug_(debug),
+  const bool curl_verbose)
+: context_(connection_info, protocol_info, curl_verbose),
   is_valid_(false)
 {}
 

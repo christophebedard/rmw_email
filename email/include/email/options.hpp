@@ -38,12 +38,12 @@ public:
    *
    * \param user_info the user info
    * \param recipients the recipients
-   * \param debug the debug status
+   * \param curl_verbose the curl verbose status
    */
   Options(
     UserInfo::SharedPtrConst user_info,
     EmailRecipients::SharedPtrConst recipients,
-    bool debug);
+    bool curl_verbose);
   ~Options();
 
   /// Get user information data.
@@ -60,12 +60,12 @@ public:
   EmailRecipients::SharedPtrConst
   get_recipients() const;
 
-  /// Get the debug status.
+  /// Get the curl verbose status.
   /**
-   * \return true if debug, false otherwise
+   * \return true if verbose, false otherwise
    */
   bool
-  debug() const;
+  curl_verbose() const;
 
   /// Parse options from CLI arguments.
   /**
@@ -88,14 +88,14 @@ public:
 private:
   UserInfo::SharedPtrConst user_info_;
   EmailRecipients::SharedPtrConst recipients_;
-  bool debug_;
+  bool curl_verbose_;
 
   static const std::regex REGEX_CONFIG_FILE;
-  static constexpr const char * ENV_VAR_DEBUG = "EMAIL_DEBUG";
+  static constexpr const char * ENV_VAR_CURL_VERBOSE = "EMAIL_CURL_VERBOSE";
   static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";
   static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT = "email.yml";
   static constexpr const char * USAGE_CLI_ARGS =
-    "usage: HOST_SMTP HOST_IMAP EMAIL PASSWORD EMAIL_TO [-d|--debug]";
+    "usage: HOST_SMTP HOST_IMAP EMAIL PASSWORD EMAIL_TO [-v|--curl-verbose]";
 };
 
 }  // namespace email

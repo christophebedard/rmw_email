@@ -47,12 +47,12 @@ protected:
   /**
    * \param connection_info the connection info
    * \param protocol_info the protocol info
-   * \param debug the debug status
+   * \param curl_verbose the curl verbose status
    */
   explicit CurlExecutor(
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
-    const bool debug);
+    const bool curl_verbose);
   CurlExecutor(const CurlExecutor &) = delete;
   CurlExecutor & operator=(const CurlExecutor &) = delete;
   virtual ~CurlExecutor();
@@ -68,7 +68,6 @@ protected:
   init_options() = 0;
 
   CurlContext context_;
-  const bool debug_;
 
 private:
   bool is_valid_;

@@ -18,13 +18,13 @@
 #include <curl/curl.h>
 
 #include <atomic>
-#include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
 
 #include "email/curl/executor.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 
 namespace email
@@ -40,11 +40,11 @@ public:
   /// Constructor.
   /**
    * \param user_info the user information for receiving emails
-   * \param debug the debug status
+   * \param curl_verbose the curl verbose status
    */
   explicit EmailReceiver(
     UserInfo::SharedPtrConst user_info,
-    const bool debug);
+    const bool curl_verbose);
   EmailReceiver(const EmailReceiver &) = delete;
   EmailReceiver & operator=(const EmailReceiver &) = delete;
   virtual ~EmailReceiver();
@@ -98,6 +98,7 @@ private:
   size_t
   write_callback(void * contents, size_t size, size_t nmemb, void * userp);
 
+  std::shared_ptr<Logger> logger_;
   int current_uid_;
   int next_uid_;
   std::string read_buffer_;

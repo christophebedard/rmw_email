@@ -19,6 +19,7 @@
 #include <string>
 
 #include "email/email/sender.hpp"
+#include "email/log.hpp"
 #include "email/pub_sub.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
@@ -50,6 +51,7 @@ public:
   publish(const std::string & message);
 
 private:
+  std::shared_ptr<Logger> logger_;
   std::shared_ptr<EmailSender> sender_;
 };
 

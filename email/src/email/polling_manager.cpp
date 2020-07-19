@@ -14,29 +14,28 @@
 
 #include <atomic>
 #include <chrono>
-#include <iostream>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <thread>
-// #include <utility>
 #include <vector>
 
 #include "email/email/polling_manager.hpp"
 #include "email/email/receiver.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 
 namespace email
 {
 
-PollingManager::PollingManager(std::shared_ptr<EmailReceiver> receiver, const bool debug)
+PollingManager::PollingManager(std::shared_ptr<EmailReceiver> receiver)
 : receiver_(receiver),
-  debug_(debug),
   has_started_(false),
   do_shutdown_(false),
   thread_({}),
   handlers_mutex_(),
-  handlers_()
+  handlers_(),
+  logger_(log::create("PollingManager"))
 {}
 
 PollingManager::~PollingManager() {}
@@ -44,8 +43,11 @@ PollingManager::~PollingManager() {}
 void
 PollingManager::register_handler(const HandlerFunction & handler)
 {
-  std::lock_guard<std::mutex> lock(handlers_mutex_);
-  handlers_.push_back(handler);
+  {
+    std::lock_guard<std::mutex> lock(handlers_mutex_);
+    handlers_.push_back(handler);
+  }
+  logger_->debug("handler registered");
 }
 
 bool
@@ -57,18 +59,22 @@ PollingManager::has_started() const
 void
 PollingManager::start()
 {
+  logger_->debug("starting");
   has_started_ = true;
   thread_ = std::thread(&PollingManager::poll_thread, this);
+  logger_->debug("started");
 }
 
 void
 PollingManager::shutdown()
 {
+  logger_->debug("shutting down");
   receiver_->shutdown();
   if (has_started()) {
     do_shutdown_ = true;
     thread_.join();
   }
+  logger_->debug("shut down");
 }
 
 void
@@ -90,9 +96,7 @@ PollingManager::poll_thread()
     {
       std::lock_guard<std::mutex> lock(handlers_mutex_);
       for (auto it = handlers_.begin(); it != handlers_.end(); ++it) {
-        if (debug_) {
-          std::cout << "[PollingManager] calling handler" << std::endl;
-        }
+        logger_->debug("calling handler");
         it->operator()(data);
       }
     }

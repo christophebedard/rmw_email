@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -20,6 +19,7 @@
 
 #include "email/context.hpp"
 #include "email/email/polling_manager.hpp"
+#include "email/log.hpp"
 #include "email/safe_queue.hpp"
 #include "email/subscription_handler.hpp"
 #include "email/types.hpp"
@@ -27,8 +27,8 @@
 namespace email
 {
 
-SubscriptionHandler::SubscriptionHandler(const bool debug)
-: debug_(debug),
+SubscriptionHandler::SubscriptionHandler()
+: logger_(log::create("SubscriptionHandler")),
   subscribers_mutex_(),
   subscribers_()
 {
@@ -38,6 +38,7 @@ SubscriptionHandler::SubscriptionHandler(const bool debug)
       &SubscriptionHandler::handle,
       this,
       std::placeholders::_1));
+  logger_->debug("initialized");
 }
 
 SubscriptionHandler::~SubscriptionHandler() {}
@@ -54,9 +55,7 @@ SubscriptionHandler::register_subscriber(
 void
 SubscriptionHandler::handle(const struct EmailData & data)
 {
-  if (debug_) {
-    std::cout << "[SubscriptionHandler] handle() called" << std::endl;
-  }
+  logger_->debug("handle() called");
   const std::string & topic = data.content.subject;
   // Push it to the right queue
   {
@@ -64,9 +63,7 @@ SubscriptionHandler::handle(const struct EmailData & data)
     auto range = subscribers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
-      if (debug_) {
-        std::cout << "[SubscriptionHandler] pushing body to queue" << std::endl;
-      }
+      logger_->debug("pushing body to queue");
       it->second->push(data.content.body);
     }
   }

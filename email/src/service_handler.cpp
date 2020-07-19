@@ -12,7 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
 #include <map>
 #include <memory>
 #include <mutex>
@@ -20,6 +19,7 @@
 
 #include "email/context.hpp"
 #include "email/email/polling_manager.hpp"
+#include "email/log.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service_handler.hpp"
 #include "email/types.hpp"
@@ -27,8 +27,8 @@
 namespace email
 {
 
-ServiceHandler::ServiceHandler(const bool debug)
-: debug_(debug),
+ServiceHandler::ServiceHandler()
+: logger_(log::create("ServiceHandler")),
   services_mutex_(),
   services_()
 {
@@ -38,6 +38,7 @@ ServiceHandler::ServiceHandler(const bool debug)
       &ServiceHandler::handle,
       this,
       std::placeholders::_1));
+  logger_->debug("initialized");
 }
 
 ServiceHandler::~ServiceHandler() {}
