@@ -17,6 +17,7 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/utils.hpp"
 
@@ -31,7 +32,8 @@ get_global_context()
 }
 
 Context::Context()
-: options_(nullptr),
+: logger_(nullptr),
+  options_(nullptr),
   is_valid_(false),
   is_receiver_init_(false),
   is_polling_manager_init_(false)
@@ -55,7 +57,7 @@ Context::init()
     throw ContextInitFailedError();
   }
   options_ = options.value();
-  is_valid_ = true;
+  init_common();
 }
 
 void
@@ -70,7 +72,17 @@ Context::init(int argc, char const * const argv[])
     exit(1);
   }
   options_ = options.value();
+  init_common();
+}
+
+void
+Context::init_common()
+{
   is_valid_ = true;
+  log::init();
+  log::set_level_from_env();
+  spdlog::get("root")->debug("logging initialized");
+  logger_ = log::create("Context");
 }
 
 bool
@@ -79,6 +91,7 @@ Context::shutdown()
   if (!is_valid()) {
     return false;
   }
+  logger_->debug("shutting down");
   // Only call shutdown() if they have been init, otherwise they will get initialized
   if (is_receiver_init_) {
     get_receiver()->shutdown();
@@ -86,6 +99,7 @@ Context::shutdown()
   if (is_polling_manager_init_) {
     get_polling_manager()->shutdown();
   }
+  logger_->debug("shut down");
   return true;
 }
 
@@ -112,7 +126,7 @@ Context::get_receiver() const
   }
   static std::shared_ptr<EmailReceiver> receiver = std::make_shared<EmailReceiver>(
     options_->get_user_info(),
-    options_->debug());
+    options_->curl_verbose());
   if (!receiver->is_valid()) {
     receiver->init();
     is_receiver_init_ = true;
@@ -129,7 +143,7 @@ Context::get_sender() const
   static std::shared_ptr<EmailSender> sender = std::make_shared<EmailSender>(
     options_->get_user_info(),
     options_->get_recipients(),
-    options_->debug());
+    options_->curl_verbose());
   if (!sender->is_valid()) {
     sender->init();
   }
@@ -142,9 +156,8 @@ Context::get_polling_manager() const
   if (!is_valid()) {
     throw ContextNotInitializedError();
   }
-  static std::shared_ptr<PollingManager> manager = std::make_shared<PollingManager>(
-    get_receiver(),
-    options_->debug());
+  static std::shared_ptr<PollingManager> manager =
+    std::make_shared<PollingManager>(get_receiver());
   if (!manager->has_started()) {
     manager->start();
     is_polling_manager_init_ = true;
@@ -158,8 +171,7 @@ Context::get_subscription_handler() const
   if (!is_valid()) {
     throw ContextNotInitializedError();
   }
-  static std::shared_ptr<SubscriptionHandler> handler = std::make_shared<SubscriptionHandler>(
-    options_->debug());
+  static std::shared_ptr<SubscriptionHandler> handler = std::make_shared<SubscriptionHandler>();
   return handler;
 }
 
@@ -169,8 +181,7 @@ Context::get_service_handler() const
   if (!is_valid()) {
     throw ContextNotInitializedError();
   }
-  static std::shared_ptr<ServiceHandler> handler = std::make_shared<ServiceHandler>(
-    options_->debug());
+  static std::shared_ptr<ServiceHandler> handler = std::make_shared<ServiceHandler>();
   return handler;
 }
 

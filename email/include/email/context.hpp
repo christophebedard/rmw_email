@@ -23,6 +23,7 @@
 #include "email/email/polling_manager.hpp"
 #include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
+#include "email/log.hpp"
 #include "email/options.hpp"
 #include "email/service_handler.hpp"
 #include "email/subscription_handler.hpp"
@@ -165,6 +166,11 @@ public:
   get_service_handler() const;
 
 private:
+  /// Perform common init tasks.
+  void
+  init_common();
+
+  std::shared_ptr<Logger> logger_;
   std::shared_ptr<Options> options_;
   bool is_valid_;
   mutable bool is_receiver_init_;

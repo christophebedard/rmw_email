@@ -17,8 +17,10 @@
 
 #include <curl/curl.h>
 
+#include <memory>
 #include <string>
 
+#include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/utils.hpp"
 
@@ -37,12 +39,12 @@ public:
   /**
    * \param connection_info the connection information
    * \param protocol_info the protocol information
-   * \param debug the debug status
+   * \param curl_verbose the curl verbose status
    */
   explicit CurlContext(
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
-    const bool debug);
+    const bool curl_verbose);
   CurlContext(const CurlContext &) = delete;
   CurlContext & operator=(const CurlContext &) = delete;
   ~CurlContext();
@@ -91,10 +93,11 @@ public:
   get_connection_info() const;
 
 private:
+  std::shared_ptr<Logger> logger_;
   CURL * handle_;
   const struct ConnectionInfo connection_info_;
   const std::string full_url_;
-  bool debug_;
+  bool curl_verbose_;
 };
 
 }  // namespace email

@@ -23,6 +23,7 @@
 #include "email/curl/executor.hpp"
 #include "email/email/payload_utils.hpp"
 #include "email/email/sender.hpp"
+#include "email/log.hpp"
 #include "email/utils.hpp"
 #include "email/types.hpp"
 
@@ -32,11 +33,12 @@ namespace email
 EmailSender::EmailSender(
   UserInfo::SharedPtrConst user_info,
   EmailRecipients::SharedPtrConst recipients,
-  const bool debug)
+  const bool curl_verbose)
 : CurlExecutor(
     {user_info->host_smtp, user_info->username, user_info->password},
     {"smtps", 465},
-    debug),
+    curl_verbose),
+  logger_(log::create("EmailSender")),
   recipients_(recipients),
   recipients_list_(nullptr),
   upload_ctx_()
@@ -80,7 +82,7 @@ EmailSender::init_options()
     context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_connection_info().username.c_str());
   // Add all destination emails to the list of recipients
   if (0 == recipients_->to.size() + recipients_->cc.size() + recipients_->bcc.size()) {
-    std::cerr << "no recipients for EmailSender" << std::endl;
+    logger_->critical("no recipients for EmailSender");
     return false;
   }
   for (auto & email_to : recipients_->to) {
@@ -118,12 +120,10 @@ bool
 EmailSender::send_payload(const std::string & payload)
 {
   if (!is_valid()) {
-    std::cerr << "not initialized!" << std::endl;
+    logger_->warn("not initialized!");
     return false;
   }
-  if (debug_) {
-    std::cout << "[PAYLOAD]:" << std::endl << payload << std::endl;
-  }
+  logger_->debug("PAYLOAD:\n{}", payload);
   // Reset upload data
   upload_ctx_.payload = payload.c_str();
   upload_ctx_.lines_read = 0;

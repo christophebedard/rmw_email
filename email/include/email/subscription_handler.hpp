@@ -21,6 +21,7 @@
 #include <string>
 
 #include "email/safe_queue.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -35,10 +36,7 @@ class SubscriptionHandler
 {
 public:
   /// Constructor.
-  /**
-   * \param debug the debug status
-   */
-  explicit SubscriptionHandler(const bool debug);
+  SubscriptionHandler();
   SubscriptionHandler(const SubscriptionHandler &) = delete;
   SubscriptionHandler & operator=(const SubscriptionHandler &) = delete;
   ~SubscriptionHandler();
@@ -63,7 +61,7 @@ public:
   handle(const struct EmailData & data);
 
 private:
-  bool debug_;
+  std::shared_ptr<Logger> logger_;
   std::mutex subscribers_mutex_;
   std::multimap<std::string, std::shared_ptr<SafeQueue<std::string>>> subscribers_;
 };

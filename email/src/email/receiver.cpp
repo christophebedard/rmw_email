@@ -18,7 +18,6 @@
 #include <cstdio>
 #include <cstring>
 #include <cstdlib>
-#include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
@@ -27,6 +26,7 @@
 #include "email/curl/executor.hpp"
 #include "email/email/receiver.hpp"
 #include "email/email/response_utils.hpp"
+#include "email/log.hpp"
 #include "email/types.hpp"
 
 namespace email
@@ -34,11 +34,12 @@ namespace email
 
 EmailReceiver::EmailReceiver(
   UserInfo::SharedPtrConst user_info,
-  const bool debug)
+  const bool curl_verbose)
 : CurlExecutor(
     {user_info->host_imap, user_info->username, user_info->password},
     {"imaps", 993},
-    debug),
+    curl_verbose),
+  logger_(log::create("EmailReceiver")),
   current_uid_(-1),
   next_uid_(-1),
   read_buffer_(),
@@ -72,7 +73,7 @@ std::optional<struct EmailData>
 EmailReceiver::get_email()
 {
   if (!is_valid()) {
-    std::cerr << "not initialized!" << std::endl;
+    logger_->warn("not initialized!");
     return std::nullopt;
   }
   // Update next UID
@@ -85,10 +86,8 @@ EmailReceiver::get_email()
   if (0 > current_uid_) {
     current_uid_ = next_uid_;
   }
-  if (debug_) {
-    std::cout << "current_uid=" << current_uid_ << std::endl;
-    std::cout << "next_uid   =" << next_uid_ << std::endl;
-  }
+  logger_->debug("current_uid={}", current_uid_);
+  logger_->debug("next_uid   ={}", next_uid_);
   // Try until we get an email or until we have to stop
   std::optional<struct EmailData> next_email = std::nullopt;
   while (!next_email && !do_shutdown_.load()) {
@@ -140,11 +139,12 @@ EmailReceiver::execute(
     curl_easy_setopt(context_.get_handle(), CURLOPT_CUSTOMREQUEST, NULL);
   }
 
-  if (debug_) {
-    std::cout << "[EXECUTE]:" << std::endl <<
-      "\turl    : " << request_url << std::endl <<
-      "\tcommand: " << (custom_request ? custom_request.value() : "") << std::endl;
-  }
+  logger_->debug(
+    "EXECUTE:\n"
+    "\turl    : {}\n"
+    "\tcommand: {}",
+    request_url,
+    (custom_request ? custom_request.value() : ""));
 
   // Reset read buffer
   read_buffer_.clear();
@@ -152,9 +152,7 @@ EmailReceiver::execute(
   if (!context_.execute()) {
     return std::nullopt;
   }
-  if (debug_) {
-    std::cout << "[RESPONSE]:" << std::endl << read_buffer_ << std::endl;
-  }
+  logger_->debug("RESPONSE:\n{}", read_buffer_);
   return read_buffer_;
 }
 

@@ -28,7 +28,7 @@ int main(int argc, char ** argv)
   email::EmailSender sender(
     options->get_user_info(),
     options->get_recipients(),
-    options->debug());
+    options->curl_verbose());
   if (!sender.init()) {
     return 1;
   }
