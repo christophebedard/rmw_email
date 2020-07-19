@@ -13,6 +13,8 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   add_compile_options(/W4)
 endif()
 
+include(cmake/add_example.cmake)
+
 find_package(ament_cmake_ros REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(spdlog_vendor REQUIRED)
@@ -66,83 +68,31 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include>"
 )
 ament_export_include_directories(include)
-ament_export_targets(${PROJECT_NAME}_export HAS_LIBRARY_TARGET)
+ament_export_dependencies(ament_cmake_ros rcpputils spdlog_vendor spdlog)
+ament_export_targets(${PROJECT_NAME} HAS_LIBRARY_TARGET)
+ament_export_libraries(${PROJECT_NAME})
 if(CURL_USE_VENDOR)
   ament_export_dependencies(libcurl_vendor)
 else()
-  ament_export_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
+  ament_export_libraries(${CURL_LIBRARIES})
 endif()
-
-# Examples & executables for testing the lib
-add_executable(send
-  example/send.cpp
-)
-target_link_libraries(send
-  ${PROJECT_NAME}
-)
-install(TARGETS
-  send
-  DESTINATION lib/${PROJECT_NAME}
-)
-add_executable(receive
-  example/receive.cpp
-)
-target_link_libraries(receive
-  ${PROJECT_NAME}
-)
-install(TARGETS
-  receive
-  DESTINATION lib/${PROJECT_NAME}
-)
-add_executable(pub
-  example/pub.cpp
-)
-target_link_libraries(pub
-  ${PROJECT_NAME}
-)
-install(TARGETS
-  pub
-  DESTINATION lib/${PROJECT_NAME}
-)
-add_executable(sub
-  example/sub.cpp
-)
-target_link_libraries(sub
-  ${PROJECT_NAME}
-)
-install(TARGETS
-  sub
-  DESTINATION lib/${PROJECT_NAME}
-)
-add_executable(service_client
-  example/service_client.cpp
-)
-target_link_libraries(service_client
-  ${PROJECT_NAME}
-)
-install(TARGETS
-  service_client
-  DESTINATION lib/${PROJECT_NAME}
-)
-add_executable(service_server
-  example/service_server.cpp
-)
-target_link_libraries(service_server
-  ${PROJECT_NAME}
-)
-install(TARGETS
-  service_server
-  DESTINATION lib/${PROJECT_NAME}
-)
 
 install(
   TARGETS ${PROJECT_NAME}
-  EXPORT ${PROJECT_NAME}_export
+  EXPORT ${PROJECT_NAME}
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   RUNTIME DESTINATION bin
   INCLUDES DESTINATION include
 )
+
+# Examples & executables for testing the lib
+add_example(send)
+add_example(receive)
+add_example(pub)
+add_example(sub)
+add_example(service_client)
+add_example(service_server)
 
 if(BUILD_TESTING)
   #set(ament_cmake_cppcheck_ADDITIONAL_INCLUDE_DIRS ${CURL_INCLUDE_DIRS})
