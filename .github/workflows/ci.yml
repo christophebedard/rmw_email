@@ -6,10 +6,11 @@ on:
       - master
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-    - uses: ros-tooling/setup-ros@0.0.25
-    - uses: christophebedard/action-ros-ci@import-token-private-repo
+    - uses: ros-tooling/setup-ros@master
+    - uses: ros-tooling/action-ros-ci@master
       with:
         package-name: email
+        target-ros2-distro: rolling
         import-token: ${{ secrets.REPO_TOKEN }}
