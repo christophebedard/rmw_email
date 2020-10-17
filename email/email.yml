@@ -1,0 +1,10 @@
+email:
+  user:
+    url-smtp:
+    url-imap:
+    username:
+    password:
+  recipients:
+    to:
+    cc:
+    bcc:
