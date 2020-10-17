@@ -16,6 +16,7 @@
 #define EMAIL__EMAIL__SENDER_HPP_
 
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <vector>
 
@@ -53,19 +54,26 @@ public:
   /// Send an email.
   /**
    * \param content the content
+   * \param additional_headers the optional additional headers to include in the email
    * \return true if successful, false otherwise
    */
   bool
-  send(const struct EmailContent & content);
+  send(
+    const struct EmailContent & content,
+    std::optional<EmailHeaders> additional_headers = std::nullopt);
 
   /// Reply to an email.
   /**
    * \param content the content
    * \param email the email to reply to
+   * \param additional_headers the optional additional headers to include in the email
    * \return true if successful, false otherwise
    */
   bool
-  reply(const struct EmailContent & content, const struct EmailData & email);
+  reply(
+    const struct EmailContent & content,
+    const struct EmailData & email,
+    std::optional<EmailHeaders> additional_headers = std::nullopt);
 
 protected:
   virtual

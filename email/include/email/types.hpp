@@ -20,6 +20,7 @@
 
 #include <memory>
 #include <string>
+#include <tuple>
 #include <vector>
 
 namespace email
@@ -93,6 +94,12 @@ struct EmailRecipients
   EmailRecipients(const EmailRecipients &) = default;
   SHARED_PTR_CONST(EmailRecipients)
 };
+
+/// Email header, with a header key and a value.
+typedef std::tuple<std::string, std::string> EmailHeader;
+
+/// Email headers, each with a key and a value.
+typedef std::vector<EmailHeader> EmailHeaders;
 
 /// Content of an email.
 struct EmailContent

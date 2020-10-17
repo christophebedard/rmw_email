@@ -50,6 +50,7 @@ build_payload(
   const std::vector<std::string> & cc,
   const std::vector<std::string> & bcc,
   const struct EmailContent & content,
+  std::optional<EmailHeaders> additional_headers = std::nullopt,
   std::optional<std::string> reply_ref = std::nullopt);
 
 /// Build curl email payload from recipients and content.
@@ -63,6 +64,7 @@ const std::string
 build_payload(
   EmailRecipients::SharedPtrConst recipients,
   const struct EmailContent & content,
+  std::optional<EmailHeaders> additional_headers = std::nullopt,
   std::optional<std::string> reply_ref = std::nullopt);
 
 /// Create a string list of emails.

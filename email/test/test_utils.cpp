@@ -70,7 +70,7 @@ TEST(TestUtils, split_email_list) {
 
 TEST(TestUtils, build_payload) {
   // Check handling of multiple recipients
-  std::string payload_one_recipient = \
+  const std::string payload_one_recipient = \
     "In-Reply-To: \r\nReferences: \r\n" \
     "To: my@email.com\r\n" \
     "Cc: \r\n" \
@@ -85,7 +85,7 @@ TEST(TestUtils, build_payload) {
     payload_one_recipient,
     email::utils::payload::build_payload(recipients_one, content_one_line));
 
-  std::string payload_multiple_recipients = \
+  const std::string payload_multiple_recipients = \
     "In-Reply-To: \r\nReferences: \r\n" \
     "To: my@email.com, another@email.com\r\n" \
     "Cc: onecc@email.ca\r\n" \
@@ -105,7 +105,7 @@ TEST(TestUtils, build_payload) {
   const struct email::EmailContent content_multiple_lines = {
     {"this is my awesome subject that stops here\nor not!"},
     {"this is the email's body\non multiple lines!"}};
-  std::string payload_multiple_recipients_newlines = \
+  const std::string payload_multiple_recipients_newlines = \
     "In-Reply-To: \r\nReferences: \r\n" \
     "To: my@email.com, another@email.com\r\n" \
     "Cc: onecc@email.ca\r\n" \
@@ -115,6 +115,43 @@ TEST(TestUtils, build_payload) {
   EXPECT_EQ(
     payload_multiple_recipients_newlines,
     email::utils::payload::build_payload(recipients_multiple, content_multiple_lines));
+
+  // Reply reference
+  const std::string payload_reply_ref = \
+    "In-Reply-To: thisisaref\r\nReferences: thisisaref\r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  const std::string reply_ref = "thisisaref";
+  EXPECT_EQ(
+    payload_reply_ref,
+    email::utils::payload::build_payload(
+      recipients_one,
+      content_one_line,
+      std::nullopt,
+      reply_ref));
+
+  // Additional headers
+  const email::EmailHeaders additional_headers = {
+    {"key", "value"}, {"anotherKey", "another@value.com"}};
+  const std::string payload_additional_headers = \
+    "key: value\r\n" \
+    "anotherKey: another@value.com\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  EXPECT_EQ(
+    payload_additional_headers,
+    email::utils::payload::build_payload(
+      recipients_one,
+      content_one_line,
+      additional_headers,
+      std::nullopt));
 }
 
 TEST(TestUtils, cut_string_if_newline) {
