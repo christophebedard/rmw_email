@@ -20,3 +20,15 @@ As for the values:
    * `to`/`cc`/`bcc`: recipients (comma-separated)
 
 Note that you might want to use two different configuration files for two different executables/nodes.
+
+## Debugging
+
+There are currently two ways to debug:
+
+1. Set the `EMAIL_CURL_VERBOSE` environment variable to be non-empty, e.g. `EMAIL_CURL_VERBOSE=y`. This will enable libcurl's verbose option.
+1. Set the logging level to "debug" through the `EMAIL_LOG_LEVEL` environment variable, e.g. `EMAIL_LOG_LEVEL=debug`.
+   * The logging levels are: off, debug, info, error, warn, and fatal.
+   * The default level is info.
+
+Option 1 generally produces too much output to be useful.
+Option 2 is much more useful.
