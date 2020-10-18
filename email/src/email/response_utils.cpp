@@ -27,17 +27,19 @@ namespace utils
 namespace response
 {
 
-static const std::regex REGEX_BCC(R"(Bcc: (.*)\r?\n)");
+static constexpr auto HEADER_BCC = "Bcc";
+static constexpr auto HEADER_CC = "Cc";
+static constexpr auto HEADER_FROM = "From";
+static constexpr auto HEADER_IN_REPLY_TO = "In-Reply-To";
+static constexpr auto HEADER_MESSAGE_ID = "Message-ID";
+static constexpr auto HEADER_REFERENCES = "References";
+static constexpr auto HEADER_SUBJECT = "Subject";
+static constexpr auto HEADER_TO = "To";
 static const std::regex REGEX_BODY(R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
-static const std::regex REGEX_CC(R"(Cc: (.*)\r?\n)");
-static const std::regex REGEX_FROM(R"(From: (.*)\r?\n)");
-static const std::regex REGEX_IN_REPLY_TO(R"(In-Reply-To: (.*)\r?\n)");
-static const std::regex REGEX_MESSAGE_ID(R"(Message-ID: (.*)\r?\n)");
+static const std::regex REGEX_HEADER(R"(([a-zA-Z\-]+): (.*)\r)");
 static const std::regex REGEX_NEXTUID(
   R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
   std::regex::extended);
-static const std::regex REGEX_SUBJECT(R"(Subject: (.*)\r?\n)");
-static const std::regex REGEX_TO(R"(To: (.*)\r?\n)");
 
 std::optional<int>
 get_nextuid_from_response(const std::string & response)
@@ -49,11 +51,45 @@ get_nextuid_from_response(const std::string & response)
   return std::stoi(match_group.value());
 }
 
-std::optional<struct EmailContent>
-get_email_content_from_response(const std::string & curl_result)
+std::optional<EmailHeaders>
+get_email_headers_from_response(const std::string & response)
 {
-  auto match_subject = get_first_match_group(curl_result, REGEX_SUBJECT);
-  auto match_body = get_first_match_group(curl_result, REGEX_BODY);
+  EmailHeaders headers;
+  std::istringstream lines(response);
+  std::string line;
+  while (getline(lines, line)) {
+    std::smatch matches;
+    if (!std::regex_search(line, matches, REGEX_HEADER)) {
+      continue;
+    }
+    // A header match should have a size of 2 (key + value) + 1 (the first global match itself)
+    if (matches.size() != 3) {
+      continue;
+    }
+    headers.insert({matches[1].str(), matches[2].str()});
+  }
+  return headers;
+}
+
+/// Utility function for taking header value from container.
+std::optional<std::string>
+_take_value_from_headers(const std::string & header_key, EmailHeaders & headers)
+{
+  auto it = headers.find(header_key);
+  if (headers.end() == it) {
+    return std::nullopt;
+  }
+  auto value = it->second;
+  // Remove the item from the map ("take")
+  headers.erase(it);
+  return value;
+}
+
+std::optional<struct EmailContent>
+get_email_content_from_response(const std::string & response, EmailHeaders & headers)
+{
+  auto match_subject = _take_value_from_headers(HEADER_SUBJECT, headers);
+  auto match_body = get_first_match_group(response, REGEX_BODY);
   if (!match_subject || !match_body) {
     return std::nullopt;
   }
@@ -64,21 +100,31 @@ get_email_content_from_response(const std::string & curl_result)
 }
 
 std::optional<struct EmailData>
-get_email_data_from_response(const std::string & curl_result)
+get_email_data_from_response(const std::string & response)
 {
-  auto match_from = get_first_match_group(curl_result, REGEX_FROM);
-  auto match_in_reply_to = get_first_match_group(curl_result, REGEX_IN_REPLY_TO);
-  auto match_message_id = get_first_match_group(curl_result, REGEX_MESSAGE_ID);
-  auto content_opt = get_email_content_from_response(curl_result);
-  if (!match_from || !match_in_reply_to || !match_message_id || !content_opt) {
+  auto match_headers = get_email_headers_from_response(response);
+  if (!match_headers) {
     return std::nullopt;
   }
-  auto match_to = get_first_match_group(curl_result, REGEX_TO);
-  auto match_cc = get_first_match_group(curl_result, REGEX_CC);
-  auto match_bcc = get_first_match_group(curl_result, REGEX_BCC);
+  auto headers = match_headers.value();
+
+  auto match_from = _take_value_from_headers(HEADER_FROM, headers);
+  auto match_in_reply_to = _take_value_from_headers(HEADER_IN_REPLY_TO, headers);
+  auto match_message_id = _take_value_from_headers(HEADER_MESSAGE_ID, headers);
+  if (!match_from || !match_in_reply_to || !match_message_id) {
+    return std::nullopt;
+  }
+  auto content_opt = get_email_content_from_response(response, headers);
+  if (!content_opt) {
+    return std::nullopt;
+  }
+  auto match_to = _take_value_from_headers(HEADER_TO, headers);
+  auto match_cc = _take_value_from_headers(HEADER_CC, headers);
+  auto match_bcc = _take_value_from_headers(HEADER_BCC, headers);
   if (!match_to || !match_cc || !match_bcc) {
     return std::nullopt;
   }
+
   struct EmailRecipients recipients(
     split_email_list(match_to.value(), true),
     split_email_list(match_cc.value(), true),
@@ -88,7 +134,8 @@ get_email_data_from_response(const std::string & curl_result)
     match_in_reply_to.value(),
     match_from.value(),
     recipients,
-    content_opt.value());
+    content_opt.value(),
+    headers);
   return email_data;
 }
 

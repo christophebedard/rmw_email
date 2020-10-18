@@ -17,6 +17,7 @@
 #include <cstring>
 #include <iostream>
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <stdexcept>
 #include <string>
 
@@ -104,16 +105,28 @@ EmailSender::init_options()
 }
 
 bool
-EmailSender::send(const struct EmailContent & content)
+EmailSender::send(
+  const struct EmailContent & content,
+  std::optional<EmailHeaders> additional_headers)
 {
-  return send_payload(utils::payload::build_payload(recipients_, content));
+  return send_payload(
+    utils::payload::build_payload(recipients_, content, additional_headers, std::nullopt));
 }
 
 bool
-EmailSender::reply(const struct EmailContent & content, const struct EmailData & email)
+EmailSender::reply(
+  const struct EmailContent & content,
+  const struct EmailData & email,
+  std::optional<EmailHeaders> additional_headers)
 {
   return send_payload(
-    utils::payload::build_payload({email.from}, {}, {}, content, email.message_id));
+    utils::payload::build_payload(
+      {email.from},
+      {},
+      {},
+      content,
+      additional_headers,
+      email.message_id));
 }
 
 bool
