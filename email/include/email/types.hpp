@@ -18,9 +18,10 @@
 #define SHARED_PTR_CONST(name) \
   using SharedPtrConst = std::shared_ptr<const struct name>;
 
+#include <map>
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
-#include <tuple>
 #include <vector>
 
 namespace email
@@ -95,11 +96,11 @@ struct EmailRecipients
   SHARED_PTR_CONST(EmailRecipients)
 };
 
-/// Email header, with a header key and a value.
-typedef std::tuple<std::string, std::string> EmailHeader;
+/// Email headers, with a header key and a value.
+typedef std::map<std::string, std::string> EmailHeaders;
 
-/// Email headers, each with a key and a value.
-typedef std::vector<EmailHeader> EmailHeaders;
+/// Email header, with a key and a value.
+typedef EmailHeaders::value_type EmailHeader;
 
 /// Content of an email.
 struct EmailContent
@@ -131,18 +132,23 @@ struct EmailData
   struct EmailRecipients recipients;
   /// Content of the email.
   struct EmailContent content;
+  /// Additional headers.
+  EmailHeaders additional_headers;
   /// Constructor.
   EmailData(
     const std::string & message_id_,
     const std::string & in_reply_to_,
     const std::string & from_,
     const struct EmailRecipients & recipients_,
-    const struct EmailContent & content_)
+    const struct EmailContent & content_,
+    std::optional<EmailHeaders> additional_headers_ = std::nullopt)
   : message_id(message_id_),
     in_reply_to(in_reply_to_),
     from(from_),
     recipients(recipients_),
-    content(content_)
+    content(content_),
+    additional_headers(
+      additional_headers_.has_value() ? additional_headers_.value() : EmailHeaders{})
   {}
   /// Copy constructor.
   EmailData(const EmailData &) = default;

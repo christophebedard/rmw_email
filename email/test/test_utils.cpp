@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "email/email/payload_utils.hpp"
+#include "email/email/response_utils.hpp"
 #include "email/utils.hpp"
 
 TEST(TestUtils, join_list) {
@@ -46,23 +47,23 @@ TEST(TestUtils, split_email_list) {
 
   const std::string list_single = "my@email.com";
   auto vector_single = email::utils::split_email_list(list_single);
-  EXPECT_EQ(1UL, vector_single.size());
+  ASSERT_EQ(1UL, vector_single.size());
   EXPECT_EQ("my@email.com", vector_single[0]);
 
   auto vector_single_space = email::utils::split_email_list(list_single, true);
-  EXPECT_EQ(1UL, vector_single_space.size());
+  ASSERT_EQ(1UL, vector_single_space.size());
   EXPECT_EQ("my@email.com", vector_single_space[0]);
 
   const std::string list_multiple_nospace = "my@email.com,another@email.ca,lastone@geemail.com";
   auto vector_multiple_nospace = email::utils::split_email_list(list_multiple_nospace);
-  EXPECT_EQ(3UL, vector_multiple_nospace.size());
+  ASSERT_EQ(3UL, vector_multiple_nospace.size());
   EXPECT_EQ("my@email.com", vector_multiple_nospace[0]);
   EXPECT_EQ("another@email.ca", vector_multiple_nospace[1]);
   EXPECT_EQ("lastone@geemail.com", vector_multiple_nospace[2]);
 
   const std::string list_multiple_space = "my@email.com, another@email.ca, lastone@geemail.com";
   auto vector_multiple_space = email::utils::split_email_list(list_multiple_space, true);
-  EXPECT_EQ(3UL, vector_multiple_space.size());
+  ASSERT_EQ(3UL, vector_multiple_space.size());
   EXPECT_EQ("my@email.com", vector_multiple_space[0]);
   EXPECT_EQ("another@email.ca", vector_multiple_space[1]);
   EXPECT_EQ("lastone@geemail.com", vector_multiple_space[2]);
@@ -136,9 +137,10 @@ TEST(TestUtils, build_payload) {
   // Additional headers
   const email::EmailHeaders additional_headers = {
     {"key", "value"}, {"anotherKey", "another@value.com"}};
+  // Here we have to watch out for the order when testing
   const std::string payload_additional_headers = \
-    "key: value\r\n" \
     "anotherKey: another@value.com\r\n" \
+    "key: value\r\n" \
     "In-Reply-To: \r\nReferences: \r\n" \
     "To: my@email.com\r\n" \
     "Cc: \r\n" \
@@ -170,4 +172,35 @@ TEST(TestUtils, cut_string_if_newline) {
     "this is the first line!?!?!?!?!",
     email::utils::payload::cut_string_if_newline(
       "this is the first line!?!?!?!?!\r<--not sure this would happen, but\n\rwhy not").c_str());
+}
+
+TEST(TestUtils, get_email_data_from_response) {
+  // Typical use-case with an additional/non-standard header (Sequence-ID)
+  const std::string response = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  auto data_opt = email::utils::response::get_email_data_from_response(response);
+  ASSERT_TRUE(data_opt.has_value());
+  auto data = data_opt.value();
+  EXPECT_EQ(data.message_id, "<some.id@mx.google.com>");
+  EXPECT_EQ(data.in_reply_to, "");
+  EXPECT_EQ(data.from, "some@email.com");
+  ASSERT_EQ(data.recipients.to.size(), 1UL);
+  EXPECT_EQ(data.recipients.to[0], "my@email.com");
+  EXPECT_EQ(data.recipients.cc.size(), 0UL);
+  EXPECT_EQ(data.recipients.bcc.size(), 0UL);
+  EXPECT_EQ(data.content.subject, "this is my awesome subject");
+  EXPECT_EQ(data.content.body, "this is the email's body");
+  auto custom_header_find = data.additional_headers.find("Sequence-ID");
+  ASSERT_NE(custom_header_find, data.additional_headers.end());
+  EXPECT_EQ(custom_header_find->first, "Sequence-ID");
+  EXPECT_EQ(custom_header_find->second, "123");
 }

@@ -43,8 +43,8 @@ build_payload(
 {
   std::stringstream additional_headers_stream;
   if (additional_headers.has_value()) {
-    for (auto & header : additional_headers.value()) {
-      additional_headers_stream << std::get<0>(header) << ": " << std::get<1>(header) << "\r\n";
+    for (auto const & [key, value] : additional_headers.value()) {
+      additional_headers_stream << key << ": " << value << "\r\n";
     }
   }
   // Subjects containing newlines will have the second+ line(s) be moved to the body,

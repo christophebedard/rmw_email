@@ -42,21 +42,29 @@ namespace response
 std::optional<int>
 get_nextuid_from_response(const std::string & response);
 
+/// Get headers from request response.
+/**
+ * \param response the result of the request
+ * \return the headers
+ */
+std::optional<EmailHeaders>
+get_email_headers_from_response(const std::string & response);
+
 /// Get email content from raw request response.
 /**
- * \param curl_result the result of the request
+ * \param response the result of the request
  * \return the email content, or `std::nullopt` if it failed
  */
 std::optional<struct EmailContent>
-get_email_content_from_response(const std::string & curl_result);
+get_email_content_from_response(const std::string & response);
 
 /// Get raw email data from raw request response.
 /**
- * \param curl_result the result of the request
+ * \param response the result of the request
  * \return the email data, or `std::nullopt` if it failed
  */
 std::optional<struct EmailData>
-get_email_data_from_response(const std::string & curl_result);
+get_email_data_from_response(const std::string & response);
 
 /// Get first match group for a string given a regex.
 std::optional<std::string>
