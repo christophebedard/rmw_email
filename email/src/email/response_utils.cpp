@@ -41,10 +41,25 @@ static const std::regex REGEX_NEXTUID(
   R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
   std::regex::extended);
 
+/// Get first match group for a string given a regex.
+std::optional<std::string>
+_get_first_match_group(const std::string & string, const std::regex & regex)
+{
+  std::smatch matches;
+  if (!std::regex_search(string, matches, regex)) {
+    return std::nullopt;
+  }
+  // Only expecting one group besides the first global match itself
+  if (matches.size() != 2) {
+    return std::nullopt;
+  }
+  return matches[1].str();
+}
+
 std::optional<int>
 get_nextuid_from_response(const std::string & response)
 {
-  auto match_group = get_first_match_group(response, REGEX_NEXTUID);
+  auto match_group = _get_first_match_group(response, REGEX_NEXTUID);
   if (!match_group) {
     return std::nullopt;
   }
@@ -89,7 +104,7 @@ std::optional<struct EmailContent>
 get_email_content_from_response(const std::string & response, EmailHeaders & headers)
 {
   auto match_subject = _take_value_from_headers(HEADER_SUBJECT, headers);
-  auto match_body = get_first_match_group(response, REGEX_BODY);
+  auto match_body = _get_first_match_group(response, REGEX_BODY);
   if (!match_subject || !match_body) {
     return std::nullopt;
   }
@@ -137,20 +152,6 @@ get_email_data_from_response(const std::string & response)
     content_opt.value(),
     headers);
   return email_data;
-}
-
-std::optional<std::string>
-get_first_match_group(const std::string & string, const std::regex & regex)
-{
-  std::smatch matches;
-  if (!std::regex_search(string, matches, regex)) {
-    return std::nullopt;
-  }
-  // Only expecting one group besides the first global match itself
-  if (matches.size() != 2) {
-    return std::nullopt;
-  }
-  return matches[1].str();
 }
 
 }  // namespace response

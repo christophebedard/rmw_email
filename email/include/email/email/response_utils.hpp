@@ -66,10 +66,6 @@ get_email_content_from_response(const std::string & response);
 std::optional<struct EmailData>
 get_email_data_from_response(const std::string & response);
 
-/// Get first match group for a string given a regex.
-std::optional<std::string>
-get_first_match_group(const std::string & string, const std::regex & regex);
-
 }  // namespace response
 }  // namespace utils
 }  // namespace email
