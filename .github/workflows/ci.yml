@@ -8,8 +8,11 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
+    - run: |
+        cat ${{ github.event_path }}
     - uses: ros-tooling/setup-ros@master
-    - uses: ros-tooling/action-ros-ci@master
+    - uses: christophebedard/action-ros-ci@pr-repos-files-override-and-supplemental
+    # - uses: ros-tooling/action-ros-ci@master
       with:
         package-name: email
         target-ros2-distro: rolling
