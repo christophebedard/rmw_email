@@ -10,7 +10,13 @@ jobs:
     steps:
     - uses: ros-tooling/setup-ros@master
     - uses: ros-tooling/action-ros-ci@master
+      id: action_ros_ci_step
       with:
         package-name: email
         target-ros2-distro: rolling
         import-token: ${{ secrets.REPO_TOKEN }}
+    - uses: actions/upload-artifact@v1
+      with:
+        name: colcon-logs
+        path: ${{ steps.action_ros_ci_step.outputs.ros-workspace-directory-name }}/log
+      if: always()
