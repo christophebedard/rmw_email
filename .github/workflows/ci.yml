@@ -8,9 +8,17 @@ jobs:
   test:
     runs-on: ubuntu-20.04
     steps:
+    - uses: actions/checkout@v2
     - uses: ros-tooling/setup-ros@master
     - uses: ros-tooling/action-ros-ci@master
       with:
         package-name: email
         target-ros2-distro: rolling
         import-token: ${{ secrets.REPO_TOKEN }}
+        colcon-mixin-name: coverage-gcc coverage-pytest
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ros_ws/lcov/total_coverage.info
+        flags: unittests
+        name: codecov-umbrella
