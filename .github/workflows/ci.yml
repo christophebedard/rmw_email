@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ros-tooling/setup-ros@master
-    - uses: ros-tooling/action-ros-ci@master
+    - uses: christophebedard/action-ros-ci@automatically-allow-accessing-private-deps-repo-files
       with:
         package-name: email
         target-ros2-distro: rolling
