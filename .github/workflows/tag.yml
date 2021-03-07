@@ -11,3 +11,4 @@ jobs:
     - uses: christophebedard/tag-version-commit@v1
       with:
         token: ${{ secrets.TAG_CREATION_TOKEN }}
+        version_assertion_command: 'grep -q "<version>$version</version>" email/package.xml'
