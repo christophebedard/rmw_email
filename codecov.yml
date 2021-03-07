@@ -1,5 +1,5 @@
 fixes:
   - "ros_ws/src/*/rmw_email/email/::"
 ignore:
-  - "**/email/example"
-  - "**/email/test"
+  - "email/example"
+  - "email/test"
