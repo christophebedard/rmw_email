@@ -14,8 +14,22 @@ jobs:
       with:
         package-name: email
         target-ros2-distro: rolling
+        vcs-repo-file-url: https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
         import-token: ${{ secrets.REPO_TOKEN }}
-        colcon-mixin-name: coverage-gcc coverage-pytest
+        colcon-defaults: |
+          {
+            "build": {
+              "mixin": [
+                  "coverage-gcc",
+                  "coverage-pytest"
+              ]
+            },
+            "test": {
+              "mixin": [
+                "coverage-pytest"
+              ]
+            }
+          }
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
