@@ -47,8 +47,9 @@ public:
    * For asynchronous sending of a request.
    *
    * \param request the request
+   * \return a reference to the request for getting the corresponding response
    */
-  void
+  uint32_t
   send_request(const std::string & request);
 
   /// Get a response if there is one.
@@ -56,7 +57,7 @@ public:
    * \return the response, or `std::nullopt` if there is none
    */
   std::optional<std::string>
-  get_response();
+  get_response(uint32_t request_id);
 
   /// Send request and get response, waiting for it.
   /**

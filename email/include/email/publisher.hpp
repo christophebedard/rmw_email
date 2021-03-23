@@ -16,6 +16,7 @@
 #define EMAIL__PUBLISHER_HPP_
 
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/email/sender.hpp"
@@ -48,7 +49,7 @@ public:
    * \param message the message
    */
   void
-  publish(const std::string & message);
+  publish(const std::string & message, std::optional<EmailHeaders> additional_headers = std::nullopt);
 
 private:
   std::shared_ptr<Logger> logger_;

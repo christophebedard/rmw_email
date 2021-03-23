@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,6 +40,11 @@ public:
   ServiceHandler(const ServiceHandler &) = delete;
   ServiceHandler & operator=(const ServiceHandler &) = delete;
   ~ServiceHandler();
+
+  void
+  register_service_client(
+    const std::string & service_name,
+    std::shared_ptr<SafeQueue<struct EmailData>> response_queue);
 
   /// Register a service server with the handler.
   /**
