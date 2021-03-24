@@ -15,8 +15,10 @@ jobs:
       with:
         package-name: email
         target-ros2-distro: rolling
-        vcs-repo-file-url: https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
         import-token: ${{ secrets.REPO_TOKEN }}
+        vcs-repo-file-url: |
+          https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
+          "${{ github.workspace }}/.github/workflows/my.repos"
         colcon-defaults: |
           {
             "build": {

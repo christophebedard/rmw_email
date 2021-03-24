@@ -1,0 +1,5 @@
+repositories:
+  rmw_email:
+    type: git
+    url: https://github.com/christophebedard/rmw_email.git
+    version: master
