@@ -7,10 +7,17 @@ on:
 jobs:
   test:
     name: "Build and test"
-    runs-on: ubuntu-20.04
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
     steps:
     - uses: actions/checkout@v2
     - uses: ros-tooling/setup-ros@master
+    - name: "Install (lib)curl"
+      run: |
+        choco install --limit-output --no-progress --yes curl
+      if: matrix.os == 'windows-latest'
     - uses: ros-tooling/action-ros-ci@master
       with:
         package-name: email
@@ -21,13 +28,7 @@ jobs:
           {
             "build": {
               "mixin": [
-                  "coverage-gcc",
-                  "coverage-pytest"
-              ]
-            },
-            "test": {
-              "mixin": [
-                "coverage-pytest"
+                  "coverage-gcc"
               ]
             }
           }
