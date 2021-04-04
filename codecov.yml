@@ -1,3 +1,11 @@
+coverage:
+  status:
+    project:
+      default:
+        informational: true
+    patch:
+      default:
+        target: 0%
 fixes:
   - "ros_ws/src/*/rmw_email/email/::"
 ignore:
