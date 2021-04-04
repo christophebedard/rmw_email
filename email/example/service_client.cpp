@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <iostream>
+#include <string>
 
 #include "email/init.hpp"
 #include "email/service_client.hpp"
@@ -21,8 +22,9 @@ int main()
 {
   email::init();
   email::ServiceClient client("/my_service");
-  std::cout << "making request" << std::endl;
-  auto response = client.send_request_and_wait("this is the request!");
+  const std::string request_content = "this is the request!";
+  std::cout << "making request: " << request_content << std::endl;
+  auto response = client.send_request_and_wait(request_content);
   if (response) {
     std::cout << "response: " << response.value() << std::endl;
   } else {

@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 #define EMAIL__PUBLISHER_HPP_
 
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/email/sender.hpp"
@@ -46,9 +47,12 @@ public:
   /// Publish message.
   /**
    * \param message the message
+   * \param additional_headers the additional headers to include
    */
   void
-  publish(const std::string & message);
+  publish(
+    const std::string & message,
+    std::optional<EmailHeaders> additional_headers = std::nullopt);
 
 private:
   std::shared_ptr<Logger> logger_;

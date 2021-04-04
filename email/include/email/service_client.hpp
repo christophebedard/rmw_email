@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,12 +15,14 @@
 #ifndef EMAIL__SERVICE_CLIENT_HPP_
 #define EMAIL__SERVICE_CLIENT_HPP_
 
+#include <map>
+#include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "email/log.hpp"
 #include "email/publisher.hpp"
 #include "email/service.hpp"
-#include "email/subscriber.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
@@ -47,16 +49,26 @@ public:
    * For asynchronous sending of a request.
    *
    * \param request the request
+   * \return the request ID to use for getting the corresponding response
    */
-  void
+  uint32_t
   send_request(const std::string & request);
+
+  /// Check if the client has an available response to a request.
+  /**
+   * \param request_id the request ID
+   * \return true if there is an available response, false otherwise
+   */
+  bool
+  has_response(uint32_t request_id);
 
   /// Get a response if there is one.
   /**
+   * \param request_id the request ID
    * \return the response, or `std::nullopt` if there is none
    */
   std::optional<std::string>
-  get_response();
+  get_response(uint32_t request_id);
 
   /// Send request and get response, waiting for it.
   /**
@@ -69,8 +81,11 @@ public:
   send_request_and_wait(const std::string & request);
 
 private:
+  std::shared_ptr<Logger> logger_;
+  std::shared_ptr<std::map<uint32_t, struct EmailData>> responses_;
   Publisher pub_;
-  Subscriber sub_;
+
+  static constexpr auto WAIT_TIME = std::chrono::milliseconds(10);
 };
 
 }  // namespace email

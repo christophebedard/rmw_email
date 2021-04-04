@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,11 +22,14 @@ int main()
 {
   email::init();
   email::ServiceServer server("/my_service");
-  std::cout << "getting request" << std::endl;
-  auto request = server.get_request_and_wait();
-  std::cout << "request: " << request << std::endl;
-  std::cout << "sending response" << std::endl;
-  server.send_response("responseeeee!");
+  std::cout << "getting request..." << std::endl;
+  auto request = server.wait_and_get_request();
+  std::cout << "got request!" << std::endl;
+  std::cout << "\trequest ID: " << request.id << std::endl;
+  std::cout << "\trequest: " << request.content << std::endl;
+  const std::string response_content = "responseeeee!";
+  std::cout << "sending response: " << response_content << std::endl;
+  server.send_response(request.id, response_content);
   email::shutdown();
   return 0;
 }
