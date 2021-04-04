@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 #include <map>
 #include <memory>
 #include <mutex>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/safe_queue.hpp"
@@ -41,6 +42,16 @@ public:
   ServiceHandler & operator=(const ServiceHandler &) = delete;
   ~ServiceHandler();
 
+  /// Register a service client with the handler.
+  /**
+   * \param service_name the service name
+   * \param response_map the service client's response map to add the new response to
+   */
+  void
+  register_service_client(
+    const std::string & service_name,
+    std::shared_ptr<std::map<uint32_t, struct EmailData>> response_map);
+
   /// Register a service server with the handler.
   /**
    * \param service_name the service name
@@ -60,10 +71,23 @@ public:
   void
   handle(const struct EmailData & data);
 
+  /// Extract request ID from email data.
+  /**
+   * \param data the email data
+   * \return the request ID, or `std::nullopt` if there is none
+   */
+  static
+  std::optional<uint32_t>
+  extract_request_id(const struct EmailData & data);
+
+  static constexpr auto HEADER_REQUEST_ID = "Request-ID";
+
 private:
   std::shared_ptr<Logger> logger_;
-  std::mutex services_mutex_;
-  std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> services_;
+  std::mutex mutex_clients_;
+  std::multimap<std::string, std::shared_ptr<std::map<uint32_t, struct EmailData>>> clients_;
+  std::mutex mutex_servers_;
+  std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> servers_;
 };
 
 }  // namespace email

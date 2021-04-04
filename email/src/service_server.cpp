@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -33,7 +33,8 @@ ServiceServer::ServiceServer(const std::string & service_name)
 : ServiceObject(service_name),
   logger_(log::create("ServiceServer::" + service_name)),
   requests_(std::make_shared<SafeQueue<struct EmailData>>()),
-  sender_(get_global_context()->get_sender())
+  sender_(get_global_context()->get_sender()),
+  requests_raw_()
 {
   // Register with handler
   get_global_context()->get_service_handler()->register_service_server(
@@ -48,35 +49,51 @@ ServiceServer::has_request()
   return !requests_->empty();
 }
 
-std::optional<std::string>
+std::optional<ServiceRequest>
 ServiceServer::get_request()
 {
   if (!has_request()) {
     return std::nullopt;
   }
-  return requests_->front().content.body;
+  const auto request = requests_->dequeue();
+  auto request_id = ServiceHandler::extract_request_id(request);
+  if (!request_id) {
+    // Should not happen because ServiceHandler should filter those out
+    logger_->error("request without a request ID");
+  }
+  // Put raw request data in a map so that we can
+  // fetch & use it when sending our response
+  requests_raw_.insert({request_id.value(), request});
+  return {{request_id.value(), request.content.body}};
 }
 
-std::string
-ServiceServer::get_request_and_wait()
+ServiceRequest
+ServiceServer::wait_and_get_request()
 {
-  while (requests_->empty()) {
+  std::optional<ServiceRequest> request = std::nullopt;
+  while (!request) {
     std::this_thread::sleep_for(WAIT_TIME);
+    request = get_request();
   }
-  return requests_->front().content.body;
+  return request.value();
 }
 
 void
-ServiceServer::send_response(const std::string & response)
+ServiceServer::send_response(const uint32_t request_id, const std::string & response)
 {
-  // TODO(christophebedard) make this better
-  if (!has_request()) {
-    logger_->warn("no request to reply to");
+  // Get & remove raw request data from internal map
+  auto request_data = requests_raw_.find(request_id);
+  if (request_data == requests_raw_.end()) {
+    logger_->error("could not find raw request data");
     return;
   }
-  auto request = requests_->dequeue();
+  const struct EmailData data = request_data->second;
+  requests_raw_.erase(request_data);
+  // Reply and include request_id
   struct EmailContent response_content {get_service_name(), response};
-  if (!sender_->reply(response_content, request)) {
+  const EmailHeaders request_id_header = {
+    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request_id)}};
+  if (!sender_->reply(response_content, data, request_id_header)) {
     logger_->error("send_response() failed");
   }
 }

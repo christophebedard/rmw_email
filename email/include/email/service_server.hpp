@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,21 +16,36 @@
 #define EMAIL__SERVICE_SERVER_HPP_
 
 #include <chrono>
+#include <map>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
-#include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service.hpp"
-#include "email/subscriber.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
 {
+
+/// Service request, with an ID and some content.
+struct ServiceRequest
+{
+  /// Request ID.
+  uint32_t id;
+  /// Request content.
+  std::string content;
+  /// Constructor.
+  ServiceRequest(const uint32_t id_, const std::string & content_)
+  : id(id_),
+    content(content_)
+  {}
+  /// Copy constructor.
+  ServiceRequest(const ServiceRequest &) = default;
+};
 
 /// Service server.
 /**
@@ -48,9 +63,9 @@ public:
   ServiceServer & operator=(const ServiceServer &) = delete;
   ~ServiceServer();
 
-  /// Check if the server has a request.
+  /// Check if the server has an available request.
   /**
-   * \return true if there is a request, false otherwise
+   * \return true if there is an available request, false otherwise
    */
   bool
   has_request();
@@ -59,7 +74,7 @@ public:
   /**
    * \return the request, or `std::nullopt` if there is none
    */
-  std::optional<std::string>
+  std::optional<ServiceRequest>
   get_request();
 
   /// Get a request, waiting until one is available.
@@ -68,24 +83,24 @@ public:
    *
    * \return the request
    */
-  std::string
-  get_request_and_wait();
+  ServiceRequest
+  wait_and_get_request();
 
   /// Send response.
   /**
-   * TODO(christophebedard) keep link betwen request & response
-   *
+   * \param request_id the request ID
    * \param response the response
    */
   void
-  send_response(const std::string & response);
+  send_response(const uint32_t request_id, const std::string & response);
 
 private:
   std::shared_ptr<Logger> logger_;
   std::shared_ptr<SafeQueue<struct EmailData>> requests_;
   std::shared_ptr<EmailSender> sender_;
+  std::map<uint32_t, struct EmailData> requests_raw_;
 
-  static constexpr auto WAIT_TIME = std::chrono::milliseconds(1);
+  static constexpr auto WAIT_TIME = std::chrono::milliseconds(10);
 };
 
 }  // namespace email
