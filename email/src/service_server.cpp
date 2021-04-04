@@ -70,7 +70,7 @@ ServiceServer::get_request()
 ServiceRequest
 ServiceServer::wait_and_get_request()
 {
-  std::optional<ServiceRequest> request = std::nullopt;
+  std::optional<ServiceRequest> request = get_request();
   while (!request) {
     std::this_thread::sleep_for(WAIT_TIME);
     request = get_request();

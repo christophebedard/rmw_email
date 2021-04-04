@@ -15,6 +15,7 @@
 #ifndef EMAIL__SERVICE_CLIENT_HPP_
 #define EMAIL__SERVICE_CLIENT_HPP_
 
+#include <chrono>
 #include <map>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -60,7 +61,7 @@ public:
    * \return true if there is an available response, false otherwise
    */
   bool
-  has_response(uint32_t request_id);
+  has_response(const uint32_t request_id);
 
   /// Get a response if there is one.
   /**
@@ -68,10 +69,12 @@ public:
    * \return the response, or `std::nullopt` if there is none
    */
   std::optional<std::string>
-  get_response(uint32_t request_id);
+  get_response(const uint32_t request_id);
 
   /// Send request and get response, waiting for it.
   /**
+   * Synchronous.
+   *
    * TODO(christophebedard) add timeout for response?
    *
    * \param request the request to send
