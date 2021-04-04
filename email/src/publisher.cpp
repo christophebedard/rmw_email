@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -34,10 +34,10 @@ Publisher::Publisher(const std::string & topic_name)
 Publisher::~Publisher() {}
 
 void
-Publisher::publish(const std::string & message)
+Publisher::publish(const std::string & message, std::optional<EmailHeaders> additional_headers)
 {
   struct EmailContent content {get_topic_name(), message};
-  if (!sender_->send(content)) {
+  if (!sender_->send(content, additional_headers)) {
     logger_->error("publish() failed");
   }
 }
