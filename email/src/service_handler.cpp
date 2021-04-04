@@ -71,6 +71,7 @@ ServiceHandler::handle(const struct EmailData & data)
 {
   // TODO(christophebedard) exclude emails coming from the sender's email?
   const std::string & topic = data.content.subject;
+
   // Only a service response if it's a reply email, i.e. if In-Reply-To
   // header is not empty, and if it has a request ID header
   if (!data.in_reply_to.empty()) {
@@ -85,8 +86,10 @@ ServiceHandler::handle(const struct EmailData & data)
         it->second->insert({request_id.value(), data});
       }
     }
-  } else {
-    // Only a service request if it's not a reply email
+  }
+
+  // Only a service request if it's not a reply email
+  if (data.in_reply_to.empty()) {
     // Find service servers with matching topic
     std::lock_guard<std::mutex> lock(mutex_servers_);
     auto range = servers_.equal_range(topic);

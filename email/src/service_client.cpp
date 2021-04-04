@@ -16,6 +16,7 @@
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <thread>
 
 #include "email/context.hpp"
 #include "email/log.hpp"
@@ -53,13 +54,13 @@ ServiceClient::send_request(const std::string & request)
 }
 
 bool
-ServiceClient::has_response(uint32_t request_id)
+ServiceClient::has_response(const uint32_t request_id)
 {
   return responses_->find(request_id) != responses_->end();
 }
 
 std::optional<std::string>
-ServiceClient::get_response(uint32_t request_id)
+ServiceClient::get_response(const uint32_t request_id)
 {
   // TODO(christophebedard) remove double check
   if (!has_response(request_id)) {
