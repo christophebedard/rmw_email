@@ -49,7 +49,7 @@ enum Level
  * \param level the logging level
  */
 void
-set_level(Level level);
+set_level(const Level & level);
 
 /// Set global logging level from environment variable value.
 void

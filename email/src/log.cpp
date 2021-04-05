@@ -41,10 +41,10 @@ level_to_spdlog(const Level & level)
       return spdlog::level::level_enum::debug;
     case info:
       return spdlog::level::level_enum::info;
-    case error:
-      return spdlog::level::level_enum::err;
     case warn:
       return spdlog::level::level_enum::warn;
+    case error:
+      return spdlog::level::level_enum::err;
     case fatal:
       return spdlog::level::level_enum::critical;
     case off:  // fallthrough
@@ -54,25 +54,25 @@ level_to_spdlog(const Level & level)
 }
 
 static
-spdlog::level::level_enum
-string_level_to_spdlog(const std::string & level)
+Level
+level_from_string(const std::string & level)
 {
   if ("debug" == level) {
-    return spdlog::level::level_enum::debug;
+    return debug;
   }
   if ("info" == level) {
-    return spdlog::level::level_enum::info;
+    return info;
   }
   if ("warn" == level) {
-    return spdlog::level::level_enum::warn;
+    return warn;
   }
   if ("error" == level) {
-    return spdlog::level::level_enum::err;
+    return error;
   }
   if ("fatal" == level) {
-    return spdlog::level::level_enum::critical;
+    return fatal;
   }
-  return spdlog::level::level_enum::off;
+  return off;
 }
 
 void
@@ -98,10 +98,7 @@ set_level_from_env()
   const std::string env_log_level = utils::get_env_var_or_default(
     ENV_VAR_LOG_LEVEL,
     ENV_VAR_LOG_LEVEL_DEFAULT);
-  {
-    std::lock_guard<std::mutex> lock(logger_mutex);
-    root_logger->set_level(string_level_to_spdlog(env_log_level));
-  }
+  set_level(level_from_string(env_log_level));
 }
 
 std::shared_ptr<spdlog::logger>
