@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -49,7 +49,7 @@ enum Level
  * \param level the logging level
  */
 void
-set_level(Level level);
+set_level(const Level & level);
 
 /// Set global logging level from environment variable value.
 void
