@@ -78,11 +78,10 @@ Context::init(int argc, char const * const argv[])
 void
 Context::init_common()
 {
-  is_valid_ = true;
-  log::init();
-  log::set_level_from_env();
+  log::init_from_env();
   spdlog::get("root")->debug("logging initialized");
   logger_ = log::create("Context");
+  is_valid_ = true;
 }
 
 bool
@@ -100,6 +99,7 @@ Context::shutdown()
     get_polling_manager()->shutdown();
   }
   logger_->debug("shut down");
+  log::shutdown();
   return true;
 }
 

@@ -16,6 +16,7 @@
   <!-- Only actually used if libcurl isn't found on the system -->
   <depend>libcurl_vendor</depend>
   <depend>rcpputils</depend>
+  <depend>rcutils</depend>
 
   <exec_depend>spdlog_vendor</exec_depend>
   <exec_depend>spdlog</exec_depend>

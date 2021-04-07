@@ -17,6 +17,8 @@
 #include <string>
 #include <vector>
 
+#include "rcutils/allocator.h"
+#include "rcutils/filesystem.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
@@ -36,7 +38,9 @@ static constexpr const char * ENV_VAR_LOG_FILE = "EMAIL_LOG_FILE";
 static constexpr const char * ENV_VAR_LOG_LEVEL = "EMAIL_LOG_LEVEL";
 static constexpr const char * ENV_VAR_LOG_LEVEL_DEFAULT = "info";
 
-static
+namespace
+{
+
 spdlog::level::level_enum
 level_to_spdlog(const Level & level)
 {
@@ -57,7 +61,6 @@ level_to_spdlog(const Level & level)
   }
 }
 
-static
 Level
 level_from_string(const std::string & level)
 {
@@ -79,8 +82,30 @@ level_from_string(const std::string & level)
   return off;
 }
 
+std::string
+level_to_string(const Level & level)
+{
+  switch (level) {
+    case debug:
+      return "debug";
+    case info:
+      return "info";
+    case warn:
+      return "warn";
+    case error:
+      return "error";
+    case fatal:
+      return "fatal";
+    case off:  // fallthrough
+    default:
+      return "off";
+  }
+}
+
+}  // namespace
+
 void
-init()
+init(const Level & level)
 {
   std::lock_guard<std::mutex> lock(logger_mutex);
   if (nullptr != root_logger) {
@@ -90,14 +115,19 @@ init()
   // Create a console sink
   std::vector<spdlog::sink_ptr> sinks = {};
   sink_console = std::make_shared<spdlog::sinks::stdout_color_sink_mt>();
+  // Only use provided log level for console sink
+  sink_console->set_level(level_to_spdlog(level));
   sinks.push_back(sink_console);
 
   // Create a file sink if a log file path was provided
-  const std::string log_file = utils::get_env_var(ENV_VAR_LOG_FILE);
+  const auto log_file = utils::get_env_var(ENV_VAR_LOG_FILE);
   const bool log_to_file = !log_file.empty();
   if (log_to_file) {
+    // Make sure to expand leading ~ to home directory
+    auto allocator = rcutils_get_default_allocator();
+    const std::string log_file_expanded = rcutils_expand_user(log_file.c_str(), allocator);
+    auto sink_file = std::make_shared<spdlog::sinks::basic_file_sink_mt>(log_file_expanded, false);
     // Set to debug so that everything gets logged to file
-    auto sink_file = std::make_shared<spdlog::sinks::basic_file_sink_mt>(log_file, false);
     sink_file->set_level(spdlog::level::debug);
     sinks.push_back(sink_file);
     // TODO(christophebedard) flush periodically using spdlog::flush_every()?
@@ -107,32 +137,24 @@ init()
   root_logger->set_level(spdlog::level::debug);
   spdlog::register_logger(root_logger);
   root_logger->debug("logging to file: " + std::string(log_to_file ? "true" : "false"));
+  root_logger->debug("logging level set to: " + level_to_string(level));
 }
 
 void
-set_level(const Level & level)
-{
-  std::lock_guard<std::mutex> lock(logger_mutex);
-  // Only change log level for console sink
-  sink_console->set_level(level_to_spdlog(level));
-}
-
-void
-set_level_from_env()
+init_from_env()
 {
   const std::string env_log_level = utils::get_env_var_or_default(
     ENV_VAR_LOG_LEVEL,
     ENV_VAR_LOG_LEVEL_DEFAULT);
-  set_level(level_from_string(env_log_level));
-  root_logger->debug("logging level set to: " + env_log_level);
+  init(level_from_string(env_log_level));
 }
 
 std::shared_ptr<spdlog::logger>
 create(const std::string & name)
 {
   std::lock_guard<std::mutex> lock(logger_mutex);
-  auto & sinks = root_logger->sinks();
-  auto logger = std::make_shared<spdlog::logger>(name, sinks.begin(), sinks.end());
+  const auto & sinks = root_logger->sinks();
+  auto logger = std::make_shared<spdlog::logger>(name, sinks.cbegin(), sinks.cend());
   logger->set_level(root_logger->level());
   spdlog::register_logger(logger);
   return logger;
@@ -146,6 +168,14 @@ get_or_create(const std::string & name)
     logger = create(name);
   }
   return logger;
+}
+
+void
+shutdown()
+{
+  spdlog::shutdown();
+  root_logger = nullptr;
+  sink_console = nullptr;
 }
 
 }  // namespace log
