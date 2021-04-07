@@ -29,10 +29,6 @@ using Logger = spdlog::logger;
 namespace log
 {
 
-/// Initialize logging.
-void
-init();
-
 /// Logging level.
 enum Level
 {
@@ -44,16 +40,16 @@ enum Level
   off
 };
 
-/// Set global logging level.
+/// Initialize logging.
 /**
- * \param level the logging level
+ * \param level the console logging level
  */
 void
-set_level(const Level & level);
+init(const Level & level);
 
-/// Set global logging level from environment variable value.
+/// Initialize logging using environment variable value for the logging level.
 void
-set_level_from_env();
+init_from_env();
 
 /// Create logger from the root logger.
 /**
