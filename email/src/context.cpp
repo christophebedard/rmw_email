@@ -99,6 +99,7 @@ Context::shutdown()
     get_polling_manager()->shutdown();
   }
   logger_->debug("shut down");
+  log::shutdown();
   return true;
 }
 

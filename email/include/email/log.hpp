@@ -71,6 +71,10 @@ create(const std::string & name);
 std::shared_ptr<Logger>
 get_or_create(const std::string & name);
 
+/// Shutdown and finalize.
+void
+shutdown();
+
 }  // namespace log
 }  // namespace email
 

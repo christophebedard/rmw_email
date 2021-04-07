@@ -169,5 +169,13 @@ get_or_create(const std::string & name)
   return logger;
 }
 
+void
+shutdown()
+{
+  spdlog::shutdown();
+  root_logger = nullptr;
+  sink_console = nullptr;
+}
+
 }  // namespace log
 }  // namespace email
