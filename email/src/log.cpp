@@ -96,6 +96,7 @@ level_to_string(const Level & level)
       return "error";
     case fatal:
       return "fatal";
+    case off:  // fallthrough
     default:
       return "off";
   }
@@ -152,8 +153,8 @@ std::shared_ptr<spdlog::logger>
 create(const std::string & name)
 {
   std::lock_guard<std::mutex> lock(logger_mutex);
-  auto & sinks = root_logger->sinks();
-  auto logger = std::make_shared<spdlog::logger>(name, sinks.begin(), sinks.end());
+  const auto & sinks = root_logger->sinks();
+  auto logger = std::make_shared<spdlog::logger>(name, sinks.cbegin(), sinks.cend());
   logger->set_level(root_logger->level());
   spdlog::register_logger(logger);
   return logger;
