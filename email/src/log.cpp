@@ -17,6 +17,8 @@
 #include <string>
 #include <vector>
 
+#include "rcutils/allocator.h"
+#include "rcutils/filesystem.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "spdlog/spdlog.h"
@@ -96,8 +98,11 @@ init()
   const std::string log_file = utils::get_env_var(ENV_VAR_LOG_FILE);
   const bool log_to_file = !log_file.empty();
   if (log_to_file) {
+    // Make sure to expand leading ~ to home directory
+    auto allocator = rcutils_get_default_allocator();
+    const std::string log_file_expanded = rcutils_expand_user(log_file.c_str(), allocator);
+    auto sink_file = std::make_shared<spdlog::sinks::basic_file_sink_mt>(log_file_expanded, false);
     // Set to debug so that everything gets logged to file
-    auto sink_file = std::make_shared<spdlog::sinks::basic_file_sink_mt>(log_file, false);
     sink_file->set_level(spdlog::level::debug);
     sinks.push_back(sink_file);
     // TODO(christophebedard) flush periodically using spdlog::flush_every()?
