@@ -20,6 +20,7 @@
 
 #include "email/context.hpp"
 #include "email/email/polling_manager.hpp"
+#include "email/email/response_utils.hpp"
 #include "email/log.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service_handler.hpp"
@@ -103,11 +104,11 @@ ServiceHandler::handle(const struct EmailData & data) const
 std::optional<uint32_t>
 ServiceHandler::extract_request_id(const struct EmailData & data)
 {
-  auto it = data.additional_headers.find(HEADER_REQUEST_ID);
-  if (it == data.additional_headers.end()) {
+  auto request_id = utils::response::get_header_value(HEADER_REQUEST_ID, data.additional_headers);
+  if (!request_id) {
     return std::nullopt;
   }
-  return static_cast<uint32_t>(std::stoul(it->second));
+  return static_cast<uint32_t>(std::stoul(request_id.value()));
 }
 
 }  // namespace email

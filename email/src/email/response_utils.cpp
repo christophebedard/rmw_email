@@ -159,6 +159,16 @@ get_email_data_from_response(const std::string & response)
   return email_data;
 }
 
+std::optional<std::string>
+get_header_value(const std::string & header_name, const EmailHeaders & headers)
+{
+  auto it = headers.find(header_name);
+  if (headers.end() == it) {
+    return std::nullopt;
+  }
+  return it->second;
+}
+
 }  // namespace response
 }  // namespace utils
 }  // namespace email
