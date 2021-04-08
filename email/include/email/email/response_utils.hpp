@@ -66,6 +66,15 @@ get_email_content_from_response(const std::string & response);
 std::optional<struct EmailData>
 get_email_data_from_response(const std::string & response);
 
+/// Get header value from headers.
+/**
+ * \param header_name the name of the header
+ * \param headers the headers
+ * \return the value, or `std::nullopt` if it failed/if the header doesn't exist
+ */
+std::optional<std::string>
+get_header_value(const std::string & header_name, const EmailHeaders & headers);
+
 }  // namespace response
 }  // namespace utils
 }  // namespace email

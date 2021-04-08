@@ -69,7 +69,7 @@ public:
    * \param data the new email data
    */
   void
-  handle(const struct EmailData & data);
+  handle(const struct EmailData & data) const;
 
   /// Extract request ID from email data.
   /**
@@ -83,10 +83,15 @@ public:
   static constexpr auto HEADER_REQUEST_ID = "Request-ID";
 
 private:
+  /// Try to call `std::stoul` and return `std::nullopt` if it fails.
+  static
+  std::optional<uint32_t>
+  optional_stoul(const std::string & str);
+
   std::shared_ptr<Logger> logger_;
-  std::mutex mutex_clients_;
+  mutable std::mutex mutex_clients_;
   std::multimap<std::string, std::shared_ptr<std::map<uint32_t, struct EmailData>>> clients_;
-  std::mutex mutex_servers_;
+  mutable std::mutex mutex_servers_;
   std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> servers_;
 };
 

@@ -41,9 +41,12 @@ static const std::regex REGEX_NEXTUID(
   R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
   std::regex::extended);
 
+namespace
+{
+
 /// Get first match group for a string given a regex.
 std::optional<std::string>
-_get_first_match_group(const std::string & string, const std::regex & regex)
+get_first_match_group(const std::string & string, const std::regex & regex)
 {
   std::smatch matches;
   if (!std::regex_search(string, matches, regex)) {
@@ -56,10 +59,26 @@ _get_first_match_group(const std::string & string, const std::regex & regex)
   return matches[1].str();
 }
 
+/// Utility function for taking header value from container.
+std::optional<std::string>
+take_value_from_headers(const std::string & header_key, EmailHeaders & headers)
+{
+  auto it = headers.find(header_key);
+  if (headers.end() == it) {
+    return std::nullopt;
+  }
+  auto value = it->second;
+  // Remove the item from the map ("take")
+  headers.erase(it);
+  return value;
+}
+
+}  // namespace
+
 std::optional<int>
 get_nextuid_from_response(const std::string & response)
 {
-  auto match_group = _get_first_match_group(response, REGEX_NEXTUID);
+  auto match_group = get_first_match_group(response, REGEX_NEXTUID);
   if (!match_group) {
     return std::nullopt;
   }
@@ -86,25 +105,11 @@ get_email_headers_from_response(const std::string & response)
   return headers;
 }
 
-/// Utility function for taking header value from container.
-std::optional<std::string>
-_take_value_from_headers(const std::string & header_key, EmailHeaders & headers)
-{
-  auto it = headers.find(header_key);
-  if (headers.end() == it) {
-    return std::nullopt;
-  }
-  auto value = it->second;
-  // Remove the item from the map ("take")
-  headers.erase(it);
-  return value;
-}
-
 std::optional<struct EmailContent>
 get_email_content_from_response(const std::string & response, EmailHeaders & headers)
 {
-  auto match_subject = _take_value_from_headers(HEADER_SUBJECT, headers);
-  auto match_body = _get_first_match_group(response, REGEX_BODY);
+  auto match_subject = take_value_from_headers(HEADER_SUBJECT, headers);
+  auto match_body = get_first_match_group(response, REGEX_BODY);
   if (!match_subject || !match_body) {
     return std::nullopt;
   }
@@ -123,9 +128,9 @@ get_email_data_from_response(const std::string & response)
   }
   auto headers = match_headers.value();
 
-  auto match_from = _take_value_from_headers(HEADER_FROM, headers);
-  auto match_in_reply_to = _take_value_from_headers(HEADER_IN_REPLY_TO, headers);
-  auto match_message_id = _take_value_from_headers(HEADER_MESSAGE_ID, headers);
+  auto match_from = take_value_from_headers(HEADER_FROM, headers);
+  auto match_in_reply_to = take_value_from_headers(HEADER_IN_REPLY_TO, headers);
+  auto match_message_id = take_value_from_headers(HEADER_MESSAGE_ID, headers);
   if (!match_from || !match_in_reply_to || !match_message_id) {
     return std::nullopt;
   }
@@ -133,9 +138,9 @@ get_email_data_from_response(const std::string & response)
   if (!content_opt) {
     return std::nullopt;
   }
-  auto match_to = _take_value_from_headers(HEADER_TO, headers);
-  auto match_cc = _take_value_from_headers(HEADER_CC, headers);
-  auto match_bcc = _take_value_from_headers(HEADER_BCC, headers);
+  auto match_to = take_value_from_headers(HEADER_TO, headers);
+  auto match_cc = take_value_from_headers(HEADER_CC, headers);
+  auto match_bcc = take_value_from_headers(HEADER_BCC, headers);
   if (!match_to || !match_cc || !match_bcc) {
     return std::nullopt;
   }
@@ -152,6 +157,16 @@ get_email_data_from_response(const std::string & response)
     content_opt.value(),
     headers);
   return email_data;
+}
+
+std::optional<std::string>
+get_header_value(const std::string & header_name, const EmailHeaders & headers)
+{
+  auto it = headers.find(header_name);
+  if (headers.end() == it) {
+    return std::nullopt;
+  }
+  return it->second;
 }
 
 }  // namespace response

@@ -20,6 +20,7 @@
 
 #include "email/context.hpp"
 #include "email/email/polling_manager.hpp"
+#include "email/email/response_utils.hpp"
 #include "email/log.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service_handler.hpp"
@@ -67,7 +68,7 @@ ServiceHandler::register_service_server(
 }
 
 void
-ServiceHandler::handle(const struct EmailData & data)
+ServiceHandler::handle(const struct EmailData & data) const
 {
   // TODO(christophebedard) exclude emails coming from the sender's email?
   const std::string & topic = data.content.subject;
@@ -103,11 +104,24 @@ ServiceHandler::handle(const struct EmailData & data)
 std::optional<uint32_t>
 ServiceHandler::extract_request_id(const struct EmailData & data)
 {
-  auto it = data.additional_headers.find(HEADER_REQUEST_ID);
-  if (it == data.additional_headers.end()) {
+  auto request_id = utils::response::get_header_value(HEADER_REQUEST_ID, data.additional_headers);
+  if (!request_id) {
     return std::nullopt;
   }
-  return static_cast<uint32_t>(std::stoul(it->second));
+  return static_cast<uint32_t>(std::stoul(request_id.value()));
+}
+
+std::optional<uint32_t>
+ServiceHandler::optional_stoul(const std::string & str)
+{
+  try {
+    return static_cast<uint32_t>(std::stoul(str));
+  } catch (const std::invalid_argument &) {
+  } catch (const std::out_of_range &) {
+  } catch (const std::exception &) {
+  } catch (...) {
+  }
+  return std::nullopt;
 }
 
 }  // namespace email
