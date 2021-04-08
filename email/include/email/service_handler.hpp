@@ -83,6 +83,11 @@ public:
   static constexpr auto HEADER_REQUEST_ID = "Request-ID";
 
 private:
+  /// Try to call `std::stoul` and return `std::nullopt` if it fails.
+  static
+  std::optional<uint32_t>
+  optional_stoul(const std::string & str);
+
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
   std::multimap<std::string, std::shared_ptr<std::map<uint32_t, struct EmailData>>> clients_;
