@@ -67,7 +67,7 @@ ServiceHandler::register_service_server(
 }
 
 void
-ServiceHandler::handle(const struct EmailData & data)
+ServiceHandler::handle(const struct EmailData & data) const
 {
   // TODO(christophebedard) exclude emails coming from the sender's email?
   const std::string & topic = data.content.subject;
