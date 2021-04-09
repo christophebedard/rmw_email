@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <atomic>
 #include <map>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -52,7 +53,7 @@ ServiceClient::send_request(const std::string & request, const uint32_t request_
 uint32_t
 ServiceClient::send_request(const std::string & request)
 {
-  static uint32_t request_id_counter = 0u;
+  static std::atomic_uint32_t request_id_counter = 0u;
   const uint32_t request_id = request_id_counter++;
   logger_->debug("creating request with ID: " + std::to_string(request_id));
   send_request(request, request_id);
