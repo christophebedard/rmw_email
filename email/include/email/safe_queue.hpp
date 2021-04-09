@@ -44,28 +44,28 @@ public:
   bool
   empty() const
   {
-    std::lock_guard<std::mutex> lock(queue_mutex_);
+    std::scoped_lock<std::mutex> lock(queue_mutex_);
     return queue_.empty();
   }
 
   void
   push(const T & element)
   {
-    std::lock_guard<std::mutex> lock(queue_mutex_);
+    std::scoped_lock<std::mutex> lock(queue_mutex_);
     queue_.push(std::move(element));
   }
 
   void
   pop()
   {
-    std::lock_guard<std::mutex> lock(queue_mutex_);
+    std::scoped_lock<std::mutex> lock(queue_mutex_);
     queue_.pop();
   }
 
   const T &
   front() const
   {
-    std::lock_guard<std::mutex> lock(queue_mutex_);
+    std::scoped_lock<std::mutex> lock(queue_mutex_);
     return queue_.front();
   }
 

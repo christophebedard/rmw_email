@@ -48,7 +48,7 @@ SubscriptionHandler::register_subscriber(
   const std::string & topic_name,
   std::shared_ptr<SafeQueue<std::string>> message_queue)
 {
-  std::lock_guard<std::mutex> lock(subscribers_mutex_);
+  std::scoped_lock<std::mutex> lock(subscribers_mutex_);
   subscribers_.insert({topic_name, message_queue});
 }
 
@@ -59,7 +59,7 @@ SubscriptionHandler::handle(const struct EmailData & data)
   const std::string & topic = data.content.subject;
   // Push it to the right queue
   {
-    std::lock_guard<std::mutex> lock(subscribers_mutex_);
+    std::scoped_lock<std::mutex> lock(subscribers_mutex_);
     auto range = subscribers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
