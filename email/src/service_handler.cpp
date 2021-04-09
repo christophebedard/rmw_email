@@ -53,7 +53,7 @@ ServiceHandler::register_service_client(
   std::shared_ptr<std::map<uint32_t, struct EmailData>> response_map)
 {
   // TODO(christophebedard) throw/return flag if a service client already exists with the name?
-  std::lock_guard<std::mutex> lock(mutex_clients_);
+  std::scoped_lock<std::mutex> lock(mutex_clients_);
   clients_.insert({service_name, response_map});
 }
 
@@ -63,7 +63,7 @@ ServiceHandler::register_service_server(
   std::shared_ptr<SafeQueue<struct EmailData>> request_queue)
 {
   // TODO(christophebedard) throw/return flag if a service server already exists with the name?
-  std::lock_guard<std::mutex> lock(mutex_servers_);
+  std::scoped_lock<std::mutex> lock(mutex_servers_);
   servers_.insert({service_name, request_queue});
 }
 
@@ -80,7 +80,7 @@ ServiceHandler::handle(const struct EmailData & data) const
     auto request_id = extract_request_id(data);
     if (request_id) {
       // Find service clients with matching topic
-      std::lock_guard<std::mutex> lock(mutex_clients_);
+      std::scoped_lock<std::mutex> lock(mutex_clients_);
       auto range = clients_.equal_range(topic);
       for (auto it = range.first; it != range.second; ++it) {
         // Add data to the map
@@ -92,7 +92,7 @@ ServiceHandler::handle(const struct EmailData & data) const
   // Only a service request if it's not a reply email
   if (data.in_reply_to.empty()) {
     // Find service servers with matching topic
-    std::lock_guard<std::mutex> lock(mutex_servers_);
+    std::scoped_lock<std::mutex> lock(mutex_servers_);
     auto range = servers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue

@@ -44,7 +44,7 @@ void
 PollingManager::register_handler(const HandlerFunction & handler)
 {
   {
-    std::lock_guard<std::mutex> lock(handlers_mutex_);
+    std::scoped_lock<std::mutex> lock(handlers_mutex_);
     handlers_.push_back(handler);
   }
   logger_->debug("handler registered");
@@ -94,7 +94,7 @@ PollingManager::poll_thread()
     const struct EmailData & data = email_data.value();
     // Call handlers
     {
-      std::lock_guard<std::mutex> lock(handlers_mutex_);
+      std::scoped_lock<std::mutex> lock(handlers_mutex_);
       for (auto it = handlers_.begin(); it != handlers_.end(); ++it) {
         logger_->debug("calling handler");
         it->operator()(data);

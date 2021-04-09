@@ -107,7 +107,7 @@ level_to_string(const Level & level)
 void
 init(const Level & level)
 {
-  std::lock_guard<std::mutex> lock(logger_mutex);
+  std::scoped_lock<std::mutex> lock(logger_mutex);
   if (nullptr != root_logger) {
     return;
   }
@@ -152,7 +152,7 @@ init_from_env()
 std::shared_ptr<spdlog::logger>
 create(const std::string & name)
 {
-  std::lock_guard<std::mutex> lock(logger_mutex);
+  std::scoped_lock<std::mutex> lock(logger_mutex);
   const auto & sinks = root_logger->sinks();
   auto logger = std::make_shared<spdlog::logger>(name, sinks.cbegin(), sinks.cend());
   logger->set_level(root_logger->level());
