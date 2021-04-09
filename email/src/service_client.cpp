@@ -41,16 +41,22 @@ ServiceClient::ServiceClient(const std::string & service_name)
 
 ServiceClient::~ServiceClient() {}
 
+void
+ServiceClient::send_request(const std::string & request, const uint32_t request_id)
+{
+  const EmailHeaders request_id_header = {
+    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request_id)}};
+  pub_.publish(request, request_id_header);
+}
+
 uint32_t
 ServiceClient::send_request(const std::string & request)
 {
-  static uint32_t request_id = 0;
-  const uint32_t next_id = request_id++;
-  logger_->debug("creating request with ID: " + std::to_string(next_id));
-  const EmailHeaders request_id_header = {
-    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(next_id)}};
-  pub_.publish(request, request_id_header);
-  return next_id;
+  static uint32_t request_id_counter = 0u;
+  const uint32_t request_id = request_id_counter++;
+  logger_->debug("creating request with ID: " + std::to_string(request_id));
+  send_request(request, request_id);
+  return request_id;
 }
 
 bool
