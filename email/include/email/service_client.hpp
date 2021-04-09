@@ -45,6 +45,16 @@ public:
   ServiceClient & operator=(const ServiceClient &) = delete;
   ~ServiceClient();
 
+  /// Send request with specific ID.
+  /**
+   * For asynchronous sending of a request.
+   *
+   * \param request the request
+   * \param request_id the request ID; to use for getting the corresponding response
+   */
+  void
+  send_request(const std::string & request, const uint32_t request_id);
+
   /// Send request.
   /**
    * For asynchronous sending of a request.
