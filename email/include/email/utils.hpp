@@ -21,6 +21,8 @@
 #include <string>
 #include <vector>
 
+#include "email/visibility_control.hpp"
+
 namespace email
 {
 namespace utils
@@ -82,6 +84,7 @@ read_file(const std::string & path);
  * \param has_space_after_comma whether there is a space after the comma, before the next email
  * \return the individual emails as a vector
  */
+EMAIL_PUBLIC
 std::vector<std::string>
 split_email_list(const std::string & list, const bool has_space_after_comma = false);
 

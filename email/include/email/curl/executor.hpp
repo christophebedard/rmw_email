@@ -17,6 +17,7 @@
 
 #include "email/curl/context.hpp"
 #include "email/types.hpp"
+#include "email/visibility_control.hpp"
 
 namespace email
 {
@@ -32,6 +33,7 @@ public:
   /**
    * \return true if successful, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   init();
 
@@ -39,6 +41,7 @@ public:
   /**
    * \param true if valid, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   is_valid() const;
 

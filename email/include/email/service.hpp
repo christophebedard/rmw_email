@@ -19,6 +19,8 @@
 #include <stdexcept>
 #include <string>
 
+#include "email/visibility_control.hpp"
+
 namespace email
 {
 
@@ -42,6 +44,7 @@ public:
   /**
    * \return the service name
    */
+  EMAIL_PUBLIC
   std::string
   get_service_name() const;
 
@@ -53,9 +56,12 @@ protected:
    * \param service_name the service name
    * \throw `ServiceNameInvalidError` if the service name is invalid
    */
+  EMAIL_PUBLIC
   explicit ServiceObject(const std::string & service_name);
+
   ServiceObject(const ServiceObject &) = delete;
   ServiceObject & operator=(const ServiceObject &) = delete;
+  EMAIL_PUBLIC
   virtual ~ServiceObject();
 
 private:

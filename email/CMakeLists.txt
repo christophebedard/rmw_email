@@ -62,6 +62,11 @@ else()
   target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 endif()
 ament_target_dependencies(${PROJECT_NAME} rcpputils spdlog)
+if(WIN32)
+  # Causes the visibility macros to use dllexport rather than dllimport
+  # which is appropriate when building the dll but not consuming it.
+  target_compile_definitions(${PROJECT_NAME} PRIVATE "EMAIL_BUILDING_DLL")
+endif()
 target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"

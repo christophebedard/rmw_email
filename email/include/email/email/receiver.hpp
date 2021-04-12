@@ -26,6 +26,7 @@
 #include "email/curl/executor.hpp"
 #include "email/log.hpp"
 #include "email/types.hpp"
+#include "email/visibility_control.hpp"
 
 namespace email
 {
@@ -42,17 +43,21 @@ public:
    * \param user_info the user information for receiving emails
    * \param curl_verbose the curl verbose status
    */
+  EMAIL_PUBLIC
   explicit EmailReceiver(
     UserInfo::SharedPtrConst user_info,
     const bool curl_verbose);
+
   EmailReceiver(const EmailReceiver &) = delete;
   EmailReceiver & operator=(const EmailReceiver &) = delete;
+  EMAIL_PUBLIC
   virtual ~EmailReceiver();
 
   /// Shut down.
   /**
    * Stops any currently-running internal polling loop.
    */
+  EMAIL_PUBLIC
   void
   shutdown();
 
@@ -60,6 +65,7 @@ public:
   /**
    * \return the new email, or `std::nullopt` if it failed
    */
+  EMAIL_PUBLIC
   std::optional<struct EmailData>
   get_email();
 

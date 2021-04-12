@@ -40,9 +40,12 @@ public:
   /**
    * \param service_name the service name
    */
+  EMAIL_PUBLIC
   explicit ServiceClient(const std::string & service_name);
+
   ServiceClient(const ServiceClient &) = delete;
   ServiceClient & operator=(const ServiceClient &) = delete;
+  EMAIL_PUBLIC
   ~ServiceClient();
 
   /// Send request with specific ID.
@@ -52,6 +55,7 @@ public:
    * \param request the request
    * \param request_id the request ID; to use for getting the corresponding response
    */
+  EMAIL_PUBLIC
   void
   send_request(const std::string & request, const uint32_t request_id);
 
@@ -62,6 +66,7 @@ public:
    * \param request the request
    * \return the request ID to use for getting the corresponding response
    */
+  EMAIL_PUBLIC
   uint32_t
   send_request(const std::string & request);
 
@@ -70,6 +75,7 @@ public:
    * \param request_id the request ID
    * \return true if there is an available response, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   has_response(const uint32_t request_id);
 
@@ -78,6 +84,7 @@ public:
    * \param request_id the request ID
    * \return the response, or `std::nullopt` if there is none
    */
+  EMAIL_PUBLIC
   std::optional<std::string>
   get_response(const uint32_t request_id);
 
@@ -90,6 +97,7 @@ public:
    * \param request the request to send
    * \return the response, or `std::nullopt` if it failed
    */
+  EMAIL_PUBLIC
   std::optional<std::string>
   send_request_and_wait(const std::string & request);
 
