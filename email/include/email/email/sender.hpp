@@ -43,12 +43,15 @@ public:
    * \param recipients the email recipients
    * \param curl_verbose the curl verbose status
    */
+  EMAIL_PUBLIC
   explicit EmailSender(
     UserInfo::SharedPtrConst user_info,
     EmailRecipients::SharedPtrConst recipients,
     const bool curl_verbose);
+
   EmailSender(const EmailSender &) = delete;
   EmailSender & operator=(const EmailSender &) = delete;
+  EMAIL_PUBLIC
   virtual ~EmailSender();
 
   /// Send an email.
@@ -57,6 +60,7 @@ public:
    * \param additional_headers the optional additional headers to include in the email
    * \return true if successful, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   send(
     const struct EmailContent & content,
@@ -69,6 +73,7 @@ public:
    * \param additional_headers the optional additional headers to include in the email
    * \return true if successful, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   reply(
     const struct EmailContent & content,

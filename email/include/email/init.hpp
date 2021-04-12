@@ -25,6 +25,7 @@ namespace email
  * \throw `std::runtime_error` if context initialization failed
  * \throw `std::runtime_error` if context is already intialized
  */
+EMAIL_PUBLIC
 void
 init();
 
@@ -35,6 +36,7 @@ init();
  * \throw `std::runtime_error` if context initialization failed
  * \throw `std::runtime_error` if context is already intialized
  */
+EMAIL_PUBLIC
 void
 init(int argc, char const * const argv[]);
 
@@ -42,6 +44,7 @@ init(int argc, char const * const argv[]);
 /**
  * \return true if successful, false otherwise
  */
+EMAIL_PUBLIC
 bool
 shutdown();
 

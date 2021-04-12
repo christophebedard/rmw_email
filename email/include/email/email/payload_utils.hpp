@@ -44,6 +44,7 @@ namespace payload
  * \param reply_ref the reply reference (Message-ID of the email to reply to)
  * \return the payload
  */
+EMAIL_PUBLIC
 const std::string
 build_payload(
   const std::vector<std::string> & to,
@@ -60,6 +61,7 @@ build_payload(
  * \param reply_ref the reply reference (Message-ID of the email to reply to)
  * \return the payload
  */
+EMAIL_PUBLIC
 const std::string
 build_payload(
   EmailRecipients::SharedPtrConst recipients,
@@ -72,6 +74,7 @@ build_payload(
  * \param list the list/vector of emails
  * \return the list as a string, compatible with RFC 5322
  */
+EMAIL_PUBLIC
 const std::string
 join_list(const std::vector<std::string> & list);
 
@@ -80,6 +83,7 @@ join_list(const std::vector<std::string> & list);
  * \param string the string
  * \return the string cut before a newline, if needed
  */
+EMAIL_PUBLIC
 std::string
 cut_string_if_newline(const std::string & string);
 

@@ -39,6 +39,7 @@ namespace response
  * \param response the response
  * \return the UID, or `std::nullopt` if it failed
  */
+EMAIL_PUBLIC
 std::optional<int>
 get_nextuid_from_response(const std::string & response);
 
@@ -47,6 +48,7 @@ get_nextuid_from_response(const std::string & response);
  * \param response the result of the request
  * \return the headers
  */
+EMAIL_PUBLIC
 std::optional<EmailHeaders>
 get_email_headers_from_response(const std::string & response);
 
@@ -55,6 +57,7 @@ get_email_headers_from_response(const std::string & response);
  * \param response the result of the request
  * \return the email content, or `std::nullopt` if it failed
  */
+EMAIL_PUBLIC
 std::optional<struct EmailContent>
 get_email_content_from_response(const std::string & response);
 
@@ -63,6 +66,7 @@ get_email_content_from_response(const std::string & response);
  * \param response the result of the request
  * \return the email data, or `std::nullopt` if it failed
  */
+EMAIL_PUBLIC
 std::optional<struct EmailData>
 get_email_data_from_response(const std::string & response);
 
@@ -72,6 +76,7 @@ get_email_data_from_response(const std::string & response);
  * \param headers the headers
  * \return the value, or `std::nullopt` if it failed/if the header doesn't exist
  */
+EMAIL_PUBLIC
 std::optional<std::string>
 get_header_value(const std::string & header_name, const EmailHeaders & headers);
 

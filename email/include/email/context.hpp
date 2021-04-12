@@ -116,6 +116,7 @@ public:
    * \return the options
    * \throw `ContextNotInitializedError` if context has not been initialized
    */
+  EMAIL_PUBLIC
   std::shared_ptr<Options>
   get_options() const;
 
@@ -181,6 +182,7 @@ private:
 /**
  * \return the global context, which should have been initialized using `email::init(*)`
  */
+EMAIL_PUBLIC
 std::shared_ptr<Context>
 get_global_context();
 

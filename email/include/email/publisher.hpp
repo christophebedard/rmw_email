@@ -39,9 +39,12 @@ public:
   /**
    * \param topic_name the topic name to publish on
    */
+  EMAIL_PUBLIC
   explicit Publisher(const std::string & topic_name);
+
   Publisher(const Publisher &) = delete;
   Publisher & operator=(const Publisher &) = delete;
+  EMAIL_PUBLIC
   virtual ~Publisher();
 
   /// Publish message.
@@ -49,6 +52,7 @@ public:
    * \param message the message
    * \param additional_headers the additional headers to include
    */
+  EMAIL_PUBLIC
   void
   publish(
     const std::string & message,

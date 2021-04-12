@@ -21,6 +21,7 @@
 #include <string>
 
 #include "email/types.hpp"
+#include "email/visibility_control.hpp"
 
 namespace email
 {
@@ -40,16 +41,19 @@ public:
    * \param recipients the recipients
    * \param curl_verbose the curl verbose status
    */
+  EMAIL_PUBLIC
   Options(
     UserInfo::SharedPtrConst user_info,
     EmailRecipients::SharedPtrConst recipients,
     bool curl_verbose);
+  EMAIL_PUBLIC
   ~Options();
 
   /// Get user information data.
   /**
    * \return the `UserInfo` object
    */
+  EMAIL_PUBLIC
   UserInfo::SharedPtrConst
   get_user_info() const;
 
@@ -57,6 +61,7 @@ public:
   /**
    * \return the `EmailRecipients` object
    */
+  EMAIL_PUBLIC
   EmailRecipients::SharedPtrConst
   get_recipients() const;
 
@@ -64,6 +69,7 @@ public:
   /**
    * \return true if verbose, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   curl_verbose() const;
 

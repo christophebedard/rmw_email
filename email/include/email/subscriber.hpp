@@ -40,15 +40,19 @@ public:
   /**
    * \param topic_name the topic name to subscribe to
    */
+  EMAIL_PUBLIC
   explicit Subscriber(const std::string & topic_name);
+
   Subscriber(const Subscriber &) = delete;
   Subscriber & operator=(const Subscriber &) = delete;
+  EMAIL_PUBLIC
   virtual ~Subscriber();
 
   /// Check if the subscriber has a message.
   /**
    * \return true if there is a message, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   has_message();
 
@@ -56,6 +60,7 @@ public:
   /**
    * \return the message, or `std::nullopt` if there is none
    */
+  EMAIL_PUBLIC
   std::optional<std::string>
   get_message();
 
@@ -65,6 +70,7 @@ public:
    *
    * \return the message
    */
+  EMAIL_PUBLIC
   std::string
   get_message_and_wait();
 

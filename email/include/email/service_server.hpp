@@ -58,15 +58,19 @@ public:
   /**
    * \param service_name the service name
    */
+  EMAIL_PUBLIC
   explicit ServiceServer(const std::string & service_name);
+
   ServiceServer(const ServiceServer &) = delete;
   ServiceServer & operator=(const ServiceServer &) = delete;
+  EMAIL_PUBLIC
   ~ServiceServer();
 
   /// Check if the server has an available request.
   /**
    * \return true if there is an available request, false otherwise
    */
+  EMAIL_PUBLIC
   bool
   has_request();
 
@@ -74,6 +78,7 @@ public:
   /**
    * \return the request, or `std::nullopt` if there is none
    */
+  EMAIL_PUBLIC
   std::optional<ServiceRequest>
   get_request();
 
@@ -83,6 +88,7 @@ public:
    *
    * \return the request
    */
+  EMAIL_PUBLIC
   ServiceRequest
   wait_and_get_request();
 
@@ -91,6 +97,7 @@ public:
    * \param request_id the request ID
    * \param response the response
    */
+  EMAIL_PUBLIC
   void
   send_response(const uint32_t request_id, const std::string & response);
 

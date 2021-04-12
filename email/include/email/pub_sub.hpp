@@ -19,6 +19,8 @@
 #include <stdexcept>
 #include <string>
 
+#include "email/visibility_control.hpp"
+
 namespace email
 {
 
@@ -42,6 +44,7 @@ public:
   /**
    * \return the topic name
    */
+  EMAIL_PUBLIC
   std::string
   get_topic_name() const;
 
@@ -53,9 +56,12 @@ protected:
    * \param topic_name the topic name
    * \throw `TopicNameInvalidError` if the topic name is invalid
    */
+  EMAIL_PUBLIC
   explicit PubSubObject(const std::string & topic_name);
+
   PubSubObject(const PubSubObject &) = delete;
   PubSubObject & operator=(const PubSubObject &) = delete;
+  EMAIL_PUBLIC
   virtual ~PubSubObject();
 
 private:
