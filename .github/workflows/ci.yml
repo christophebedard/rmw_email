@@ -14,6 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ros-tooling/setup-ros@master
+      with:
+        required-ros-distributions: ${{ matrix.os == 'windows-latest' && '' || 'rolling' }}
     - name: "Install (lib)curl"
       run: |
         choco install --limit-output --no-progress --yes curl
@@ -22,7 +24,7 @@ jobs:
       with:
         package-name: email
         target-ros2-distro: rolling
-        vcs-repo-file-url: https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
+        vcs-repo-file-url: ${{ matrix.os == 'windows-latest' && 'https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos' || '' }}
         import-token: ${{ secrets.REPO_TOKEN }}
         colcon-defaults: |
           {
