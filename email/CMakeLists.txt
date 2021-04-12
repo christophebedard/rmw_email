@@ -20,16 +20,18 @@ find_package(rcpputils REQUIRED)
 find_package(spdlog_vendor REQUIRED)
 find_package(spdlog REQUIRED)
 
-set(CURL_USE_VENDOR FALSE)
-find_package(CURL)
-if(NOT CURL_FOUND)
-  message(STATUS "libcurl not found; using libcurl_vendor")
+set(CURL_USE_VENDOR TRUE)
+# TODO(christophebedard) switch to using system curl when possible,
+# but for now using the vendor package makes it easier for Windows
+#find_package(CURL)
+if(CURL_USE_VENDOR OR NOT CURL_FOUND)
+  message(STATUS "using libcurl_vendor")
   find_package(libcurl_vendor REQUIRED)
   set(CURL_USE_VENDOR TRUE)
 endif()
-# message(STATUS "Found CURL version: ${CURL_VERSION_STRING}")
-# message(STATUS "Using CURL include dir(s): ${CURL_INCLUDE_DIRS}")
-# message(STATUS "Using CURL lib(s): ${CURL_LIBRARIES}")
+message(STATUS "Found CURL version: ${CURL_VERSION_STRING}")
+message(STATUS "Using CURL include dir(s): ${CURL_INCLUDE_DIRS}")
+message(STATUS "Using CURL lib(s): ${CURL_LIBRARIES}")
 
 # Lib
 set(SOURCES
