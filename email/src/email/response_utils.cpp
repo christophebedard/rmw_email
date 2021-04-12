@@ -14,6 +14,7 @@
 
 #include <optional>
 #include <regex>
+#include <sstream>
 #include <string>
 
 #include "email/email/response_utils.hpp"
