@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -21,6 +21,7 @@
 #include <string>
 
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/types.hpp"
 #include "email/utils.hpp"
 
@@ -45,8 +46,7 @@ public:
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
     const bool curl_verbose);
-  CurlContext(const CurlContext &) = delete;
-  CurlContext & operator=(const CurlContext &) = delete;
+
   ~CurlContext();
 
   /// Initialize context.
@@ -93,6 +93,8 @@ public:
   get_connection_info() const;
 
 private:
+  EMAIL_DISABLE_COPY(CurlContext)
+
   std::shared_ptr<Logger> logger_;
   CURL * handle_;
   const struct ConnectionInfo connection_info_;

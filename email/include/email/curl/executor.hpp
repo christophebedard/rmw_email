@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,6 +16,7 @@
 #define EMAIL__CURL__EXECUTOR_HPP_
 
 #include "email/curl/context.hpp"
+#include "email/macros.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -56,8 +57,7 @@ protected:
     const struct ConnectionInfo & connection_info,
     const struct ProtocolInfo & protocol_info,
     const bool curl_verbose);
-  CurlExecutor(const CurlExecutor &) = delete;
-  CurlExecutor & operator=(const CurlExecutor &) = delete;
+
   virtual ~CurlExecutor();
 
   /// Initialize concrete options.
@@ -73,6 +73,8 @@ protected:
   CurlContext context_;
 
 private:
+  EMAIL_DISABLE_COPY(CurlExecutor)
+
   bool is_valid_;
 };
 

@@ -22,6 +22,7 @@
 #include <string>
 
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/publisher.hpp"
 #include "email/service.hpp"
 #include "email/visibility_control.hpp"
@@ -43,8 +44,6 @@ public:
   EMAIL_PUBLIC
   explicit ServiceClient(const std::string & service_name);
 
-  ServiceClient(const ServiceClient &) = delete;
-  ServiceClient & operator=(const ServiceClient &) = delete;
   EMAIL_PUBLIC
   ~ServiceClient();
 
@@ -102,6 +101,8 @@ public:
   send_request_and_wait(const std::string & request);
 
 private:
+  EMAIL_DISABLE_COPY(ServiceClient)
+
   std::shared_ptr<Logger> logger_;
   std::shared_ptr<std::map<uint32_t, struct EmailData>> responses_;
   Publisher pub_;

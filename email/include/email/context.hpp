@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,6 +24,7 @@
 #include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/options.hpp"
 #include "email/service_handler.hpp"
 #include "email/subscription_handler.hpp"
@@ -73,8 +74,7 @@ public:
    * Not to be used directly: use `get_global_context()` instead.
    */
   Context();
-  Context(const Context &) = delete;
-  Context & operator=(const Context &) = delete;
+
   ~Context();
 
   /// Initialize context using config file.
@@ -167,6 +167,8 @@ public:
   get_service_handler() const;
 
 private:
+  EMAIL_DISABLE_COPY(Context)
+
   /// Perform common init tasks.
   void
   init_common();

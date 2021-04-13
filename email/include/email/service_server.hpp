@@ -23,6 +23,7 @@
 
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service.hpp"
 #include "email/types.hpp"
@@ -61,8 +62,6 @@ public:
   EMAIL_PUBLIC
   explicit ServiceServer(const std::string & service_name);
 
-  ServiceServer(const ServiceServer &) = delete;
-  ServiceServer & operator=(const ServiceServer &) = delete;
   EMAIL_PUBLIC
   ~ServiceServer();
 
@@ -102,6 +101,8 @@ public:
   send_response(const uint32_t request_id, const std::string & response);
 
 private:
+  EMAIL_DISABLE_COPY(ServiceServer)
+
   std::shared_ptr<Logger> logger_;
   std::shared_ptr<SafeQueue<struct EmailData>> requests_;
   std::shared_ptr<EmailSender> sender_;

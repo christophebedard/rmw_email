@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 
 #include "email/safe_queue.hpp"
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -37,8 +38,7 @@ class SubscriptionHandler
 public:
   /// Constructor.
   SubscriptionHandler();
-  SubscriptionHandler(const SubscriptionHandler &) = delete;
-  SubscriptionHandler & operator=(const SubscriptionHandler &) = delete;
+
   ~SubscriptionHandler();
 
   /// Register a subscriber with the handler.
@@ -61,6 +61,8 @@ public:
   handle(const struct EmailData & data);
 
 private:
+  EMAIL_DISABLE_COPY(SubscriptionHandler)
+
   std::shared_ptr<Logger> logger_;
   std::mutex subscribers_mutex_;
   std::multimap<std::string, std::shared_ptr<SafeQueue<std::string>>> subscribers_;
