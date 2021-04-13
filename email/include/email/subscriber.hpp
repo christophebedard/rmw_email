@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,6 +20,7 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "email/macros.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
 #include "email/types.hpp"
@@ -43,8 +44,6 @@ public:
   EMAIL_PUBLIC
   explicit Subscriber(const std::string & topic_name);
 
-  Subscriber(const Subscriber &) = delete;
-  Subscriber & operator=(const Subscriber &) = delete;
   EMAIL_PUBLIC
   virtual ~Subscriber();
 
@@ -75,6 +74,8 @@ public:
   get_message_and_wait();
 
 private:
+  EMAIL_DISABLE_COPY(Subscriber)
+
   std::shared_ptr<SafeQueue<std::string>> messages_;
 
   static constexpr auto WAIT_TIME = std::chrono::milliseconds(1);

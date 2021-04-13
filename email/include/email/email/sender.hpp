@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
 
 #include "email/curl/executor.hpp"
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -49,8 +50,6 @@ public:
     EmailRecipients::SharedPtrConst recipients,
     const bool curl_verbose);
 
-  EmailSender(const EmailSender &) = delete;
-  EmailSender & operator=(const EmailSender &) = delete;
   EMAIL_PUBLIC
   virtual ~EmailSender();
 
@@ -86,6 +85,8 @@ protected:
   init_options();
 
 private:
+  EMAIL_DISABLE_COPY(EmailSender)
+
   /// Send payload.
   /**
    * \param payload the payload

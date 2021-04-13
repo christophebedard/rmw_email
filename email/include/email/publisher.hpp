@@ -21,6 +21,7 @@
 
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/pub_sub.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
@@ -42,8 +43,6 @@ public:
   EMAIL_PUBLIC
   explicit Publisher(const std::string & topic_name);
 
-  Publisher(const Publisher &) = delete;
-  Publisher & operator=(const Publisher &) = delete;
   EMAIL_PUBLIC
   virtual ~Publisher();
 
@@ -59,6 +58,8 @@ public:
     std::optional<EmailHeaders> additional_headers = std::nullopt);
 
 private:
+  EMAIL_DISABLE_COPY(Publisher)
+
   std::shared_ptr<Logger> logger_;
   std::shared_ptr<EmailSender> sender_;
 };

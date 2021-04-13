@@ -23,6 +23,7 @@
 
 #include "email/safe_queue.hpp"
 #include "email/log.hpp"
+#include "email/macros.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -38,8 +39,7 @@ class ServiceHandler
 public:
   /// Constructor.
   ServiceHandler();
-  ServiceHandler(const ServiceHandler &) = delete;
-  ServiceHandler & operator=(const ServiceHandler &) = delete;
+
   ~ServiceHandler();
 
   /// Register a service client with the handler.
@@ -83,6 +83,8 @@ public:
   static constexpr auto HEADER_REQUEST_ID = "Request-ID";
 
 private:
+  EMAIL_DISABLE_COPY(ServiceHandler)
+
   /// Try to call `std::stoul` and return `std::nullopt` if it fails.
   static
   std::optional<uint32_t>

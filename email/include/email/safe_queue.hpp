@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@
 #include <queue>
 #include <utility>
 
+#include "email/macros.hpp"
+
 namespace email
 {
 
@@ -37,8 +39,7 @@ public:
   : queue_mutex_(),
     queue_()
   {}
-  SafeQueue(const SafeQueue &) = delete;
-  SafeQueue & operator=(const SafeQueue &) = delete;
+
   ~SafeQueue() {}
 
   bool
@@ -78,6 +79,8 @@ public:
   }
 
 private:
+  EMAIL_DISABLE_COPY(SafeQueue)
+
   mutable std::mutex queue_mutex_;
   std::queue<T> queue_;
 };

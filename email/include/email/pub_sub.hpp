@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
 #include <stdexcept>
 #include <string>
 
+#include "email/macros.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
@@ -59,12 +60,12 @@ protected:
   EMAIL_PUBLIC
   explicit PubSubObject(const std::string & topic_name);
 
-  PubSubObject(const PubSubObject &) = delete;
-  PubSubObject & operator=(const PubSubObject &) = delete;
   EMAIL_PUBLIC
   virtual ~PubSubObject();
 
 private:
+  EMAIL_DISABLE_COPY(PubSubObject)
+
   /// Validate a topic name and throw an error with an explanation if it is not valid.
   static
   void
