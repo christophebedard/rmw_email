@@ -105,7 +105,7 @@ private:
   EMAIL_DISABLE_COPY(ServiceClient)
 
   std::shared_ptr<Logger> logger_;
-  std::shared_ptr<SafeMap<uint32_t, struct EmailData>> responses_;
+  SafeMap<uint32_t, struct EmailData>::SharedPtr responses_;
   Publisher pub_;
 
   static constexpr auto WAIT_TIME = std::chrono::milliseconds(10);

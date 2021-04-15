@@ -39,6 +39,7 @@ public:
   : queue_mutex_(),
     queue_()
   {}
+  EMAIL_SHARED_PTR(SafeQueue)
 
   ~SafeQueue() {}
 

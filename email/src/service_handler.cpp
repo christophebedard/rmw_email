@@ -51,7 +51,7 @@ ServiceHandler::~ServiceHandler() {}
 void
 ServiceHandler::register_service_client(
   const std::string & service_name,
-  std::shared_ptr<SafeMap<uint32_t, struct EmailData>> response_map)
+  SafeMap<uint32_t, struct EmailData>::SharedPtr response_map)
 {
   // TODO(christophebedard) throw/return flag if a service client already exists with the name?
   std::scoped_lock<std::mutex> lock(mutex_clients_);
@@ -61,7 +61,7 @@ ServiceHandler::register_service_client(
 void
 ServiceHandler::register_service_server(
   const std::string & service_name,
-  std::shared_ptr<SafeQueue<struct EmailData>> request_queue)
+  SafeQueue<struct EmailData>::SharedPtr request_queue)
 {
   // TODO(christophebedard) throw/return flag if a service server already exists with the name?
   std::scoped_lock<std::mutex> lock(mutex_servers_);

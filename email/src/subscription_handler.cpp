@@ -46,7 +46,7 @@ SubscriptionHandler::~SubscriptionHandler() {}
 void
 SubscriptionHandler::register_subscriber(
   const std::string & topic_name,
-  std::shared_ptr<SafeQueue<std::string>> message_queue)
+  SafeQueue<std::string>::SharedPtr message_queue)
 {
   std::scoped_lock<std::mutex> lock(subscribers_mutex_);
   subscribers_.insert({topic_name, message_queue});

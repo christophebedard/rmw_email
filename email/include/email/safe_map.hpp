@@ -40,6 +40,7 @@ public:
   : map_mutex_(),
     map_()
   {}
+  EMAIL_SHARED_PTR(SafeMap)
 
   ~SafeMap() {}
 

@@ -51,7 +51,7 @@ public:
   void
   register_service_client(
     const std::string & service_name,
-    std::shared_ptr<SafeMap<uint32_t, struct EmailData>> response_map);
+    SafeMap<uint32_t, struct EmailData>::SharedPtr response_map);
 
   /// Register a service server with the handler.
   /**
@@ -61,7 +61,7 @@ public:
   void
   register_service_server(
     const std::string & service_name,
-    std::shared_ptr<SafeQueue<struct EmailData>> request_queue);
+    SafeQueue<struct EmailData>::SharedPtr request_queue);
 
   /// Handle new email.
   /**
@@ -93,9 +93,9 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
-  std::multimap<std::string, std::shared_ptr<SafeMap<uint32_t, struct EmailData>>> clients_;
+  std::multimap<std::string, SafeMap<uint32_t, struct EmailData>::SharedPtr> clients_;
   mutable std::mutex mutex_servers_;
-  std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> servers_;
+  std::multimap<std::string, SafeQueue<struct EmailData>::SharedPtr> servers_;
 };
 
 }  // namespace email

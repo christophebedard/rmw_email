@@ -49,7 +49,7 @@ public:
   void
   register_subscriber(
     const std::string & topic_name,
-    std::shared_ptr<SafeQueue<std::string>> message_queue);
+    SafeQueue<std::string>::SharedPtr message_queue);
 
   /// Handle new email.
   /**
@@ -65,7 +65,7 @@ private:
 
   std::shared_ptr<Logger> logger_;
   std::mutex subscribers_mutex_;
-  std::multimap<std::string, std::shared_ptr<SafeQueue<std::string>>> subscribers_;
+  std::multimap<std::string, SafeQueue<std::string>::SharedPtr> subscribers_;
 };
 
 }  // namespace email

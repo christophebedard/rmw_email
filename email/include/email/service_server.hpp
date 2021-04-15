@@ -104,7 +104,7 @@ private:
   EMAIL_DISABLE_COPY(ServiceServer)
 
   std::shared_ptr<Logger> logger_;
-  std::shared_ptr<SafeQueue<struct EmailData>> requests_;
+  SafeQueue<struct EmailData>::SharedPtr requests_;
   std::shared_ptr<EmailSender> sender_;
   std::map<uint32_t, struct EmailData> requests_raw_;
 

@@ -76,7 +76,7 @@ public:
 private:
   EMAIL_DISABLE_COPY(Subscriber)
 
-  std::shared_ptr<SafeQueue<std::string>> messages_;
+  SafeQueue<std::string>::SharedPtr messages_;
 
   static constexpr auto WAIT_TIME = std::chrono::milliseconds(1);
 };

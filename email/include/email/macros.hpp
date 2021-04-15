@@ -15,6 +15,8 @@
 #ifndef EMAIL__MACROS_HPP_
 #define EMAIL__MACROS_HPP_
 
+#include <memory>
+
 /**
  * Disables the copy constructor and operator= for the given class.
  *
@@ -23,5 +25,11 @@
 #define EMAIL_DISABLE_COPY(...) \
   __VA_ARGS__(const __VA_ARGS__ &) = delete; \
   __VA_ARGS__ & operator=(const __VA_ARGS__ &) = delete;
+
+/**
+ * Declare std::shared_ptr<T>.
+ */
+#define EMAIL_SHARED_PTR(...) \
+  using SharedPtr = std::shared_ptr<__VA_ARGS__>;
 
 #endif  // EMAIL__MACROS_HPP_
