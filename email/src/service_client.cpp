@@ -63,7 +63,7 @@ ServiceClient::send_request(const std::string & request)
 bool
 ServiceClient::has_response(const uint32_t request_id)
 {
-  return responses_->find(request_id) != responses_->cend();
+  return responses_->contains(request_id);
 }
 
 std::optional<std::string>

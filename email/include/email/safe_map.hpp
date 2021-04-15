@@ -64,6 +64,13 @@ public:
     return map_.find(k);
   }
 
+  bool
+  contains(const K & k) const
+  {
+    std::scoped_lock<std::mutex> lock(map_mutex_);
+    return map_.find(k) != map_.cend();
+  }
+
   std::pair<typename std::map<K, T>::const_iterator, typename std::map<K, T>::const_iterator>
   equal_range(const K & k) const
   {
