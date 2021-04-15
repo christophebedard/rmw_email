@@ -10,5 +10,5 @@ jobs:
     - uses: actions/checkout@v1
     - uses: christophebedard/tag-version-commit@v1
       with:
-        token: ${{ secrets.TAG_CREATION_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
         version_assertion_command: 'grep -q "<version>$version</version>" email/package.xml'
