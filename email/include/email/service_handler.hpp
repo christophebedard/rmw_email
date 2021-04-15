@@ -21,9 +21,10 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
-#include "email/safe_queue.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
+#include "email/safe_map.hpp"
+#include "email/safe_queue.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -50,7 +51,7 @@ public:
   void
   register_service_client(
     const std::string & service_name,
-    std::shared_ptr<std::map<uint32_t, struct EmailData>> response_map);
+    std::shared_ptr<SafeMap<uint32_t, struct EmailData>> response_map);
 
   /// Register a service server with the handler.
   /**
@@ -92,7 +93,7 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
-  std::multimap<std::string, std::shared_ptr<std::map<uint32_t, struct EmailData>>> clients_;
+  std::multimap<std::string, std::shared_ptr<SafeMap<uint32_t, struct EmailData>>> clients_;
   mutable std::mutex mutex_servers_;
   std::multimap<std::string, std::shared_ptr<SafeQueue<struct EmailData>>> servers_;
 };

@@ -22,6 +22,7 @@
 #include "email/context.hpp"
 #include "email/log.hpp"
 #include "email/publisher.hpp"
+#include "email/safe_map.hpp"
 #include "email/service_client.hpp"
 
 namespace email
@@ -30,10 +31,9 @@ namespace email
 ServiceClient::ServiceClient(const std::string & service_name)
 : ServiceObject(service_name),
   logger_(log::create("ServiceClient::" + service_name)),
-  responses_(std::make_shared<std::map<uint32_t, struct EmailData>>()),
+  responses_(std::make_shared<SafeMap<uint32_t, struct EmailData>>()),
   pub_(get_service_name())
 {
-  // TODO(christophebedard) create SafeMap?
   // Register with handler
   get_global_context()->get_service_handler()->register_service_client(
     service_name, responses_);
@@ -63,7 +63,7 @@ ServiceClient::send_request(const std::string & request)
 bool
 ServiceClient::has_response(const uint32_t request_id)
 {
-  return responses_->find(request_id) != responses_->end();
+  return responses_->find(request_id) != responses_->cend();
 }
 
 std::optional<std::string>
@@ -74,7 +74,7 @@ ServiceClient::get_response(const uint32_t request_id)
     return std::nullopt;
   }
   auto it = responses_->find(request_id);
-  if (it == responses_->end()) {
+  if (it == responses_->cend()) {
     return std::nullopt;
   }
   const std::string response = it->second.content.body;

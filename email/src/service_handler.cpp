@@ -22,6 +22,7 @@
 #include "email/email/polling_manager.hpp"
 #include "email/email/response_utils.hpp"
 #include "email/log.hpp"
+#include "email/safe_map.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service_handler.hpp"
 #include "email/types.hpp"
@@ -50,7 +51,7 @@ ServiceHandler::~ServiceHandler() {}
 void
 ServiceHandler::register_service_client(
   const std::string & service_name,
-  std::shared_ptr<std::map<uint32_t, struct EmailData>> response_map)
+  std::shared_ptr<SafeMap<uint32_t, struct EmailData>> response_map)
 {
   // TODO(christophebedard) throw/return flag if a service client already exists with the name?
   std::scoped_lock<std::mutex> lock(mutex_clients_);

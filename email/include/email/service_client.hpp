@@ -24,6 +24,7 @@
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/publisher.hpp"
+#include "email/safe_map.hpp"
 #include "email/service.hpp"
 #include "email/visibility_control.hpp"
 
@@ -104,7 +105,7 @@ private:
   EMAIL_DISABLE_COPY(ServiceClient)
 
   std::shared_ptr<Logger> logger_;
-  std::shared_ptr<std::map<uint32_t, struct EmailData>> responses_;
+  std::shared_ptr<SafeMap<uint32_t, struct EmailData>> responses_;
   Publisher pub_;
 
   static constexpr auto WAIT_TIME = std::chrono::milliseconds(10);
