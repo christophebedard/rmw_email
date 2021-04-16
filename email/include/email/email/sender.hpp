@@ -104,7 +104,7 @@ private:
   struct UploadData
   {
     const char * payload;
-    int lines_read;
+    size_t lines_read;
   };
 
   std::shared_ptr<Logger> logger_;
