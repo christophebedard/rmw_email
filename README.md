@@ -1,6 +1,8 @@
 # rmw_email
 
+[![Latest GitHub tag](https://img.shields.io/github/v/tag/christophebedard/rmw_email?sort=semver&label=v)](https://github.com/christophebedard/rmw_email/tags)
 ![GitHub workflow status](https://github.com/christophebedard/rmw_email/workflows/Test/badge.svg)
+[![codecov](https://codecov.io/gh/christophebedard/rmw_email/branch/master/graph/badge.svg?token=20FSAUKMDB)](https://codecov.io/gh/christophebedard/rmw_email)
 [![License](https://img.shields.io/github/license/christophebedard/rmw_email)](https://github.com/christophebedard/rmw_email/blob/master/LICENSE)
 
 ## Configuration
