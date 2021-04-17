@@ -5,6 +5,8 @@
 [![codecov](https://codecov.io/gh/christophebedard/rmw_email/branch/master/graph/badge.svg?token=20FSAUKMDB)](https://codecov.io/gh/christophebedard/rmw_email)
 [![License](https://img.shields.io/github/license/christophebedard/rmw_email)](https://github.com/christophebedard/rmw_email/blob/master/LICENSE)
 
+ROS 2 over email.
+
 ## Configuration
 
 In order to send & receive emails, a configuration file has to be provided.
@@ -25,12 +27,13 @@ Note that you might want to use two different configuration files for two differ
 
 ## Debugging
 
-There are currently two ways to debug:
+There are a few ways to debug:
 
 1. Set the `EMAIL_CURL_VERBOSE` environment variable to be non-empty, e.g. `EMAIL_CURL_VERBOSE=y`. This will enable libcurl's verbose option.
+   * Generally produces too much output to be useful.
 1. Set the logging level to "debug" through the `EMAIL_LOG_LEVEL` environment variable, e.g. `EMAIL_LOG_LEVEL=debug`.
-   * The logging levels are: off, debug, info, error, warn, and fatal.
-   * The default level is info.
-
-Option 1 generally produces too much output to be useful.
-Option 2 is much more useful.
+   * The logging levels are: `off`, `debug`, `info`, `warn`, `error`, and `fatal`.
+   * The default level is `info`.
+1. Write all logs to a file by setting the `EMAIL_LOG_FILE` environment variable to a file path.
+   * This writes all logs to the file, independently of the logging level set through `EMAIL_LOG_LEVEL`.
+   * A leading `~` is expanded to the user's home directory.
