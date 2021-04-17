@@ -10,21 +10,19 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [windows-latest]
     steps:
     - uses: actions/checkout@v2
     - uses: ros-tooling/setup-ros@master
-      with:
-        required-ros-distributions: ${{ matrix.os == 'windows-latest' && '' || 'rolling' }}
-    - name: "Install (lib)curl"
-      run: |
-        choco install --limit-output --no-progress --yes curl
-      if: matrix.os == 'windows-latest'
+    # - name: "Install (lib)curl"
+    #   run: |
+    #     choco install --limit-output --no-progress --yes curl
+    #   if: matrix.os == 'windows-latest'
     - uses: ros-tooling/action-ros-ci@master
       with:
-        package-name: email
+        package-name: rosidl_default_generators unique_identifier_msgs
         target-ros2-distro: rolling
-        vcs-repo-file-url: ${{ matrix.os == 'windows-latest' && 'https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos' || '' }}
+        vcs-repo-file-url: https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
         import-token: ${{ secrets.REPO_TOKEN }}
         colcon-defaults: |
           {
