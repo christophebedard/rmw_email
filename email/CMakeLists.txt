@@ -85,6 +85,10 @@ else()
 endif()
 
 install(
+  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+  DESTINATION include
+)
+install(
   TARGETS ${PROJECT_NAME}
   EXPORT ${PROJECT_NAME}
   LIBRARY DESTINATION lib
