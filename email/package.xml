@@ -6,7 +6,7 @@
   <description>Pub/sub using emails.</description>
   <maintainer email="bedard.christophe@gmail.com">Christophe Bedard</maintainer>
   <license>Apache License 2.0</license>
-  <author>Christophe Bedard</author>
+  <author email="bedard.christophe@gmail.com">Christophe Bedard</author>
 
   <buildtool_depend>ament_cmake_ros</buildtool_depend>
 
