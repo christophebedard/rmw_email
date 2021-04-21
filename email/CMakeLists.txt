@@ -3,7 +3,6 @@ project(email)
 
 # Default to C++17 for std::optional
 if(NOT CMAKE_CXX_STANDARD)
-  # set(CMAKE_CXX_STANDARD 14)
   set(CMAKE_CXX_STANDARD 17)
 endif()
 
@@ -84,6 +83,10 @@ else()
   ament_export_libraries(${CURL_LIBRARIES})
 endif()
 
+install(
+  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+  DESTINATION include
+)
 install(
   TARGETS ${PROJECT_NAME}
   EXPORT ${PROJECT_NAME}
