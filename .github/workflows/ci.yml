@@ -15,11 +15,17 @@ jobs:
             build-type: binary
           - os: ubuntu-latest
             build-type: source
+          - os: windows-latest
+            build-type: source
     steps:
     - uses: actions/checkout@v2
     - uses: ros-tooling/setup-ros@master
       with:
         required-ros-distributions: ${{ matrix.build-type == 'binary' && 'rolling' || '' }}
+    - name: "Install (lib)curl"
+      run: |
+        choco install --limit-output --no-progress --yes curl
+      if: matrix.os == 'windows-latest'
     - uses: ros-tooling/action-ros-ci@master
       with:
         package-name: email
