@@ -33,7 +33,6 @@ static constexpr auto HEADER_CC = "Cc";
 static constexpr auto HEADER_FROM = "From";
 static constexpr auto HEADER_IN_REPLY_TO = "In-Reply-To";
 static constexpr auto HEADER_MESSAGE_ID = "Message-ID";
-static constexpr auto HEADER_REFERENCES = "References";
 static constexpr auto HEADER_SUBJECT = "Subject";
 static constexpr auto HEADER_TO = "To";
 static const std::regex REGEX_BODY(R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
