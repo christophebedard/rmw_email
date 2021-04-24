@@ -174,6 +174,21 @@ TEST(TestUtils, cut_string_if_newline) {
       "this is the first line!?!?!?!?!\r<--not sure this would happen, but\n\rwhy not").c_str());
 }
 
+TEST(TestUtils, get_nextuid_from_response) {
+  auto nextuid_opt_fail = email::utils::response::get_nextuid_from_response("whatever 42");
+  EXPECT_FALSE(nextuid_opt_fail.has_value());
+
+  const std::string response = \
+    "Some line\r\n" \
+    "another line\r\n" \
+    "* OK [UIDNEXT 42] Predicted next UID.\r\n" \
+    "a last line";
+  auto nextuid_opt = email::utils::response::get_nextuid_from_response(response);
+  ASSERT_TRUE(nextuid_opt.has_value());
+  auto nextuid = nextuid_opt.value();
+  EXPECT_EQ(42, nextuid);
+}
+
 TEST(TestUtils, get_email_data_from_response) {
   // Typical use-case with an additional/non-standard header (Sequence-ID)
   const std::string response = \
