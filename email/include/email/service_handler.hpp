@@ -86,11 +86,6 @@ public:
 private:
   EMAIL_DISABLE_COPY(ServiceHandler)
 
-  /// Try to call `std::stoul` and return `std::nullopt` if it fails.
-  static
-  std::optional<uint32_t>
-  optional_stoul(const std::string & str);
-
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
   std::multimap<std::string, SafeMap<uint32_t, struct EmailData>::SharedPtr> clients_;

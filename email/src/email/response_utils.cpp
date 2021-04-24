@@ -73,6 +73,19 @@ take_value_from_headers(const std::string & header_key, EmailHeaders & headers)
 
 }  // namespace
 
+std::optional<uint32_t>
+optional_stoul(const std::string & str)
+{
+  try {
+    return static_cast<uint32_t>(std::stoul(str));
+  } catch (const std::invalid_argument &) {
+  } catch (const std::out_of_range &) {
+  } catch (const std::exception &) {
+  } catch (...) {
+  }
+  return std::nullopt;
+}
+
 std::optional<int>
 get_nextuid_from_response(const std::string & response)
 {

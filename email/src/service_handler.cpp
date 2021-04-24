@@ -109,20 +109,7 @@ ServiceHandler::extract_request_id(const struct EmailData & data)
   if (!request_id) {
     return std::nullopt;
   }
-  return static_cast<uint32_t>(std::stoul(request_id.value()));
-}
-
-std::optional<uint32_t>
-ServiceHandler::optional_stoul(const std::string & str)
-{
-  try {
-    return static_cast<uint32_t>(std::stoul(str));
-  } catch (const std::invalid_argument &) {
-  } catch (const std::out_of_range &) {
-  } catch (const std::exception &) {
-  } catch (...) {
-  }
-  return std::nullopt;
+  return utils::response::optional_stoul(request_id.value());
 }
 
 }  // namespace email
