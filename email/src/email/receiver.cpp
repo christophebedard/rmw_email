@@ -79,6 +79,7 @@ EmailReceiver::get_email()
   // Update next UID
   std::optional<int> next_uid = get_nextuid();
   if (!next_uid) {
+    logger_->error("could not get next UID");
     return std::nullopt;
   }
   next_uid_ = next_uid.value();

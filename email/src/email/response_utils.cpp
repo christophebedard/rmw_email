@@ -37,9 +37,7 @@ static constexpr auto HEADER_SUBJECT = "Subject";
 static constexpr auto HEADER_TO = "To";
 static const std::regex REGEX_BODY(R"((?:\r?\n){2}((?:.*\n*)*)(?:\r?\n)?)");
 static const std::regex REGEX_HEADER(R"(([a-zA-Z\-]+): (.*)\r)");
-static const std::regex REGEX_NEXTUID(
-  R"(.*OK \[UIDNEXT (.*)\] Predicted next UID.*)",
-  std::regex::extended);
+static const std::regex REGEX_NEXTUID(R"(OK \[UIDNEXT ([0-9]+)\] Predicted next UID)");
 
 namespace
 {
