@@ -69,6 +69,20 @@ TEST(TestUtils, split_email_list) {
   EXPECT_EQ("lastone@geemail.com", vector_multiple_space[2]);
 }
 
+TEST(TestUtils, optional_stox) {
+  auto stoi_opt_fail = email::utils::optional_stoi("abc");
+  EXPECT_FALSE(stoi_opt_fail.has_value());
+  auto stoul_opt_fail = email::utils::optional_stoul("abc");
+  EXPECT_FALSE(stoul_opt_fail.has_value());
+
+  auto stoi_opt = email::utils::optional_stoi("42");
+  ASSERT_TRUE(stoi_opt.has_value());
+  EXPECT_EQ(42, stoi_opt);
+  auto stoul_opt = email::utils::optional_stoul("42");
+  ASSERT_TRUE(stoul_opt.has_value());
+  EXPECT_EQ(42ul, stoul_opt);
+}
+
 TEST(TestUtils, build_payload) {
   // Check handling of multiple recipients
   const std::string payload_one_recipient = \
