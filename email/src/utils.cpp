@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -76,9 +76,9 @@ optional_stoul(const std::string & str)
   try {
     return static_cast<uint32_t>(std::stoul(str));
   } catch (const std::invalid_argument &) {
-  } catch (const std::out_of_range &) {
-  } catch (const std::exception &) {
-  } catch (...) {
+  } catch (const std::out_of_range &) {  // LCOV_EXCL_LINE
+  } catch (const std::exception &) {  // LCOV_EXCL_LINE
+  } catch (...) {  // LCOV_EXCL_LINE
   }
   return std::nullopt;
 }
@@ -89,9 +89,9 @@ optional_stoi(const std::string & str)
   try {
     return std::stoi(str);
   } catch (const std::invalid_argument &) {
-  } catch (const std::out_of_range &) {
-  } catch (const std::exception &) {
-  } catch (...) {
+  } catch (const std::out_of_range &) {  // LCOV_EXCL_LINE
+  } catch (const std::exception &) {  // LCOV_EXCL_LINE
+  } catch (...) {  // LCOV_EXCL_LINE
   }
   return std::nullopt;
 }
