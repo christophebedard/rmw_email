@@ -26,6 +26,7 @@
 #include "email/safe_queue.hpp"
 #include "email/service_handler.hpp"
 #include "email/types.hpp"
+#include "email/utils.hpp"
 
 namespace email
 {
@@ -109,7 +110,7 @@ ServiceHandler::extract_request_id(const struct EmailData & data)
   if (!request_id) {
     return std::nullopt;
   }
-  return utils::response::optional_stoul(request_id.value());
+  return utils::optional_stoul(request_id.value());
 }
 
 }  // namespace email
