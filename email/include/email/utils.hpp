@@ -100,6 +100,24 @@ split_email_list(const std::string & list, const bool has_space_after_comma = fa
 std::string
 full_url(const std::string & protocol, const std::string & host, const int port);
 
+/// Try to call `std::stoul`.
+/**
+ * \param std the string to convert to unsigned long
+ * \return the number, or `std::nullopt` if it fails
+ */
+EMAIL_PUBLIC
+std::optional<uint32_t>
+optional_stoul(const std::string & str);
+
+/// Try to call `std::stoi`.
+/**
+ * \param std the string to convert to int
+ * \return the number, or `std::nullopt` if it fails
+ */
+EMAIL_PUBLIC
+std::optional<int>
+optional_stoi(const std::string & str);
+
 }  // namespace utils
 }  // namespace email
 

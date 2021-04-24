@@ -29,7 +29,6 @@ namespace utils
 /// Utilities for extracting information from an email formatted according to RFC 5322.
 /**
  * See: https://tools.ietf.org/html/rfc5322
- * Static utility class only.
  */
 namespace response
 {

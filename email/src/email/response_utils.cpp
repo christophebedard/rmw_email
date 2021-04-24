@@ -80,7 +80,7 @@ get_nextuid_from_response(const std::string & response)
   if (!match_group) {
     return std::nullopt;
   }
-  return std::stoi(match_group.value());
+  return utils::optional_stoi(match_group.value());
 }
 
 std::optional<EmailHeaders>
