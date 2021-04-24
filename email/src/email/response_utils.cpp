@@ -87,13 +87,26 @@ optional_stoul(const std::string & str)
 }
 
 std::optional<int>
+optional_stoi(const std::string & str)
+{
+  try {
+    return std::stoi(str);
+  } catch (const std::invalid_argument &) {
+  } catch (const std::out_of_range &) {
+  } catch (const std::exception &) {
+  } catch (...) {
+  }
+  return std::nullopt;
+}
+
+std::optional<int>
 get_nextuid_from_response(const std::string & response)
 {
   auto match_group = get_first_match_group(response, REGEX_NEXTUID);
   if (!match_group) {
     return std::nullopt;
   }
-  return std::stoi(match_group.value());
+  return optional_stoi(match_group.value());
 }
 
 std::optional<EmailHeaders>

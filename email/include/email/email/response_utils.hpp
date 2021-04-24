@@ -39,6 +39,11 @@ EMAIL_PUBLIC
 std::optional<uint32_t>
 optional_stoul(const std::string & str);
 
+/// Try to call `std::stoi` and return `std::nullopt` if it fails.
+EMAIL_PUBLIC
+std::optional<uint32_t>
+optional_stoi(const std::string & str);
+
 /// Extract UID from request response.
 /**
  * \param response the response
