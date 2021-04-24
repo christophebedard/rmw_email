@@ -112,6 +112,7 @@ if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
   ament_add_gtest(test_utils
     test/test_utils.cpp
+    ENV EMAIL_TEST_UTILS_TEST_ENV_VAR=value42 EMAIL_TEST_UTILS_FILE=${CMAKE_CURRENT_SOURCE_DIR}/test/test_utils.cpp
   )
   target_link_libraries(test_utils ${PROJECT_NAME})
   ament_add_gtest(test_pub_sub

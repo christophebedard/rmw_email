@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,6 +22,32 @@
 #include "email/email/payload_utils.hpp"
 #include "email/email/response_utils.hpp"
 #include "email/utils.hpp"
+
+TEST(TestUtils, get_env_var) {
+  EXPECT_STREQ("", email::utils::get_env_var("SHOULDNT_EXIST").c_str());
+  // See CMakeLists.txt for declaration of this env var
+  EXPECT_STREQ("value42", email::utils::get_env_var("EMAIL_TEST_UTILS_TEST_ENV_VAR").c_str());
+}
+
+TEST(TestUtils, get_env_var_or_default) {
+  EXPECT_STREQ(
+    "defaultvalue",
+    email::utils::get_env_var_or_default("SHOULDNT_EXIST", "defaultvalue").c_str());
+  // See CMakeLists.txt for declaration of this env var
+  EXPECT_STREQ(
+    "value42",
+    email::utils::get_env_var_or_default("EMAIL_TEST_UTILS_TEST_ENV_VAR", "defaultvalue").c_str());
+}
+
+TEST(TestUtils, read_file) {
+  EXPECT_FALSE(email::utils::read_file("doesntexist.txt").has_value());
+
+  auto filepath = email::utils::get_env_var("EMAIL_TEST_UTILS_FILE");
+  ASSERT_FALSE(filepath.empty());
+  auto file_content = email::utils::read_file(filepath);
+  ASSERT_TRUE(file_content.has_value());
+  EXPECT_FALSE(file_content.value().empty());
+}
 
 TEST(TestUtils, join_list) {
   const std::vector<std::string> vect_empty = {};
@@ -67,6 +93,10 @@ TEST(TestUtils, split_email_list) {
   EXPECT_EQ("my@email.com", vector_multiple_space[0]);
   EXPECT_EQ("another@email.ca", vector_multiple_space[1]);
   EXPECT_EQ("lastone@geemail.com", vector_multiple_space[2]);
+}
+
+TEST(TestUtils, full_url) {
+  EXPECT_STREQ("https://google.com:42/", email::utils::full_url("https", "google.com", 42).c_str());
 }
 
 TEST(TestUtils, optional_stox) {

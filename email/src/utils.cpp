@@ -76,9 +76,9 @@ optional_stoul(const std::string & str)
   try {
     return static_cast<uint32_t>(std::stoul(str));
   } catch (const std::invalid_argument &) {
-  } catch (const std::out_of_range &) {
-  } catch (const std::exception &) {
-  } catch (...) {
+  } catch (const std::out_of_range &) {  // LCOV_EXCL_LINE
+  } catch (const std::exception &) {  // LCOV_EXCL_LINE
+  } catch (...) {  // LCOV_EXCL_LINE
   }
   return std::nullopt;
 }
@@ -89,9 +89,9 @@ optional_stoi(const std::string & str)
   try {
     return std::stoi(str);
   } catch (const std::invalid_argument &) {
-  } catch (const std::out_of_range &) {
-  } catch (const std::exception &) {
-  } catch (...) {
+  } catch (const std::out_of_range &) {  // LCOV_EXCL_LINE
+  } catch (const std::exception &) {  // LCOV_EXCL_LINE
+  } catch (...) {  // LCOV_EXCL_LINE
   }
   return std::nullopt;
 }
