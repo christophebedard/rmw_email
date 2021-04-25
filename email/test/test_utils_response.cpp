@@ -35,6 +35,9 @@ TEST(TestResponseUtils, get_nextuid_from_response) {
 }
 
 TEST(TestResponseUtils, get_email_data_from_response) {
+  auto data_opt_fail = email::utils::response::get_email_data_from_response("");
+  EXPECT_FALSE(data_opt_fail.has_value());
+
   // Typical use-case with an additional/non-standard header (Sequence-ID)
   const std::string response = \
     "Message-ID: <some.id@mx.google.com>\r\n" \
@@ -63,4 +66,15 @@ TEST(TestResponseUtils, get_email_data_from_response) {
   ASSERT_NE(custom_header_find, data.additional_headers.end());
   EXPECT_EQ(custom_header_find->first, "Sequence-ID");
   EXPECT_EQ(custom_header_find->second, "123");
+}
+
+TEST(TestResponseUtils, get_header_value) {
+  auto value_opt_fail = email::utils::response::get_header_value("doesntexist", {});
+  EXPECT_FALSE(value_opt_fail.has_value());
+
+  auto value_opt = email::utils::response::get_header_value(
+    "headername",
+    {{"someotherheader", "somevalue"}, {"headername", "headervalue"}});
+  ASSERT_TRUE(value_opt.has_value());
+  EXPECT_STREQ("headervalue", value_opt.value().c_str());
 }
