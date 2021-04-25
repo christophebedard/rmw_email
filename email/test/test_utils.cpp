@@ -20,6 +20,10 @@
 
 #include "email/utils.hpp"
 
+TEST(TestUtils, string_format) {
+  EXPECT_STREQ("answer is: 42!", email::utils::string_format("answer is: %d!", 42).c_str());
+}
+
 TEST(TestUtils, get_env_var) {
   EXPECT_STREQ("", email::utils::get_env_var("SHOULDNT_EXIST").c_str());
   // See CMakeLists.txt for declaration of this env var
