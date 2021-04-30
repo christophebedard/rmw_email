@@ -81,6 +81,11 @@ public:
   std::optional<uint32_t>
   extract_request_id(const struct EmailData & data);
 
+  /// Custom header name for service request ID.
+  /**
+   * Note that there is no "X-" prefix.
+   * See RFC 6648: https://tools.ietf.org/html/rfc6648
+   */
   static constexpr auto HEADER_REQUEST_ID = "Request-ID";
 
 private:
