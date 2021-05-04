@@ -1,0 +1,33 @@
+cmake_minimum_required(VERSION 3.5)
+project(email_examples)
+
+# Default to C++17 for std::optional
+if(NOT CMAKE_CXX_STANDARD)
+  set(CMAKE_CXX_STANDARD 17)
+endif()
+
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
+  add_compile_options(/W4)
+endif()
+
+include(cmake/add_example.cmake)
+
+find_package(ament_cmake_ros REQUIRED)
+find_package(email REQUIRED)
+
+# Examples & executables for testing the lib
+add_example(send)
+add_example(receive)
+add_example(pub)
+add_example(sub)
+add_example(service_client)
+add_example(service_server)
+
+if(BUILD_TESTING)
+  find_package(ament_lint_auto REQUIRED)
+  ament_lint_auto_find_test_dependencies()
+endif()
+
+ament_package()

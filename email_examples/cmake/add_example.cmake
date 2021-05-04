@@ -1,4 +1,4 @@
-# Copyright 2020 Christophe Bedard
+# Copyright 2020-2021 Christophe Bedard
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -16,16 +16,16 @@
 # Add executable, target project lib and install an example.
 #
 # :param name: the name of the example
-#   (name of the .cpp file under the example/ directory;
+#   (name of the .cpp file under the src/ directory;
 #   will be used as the executable name)
 # :type name: string
 #
 macro(add_example name)
   add_executable(${name}
-    example/${name}.cpp
+    src/${name}.cpp
   )
-  target_link_libraries(${name}
-    ${PROJECT_NAME}
+  ament_target_dependencies(${name}
+    email
   )
   install(TARGETS
     ${name}
