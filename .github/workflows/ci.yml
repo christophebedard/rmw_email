@@ -22,7 +22,7 @@ jobs:
         required-ros-distributions: ${{ matrix.build-type == 'binary' && 'rolling' || '' }}
     - uses: ros-tooling/action-ros-ci@master
       with:
-        package-name: email
+        package-name: email email_examples
         target-ros2-distro: rolling
         vcs-repo-file-url: ${{ matrix.build-type == 'source' && 'https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos' || '' }}
         import-token: ${{ secrets.REPO_TOKEN }}

@@ -12,8 +12,6 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   add_compile_options(/W4)
 endif()
 
-include(cmake/add_example.cmake)
-
 find_package(ament_cmake_ros REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(spdlog_vendor REQUIRED)
@@ -95,14 +93,6 @@ install(
   RUNTIME DESTINATION bin
   INCLUDES DESTINATION include
 )
-
-# Examples & executables for testing the lib
-add_example(send)
-add_example(receive)
-add_example(pub)
-add_example(sub)
-add_example(service_client)
-add_example(service_server)
 
 if(BUILD_TESTING)
   #set(ament_cmake_cppcheck_ADDITIONAL_INCLUDE_DIRS ${CURL_INCLUDE_DIRS})
