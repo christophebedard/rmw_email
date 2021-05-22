@@ -54,6 +54,7 @@ string_format(const std::string & format, Args... args)
  * \return the value, or an empty string if it does not exist
  * \throw `std::runtime_error` on error
  */
+EMAIL_PUBLIC
 std::string
 get_env_var(const std::string & env_var);
 
@@ -67,6 +68,7 @@ get_env_var(const std::string & env_var);
  * \return the value or default value
  * \throw `std::runtime_error` on error
  */
+EMAIL_PUBLIC
 std::string
 get_env_var_or_default(const std::string & env_var, const std::string & default_value);
 
@@ -75,6 +77,7 @@ get_env_var_or_default(const std::string & env_var, const std::string & default_
  * \param path the path to the file
  * \return the file content, or `std::nullopt` if it failed (e.g. file does not exist)
  */
+EMAIL_PUBLIC
 std::optional<std::string>
 read_file(const std::string & path);
 
@@ -97,6 +100,7 @@ split_email_list(const std::string & list, const bool has_space_after_comma = fa
  * \param port the port, corresponding to the protocol
  * \return the full URL
  */
+EMAIL_PUBLIC
 std::string
 full_url(const std::string & protocol, const std::string & host, const int port);
 
