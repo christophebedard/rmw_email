@@ -16,6 +16,7 @@
 #define EMAIL__CONTEXT_HPP_
 
 #include <memory>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <stdexcept>
 #include <string>
 
@@ -34,30 +35,39 @@
 namespace email
 {
 
+/// General context error.
+class ContextError : public std::runtime_error
+{
+public:
+  explicit ContextError(const std::string & msg)
+  : std::runtime_error(msg)
+  {}
+};
+
 /// Error when the context is not initialized.
-class ContextNotInitializedError : public std::runtime_error
+class ContextNotInitializedError : public ContextError
 {
 public:
   ContextNotInitializedError()
-  : std::runtime_error("context not initialized")
+  : ContextError("context not initialized")
   {}
 };
 
 /// Error when the context is already initialized.
-class ContextAlreadyInitializedError : public std::runtime_error
+class ContextAlreadyInitializedError : public ContextError
 {
 public:
   ContextAlreadyInitializedError()
-  : std::runtime_error("context already initialized")
+  : ContextError("context already initialized")
   {}
 };
 
 /// Error when the context initialization fails.
-class ContextInitFailedError : public std::runtime_error
+class ContextInitFailedError : public ContextError
 {
 public:
-  ContextInitFailedError()
-  : std::runtime_error("context init failed")
+  explicit ContextInitFailedError(std::optional<std::string> reason = std::nullopt)
+  : ContextError("context init failed: " + reason.value_or("(unknown)"))
   {}
 };
 
@@ -90,6 +100,8 @@ public:
   /// Initialize context using commandline arguments.
   /**
    * Shouldn't be called directly: use `email::init(argc, argv)` instead.
+   *
+   * The process will exit with error code 1 if parsing of CLI options fails.
    *
    * \throw `ContextInitFailedError` if context initialization failed
    * \throw `ContextAlreadyInitializedError` if context is already intialized

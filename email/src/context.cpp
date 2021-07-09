@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -54,7 +54,7 @@ Context::init()
   }
   auto options = Options::parse_options_from_file();
   if (!options) {
-    throw ContextInitFailedError();
+    throw ContextInitFailedError("parsing options from file");
   }
   options_ = options.value();
   init_common();
