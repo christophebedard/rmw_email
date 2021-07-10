@@ -19,6 +19,9 @@
 #include <string>
 #include <vector>
 
+#include "rcpputils/filesystem_helper.hpp"
+#include "rcutils/env.h"
+
 #include "email/options.hpp"
 #include "email/types.hpp"
 #include "email/utils.hpp"
@@ -82,8 +85,8 @@ Options::parse_options_from_args(int argc, char const * const argv[])
     curl_verbose);
 }
 
-std::optional<std::shared_ptr<Options>>
-Options::parse_options_from_file()
+std::optional<std::string>
+Options::get_options_file_content()
 {
   const std::string config_file_path = utils::get_env_var_or_default(
     Options::ENV_VAR_CONFIG_FILE,
@@ -95,7 +98,23 @@ Options::parse_options_from_file()
   }
   auto content = utils::read_file(config_file_path);
   if (!content) {
-    std::cerr << "could not read config file from path: " << config_file_path << std::endl;
+    // Try reading backup config file
+    auto backup_file_path = (rcpputils::fs::path(rcutils_get_home_dir()) / "email.yml").string();
+    content = utils::read_file(backup_file_path);
+    if (!content) {
+      std::cerr << "could not read config file from path: " << config_file_path <<
+        " or from backup path: " << backup_file_path << std::endl;
+      return std::nullopt;
+    }
+  }
+  return content;
+}
+
+std::optional<std::shared_ptr<Options>>
+Options::parse_options_from_file()
+{
+  auto content = Options::get_options_file_content();
+  if (!content) {
     return std::nullopt;
   }
   std::smatch matches;

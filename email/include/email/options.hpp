@@ -92,6 +92,10 @@ public:
   parse_options_from_file();
 
 private:
+  static
+  std::optional<std::string>
+  get_options_file_content();
+
   UserInfo::SharedPtrConst user_info_;
   EmailRecipients::SharedPtrConst recipients_;
   bool curl_verbose_;
