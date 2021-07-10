@@ -18,6 +18,8 @@
 #include <string>
 #include <vector>
 
+#include "yaml-cpp/yaml.h"
+
 #include "email/utils.hpp"
 
 TEST(TestUtils, string_format) {
@@ -50,7 +52,7 @@ TEST(TestUtils, read_file) {
   EXPECT_FALSE(file_content.value().empty());
 }
 
-TEST(TestUtils, split_email_list) {
+TEST(TestUtils, split_email_list_string) {
   EXPECT_TRUE(email::utils::split_email_list("").empty());
 
   const std::string list_single = "my@email.com";
@@ -75,6 +77,30 @@ TEST(TestUtils, split_email_list) {
   EXPECT_EQ("my@email.com", vector_multiple_space[0]);
   EXPECT_EQ("another@email.ca", vector_multiple_space[1]);
   EXPECT_EQ("lastone@geemail.com", vector_multiple_space[2]);
+}
+
+TEST(TestUtils, split_email_list_yaml) {
+  YAML::Node node_vector;
+  node_vector.push_back("my@email.com");
+  node_vector.push_back("another@email.com");
+  auto vector_vector = email::utils::split_email_list(node_vector);
+  ASSERT_EQ(2UL, vector_vector.size());
+  EXPECT_EQ("my@email.com", vector_vector[0]);
+  EXPECT_EQ("another@email.com", vector_vector[1]);
+
+  YAML::Node node_string;
+  node_string = "some@email.com";
+  auto vector_string = email::utils::split_email_list(node_string);
+  ASSERT_EQ(1UL, vector_string.size());
+  EXPECT_EQ("some@email.com", vector_string[0]);
+
+  YAML::Node node_empty;
+  auto vector_empty = email::utils::split_email_list(node_empty);
+  EXPECT_EQ(0UL, vector_empty.size());
+
+  YAML::Node node_nothing;
+  auto vector_nothing = email::utils::split_email_list(node_nothing["some-key"]);
+  EXPECT_EQ(0UL, vector_nothing.size());
 }
 
 TEST(TestUtils, full_url) {

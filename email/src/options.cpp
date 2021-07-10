@@ -21,6 +21,7 @@
 
 #include "rcpputils/filesystem_helper.hpp"
 #include "rcutils/env.h"
+#include "yaml-cpp/yaml.h"
 
 #include "email/log.hpp"
 #include "email/options.hpp"
@@ -86,9 +87,78 @@ Options::parse_options_from_args(int argc, char const * const argv[])
     curl_verbose);
 }
 
-std::optional<std::string>
-Options::get_options_file_content()
+std::optional<std::shared_ptr<Options>>
+Options::yaml_to_options(YAML::Node yaml)
 {
+  logger()->debug("options:\n{}", yaml);
+
+  // Validate content
+  if (!yaml["email"]) {
+    logger()->error("missing top-level 'email' key in options");
+    return std::nullopt;
+  }
+  YAML::Node node_email = yaml["email"];
+  if (!node_email["user"]) {
+    logger()->error("missing key in options: email.user");
+    return std::nullopt;
+  }
+  YAML::Node node_user = node_email["user"];
+  // Need all values under email.user
+  for (const auto & user_key : {"url-smtp", "url-imap", "username", "password"}) {
+    if (!node_user[user_key]) {
+      logger()->error("missing key in options: email.user.{}", user_key);
+      return std::nullopt;
+    }
+  }
+  if (!node_email["recipients"]) {
+    logger()->error("missing key in options: email.recipients");
+    return std::nullopt;
+  }
+  YAML::Node node_recipients = node_email["recipients"];
+  // Only require 'to', the rest are optional
+  if (!node_recipients["to"]) {
+    logger()->error("missing key in options: email.recipients.to");
+    return std::nullopt;
+  }
+
+  UserInfo::SharedPtrConst user_info = std::make_shared<const struct UserInfo>(
+    node_user["url-smtp"].as<std::string>(),
+    node_user["url-imap"].as<std::string>(),
+    node_user["username"].as<std::string>(),
+    node_user["password"].as<std::string>());
+  EmailRecipients::SharedPtrConst recipients =
+    std::make_shared<const struct EmailRecipients>(
+    utils::split_email_list(node_recipients["to"]),
+    utils::split_email_list(node_recipients["cc"]),
+    utils::split_email_list(node_recipients["bcc"]));
+  const std::string curl_verbose_env_var = utils::get_env_var(Options::ENV_VAR_CURL_VERBOSE);
+  return std::make_shared<Options>(
+    user_info,
+    recipients,
+    !curl_verbose_env_var.empty());
+}
+
+std::optional<std::shared_ptr<Options>>
+Options::parse_options_file(const rcpputils::fs::path & file_path)
+{
+  if (file_path.is_directory() || !file_path.exists()) {
+    logger()->error("options file path does not exist or is not a file: {}", file_path);
+  }
+  YAML::Node yaml;
+  const std::string path = file_path.string();
+  try {
+    yaml = YAML::LoadFile(path);
+  } catch (const YAML::BadFile & e) {
+    logger()->error("could not load options file '{}': {}", path, e.what());
+    return std::nullopt;
+  }
+  return Options::yaml_to_options(yaml);
+}
+
+std::optional<std::shared_ptr<Options>>
+Options::parse_options_from_file()
+{
+  // First try using path from environment variable or the default value
   const std::string config_file_path = utils::get_env_var_or_default(
     Options::ENV_VAR_CONFIG_FILE,
     Options::ENV_VAR_CONFIG_FILE_DEFAULT);
@@ -96,16 +166,15 @@ Options::get_options_file_content()
     logger()->error("'%s' env var not found or empty", Options::ENV_VAR_CONFIG_FILE);
     return std::nullopt;
   }
-  auto content = utils::read_file(config_file_path);
-  if (!content) {
+  auto options = Options::parse_options_file(config_file_path);
+  if (!options) {
     // Try reading backup config file
     logger()->debug("could not read config file from path: {}", config_file_path);
-    auto backup_file_path =
-      (rcpputils::fs::path(rcutils_get_home_dir()) / Options::ENV_VAR_CONFIG_FILE_DEFAULT)
-      .string();
+    const rcpputils::fs::path backup_file_path =
+      rcpputils::fs::path(rcutils_get_home_dir()) / Options::ENV_VAR_CONFIG_FILE_DEFAULT;
     logger()->debug("trying backup config file path: {}", backup_file_path);
-    content = utils::read_file(backup_file_path);
-    if (!content) {
+    options = Options::parse_options_file(backup_file_path);
+    if (!options) {
       logger()->error(
         "could not read config file from path '{}' or from backup path '{}'",
         config_file_path,
@@ -113,41 +182,7 @@ Options::get_options_file_content()
       return std::nullopt;
     }
   }
-  return content;
-}
-
-std::optional<std::shared_ptr<Options>>
-Options::parse_options_from_file()
-{
-  auto content = Options::get_options_file_content();
-  if (!content) {
-    return std::nullopt;
-  }
-  std::smatch matches;
-  if (!std::regex_search(content.value(), matches, Options::REGEX_CONFIG_FILE)) {
-    logger()->error("invalid config file");
-    return std::nullopt;
-  }
-  // 7 groups besides the global match itself
-  if (matches.size() != 8) {
-    logger()->error("invalid config file");
-    return std::nullopt;
-  }
-  UserInfo::SharedPtrConst user_info = std::make_shared<const struct UserInfo>(
-    matches[1].str(),
-    matches[2].str(),
-    matches[3].str(),
-    matches[4].str());
-  EmailRecipients::SharedPtrConst recipients =
-    std::make_shared<const struct EmailRecipients>(
-    utils::split_email_list(matches[5].str()),
-    utils::split_email_list(matches[6].str()),
-    utils::split_email_list(matches[7].str()));
-  const std::string curl_verbose_env_var = utils::get_env_var(Options::ENV_VAR_CURL_VERBOSE);
-  return std::make_shared<Options>(
-    user_info,
-    recipients,
-    !curl_verbose_env_var.empty());
+  return options;
 }
 
 std::shared_ptr<Logger>
@@ -156,9 +191,5 @@ Options::logger()
   static auto logger = log::create("Options");
   return logger;
 }
-
-// See: https://regexr.com/580va
-const std::regex Options::REGEX_CONFIG_FILE(
-  R"(email:\n  user:\n    url-smtp:[ ]?(.*)\n    url-imap:[ ]?(.*)\n    username: (.*)\n    password: (.*)\n  recipients:\n    to:[ ]?(.*)\n    cc:[ ]?(.*)\n    bcc:[ ]?(.*)[\n]?)");  // NOLINT
 
 }  // namespace email

@@ -64,6 +64,18 @@ split_email_list(const std::string & list, const bool has_space_after_comma)
   return rcpputils::split(list, ',', true);
 }
 
+std::vector<std::string>
+split_email_list(const YAML::Node & node)
+{
+  if (!node.IsDefined() || node.IsNull()) {
+    return {};
+  }
+  if (node.IsSequence()) {
+    return node.as<std::vector<std::string>>();
+  }
+  return {node.as<std::string>()};
+}
+
 std::string
 full_url(const std::string & protocol, const std::string & host, const int port)
 {
