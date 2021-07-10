@@ -14,6 +14,7 @@ endif()
 
 find_package(ament_cmake_ros REQUIRED)
 find_package(rcpputils REQUIRED)
+find_package(rcutils REQUIRED)
 find_package(spdlog_vendor REQUIRED)
 find_package(spdlog REQUIRED)
 
@@ -60,7 +61,7 @@ if(CURL_USE_VENDOR)
 else()
   target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 endif()
-ament_target_dependencies(${PROJECT_NAME} rcpputils spdlog)
+ament_target_dependencies(${PROJECT_NAME} rcpputils rcutils spdlog)
 if(WIN32)
   # Causes the visibility macros to use dllexport rather than dllimport
   # which is appropriate when building the dll but not consuming it.
@@ -72,7 +73,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   "$<INSTALL_INTERFACE:include>"
 )
 ament_export_include_directories(include)
-ament_export_dependencies(ament_cmake_ros rcpputils spdlog_vendor spdlog)
+ament_export_dependencies(ament_cmake_ros rcpputils rcutils spdlog_vendor spdlog)
 ament_export_targets(${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_export_libraries(${PROJECT_NAME})
 if(CURL_USE_VENDOR)
