@@ -93,18 +93,20 @@ Options::get_options_file_content()
     Options::ENV_VAR_CONFIG_FILE,
     Options::ENV_VAR_CONFIG_FILE_DEFAULT);
   if (config_file_path.empty()) {
-    Options::logger()->error("'%s' env var not found or empty", Options::ENV_VAR_CONFIG_FILE);
+    logger()->error("'%s' env var not found or empty", Options::ENV_VAR_CONFIG_FILE);
     return std::nullopt;
   }
   auto content = utils::read_file(config_file_path);
   if (!content) {
     // Try reading backup config file
-    Options::logger()->debug("could not read config file from path: {}", config_file_path);
-    auto backup_file_path = (rcpputils::fs::path(rcutils_get_home_dir()) / "email.yml").string();
-    Options::logger()->debug("trying backup config file path: {}", backup_file_path);
+    logger()->debug("could not read config file from path: {}", config_file_path);
+    auto backup_file_path =
+      (rcpputils::fs::path(rcutils_get_home_dir()) / Options::ENV_VAR_CONFIG_FILE_DEFAULT)
+      .string();
+    logger()->debug("trying backup config file path: {}", backup_file_path);
     content = utils::read_file(backup_file_path);
     if (!content) {
-      Options::logger()->error(
+      logger()->error(
         "could not read config file from path '{}' or from backup path '{}'",
         config_file_path,
         backup_file_path);
@@ -123,12 +125,12 @@ Options::parse_options_from_file()
   }
   std::smatch matches;
   if (!std::regex_search(content.value(), matches, Options::REGEX_CONFIG_FILE)) {
-    Options::logger()->error("invalid config file");
+    logger()->error("invalid config file");
     return std::nullopt;
   }
   // 7 groups besides the global match itself
   if (matches.size() != 8) {
-    Options::logger()->error("invalid config file");
+    logger()->error("invalid config file");
     return std::nullopt;
   }
   UserInfo::SharedPtrConst user_info = std::make_shared<const struct UserInfo>(

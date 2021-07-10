@@ -93,10 +93,18 @@ public:
   parse_options_from_file();
 
 private:
+  /// Get content of options files.
+  /**
+   * It first tries to read `$EMAIL_CONFIG_FILE`, or `$PWD/email.yml` if it is not set.
+   * If that does not work, it then tries to read from a backup file path: `~/email.yml`.
+   *
+   * \return the content, or `std::nullopt` if it failed
+   */
   static
   std::optional<std::string>
   get_options_file_content();
 
+  /// Get logger.
   static
   std::shared_ptr<Logger>
   logger();
