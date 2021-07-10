@@ -52,12 +52,14 @@ Context::init()
   if (is_valid()) {
     throw ContextAlreadyInitializedError();
   }
+  init_common();
   auto options = Options::parse_options_from_file();
   if (!options) {
     throw ContextInitFailedError("parsing options from file");
   }
   options_ = options.value();
-  init_common();
+
+  is_valid_ = true;
 }
 
 void
@@ -66,13 +68,15 @@ Context::init(int argc, char const * const argv[])
   if (is_valid()) {
     throw ContextAlreadyInitializedError();
   }
+  init_common();
   auto options = Options::parse_options_from_args(argc, argv);
   if (!options) {
     // Exit with non-zero instead of throwing an exception, since this is CLI args-related
     exit(1);
   }
   options_ = options.value();
-  init_common();
+
+  is_valid_ = true;
 }
 
 void
@@ -81,7 +85,6 @@ Context::init_common()
   log::init_from_env();
   spdlog::get("root")->debug("logging initialized");
   logger_ = log::create("Context");
-  is_valid_ = true;
 }
 
 bool
