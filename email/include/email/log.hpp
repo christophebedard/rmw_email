@@ -94,6 +94,13 @@ create(const std::string & name);
 std::shared_ptr<Logger>
 get_or_create(const std::string & name);
 
+/// Remove an existing logger.
+/**
+ * \param name the logger
+ */
+void
+remove(const std::shared_ptr<Logger> & logger);
+
 /// Shutdown and finalize.
 void
 shutdown();

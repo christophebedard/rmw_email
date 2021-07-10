@@ -19,6 +19,7 @@
 #include <utility>
 
 #include "email/context.hpp"
+#include "email/log.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
 #include "email/subscriber.hpp"
@@ -28,8 +29,9 @@
 namespace email
 {
 
-Subscriber::Subscriber(const std::string & topic)
-: PubSubObject(topic),
+Subscriber::Subscriber(const std::string & topic_name)
+: PubSubObject(topic_name),
+  logger_(log::create("Subscriber::" + topic_name)),
   messages_(std::make_shared<SafeQueue<std::string>>())
 {
   // Register with handler
@@ -38,7 +40,10 @@ Subscriber::Subscriber(const std::string & topic)
     messages_);
 }
 
-Subscriber::~Subscriber() {}
+Subscriber::~Subscriber()
+{
+  log::remove(logger_);
+}
 
 bool
 Subscriber::has_message()

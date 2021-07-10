@@ -171,8 +171,15 @@ get_or_create(const std::string & name)
 }
 
 void
+remove(const std::shared_ptr<Logger> & logger)
+{
+  spdlog::drop(logger->name());
+}
+
+void
 shutdown()
 {
+  spdlog::drop_all();
   spdlog::shutdown();
   root_logger = nullptr;
   sink_console = nullptr;

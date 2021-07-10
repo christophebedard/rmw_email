@@ -31,7 +31,10 @@ Publisher::Publisher(const std::string & topic_name)
   sender_(get_global_context()->get_sender())
 {}
 
-Publisher::~Publisher() {}
+Publisher::~Publisher()
+{
+  log::remove(logger_);
+}
 
 void
 Publisher::publish(const std::string & message, std::optional<EmailHeaders> additional_headers)

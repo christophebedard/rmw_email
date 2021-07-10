@@ -20,6 +20,7 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
@@ -76,6 +77,7 @@ public:
 private:
   EMAIL_DISABLE_COPY(Subscriber)
 
+  std::shared_ptr<Logger> logger_;
   SafeQueue<std::string>::SharedPtr messages_;
 
   static constexpr auto WAIT_TIME = std::chrono::milliseconds(1);
