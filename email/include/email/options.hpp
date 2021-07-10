@@ -20,6 +20,9 @@
 #include <regex>
 #include <string>
 
+#include "rcpputils/filesystem_helper.hpp"
+#include "yaml-cpp/yaml.h"
+
 #include "email/log.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
@@ -86,24 +89,34 @@ public:
 
   /// Parse options from config file.
   /**
+   * It first tries to read `$EMAIL_CONFIG_FILE`, or `$PWD/email.yml` if it is not set.
+   * If that does not work, it then tries to read from a backup file path: `~/email.yml`.
+   *
    * \return the resulting `Options` object, or `std::nullopt` if it failed
    */
   static
   std::optional<std::shared_ptr<Options>>
   parse_options_from_file();
 
-private:
-  /// Get content of options files.
+  /// Get `Options` object from yaml node.
   /**
-   * It first tries to read `$EMAIL_CONFIG_FILE`, or `$PWD/email.yml` if it is not set.
-   * If that does not work, it then tries to read from a backup file path: `~/email.yml`.
-   *
-   * \return the content, or `std::nullopt` if it failed
+   * \return the resulting `Options` object, or `std::nullopt` if it failed
+   */
+  EMAIL_PUBLIC
+  static
+  std::optional<std::shared_ptr<Options>>
+  yaml_to_options(YAML::Node);
+
+  /// Parse options file.
+  /**
+   * \param file_path the path to the file to parse
+   * \return the resulting `Options` object, or `std::nullopt` if it failed
    */
   static
-  std::optional<std::string>
-  get_options_file_content();
+  std::optional<std::shared_ptr<Options>>
+  parse_options_file(const rcpputils::fs::path & file_path);
 
+private:
   /// Get logger.
   static
   std::shared_ptr<Logger>
@@ -113,7 +126,6 @@ private:
   EmailRecipients::SharedPtrConst recipients_;
   bool curl_verbose_;
 
-  static const std::regex REGEX_CONFIG_FILE;
   static constexpr const char * ENV_VAR_CURL_VERBOSE = "EMAIL_CURL_VERBOSE";
   static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";
   static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT = "email.yml";

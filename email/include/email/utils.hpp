@@ -21,6 +21,8 @@
 #include <string>
 #include <vector>
 
+#include "yaml-cpp/yaml.h"
+
 #include "email/visibility_control.hpp"
 
 namespace email
@@ -90,6 +92,15 @@ read_file(const std::string & path);
 EMAIL_PUBLIC
 std::vector<std::string>
 split_email_list(const std::string & list, const bool has_space_after_comma = false);
+
+/// Split list of emails in a YAML node.
+/**
+ * \param node the yaml node
+ * \return the individual emails as a vector
+ */
+EMAIL_PUBLIC
+std::vector<std::string>
+split_email_list(const YAML::Node & node);
 
 /// Build a full URL from the necessary information.
 /**

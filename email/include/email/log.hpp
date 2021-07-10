@@ -18,7 +18,30 @@
 #include <memory>
 #include <string>
 
+#include "rcpputils/filesystem_helper.hpp"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
+#include "yaml-cpp/yaml.h"
+
+struct path
+{
+  template<typename OStream>
+  friend OStream & operator<<(OStream & os, const rcpputils::fs::path & p)
+  {
+    return os << p.string();
+  }
+};
+
+struct yaml
+{
+  template<typename OStream>
+  friend OStream & operator<<(OStream & os, const YAML::Node & y)
+  {
+    YAML::Emitter emitter;
+    emitter << YAML::DoubleQuoted << YAML::Flow << y;
+    return os << emitter.c_str();
+  }
+};
 
 namespace email
 {
