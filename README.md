@@ -12,6 +12,7 @@ ROS 2 over email.
 In order to send & receive emails, a configuration file has to be provided.
 By default, the path to the config file is `email.yml`, relative to the current working directory.
 However, the path can be changed using the `EMAIL_CONFIG_FILE` environment variable, e.g. `EMAIL_CONFIG_FILE=other/dir/myemail.yml`.
+If that file does not exist, `~/email.yml` will be used as a backup.
 
 A sample configuration file is provided: [`email.yml`](./email/email.yml).
 As for the values:
