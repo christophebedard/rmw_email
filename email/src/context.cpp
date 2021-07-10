@@ -103,6 +103,7 @@ Context::shutdown()
   }
   logger_->debug("shut down");
   log::shutdown();
+  is_valid_ = false;
   return true;
 }
 
