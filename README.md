@@ -9,7 +9,7 @@ ROS 2 over email.
 
 ## Configuration
 
-In order to send & receive emails, a configuration file has to be provided.
+In order to send & receive emails, a YAML configuration file has to be provided.
 By default, the path to the config file is `email.yml`, relative to the current working directory.
 However, the path can be changed using the `EMAIL_CONFIG_FILE` environment variable, e.g. `EMAIL_CONFIG_FILE=other/dir/myemail.yml`.
 If that file does not exist, `~/email.yml` will be used as a backup.
@@ -22,7 +22,15 @@ As for the values:
    * `username`: your email
    * `password`: your password
       * it is recommended to generate a "unique" password. For Gmail, that is an [app password](https://myaccount.google.com/apppasswords). Under *Select app*, click *Other (Custom name)* and simply enter something like *rmw_email*. Copy the generated password and paste it in the config file.
-   * `to`/`cc`/`bcc`: recipients (comma-separated)
+   * `to`/`cc`/`bcc`: recipients
+      * either as simple string values or as an array of string values, e.g.:
+         ```yaml
+         to: my@email.com
+         cc:
+           - some@email.com
+           - another@email.com
+         ```
+      * `to` must be defined and must contain at least one email address, but `cc` and `bcc` are optional
 
 Note that you might want to use two different configuration files for two different executables/nodes.
 
