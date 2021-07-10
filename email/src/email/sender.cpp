@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,7 +15,6 @@
 #include <curl/curl.h>
 
 #include <cstring>
-#include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <stdexcept>
@@ -39,7 +38,6 @@ EmailSender::EmailSender(
     {user_info->host_smtp, user_info->username, user_info->password},
     {"smtps", 465},
     curl_verbose),
-  logger_(log::create("EmailSender")),
   recipients_(recipients),
   recipients_list_(nullptr),
   upload_ctx_()
@@ -68,7 +66,7 @@ EmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, void *
   size_t len = strlen(data);
   if (len > max_size) {
     len = max_size;
-    std::cerr << "truncated to len=" << len << std::endl;
+    logger()->error("truncated to len={}", len);
   }
   memcpy(ptr, data, len);
   upload_ctx->lines_read += len;
@@ -83,7 +81,7 @@ EmailSender::init_options()
     context_.get_handle(), CURLOPT_MAIL_FROM, context_.get_connection_info().username.c_str());
   // Add all destination emails to the list of recipients
   if (0 == recipients_->to.size() + recipients_->cc.size() + recipients_->bcc.size()) {
-    logger_->critical("no recipients for EmailSender");
+    logger()->critical("no recipients for EmailSender");
     return false;
   }
   for (auto & email_to : recipients_->to) {
@@ -133,10 +131,10 @@ bool
 EmailSender::send_payload(const std::string & payload)
 {
   if (!is_valid()) {
-    logger_->warn("not initialized!");
+    logger()->warn("not initialized!");
     return false;
   }
-  logger_->debug("PAYLOAD:\n{}", payload);
+  logger()->debug("PAYLOAD:\n{}", payload);
   // Reset upload data
   upload_ctx_.payload = payload.c_str();
   // TODO(christophebedard) use 'uz' suffix when switching to C++23
@@ -145,6 +143,13 @@ EmailSender::send_payload(const std::string & payload)
     return false;
   }
   return true;
+}
+
+std::shared_ptr<Logger>
+EmailSender::logger()
+{
+  static auto logger = log::create("EmailSender");
+  return logger;
 }
 
 }  // namespace email

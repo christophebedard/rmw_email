@@ -100,6 +100,11 @@ private:
   size_t
   read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp);
 
+  /// Get logger.
+  static
+  std::shared_ptr<Logger>
+  logger();
+
   /// Utility struct for uploading data with curl.
   struct UploadData
   {
@@ -107,7 +112,6 @@ private:
     size_t lines_read;
   };
 
-  std::shared_ptr<Logger> logger_;
   EmailRecipients::SharedPtrConst recipients_;
   struct curl_slist * recipients_list_;
   struct UploadData upload_ctx_;
