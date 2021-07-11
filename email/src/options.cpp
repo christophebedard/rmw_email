@@ -161,7 +161,7 @@ Options::parse_options_from_file()
   // First try using path from environment variable or the default value
   const std::string config_file_path = utils::get_env_var_or_default(
     Options::ENV_VAR_CONFIG_FILE,
-    Options::ENV_VAR_CONFIG_FILE_DEFAULT);
+    (rcpputils::fs::current_path() / Options::ENV_VAR_CONFIG_FILE_DEFAULT).string());
   if (config_file_path.empty()) {
     logger()->error("'%s' env var not found or empty", Options::ENV_VAR_CONFIG_FILE);
     return std::nullopt;
