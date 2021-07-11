@@ -175,7 +175,21 @@ extern "C" rmw_ret_t rmw_publisher_count_matched_subscriptions(
   return RMW_RET_OK;
 }
 
-rmw_ret_t rmw_publisher_assert_liveliness(const rmw_publisher_t * publisher)
+rmw_ret_t rmw_publisher_get_actual_qos(const rmw_publisher_t * publisher, rmw_qos_profile_t * qos)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(publisher, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    publisher,
+    publisher->implementation_identifier,
+    email_identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_ARGUMENT_FOR_NULL(qos, RMW_RET_INVALID_ARGUMENT);
+
+  // TODO(christophebedard) figure out
+  return RMW_RET_OK;
+}
+
+extern "C" rmw_ret_t rmw_publisher_assert_liveliness(const rmw_publisher_t * publisher)
 {
   RET_NULL(publisher);
   RET_WRONG_IMPLID(publisher);
@@ -186,4 +200,73 @@ rmw_ret_t rmw_publisher_assert_liveliness(const rmw_publisher_t * publisher)
 
   // Stayin' alive
   return RMW_RET_OK;
+}
+
+extern "C" rmw_ret_t rmw_publisher_wait_for_all_acked(
+  const rmw_publisher_t * publisher,
+  rmw_time_t wait_timeout)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(publisher, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    publisher,
+    publisher->implementation_identifier,
+    email_identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+
+  // TODO(christophebedard) RFC 3798?
+  static_cast<void>(wait_timeout);
+  return RMW_RET_OK;
+}
+
+extern "C" rmw_ret_t rmw_count_publishers(
+  const rmw_node_t * node,
+  const char * topic_name,
+  size_t * count)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(node, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    node,
+    node->implementation_identifier,
+    email_identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, RMW_RET_INVALID_ARGUMENT);
+
+  // Validate topic name
+  int validation_result = RMW_TOPIC_VALID;
+  rmw_ret_t ret = rmw_validate_full_topic_name(topic_name, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  if (RMW_TOPIC_VALID != validation_result) {
+    const char * reason = rmw_full_topic_name_validation_result_string(validation_result);
+    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("topic_name argument is invalid: %s", reason);
+    return RMW_RET_INVALID_ARGUMENT;
+  }
+
+  RMW_CHECK_ARGUMENT_FOR_NULL(count, RMW_RET_INVALID_ARGUMENT);
+  // TODO(christophebedard) figure out
+  *count = 1u;
+  return RMW_RET_OK;
+}
+
+extern "C" rmw_ret_t rmw_borrow_loaned_message(
+  const rmw_publisher_t * publisher,
+  const rosidl_message_type_support_t * type_support,
+  void ** ros_message)
+{
+  static_cast<void>(publisher);
+  static_cast<void>(type_support);
+  static_cast<void>(ros_message);
+  RMW_SET_ERROR_MSG("rmw_borrow_loaned_message not implemented for rmw_email_cpp");
+  return RMW_RET_UNSUPPORTED;
+}
+
+extern "C" rmw_ret_t rmw_return_loaned_message_from_publisher(
+  const rmw_publisher_t * publisher,
+  void * loaned_message)
+{
+  static_cast<void>(publisher);
+  static_cast<void>(loaned_message);
+  RMW_SET_ERROR_MSG("rmw_return_loaned_message_from_publisher not implemented for rmw_email_cpp");
+  return RMW_RET_UNSUPPORTED;
 }

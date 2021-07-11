@@ -119,6 +119,35 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
   return _create_subscription(topic_name, subscription_options, type_supports);
 }
 
+static rmw_ret_t _destroy_subscription(rmw_subscription_t * subscription)
+{
+  rmw_email_sub_t * sub = static_cast<rmw_email_sub_t *>(subscription->data);
+  email::Subscriber * email_sub = sub->email_sub;
+  delete email_sub;
+  delete sub;
+  rmw_free(const_cast<char *>(subscription->topic_name));
+  rmw_subscription_free(subscription);
+  return RMW_RET_OK;
+}
+
+extern "C" rmw_ret_t rmw_destroy_subscription(rmw_node_t * node, rmw_subscription_t * subscription)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(node, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_ARGUMENT_FOR_NULL(subscription, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    node,
+    node->implementation_identifier,
+    email_identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    subscription,
+    subscription->implementation_identifier,
+    email_identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+
+  return _destroy_subscription(subscription);
+}
+
 extern "C" rmw_ret_t rmw_subscription_count_matched_publishers(
   const rmw_subscription_t * subscription, size_t * publisher_count)
 {
@@ -129,12 +158,6 @@ extern "C" rmw_ret_t rmw_subscription_count_matched_publishers(
     email_identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(publisher_count, RMW_RET_INVALID_ARGUMENT);
-
-  // auto sub = static_cast<CddsSubscription *>(subscription->data);
-  // dds_subscription_matched_status_t status;
-  // if (dds_get_subscription_matched_status(sub->enth, &status) < 0) {
-  //   return RMW_RET_ERROR;
-  // }
 
   // We're always listening
   *publisher_count = 1u;
@@ -154,9 +177,36 @@ extern "C" rmw_ret_t rmw_subscription_get_actual_qos(
   RMW_CHECK_ARGUMENT_FOR_NULL(qos, RMW_RET_INVALID_ARGUMENT);
 
   // TODO(christophebedard) figure out
-  // auto sub = static_cast<CddsSubscription *>(subscription->data);
-  // if (get_readwrite_qos(sub->enth, qos)) {
-  //   return RMW_RET_OK;
-  // }
   return RMW_RET_ERROR;
+}
+
+extern "C" rmw_ret_t rmw_count_subscribers(
+  const rmw_node_t * node,
+  const char * topic_name,
+  size_t * count)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(node, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    node,
+    node->implementation_identifier,
+    email_identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, RMW_RET_INVALID_ARGUMENT);
+
+  // Validate topic name
+  int validation_result = RMW_TOPIC_VALID;
+  rmw_ret_t ret = rmw_validate_full_topic_name(topic_name, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  if (RMW_TOPIC_VALID != validation_result) {
+    const char * reason = rmw_full_topic_name_validation_result_string(validation_result);
+    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("topic_name argument is invalid: %s", reason);
+    return RMW_RET_INVALID_ARGUMENT;
+  }
+
+  RMW_CHECK_ARGUMENT_FOR_NULL(count, RMW_RET_INVALID_ARGUMENT);
+  // TODO(christophebedard) figure out
+  *count = 1u;
+  return RMW_RET_OK;
 }
