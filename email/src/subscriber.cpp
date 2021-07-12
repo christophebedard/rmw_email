@@ -31,7 +31,7 @@ namespace email
 
 Subscriber::Subscriber(const std::string & topic_name)
 : PubSubObject(topic_name),
-  logger_(log::create("Subscriber::" + topic_name)),
+  logger_(log::get_or_create("Subscriber::" + topic_name)),
   messages_(std::make_shared<SafeQueue<std::string>>())
 {
   // Register with handler
@@ -41,9 +41,7 @@ Subscriber::Subscriber(const std::string & topic_name)
 }
 
 Subscriber::~Subscriber()
-{
-  log::remove(logger_);
-}
+{}
 
 bool
 Subscriber::has_message()

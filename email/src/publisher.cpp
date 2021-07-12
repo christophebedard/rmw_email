@@ -27,14 +27,12 @@ namespace email
 
 Publisher::Publisher(const std::string & topic_name)
 : PubSubObject(topic_name),
-  logger_(log::create("Publisher::" + topic_name)),
+  logger_(log::get_or_create("Publisher::" + topic_name)),
   sender_(get_global_context()->get_sender())
 {}
 
 Publisher::~Publisher()
-{
-  log::remove(logger_);
-}
+{}
 
 void
 Publisher::publish(const std::string & message, std::optional<EmailHeaders> additional_headers)
