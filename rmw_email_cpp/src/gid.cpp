@@ -21,7 +21,7 @@ rmw_gid_t convert_gid(const email::Gid & gid)
   rmw_gid_t rmw_gid = {};
   rmw_gid.implementation_identifier = email_identifier;
 
-  email::GidValue new_id = gid.value();
+  const email::GidValue new_id = gid.value();
   static_assert(
     sizeof(decltype(new_id)) <= RMW_GID_STORAGE_SIZE,
     "RMW_GID_STORAGE_SIZE insufficient to store rmw_email_cpp GID");

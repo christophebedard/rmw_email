@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <atomic>
+#include <random>
 #include <string>
 
 #include "email/gid.hpp"
@@ -41,9 +42,13 @@ Gid::as_string() const
 GidValue
 Gid::new_value()
 {
-  // TODO(christophebedard) generate a random UUID?
+  // Generate random prefix
+  static std::random_device random_device;
+  static std::mt19937 gen(random_device());
+  static auto prefix = gen();
+  // Add sequence ID to prefix
   static std::atomic<GidValue> id;
-  return id++;
+  return prefix + id++;
 }
 
 }  // namespace email
