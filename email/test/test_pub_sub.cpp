@@ -16,6 +16,7 @@
 
 #include <string>
 
+#include "email/gid.hpp"
 #include "email/pub_sub.hpp"
 
 class PubSubObjectStub : public email::PubSubObject
@@ -27,6 +28,7 @@ public:
 };
 
 TEST(TestPubSub, validate_topic_name) {
+  EXPECT_NO_THROW(PubSubObjectStub("/my_topic"));
   EXPECT_THROW(PubSubObjectStub(""), email::TopicNameInvalidError);
   EXPECT_THROW(PubSubObjectStub("aaa\n"), email::TopicNameInvalidError);
   EXPECT_THROW(PubSubObjectStub("\nbbb"), email::TopicNameInvalidError);
@@ -35,4 +37,11 @@ TEST(TestPubSub, validate_topic_name) {
   EXPECT_THROW(PubSubObjectStub("aaa\r\n"), email::TopicNameInvalidError);
   EXPECT_THROW(PubSubObjectStub("\r\nccc"), email::TopicNameInvalidError);
   EXPECT_THROW(PubSubObjectStub("aaa\r\nccc"), email::TopicNameInvalidError);
+}
+
+TEST(TestPubSub, gid) {
+  PubSubObjectStub o1("/my_topic");
+  PubSubObjectStub o2("/my_other_topic");
+  EXPECT_NE(o1.get_gid().value(), o2.get_gid().value());
+  EXPECT_STRNE(o1.get_gid().as_string().c_str(), o2.get_gid().as_string().c_str());
 }

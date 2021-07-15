@@ -19,6 +19,7 @@
 #include <stdexcept>
 #include <string>
 
+#include "email/gid.hpp"
 #include "email/macros.hpp"
 #include "email/visibility_control.hpp"
 
@@ -49,6 +50,14 @@ public:
   std::string
   get_topic_name() const;
 
+  /// Get the unique ID (GID) for this object.
+  /**
+   * \return the GID
+   */
+  EMAIL_PUBLIC
+  const Gid &
+  get_gid() const;
+
 protected:
   /// Constructor.
   /**
@@ -75,6 +84,7 @@ private:
   static const std::regex REGEX_NEWLINE;
 
   const std::string topic_name_;
+  const Gid gid_;
 };
 
 }  // namespace email

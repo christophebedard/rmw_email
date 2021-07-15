@@ -61,8 +61,8 @@ static rmw_publisher_t * _create_publisher(
   RET_ALLOC_X(email_pub, return nullptr);
   pub->email_pub = email_pub;
 
-  // Create GID now and then we can fetch it whenever
-  pub->gid = get_new_gid();
+  // Get GID from email publisher
+  pub->gid = convert_gid(email_pub->get_gid());
 
   // Put everything together
   rmw_publisher_t * rmw_publisher = rmw_publisher_allocate();

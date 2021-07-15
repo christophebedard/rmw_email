@@ -42,6 +42,7 @@ set(SOURCES
   src/email/receiver.cpp
   src/email/response_utils.cpp
   src/email/sender.cpp
+  src/gid.cpp
   src/init.cpp
   src/log.cpp
   src/options.cpp

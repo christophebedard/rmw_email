@@ -12,18 +12,38 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef RMW_EMAIL_CPP__GID_HPP_
-#define RMW_EMAIL_CPP__GID_HPP_
-
-#include <stdint.h>
+#include <atomic>
+#include <string>
 
 #include "email/gid.hpp"
-#include "rmw/types.h"
 
-/// Convert GID from email to rmw.
-rmw_gid_t convert_gid(const email::Gid & gid);
+namespace email
+{
 
-/// Copy rmw GIDs.
-void copy_gids(rmw_gid_t * dest, rmw_gid_t * src);
+Gid::Gid()
+: value_(Gid::new_value())
+{}
 
-#endif  // RMW_EMAIL_CPP__GID_HPP_
+Gid::~Gid() {}
+
+GidValue
+Gid::value() const
+{
+  return value_;
+}
+
+std::string
+Gid::as_string() const
+{
+  return std::to_string(value_);
+}
+
+GidValue
+Gid::new_value()
+{
+  // TODO(christophebedard) generate a random UUID?
+  static std::atomic<GidValue> id;
+  return id++;
+}
+
+}  // namespace email
