@@ -21,7 +21,8 @@ namespace email
 {
 
 PubSubObject::PubSubObject(const std::string & topic_name)
-: topic_name_(topic_name)
+: topic_name_(topic_name),
+  gid_()
 {
   validate_topic_name(topic_name);
 }
@@ -32,6 +33,12 @@ std::string
 PubSubObject::get_topic_name() const
 {
   return topic_name_;
+}
+
+const Gid &
+PubSubObject::get_gid() const
+{
+  return gid_;
 }
 
 void

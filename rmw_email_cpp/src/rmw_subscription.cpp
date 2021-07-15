@@ -58,8 +58,8 @@ static rmw_subscription_t * _create_subscription(
   RET_ALLOC_X(email_sub, return nullptr);
   sub->email_sub = email_sub;
 
-  // Create GID now and then we can fetch it whenever
-  sub->gid = get_new_gid();
+  // Get GID from email subscriber
+  sub->gid = convert_gid(email_sub->get_gid());
 
   // Put everything together
   rmw_subscription_t * rmw_subscription = rmw_subscription_allocate();

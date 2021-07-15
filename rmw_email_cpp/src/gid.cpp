@@ -12,26 +12,18 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <atomic>
-
+#include "email/gid.hpp"
 #include "rmw/types.h"
 #include "rmw_email_cpp/identifier.hpp"
 
-inline uint32_t get_new_id()
-{
-  // TODO(christophebedard) generate a random UUID?
-  static std::atomic<uint32_t> id;
-  return id++;
-}
-
-rmw_gid_t get_new_gid()
+rmw_gid_t convert_gid(const email::Gid & gid)
 {
   rmw_gid_t rmw_gid = {};
   rmw_gid.implementation_identifier = email_identifier;
 
-  uint32_t new_id = get_new_id();
+  email::GidValue new_id = gid.value();
   static_assert(
-    sizeof(decltype(get_new_id())) <= RMW_GID_STORAGE_SIZE,
+    sizeof(decltype(new_id)) <= RMW_GID_STORAGE_SIZE,
     "RMW_GID_STORAGE_SIZE insufficient to store rmw_email_cpp GID");
   memcpy(rmw_gid.data, &new_id, sizeof(new_id));
 
