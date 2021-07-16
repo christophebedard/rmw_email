@@ -102,6 +102,15 @@ EMAIL_PUBLIC
 std::vector<std::string>
 split_email_list(const YAML::Node & node);
 
+/// Convert YAML node to string.
+/**
+ * \param node the YAML node
+ * \return the string equivalent
+ */
+EMAIL_PUBLIC
+std::string
+yaml_to_string(const YAML::Node & node);
+
 /// Build a full URL from the necessary information.
 /**
  * i.e. protocol://host:port/

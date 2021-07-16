@@ -88,16 +88,16 @@ Options::parse_options_from_args(int argc, char const * const argv[])
 }
 
 std::optional<std::shared_ptr<Options>>
-Options::yaml_to_options(YAML::Node yaml)
+Options::yaml_to_options(YAML::Node node)
 {
-  logger()->debug("options:\n{}", yaml);
+  logger()->debug("options:\n{}", node);
 
   // Validate content
-  if (!yaml["email"]) {
+  if (!node["email"]) {
     logger()->error("missing top-level 'email' key in options");
     return std::nullopt;
   }
-  YAML::Node node_email = yaml["email"];
+  YAML::Node node_email = node["email"];
   if (!node_email["user"]) {
     logger()->error("missing key in options: email.user");
     return std::nullopt;
@@ -141,18 +141,20 @@ Options::yaml_to_options(YAML::Node yaml)
 std::optional<std::shared_ptr<Options>>
 Options::parse_options_file(const rcpputils::fs::path & file_path)
 {
+  logger()->debug("parsing options file: {}", file_path);
   if (file_path.is_directory() || !file_path.exists()) {
-    logger()->error("options file path does not exist or is not a file: {}", file_path);
+    logger()->debug("options file path does not exist or is not a file: {}", file_path);
+    return std::nullopt;
   }
-  YAML::Node yaml;
+  YAML::Node node;
   const std::string path = file_path.string();
   try {
-    yaml = YAML::LoadFile(path);
+    node = YAML::LoadFile(path);
   } catch (const YAML::BadFile & e) {
     logger()->error("could not load options file '{}': {}", path, e.what());
     return std::nullopt;
   }
-  return Options::yaml_to_options(yaml);
+  return Options::yaml_to_options(node);
 }
 
 std::optional<std::shared_ptr<Options>>
@@ -163,13 +165,12 @@ Options::parse_options_from_file()
     Options::ENV_VAR_CONFIG_FILE,
     (rcpputils::fs::current_path() / Options::ENV_VAR_CONFIG_FILE_DEFAULT).string());
   if (config_file_path.empty()) {
-    logger()->error("'%s' env var not found or empty", Options::ENV_VAR_CONFIG_FILE);
+    logger()->error("env var empty: {}", Options::ENV_VAR_CONFIG_FILE);
     return std::nullopt;
   }
   auto options = Options::parse_options_file(config_file_path);
   if (!options) {
     // Try reading backup config file
-    logger()->debug("could not read config file from path: {}", config_file_path);
     const rcpputils::fs::path backup_file_path =
       rcpputils::fs::path(rcutils_get_home_dir()) / Options::ENV_VAR_CONFIG_FILE_DEFAULT;
     logger()->debug("trying backup config file path: {}", backup_file_path);
