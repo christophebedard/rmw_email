@@ -77,6 +77,14 @@ split_email_list(const YAML::Node & node)
 }
 
 std::string
+yaml_to_string(const YAML::Node & node)
+{
+  YAML::Emitter emitter;
+  emitter << YAML::DoubleQuoted << YAML::Flow << node;
+  return emitter.c_str();
+}
+
+std::string
 full_url(const std::string & protocol, const std::string & host, const int port)
 {
   return protocol + "://" + host + ":" + std::to_string(port) + "/";

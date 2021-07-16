@@ -103,6 +103,12 @@ TEST(TestUtils, split_email_list_yaml) {
   EXPECT_EQ(0UL, vector_nothing.size());
 }
 
+TEST(TestUtils, yaml_to_string) {
+  YAML::Node node;
+  node["key"] = "value";
+  EXPECT_STREQ("{\"key\": \"value\"}", email::utils::yaml_to_string(node).c_str());
+}
+
 TEST(TestUtils, full_url) {
   EXPECT_STREQ("https://google.com:42/", email::utils::full_url("https", "google.com", 42).c_str());
 }

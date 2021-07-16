@@ -23,25 +23,7 @@
 #include "spdlog/fmt/ostr.h"
 #include "yaml-cpp/yaml.h"
 
-struct path
-{
-  template<typename OStream>
-  friend OStream & operator<<(OStream & os, const rcpputils::fs::path & p)
-  {
-    return os << p.string();
-  }
-};
-
-struct yaml
-{
-  template<typename OStream>
-  friend OStream & operator<<(OStream & os, const YAML::Node & y)
-  {
-    YAML::Emitter emitter;
-    emitter << YAML::DoubleQuoted << YAML::Flow << y;
-    return os << emitter.c_str();
-  }
-};
+#include "email/utils.hpp"
 
 namespace email
 {
@@ -107,5 +89,27 @@ shutdown();
 
 }  // namespace log
 }  // namespace email
+
+/// Formatting for rcpputils::fs::path objects.
+template<>
+struct fmt::formatter<rcpputils::fs::path>: formatter<string_view>
+{
+  template<typename FormatContext>
+  auto format(const rcpputils::fs::path & p, FormatContext & ctx)
+  {
+    return formatter<string_view>::format(p.string(), ctx);
+  }
+};
+
+/// Formatting for YAML::Node objects.
+template<>
+struct fmt::formatter<YAML::Node>: formatter<string_view>
+{
+  template<typename FormatContext>
+  auto format(const YAML::Node & node, FormatContext & ctx)
+  {
+    return formatter<string_view>::format(email::utils::yaml_to_string(node), ctx);
+  }
+};
 
 #endif  // EMAIL__LOG_HPP_
