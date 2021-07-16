@@ -104,6 +104,8 @@ extern "C" rmw_ret_t rmw_init_options_fini(rmw_init_options_t * init_options)
 rmw_ret_t
 rmw_context_impl_t::init(rmw_init_options_t * options, size_t domain_id)
 {
+  static_cast<void>(options);
+
   std::scoped_lock<std::mutex> lock(mutex_initialization);
   if (0u != this->node_count) {
     this->node_count++;
@@ -154,6 +156,10 @@ extern "C" rmw_ret_t rmw_init(const rmw_init_options_t * options, rmw_context_t 
     options->implementation_identifier,
     email_identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_FOR_NULL_WITH_MSG(
+    options->enclave,
+    "expected non-null enclave",
+    return RMW_RET_INVALID_ARGUMENT);
   if (NULL != context->implementation_identifier) {
     RMW_SET_ERROR_MSG("expected a zero-initialized context");
     return RMW_RET_INVALID_ARGUMENT;

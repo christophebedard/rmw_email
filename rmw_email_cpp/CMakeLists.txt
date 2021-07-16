@@ -34,14 +34,30 @@ add_library(${PROJECT_NAME}
   src/gid.cpp
   src/identifier.cpp
 
+  src/rmw_client.cpp
+  src/rmw_event.cpp
   src/rmw_gid.cpp
+  src/rmw_get_service_names_and_types.cpp
+  src/rmw_get_topic_endpoint_info.cpp
+  src/rmw_get_topic_names_and_types.cpp
+  src/rmw_guard_condition.cpp
   src/rmw_implementation_serialization.cpp
   src/rmw_init.cpp
   src/rmw_log.cpp
+  src/rmw_network_flow.cpp
   src/rmw_node.cpp
+  src/rmw_node_info_and_types.cpp
+  src/rmw_node_names.cpp
   src/rmw_publish.cpp
   src/rmw_publisher.cpp
+  src/rmw_qos_profiles.cpp
+  src/rmw_request.cpp
+  src/rmw_response.cpp
+  src/rmw_serialize.cpp
+  src/rmw_service.cpp
   src/rmw_subscription.cpp
+  src/rmw_take.cpp
+  src/rmw_wait.cpp
 )
 
 ament_target_dependencies(${PROJECT_NAME}
