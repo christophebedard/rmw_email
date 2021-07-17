@@ -55,6 +55,7 @@ set(SOURCES
   src/subscriber.cpp
   src/subscription_handler.cpp
   src/utils.cpp
+  src/wait_set.cpp
 )
 
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
