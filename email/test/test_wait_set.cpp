@@ -36,10 +36,19 @@ public:
   }
 };
 
+TEST_F(TestWaitSet, empty) {
+  email::WaitSet waitset;
+  // Expect false because it shouldn't time out
+  EXPECT_FALSE(waitset.wait());
+  EXPECT_FALSE(waitset.wait(std::chrono::seconds(10)));
+}
+
 TEST_F(TestWaitSet, guard_condition_in_use) {
   auto cond = std::make_shared<email::GuardCondition>();
   email::WaitSet waitset1({}, {}, {}, {cond});
   EXPECT_THROW(email::WaitSet waitset2({}, {}, {}, {cond}), email::GuardConditionAlreadyInUseError);
+  email::WaitSet waitset3;
+  EXPECT_THROW(waitset3.add_guard_condition(cond), email::GuardConditionAlreadyInUseError);
 }
 
 TEST_F(TestWaitSet, guard_condition) {
