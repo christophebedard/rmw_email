@@ -17,6 +17,7 @@
 
 #include <mutex>
 
+#include "email/guard_condition.hpp"
 #include "email/publisher.hpp"
 #include "email/subscriber.hpp"
 #include "rmw/rmw.h"
@@ -63,5 +64,11 @@ typedef struct rmw_email_sub_t
   /// Type supports
   rosidl_message_type_support_t type_supports;
 } rmw_email_sub_t;
+
+typedef struct rmw_email_guard_condition_t
+{
+  /// Pointer to the actual guard condition
+  email::GuardCondition * email_guard_condition;
+} rmw_email_guard_condition_t;
 
 #endif  // RMW_EMAIL_CPP__TYPES_HPP_
