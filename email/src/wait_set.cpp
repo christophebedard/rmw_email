@@ -18,6 +18,7 @@
 #include <vector>
 
 #include "email/log.hpp"
+#include "email/guard_condition.hpp"
 #include "email/service_client.hpp"
 #include "email/service_server.hpp"
 #include "email/subscriber.hpp"
@@ -28,16 +29,27 @@ using namespace std::chrono_literals;
 namespace email
 {
 
-// TODO(christophebedard) use static logger or create unique waitset name
 WaitSet::WaitSet(
   std::vector<std::shared_ptr<Subscriber>> subscriptions,
   std::vector<std::shared_ptr<ServiceClient>> clients,
-  std::vector<std::shared_ptr<ServiceServer>> servers)
+  std::vector<std::shared_ptr<ServiceServer>> servers,
+  std::vector<std::shared_ptr<GuardCondition>> guard_conditions)
 : logger_(log::get_or_create("WaitSet")),
   subscriptions_(std::move(subscriptions)),
   clients_(std::move(clients)),
-  servers_(std::move(servers))
-{}
+  servers_(std::move(servers)),
+  guard_conditions_(std::move(guard_conditions))
+{
+  bool guard_condition_in_use = false;
+  for (const auto & guard_condition : guard_conditions_) {
+    if (guard_condition->exchange_in_use(true)) {
+      guard_condition_in_use = true;
+    }
+  }
+  if (guard_condition_in_use) {
+    throw GuardConditionAlreadyInUseError();
+  }
+}
 
 WaitSet::~WaitSet() {}
 
@@ -66,12 +78,13 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
   auto loop_predicate = get_loop_predicate(timeout, start);
   logger_->debug("wait start: timeout={} ms", timeout.count());
 
-  // Success is defined as having at least one sub/client/server ready
+  // Success is defined as having at least one sub/client/server/guard condition ready
   bool success = false;
 
   std::vector<bool> subscriptions_ready(subscriptions_.size(), false);
   std::vector<bool> clients_ready(clients_.size(), false);
   std::vector<bool> servers_ready(servers_.size(), false);
+  std::vector<bool> guard_conditions_ready(guard_conditions_.size(), false);
   do {
     // Subscriptions
     for (std::size_t i = 0u; i < subscriptions_.size(); i++) {
@@ -94,6 +107,13 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
         success = true;
       }
     }
+    // Guard conditions
+    for (std::size_t i = 0u; i < guard_conditions_.size(); i++) {
+      if (!guard_conditions_ready[i] && guard_conditions_[i]->triggered()) {
+        guard_conditions_ready[i] = true;
+        success = true;
+      }
+    }
     if (success) {
       break;
     }
@@ -108,6 +128,7 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
   apply_status<>(subscriptions_, subscriptions_ready);
   apply_status<>(clients_, clients_ready);
   apply_status<>(servers_, servers_ready);
+  apply_status<>(guard_conditions_, guard_conditions_ready);
   logger_->debug("wait done: successful");
   return false;
 }

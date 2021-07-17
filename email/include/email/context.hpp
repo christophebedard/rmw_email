@@ -35,7 +35,7 @@
 namespace email
 {
 
-/// General context error.
+/// Generic context error.
 class ContextError : public std::runtime_error
 {
 public:

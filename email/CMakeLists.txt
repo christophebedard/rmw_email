@@ -43,6 +43,7 @@ set(SOURCES
   src/email/response_utils.cpp
   src/email/sender.cpp
   src/gid.cpp
+  src/guard_condition.cpp
   src/init.cpp
   src/log.cpp
   src/options.cpp
@@ -138,6 +139,10 @@ if(BUILD_TESTING)
     test/test_service.cpp
   )
   target_link_libraries(test_service ${PROJECT_NAME})
+  ament_add_gtest(test_wait_set
+    test/test_wait_set.cpp
+  )
+  target_link_libraries(test_wait_set ${PROJECT_NAME})
 endif()
 
 ament_package()
