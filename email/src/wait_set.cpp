@@ -40,18 +40,45 @@ WaitSet::WaitSet(
   servers_(std::move(servers)),
   guard_conditions_(std::move(guard_conditions))
 {
-  bool guard_condition_in_use = false;
   for (const auto & guard_condition : guard_conditions_) {
-    if (guard_condition->exchange_in_use(true)) {
-      guard_condition_in_use = true;
-    }
-  }
-  if (guard_condition_in_use) {
-    throw GuardConditionAlreadyInUseError();
+    check_guard_condition(guard_condition);
   }
 }
 
 WaitSet::~WaitSet() {}
+
+void
+WaitSet::check_guard_condition(const std::shared_ptr<GuardCondition> & guard_condition)
+{
+  if (guard_condition->exchange_in_use(true)) {
+    throw GuardConditionAlreadyInUseError();
+  }
+}
+
+void
+WaitSet::add_subscription(std::shared_ptr<Subscriber> subscription)
+{
+  subscriptions_.push_back(subscription);
+}
+
+void
+WaitSet::add_client(std::shared_ptr<ServiceClient> client)
+{
+  clients_.push_back(client);
+}
+
+void
+WaitSet::add_server(std::shared_ptr<ServiceServer> server)
+{
+  servers_.push_back(server);
+}
+
+void
+WaitSet::add_guard_condition(std::shared_ptr<GuardCondition> guard_condition)
+{
+  check_guard_condition(guard_condition);
+  guard_conditions_.push_back(guard_condition);
+}
 
 const std::vector<std::shared_ptr<Subscriber>> &
 WaitSet::get_subscriptions() const
@@ -71,9 +98,23 @@ WaitSet::get_servers() const
   return servers_;
 }
 
+const std::vector<std::shared_ptr<GuardCondition>> &
+WaitSet::get_guard_conditions() const
+{
+  return guard_conditions_;
+}
+
 bool
 WaitSet::wait(const std::chrono::milliseconds timeout)
 {
+  // Return right away (no timeout) if we have nothing to wait on
+  if (0 ==
+    (subscriptions_.size() + clients_.size() + servers_.size() + guard_conditions_.size()))
+  {
+    logger_->warn("waiting on empty waitset");
+    return false;
+  }
+
   auto start = std::chrono::steady_clock::now();
   auto loop_predicate = get_loop_predicate(timeout, start);
   logger_->debug("wait start: timeout={} ms", timeout.count());
