@@ -66,6 +66,13 @@ public:
   }
 
   bool
+  empty() const
+  {
+    std::scoped_lock<std::mutex> lock(map_mutex_);
+    return map_.empty();
+  }
+
+  bool
   contains(const K & k) const
   {
     std::scoped_lock<std::mutex> lock(map_mutex_);
