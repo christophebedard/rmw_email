@@ -7,6 +7,14 @@
 
 ROS 2 over email.
 
+## Packages
+
+This repository contains a few packages:
+
+* [`email`](./email/): simple middleware with publishers/subscriptions and services using emails with `libcurl`
+* [`email_examples`](./email_examples/): various examples using `email`
+* [`rmw_email_cpp`](./rmw_email_cpp/): ROS 2 `rmw` implementation using `email` as the middleware
+
 ## Configuration
 
 In order to send & receive emails, a YAML configuration file has to be provided.
@@ -34,9 +42,9 @@ As for the values:
 
 Note that you might want to use two different configuration files for two different executables/nodes.
 
-## Debugging
+## Logging
 
-There are a few ways to debug:
+There are a few logging options:
 
 1. Set the `EMAIL_CURL_VERBOSE` environment variable to be non-empty, e.g. `EMAIL_CURL_VERBOSE=y`. This will enable libcurl's verbose option.
    * Generally produces too much output to be useful.
