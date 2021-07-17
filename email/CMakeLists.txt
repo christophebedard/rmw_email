@@ -117,6 +117,10 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 
   find_package(ament_cmake_gtest REQUIRED)
+  ament_add_gtest(test_log
+    test/test_log.cpp
+  )
+  target_link_libraries(test_log ${PROJECT_NAME})
   ament_add_gtest(test_utils
     test/test_utils.cpp
     ENV EMAIL_TEST_UTILS_TEST_ENV_VAR=value42 EMAIL_TEST_UTILS_FILE=${CMAKE_CURRENT_SOURCE_DIR}/test/test_utils.cpp
