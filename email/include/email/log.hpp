@@ -16,6 +16,7 @@
 #define EMAIL__LOG_HPP_
 
 #include <memory>
+#include <stdexcept>
 #include <string>
 
 #include "rcpputils/filesystem_helper.hpp"
@@ -34,6 +35,33 @@ using Logger = spdlog::logger;
 namespace log
 {
 
+/// Generic logging error.
+class LoggingError : public std::runtime_error
+{
+public:
+  explicit LoggingError(const std::string & msg)
+  : std::runtime_error(msg)
+  {}
+};
+
+/// Error when logging is not initialized.
+class LoggingNotInitializedError : public LoggingError
+{
+public:
+  LoggingNotInitializedError()
+  : LoggingError("logging not initialized")
+  {}
+};
+
+/// Error when logging is already initialized.
+class LoggingAlreadyInitializedError : public LoggingError
+{
+public:
+  LoggingAlreadyInitializedError()
+  : LoggingError("logging already initialized")
+  {}
+};
+
 /// Logging level.
 enum Level
 {
@@ -48,11 +76,15 @@ enum Level
 /// Initialize logging.
 /**
  * \param level the console logging level
+ * \throw `LoggingAlreadyInitializedError` if logging is already intialized
  */
 void
 init(const Level & level);
 
 /// Initialize logging using environment variable value for the logging level.
+/**
+ * \throw `LoggingAlreadyInitializedError` if logging is already intialized
+ */
 void
 init_from_env();
 
@@ -62,6 +94,7 @@ init_from_env();
  *
  * \param name the name of the logger
  * \return the logger
+ * \throw `LoggingNotInitializedError` if logging is not intialized
  */
 std::shared_ptr<Logger>
 create(const std::string & name);
@@ -72,6 +105,7 @@ create(const std::string & name);
  *
  * \param name the name of the logger
  * \return the logger
+ * \throw `LoggingNotInitializedError` if logging is not intialized
  */
 std::shared_ptr<Logger>
 get_or_create(const std::string & name);
@@ -79,6 +113,7 @@ get_or_create(const std::string & name);
 /// Remove an existing logger.
 /**
  * \param name the logger
+ * \throw `LoggingNotInitializedError` if logging is not intialized
  */
 void
 remove(const std::shared_ptr<Logger> & logger);

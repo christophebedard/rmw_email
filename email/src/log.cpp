@@ -104,10 +104,15 @@ level_to_string(const Level & level)
 
 }  // namespace
 
+static bool is_logging_initialized = false;
+
 void
 init(const Level & level)
 {
   std::scoped_lock<std::mutex> lock(logger_mutex);
+  if (is_logging_initialized) {
+    throw LoggingAlreadyInitializedError();
+  }
   if (nullptr != root_logger) {
     return;
   }
@@ -138,6 +143,8 @@ init(const Level & level)
   spdlog::register_logger(root_logger);
   root_logger->debug("logging to file: " + std::string(log_to_file ? "true" : "false"));
   root_logger->debug("logging level set to: " + level_to_string(level));
+
+  is_logging_initialized = true;
 }
 
 void
@@ -153,6 +160,9 @@ std::shared_ptr<spdlog::logger>
 create(const std::string & name)
 {
   std::scoped_lock<std::mutex> lock(logger_mutex);
+  if (!is_logging_initialized) {
+    throw LoggingNotInitializedError();
+  }
   const auto & sinks = root_logger->sinks();
   auto logger = std::make_shared<spdlog::logger>(name, sinks.cbegin(), sinks.cend());
   logger->set_level(root_logger->level());
@@ -163,6 +173,9 @@ create(const std::string & name)
 std::shared_ptr<Logger>
 get_or_create(const std::string & name)
 {
+  if (!is_logging_initialized) {
+    throw LoggingNotInitializedError();
+  }
   std::shared_ptr<spdlog::logger> logger = spdlog::get(name);
   if (nullptr == logger) {
     logger = create(name);
@@ -173,16 +186,23 @@ get_or_create(const std::string & name)
 void
 remove(const std::shared_ptr<Logger> & logger)
 {
+  if (!is_logging_initialized) {
+    throw LoggingNotInitializedError();
+  }
   spdlog::drop(logger->name());
 }
 
 void
 shutdown()
 {
+  if (!is_logging_initialized) {
+    return;
+  }
   spdlog::drop_all();
   spdlog::shutdown();
   root_logger = nullptr;
   sink_console = nullptr;
+  is_logging_initialized = false;
 }
 
 }  // namespace log
