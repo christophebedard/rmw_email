@@ -79,6 +79,16 @@ public:
   bool
   has_response(const uint32_t request_id);
 
+  /// Check if the client has an available response to any request.
+  /**
+   * Note: `has_response(uint32_t)` should be used instead.
+   *
+   * \return true if there is an available response, false otherwise
+   */
+  EMAIL_PUBLIC
+  bool
+  has_response();
+
   /// Get a response if there is one.
   /**
    * \param request_id the request ID

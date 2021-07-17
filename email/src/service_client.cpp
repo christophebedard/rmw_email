@@ -39,7 +39,6 @@ ServiceClient::ServiceClient(const std::string & service_name)
     service_name, responses_);
 }
 
-
 ServiceClient::~ServiceClient() {}
 
 void
@@ -64,6 +63,12 @@ bool
 ServiceClient::has_response(const uint32_t request_id)
 {
   return responses_->contains(request_id);
+}
+
+bool
+ServiceClient::has_response()
+{
+  return !responses_->empty();
 }
 
 std::optional<std::string>
