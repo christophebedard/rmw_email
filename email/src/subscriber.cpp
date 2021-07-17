@@ -58,13 +58,4 @@ Subscriber::get_message()
   return messages_->dequeue();
 }
 
-std::string
-Subscriber::get_message_and_wait()
-{
-  while (messages_->empty()) {
-    std::this_thread::sleep_for(WAIT_TIME);
-  }
-  return messages_->dequeue();
-}
-
 }  // namespace email
