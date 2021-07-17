@@ -54,10 +54,12 @@ public:
    */
   EMAIL_PUBLIC
   bool
-  has_message();
+  has_message() const;
 
   /// Get a message if there is one.
   /**
+   * This is the same as "taking" a message if there is one.
+   *
    * \return the message, or `std::nullopt` if there is none
    */
   EMAIL_PUBLIC

@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ Subscriber::~Subscriber()
 {}
 
 bool
-Subscriber::has_message()
+Subscriber::has_message() const
 {
   return !messages_->empty();
 }
