@@ -41,7 +41,7 @@ public:
   /// Constructor.
   EMAIL_PUBLIC
   WaitSet(
-    std::vector<std::shared_ptr<Subscriber>> subscriptions,
+    std::vector<std::shared_ptr<Subscriber>> subscriptions = {},
     std::vector<std::shared_ptr<ServiceClient>> clients = {},
     std::vector<std::shared_ptr<ServiceServer>> servers = {},
     std::vector<std::shared_ptr<GuardCondition>> guard_conditions = {});
@@ -69,6 +69,26 @@ public:
   bool
   wait(const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
+  /// Add a subscription.
+  EMAIL_PUBLIC
+  void
+  add_subscription(std::shared_ptr<Subscriber> subscription);
+
+  /// Add a client.
+  EMAIL_PUBLIC
+  void
+  add_client(std::shared_ptr<ServiceClient> client);
+
+  /// Add a server.
+  EMAIL_PUBLIC
+  void
+  add_server(std::shared_ptr<ServiceServer> server);
+
+  /// Add a guard condition.
+  EMAIL_PUBLIC
+  void
+  add_guard_condition(std::shared_ptr<GuardCondition> guard_condition);
+
   /// Get the subscriptions.
   EMAIL_PUBLIC
   const std::vector<std::shared_ptr<Subscriber>> &
@@ -84,8 +104,24 @@ public:
   const std::vector<std::shared_ptr<ServiceServer>> &
   get_servers() const;
 
+  /// Get the guard conditions.
+  EMAIL_PUBLIC
+  const std::vector<std::shared_ptr<GuardCondition>> &
+  get_guard_conditions() const;
+
 private:
   EMAIL_DISABLE_COPY(WaitSet)
+
+  /// Make sure guard condition is not already in use.
+  /**
+   * If the guard condition is in use, it throws.
+   * If not, it flags the guard condition as being in use.
+   *
+   * \param guard_condition the guard condition
+   * \throw `GuardConditionAlreadyInUseError` if guard condition is already used by a wait set
+   */
+  void
+  check_guard_condition(const std::shared_ptr<GuardCondition> & guard_condition);
 
   /// Apply ready status to vector of objects.
   /**
