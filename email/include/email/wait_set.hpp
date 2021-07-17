@@ -20,6 +20,7 @@
 #include <vector>
 
 #include "email/log.hpp"
+#include "email/guard_condition.hpp"
 #include "email/service_client.hpp"
 #include "email/service_server.hpp"
 #include "email/subscriber.hpp"
@@ -32,6 +33,7 @@ namespace email
 /// Wait set.
 /**
  * Waits on a set of subscriptions, clients, and servers.
+ * TODO(christophebedard) allow waiting for ALL conditions
  */
 class WaitSet
 {
@@ -41,7 +43,8 @@ public:
   WaitSet(
     std::vector<std::shared_ptr<Subscriber>> subscriptions,
     std::vector<std::shared_ptr<ServiceClient>> clients = {},
-    std::vector<std::shared_ptr<ServiceServer>> servers = {});
+    std::vector<std::shared_ptr<ServiceServer>> servers = {},
+    std::vector<std::shared_ptr<GuardCondition>> guard_conditions = {});
 
   EMAIL_PUBLIC
   ~WaitSet();
@@ -114,6 +117,7 @@ private:
   std::vector<std::shared_ptr<Subscriber>> subscriptions_;
   std::vector<std::shared_ptr<ServiceClient>> clients_;
   std::vector<std::shared_ptr<ServiceServer>> servers_;
+  std::vector<std::shared_ptr<GuardCondition>> guard_conditions_;
 };
 
 }  // namespace email
