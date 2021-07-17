@@ -66,23 +66,11 @@ public:
   std::optional<std::string>
   get_message();
 
-  /// Get a message, waiting until one is available.
-  /**
-   * TODO(christophebedard) use a timeout?
-   *
-   * \return the message
-   */
-  EMAIL_PUBLIC
-  std::string
-  get_message_and_wait();
-
 private:
   EMAIL_DISABLE_COPY(Subscriber)
 
   std::shared_ptr<Logger> logger_;
   SafeQueue<std::string>::SharedPtr messages_;
-
-  static constexpr auto WAIT_TIME = std::chrono::milliseconds(1);
 };
 
 }  // namespace email

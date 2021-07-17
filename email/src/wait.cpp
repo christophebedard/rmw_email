@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,22 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <iostream>
+#include <chrono>
+#include <memory>
+#include <string>
 
-#include "email/init.hpp"
 #include "email/subscriber.hpp"
+#include "email/wait_set.hpp"
 
-int main()
+namespace email
 {
-  email::init();
-  email::Subscriber sub1("/my_topic");
-  email::Subscriber sub2("/my_other_topic");
-  std::cout << "getting message..." << std::endl;
-  while (!sub1.has_message() & !sub2.has_message()) {}
-  auto message1 = sub1.get_message();
-  auto message2 = sub2.get_message();
-  std::cout << "got message1: " << message1.value() << std::endl;
-  std::cout << "got message2: " << message2.value() << std::endl;
-  email::shutdown();
-  return 0;
+
+std::string
+wait_for_message(
+  std::shared_ptr<Subscriber> subscription,
+  const std::chrono::milliseconds timeout)
+{
+  email::WaitSet waitset({subscription});
+  const bool timedout = waitset.wait(timeout);
+  assert(!timedout);
+
+  return subscription->get_message().value();
 }
+
+}  // namespace email
