@@ -37,6 +37,16 @@ namespace email
 EMAIL_PUBLIC
 std::string
 wait_for_message(
+  Subscriber * subscription,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a message from a subscription, waiting until one is available.
+/**
+ * \see wait_for_message(std::shared_ptr<Subscriber>, const std::chrono::milliseconds)
+ */
+EMAIL_PUBLIC
+std::string
+wait_for_message(
   std::shared_ptr<Subscriber> subscription,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 

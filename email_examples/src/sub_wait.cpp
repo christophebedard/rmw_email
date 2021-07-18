@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include <iostream>
-#include <memory>
 
 #include "email/init.hpp"
 #include "email/subscriber.hpp"
@@ -22,9 +21,9 @@
 int main()
 {
   email::init();
-  auto sub = std::make_shared<email::Subscriber>("/my_topic");
+  email::Subscriber sub("/my_topic");
   std::cout << "waiting for message..." << std::endl;
-  auto message = email::wait_for_message(sub);
+  auto message = email::wait_for_message(&sub);
   std::cout << "got message: " << message << std::endl;
   email::shutdown();
   return 0;

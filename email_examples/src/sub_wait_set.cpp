@@ -24,14 +24,14 @@ using namespace std::chrono_literals;
 int main()
 {
   email::init();
-  auto sub = std::make_shared<email::Subscriber>("/my_topic");
+  email::Subscriber sub("/my_topic");
 
   std::cout << "waiting for message..." << std::endl;
-  email::WaitSet waitset({sub});
+  email::WaitSet waitset(&sub);
   const bool timedout = waitset.wait(10s);
 
   if (!timedout) {
-    auto message = sub->get_message();
+    auto message = sub.get_message();
     std::cout << "got message: " << message.value() << std::endl;
   } else {
     std::cout << "...wait timed out" << std::endl;

@@ -24,7 +24,7 @@ namespace email
 
 std::string
 wait_for_message(
-  std::shared_ptr<Subscriber> subscription,
+  Subscriber * subscription,
   const std::chrono::milliseconds timeout)
 {
   email::WaitSet waitset({subscription});
@@ -32,6 +32,14 @@ wait_for_message(
   assert(!timedout);
 
   return subscription->get_message().value();
+}
+
+std::string
+wait_for_message(
+  std::shared_ptr<Subscriber> subscription,
+  const std::chrono::milliseconds timeout)
+{
+  return wait_for_message(subscription.get(), timeout);
 }
 
 }  // namespace email
