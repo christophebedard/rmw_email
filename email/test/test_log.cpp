@@ -19,12 +19,12 @@
 #include "email/log.hpp"
 
 TEST(TestLog, init) {
-  EXPECT_THROW(email::log::create("some logger"), email::log::LoggingNotInitializedError);
-  EXPECT_THROW(
-    email::log::get_or_create("some logger"), email::log::LoggingNotInitializedError);
   EXPECT_THROW(
     email::log::remove(std::shared_ptr<email::Logger>(nullptr)),
     email::log::LoggingNotInitializedError);
+  EXPECT_NO_THROW(email::log::create("some logger"));
+  EXPECT_NO_THROW(email::log::get_or_create("some logger"));
+  EXPECT_NO_THROW(email::log::shutdown());
   EXPECT_NO_THROW(email::log::shutdown());
 
   email::log::init(email::log::Level::debug);
