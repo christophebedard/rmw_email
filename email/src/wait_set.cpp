@@ -111,12 +111,10 @@ WaitSet::get_guard_conditions() const
 bool
 WaitSet::wait(const std::chrono::milliseconds timeout)
 {
-  // Return right away (no timeout) if we have nothing to wait on
   if (0 ==
     (subscriptions_.size() + clients_.size() + servers_.size() + guard_conditions_.size()))
   {
-    logger_->warn("waiting on empty waitset");
-    return false;
+    logger_->debug("waiting on empty waitset");
   }
 
   auto start = std::chrono::steady_clock::now();
@@ -164,16 +162,16 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
     }
   } while (loop_predicate());
 
-  if (!success) {
-    // Timed out
-    logger_->debug("wait done: timed out");
-    return true;
-  }
   // Apply statuses to vectors
   apply_status<>(subscriptions_, subscriptions_ready);
   apply_status<>(clients_, clients_ready);
   apply_status<>(servers_, servers_ready);
   apply_status<>(guard_conditions_, guard_conditions_ready);
+  if (!success) {
+    // Timed out
+    logger_->debug("wait done: timed out");
+    return true;
+  }
   logger_->debug("wait done: successful");
   return false;
 }

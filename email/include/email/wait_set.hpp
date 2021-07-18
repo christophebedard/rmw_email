@@ -66,6 +66,8 @@ public:
    * The objects that are ready will have their respective pointers be non-`nullptr`
    * in their respective vectors; the rest will have their pointers set to `nullptr`.
    *
+   * Waiting on an empty waitset with a timeout>=0 is similar to a sleep() call.
+   *
    * \param timeout the timeout
    * \return whether the wait call timed out
    */
