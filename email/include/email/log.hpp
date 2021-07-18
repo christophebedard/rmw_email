@@ -99,7 +99,6 @@ create(const std::string & name);
  *
  * \param name the name of the logger
  * \return the logger
- * \throw `LoggingNotInitializedError` if logging is not intialized
  */
 std::shared_ptr<Logger>
 get_or_create(const std::string & name);
