@@ -109,10 +109,13 @@ static bool is_logging_initialized = false;
 void
 init(const Level & level)
 {
-  std::scoped_lock<std::mutex> lock(logger_mutex);
+  // If logging is already initialized, just set console log level
   if (is_logging_initialized) {
-    throw LoggingAlreadyInitializedError();
+    sink_console->set_level(level_to_spdlog(level));
+    return;
   }
+
+  std::scoped_lock<std::mutex> lock(logger_mutex);
   if (nullptr != root_logger) {
     return;
   }
@@ -159,10 +162,10 @@ init_from_env()
 std::shared_ptr<spdlog::logger>
 create(const std::string & name)
 {
-  std::scoped_lock<std::mutex> lock(logger_mutex);
   if (!is_logging_initialized) {
-    throw LoggingNotInitializedError();
+    init_from_env();
   }
+  std::scoped_lock<std::mutex> lock(logger_mutex);
   const auto & sinks = root_logger->sinks();
   auto logger = std::make_shared<spdlog::logger>(name, sinks.cbegin(), sinks.cend());
   logger->set_level(root_logger->level());
@@ -174,7 +177,7 @@ std::shared_ptr<Logger>
 get_or_create(const std::string & name)
 {
   if (!is_logging_initialized) {
-    throw LoggingNotInitializedError();
+    init_from_env();
   }
   std::shared_ptr<spdlog::logger> logger = spdlog::get(name);
   if (nullptr == logger) {
@@ -186,6 +189,7 @@ get_or_create(const std::string & name)
 void
 remove(const std::shared_ptr<Logger> & logger)
 {
+  // Doesn't make sense to remove a logger if logging isn't initialized
   if (!is_logging_initialized) {
     throw LoggingNotInitializedError();
   }
