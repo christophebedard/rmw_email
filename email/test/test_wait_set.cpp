@@ -15,7 +15,6 @@
 #include <gtest/gtest.h>
 
 #include <chrono>
-#include <memory>
 #include <thread>
 
 #include "email/guard_condition.hpp"
@@ -44,23 +43,26 @@ TEST_F(TestWaitSet, empty) {
 }
 
 TEST_F(TestWaitSet, guard_condition_in_use) {
-  auto cond = std::make_shared<email::GuardCondition>();
-  email::WaitSet waitset1({}, {}, {}, {cond});
-  EXPECT_THROW(email::WaitSet waitset2({}, {}, {}, {cond}), email::GuardConditionAlreadyInUseError);
+  email::GuardCondition cond;
+  email::WaitSet waitset1({}, {}, {}, {&cond});
+  EXPECT_THROW(
+    email::WaitSet waitset2({}, {}, {}, {&cond}),
+    email::GuardConditionAlreadyInUseError);
   email::WaitSet waitset3;
-  EXPECT_THROW(waitset3.add_guard_condition(cond), email::GuardConditionAlreadyInUseError);
+  EXPECT_THROW(waitset3.add_guard_condition(&cond), email::GuardConditionAlreadyInUseError);
 }
 
 TEST_F(TestWaitSet, guard_condition) {
-  auto cond = std::make_shared<email::GuardCondition>();
-  email::WaitSet waitset({}, {}, {}, {cond});
+  email::GuardCondition cond;
+  email::WaitSet waitset;
+  waitset.add_guard_condition(&cond);
 
   auto delay = std::chrono::milliseconds(100);
   auto start = std::chrono::steady_clock::now();
   auto trigger_thread = std::thread(
     [&]() {
       std::this_thread::sleep_for(delay);
-      cond->trigger();
+      cond.trigger();
     });
   bool timedout = waitset.wait();
   auto end = std::chrono::steady_clock::now();

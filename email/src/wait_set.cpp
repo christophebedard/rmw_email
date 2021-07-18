@@ -30,25 +30,29 @@ namespace email
 {
 
 WaitSet::WaitSet(
-  std::vector<std::shared_ptr<Subscriber>> subscriptions,
-  std::vector<std::shared_ptr<ServiceClient>> clients,
-  std::vector<std::shared_ptr<ServiceServer>> servers,
-  std::vector<std::shared_ptr<GuardCondition>> guard_conditions)
+  std::vector<Subscriber *> subscriptions,
+  std::vector<ServiceClient *> clients,
+  std::vector<ServiceServer *> servers,
+  std::vector<GuardCondition *> guard_conditions)
 : logger_(log::get_or_create("WaitSet")),
   subscriptions_(std::move(subscriptions)),
   clients_(std::move(clients)),
   servers_(std::move(servers)),
   guard_conditions_(std::move(guard_conditions))
 {
-  for (const auto & guard_condition : guard_conditions_) {
+  for (auto guard_condition : guard_conditions_) {
     check_guard_condition(guard_condition);
   }
 }
 
+WaitSet::WaitSet(Subscriber * subscription)
+: WaitSet({subscription}, {}, {}, {})
+{}
+
 WaitSet::~WaitSet() {}
 
 void
-WaitSet::check_guard_condition(const std::shared_ptr<GuardCondition> & guard_condition)
+WaitSet::check_guard_condition(GuardCondition * guard_condition)
 {
   if (guard_condition->exchange_in_use(true)) {
     throw GuardConditionAlreadyInUseError();
@@ -56,49 +60,49 @@ WaitSet::check_guard_condition(const std::shared_ptr<GuardCondition> & guard_con
 }
 
 void
-WaitSet::add_subscription(std::shared_ptr<Subscriber> subscription)
+WaitSet::add_subscription(Subscriber * subscription)
 {
   subscriptions_.push_back(subscription);
 }
 
 void
-WaitSet::add_client(std::shared_ptr<ServiceClient> client)
+WaitSet::add_client(ServiceClient * client)
 {
   clients_.push_back(client);
 }
 
 void
-WaitSet::add_server(std::shared_ptr<ServiceServer> server)
+WaitSet::add_server(ServiceServer * server)
 {
   servers_.push_back(server);
 }
 
 void
-WaitSet::add_guard_condition(std::shared_ptr<GuardCondition> guard_condition)
+WaitSet::add_guard_condition(GuardCondition * guard_condition)
 {
   check_guard_condition(guard_condition);
   guard_conditions_.push_back(guard_condition);
 }
 
-const std::vector<std::shared_ptr<Subscriber>> &
+const std::vector<Subscriber *> &
 WaitSet::get_subscriptions() const
 {
   return subscriptions_;
 }
 
-const std::vector<std::shared_ptr<ServiceClient>> &
+const std::vector<ServiceClient *> &
 WaitSet::get_clients() const
 {
   return clients_;
 }
 
-const std::vector<std::shared_ptr<ServiceServer>> &
+const std::vector<ServiceServer *> &
 WaitSet::get_servers() const
 {
   return servers_;
 }
 
-const std::vector<std::shared_ptr<GuardCondition>> &
+const std::vector<GuardCondition *> &
 WaitSet::get_guard_conditions() const
 {
   return guard_conditions_;

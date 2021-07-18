@@ -41,10 +41,14 @@ public:
   /// Constructor.
   EMAIL_PUBLIC
   WaitSet(
-    std::vector<std::shared_ptr<Subscriber>> subscriptions = {},
-    std::vector<std::shared_ptr<ServiceClient>> clients = {},
-    std::vector<std::shared_ptr<ServiceServer>> servers = {},
-    std::vector<std::shared_ptr<GuardCondition>> guard_conditions = {});
+    std::vector<Subscriber *> subscriptions = {},
+    std::vector<ServiceClient *> clients = {},
+    std::vector<ServiceServer *> servers = {},
+    std::vector<GuardCondition *> guard_conditions = {});
+
+  /// Constructor.
+  EMAIL_PUBLIC
+  explicit WaitSet(Subscriber * subscription);
 
   EMAIL_PUBLIC
   ~WaitSet();
@@ -72,41 +76,41 @@ public:
   /// Add a subscription.
   EMAIL_PUBLIC
   void
-  add_subscription(std::shared_ptr<Subscriber> subscription);
+  add_subscription(Subscriber * subscription);
 
   /// Add a client.
   EMAIL_PUBLIC
   void
-  add_client(std::shared_ptr<ServiceClient> client);
+  add_client(ServiceClient * client);
 
   /// Add a server.
   EMAIL_PUBLIC
   void
-  add_server(std::shared_ptr<ServiceServer> server);
+  add_server(ServiceServer * server);
 
   /// Add a guard condition.
   EMAIL_PUBLIC
   void
-  add_guard_condition(std::shared_ptr<GuardCondition> guard_condition);
+  add_guard_condition(GuardCondition * guard_condition);
 
   /// Get the subscriptions.
   EMAIL_PUBLIC
-  const std::vector<std::shared_ptr<Subscriber>> &
+  const std::vector<Subscriber *> &
   get_subscriptions() const;
 
   /// Get the clients.
   EMAIL_PUBLIC
-  const std::vector<std::shared_ptr<ServiceClient>> &
+  const std::vector<ServiceClient *> &
   get_clients() const;
 
   /// Get the servers.
   EMAIL_PUBLIC
-  const std::vector<std::shared_ptr<ServiceServer>> &
+  const std::vector<ServiceServer *> &
   get_servers() const;
 
   /// Get the guard conditions.
   EMAIL_PUBLIC
-  const std::vector<std::shared_ptr<GuardCondition>> &
+  const std::vector<GuardCondition *> &
   get_guard_conditions() const;
 
 private:
@@ -121,7 +125,7 @@ private:
    * \throw `GuardConditionAlreadyInUseError` if guard condition is already used by a wait set
    */
   void
-  check_guard_condition(const std::shared_ptr<GuardCondition> & guard_condition);
+  check_guard_condition(GuardCondition * guard_condition);
 
   /// Apply ready status to vector of objects.
   /**
@@ -150,10 +154,10 @@ private:
     std::chrono::steady_clock::time_point start);
 
   std::shared_ptr<Logger> logger_;
-  std::vector<std::shared_ptr<Subscriber>> subscriptions_;
-  std::vector<std::shared_ptr<ServiceClient>> clients_;
-  std::vector<std::shared_ptr<ServiceServer>> servers_;
-  std::vector<std::shared_ptr<GuardCondition>> guard_conditions_;
+  std::vector<Subscriber *> subscriptions_;
+  std::vector<ServiceClient *> clients_;
+  std::vector<ServiceServer *> servers_;
+  std::vector<GuardCondition *> guard_conditions_;
 };
 
 }  // namespace email
