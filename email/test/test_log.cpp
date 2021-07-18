@@ -28,8 +28,7 @@ TEST(TestLog, init) {
   EXPECT_NO_THROW(email::log::shutdown());
 
   email::log::init(email::log::Level::debug);
-  EXPECT_THROW(
-    email::log::init(email::log::Level::debug), email::log::LoggingAlreadyInitializedError);
+  EXPECT_NO_THROW(email::log::init(email::log::Level::warn));
   EXPECT_NO_THROW(email::log::create("some logger"));
   EXPECT_NO_THROW(email::log::get_or_create("some logger"));
   auto logger = email::log::get_or_create("some logger");

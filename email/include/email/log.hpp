@@ -53,15 +53,6 @@ public:
   {}
 };
 
-/// Error when logging is already initialized.
-class LoggingAlreadyInitializedError : public LoggingError
-{
-public:
-  LoggingAlreadyInitializedError()
-  : LoggingError("logging already initialized")
-  {}
-};
-
 /// Logging level.
 enum Level
 {
@@ -92,9 +83,10 @@ init_from_env();
 /**
  * Uses sink(s) and log level from the root logger.
  *
+ * Will initialize logging from environment if not initialized.
+ *
  * \param name the name of the logger
  * \return the logger
- * \throw `LoggingNotInitializedError` if logging is not intialized
  */
 std::shared_ptr<Logger>
 create(const std::string & name);
@@ -102,6 +94,8 @@ create(const std::string & name);
 /// Get an existing logger or create it from the root logger.
 /**
  * Useful for sharing a logger.
+ *
+ * Will initialize logging from environment if not initialized.
  *
  * \param name the name of the logger
  * \return the logger
