@@ -116,8 +116,8 @@ init(const Level & level)
   }
 
   std::scoped_lock<std::mutex> lock(logger_mutex);
-  if (nullptr != root_logger) {
-    return;
+  if (nullptr != root_logger) {  // LCOV_EXCL_LINE
+    return;  // LCOV_EXCL_LINE
   }
 
   // Create a console sink
