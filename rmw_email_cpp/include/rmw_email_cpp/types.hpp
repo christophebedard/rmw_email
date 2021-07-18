@@ -20,6 +20,7 @@
 #include "email/guard_condition.hpp"
 #include "email/publisher.hpp"
 #include "email/subscriber.hpp"
+#include "email/wait_set.hpp"
 #include "rmw/rmw.h"
 
 struct rmw_context_impl_t
@@ -70,5 +71,11 @@ typedef struct rmw_email_guard_condition_t
   /// Pointer to the actual guard condition
   email::GuardCondition * email_guard_condition;
 } rmw_email_guard_condition_t;
+
+typedef struct rmw_email_wait_set_t
+{
+  /// Pointer to the actual wait set
+  email::WaitSet * email_waitset;
+} rmw_email_wait_set_t;
 
 #endif  // RMW_EMAIL_CPP__TYPES_HPP_
