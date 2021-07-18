@@ -71,6 +71,14 @@ extern "C" rmw_node_t * rmw_create_node(
   auto finalize_context = rcpputils::make_scope_exit(
     [context]() {context->impl->fini();});
 
+
+  auto rmw_email_node = new (std::nothrow) rmw_email_node_t;
+  RET_ALLOC_X(rmw_email_node, return nullptr);
+  auto cleanup_rmw_email_node = rcpputils::make_scope_exit(
+    [rmw_email_node]() {
+      delete rmw_email_node;
+    });
+
   // Create node handle
   rmw_node_t * node = rmw_node_allocate();
   RET_ALLOC_X(node, return nullptr);
@@ -92,10 +100,10 @@ extern "C" rmw_node_t * rmw_create_node(
   RET_ALLOC_X(node->namespace_, return nullptr);
   memcpy(const_cast<char *>(node->namespace_), namespace_, strlen(namespace_) + 1);
 
+  cleanup_rmw_email_node.cancel();
   cleanup_node.cancel();
   node->implementation_identifier = email_identifier;
-  // TODO(christophebedard) add concept of "node" to email?
-  node->data = nullptr;
+  node->data = rmw_email_node;
   node->context = context;
   finalize_context.cancel();
   return node;
@@ -125,9 +133,8 @@ extern "C" const rmw_guard_condition_t * rmw_node_get_graph_guard_condition(cons
   RET_NULL_X(node, return nullptr);
   RET_WRONG_IMPLID_X(node, return nullptr);
 
-  // auto node_impl = static_cast<rmw_email_node_t *>(node->data);
-  // RET_NULL_X(node_impl, return nullptr);
-  // TODO(christophebedard) support
-  // return node->context->impl->common.graph_guard_condition;
-  return nullptr;
+  auto node_impl = static_cast<rmw_email_node_t *>(node->data);
+  RET_NULL_X(node_impl, return nullptr);
+
+  return node->context->impl->graph_guard_condition;
 }

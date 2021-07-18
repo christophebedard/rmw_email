@@ -32,6 +32,7 @@ find_package(rmw REQUIRED)
 add_library(${PROJECT_NAME}
   src/conversion.cpp
   src/gid.cpp
+  src/guard_condition.cpp
   src/identifier.cpp
 
   src/rmw_client.cpp

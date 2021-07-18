@@ -27,6 +27,9 @@ struct rmw_context_impl_t
 {
   // TODO(christophebedard) add missing stuff
 
+  // TODO(christophebedard) move to graph cache handler?
+  rmw_guard_condition_t * graph_guard_condition;
+
   size_t node_count{0};
   std::mutex mutex_initialization;
 
@@ -43,9 +46,17 @@ struct rmw_context_impl_t
 
   rmw_ret_t
   fini();
+
+  void
+  cleanup();
 };
 
-// TODO(christophebedard) move to more specific type header?
+// TODO(christophebedard) add concept of "node" to email?
+typedef struct rmw_email_node_t
+{
+  // TODO
+} rmw_email_node_t;
+
 typedef struct rmw_email_pub_t
 {
   /// Pointer to the actual publisher

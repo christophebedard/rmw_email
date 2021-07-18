@@ -22,6 +22,7 @@
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
 
+#include "rmw_email_cpp/guard_condition.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/types.hpp"
 
@@ -105,6 +106,8 @@ rmw_ret_t
 rmw_context_impl_t::init(rmw_init_options_t * options, size_t domain_id)
 {
   static_cast<void>(options);
+  // There's no concept of "domain" with email, duh
+  static_cast<void>(domain_id);
 
   std::scoped_lock<std::mutex> lock(mutex_initialization);
   if (0u != this->node_count) {
@@ -112,14 +115,19 @@ rmw_context_impl_t::init(rmw_init_options_t * options, size_t domain_id)
     return RMW_RET_OK;
   }
 
-  // There's no concept of "domain" with email, duh
-  static_cast<void>(domain_id);
+  // TODO(christophebedard) move to graph cache handler
+  this->graph_guard_condition = create_guard_condition();
+  if (nullptr == this->graph_guard_condition) {
+    cleanup();
+    return RMW_RET_BAD_ALLOC;
+  }
 
   // Init middleware
   try {
     email::init();
   } catch (const std::runtime_error & e) {
     RMW_SET_ERROR_MSG(e.what());
+    cleanup();
     return RMW_RET_ERROR;
   }
 
@@ -137,7 +145,17 @@ rmw_context_impl_t::fini()
 
   // Shutdown middleware
   email::shutdown();
+
+  cleanup();
   return RMW_RET_OK;
+}
+
+void
+rmw_context_impl_t::cleanup()
+{
+  if (this->graph_guard_condition) {
+    destroy_guard_condition(this->graph_guard_condition);
+  }
 }
 
 extern "C" rmw_ret_t rmw_init(const rmw_init_options_t * options, rmw_context_t * context)

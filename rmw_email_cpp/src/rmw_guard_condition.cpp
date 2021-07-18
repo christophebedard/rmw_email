@@ -15,57 +15,20 @@
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
 
-#include "email/guard_condition.hpp"
-
+#include "rmw_email_cpp/guard_condition.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/types.hpp"
-
-static rmw_guard_condition_t * _create_guard_condition()
-{
-  auto email_guard_condition = new (std::nothrow) email::GuardCondition();
-  if (nullptr == email_guard_condition) {
-    RMW_SET_ERROR_MSG("failed to allocate guard condition impl");
-    return nullptr;
-  }
-
-  auto rmw_email_guard_condition = new (std::nothrow) rmw_email_guard_condition_t;
-  if (nullptr == email_guard_condition) {
-    RMW_SET_ERROR_MSG("failed to allocate rmw guard condition");
-    return nullptr;
-  }
-  rmw_email_guard_condition->email_guard_condition = email_guard_condition;
-
-  rmw_guard_condition_t * guard_condition = new (std::nothrow) rmw_guard_condition_t;
-  if (nullptr == guard_condition) {
-    RMW_SET_ERROR_MSG("failed to allocate guard condition");
-    return nullptr;
-  }
-  guard_condition->implementation_identifier = email_identifier;
-  guard_condition->data = rmw_email_guard_condition;
-  return guard_condition;
-}
-
-static rmw_ret_t _destroy_guard_condition(rmw_guard_condition_t * guard_condition)
-{
-  auto rmw_email_guard_condition = static_cast<rmw_email_guard_condition_t *>(
-    guard_condition->data);
-  auto email_guard_condition = rmw_email_guard_condition->email_guard_condition;
-  delete email_guard_condition;
-  delete rmw_email_guard_condition;
-  delete guard_condition;
-  return RMW_RET_OK;
-}
 
 extern "C" rmw_guard_condition_t * rmw_create_guard_condition(rmw_context_t * context)
 {
   RMW_CHECK_ARGUMENT_FOR_NULL(context, nullptr);
-  return _create_guard_condition();
+  return create_guard_condition();
 }
 
 extern "C" rmw_ret_t rmw_destroy_guard_condition(rmw_guard_condition_t * guard_condition)
 {
   RMW_CHECK_ARGUMENT_FOR_NULL(guard_condition, RMW_RET_INVALID_ARGUMENT);
-  return _destroy_guard_condition(guard_condition);
+  return destroy_guard_condition(guard_condition);
 }
 
 extern "C" rmw_ret_t rmw_trigger_guard_condition(const rmw_guard_condition_t * guard_condition)
