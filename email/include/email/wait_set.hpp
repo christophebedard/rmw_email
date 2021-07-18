@@ -141,7 +141,7 @@ private:
   apply_status(std::vector<T> & objects, const std::vector<bool> & ready)
   {
     for (std::size_t i = 0u; i < objects.size(); i++) {
-      if (ready[i]) {
+      if (!ready[i]) {
         objects[i] = nullptr;
       }
     }

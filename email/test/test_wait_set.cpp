@@ -45,11 +45,17 @@ TEST_F(TestWaitSet, empty) {
 TEST_F(TestWaitSet, guard_condition_in_use) {
   email::GuardCondition cond;
   email::WaitSet waitset1({}, {}, {}, {&cond});
+  ASSERT_EQ(1u, waitset1.get_guard_conditions().size());
   EXPECT_THROW(
     email::WaitSet waitset2({}, {}, {}, {&cond}),
     email::GuardConditionAlreadyInUseError);
   email::WaitSet waitset3;
   EXPECT_THROW(waitset3.add_guard_condition(&cond), email::GuardConditionAlreadyInUseError);
+  ASSERT_EQ(0u, waitset3.get_guard_conditions().size());
+
+  cond.trigger();
+  EXPECT_FALSE(waitset1.wait());
+  EXPECT_FALSE(waitset1.wait(std::chrono::milliseconds(0)));
 }
 
 TEST_F(TestWaitSet, guard_condition) {
@@ -73,4 +79,6 @@ TEST_F(TestWaitSet, guard_condition) {
   EXPECT_TRUE(diff < std::chrono::milliseconds(10)) <<
     "diff=" << std::chrono::duration_cast<std::chrono::milliseconds>(diff).count() << " ms";
   trigger_thread.join();
+  ASSERT_EQ(1u, waitset.get_guard_conditions().size());
+  EXPECT_TRUE(nullptr != waitset.get_guard_conditions()[0]);
 }
