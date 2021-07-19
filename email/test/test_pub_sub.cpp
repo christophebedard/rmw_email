@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -40,6 +40,7 @@ TEST(TestPubSub, validate_topic_name) {
 }
 
 TEST(TestPubSub, gid) {
+  // Just check that they don't have the same GID
   PubSubObjectStub o1("/my_topic");
   PubSubObjectStub o2("/my_other_topic");
   EXPECT_NE(o1.get_gid().value(), o2.get_gid().value());

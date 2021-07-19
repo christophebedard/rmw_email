@@ -55,8 +55,7 @@ public:
   /**
    * \return the GID as a string
    */
-  EMAIL_PUBLIC
-  std::string
+  const std::string &
   as_string() const;
 
 private:
@@ -67,7 +66,16 @@ private:
   GidValue
   new_value();
 
+  /// Convert a GID value to a string.
+  /**
+   * \return the GID value as a string
+   */
+  static
+  std::string
+  to_string(const GidValue value);
+
   const GidValue value_;
+  const std::string value_string_;
 };
 
 }  // namespace email

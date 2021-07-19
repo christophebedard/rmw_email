@@ -22,7 +22,8 @@ namespace email
 {
 
 Gid::Gid()
-: value_(Gid::new_value())
+: value_(Gid::new_value()),
+  value_string_(Gid::to_string(value_))
 {}
 
 Gid::~Gid() {}
@@ -33,10 +34,10 @@ Gid::value() const
   return value_;
 }
 
-std::string
+const std::string &
 Gid::as_string() const
 {
-  return std::to_string(value_);
+  return value_string_;
 }
 
 GidValue
@@ -49,6 +50,12 @@ Gid::new_value()
   // Add sequence ID to prefix
   static std::atomic<GidValue> id;
   return prefix + id++;
+}
+
+std::string
+Gid::to_string(const GidValue value)
+{
+  return std::to_string(value);
 }
 
 }  // namespace email
