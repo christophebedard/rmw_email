@@ -177,7 +177,7 @@ extern "C" rmw_ret_t rmw_subscription_get_actual_qos(
   RMW_CHECK_ARGUMENT_FOR_NULL(qos, RMW_RET_INVALID_ARGUMENT);
 
   // TODO(christophebedard) figure out
-  return RMW_RET_ERROR;
+  return RMW_RET_OK;
 }
 
 extern "C" rmw_ret_t rmw_count_subscribers(

@@ -54,7 +54,6 @@ struct rmw_context_impl_t
 // TODO(christophebedard) add concept of "node" to email?
 typedef struct rmw_email_node_t
 {
-  // TODO
 } rmw_email_node_t;
 
 typedef struct rmw_email_pub_t
