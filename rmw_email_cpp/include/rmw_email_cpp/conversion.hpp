@@ -17,10 +17,16 @@
 
 #include <string>
 
+#include "rcutils/allocator.h"
+
 #include "rmw_email_cpp/types.hpp"
 
 std::string msg_to_yaml(const rmw_email_pub_t * publisher, const void * msg);
 
-uint8_t * yaml_to_msg(const rmw_email_sub_t * subscription, const std::string & yaml);
+bool yaml_to_msg(
+  const rmw_email_sub_t * subscription,
+  const std::string & yaml,
+  void * ros_message,
+  rcutils_allocator_t * allocator);
 
 #endif  // RMW_EMAIL_CPP__CONVERSION_HPP_
