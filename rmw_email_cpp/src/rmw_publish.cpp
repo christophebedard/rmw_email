@@ -19,10 +19,9 @@
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
 
+#include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/types.hpp"
-
-// std::string
 
 extern "C" rmw_ret_t rmw_publish(
   const rmw_publisher_t * publisher,
@@ -40,17 +39,21 @@ extern "C" rmw_ret_t rmw_publish(
     ros_message, "ros message handle is null",
     return RMW_RET_INVALID_ARGUMENT);
 
-  auto pub = static_cast<rmw_email_pub_t *>(publisher->data);
-  assert(pub);
+  auto rmw_email_pub = static_cast<rmw_email_pub_t *>(publisher->data);
+  RMW_CHECK_FOR_NULL_WITH_MSG(
+    rmw_email_pub, "rmw_email_pub is null",
+    return RMW_RET_ERROR);
+  assert(rmw_email_pub);
+  email::Publisher * email_pub = rmw_email_pub->email_pub;
+  RMW_CHECK_FOR_NULL_WITH_MSG(
+    email_pub, "email_pub is null",
+    return RMW_RET_ERROR);
 
-  // Publish using middleware
-  // TODO(christophebedard) figure out
-  // pub->publish(ros_message);
+  // Convert to YAML string and publish
+  const std::string msg_yaml = msg_to_yaml(rmw_email_pub, ros_message);
+  assert(!msg_yaml.empty());
+  email_pub->publish(msg_yaml);
   return RMW_RET_OK;
-  // } else {
-  //   RMW_SET_ERROR_MSG("failed to publish data");
-  //   return RMW_RET_ERROR;
-  // }
 }
 
 extern "C" rmw_ret_t rmw_publish_serialized_message(

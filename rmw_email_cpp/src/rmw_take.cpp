@@ -12,13 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <string>
+
+#include "email/subscriber.hpp"
+#include "rcutils/allocator.h"
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
 
+#include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/identifier.hpp"
-// #include "rmw_email_cpp/macros.hpp"
-// #include "rmw_email_cpp/types.hpp"
+#include "rmw_email_cpp/types.hpp"
 
 static rmw_ret_t _rmw_take(
   const rmw_subscription_t * subscription,
@@ -37,8 +41,25 @@ static rmw_ret_t _rmw_take(
   RMW_CHECK_ARGUMENT_FOR_NULL(taken, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(allocation, RMW_RET_INVALID_ARGUMENT);
 
-  // TODO(christophebedard) figure out
-  return RMW_RET_OK;
+  auto rmw_email_sub = static_cast<rmw_email_sub_t *>(subscription->data);
+  email::Subscriber * email_sub = rmw_email_sub->email_sub;
+
+  rmw_ret_t ret = RMW_RET_OK;
+  auto msg = email_sub->get_message();
+  if (!msg.has_value()) {
+    *taken = false;
+  } else {
+    *taken = true;
+    const std::string & msg_yaml = msg.value();
+    rcutils_allocator_t allocator = rcutils_get_default_allocator();
+    if (!yaml_to_msg(rmw_email_sub, msg_yaml, ros_message, &allocator)) {
+      ret = RMW_RET_ERROR;
+    }
+    if (message_info) {
+      // TODO(christophebedard) set/use message_info
+    }
+  }
+  return ret;
 }
 
 extern "C" rmw_ret_t rmw_take(
