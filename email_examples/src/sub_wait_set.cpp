@@ -25,11 +25,9 @@ int main()
 {
   email::init();
   email::Subscriber sub("/my_topic");
-
-  std::cout << "waiting for message..." << std::endl;
+  std::cout << "waiting for message on topic '" << sub.get_topic_name() << "'..." << std::endl;
   email::WaitSet waitset(&sub);
   const bool timedout = waitset.wait(10s);
-
   if (!timedout) {
     auto message = sub.get_message();
     std::cout << "got message: " << message.value() << std::endl;

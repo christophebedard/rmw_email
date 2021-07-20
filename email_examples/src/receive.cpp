@@ -19,13 +19,12 @@
 #include "email/context.hpp"
 #include "email/email/receiver.hpp"
 #include "email/init.hpp"
-#include "email/options.hpp"
 #include "email/types.hpp"
 
 int main(int argc, char ** argv)
 {
   email::init(argc, argv);
-  std::shared_ptr<email::Options> options = email::get_global_context()->get_options();
+  auto options = email::get_global_context()->get_options();
   email::EmailReceiver receiver(options->get_user_info(), options->curl_verbose());
   if (!receiver.init()) {
     return 1;

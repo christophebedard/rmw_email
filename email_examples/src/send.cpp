@@ -19,12 +19,11 @@
 #include "email/email/sender.hpp"
 #include "email/init.hpp"
 #include "email/types.hpp"
-#include "email/options.hpp"
 
 int main(int argc, char ** argv)
 {
   email::init(argc, argv);
-  std::shared_ptr<email::Options> options = email::get_global_context()->get_options();
+  auto options = email::get_global_context()->get_options();
   email::EmailSender sender(
     options->get_user_info(),
     options->get_recipients(),

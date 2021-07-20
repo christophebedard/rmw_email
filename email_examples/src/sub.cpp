@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -22,8 +22,8 @@ int main()
   email::init();
   email::Subscriber sub1("/my_topic");
   email::Subscriber sub2("/my_other_topic");
-  std::cout << "getting message..." << std::endl;
-  while (!sub1.has_message() & !sub2.has_message()) {}
+  std::cout << "getting messages..." << std::endl;
+  while (!sub1.has_message() & !sub2.has_message()) {}  // empty
   auto message1 = sub1.get_message();
   auto message2 = sub2.get_message();
   std::cout << "got message1: " << message1.value() << std::endl;
