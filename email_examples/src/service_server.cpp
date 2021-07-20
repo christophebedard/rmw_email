@@ -26,7 +26,7 @@ int main()
   auto request = server.wait_and_get_request();
   std::cout << "got request!" << std::endl;
   std::cout << "\trequest ID: " << request.id << std::endl;
-  std::cout << "\trequest: " << request.content << std::endl;
+  std::cout << "\trequest   : " << request.content << std::endl;
   const std::string response_content = "responseeeee!";
   std::cout << "sending response: " << response_content << std::endl;
   server.send_response(request.id, response_content);
