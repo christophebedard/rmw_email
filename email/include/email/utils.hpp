@@ -142,6 +142,15 @@ EMAIL_PUBLIC
 std::optional<int>
 optional_stoi(const std::string & str);
 
+/// Try to call `std::stoll`.
+/**
+ * \param std the string to convert to long int/long
+ * \return the number, or `std::nullopt` if it fails
+ */
+EMAIL_PUBLIC
+std::optional<int64_t>
+optional_stoll(const std::string & str);
+
 }  // namespace utils
 }  // namespace email
 

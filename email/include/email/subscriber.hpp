@@ -19,11 +19,14 @@
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <utility>
 
 #include "email/log.hpp"
 #include "email/macros.hpp"
+#include "email/message_info.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
+#include "email/subscription_handler.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -66,11 +69,21 @@ public:
   std::optional<std::string>
   get_message();
 
+  /// Get a message with info if there is one.
+  /**
+   * This is the same as "taking" a message with its info if there is one.
+   *
+   * \return the message & message info pair, or `std::nullopt` if there is none
+   */
+  EMAIL_PUBLIC
+  std::optional<std::pair<std::string, MessageInfo>>
+  get_message_with_info();
+
 private:
   EMAIL_DISABLE_COPY(Subscriber)
 
   std::shared_ptr<Logger> logger_;
-  SafeQueue<std::string>::SharedPtr messages_;
+  SubscriptionHandler::SubscriberQueue::SharedPtr messages_;
 };
 
 }  // namespace email

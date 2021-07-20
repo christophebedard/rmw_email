@@ -44,5 +44,5 @@ TEST(TestPubSub, gid) {
   PubSubObjectStub o1("/my_topic");
   PubSubObjectStub o2("/my_other_topic");
   EXPECT_NE(o1.get_gid().value(), o2.get_gid().value());
-  EXPECT_STRNE(o1.get_gid().as_string().c_str(), o2.get_gid().as_string().c_str());
+  EXPECT_STRNE(o1.get_gid().to_string().c_str(), o2.get_gid().to_string().c_str());
 }

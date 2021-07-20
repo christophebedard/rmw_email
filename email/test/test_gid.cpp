@@ -14,12 +14,14 @@
 
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "email/gid.hpp"
 
 TEST(TestGid, gid) {
-  email::Gid gid1;
-  email::Gid gid2;
-  email::Gid gid3;
+  email::Gid gid1 = email::Gid::new_gid();
+  email::Gid gid2 = email::Gid::new_gid();
+  email::Gid gid3 = email::Gid::new_gid();
 
   // May be overkill
   EXPECT_NE(0u, gid1.value());
@@ -28,14 +30,22 @@ TEST(TestGid, gid) {
   EXPECT_NE(gid1.value(), gid2.value());
   EXPECT_NE(gid1.value(), gid3.value());
   EXPECT_NE(gid2.value(), gid3.value());
-  EXPECT_FALSE(gid1.as_string().empty());
-  EXPECT_FALSE(gid2.as_string().empty());
-  EXPECT_FALSE(gid3.as_string().empty());
-  EXPECT_STRNE(gid1.as_string().c_str(), gid2.as_string().c_str());
-  EXPECT_STRNE(gid1.as_string().c_str(), gid3.as_string().c_str());
-  EXPECT_STRNE(gid2.as_string().c_str(), gid3.as_string().c_str());
+  EXPECT_FALSE(gid1.to_string().empty());
+  EXPECT_FALSE(gid2.to_string().empty());
+  EXPECT_FALSE(gid3.to_string().empty());
+  EXPECT_STRNE(gid1.to_string().c_str(), gid2.to_string().c_str());
+  EXPECT_STRNE(gid1.to_string().c_str(), gid3.to_string().c_str());
+  EXPECT_STRNE(gid2.to_string().c_str(), gid3.to_string().c_str());
 
   // Check sequentiality (wow that's a real word)
   EXPECT_EQ(1u, gid2.value() - gid1.value());
   EXPECT_EQ(1u, gid3.value() - gid2.value());
+}
+
+TEST(TestGid, string) {
+  email::Gid gid = email::Gid::new_gid();
+  auto str = gid.to_string();
+  email::Gid gid_str = email::Gid::from_string(str);
+
+  EXPECT_EQ(gid.value(), gid_str.value());
 }

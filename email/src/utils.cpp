@@ -116,5 +116,18 @@ optional_stoi(const std::string & str)
   return std::nullopt;
 }
 
+std::optional<int64_t>
+optional_stoll(const std::string & str)
+{
+  try {
+    return static_cast<int64_t>(std::stoll(str));
+  } catch (const std::invalid_argument &) {
+  } catch (const std::out_of_range &) {  // LCOV_EXCL_LINE
+  } catch (const std::exception &) {  // LCOV_EXCL_LINE
+  } catch (...) {  // LCOV_EXCL_LINE
+  }
+  return std::nullopt;
+}
+
 }  // namespace utils
 }  // namespace email

@@ -14,6 +14,7 @@
 
 #include <string>
 
+#include "email/message_info.hpp"
 #include "email/subscriber.hpp"
 #include "rcutils/allocator.h"
 #include "rmw/error_handling.h"
@@ -21,7 +22,9 @@
 #include "rmw/rmw.h"
 
 #include "rmw_email_cpp/conversion.hpp"
+#include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
+#include "rmw_email_cpp/timestamp.hpp"
 #include "rmw_email_cpp/types.hpp"
 
 static rmw_ret_t _rmw_take(
@@ -45,18 +48,23 @@ static rmw_ret_t _rmw_take(
   email::Subscriber * email_sub = rmw_email_sub->email_sub;
 
   rmw_ret_t ret = RMW_RET_OK;
-  auto msg = email_sub->get_message();
-  if (!msg.has_value()) {
+  auto msg_with_info_opt = email_sub->get_message_with_info();
+  if (!msg_with_info_opt.has_value()) {
     *taken = false;
   } else {
     *taken = true;
-    const std::string & msg_yaml = msg.value();
+    auto msg_with_info = msg_with_info_opt.value();
+    const std::string & msg_yaml = msg_with_info.first;
     rcutils_allocator_t allocator = rcutils_get_default_allocator();
     if (!yaml_to_msg(rmw_email_sub, msg_yaml, ros_message, &allocator)) {
       ret = RMW_RET_ERROR;
     }
     if (message_info) {
-      // TODO(christophebedard) set/use message_info
+      email::MessageInfo msg_info = msg_with_info.second;
+      message_info->publisher_gid = convert_gid(msg_info.publisher_gid());
+      message_info->source_timestamp = convert_timestamp(msg_info.source_timestamp());
+      message_info->received_timestamp = convert_timestamp(msg_info.received_timestamp());
+      message_info->from_intra_process = false;
     }
   }
   return ret;

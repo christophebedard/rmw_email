@@ -33,12 +33,23 @@ typedef uint32_t GidValue;
 class Gid
 {
 public:
+  /// Get a new GID.
+  EMAIL_PUBLIC
+  static
+  Gid
+  new_gid();
+
   /// Constructor.
   /**
-   * A new GID is automatically created.
+   * To create a new GID, see Gid::new().
+   *
+   * \param value the value for this GID
    */
   EMAIL_PUBLIC
-  Gid();
+  explicit Gid(const GidValue value);
+
+  EMAIL_PUBLIC
+  Gid(const Gid &) = default;
 
   EMAIL_PUBLIC
   virtual ~Gid();
@@ -53,23 +64,28 @@ public:
 
   /// Get the GID as a string.
   /**
-   * \return the GID as a string
+   * This string can be converted back to a GID using from_string().
    */
+  EMAIL_PUBLIC
   const std::string &
-  as_string() const;
+  to_string() const;
+
+  /// Get a GID object from a string.
+  /**
+   * The string should have been generated using to_string().
+   */
+  EMAIL_PUBLIC
+  static
+  Gid
+  from_string(const std::string & str);
 
 private:
-  EMAIL_DISABLE_COPY(Gid)
-
   /// Get a new value.
   static
   GidValue
   new_value();
 
   /// Convert a GID value to a string.
-  /**
-   * \return the GID value as a string
-   */
   static
   std::string
   to_string(const GidValue value);

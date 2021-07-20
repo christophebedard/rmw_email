@@ -46,6 +46,7 @@ set(SOURCES
   src/guard_condition.cpp
   src/init.cpp
   src/log.cpp
+  src/message_info.cpp
   src/options.cpp
   src/pub_sub.cpp
   src/publisher.cpp
@@ -55,6 +56,7 @@ set(SOURCES
   src/service_server.cpp
   src/subscriber.cpp
   src/subscription_handler.cpp
+  src/timestamp.cpp
   src/utils.cpp
   src/wait.cpp
   src/wait_set.cpp
@@ -147,6 +149,10 @@ if(BUILD_TESTING)
     test/test_service.cpp
   )
   target_link_libraries(test_service ${PROJECT_NAME})
+  ament_add_gtest(test_timestamp
+    test/test_timestamp.cpp
+  )
+  target_link_libraries(test_timestamp ${PROJECT_NAME})
   ament_add_gtest(test_wait_set
     test/test_wait_set.cpp
   )

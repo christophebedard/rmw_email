@@ -13,16 +13,24 @@
 // limitations under the License.
 
 #include <atomic>
+#include <cassert>
 #include <random>
 #include <string>
 
 #include "email/gid.hpp"
+#include "email/utils.hpp"
 
 namespace email
 {
 
-Gid::Gid()
-: value_(Gid::new_value()),
+Gid
+Gid::new_gid()
+{
+  return Gid(Gid::new_value());
+}
+
+Gid::Gid(const GidValue value)
+: value_(value),
   value_string_(Gid::to_string(value_))
 {}
 
@@ -35,9 +43,17 @@ Gid::value() const
 }
 
 const std::string &
-Gid::as_string() const
+Gid::to_string() const
 {
   return value_string_;
+}
+
+Gid
+Gid::from_string(const std::string & str)
+{
+  auto value_opt = utils::optional_stoul(str);
+  assert(value_opt.has_value());
+  return Gid(value_opt.value());
 }
 
 GidValue

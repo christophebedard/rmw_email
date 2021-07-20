@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,10 +16,12 @@
 #include <memory>
 #include <mutex>
 #include <string>
+#include <utility>
 
 #include "email/context.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/log.hpp"
+#include "email/message_info.hpp"
 #include "email/safe_queue.hpp"
 #include "email/subscription_handler.hpp"
 #include "email/types.hpp"
@@ -46,7 +48,7 @@ SubscriptionHandler::~SubscriptionHandler() {}
 void
 SubscriptionHandler::register_subscriber(
   const std::string & topic_name,
-  SafeQueue<std::string>::SharedPtr message_queue)
+  SubscriberQueue::SharedPtr message_queue)
 {
   std::scoped_lock<std::mutex> lock(subscribers_mutex_);
   subscribers_.insert({topic_name, message_queue});
@@ -57,6 +59,8 @@ SubscriptionHandler::handle(const struct EmailData & data)
 {
   logger_->debug("handle() called");
   const std::string & topic = data.content.subject;
+  const std::string msg = data.content.body;
+  const MessageInfo msg_info = MessageInfo::from_headers(data.additional_headers);
   // Push it to the right queue
   {
     std::scoped_lock<std::mutex> lock(subscribers_mutex_);
@@ -64,7 +68,7 @@ SubscriptionHandler::handle(const struct EmailData & data)
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
       logger_->debug("pushing body to queue");
-      it->second->push(data.content.body);
+      it->second->push({msg, msg_info});
     }
   }
 }

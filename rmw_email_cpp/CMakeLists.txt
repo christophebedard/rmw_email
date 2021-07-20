@@ -34,6 +34,7 @@ add_library(${PROJECT_NAME}
   src/gid.cpp
   src/guard_condition.cpp
   src/identifier.cpp
+  src/timestamp.cpp
 
   src/rmw_client.cpp
   src/rmw_event.cpp

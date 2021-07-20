@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 #include <regex>
 #include <string>
 
+#include "email/gid.hpp"
 #include "email/pub_sub.hpp"
 
 namespace email
@@ -22,7 +23,7 @@ namespace email
 
 PubSubObject::PubSubObject(const std::string & topic_name)
 : topic_name_(topic_name),
-  gid_()
+  gid_(Gid::new_gid())
 {
   validate_topic_name(topic_name);
 }
