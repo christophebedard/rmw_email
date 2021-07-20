@@ -48,4 +48,6 @@ TEST(TestGid, string) {
   email::Gid gid_str = email::Gid::from_string(str);
 
   EXPECT_EQ(gid.value(), gid_str.value());
+
+  EXPECT_DEATH(email::Gid::from_string("abc"), "");
 }

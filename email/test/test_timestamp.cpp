@@ -34,6 +34,8 @@ TEST(TestTimestamp, string) {
   email::Timestamp ts_str = email::Timestamp::from_string(str);
 
   EXPECT_EQ(ts.nanoseconds(), ts_str.nanoseconds());
+
+  EXPECT_DEATH(email::Timestamp::from_string("abc"), "");
 }
 
 TEST(TestTimestamp, format) {
