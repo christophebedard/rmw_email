@@ -125,4 +125,7 @@ TEST(TestUtils, optional_stox) {
   auto stoul_opt = email::utils::optional_stoul("42");
   ASSERT_TRUE(stoul_opt.has_value());
   EXPECT_EQ(42ul, stoul_opt);
+  auto stoll_opt = email::utils::optional_stoll("42");
+  ASSERT_TRUE(stoll_opt.has_value());
+  EXPECT_EQ(42l, stoll_opt);
 }

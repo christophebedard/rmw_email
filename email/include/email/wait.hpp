@@ -18,12 +18,39 @@
 #include <chrono>
 #include <memory>
 #include <string>
+#include <utility>
 
+#include "email/message_info.hpp"
 #include "email/subscriber.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
 {
+
+/// Get a message with info from a subscription, waiting until one is available.
+/**
+ * For the meaning of the timeout parameter, see `WaitSet::wait`.
+ *
+ * \param subscription the subscription
+ * \param timeout the timeout
+ * \return the message & message info pair
+ * \see WaitSet::wait()
+ */
+EMAIL_PUBLIC
+std::pair<std::string, MessageInfo>
+wait_for_message_with_info(
+  Subscriber * subscription,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a message with info from a subscription, waiting until one is available.
+/**
+ * \see wait_for_message(std::shared_ptr<Subscriber>, const std::chrono::milliseconds)
+ */
+EMAIL_PUBLIC
+std::pair<std::string, MessageInfo>
+wait_for_message_with_info(
+  std::shared_ptr<Subscriber> subscription,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a message from a subscription, waiting until one is available.
 /**

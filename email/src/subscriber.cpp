@@ -20,6 +20,7 @@
 
 #include "email/context.hpp"
 #include "email/log.hpp"
+#include "email/message_info.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
 #include "email/subscriber.hpp"
@@ -32,7 +33,7 @@ namespace email
 Subscriber::Subscriber(const std::string & topic_name)
 : PubSubObject(topic_name),
   logger_(log::get_or_create("Subscriber::" + topic_name)),
-  messages_(std::make_shared<SafeQueue<std::string>>())
+  messages_(std::make_shared<SubscriptionHandler::SubscriberQueue>())
 {
   // Register with handler
   get_global_context()->get_subscription_handler()->register_subscriber(
@@ -51,6 +52,15 @@ Subscriber::has_message() const
 
 std::optional<std::string>
 Subscriber::get_message()
+{
+  if (!has_message()) {
+    return std::nullopt;
+  }
+  return messages_->dequeue().first;
+}
+
+std::optional<std::pair<std::string, MessageInfo>>
+Subscriber::get_message_with_info()
 {
   if (!has_message()) {
     return std::nullopt;

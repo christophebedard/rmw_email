@@ -12,18 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <cassert>
 #include <chrono>
 #include <memory>
 #include <string>
+#include <utility>
 
+#include "email/message_info.hpp"
 #include "email/subscriber.hpp"
 #include "email/wait_set.hpp"
 
 namespace email
 {
 
-std::string
-wait_for_message(
+std::pair<std::string, MessageInfo>
+wait_for_message_with_info(
   Subscriber * subscription,
   const std::chrono::milliseconds timeout)
 {
@@ -31,7 +34,23 @@ wait_for_message(
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
 
-  return subscription->get_message().value();
+  return subscription->get_message_with_info().value();
+}
+
+std::pair<std::string, MessageInfo>
+wait_for_message_with_info(
+  std::shared_ptr<Subscriber> subscription,
+  const std::chrono::milliseconds timeout)
+{
+  return wait_for_message_with_info(subscription.get(), timeout);
+}
+
+std::string
+wait_for_message(
+  Subscriber * subscription,
+  const std::chrono::milliseconds timeout)
+{
+  return wait_for_message_with_info(subscription, timeout).first;
 }
 
 std::string
