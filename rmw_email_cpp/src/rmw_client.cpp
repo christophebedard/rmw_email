@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "email/service_client.hpp"
+#include "rcpputils/scope_exit.hpp"
 #include "rmw/allocators.h"
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
@@ -21,7 +23,7 @@
 
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/macros.hpp"
-// #include "rmw_email_cpp/types.hpp"
+#include "rmw_email_cpp/types.hpp"
 
 extern "C" rmw_client_t * rmw_create_client(
   const rmw_node_t * node,
@@ -53,15 +55,37 @@ extern "C" rmw_client_t * rmw_create_client(
     }
   }
 
+  // Create email service client
+  email::ServiceClient * email_client = new (std::nothrow) email::ServiceClient(service_name);
+  RET_ALLOC_X(email_client, return nullptr);
+  auto cleanup_email_client = rcpputils::make_scope_exit(
+    [email_client]() {
+      delete email_client;
+    });
+
+  rmw_email_client_t * rmw_email_client = new (std::nothrow) rmw_email_client_t;
+  RET_ALLOC_X(rmw_email_client, return nullptr);
+  auto cleanup_rmw_email_client = rcpputils::make_scope_exit(
+    [rmw_email_client]() {
+      delete rmw_email_client;
+    });
+  rmw_email_client->email_client = email_client;
+
   rmw_client_t * rmw_client = rmw_client_allocate();
   RET_NULL_X(rmw_client, return nullptr);
+  auto cleanup_rmw_client = rcpputils::make_scope_exit(
+    [rmw_client]() {
+      rmw_client_free(rmw_client);
+    });
   rmw_client->implementation_identifier = email_identifier;
-  // TODO(christophebedard) figure out
-  // rmw_client->data = ;
+  rmw_client->data = rmw_email_client;
   rmw_client->service_name = reinterpret_cast<const char *>(rmw_allocate(strlen(service_name) + 1));
   RET_NULL_X(rmw_client->service_name, rmw_client_free(rmw_client); return nullptr);
   memcpy(const_cast<char *>(rmw_client->service_name), service_name, strlen(service_name) + 1);
 
+  cleanup_rmw_client.cancel();
+  cleanup_rmw_email_client.cancel();
+  cleanup_email_client.cancel();
   return rmw_client;
 }
 
@@ -82,9 +106,10 @@ extern "C" rmw_ret_t rmw_destroy_client(
     email_identifier,
     return RMW_RET_INVALID_ARGUMENT);
 
-  // TODO(christophebedard) figure out
-  // auto data = static_cast<>(client->data);
-  // delete data;
+  rmw_email_client_t * rmw_email_client = static_cast<rmw_email_client_t *>(client->data);
+  email::ServiceClient * email_client = rmw_email_client->email_client;
+  delete email_client;
+  delete rmw_email_client;
   rmw_free(const_cast<char *>(client->service_name));
   rmw_client_free(client);
   return RMW_RET_OK;
