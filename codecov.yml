@@ -7,7 +7,10 @@ coverage:
       default:
         target: 0%
 fixes:
-  - "ros_ws/src/*/rmw_email/email/::"
+  - "ros_ws/src/*/rmw_email/email/::email/"
+  - "ros_ws/src/*/rmw_email/email_examples/::email_examples/"
+  - "ros_ws/src/*/rmw_email/rmw_email_cpp/::rmw_email_cpp/"
 ignore:
-  - "email/example"
   - "email/test"
+  - "email_examples"
+  - "rmw_email_cpp/test"
