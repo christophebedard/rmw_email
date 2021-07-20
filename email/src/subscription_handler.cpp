@@ -59,8 +59,8 @@ SubscriptionHandler::handle(const struct EmailData & data)
 {
   logger_->debug("handle() called");
   const std::string & topic = data.content.subject;
-  const std::string msg = data.content.body;
-  const MessageInfo msg_info = MessageInfo::from_headers(data.additional_headers);
+  const std::string & msg = data.content.body;
+  const MessageInfo & msg_info = MessageInfo::from_headers(data.additional_headers);
   // Push it to the right queue
   {
     std::scoped_lock<std::mutex> lock(subscribers_mutex_);

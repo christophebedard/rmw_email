@@ -118,6 +118,8 @@ TEST(TestUtils, optional_stox) {
   EXPECT_FALSE(stoi_opt_fail.has_value());
   auto stoul_opt_fail = email::utils::optional_stoul("abc");
   EXPECT_FALSE(stoul_opt_fail.has_value());
+  auto stoll_opt_fail = email::utils::optional_stoll("abc");
+  EXPECT_FALSE(stoll_opt_fail.has_value());
 
   auto stoi_opt = email::utils::optional_stoi("42");
   ASSERT_TRUE(stoi_opt.has_value());
