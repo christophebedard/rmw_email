@@ -100,10 +100,18 @@ extern "C" rmw_ret_t rmw_wait(
     }
   }
   if (clients) {
-    // TODO(christophebedard)
+    for (size_t i = 0u; i < clients->client_count; i++) {
+      void * data = clients->clients[i];
+      auto rmw_email_client = static_cast<rmw_email_client_t *>(data);
+      email_waitset->add_client(rmw_email_client->email_client);
+    }
   }
   if (services) {
-    // TODO(christophebedard)
+    for (size_t i = 0u; i < services->service_count; i++) {
+      void * data = services->services[i];
+      auto rmw_email_server = static_cast<rmw_email_server_t *>(data);
+      email_waitset->add_server(rmw_email_server->email_server);
+    }
   }
   if (events) {
     // TODO(christophebedard)
@@ -136,10 +144,22 @@ extern "C" rmw_ret_t rmw_wait(
     }
   }
   if (clients) {
-    // TODO(christophebedard)
+    const auto & waitset_clients = email_waitset->get_clients();
+    assert(clients->client_count == waitset_clients.size());
+    for (size_t i = 0u; i < clients->client_count; i++) {
+      if (nullptr == waitset_clients[i]) {
+        clients->clients[i] = nullptr;
+      }
+    }
   }
   if (services) {
-    // TODO(christophebedard)
+    const auto & waitset_servers = email_waitset->get_servers();
+    assert(services->service_count == waitset_servers.size());
+    for (size_t i = 0u; i < services->service_count; i++) {
+      if (nullptr == waitset_servers[i]) {
+        services->services[i] = nullptr;
+      }
+    }
   }
   if (events) {
     // TODO(christophebedard)

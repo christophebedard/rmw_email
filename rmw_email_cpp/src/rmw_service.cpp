@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include "email/service_server.hpp"
+#include "rcpputils/scope_exit.hpp"
 #include "rmw/allocators.h"
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
@@ -21,7 +23,7 @@
 
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/macros.hpp"
-// #include "rmw_email_cpp/types.hpp"
+#include "rmw_email_cpp/types.hpp"
 
 extern "C" rmw_service_t * rmw_create_service(
   const rmw_node_t * node,
@@ -53,16 +55,38 @@ extern "C" rmw_service_t * rmw_create_service(
     }
   }
 
+  // Create email service server
+  email::ServiceServer * email_server = new (std::nothrow) email::ServiceServer(service_name);
+  RET_ALLOC_X(email_server, return nullptr);
+  auto cleanup_email_server = rcpputils::make_scope_exit(
+    [email_server]() {
+      delete email_server;
+    });
+
+  rmw_email_server_t * rmw_email_server = new (std::nothrow) rmw_email_server_t;
+  RET_ALLOC_X(rmw_email_server, return nullptr);
+  auto cleanup_rmw_email_server = rcpputils::make_scope_exit(
+    [rmw_email_server]() {
+      delete rmw_email_server;
+    });
+  rmw_email_server->email_server = email_server;
+
   rmw_service_t * rmw_service = rmw_service_allocate();
   RET_NULL_X(rmw_service, return nullptr);
+  auto cleanup_rmw_service = rcpputils::make_scope_exit(
+    [rmw_service]() {
+      rmw_service_free(rmw_service);
+    });
   rmw_service->implementation_identifier = email_identifier;
-  // TODO(christophebedard) figure out
-  // rmw_service->data = ;
+  rmw_service->data = rmw_email_server;
   rmw_service->service_name =
     reinterpret_cast<const char *>(rmw_allocate(strlen(service_name) + 1));
   RET_NULL_X(rmw_service->service_name, rmw_service_free(rmw_service); return nullptr);
   memcpy(const_cast<char *>(rmw_service->service_name), service_name, strlen(service_name) + 1);
 
+  cleanup_rmw_service.cancel();
+  cleanup_rmw_email_server.cancel();
+  cleanup_email_server.cancel();
   return rmw_service;
 }
 
@@ -83,9 +107,10 @@ extern "C" rmw_ret_t rmw_destroy_service(
     email_identifier,
     return RMW_RET_INVALID_ARGUMENT);
 
-  // TODO(christophebedard) figure out
-  // auto data = static_cast<>(service->data);
-  // delete data;
+  rmw_email_server_t * rmw_email_server = static_cast<rmw_email_server_t *>(service->data);
+  email::ServiceServer * email_server = rmw_email_server->email_server;
+  delete email_server;
+  delete rmw_email_server;
   rmw_free(const_cast<char *>(service->service_name));
   rmw_service_free(service);
   return RMW_RET_OK;
@@ -109,6 +134,8 @@ extern "C" rmw_ret_t rmw_service_server_is_available(
     email_identifier,
     return RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(is_available, RMW_RET_ERROR);
+
+  // TODO(christophebedard) figure out
 
   // Always ready
   *is_available = true;
