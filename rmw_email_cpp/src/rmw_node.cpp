@@ -63,14 +63,13 @@ extern "C" rmw_node_t * rmw_create_node(
     return nullptr;
   }
 
-  // Init context implementation
+  // Call context implementation init() whenever we create a new node
   ret = context->impl->init(&context->options, context->actual_domain_id);
   if (RMW_RET_OK != ret) {
     return nullptr;
   }
   auto finalize_context = rcpputils::make_scope_exit(
     [context]() {context->impl->fini();});
-
 
   auto rmw_email_node = new (std::nothrow) rmw_email_node_t;
   RET_ALLOC_X(rmw_email_node, return nullptr);
@@ -124,6 +123,7 @@ extern "C" rmw_ret_t rmw_destroy_node(rmw_node_t * node)
   allocator.deallocate(const_cast<char *>(node->name), allocator.state);
   allocator.deallocate(const_cast<char *>(node->namespace_), allocator.state);
   allocator.deallocate(node, allocator.state);
+  // Call context implemnentation fini() whenever we destroy a node
   context->impl->fini();
   return result_ret;
 }

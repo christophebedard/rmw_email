@@ -17,6 +17,7 @@
 
 #include <mutex>
 
+#include "email/init.hpp"
 #include "email/guard_condition.hpp"
 #include "email/publisher.hpp"
 #include "email/service_client.hpp"
@@ -30,7 +31,7 @@ struct rmw_context_impl_t
   // TODO(christophebedard) add missing stuff
 
   // TODO(christophebedard) move to graph cache handler?
-  rmw_guard_condition_t * graph_guard_condition;
+  rmw_guard_condition_t * graph_guard_condition{nullptr};
 
   size_t node_count{0};
   std::mutex mutex_initialization;
@@ -40,15 +41,30 @@ struct rmw_context_impl_t
   rmw_context_impl_t()
   {}
 
+  /// Context destruction, called when deleting this.
   ~rmw_context_impl_t()
-  {}
+  {
+    // Shutdown middleware
+    email::shutdown();
 
+    // Make sure we didn't get destroyed while there's still a node
+    if (0u != this->node_count) {
+      RCUTILS_SAFE_FWRITE_TO_STDERR(
+        "Not all nodes were finished before finishing the context\n."
+        "Ensure `rmw_destroy_node` is called for all nodes before `rmw_context_fini`,"
+        "to avoid leaking.\n");
+    }
+  }
+
+  /// Called whenever a new node is created.
   rmw_ret_t
   init(rmw_init_options_t * options, size_t domain_id);
 
+  /// Called whenever a node is destroy.
   rmw_ret_t
   fini();
 
+  /// Cleanup on init failure and on fini.
   void
   cleanup();
 };

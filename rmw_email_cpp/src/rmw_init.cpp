@@ -109,6 +109,8 @@ rmw_context_impl_t::init(rmw_init_options_t * options, size_t domain_id)
   // There's no concept of "domain" with email, duh
   static_cast<void>(domain_id);
 
+  // If this isn't the first node, just increment the node counter;
+  // we only do the rest if this was the first node
   std::scoped_lock<std::mutex> lock(mutex_initialization);
   if (0u != this->node_count) {
     this->node_count++;
@@ -142,9 +144,6 @@ rmw_context_impl_t::fini()
   if (0u != --this->node_count) {
     return RMW_RET_OK;
   }
-
-  // Shutdown middleware
-  email::shutdown();
 
   cleanup();
   return RMW_RET_OK;
@@ -243,6 +242,7 @@ extern "C" rmw_ret_t rmw_context_fini(rmw_context_t * context)
   }
 
   rmw_ret_t ret = rmw_init_options_fini(&context->options);
+  // Will destroy the context implementation object and call shutdown() on the middleware
   delete context->impl;
   *context = rmw_get_zero_initialized_context();
   return ret;
