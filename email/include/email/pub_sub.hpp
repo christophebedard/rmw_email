@@ -39,7 +39,7 @@ public:
 /**
  * Abstract class representing common publishing and subscribing elements.
  */
-class PubSubObject
+class PubSubObject : public GidObject
 {
 public:
   /// Get the topic name.
@@ -49,14 +49,6 @@ public:
   EMAIL_PUBLIC
   std::string
   get_topic_name() const;
-
-  /// Get the unique ID (GID) for this object.
-  /**
-   * \return the GID
-   */
-  EMAIL_PUBLIC
-  const Gid &
-  get_gid() const;
 
 protected:
   /// Constructor.
@@ -84,7 +76,6 @@ private:
   static const std::regex REGEX_NEWLINE;
 
   const std::string topic_name_;
-  const Gid gid_;
 };
 
 }  // namespace email

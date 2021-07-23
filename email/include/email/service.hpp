@@ -19,6 +19,7 @@
 #include <stdexcept>
 #include <string>
 
+#include "email/gid.hpp"
 #include "email/macros.hpp"
 #include "email/visibility_control.hpp"
 
@@ -38,7 +39,7 @@ public:
 /**
  * Abstract class representing common service elements.
  */
-class ServiceObject
+class ServiceObject : public GidObject
 {
 public:
   /// Get the service name.
