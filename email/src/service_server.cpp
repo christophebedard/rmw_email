@@ -67,17 +67,6 @@ ServiceServer::get_request()
   return {{request_id.value(), request.content.body}};
 }
 
-ServiceRequest
-ServiceServer::wait_and_get_request()
-{
-  std::optional<ServiceRequest> request = get_request();
-  while (!request) {
-    std::this_thread::sleep_for(WAIT_TIME);
-    request = get_request();
-  }
-  return request.value();
-}
-
 void
 ServiceServer::send_response(const uint32_t request_id, const std::string & response)
 {

@@ -1,4 +1,4 @@
-// Copyright 2020-2021 Christophe Bedard
+// Copyright 2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,23 +16,22 @@
 #include <string>
 
 #include "email/init.hpp"
-#include "email/service_client.hpp"
+#include "email/service_server.hpp"
+#include "email/wait.hpp"
 
 int main()
 {
   email::init();
-  email::ServiceClient client("/my_service");
-  const std::string request_content = "this is the request!";
-  std::cout << "making request for service '" << client.get_service_name() << "': " <<
-    request_content << std::endl;
-  auto request_id = client.send_request(request_content);
-  while (!client.has_response(request_id)) {}  // empty
-  auto response = client.get_response(request_id);
-  if (response) {
-    std::cout << "response: " << response.value() << std::endl;
-  } else {
-    std::cout << "no response" << std::endl;
-  }
+  email::ServiceServer server("/my_service");
+  std::cout << "waiting for request for service '" << server.get_service_name() << "'..." <<
+    std::endl;
+  auto request = email::wait_for_request(&server);
+  std::cout << "got request!" << std::endl;
+  std::cout << "\trequest ID: " << request.id << std::endl;
+  std::cout << "\trequest   : " << request.content << std::endl;
+  const std::string response_content = "responseeeee!";
+  std::cout << "sending response: " << response_content << std::endl;
+  server.send_response(request.id, response_content);
   email::shutdown();
   return 0;
 }

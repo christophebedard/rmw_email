@@ -22,14 +22,20 @@ int main()
 {
   email::init();
   email::ServiceServer server("/my_service");
-  std::cout << "getting request..." << std::endl;
-  auto request = server.wait_and_get_request();
+  std::cout << "getting request for service '" << server.get_service_name() << "'..." <<
+    std::endl;
+  while (!server.has_request()) {}  // empty
+  auto request = server.get_request();
+  if (!request) {
+    std::cout << "no request" << std::endl;
+    return 1;
+  }
   std::cout << "got request!" << std::endl;
-  std::cout << "\trequest ID: " << request.id << std::endl;
-  std::cout << "\trequest   : " << request.content << std::endl;
+  std::cout << "\trequest ID: " << request.value().id << std::endl;
+  std::cout << "\trequest   : " << request.value().content << std::endl;
   const std::string response_content = "responseeeee!";
   std::cout << "sending response: " << response_content << std::endl;
-  server.send_response(request.id, response_content);
+  server.send_response(request.value().id, response_content);
   email::shutdown();
   return 0;
 }

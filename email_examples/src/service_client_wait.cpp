@@ -1,4 +1,4 @@
-// Copyright 2020-2021 Christophe Bedard
+// Copyright 2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,6 +17,7 @@
 
 #include "email/init.hpp"
 #include "email/service_client.hpp"
+#include "email/wait.hpp"
 
 int main()
 {
@@ -26,13 +27,9 @@ int main()
   std::cout << "making request for service '" << client.get_service_name() << "': " <<
     request_content << std::endl;
   auto request_id = client.send_request(request_content);
-  while (!client.has_response(request_id)) {}  // empty
-  auto response = client.get_response(request_id);
-  if (response) {
-    std::cout << "response: " << response.value() << std::endl;
-  } else {
-    std::cout << "no response" << std::endl;
-  }
+  std::cout << "waiting for response..." << std::endl;
+  const std::string response = email::wait_for_response(request_id, &client);
+  std::cout << "response: " << response << std::endl;
   email::shutdown();
   return 0;
 }
