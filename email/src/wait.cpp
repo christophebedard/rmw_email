@@ -61,4 +61,48 @@ wait_for_message(
   return wait_for_message(subscription.get(), timeout);
 }
 
+std::string
+wait_for_response(
+  const uint32_t request_id,
+  ServiceClient * client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  email::WaitSet waitset;
+  waitset.add_client(client);
+  const bool timedout = waitset.wait(timeout);
+  assert(!timedout);
+
+  return client->get_response(request_id).value();
+}
+
+std::string
+wait_for_response(
+  const uint32_t request_id,
+  std::shared_ptr<ServiceClient> client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  return wait_for_response(request_id, client.get(), timeout);
+}
+
+ServiceRequest
+wait_for_request(
+  ServiceServer * server,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  email::WaitSet waitset;
+  waitset.add_server(server);
+  const bool timedout = waitset.wait(timeout);
+  assert(!timedout);
+
+  return server->get_request().value();
+}
+
+ServiceRequest
+wait_for_request(
+  std::shared_ptr<ServiceServer> server,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  return wait_for_request(server.get(), timeout);
+}
+
 }  // namespace email

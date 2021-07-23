@@ -98,27 +98,12 @@ public:
   std::optional<std::string>
   get_response(const uint32_t request_id);
 
-  /// Send request and get response, waiting for it.
-  /**
-   * Synchronous.
-   *
-   * TODO(christophebedard) add timeout for response?
-   *
-   * \param request the request to send
-   * \return the response, or `std::nullopt` if it failed
-   */
-  EMAIL_PUBLIC
-  std::optional<std::string>
-  send_request_and_wait(const std::string & request);
-
 private:
   EMAIL_DISABLE_COPY(ServiceClient)
 
   std::shared_ptr<Logger> logger_;
   SafeMap<uint32_t, struct EmailData>::SharedPtr responses_;
   Publisher pub_;
-
-  static constexpr auto WAIT_TIME = std::chrono::milliseconds(10);
 };
 
 }  // namespace email

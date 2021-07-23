@@ -87,14 +87,4 @@ ServiceClient::get_response(const uint32_t request_id)
   return response;
 }
 
-std::optional<std::string>
-ServiceClient::send_request_and_wait(const std::string & request)
-{
-  const auto request_id = send_request(request);
-  while (!has_response(request_id)) {
-    std::this_thread::sleep_for(WAIT_TIME);
-  }
-  return get_response(request_id);
-}
-
 }  // namespace email

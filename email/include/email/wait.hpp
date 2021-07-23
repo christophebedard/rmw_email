@@ -21,6 +21,8 @@
 #include <utility>
 
 #include "email/message_info.hpp"
+#include "email/service_client.hpp"
+#include "email/service_server.hpp"
 #include "email/subscriber.hpp"
 #include "email/visibility_control.hpp"
 
@@ -75,6 +77,57 @@ EMAIL_PUBLIC
 std::string
 wait_for_message(
   std::shared_ptr<Subscriber> subscription,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a service reponse, waiting until it is available.
+/**
+ * For the meaning of the timeout parameter, see `WaitSet::wait`.
+ *
+ * \param request_id the request ID
+ * \param client the service client
+ * \param timeout the timeout
+ * \return the response
+ */
+EMAIL_PUBLIC
+std::string
+wait_for_response(
+  const uint32_t request_id,
+  ServiceClient * client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a service reponse, waiting until it is available.
+/**
+ * \see wait_for_response(const uint32_t, ServiceClient *, const std::chrono::milliseconds)
+ */
+EMAIL_PUBLIC
+std::string
+wait_for_response(
+  const uint32_t request_id,
+  std::shared_ptr<ServiceClient> client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a service request, waiting until one is available.
+/**
+ * For the meaning of the timeout parameter, see `WaitSet::wait`.
+ *
+ * \param server the server
+ * \param the timeout
+ * \return the service request
+ */
+EMAIL_PUBLIC
+ServiceRequest
+wait_for_request(
+  ServiceServer * server,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a service request, waiting until one is available.
+/**
+ * \see wait_for_request(ServiceServer *, const std::chrono::milliseconds)
+ */
+EMAIL_PUBLIC
+ServiceRequest
+wait_for_request(
+  std::shared_ptr<ServiceServer> server,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 }  // namespace email

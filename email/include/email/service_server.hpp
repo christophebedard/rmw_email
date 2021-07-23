@@ -81,16 +81,6 @@ public:
   std::optional<ServiceRequest>
   get_request();
 
-  /// Get a request, waiting until one is available.
-  /**
-   * TODO(christophebedard) use a timeout?
-   *
-   * \return the request
-   */
-  EMAIL_PUBLIC
-  ServiceRequest
-  wait_and_get_request();
-
   /// Send response.
   /**
    * \param request_id the request ID
@@ -107,8 +97,6 @@ private:
   SafeQueue<struct EmailData>::SharedPtr requests_;
   std::shared_ptr<EmailSender> sender_;
   std::map<uint32_t, struct EmailData> requests_raw_;
-
-  static constexpr auto WAIT_TIME = std::chrono::milliseconds(10);
 };
 
 }  // namespace email
