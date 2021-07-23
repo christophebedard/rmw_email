@@ -51,3 +51,16 @@ TEST(TestGid, string) {
 
   EXPECT_DEATH(email::Gid::from_string("abc"), "");
 }
+
+class GidObjectStub : public email::GidObject
+{
+public:
+  GidObjectStub()
+  : GidObject()
+  {}
+};
+
+TEST(TestGidObject, init) {
+  auto gid_object = GidObjectStub();
+  EXPECT_NE(0u, gid_object.get_gid().value());
+}

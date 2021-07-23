@@ -94,6 +94,35 @@ private:
   const std::string value_string_;
 };
 
+/// Abstract object with a GID.
+/**
+ * TODO(christophebedard) move to its own header
+ */
+class GidObject
+{
+public:
+  /// Get the unique ID (GID) for this object.
+  /**
+   * \return the GID
+   */
+  EMAIL_PUBLIC
+  const Gid &
+  get_gid() const;
+
+protected:
+  /// Constructor
+  EMAIL_PUBLIC
+  GidObject();
+
+  EMAIL_PUBLIC
+  virtual ~GidObject();
+
+private:
+  EMAIL_DISABLE_COPY(GidObject)
+
+  const Gid gid_;
+};
+
 }  // namespace email
 
 #endif  // EMAIL__GID_HPP_

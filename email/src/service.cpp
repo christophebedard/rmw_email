@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,13 +15,15 @@
 #include <regex>
 #include <string>
 
+#include "email/gid.hpp"
 #include "email/service.hpp"
 
 namespace email
 {
 
 ServiceObject::ServiceObject(const std::string & service_name)
-: service_name_(service_name)
+: GidObject(),
+  service_name_(service_name)
 {
   validate_service_name(service_name);
 }
