@@ -20,11 +20,13 @@
 #include <mutex>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <utility>
 
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/safe_map.hpp"
 #include "email/safe_queue.hpp"
+#include "email/service_info.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -38,6 +40,9 @@ namespace email
 class ServiceHandler
 {
 public:
+  using ServiceResponseMap = SafeMap<uint32_t, std::pair<struct EmailData, ServiceInfo>>;
+  using RequestQueue = SafeQueue<std::pair<struct EmailData, ServiceInfo>>;
+
   /// Constructor.
   ServiceHandler();
 
@@ -51,7 +56,7 @@ public:
   void
   register_service_client(
     const std::string & service_name,
-    SafeMap<uint32_t, struct EmailData>::SharedPtr response_map);
+    ServiceResponseMap::SharedPtr response_map);
 
   /// Register a service server with the handler.
   /**
@@ -61,7 +66,7 @@ public:
   void
   register_service_server(
     const std::string & service_name,
-    SafeQueue<struct EmailData>::SharedPtr request_queue);
+    RequestQueue::SharedPtr request_queue);
 
   /// Handle new email.
   /**
@@ -93,9 +98,9 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
-  std::multimap<std::string, SafeMap<uint32_t, struct EmailData>::SharedPtr> clients_;
+  std::multimap<std::string, ServiceResponseMap::SharedPtr> clients_;
   mutable std::mutex mutex_servers_;
-  std::multimap<std::string, SafeQueue<struct EmailData>::SharedPtr> servers_;
+  std::multimap<std::string, RequestQueue::SharedPtr> servers_;
 };
 
 }  // namespace email

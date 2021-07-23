@@ -18,12 +18,15 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <thread>
+#include <utility>
 
 #include "email/context.hpp"
 #include "email/log.hpp"
 #include "email/publisher.hpp"
 #include "email/safe_map.hpp"
 #include "email/service_client.hpp"
+#include "email/service_info.hpp"
+#include "email/service_handler.hpp"
 
 namespace email
 {
@@ -31,7 +34,7 @@ namespace email
 ServiceClient::ServiceClient(const std::string & service_name)
 : ServiceObject(service_name),
   logger_(log::create("ServiceClient::" + service_name)),
-  responses_(std::make_shared<SafeMap<uint32_t, struct EmailData>>()),
+  responses_(std::make_shared<ServiceHandler::ServiceResponseMap>()),
   pub_(get_service_name())
 {
   // Register with handler
@@ -78,13 +81,25 @@ ServiceClient::get_response(const uint32_t request_id)
   if (!has_response(request_id)) {
     return std::nullopt;
   }
+  return get_response_with_info(request_id).value().first;
+}
+
+std::optional<std::pair<std::string, ServiceInfo>>
+ServiceClient::get_response_with_info(const uint32_t request_id)
+{
+  // TODO(christophebedard) remove double check
+  if (!has_response(request_id)) {
+    return std::nullopt;
+  }
   auto it = responses_->find(request_id);
   if (it == responses_->cend()) {
     return std::nullopt;
   }
-  const std::string response = it->second.content.body;
+  const auto email_data = it->second.first;
+  const auto info = it->second.second;
+  const std::string response = email_data.content.body;
   responses_->erase(it);
-  return response;
+  return {{response, info}};
 }
 
 }  // namespace email

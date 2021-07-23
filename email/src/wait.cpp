@@ -61,8 +61,8 @@ wait_for_message(
   return wait_for_message(subscription.get(), timeout);
 }
 
-std::string
-wait_for_response(
+std::pair<std::string, ServiceInfo>
+wait_for_response_with_info(
   const uint32_t request_id,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
@@ -72,7 +72,25 @@ wait_for_response(
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
 
-  return client->get_response(request_id).value();
+  return client->get_response_with_info(request_id).value();
+}
+
+std::pair<std::string, ServiceInfo>
+wait_for_response_with_info(
+  const uint32_t request_id,
+  std::shared_ptr<ServiceClient> client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  return wait_for_response_with_info(request_id, client.get(), timeout);
+}
+
+std::string
+wait_for_response(
+  const uint32_t request_id,
+  ServiceClient * client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  return wait_for_response_with_info(request_id, client, timeout).first;
 }
 
 std::string
@@ -84,8 +102,8 @@ wait_for_response(
   return wait_for_response(request_id, client.get(), timeout);
 }
 
-ServiceRequest
-wait_for_request(
+std::pair<ServiceRequest, ServiceInfo>
+wait_for_request_with_info(
   ServiceServer * server,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
@@ -94,7 +112,23 @@ wait_for_request(
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
 
-  return server->get_request().value();
+  return server->get_request_with_info().value();
+}
+
+std::pair<ServiceRequest, ServiceInfo>
+wait_for_request_with_info(
+  std::shared_ptr<ServiceServer> server,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  return wait_for_request_with_info(server.get(), timeout);
+}
+
+ServiceRequest
+wait_for_request(
+  ServiceServer * server,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
+{
+  return wait_for_request_with_info(server, timeout).first;
 }
 
 ServiceRequest

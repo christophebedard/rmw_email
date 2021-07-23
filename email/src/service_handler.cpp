@@ -25,6 +25,7 @@
 #include "email/safe_map.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service_handler.hpp"
+#include "email/service_info.hpp"
 #include "email/types.hpp"
 #include "email/utils.hpp"
 
@@ -52,9 +53,8 @@ ServiceHandler::~ServiceHandler() {}
 void
 ServiceHandler::register_service_client(
   const std::string & service_name,
-  SafeMap<uint32_t, struct EmailData>::SharedPtr response_map)
+  ServiceResponseMap::SharedPtr response_map)
 {
-  // TODO(christophebedard) throw/return flag if a service client already exists with the name?
   std::scoped_lock<std::mutex> lock(mutex_clients_);
   clients_.insert({service_name, response_map});
 }
@@ -62,7 +62,7 @@ ServiceHandler::register_service_client(
 void
 ServiceHandler::register_service_server(
   const std::string & service_name,
-  SafeQueue<struct EmailData>::SharedPtr request_queue)
+  RequestQueue::SharedPtr request_queue)
 {
   // TODO(christophebedard) throw/return flag if a service server already exists with the name?
   std::scoped_lock<std::mutex> lock(mutex_servers_);
@@ -72,8 +72,8 @@ ServiceHandler::register_service_server(
 void
 ServiceHandler::handle(const struct EmailData & data) const
 {
-  // TODO(christophebedard) exclude emails coming from the sender's email?
   const std::string & topic = data.content.subject;
+  const ServiceInfo & service_info = ServiceInfo::from_headers(data.additional_headers);
 
   // Only a service response if it's a reply email, i.e. if In-Reply-To
   // header is not empty, and if it has a request ID header
@@ -86,7 +86,7 @@ ServiceHandler::handle(const struct EmailData & data) const
       auto range = clients_.equal_range(topic);
       for (auto it = range.first; it != range.second; ++it) {
         // Add data to the map
-        it->second->insert({request_id.value(), data});
+        it->second->insert({request_id.value(), {data, service_info}});
       }
     }
   }
@@ -98,7 +98,7 @@ ServiceHandler::handle(const struct EmailData & data) const
     auto range = servers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
-      it->second->push(data);
+      it->second->push({data, service_info});
     }
   }
 }

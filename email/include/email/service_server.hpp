@@ -20,12 +20,15 @@
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <utility>
 
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/safe_queue.hpp"
 #include "email/service.hpp"
+#include "email/service_handler.hpp"
+#include "email/service_info.hpp"
 #include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
@@ -81,6 +84,14 @@ public:
   std::optional<ServiceRequest>
   get_request();
 
+  /// Get a request with info if there is one.
+  /**
+   * \return the request with info, or `std::nullopt` if there is none
+   */
+  EMAIL_PUBLIC
+  std::optional<std::pair<ServiceRequest, ServiceInfo>>
+  get_request_with_info();
+
   /// Send response.
   /**
    * \param request_id the request ID
@@ -94,7 +105,7 @@ private:
   EMAIL_DISABLE_COPY(ServiceServer)
 
   std::shared_ptr<Logger> logger_;
-  SafeQueue<struct EmailData>::SharedPtr requests_;
+  ServiceHandler::RequestQueue::SharedPtr requests_;
   std::shared_ptr<EmailSender> sender_;
   std::map<uint32_t, struct EmailData> requests_raw_;
 };
