@@ -47,9 +47,11 @@ ServiceClient::~ServiceClient() {}
 void
 ServiceClient::send_request(const std::string & request, const uint32_t request_id)
 {
-  const EmailHeaders request_id_header = {
-    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request_id)}};
-  pub_.publish(request, request_id_header);
+  // Publisher will add source timestamp
+  const EmailHeaders headers = {
+    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request_id)},
+    {ServiceInfo::HEADER_CLIENT_GID, get_gid().to_string()}};
+  pub_.publish(request, headers);
 }
 
 uint32_t

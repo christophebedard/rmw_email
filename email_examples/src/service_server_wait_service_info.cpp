@@ -38,7 +38,7 @@ int main()
     "\tclient GID        : " << request_info.client_gid().to_string() << std::endl;
   const std::string response_content = "responseeeee!";
   std::cout << "sending response: " << response_content << std::endl;
-  server.send_response(request.id, response_content);
+  server.send_response(request, response_content);
   email::shutdown();
   return 0;
 }
