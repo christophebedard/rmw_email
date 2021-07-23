@@ -15,6 +15,7 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "email/communication_info.hpp"
 #include "email/context.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
@@ -40,13 +41,15 @@ void
 Publisher::publish(const std::string & message, std::optional<EmailHeaders> additional_headers)
 {
   // Add GID and source timestamp to headers
-  EmailHeaders headers;
+  EmailHeaders headers = {
+    {MessageInfo::HEADER_PUBLISHER_GID, get_gid().to_string()},
+    {CommunicationInfo::HEADER_SOURCE_TIMESTAMP, Timestamp::now().to_string()}};
+  // Insert given additional header and overwrite the above map if necessary
   if (additional_headers.has_value()) {
-    headers = additional_headers.value();
+    for (auto const & [header_name, value] : additional_headers.value()) {
+      headers[header_name] = value;
+    }
   }
-  // TODO(christophebedard) extract header key to constant
-  headers.insert({MessageInfo::HEADER_PUBLISHER_GID, get_gid().to_string()});
-  headers.insert({MessageInfo::HEADER_SOURCE_TIMESTAMP, Timestamp::now().to_string()});
 
   struct EmailContent content {get_topic_name(), message};
   if (!sender_->send(content, headers)) {

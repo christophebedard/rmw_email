@@ -12,51 +12,73 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <cassert>
+
 #include "email/communication_info.hpp"
+#include "email/email/response_utils.hpp"
 #include "email/gid.hpp"
-#include "email/message_info.hpp"
+#include "email/service_handler.hpp"
+#include "email/service_info.hpp"
 #include "email/timestamp.hpp"
+#include "email/utils.hpp"
 
 namespace email
 {
 
-MessageInfo::MessageInfo(
+ServiceInfo::ServiceInfo(
   const Timestamp & source_timestamp,
   const Timestamp & received_timestamp,
-  const Gid & publisher_gid)
-: base_info_(source_timestamp, received_timestamp, publisher_gid)
+  const Gid & client_gid,
+  const uint32_t request_id)
+: base_info_(source_timestamp, received_timestamp, client_gid),
+  request_id_(request_id)
 {}
 
-MessageInfo::~MessageInfo() {}
+ServiceInfo::~ServiceInfo() {}
 
 const Timestamp &
-MessageInfo::source_timestamp() const
+ServiceInfo::source_timestamp() const
 {
   return base_info_.source_timestamp();
 }
 
 const Timestamp &
-MessageInfo::received_timestamp() const
+ServiceInfo::received_timestamp() const
 {
   return base_info_.received_timestamp();
 }
 
 const Gid &
-MessageInfo::publisher_gid() const
+ServiceInfo::client_gid() const
 {
   return base_info_.source_gid();
 }
 
-MessageInfo
-MessageInfo::from_headers(const EmailHeaders & headers)
+uint32_t
+ServiceInfo::request_id() const
+{
+  return request_id_;
+}
+
+ServiceInfo
+ServiceInfo::from_headers(const EmailHeaders & headers)
 {
   const CommunicationInfo base_info = CommunicationInfo::from_headers(
     headers,
-    MessageInfo::HEADER_PUBLISHER_GID);
-  return MessageInfo(
+    ServiceInfo::HEADER_CLIENT_GID);
+  auto request_id_str_opt = utils::response::get_header_value(
+    ServiceHandler::HEADER_REQUEST_ID,
+    headers);
+  // TODO(christophebedard) handle missing header or bad conversion
+  assert(request_id_str_opt.has_value());
+  auto request_id_opt = utils::optional_stoul(request_id_str_opt.value());
+  assert(request_id_opt.has_value());
+  const uint32_t request_id = request_id_opt.value();
+  return ServiceInfo(
     base_info.source_timestamp(),
     base_info.received_timestamp(),
-    base_info.source_gid());
+    base_info.source_gid(),
+    request_id);
 }
 
 }  // namespace email

@@ -34,6 +34,7 @@ message(STATUS "Using CURL lib(s): ${CURL_LIBRARIES}")
 
 # Lib
 set(SOURCES
+  src/communication_info.cpp
   src/context.cpp
   src/curl/context.cpp
   src/curl/executor.cpp
@@ -53,6 +54,7 @@ set(SOURCES
   src/service.cpp
   src/service_client.cpp
   src/service_handler.cpp
+  src/service_info.cpp
   src/service_server.cpp
   src/subscriber.cpp
   src/subscription_handler.cpp
@@ -128,10 +130,10 @@ if(BUILD_TESTING)
     test/test_log.cpp
   )
   target_link_libraries(test_log ${PROJECT_NAME})
-  ament_add_gtest(test_message_info
-    test/test_message_info.cpp
+  ament_add_gtest(test_communication_info
+    test/test_communication_info.cpp
   )
-  target_link_libraries(test_message_info ${PROJECT_NAME})
+  target_link_libraries(test_communication_info ${PROJECT_NAME})
   ament_add_gtest(test_utils
     test/test_utils.cpp
     ENV EMAIL_TEST_UTILS_TEST_ENV_VAR=value42 EMAIL_TEST_UTILS_FILE=${CMAKE_CURRENT_SOURCE_DIR}/test/test_utils.cpp
