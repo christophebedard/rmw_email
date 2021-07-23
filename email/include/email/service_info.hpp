@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__MESSAGE_INFO_HPP_
-#define EMAIL__MESSAGE_INFO_HPP_
+#ifndef EMAIL__SERVICE_INFO_HPP_
+#define EMAIL__SERVICE_INFO_HPP_
 
 #include "email/communication_info.hpp"
 #include "email/gid.hpp"
@@ -24,56 +24,63 @@
 namespace email
 {
 
-/// Message info container.
+/// Service info container.
 /**
- * Contains metadata about a received message.
+ * Contains metadata about a received service request or response.
  */
-class MessageInfo
+class ServiceInfo
 {
 public:
   /// Constructor.
   EMAIL_PUBLIC
-  MessageInfo(
+  ServiceInfo(
     const Timestamp & source_timestamp,
     const Timestamp & received_timestamp,
-    const Gid & publisher_gid);
+    const Gid & client_gid,
+    const uint32_t request_id);
 
   EMAIL_PUBLIC
-  MessageInfo(const MessageInfo &) = default;
+  ServiceInfo(const ServiceInfo &) = default;
 
   EMAIL_PUBLIC
-  ~MessageInfo();
+  ~ServiceInfo();
 
-  /// Get the message source timestamp.
+  /// Get the request or response source timestamp.
   EMAIL_PUBLIC
   const Timestamp &
   source_timestamp() const;
 
-  /// Get the message reception timestamp.
+  /// Get the request or response reception timestamp.
   EMAIL_PUBLIC
   const Timestamp &
   received_timestamp() const;
 
-  /// Get the publisher GID.
+  /// Get the service client GID.
   EMAIL_PUBLIC
   const Gid &
-  publisher_gid() const;
+  client_gid() const;
 
-  /// Get a MessageInfo object from email headers.
+  /// Get the request ID.
+  EMAIL_PUBLIC
+  uint32_t
+  request_id() const;
+
+  /// Get a ServiceInfo object from email headers.
   /**
    * The received timestamp will be created using Timestamp::now().
    */
   static
-  MessageInfo
+  ServiceInfo
   from_headers(const EmailHeaders & headers);
 
-  /// Custom header name for publisher GID.
-  static constexpr auto HEADER_PUBLISHER_GID = "Publisher-GID";
+  /// Custom header name for service client GID.
+  static constexpr auto HEADER_CLIENT_GID = "Client-GID";
 
 private:
   const CommunicationInfo base_info_;
+  const uint32_t request_id_;
 };
 
 }  // namespace email
 
-#endif  // EMAIL__MESSAGE_INFO_HPP_
+#endif  // EMAIL__SERVICE_INFO_HPP_

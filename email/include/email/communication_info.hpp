@@ -12,10 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__MESSAGE_INFO_HPP_
-#define EMAIL__MESSAGE_INFO_HPP_
+#ifndef EMAIL__COMMUNICATION_INFO_HPP_
+#define EMAIL__COMMUNICATION_INFO_HPP_
 
-#include "email/communication_info.hpp"
+#include <string>
+
 #include "email/gid.hpp"
 #include "email/timestamp.hpp"
 #include "email/types.hpp"
@@ -24,56 +25,61 @@
 namespace email
 {
 
-/// Message info container.
+/// Communication info container.
 /**
- * Contains metadata about a received message.
+ * Contains metadata about a specific communication instance.
+ * This container is too abstract to be used by itself.
  */
-class MessageInfo
+class CommunicationInfo
 {
 public:
   /// Constructor.
   EMAIL_PUBLIC
-  MessageInfo(
+  CommunicationInfo(
     const Timestamp & source_timestamp,
     const Timestamp & received_timestamp,
-    const Gid & publisher_gid);
+    const Gid & source_gid);
 
   EMAIL_PUBLIC
-  MessageInfo(const MessageInfo &) = default;
+  CommunicationInfo(const CommunicationInfo &) = default;
 
   EMAIL_PUBLIC
-  ~MessageInfo();
+  ~CommunicationInfo();
 
-  /// Get the message source timestamp.
+  /// Get the source timestamp.
   EMAIL_PUBLIC
   const Timestamp &
   source_timestamp() const;
 
-  /// Get the message reception timestamp.
+  /// Get the reception timestamp.
   EMAIL_PUBLIC
   const Timestamp &
   received_timestamp() const;
 
-  /// Get the publisher GID.
+  /// Get the source GID.
   EMAIL_PUBLIC
   const Gid &
-  publisher_gid() const;
+  source_gid() const;
 
-  /// Get a MessageInfo object from email headers.
+  /// Get a CommunicationInfo object from email headers.
   /**
    * The received timestamp will be created using Timestamp::now().
+   *
+   * \param source_gid_header the name of the header for the source GID
    */
   static
-  MessageInfo
-  from_headers(const EmailHeaders & headers);
+  CommunicationInfo
+  from_headers(const EmailHeaders & headers, const std::string & source_gid_header);
 
-  /// Custom header name for publisher GID.
-  static constexpr auto HEADER_PUBLISHER_GID = "Publisher-GID";
+  /// Custom header name for source timestamp.
+  static constexpr auto HEADER_SOURCE_TIMESTAMP = "Source-Timestamp";
 
 private:
-  const CommunicationInfo base_info_;
+  const Timestamp source_timestamp_;
+  const Timestamp received_timestamp_;
+  const Gid source_gid_;
 };
 
 }  // namespace email
 
-#endif  // EMAIL__MESSAGE_INFO_HPP_
+#endif  // EMAIL__COMMUNICATION_INFO_HPP_
