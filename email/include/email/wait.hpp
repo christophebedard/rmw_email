@@ -79,6 +79,34 @@ wait_for_message(
   std::shared_ptr<Subscriber> subscription,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
+/// Get a service reponse with info, waiting until it is available.
+/**
+ * For the meaning of the timeout parameter, see `WaitSet::wait`.
+ *
+ * \param request_id the request ID
+ * \param client the service client
+ * \param timeout the timeout
+ * \return the response with info
+ */
+EMAIL_PUBLIC
+std::pair<std::string, ServiceInfo>
+wait_for_response_with_info(
+  const uint32_t request_id,
+  ServiceClient * client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a service reponse with info, waiting until it is available.
+/**
+ * \see wait_for_response_with_info(
+ *    const uint32_t, ServiceClient *, const std::chrono::milliseconds)
+ */
+EMAIL_PUBLIC
+std::string
+wait_for_response_with_info(
+  const uint32_t request_id,
+  std::shared_ptr<ServiceClient> client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
 /// Get a service reponse, waiting until it is available.
 /**
  * For the meaning of the timeout parameter, see `WaitSet::wait`.
@@ -104,6 +132,30 @@ std::string
 wait_for_response(
   const uint32_t request_id,
   std::shared_ptr<ServiceClient> client,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a service request with info, waiting until one is available.
+/**
+ * For the meaning of the timeout parameter, see `WaitSet::wait`.
+ *
+ * \param server the server
+ * \param the timeout
+ * \return the service request with info
+ */
+EMAIL_PUBLIC
+std::pair<ServiceRequest, ServiceInfo>
+wait_for_request_with_info(
+  ServiceServer * server,
+  const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+
+/// Get a service request, waiting until one is available.
+/**
+ * \see wait_for_request_with_info(ServiceServer *, const std::chrono::milliseconds)
+ */
+EMAIL_PUBLIC
+std::pair<ServiceRequest, ServiceInfo>
+wait_for_request_with_info(
+  std::shared_ptr<ServiceServer> server,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a service request, waiting until one is available.

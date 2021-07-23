@@ -16,6 +16,7 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <thread>
+#include <utility>
 
 #include "email/context.hpp"
 #include "email/email/sender.hpp"
@@ -23,6 +24,7 @@
 #include "email/safe_queue.hpp"
 #include "email/service.hpp"
 #include "email/service_handler.hpp"
+#include "email/service_info.hpp"
 #include "email/service_server.hpp"
 #include "email/types.hpp"
 
@@ -32,7 +34,7 @@ namespace email
 ServiceServer::ServiceServer(const std::string & service_name)
 : ServiceObject(service_name),
   logger_(log::create("ServiceServer::" + service_name)),
-  requests_(std::make_shared<SafeQueue<struct EmailData>>()),
+  requests_(std::make_shared<ServiceHandler::RequestQueue>()),
   sender_(get_global_context()->get_sender()),
   requests_raw_()
 {
@@ -55,16 +57,27 @@ ServiceServer::get_request()
   if (!has_request()) {
     return std::nullopt;
   }
+  return get_request_with_info().value().first;
+}
+
+std::optional<std::pair<ServiceRequest, ServiceInfo>>
+ServiceServer::get_request_with_info()
+{
+  if (!has_request()) {
+    return std::nullopt;
+  }
   const auto request = requests_->dequeue();
-  auto request_id = ServiceHandler::extract_request_id(request);
+  const auto email_data = request.first;
+  const auto info = request.second;
+  auto request_id = ServiceHandler::extract_request_id(email_data);
   if (!request_id) {
     // Should not happen because ServiceHandler should filter those out
     logger_->error("request without a request ID");
   }
   // Put raw request data in a map so that we can
   // fetch & use it when sending our response
-  requests_raw_.insert({request_id.value(), request});
-  return {{request_id.value(), request.content.body}};
+  requests_raw_.insert({request_id.value(), email_data});
+  return {{{request_id.value(), email_data.content.body}, info}};
 }
 
 void

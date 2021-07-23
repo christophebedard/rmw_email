@@ -29,6 +29,7 @@ add_example(service_client)
 add_example(service_client_wait)
 add_example(service_server)
 add_example(service_server_wait)
+add_example(service_server_wait_service_info)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)

@@ -20,12 +20,15 @@
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <utility>
 
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/publisher.hpp"
 #include "email/safe_map.hpp"
 #include "email/service.hpp"
+#include "email/service_handler.hpp"
+#include "email/service_info.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
@@ -98,11 +101,20 @@ public:
   std::optional<std::string>
   get_response(const uint32_t request_id);
 
+  /// Get a response with info if there is one.
+  /**
+   * \param request_id the request ID
+   * \return the response with info, or `std::nullopt` if there is none
+   */
+  EMAIL_PUBLIC
+  std::optional<std::pair<std::string, ServiceInfo>>
+  get_response_with_info(const uint32_t request_id);
+
 private:
   EMAIL_DISABLE_COPY(ServiceClient)
 
   std::shared_ptr<Logger> logger_;
-  SafeMap<uint32_t, struct EmailData>::SharedPtr responses_;
+  ServiceHandler::ServiceResponseMap::SharedPtr responses_;
   Publisher pub_;
 };
 
