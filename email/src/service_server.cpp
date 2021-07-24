@@ -18,6 +18,7 @@
 #include <thread>
 #include <utility>
 
+#include "email/communication_info.hpp"
 #include "email/context.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
@@ -77,25 +78,27 @@ ServiceServer::get_request_with_info()
   // Put raw request data in a map so that we can
   // fetch & use it when sending our response
   requests_raw_.insert({request_id.value(), email_data});
-  return {{{request_id.value(), email_data.content.body}, info}};
+  return {{ServiceRequest(request_id.value(), info.client_gid(), email_data.content.body), info}};
 }
 
 void
-ServiceServer::send_response(const uint32_t request_id, const std::string & response)
+ServiceServer::send_response(const ServiceRequest request, const std::string & response)
 {
   // Get & remove raw request data from internal map
-  auto request_data = requests_raw_.find(request_id);
+  auto request_data = requests_raw_.find(request.id);
   if (request_data == requests_raw_.end()) {
     logger_->error("could not find raw request data");
     return;
   }
   const struct EmailData data = request_data->second;
   requests_raw_.erase(request_data);
-  // Reply and include request_id
+  // Reply and include sequence ID and client GID
   struct EmailContent response_content {get_service_name(), response};
-  const EmailHeaders request_id_header = {
-    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request_id)}};
-  if (!sender_->reply(response_content, data, request_id_header)) {
+  const EmailHeaders headers = {
+    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request.id)},
+    {ServiceInfo::HEADER_CLIENT_GID, request.client_gid.to_string()},
+    {CommunicationInfo::HEADER_SOURCE_TIMESTAMP, Timestamp::now().to_string()}};
+  if (!sender_->reply(response_content, data, headers)) {
     logger_->error("send_response() failed");
   }
 }

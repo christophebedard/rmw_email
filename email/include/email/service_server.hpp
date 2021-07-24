@@ -35,16 +35,19 @@
 namespace email
 {
 
-/// Service request, with an ID and some content.
+/// Service request, with a sequence ID, a client GID, and some content.
 struct ServiceRequest
 {
-  /// Request ID.
+  /// Sequence ID of the request.
   uint32_t id;
-  /// Request content.
+  /// GID of the service client that made the request.
+  Gid client_gid;
+  /// Content of the request.
   std::string content;
   /// Constructor.
-  ServiceRequest(const uint32_t id_, const std::string & content_)
+  ServiceRequest(const uint32_t id_, const Gid & client_gid_, const std::string & content_)
   : id(id_),
+    client_gid(client_gid_),
     content(content_)
   {}
   /// Copy constructor.
@@ -94,12 +97,12 @@ public:
 
   /// Send response.
   /**
-   * \param request_id the request ID
+   * \param request the original request
    * \param response the response
    */
   EMAIL_PUBLIC
   void
-  send_response(const uint32_t request_id, const std::string & response);
+  send_response(const ServiceRequest request, const std::string & response);
 
 private:
   EMAIL_DISABLE_COPY(ServiceServer)
