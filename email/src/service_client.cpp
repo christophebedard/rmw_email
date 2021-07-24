@@ -45,11 +45,11 @@ ServiceClient::ServiceClient(const std::string & service_name)
 ServiceClient::~ServiceClient() {}
 
 void
-ServiceClient::send_request(const std::string & request, const uint32_t request_id)
+ServiceClient::send_request(const std::string & request, const uint32_t sequence_number)
 {
   // Publisher will add source timestamp
   const EmailHeaders headers = {
-    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request_id)},
+    {std::string(ServiceHandler::HEADER_SEQUENCE_NUMBER), std::to_string(sequence_number)},
     {ServiceInfo::HEADER_CLIENT_GID, get_gid().to_string()}};
   pub_.publish(request, headers);
 }
@@ -57,17 +57,17 @@ ServiceClient::send_request(const std::string & request, const uint32_t request_
 uint32_t
 ServiceClient::send_request(const std::string & request)
 {
-  static std::atomic_uint32_t request_id_counter = 0u;
-  const uint32_t request_id = request_id_counter++;
-  logger_->debug("creating request with ID: " + std::to_string(request_id));
-  send_request(request, request_id);
-  return request_id;
+  static std::atomic_uint32_t sequence_number_counter = 0u;
+  const uint32_t sequence_number = sequence_number_counter++;
+  logger_->debug("creating request sequence number: " + std::to_string(sequence_number));
+  send_request(request, sequence_number);
+  return sequence_number;
 }
 
 bool
-ServiceClient::has_response(const uint32_t request_id)
+ServiceClient::has_response(const uint32_t sequence_number)
 {
-  return responses_->contains(request_id);
+  return responses_->contains(sequence_number);
 }
 
 bool
@@ -77,23 +77,23 @@ ServiceClient::has_response()
 }
 
 std::optional<std::string>
-ServiceClient::get_response(const uint32_t request_id)
+ServiceClient::get_response(const uint32_t sequence_number)
 {
   // TODO(christophebedard) remove double check
-  if (!has_response(request_id)) {
+  if (!has_response(sequence_number)) {
     return std::nullopt;
   }
-  return get_response_with_info(request_id).value().first;
+  return get_response_with_info(sequence_number).value().first;
 }
 
 std::optional<std::pair<std::string, ServiceInfo>>
-ServiceClient::get_response_with_info(const uint32_t request_id)
+ServiceClient::get_response_with_info(const uint32_t sequence_number)
 {
   // TODO(christophebedard) remove double check
-  if (!has_response(request_id)) {
+  if (!has_response(sequence_number)) {
     return std::nullopt;
   }
-  auto it = responses_->find(request_id);
+  auto it = responses_->find(sequence_number);
   if (it == responses_->cend()) {
     return std::nullopt;
   }

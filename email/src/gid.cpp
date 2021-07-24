@@ -63,9 +63,9 @@ Gid::new_value()
   static std::random_device random_device;
   static std::mt19937 gen(random_device());
   static auto prefix = gen();
-  // Add sequence ID to prefix
-  static std::atomic<GidValue> id;
-  return prefix + id++;
+  // Add sequence sequence number to prefix
+  static std::atomic<GidValue> sequence;
+  return prefix + sequence++;
 }
 
 std::string

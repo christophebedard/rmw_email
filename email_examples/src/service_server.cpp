@@ -31,11 +31,11 @@ int main()
     return 1;
   }
   std::cout << "got request!" << std::endl;
-  std::cout << "\trequest ID: " << request.value().id << std::endl;
-  std::cout << "\trequest   : " << request.value().content << std::endl;
+  std::cout << "\tsequence number: " << request.value().id.sequence_number << std::endl;
+  std::cout << "\trequest        : " << request.value().content << std::endl;
   const std::string response_content = "responseeeee!";
   std::cout << "sending response: " << response_content << std::endl;
-  server.send_response(request.value(), response_content);
+  server.send_response(request.value().id, response_content);
   email::shutdown();
   return 0;
 }

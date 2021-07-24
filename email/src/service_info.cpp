@@ -29,9 +29,9 @@ ServiceInfo::ServiceInfo(
   const Timestamp & source_timestamp,
   const Timestamp & received_timestamp,
   const Gid & client_gid,
-  const uint32_t request_id)
+  const uint32_t sequence_number)
 : base_info_(source_timestamp, received_timestamp, client_gid),
-  request_id_(request_id)
+  sequence_number_(sequence_number)
 {}
 
 ServiceInfo::~ServiceInfo() {}
@@ -55,9 +55,9 @@ ServiceInfo::client_gid() const
 }
 
 uint32_t
-ServiceInfo::request_id() const
+ServiceInfo::sequence_number() const
 {
-  return request_id_;
+  return sequence_number_;
 }
 
 ServiceInfo
@@ -66,19 +66,19 @@ ServiceInfo::from_headers(const EmailHeaders & headers)
   const CommunicationInfo base_info = CommunicationInfo::from_headers(
     headers,
     ServiceInfo::HEADER_CLIENT_GID);
-  auto request_id_str_opt = utils::response::get_header_value(
-    ServiceHandler::HEADER_REQUEST_ID,
+  auto sequence_number_str_opt = utils::response::get_header_value(
+    ServiceHandler::HEADER_SEQUENCE_NUMBER,
     headers);
   // TODO(christophebedard) handle missing header or bad conversion
-  assert(request_id_str_opt.has_value());
-  auto request_id_opt = utils::optional_stoul(request_id_str_opt.value());
-  assert(request_id_opt.has_value());
-  const uint32_t request_id = request_id_opt.value();
+  assert(sequence_number_str_opt.has_value());
+  auto sequence_number_opt = utils::optional_stoul(sequence_number_str_opt.value());
+  assert(sequence_number_opt.has_value());
+  const uint32_t sequence_number = sequence_number_opt.value();
   return ServiceInfo(
     base_info.source_timestamp(),
     base_info.received_timestamp(),
     base_info.source_gid(),
-    request_id);
+    sequence_number);
 }
 
 }  // namespace email

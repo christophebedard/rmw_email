@@ -70,33 +70,36 @@ ServiceServer::get_request_with_info()
   const auto request = requests_->dequeue();
   const auto email_data = request.first;
   const auto info = request.second;
-  auto request_id = ServiceHandler::extract_request_id(email_data);
-  if (!request_id) {
+  auto sequence_number = ServiceHandler::extract_sequence_number(email_data);
+  if (!sequence_number) {
     // Should not happen because ServiceHandler should filter those out
-    logger_->error("request without a request ID");
+    logger_->error("request without a sequence number");
+    return std::nullopt;
   }
   // Put raw request data in a map so that we can
   // fetch & use it when sending our response
-  requests_raw_.insert({request_id.value(), email_data});
-  return {{ServiceRequest(request_id.value(), info.client_gid(), email_data.content.body), info}};
+  requests_raw_.insert({sequence_number.value(), email_data});
+  return {{
+    ServiceRequest(sequence_number.value(), info.client_gid(), email_data.content.body), info}};
 }
 
 void
-ServiceServer::send_response(const ServiceRequest request, const std::string & response)
+ServiceServer::send_response(const ServiceRequestId & request_id, const std::string & response)
 {
   // Get & remove raw request data from internal map
-  auto request_data = requests_raw_.find(request.id);
+  auto request_data = requests_raw_.find(request_id.sequence_number);
   if (request_data == requests_raw_.end()) {
     logger_->error("could not find raw request data");
     return;
   }
   const struct EmailData data = request_data->second;
   requests_raw_.erase(request_data);
-  // Reply and include sequence ID and client GID
+  // Reply and include sequence number and client GID
   struct EmailContent response_content {get_service_name(), response};
   const EmailHeaders headers = {
-    {std::string(ServiceHandler::HEADER_REQUEST_ID), std::to_string(request.id)},
-    {ServiceInfo::HEADER_CLIENT_GID, request.client_gid.to_string()},
+    {std::string(ServiceHandler::HEADER_SEQUENCE_NUMBER),
+      std::to_string(request_id.sequence_number)},
+    {ServiceInfo::HEADER_CLIENT_GID, request_id.client_gid.to_string()},
     {CommunicationInfo::HEADER_SOURCE_TIMESTAMP, Timestamp::now().to_string()}};
   if (!sender_->reply(response_content, data, headers)) {
     logger_->error("send_response() failed");

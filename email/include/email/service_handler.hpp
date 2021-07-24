@@ -78,21 +78,21 @@ public:
   void
   handle(const struct EmailData & data) const;
 
-  /// Extract request ID from email data.
+  /// Extract request sequence number from email data.
   /**
    * \param data the email data
-   * \return the request ID, or `std::nullopt` if there is none
+   * \return the sequence number, or `std::nullopt` if there is none
    */
   static
   std::optional<uint32_t>
-  extract_request_id(const struct EmailData & data);
+  extract_sequence_number(const struct EmailData & data);
 
-  /// Custom header name for service request ID.
+  /// Custom header name for service request sequence number.
   /**
    * Note that there is no "X-" prefix.
    * See RFC 6648: https://tools.ietf.org/html/rfc6648
    */
-  static constexpr auto HEADER_REQUEST_ID = "Request-ID";
+  static constexpr auto HEADER_SEQUENCE_NUMBER = "Request-Sequence-Number";
 
 private:
   EMAIL_DISABLE_COPY(ServiceHandler)
