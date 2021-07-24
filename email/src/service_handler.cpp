@@ -49,15 +49,21 @@ ServiceHandler::ServiceHandler()
   logger_->debug("initialized");
 }
 
-ServiceHandler::~ServiceHandler() {}
+ServiceHandler::~ServiceHandler()
+{
+  logger_->debug("destroying");
+}
 
 void
 ServiceHandler::register_service_client(
   const Gid & gid,
   ServiceResponseMap::SharedPtr response_map)
 {
-  std::scoped_lock<std::mutex> lock(mutex_clients_);
-  clients_.insert({gid.value(), response_map});
+  {
+    std::scoped_lock<std::mutex> lock(mutex_clients_);
+    clients_.insert({gid.value(), response_map});
+  }
+  logger_->debug("service client registered with GID: {}", gid);
 }
 
 void
@@ -66,8 +72,11 @@ ServiceHandler::register_service_server(
   RequestQueue::SharedPtr request_queue)
 {
   // TODO(christophebedard) throw/return flag if a service server already exists with the name?
-  std::scoped_lock<std::mutex> lock(mutex_servers_);
-  servers_.insert({service_name, request_queue});
+  {
+    std::scoped_lock<std::mutex> lock(mutex_servers_);
+    servers_.insert({service_name, request_queue});
+  }
+  logger_->debug("service server registered with service name: {}", service_name);
 }
 
 void
@@ -86,6 +95,10 @@ ServiceHandler::handle(const struct EmailData & data) const
       std::scoped_lock<std::mutex> lock(mutex_clients_);
       auto range = clients_.equal_range(service_info.client_gid().value());
       for (auto it = range.first; it != range.second; ++it) {
+        logger_->debug(
+          "adding response with seq number {} to client queue for service: {}",
+          sequence_number.value(),
+          topic);
         // Add data to the map
         it->second->insert({sequence_number.value(), {data, service_info}});
       }
@@ -99,6 +112,7 @@ ServiceHandler::handle(const struct EmailData & data) const
     auto range = servers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
+      logger_->debug("adding request to service queue for service: {}", topic);
       it->second->push({data, service_info});
     }
   }

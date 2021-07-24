@@ -32,10 +32,14 @@ Publisher::Publisher(const std::string & topic_name)
 : PubSubObject(topic_name),
   logger_(log::get_or_create("Publisher::" + topic_name)),
   sender_(get_global_context()->get_sender())
-{}
+{
+  logger_->debug("created with GID: {}", get_gid());
+}
 
 Publisher::~Publisher()
-{}
+{
+  logger_->debug("destroying");
+}
 
 void
 Publisher::publish(const std::string & message, std::optional<EmailHeaders> additional_headers)
