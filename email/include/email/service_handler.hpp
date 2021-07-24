@@ -22,6 +22,7 @@
 #include <string>
 #include <utility>
 
+#include "email/gid.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/safe_map.hpp"
@@ -50,12 +51,12 @@ public:
 
   /// Register a service client with the handler.
   /**
-   * \param service_name the service name
+   * \param gid the service client GID
    * \param response_map the service client's response map to add the new response to
    */
   void
   register_service_client(
-    const std::string & service_name,
+    const Gid & gid,
     ServiceResponseMap::SharedPtr response_map);
 
   /// Register a service server with the handler.
@@ -98,7 +99,7 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
-  std::multimap<std::string, ServiceResponseMap::SharedPtr> clients_;
+  std::multimap<GidValue, ServiceResponseMap::SharedPtr> clients_;
   mutable std::mutex mutex_servers_;
   std::multimap<std::string, RequestQueue::SharedPtr> servers_;
 };
