@@ -30,7 +30,7 @@ find_package(rosidl_typesupport_introspection_c REQUIRED)
 find_package(rosidl_typesupport_introspection_cpp REQUIRED)
 find_package(rmw REQUIRED)
 
-add_library(${PROJECT_NAME}
+set(${PROJECT_NAME}_SOURCES
   src/conversion.cpp
   src/gid.cpp
   src/guard_condition.cpp
@@ -62,6 +62,8 @@ add_library(${PROJECT_NAME}
   src/rmw_take.cpp
   src/rmw_wait.cpp
 )
+
+add_library(${PROJECT_NAME} ${${PROJECT_NAME}_SOURCES})
 
 ament_target_dependencies(${PROJECT_NAME}
   email
@@ -106,11 +108,22 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 
   find_package(ament_cmake_gtest REQUIRED)
+
   ament_add_gtest(test_conversion
     test/test_conversion.cpp
   )
   target_link_libraries(test_conversion ${PROJECT_NAME})
   ament_target_dependencies(test_conversion dynmsg std_msgs)
+
+  # Manually add source files+include dir because rmw_email_cpp isn't exported
+  ament_add_gtest(test_gid
+    test/test_gid.cpp
+
+    src/gid.cpp
+    src/identifier.cpp
+  )
+  ament_target_dependencies(test_gid email rmw)
+  target_include_directories(test_gid PRIVATE include/)
 endif()
 
 ament_package()
