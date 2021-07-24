@@ -14,6 +14,8 @@
 
 #include "email/gid.hpp"
 #include "rmw/types.h"
+
+#include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 
 rmw_gid_t convert_gid(const email::Gid & gid)
@@ -28,6 +30,26 @@ rmw_gid_t convert_gid(const email::Gid & gid)
   memcpy(rmw_gid.data, &new_id, sizeof(new_id));
 
   return rmw_gid;
+}
+
+void copy_email_gid_to_writer_guid(int8_t * writer_guid, const email::Gid & gid)
+{
+  const email::GidValue gid_value = gid.value();
+  static_assert(
+    sizeof(decltype(gid_value)) <= sizeof((reinterpret_cast<rmw_request_id_t *>(0))->writer_guid),
+    "rmw writer guid size insufficient to store rmw_email_cpp GID");
+  memcpy(writer_guid, &gid_value, sizeof(gid_value));
+}
+
+email::Gid convert_writer_guid_to_email_gid(int8_t * writer_guid)
+{
+  email::GidValue gid_value = 0u;
+  static_assert(
+    sizeof(decltype(gid_value)) <= sizeof((reinterpret_cast<rmw_request_id_t *>(0))->writer_guid),
+    "rmw writer guid size insufficient to store rmw_email_cpp GID");
+  memcpy(&gid_value, writer_guid, sizeof(gid_value));
+
+  return email::Gid(gid_value);
 }
 
 void copy_gids(rmw_gid_t * dest, rmw_gid_t * src)
