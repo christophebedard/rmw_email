@@ -26,9 +26,9 @@ int main()
   const std::string request_content = "this is the request!";
   std::cout << "making request for service '" << client.get_service_name() << "': " <<
     request_content << std::endl;
-  auto request_id = client.send_request(request_content);
+  auto sequence_number = client.send_request(request_content);
   std::cout << "waiting for response..." << std::endl;
-  const std::string response = email::wait_for_response(request_id, &client);
+  const std::string response = email::wait_for_response(sequence_number, &client);
   std::cout << "response: " << response << std::endl;
   email::shutdown();
   return 0;

@@ -37,7 +37,7 @@ public:
     const Timestamp & source_timestamp,
     const Timestamp & received_timestamp,
     const Gid & client_gid,
-    const uint32_t request_id);
+    const uint32_t sequence_number);
 
   EMAIL_PUBLIC
   ServiceInfo(const ServiceInfo &) = default;
@@ -60,10 +60,10 @@ public:
   const Gid &
   client_gid() const;
 
-  /// Get the request ID.
+  /// Get the request sequence number.
   EMAIL_PUBLIC
   uint32_t
-  request_id() const;
+  sequence_number() const;
 
   /// Get a ServiceInfo object from email headers.
   /**
@@ -78,7 +78,7 @@ public:
 
 private:
   const CommunicationInfo base_info_;
-  const uint32_t request_id_;
+  const uint32_t sequence_number_;
 };
 
 }  // namespace email

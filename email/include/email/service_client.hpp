@@ -54,20 +54,21 @@ public:
   /// Send request with specific ID.
   /**
    * For asynchronous sending of a request.
+   * TODO(christophebedard) remove this one since we don't need it
    *
    * \param request the request
-   * \param request_id the request ID; to use for getting the corresponding response
+   * \param sequence_number the sequence number; to use for getting the corresponding response
    */
   EMAIL_PUBLIC
   void
-  send_request(const std::string & request, const uint32_t request_id);
+  send_request(const std::string & request, const uint32_t sequence_number);
 
   /// Send request.
   /**
    * For asynchronous sending of a request.
    *
    * \param request the request
-   * \return the request ID to use for getting the corresponding response
+   * \return the sequence_number to use for getting the corresponding response
    */
   EMAIL_PUBLIC
   uint32_t
@@ -75,12 +76,12 @@ public:
 
   /// Check if the client has an available response to a request.
   /**
-   * \param request_id the request ID
+   * \param sequence_number the request sequence number
    * \return true if there is an available response, false otherwise
    */
   EMAIL_PUBLIC
   bool
-  has_response(const uint32_t request_id);
+  has_response(const uint32_t sequence_number);
 
   /// Check if the client has an available response to any request.
   /**
@@ -94,21 +95,21 @@ public:
 
   /// Get a response if there is one.
   /**
-   * \param request_id the request ID
+   * \param sequence_number the request sequence number
    * \return the response, or `std::nullopt` if there is none
    */
   EMAIL_PUBLIC
   std::optional<std::string>
-  get_response(const uint32_t request_id);
+  get_response(const uint32_t sequence_number);
 
   /// Get a response with info if there is one.
   /**
-   * \param request_id the request ID
+   * \param sequence_number the request sequence number
    * \return the response with info, or `std::nullopt` if there is none
    */
   EMAIL_PUBLIC
   std::optional<std::pair<std::string, ServiceInfo>>
-  get_response_with_info(const uint32_t request_id);
+  get_response_with_info(const uint32_t sequence_number);
 
 private:
   EMAIL_DISABLE_COPY(ServiceClient)

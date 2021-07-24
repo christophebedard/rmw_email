@@ -25,9 +25,9 @@ int main()
   const std::string request_content = "this is the request!";
   std::cout << "making request for service '" << client.get_service_name() << "': " <<
     request_content << std::endl;
-  auto request_id = client.send_request(request_content);
-  while (!client.has_response(request_id)) {}  // empty
-  auto response = client.get_response(request_id);
+  auto sequence_number = client.send_request(request_content);
+  while (!client.has_response(sequence_number)) {}  // empty
+  auto response = client.get_response(sequence_number);
   if (response) {
     std::cout << "response: " << response.value() << std::endl;
   } else {

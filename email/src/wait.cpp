@@ -63,7 +63,7 @@ wait_for_message(
 
 std::pair<std::string, ServiceInfo>
 wait_for_response_with_info(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
@@ -72,34 +72,34 @@ wait_for_response_with_info(
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
 
-  return client->get_response_with_info(request_id).value();
+  return client->get_response_with_info(sequence_number).value();
 }
 
 std::pair<std::string, ServiceInfo>
 wait_for_response_with_info(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
-  return wait_for_response_with_info(request_id, client.get(), timeout);
+  return wait_for_response_with_info(sequence_number, client.get(), timeout);
 }
 
 std::string
 wait_for_response(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
-  return wait_for_response_with_info(request_id, client, timeout).first;
+  return wait_for_response_with_info(sequence_number, client, timeout).first;
 }
 
 std::string
 wait_for_response(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
-  return wait_for_response(request_id, client.get(), timeout);
+  return wait_for_response(sequence_number, client.get(), timeout);
 }
 
 std::pair<ServiceRequest, ServiceInfo>

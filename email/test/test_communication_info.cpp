@@ -69,12 +69,12 @@ TEST(TestServiceInfo, init) {
   auto ts_source = email::Timestamp::now();
   auto ts_received = email::Timestamp::now();
   auto client_gid = email::Gid::new_gid();
-  auto request_id = 42u;
-  auto srv_info = email::ServiceInfo(ts_source, ts_received, client_gid, request_id);
+  auto sequence_number = 42u;
+  auto srv_info = email::ServiceInfo(ts_source, ts_received, client_gid, sequence_number);
   EXPECT_EQ(ts_source.nanoseconds(), srv_info.source_timestamp().nanoseconds());
   EXPECT_EQ(ts_received.nanoseconds(), srv_info.received_timestamp().nanoseconds());
   EXPECT_EQ(client_gid.value(), srv_info.client_gid().value());
-  EXPECT_EQ(request_id, srv_info.request_id());
+  EXPECT_EQ(sequence_number, srv_info.sequence_number());
 }
 
 TEST(TestServiceInfo, from_headers) {
@@ -82,11 +82,11 @@ TEST(TestServiceInfo, from_headers) {
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},
     {email::ServiceInfo::HEADER_CLIENT_GID, "456"},
-    {email::ServiceHandler::HEADER_REQUEST_ID, "42"}
+    {email::ServiceHandler::HEADER_SEQUENCE_NUMBER, "42"}
   });
   EXPECT_EQ(info.source_timestamp().nanoseconds(), 123);
   EXPECT_EQ(info.client_gid().value(), 456u);
-  EXPECT_EQ(info.request_id(), 42u);
+  EXPECT_EQ(info.sequence_number(), 42u);
 
   EXPECT_DEATH(email::ServiceInfo::from_headers({}), "");
   EXPECT_DEATH(
@@ -101,7 +101,7 @@ TEST(TestServiceInfo, from_headers) {
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},
     {email::ServiceInfo::HEADER_CLIENT_GID, "456"},
-    {email::ServiceHandler::HEADER_REQUEST_ID, "abc"}
+    {email::ServiceHandler::HEADER_SEQUENCE_NUMBER, "abc"}
   }),
     "");
 }

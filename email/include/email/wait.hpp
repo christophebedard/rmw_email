@@ -83,7 +83,7 @@ wait_for_message(
 /**
  * For the meaning of the timeout parameter, see `WaitSet::wait`.
  *
- * \param request_id the request ID
+ * \param sequence_number the request sequence number
  * \param client the service client
  * \param timeout the timeout
  * \return the response with info
@@ -91,7 +91,7 @@ wait_for_message(
 EMAIL_PUBLIC
 std::pair<std::string, ServiceInfo>
 wait_for_response_with_info(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
@@ -103,7 +103,7 @@ wait_for_response_with_info(
 EMAIL_PUBLIC
 std::string
 wait_for_response_with_info(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
@@ -111,7 +111,7 @@ wait_for_response_with_info(
 /**
  * For the meaning of the timeout parameter, see `WaitSet::wait`.
  *
- * \param request_id the request ID
+ * \param sequence_number the request sequence number
  * \param client the service client
  * \param timeout the timeout
  * \return the response
@@ -119,7 +119,7 @@ wait_for_response_with_info(
 EMAIL_PUBLIC
 std::string
 wait_for_response(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
@@ -130,7 +130,7 @@ wait_for_response(
 EMAIL_PUBLIC
 std::string
 wait_for_response(
-  const uint32_t request_id,
+  const uint32_t sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
