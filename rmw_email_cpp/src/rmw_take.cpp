@@ -51,21 +51,22 @@ static rmw_ret_t _rmw_take(
   auto msg_with_info_opt = email_sub->get_message_with_info();
   if (!msg_with_info_opt.has_value()) {
     *taken = false;
-  } else {
-    *taken = true;
-    auto msg_with_info = msg_with_info_opt.value();
-    const std::string & msg_yaml = msg_with_info.first;
-    rcutils_allocator_t allocator = rcutils_get_default_allocator();
-    if (!yaml_to_msg(rmw_email_sub, msg_yaml, ros_message, &allocator)) {
-      ret = RMW_RET_ERROR;
-    }
-    if (message_info) {
-      email::MessageInfo msg_info = msg_with_info.second;
-      message_info->publisher_gid = convert_gid(msg_info.publisher_gid());
-      message_info->source_timestamp = convert_timestamp(msg_info.source_timestamp());
-      message_info->received_timestamp = convert_timestamp(msg_info.received_timestamp());
-      message_info->from_intra_process = false;
-    }
+    return ret;
+  }
+  *taken = true;
+
+  auto msg_with_info = msg_with_info_opt.value();
+  const std::string & msg_yaml = msg_with_info.first;
+  rcutils_allocator_t allocator = rcutils_get_default_allocator();
+  if (!yaml_to_msg(rmw_email_sub, msg_yaml, ros_message, &allocator)) {
+    ret = RMW_RET_ERROR;
+  }
+  if (message_info) {
+    const email::MessageInfo msg_info = msg_with_info.second;
+    message_info->publisher_gid = convert_gid(msg_info.publisher_gid());
+    message_info->source_timestamp = convert_timestamp(msg_info.source_timestamp());
+    message_info->received_timestamp = convert_timestamp(msg_info.received_timestamp());
+    message_info->from_intra_process = false;
   }
   return ret;
 }
