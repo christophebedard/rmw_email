@@ -38,7 +38,10 @@ PollingManager::PollingManager(std::shared_ptr<EmailReceiver> receiver)
   logger_(log::create("PollingManager"))
 {}
 
-PollingManager::~PollingManager() {}
+PollingManager::~PollingManager()
+{
+  logger_->debug("destroying");
+}
 
 void
 PollingManager::register_handler(const HandlerFunction & handler)

@@ -43,15 +43,21 @@ SubscriptionHandler::SubscriptionHandler()
   logger_->debug("initialized");
 }
 
-SubscriptionHandler::~SubscriptionHandler() {}
+SubscriptionHandler::~SubscriptionHandler()
+{
+  logger_->debug("destroying");
+}
 
 void
 SubscriptionHandler::register_subscriber(
   const std::string & topic_name,
   SubscriberQueue::SharedPtr message_queue)
 {
-  std::scoped_lock<std::mutex> lock(subscribers_mutex_);
-  subscribers_.insert({topic_name, message_queue});
+  {
+    std::scoped_lock<std::mutex> lock(subscribers_mutex_);
+    subscribers_.insert({topic_name, message_queue});
+  }
+  logger_->debug("subscription registered with topic name: {}", topic_name);
 }
 
 void
@@ -67,7 +73,7 @@ SubscriptionHandler::handle(const struct EmailData & data)
     auto range = subscribers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
-      logger_->debug("pushing body to queue");
+      logger_->debug("adding message to subscription queue with topic: {}", topic);
       it->second->push({msg, msg_info});
     }
   }

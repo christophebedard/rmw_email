@@ -39,12 +39,16 @@ ServiceServer::ServiceServer(const std::string & service_name)
   sender_(get_global_context()->get_sender()),
   requests_raw_()
 {
+  logger_->debug("created with GID: {}", get_gid());
   // Register with handler
   get_global_context()->get_service_handler()->register_service_server(
     get_service_name(), requests_);
 }
 
-ServiceServer::~ServiceServer() {}
+ServiceServer::~ServiceServer()
+{
+  logger_->debug("destroying");
+}
 
 bool
 ServiceServer::has_request()

@@ -33,16 +33,20 @@ namespace email
 
 ServiceClient::ServiceClient(const std::string & service_name)
 : ServiceObject(service_name),
-  logger_(log::create("ServiceClient::" + service_name)),
+  logger_(log::get_or_create("ServiceClient::" + service_name)),
   responses_(std::make_shared<ServiceHandler::ServiceResponseMap>()),
   pub_(get_service_name())
 {
+  logger_->debug("created with GID: {}", get_gid());
   // Register with handler
   get_global_context()->get_service_handler()->register_service_client(
     get_gid(), responses_);
 }
 
-ServiceClient::~ServiceClient() {}
+ServiceClient::~ServiceClient()
+{
+  logger_->debug("destroying");
+}
 
 void
 ServiceClient::send_request(const std::string & request, const uint32_t sequence_number)
@@ -59,7 +63,7 @@ ServiceClient::send_request(const std::string & request)
 {
   static std::atomic_uint32_t sequence_number_counter = 0u;
   const uint32_t sequence_number = sequence_number_counter++;
-  logger_->debug("creating request sequence number: " + std::to_string(sequence_number));
+  logger_->debug("creating request with sequence number: {}", sequence_number);
   send_request(request, sequence_number);
   return sequence_number;
 }

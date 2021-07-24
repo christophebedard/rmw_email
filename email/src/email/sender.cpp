@@ -49,6 +49,7 @@ EmailSender::~EmailSender()
     curl_slist_free_all(recipients_list_);
     recipients_list_ = nullptr;
   }
+  logger()->debug("destroying");
 }
 
 size_t

@@ -17,6 +17,8 @@
 
 #include <string>
 
+#include "spdlog/fmt/ostr.h"
+
 #include "email/macros.hpp"
 #include "email/visibility_control.hpp"
 
@@ -124,5 +126,16 @@ private:
 };
 
 }  // namespace email
+
+/// Formatting for Gid objects.
+template<>
+struct fmt::formatter<email::Gid>: formatter<string_view>
+{
+  template<typename FormatContext>
+  auto format(const email::Gid & gid, FormatContext & ctx)
+  {
+    return formatter<string_view>::format(gid.to_string(), ctx);
+  }
+};
 
 #endif  // EMAIL__GID_HPP_

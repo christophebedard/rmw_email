@@ -46,7 +46,10 @@ EmailReceiver::EmailReceiver(
   do_shutdown_(false)
 {}
 
-EmailReceiver::~EmailReceiver() {}
+EmailReceiver::~EmailReceiver()
+{
+  logger_->debug("destroying");
+}
 
 size_t
 EmailReceiver::write_callback(void * contents, size_t size, size_t nmemb, void * userp)

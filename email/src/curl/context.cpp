@@ -40,7 +40,10 @@ CurlContext::CurlContext(
   curl_verbose_(curl_verbose)
 {}
 
-CurlContext::~CurlContext() {}
+CurlContext::~CurlContext()
+{
+  logger_->debug("destroying");
+}
 
 bool
 CurlContext::init()

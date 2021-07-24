@@ -35,6 +35,7 @@ Subscriber::Subscriber(const std::string & topic_name)
   logger_(log::get_or_create("Subscriber::" + topic_name)),
   messages_(std::make_shared<SubscriptionHandler::SubscriberQueue>())
 {
+  logger_->debug("created with GID: {}", get_gid());
   // Register with handler
   get_global_context()->get_subscription_handler()->register_subscriber(
     get_topic_name(),
@@ -42,7 +43,9 @@ Subscriber::Subscriber(const std::string & topic_name)
 }
 
 Subscriber::~Subscriber()
-{}
+{
+  logger_->debug("destroying");
+}
 
 bool
 Subscriber::has_message() const
