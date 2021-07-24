@@ -21,6 +21,7 @@
 #include "email/context.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/email/response_utils.hpp"
+#include "email/gid.hpp"
 #include "email/log.hpp"
 #include "email/safe_map.hpp"
 #include "email/safe_queue.hpp"
@@ -52,11 +53,11 @@ ServiceHandler::~ServiceHandler() {}
 
 void
 ServiceHandler::register_service_client(
-  const std::string & service_name,
+  const Gid & gid,
   ServiceResponseMap::SharedPtr response_map)
 {
   std::scoped_lock<std::mutex> lock(mutex_clients_);
-  clients_.insert({service_name, response_map});
+  clients_.insert({gid.value(), response_map});
 }
 
 void
@@ -81,9 +82,9 @@ ServiceHandler::handle(const struct EmailData & data) const
     // If it has a request ID header
     auto request_id = extract_request_id(data);
     if (request_id) {
-      // Find service clients with matching topic
+      // Find service clients with matching client GID
       std::scoped_lock<std::mutex> lock(mutex_clients_);
-      auto range = clients_.equal_range(topic);
+      auto range = clients_.equal_range(service_info.client_gid().value());
       for (auto it = range.first; it != range.second; ++it) {
         // Add data to the map
         it->second->insert({request_id.value(), {data, service_info}});

@@ -39,7 +39,7 @@ ServiceClient::ServiceClient(const std::string & service_name)
 {
   // Register with handler
   get_global_context()->get_service_handler()->register_service_client(
-    service_name, responses_);
+    get_gid(), responses_);
 }
 
 ServiceClient::~ServiceClient() {}

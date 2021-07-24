@@ -23,7 +23,7 @@ int main()
   email::Subscriber sub1("/my_topic");
   email::Subscriber sub2("/my_other_topic");
   std::cout << "getting messages..." << std::endl;
-  while (!sub1.has_message() & !sub2.has_message()) {}  // empty
+  while (!(sub1.has_message() && sub2.has_message())) {}  // empty
   auto message1 = sub1.get_message();
   auto message2 = sub2.get_message();
   std::cout << "got message1: " << message1.value() << std::endl;
