@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <cassert>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/communication_info.hpp"
@@ -53,21 +53,36 @@ CommunicationInfo::source_gid() const
   return source_gid_;
 }
 
-CommunicationInfo
+std::optional<CommunicationInfo>
 CommunicationInfo::from_headers(
   const EmailHeaders & headers,
   const std::string & source_gid_header)
 {
   auto source_ts_opt = utils::response::get_header_value(
     CommunicationInfo::HEADER_SOURCE_TIMESTAMP, headers);
+  // This one should not be missing, it's universal for all kinds of messages
+  if (!source_ts_opt) {
+    // TODO(christophebedard) log
+    return std::nullopt;
+  }
   auto source_gid_opt = utils::response::get_header_value(source_gid_header, headers);
-  // TODO(christophebedard) handle missing header
-  assert(source_ts_opt.has_value());
-  assert(source_gid_opt.has_value());
-  const Timestamp source_timestamp = Timestamp::from_string(source_ts_opt.value());
+  // This one could be missing if the type of communication isn't the one we expected
+  if (!source_gid_opt) {
+    return std::nullopt;
+  }
+  auto source_timestamp_opt = Timestamp::from_string(source_ts_opt.value());
+  if (!source_timestamp_opt) {
+    return std::nullopt;
+  }
   const Timestamp received_timestamp = Timestamp::now();
-  const Gid source_gid = Gid::from_string(source_gid_opt.value());
-  return CommunicationInfo(source_timestamp, received_timestamp, source_gid);
+  auto source_gid_value_opt = Gid::from_string(source_gid_opt.value());
+  if (!source_gid_value_opt) {
+    return std::nullopt;
+  }
+  return CommunicationInfo(
+    source_timestamp_opt.value(),
+    received_timestamp,
+    source_gid_value_opt.value());
 }
 
 }  // namespace email

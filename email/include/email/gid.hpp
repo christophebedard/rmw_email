@@ -15,6 +15,7 @@
 #ifndef EMAIL__GID_HPP_
 #define EMAIL__GID_HPP_
 
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "spdlog/fmt/ostr.h"
@@ -75,10 +76,12 @@ public:
   /// Get a GID object from a string.
   /**
    * The string should have been generated using to_string().
+   *
+   * \return the GID object, or `std::nullopt` if it fails
    */
   EMAIL_PUBLIC
   static
-  Gid
+  std::optional<Gid>
   from_string(const std::string & str);
 
 private:
