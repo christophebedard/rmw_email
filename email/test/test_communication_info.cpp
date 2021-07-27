@@ -39,30 +39,28 @@ TEST(TestMessageInfo, from_headers) {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},
     {email::MessageInfo::HEADER_PUBLISHER_GID, "456"}
   });
-  EXPECT_EQ(info.source_timestamp().nanoseconds(), 123);
-  EXPECT_EQ(info.publisher_gid().value(), 456u);
+  ASSERT_TRUE(info.has_value());
+  EXPECT_EQ(info.value().source_timestamp().nanoseconds(), 123);
+  EXPECT_EQ(info.value().publisher_gid().value(), 456u);
 
-  EXPECT_DEATH(email::MessageInfo::from_headers({}), "");
-  EXPECT_DEATH(
+  EXPECT_FALSE(email::MessageInfo::from_headers({}).has_value());
+  EXPECT_FALSE(
     email::MessageInfo::from_headers(
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"}
-  }),
-    "");
-  EXPECT_DEATH(
+  }).has_value());
+  EXPECT_FALSE(
     email::MessageInfo::from_headers(
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "abc"},
     {email::MessageInfo::HEADER_PUBLISHER_GID, "123"}
-  }),
-    "");
-  EXPECT_DEATH(
+  }).has_value());
+  EXPECT_FALSE(
     email::MessageInfo::from_headers(
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},
     {email::MessageInfo::HEADER_PUBLISHER_GID, "abc"}
-  }),
-    "");
+  }).has_value());
 }
 
 TEST(TestServiceInfo, init) {
@@ -84,24 +82,23 @@ TEST(TestServiceInfo, from_headers) {
     {email::ServiceInfo::HEADER_CLIENT_GID, "456"},
     {email::ServiceHandler::HEADER_SEQUENCE_NUMBER, "42"}
   });
-  EXPECT_EQ(info.source_timestamp().nanoseconds(), 123);
-  EXPECT_EQ(info.client_gid().value(), 456u);
-  EXPECT_EQ(info.sequence_number(), 42u);
+  ASSERT_TRUE(info.has_value());
+  EXPECT_EQ(info.value().source_timestamp().nanoseconds(), 123);
+  EXPECT_EQ(info.value().client_gid().value(), 456u);
+  EXPECT_EQ(info.value().sequence_number(), 42u);
 
-  EXPECT_DEATH(email::ServiceInfo::from_headers({}), "");
-  EXPECT_DEATH(
+  EXPECT_FALSE(email::ServiceInfo::from_headers({}).has_value());
+  EXPECT_FALSE(
     email::ServiceInfo::from_headers(
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},
     {email::ServiceInfo::HEADER_CLIENT_GID, "456"}
-  }),
-    "");
-  EXPECT_DEATH(
+  }).has_value());
+  EXPECT_FALSE(
     email::ServiceInfo::from_headers(
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},
     {email::ServiceInfo::HEADER_CLIENT_GID, "456"},
     {email::ServiceHandler::HEADER_SEQUENCE_NUMBER, "abc"}
-  }),
-    "");
+  }).has_value());
 }

@@ -45,11 +45,12 @@ TEST(TestGid, gid) {
 TEST(TestGid, string) {
   email::Gid gid = email::Gid::new_gid();
   auto str = gid.to_string();
-  email::Gid gid_str = email::Gid::from_string(str);
+  auto gid_str_opt = email::Gid::from_string(str);
 
-  EXPECT_EQ(gid.value(), gid_str.value());
+  ASSERT_TRUE(gid_str_opt.has_value());
+  EXPECT_EQ(gid.value(), gid_str_opt.value().value());
 
-  EXPECT_DEATH(email::Gid::from_string("abc"), "");
+  EXPECT_FALSE(email::Gid::from_string("abc").has_value());
 }
 
 class GidObjectStub : public email::GidObject

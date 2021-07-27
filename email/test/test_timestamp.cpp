@@ -31,11 +31,11 @@ TEST(TestTimestamp, init) {
 TEST(TestTimestamp, string) {
   email::Timestamp ts = email::Timestamp::now();
   auto str = ts.to_string();
-  email::Timestamp ts_str = email::Timestamp::from_string(str);
+  auto ts_str_opt = email::Timestamp::from_string(str);
+  ASSERT_TRUE(ts_str_opt.has_value());
+  EXPECT_EQ(ts.nanoseconds(), ts_str_opt.value().nanoseconds());
 
-  EXPECT_EQ(ts.nanoseconds(), ts_str.nanoseconds());
-
-  EXPECT_DEATH(email::Timestamp::from_string("abc"), "");
+  EXPECT_FALSE(email::Timestamp::from_string("abc").has_value());
 }
 
 TEST(TestTimestamp, format) {
