@@ -89,7 +89,7 @@ TEST_F(TestWaitSet, guard_condition) {
     // Check delay to make sure it's close to the expected delay
     auto actual_delay = end - start;
     auto diff = std::chrono::abs(actual_delay - delay);
-    EXPECT_TRUE(diff < std::chrono::milliseconds(10)) <<
+    EXPECT_TRUE(diff < std::chrono::milliseconds(15)) <<
       "diff=" << std::chrono::duration_cast<std::chrono::milliseconds>(diff).count() << " ms";
     trigger_thread.join();
     ASSERT_EQ(1u, waitset.get_guard_conditions().size());
