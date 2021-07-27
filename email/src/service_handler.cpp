@@ -82,8 +82,14 @@ ServiceHandler::register_service_server(
 void
 ServiceHandler::handle(const struct EmailData & data) const
 {
+  logger_->debug("handling new email");
   const std::string & topic = data.content.subject;
-  const ServiceInfo & service_info = ServiceInfo::from_headers(data.additional_headers);
+  auto service_info_opt = ServiceInfo::from_headers(data.additional_headers);
+  if (!service_info_opt) {
+    logger_->debug("not a service message");
+    return;
+  }
+  const ServiceInfo & service_info = service_info_opt.value();
 
   // Only a service response if it's a reply email, i.e. if In-Reply-To
   // header is not empty, and if it has a sequence number header

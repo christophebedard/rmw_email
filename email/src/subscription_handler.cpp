@@ -63,10 +63,16 @@ SubscriptionHandler::register_subscriber(
 void
 SubscriptionHandler::handle(const struct EmailData & data)
 {
-  logger_->debug("handle() called");
+  logger_->debug("handling new email");
   const std::string & topic = data.content.subject;
   const std::string & msg = data.content.body;
-  const MessageInfo & msg_info = MessageInfo::from_headers(data.additional_headers);
+  auto msg_info_opt = MessageInfo::from_headers(data.additional_headers);
+  if (!msg_info_opt) {
+    logger_->debug("not a subscription message");
+    return;
+  }
+  const MessageInfo & msg_info = msg_info_opt.value();
+
   // Push it to the right queue
   {
     std::scoped_lock<std::mutex> lock(subscribers_mutex_);
