@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+
 #include "email/communication_info.hpp"
 #include "email/gid.hpp"
 #include "email/message_info.hpp"
@@ -47,16 +49,21 @@ MessageInfo::publisher_gid() const
   return base_info_.source_gid();
 }
 
-MessageInfo
+std::optional<MessageInfo>
 MessageInfo::from_headers(const EmailHeaders & headers)
 {
-  const CommunicationInfo base_info = CommunicationInfo::from_headers(
+  auto base_info_opt = CommunicationInfo::from_headers(
     headers,
     MessageInfo::HEADER_PUBLISHER_GID);
+  // The headers could be missing if the type of communication isn't the one we expected,
+  // especially the publisher GID header
+  if (!base_info_opt) {
+    return std::nullopt;
+  }
   return MessageInfo(
-    base_info.source_timestamp(),
-    base_info.received_timestamp(),
-    base_info.source_gid());
+    base_info_opt.value().source_timestamp(),
+    base_info_opt.value().received_timestamp(),
+    base_info_opt.value().source_gid());
 }
 
 }  // namespace email

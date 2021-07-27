@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <cassert>
 #include <chrono>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/timestamp.hpp"
@@ -48,11 +48,14 @@ Timestamp::to_string() const
   return std::to_string(nanoseconds_);
 }
 
-Timestamp
+std::optional<Timestamp>
 Timestamp::from_string(const std::string & timestamp)
 {
   auto nanoseconds_opt = utils::optional_stoll(timestamp);
-  assert(nanoseconds_opt.has_value());
+  if (!nanoseconds_opt) {
+    // TODO(christophebedard) log
+    return std::nullopt;
+  }
   return Timestamp(nanoseconds_opt.value());
 }
 

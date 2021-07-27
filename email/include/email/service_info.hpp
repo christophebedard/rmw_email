@@ -15,6 +15,8 @@
 #ifndef EMAIL__SERVICE_INFO_HPP_
 #define EMAIL__SERVICE_INFO_HPP_
 
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+
 #include "email/communication_info.hpp"
 #include "email/gid.hpp"
 #include "email/timestamp.hpp"
@@ -68,9 +70,13 @@ public:
   /// Get a ServiceInfo object from email headers.
   /**
    * The received timestamp will be created using Timestamp::now().
+   *
+   * \param headers the email headers
+   * \return the service info object, or `std::nullopt` if the email headers
+   *    don't contain the expected info
    */
   static
-  ServiceInfo
+  std::optional<ServiceInfo>
   from_headers(const EmailHeaders & headers);
 
   /// Custom header name for service client GID.

@@ -13,7 +13,7 @@
 // limitations under the License.
 
 #include <atomic>
-#include <cassert>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <random>
 #include <string>
 
@@ -48,11 +48,13 @@ Gid::to_string() const
   return value_string_;
 }
 
-Gid
+std::optional<Gid>
 Gid::from_string(const std::string & str)
 {
   auto value_opt = utils::optional_stoul(str);
-  assert(value_opt.has_value());
+  if (!value_opt) {
+    return std::nullopt;
+  }
   return Gid(value_opt.value());
 }
 

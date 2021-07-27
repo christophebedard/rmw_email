@@ -15,6 +15,7 @@
 #ifndef EMAIL__COMMUNICATION_INFO_HPP_
 #define EMAIL__COMMUNICATION_INFO_HPP_
 
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "email/gid.hpp"
@@ -65,10 +66,13 @@ public:
   /**
    * The received timestamp will be created using Timestamp::now().
    *
+   * \param headers the email headers
    * \param source_gid_header the name of the header for the source GID
+   * \return the communication info object, or `std::nullopt` if the email headers
+   *    don't contain the expected info
    */
   static
-  CommunicationInfo
+  std::optional<CommunicationInfo>
   from_headers(const EmailHeaders & headers, const std::string & source_gid_header);
 
   /// Custom header name for source timestamp.

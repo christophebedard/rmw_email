@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <cassert>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
 #include "email/communication_info.hpp"
 #include "email/email/response_utils.hpp"
@@ -60,24 +60,30 @@ ServiceInfo::sequence_number() const
   return sequence_number_;
 }
 
-ServiceInfo
+std::optional<ServiceInfo>
 ServiceInfo::from_headers(const EmailHeaders & headers)
 {
-  const CommunicationInfo base_info = CommunicationInfo::from_headers(
+  auto base_info_opt = CommunicationInfo::from_headers(
     headers,
     ServiceInfo::HEADER_CLIENT_GID);
   auto sequence_number_str_opt = utils::response::get_header_value(
     ServiceHandler::HEADER_SEQUENCE_NUMBER,
     headers);
-  // TODO(christophebedard) handle missing header or bad conversion
-  assert(sequence_number_str_opt.has_value());
+  // These headers could be missing if the type of communication isn't the one we expected
+  if (!base_info_opt || !sequence_number_str_opt) {
+    return std::nullopt;
+  }
+  // If the header is there, the value *should* be convertible to a sequence number
   auto sequence_number_opt = utils::optional_stoul(sequence_number_str_opt.value());
-  assert(sequence_number_opt.has_value());
+  if (!sequence_number_opt) {
+    // TODO(christophebedard) log
+    return std::nullopt;
+  }
   const uint32_t sequence_number = sequence_number_opt.value();
   return ServiceInfo(
-    base_info.source_timestamp(),
-    base_info.received_timestamp(),
-    base_info.source_gid(),
+    base_info_opt.value().source_timestamp(),
+    base_info_opt.value().received_timestamp(),
+    base_info_opt.value().source_gid(),
     sequence_number);
 }
 

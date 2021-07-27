@@ -15,6 +15,7 @@
 #ifndef EMAIL__TIMESTAMP_HPP_
 #define EMAIL__TIMESTAMP_HPP_
 
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
 #include "spdlog/fmt/ostr.h"
@@ -67,10 +68,12 @@ public:
   /// Get a timestamp object from a string.
   /**
    * The string should have been generated using to_string().
+   *
+   * \return the timestamp object, or `std::nullopt` if it fails
    */
   EMAIL_PUBLIC
   static
-  Timestamp
+  std::optional<Timestamp>
   from_string(const std::string & timestamp);
 
 private:
