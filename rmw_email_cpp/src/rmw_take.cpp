@@ -42,7 +42,7 @@ static rmw_ret_t _rmw_take(
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(ros_message, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(taken, RMW_RET_INVALID_ARGUMENT);
-  RMW_CHECK_ARGUMENT_FOR_NULL(allocation, RMW_RET_INVALID_ARGUMENT);
+  static_cast<void>(allocation);
 
   auto rmw_email_sub = static_cast<rmw_email_sub_t *>(subscription->data);
   email::Subscriber * email_sub = rmw_email_sub->email_sub;

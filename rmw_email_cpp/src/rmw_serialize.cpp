@@ -26,7 +26,7 @@ extern "C" rmw_ret_t rmw_get_serialized_message_size(
   static_cast<void>(type_support);
   static_cast<void>(message_bounds);
   static_cast<void>(size);
-  RMW_SET_ERROR_MSG("rmw_get_serialized_message_size: unimplemented");
+  RMW_SET_ERROR_MSG("rmw_get_serialized_message_size not implemented for rmw_email_cpp");
   return RMW_RET_UNSUPPORTED;
 }
 
@@ -36,6 +36,9 @@ extern "C" rmw_ret_t rmw_serialize(
   rmw_serialized_message_t * serialized_message)
 {
   // TODO(christophebedard) figure out
+  static_cast<void>(ros_message);
+  static_cast<void>(type_support);
+  static_cast<void>(serialized_message);
   // serialized_message->
   return RMW_RET_OK;
 }
@@ -46,5 +49,8 @@ extern "C" rmw_ret_t rmw_deserialize(
   void * ros_message)
 {
   // TODO(christophebedard) figure out
+  static_cast<void>(serialized_message);
+  static_cast<void>(type_support);
+  static_cast<void>(ros_message);
   return RMW_RET_OK;
 }
