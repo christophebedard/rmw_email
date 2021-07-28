@@ -118,10 +118,14 @@ extern "C" rmw_ret_t rmw_wait(
   }
 
   /// Wait
-  auto wait_timeout_chrono =
-    std::chrono::seconds(wait_timeout->sec) + std::chrono::nanoseconds(wait_timeout->nsec);
-  auto wait_timeout_chrono_ms =
-    std::chrono::duration_cast<std::chrono::milliseconds>(wait_timeout_chrono);
+  // If a timeout isn't provided, we wait forever until ready
+  std::chrono::milliseconds wait_timeout_chrono_ms = std::chrono::milliseconds(-1);
+  if (wait_timeout) {
+    auto wait_timeout_chrono =
+      std::chrono::seconds(wait_timeout->sec) + std::chrono::nanoseconds(wait_timeout->nsec);
+    auto wait_timeout_chrono_ms =
+      std::chrono::duration_cast<std::chrono::milliseconds>(wait_timeout_chrono);
+  }
   const bool timedout = email_waitset->wait(wait_timeout_chrono_ms);
 
   /// Set elements that were not triggered/that are not ready to nullptr in the arrays
