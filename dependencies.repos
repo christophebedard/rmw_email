@@ -411,3 +411,7 @@ repositories:
     type: git
     url: https://github.com/christophebedard/dynamic_message_introspection.git
     version: feature
+  sdt-probe-example:
+    type: git
+    url: https://github.com/christophebedard/sdt-probe-example.git
+    version: main
