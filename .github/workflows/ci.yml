@@ -22,7 +22,7 @@ jobs:
     - uses: ros-tooling/setup-ros@master
       with:
         required-ros-distributions: ${{ matrix.build-type == 'binary' && 'rolling' || '' }}
-    - uses: kenji-miyake/action-ros-ci@support-github-token
+    - uses: ros-tooling/action-ros-ci@master
       with:
         package-name: email email_examples rmw_email_cpp
         target-ros2-distro: rolling
