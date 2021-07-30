@@ -19,7 +19,6 @@
 #include "rmw/types.h"
 
 #include "rmw_email_cpp/identifier.hpp"
-// #include "rmw_email_cpp/types.hpp"
 
 static rmw_ret_t _init_rmw_event(
   rmw_event_t * rmw_event,
@@ -35,7 +34,7 @@ static rmw_ret_t _init_rmw_event(
     email_identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
-  // TODO(christophebedard) figure out
+  // Do nothing else
 
   rmw_event->implementation_identifier = implementation_identifier;
   rmw_event->data = data;
@@ -94,6 +93,6 @@ extern "C" rmw_ret_t rmw_take_event(
   RMW_CHECK_ARGUMENT_FOR_NULL(event_info, RMW_RET_ERROR);
   RMW_CHECK_ARGUMENT_FOR_NULL(taken, RMW_RET_ERROR);
 
-  // TODO(christophebedard) figure out
+  // Do nothing, should not be called because there shouldn't be any events
   return RMW_RET_OK;
 }

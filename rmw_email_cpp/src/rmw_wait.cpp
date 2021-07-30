@@ -113,9 +113,7 @@ extern "C" rmw_ret_t rmw_wait(
       email_waitset->add_server(rmw_email_server->email_server);
     }
   }
-  if (events) {
-    // TODO(christophebedard)
-  }
+  // Do nothing with events
 
   /// Wait
   // If a timeout isn't provided, we wait forever until ready
@@ -166,7 +164,10 @@ extern "C" rmw_ret_t rmw_wait(
     }
   }
   if (events) {
-    // TODO(christophebedard)
+    // Just set everything to nullptr since we didn't actually wait on these, so none are ready
+    for (size_t i = 0u; i < events->event_count; i++) {
+      events->events[i] = nullptr;
+    }
   }
 
   return timedout ? RMW_RET_TIMEOUT : RMW_RET_OK;
