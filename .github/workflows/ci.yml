@@ -22,14 +22,15 @@ jobs:
     - uses: ros-tooling/setup-ros@master
       with:
         required-ros-distributions: ${{ matrix.build-type == 'binary' && 'rolling' || '' }}
-    - uses: ros-tooling/action-ros-ci@master
+    - uses: kenji-miyake/action-ros-ci@support-github-token
       with:
         package-name: email email_examples rmw_email_cpp
         target-ros2-distro: rolling
         vcs-repo-file-url: |
           ${{ github.workspace }}/dependencies.repos
         # ${{ matrix.build-type == 'source' && 'https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos' || '' }}
-        import-token: ${{ secrets.REPO_TOKEN }}
+        # import-token: ${{ secrets.REPO_TOKEN }}
+        import-token: ${{ secrets.GITHUB_TOKEN }}
         colcon-defaults: |
           {
             "build": {
