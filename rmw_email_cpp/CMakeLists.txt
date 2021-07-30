@@ -25,6 +25,7 @@ find_package(dynmsg REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(rosidl_runtime_c REQUIRED)
+find_package(rosidl_runtime_cpp REQUIRED)
 find_package(rosidl_typesupport_introspection_c REQUIRED)
 find_package(rosidl_typesupport_introspection_cpp REQUIRED)
 find_package(rmw REQUIRED)
@@ -68,6 +69,7 @@ ament_target_dependencies(${PROJECT_NAME}
   rcutils
   rcpputils
   rosidl_runtime_c
+  rosidl_runtime_cpp
   rosidl_typesupport_introspection_c
   rosidl_typesupport_introspection_cpp
   rmw
@@ -81,6 +83,7 @@ ament_export_dependencies(rcutils)
 ament_export_dependencies(rcpputils)
 ament_export_dependencies(rmw)
 ament_export_dependencies(rosidl_runtime_c)
+ament_export_dependencies(rosidl_runtime_cpp)
 ament_export_dependencies(rosidl_typesupport_introspection_c)
 ament_export_dependencies(rosidl_typesupport_introspection_cpp)
 
