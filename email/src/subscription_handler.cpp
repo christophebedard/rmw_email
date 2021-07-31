@@ -31,8 +31,8 @@ namespace email
 
 SubscriptionHandler::SubscriptionHandler()
 : logger_(log::create("SubscriptionHandler")),
-  subscribers_mutex_(),
-  subscribers_()
+  subscriptions_mutex_(),
+  subscriptions_()
 {
   // Register handler with the polling manager
   get_global_context()->get_polling_manager()->register_handler(
@@ -49,13 +49,13 @@ SubscriptionHandler::~SubscriptionHandler()
 }
 
 void
-SubscriptionHandler::register_subscriber(
+SubscriptionHandler::register_subscription(
   const std::string & topic_name,
-  SubscriberQueue::SharedPtr message_queue)
+  SubscriptionQueue::SharedPtr message_queue)
 {
   {
-    std::scoped_lock<std::mutex> lock(subscribers_mutex_);
-    subscribers_.insert({topic_name, message_queue});
+    std::scoped_lock<std::mutex> lock(subscriptions_mutex_);
+    subscriptions_.insert({topic_name, message_queue});
   }
   logger_->debug("subscription registered with topic name: {}", topic_name);
 }
@@ -75,8 +75,8 @@ SubscriptionHandler::handle(const struct EmailData & data)
 
   // Push it to the right queue
   {
-    std::scoped_lock<std::mutex> lock(subscribers_mutex_);
-    auto range = subscribers_.equal_range(topic);
+    std::scoped_lock<std::mutex> lock(subscriptions_mutex_);
+    auto range = subscriptions_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
       logger_->debug("adding message to subscription queue with topic: {}", topic);

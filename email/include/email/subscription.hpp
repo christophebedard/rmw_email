@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__SUBSCRIBER_HPP_
-#define EMAIL__SUBSCRIBER_HPP_
+#ifndef EMAIL__SUBSCRIPTION_HPP_
+#define EMAIL__SUBSCRIPTION_HPP_
 
 #include <chrono>
 #include <memory>
@@ -33,12 +33,12 @@
 namespace email
 {
 
-/// Message subscriber.
+/// Message subscription.
 /**
  * Uses emails, with the topic name as the email subject and the data as the email body.
  * TODO(christophebedard) add take to get a vector of all available messages?
  */
-class Subscriber : public PubSubObject
+class Subscription : public PubSubObject
 {
 public:
   /// Constructor.
@@ -46,12 +46,12 @@ public:
    * \param topic_name the topic name to subscribe to
    */
   EMAIL_PUBLIC
-  explicit Subscriber(const std::string & topic_name);
+  explicit Subscription(const std::string & topic_name);
 
   EMAIL_PUBLIC
-  virtual ~Subscriber();
+  virtual ~Subscription();
 
-  /// Check if the subscriber has a message.
+  /// Check if the subscription has a message.
   /**
    * \return true if there is a message, false otherwise
    */
@@ -80,12 +80,12 @@ public:
   get_message_with_info();
 
 private:
-  EMAIL_DISABLE_COPY(Subscriber)
+  EMAIL_DISABLE_COPY(Subscription)
 
   std::shared_ptr<Logger> logger_;
-  SubscriptionHandler::SubscriberQueue::SharedPtr messages_;
+  SubscriptionHandler::SubscriptionQueue::SharedPtr messages_;
 };
 
 }  // namespace email
 
-#endif  // EMAIL__SUBSCRIBER_HPP_
+#endif  // EMAIL__SUBSCRIPTION_HPP_

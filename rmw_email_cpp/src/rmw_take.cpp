@@ -15,7 +15,7 @@
 #include <string>
 
 #include "email/message_info.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "rcutils/allocator.h"
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
@@ -45,7 +45,7 @@ static rmw_ret_t _rmw_take(
   static_cast<void>(allocation);
 
   auto rmw_email_sub = static_cast<rmw_email_sub_t *>(subscription->data);
-  email::Subscriber * email_sub = rmw_email_sub->email_sub;
+  email::Subscription * email_sub = rmw_email_sub->email_sub;
 
   rmw_ret_t ret = RMW_RET_OK;
   auto msg_with_info_opt = email_sub->get_message_with_info();

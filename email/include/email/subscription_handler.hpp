@@ -33,35 +33,35 @@ namespace email
 
 /// Email handler for subscriptions.
 /**
- * Distributes new messages to the right subscriber(s).
+ * Distributes new messages to the right subscription(s).
  */
 class SubscriptionHandler
 {
 public:
-  using SubscriberQueue = SafeQueue<std::pair<std::string, MessageInfo>>;
+  using SubscriptionQueue = SafeQueue<std::pair<std::string, MessageInfo>>;
 
   /// Constructor.
   SubscriptionHandler();
 
   ~SubscriptionHandler();
 
-  /// Register a subscriber with the handler.
+  /// Register a subscription with the handler.
   /**
-   * New messages will be added to the subscriber's queue if the topic name matches.
+   * New messages will be added to the subscription's queue if the topic name matches.
    *
    * \param topic_name the topic name
-   * \param message_queue the subscriber's message queue to push the new message to
+   * \param message_queue the subscription's message queue to push the new message to
    */
   void
-  register_subscriber(
+  register_subscription(
     const std::string & topic_name,
-    SubscriberQueue::SharedPtr message_queue);
+    SubscriptionQueue::SharedPtr message_queue);
 
   /// Handle new email.
   /**
    * To be called by the `PollingManager`.
    *
-   * Adds the message to the queues of subscribers with topic names that match the new message.
+   * Adds the message to the queues of subscriptions with topic names that match the new message.
    *
    * \param data the new email data
    */
@@ -72,8 +72,8 @@ private:
   EMAIL_DISABLE_COPY(SubscriptionHandler)
 
   std::shared_ptr<Logger> logger_;
-  std::mutex subscribers_mutex_;
-  std::multimap<std::string, SubscriberQueue::SharedPtr> subscribers_;
+  std::mutex subscriptions_mutex_;
+  std::multimap<std::string, SubscriptionQueue::SharedPtr> subscriptions_;
 };
 
 }  // namespace email

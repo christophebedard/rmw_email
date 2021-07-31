@@ -24,7 +24,7 @@
 #include "email/service_client.hpp"
 #include "email/service_request.hpp"
 #include "email/service_server.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
@@ -42,17 +42,17 @@ namespace email
 EMAIL_PUBLIC
 std::pair<std::string, MessageInfo>
 wait_for_message_with_info(
-  Subscriber * subscription,
+  Subscription * subscription,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a message with info from a subscription, waiting until one is available.
 /**
- * \see wait_for_message(std::shared_ptr<Subscriber>, const std::chrono::milliseconds)
+ * \see wait_for_message(std::shared_ptr<Subscription>, const std::chrono::milliseconds)
  */
 EMAIL_PUBLIC
 std::pair<std::string, MessageInfo>
 wait_for_message_with_info(
-  std::shared_ptr<Subscriber> subscription,
+  std::shared_ptr<Subscription> subscription,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a message from a subscription, waiting until one is available.
@@ -67,17 +67,17 @@ wait_for_message_with_info(
 EMAIL_PUBLIC
 std::string
 wait_for_message(
-  Subscriber * subscription,
+  Subscription * subscription,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a message from a subscription, waiting until one is available.
 /**
- * \see wait_for_message(std::shared_ptr<Subscriber>, const std::chrono::milliseconds)
+ * \see wait_for_message(std::shared_ptr<Subscription>, const std::chrono::milliseconds)
  */
 EMAIL_PUBLIC
 std::string
 wait_for_message(
-  std::shared_ptr<Subscriber> subscription,
+  std::shared_ptr<Subscription> subscription,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a service reponse with info, waiting until it is available.

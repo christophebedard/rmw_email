@@ -15,13 +15,13 @@
 #include <iostream>
 
 #include "email/init.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/wait.hpp"
 
 int main()
 {
   email::init();
-  email::Subscriber sub("/my_topic");
+  email::Subscription sub("/my_topic");
   std::cout << "waiting for message on topic '" << sub.get_topic_name() << "'..." << std::endl;
   auto message = email::wait_for_message(&sub);
   std::cout << "got message: " << message << std::endl;

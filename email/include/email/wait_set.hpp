@@ -23,7 +23,7 @@
 #include "email/guard_condition.hpp"
 #include "email/service_client.hpp"
 #include "email/service_server.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/macros.hpp"
 #include "email/visibility_control.hpp"
 
@@ -41,14 +41,14 @@ public:
   /// Constructor.
   EMAIL_PUBLIC
   WaitSet(
-    std::vector<Subscriber *> subscriptions = {},
+    std::vector<Subscription *> subscriptions = {},
     std::vector<ServiceClient *> clients = {},
     std::vector<ServiceServer *> servers = {},
     std::vector<GuardCondition *> guard_conditions = {});
 
   /// Constructor.
   EMAIL_PUBLIC
-  explicit WaitSet(Subscriber * subscription);
+  explicit WaitSet(Subscription * subscription);
 
   EMAIL_PUBLIC
   ~WaitSet();
@@ -78,7 +78,7 @@ public:
   /// Add a subscription.
   EMAIL_PUBLIC
   void
-  add_subscription(Subscriber * subscription);
+  add_subscription(Subscription * subscription);
 
   /// Add a client.
   EMAIL_PUBLIC
@@ -97,7 +97,7 @@ public:
 
   /// Get the subscriptions.
   EMAIL_PUBLIC
-  const std::vector<Subscriber *> &
+  const std::vector<Subscription *> &
   get_subscriptions() const;
 
   /// Get the clients.
@@ -156,7 +156,7 @@ private:
     std::chrono::steady_clock::time_point start);
 
   std::shared_ptr<Logger> logger_;
-  std::vector<Subscriber *> subscriptions_;
+  std::vector<Subscription *> subscriptions_;
   std::vector<ServiceClient *> clients_;
   std::vector<ServiceServer *> servers_;
   std::vector<GuardCondition *> guard_conditions_;

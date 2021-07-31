@@ -23,7 +23,7 @@
 #include "email/service_info.hpp"
 #include "email/service_request.hpp"
 #include "email/service_server.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/wait_set.hpp"
 
 namespace email
@@ -31,7 +31,7 @@ namespace email
 
 std::pair<std::string, MessageInfo>
 wait_for_message_with_info(
-  Subscriber * subscription,
+  Subscription * subscription,
   const std::chrono::milliseconds timeout)
 {
   email::WaitSet waitset({subscription});
@@ -43,7 +43,7 @@ wait_for_message_with_info(
 
 std::pair<std::string, MessageInfo>
 wait_for_message_with_info(
-  std::shared_ptr<Subscriber> subscription,
+  std::shared_ptr<Subscription> subscription,
   const std::chrono::milliseconds timeout)
 {
   return wait_for_message_with_info(subscription.get(), timeout);
@@ -51,7 +51,7 @@ wait_for_message_with_info(
 
 std::string
 wait_for_message(
-  Subscriber * subscription,
+  Subscription * subscription,
   const std::chrono::milliseconds timeout)
 {
   return wait_for_message_with_info(subscription, timeout).first;
@@ -59,7 +59,7 @@ wait_for_message(
 
 std::string
 wait_for_message(
-  std::shared_ptr<Subscriber> subscription,
+  std::shared_ptr<Subscription> subscription,
   const std::chrono::milliseconds timeout)
 {
   return wait_for_message(subscription.get(), timeout);

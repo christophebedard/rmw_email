@@ -16,7 +16,7 @@
 #include <memory>
 
 #include "email/init.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/wait_set.hpp"
 
 using namespace std::chrono_literals;
@@ -24,7 +24,7 @@ using namespace std::chrono_literals;
 int main()
 {
   email::init();
-  email::Subscriber sub("/my_topic");
+  email::Subscription sub("/my_topic");
   std::cout << "waiting for message on topic '" << sub.get_topic_name() << "'..." << std::endl;
   email::WaitSet waitset(&sub);
   const bool timedout = waitset.wait(10s);

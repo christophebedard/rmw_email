@@ -22,7 +22,7 @@
 #include "email/publisher.hpp"
 #include "email/service_client.hpp"
 #include "email/service_server.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/wait_set.hpp"
 #include "rmw/rmw.h"
 
@@ -86,8 +86,8 @@ typedef struct rmw_email_pub_t
 
 typedef struct rmw_email_sub_t
 {
-  /// Pointer to the actual subscriber
-  email::Subscriber * email_sub;
+  /// Pointer to the actual subscription
+  email::Subscription * email_sub;
   /// gid
   rmw_gid_t gid;
   /// Type supports
