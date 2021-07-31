@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "rcpputils/scope_exit.hpp"
 #include "rmw/allocators.h"
 #include "rmw/error_handling.h"
@@ -53,12 +53,12 @@ static rmw_subscription_t * _create_subscription(
   RET_ALLOC_X(sub, return nullptr);
   sub->type_supports = *type_supports;
 
-  // Create email subscriber
-  auto email_sub = new (std::nothrow) email::Subscriber(topic_name);
+  // Create email subscription
+  auto email_sub = new (std::nothrow) email::Subscription(topic_name);
   RET_ALLOC_X(email_sub, return nullptr);
   sub->email_sub = email_sub;
 
-  // Get GID from email subscriber
+  // Get GID from email subscription
   sub->gid = convert_gid(email_sub->get_gid());
 
   // Put everything together
@@ -122,7 +122,7 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
 static rmw_ret_t _destroy_subscription(rmw_subscription_t * subscription)
 {
   rmw_email_sub_t * sub = static_cast<rmw_email_sub_t *>(subscription->data);
-  email::Subscriber * email_sub = sub->email_sub;
+  email::Subscription * email_sub = sub->email_sub;
   delete email_sub;
   delete sub;
   rmw_free(const_cast<char *>(subscription->topic_name));

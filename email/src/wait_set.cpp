@@ -21,7 +21,7 @@
 #include "email/guard_condition.hpp"
 #include "email/service_client.hpp"
 #include "email/service_server.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/wait_set.hpp"
 
 using namespace std::chrono_literals;
@@ -30,7 +30,7 @@ namespace email
 {
 
 WaitSet::WaitSet(
-  std::vector<Subscriber *> subscriptions,
+  std::vector<Subscription *> subscriptions,
   std::vector<ServiceClient *> clients,
   std::vector<ServiceServer *> servers,
   std::vector<GuardCondition *> guard_conditions)
@@ -45,7 +45,7 @@ WaitSet::WaitSet(
   }
 }
 
-WaitSet::WaitSet(Subscriber * subscription)
+WaitSet::WaitSet(Subscription * subscription)
 : WaitSet({subscription}, {}, {}, {})
 {}
 
@@ -60,7 +60,7 @@ WaitSet::check_guard_condition(GuardCondition * guard_condition)
 }
 
 void
-WaitSet::add_subscription(Subscriber * subscription)
+WaitSet::add_subscription(Subscription * subscription)
 {
   subscriptions_.push_back(subscription);
 }
@@ -84,7 +84,7 @@ WaitSet::add_guard_condition(GuardCondition * guard_condition)
   guard_conditions_.push_back(guard_condition);
 }
 
-const std::vector<Subscriber *> &
+const std::vector<Subscription *> &
 WaitSet::get_subscriptions() const
 {
   return subscriptions_;

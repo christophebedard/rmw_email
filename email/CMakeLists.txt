@@ -56,7 +56,7 @@ set(SOURCES
   src/service_handler.cpp
   src/service_info.cpp
   src/service_server.cpp
-  src/subscriber.cpp
+  src/subscription.cpp
   src/subscription_handler.cpp
   src/timestamp.cpp
   src/utils.cpp

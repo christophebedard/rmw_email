@@ -24,37 +24,37 @@
 #include "email/message_info.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 #include "email/subscription_handler.hpp"
 
 namespace email
 {
 
-Subscriber::Subscriber(const std::string & topic_name)
+Subscription::Subscription(const std::string & topic_name)
 : PubSubObject(topic_name),
-  logger_(log::get_or_create("Subscriber::" + topic_name)),
-  messages_(std::make_shared<SubscriptionHandler::SubscriberQueue>())
+  logger_(log::get_or_create("Subscription::" + topic_name)),
+  messages_(std::make_shared<SubscriptionHandler::SubscriptionQueue>())
 {
   logger_->debug("created with GID: {}", get_gid());
   // Register with handler
-  get_global_context()->get_subscription_handler()->register_subscriber(
+  get_global_context()->get_subscription_handler()->register_subscription(
     get_topic_name(),
     messages_);
 }
 
-Subscriber::~Subscriber()
+Subscription::~Subscription()
 {
   logger_->debug("destroying");
 }
 
 bool
-Subscriber::has_message() const
+Subscription::has_message() const
 {
   return !messages_->empty();
 }
 
 std::optional<std::string>
-Subscriber::get_message()
+Subscription::get_message()
 {
   if (!has_message()) {
     return std::nullopt;
@@ -63,7 +63,7 @@ Subscriber::get_message()
 }
 
 std::optional<std::pair<std::string, MessageInfo>>
-Subscriber::get_message_with_info()
+Subscription::get_message_with_info()
 {
   if (!has_message()) {
     return std::nullopt;

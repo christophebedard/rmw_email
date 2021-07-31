@@ -15,13 +15,13 @@
 #include <iostream>
 
 #include "email/init.hpp"
-#include "email/subscriber.hpp"
+#include "email/subscription.hpp"
 
 int main()
 {
   email::init();
-  email::Subscriber sub1("/my_topic");
-  email::Subscriber sub2("/my_other_topic");
+  email::Subscription sub1("/my_topic");
+  email::Subscription sub2("/my_other_topic");
   std::cout << "getting messages..." << std::endl;
   while (!(sub1.has_message() && sub2.has_message())) {}  // empty
   auto message1 = sub1.get_message();
