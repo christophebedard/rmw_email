@@ -20,6 +20,7 @@
 
 #include "email/service_client.hpp"
 #include "email/service_info.hpp"
+#include "email/service_request.hpp"
 #include "email/service_server.hpp"
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
@@ -82,7 +83,7 @@ extern "C" rmw_ret_t rmw_take_request(
   }
   *taken = true;
 
-  const email::ServiceRequest request = request_with_info_opt.value().first;
+  const struct email::ServiceRequest request = request_with_info_opt.value().first;
   const email::ServiceInfo info = request_with_info_opt.value().second;
   // TODO(christophebedard) convert YAML string back to ros_request
   static_cast<void>(request.content);

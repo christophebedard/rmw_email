@@ -20,6 +20,7 @@
 
 #include "email/service_client.hpp"
 #include "email/service_info.hpp"
+#include "email/service_request.hpp"
 #include "email/service_server.hpp"
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
@@ -50,7 +51,7 @@ extern "C" rmw_ret_t rmw_send_response(
 
   // Convert request header to request ID
   const email::Gid client_gid = convert_writer_guid_to_email_gid(request_header->writer_guid);
-  const email::ServiceRequestId request_id(request_header->sequence_number, client_gid);
+  const struct email::ServiceRequestId request_id(request_header->sequence_number, client_gid);
 
   // Send
   email_server->send_response(request_id, response);

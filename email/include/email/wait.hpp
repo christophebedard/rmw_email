@@ -22,6 +22,7 @@
 
 #include "email/message_info.hpp"
 #include "email/service_client.hpp"
+#include "email/service_request.hpp"
 #include "email/service_server.hpp"
 #include "email/subscriber.hpp"
 #include "email/visibility_control.hpp"
@@ -143,7 +144,7 @@ wait_for_response(
  * \return the service request with info
  */
 EMAIL_PUBLIC
-std::pair<ServiceRequest, ServiceInfo>
+std::pair<struct ServiceRequest, ServiceInfo>
 wait_for_request_with_info(
   ServiceServer * server,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
@@ -153,7 +154,7 @@ wait_for_request_with_info(
  * \see wait_for_request_with_info(ServiceServer *, const std::chrono::milliseconds)
  */
 EMAIL_PUBLIC
-std::pair<ServiceRequest, ServiceInfo>
+std::pair<struct ServiceRequest, ServiceInfo>
 wait_for_request_with_info(
   std::shared_ptr<ServiceServer> server,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
@@ -167,7 +168,7 @@ wait_for_request_with_info(
  * \return the service request
  */
 EMAIL_PUBLIC
-ServiceRequest
+struct ServiceRequest
 wait_for_request(
   ServiceServer * server,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
@@ -177,7 +178,7 @@ wait_for_request(
  * \see wait_for_request(ServiceServer *, const std::chrono::milliseconds)
  */
 EMAIL_PUBLIC
-ServiceRequest
+struct ServiceRequest
 wait_for_request(
   std::shared_ptr<ServiceServer> server,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));

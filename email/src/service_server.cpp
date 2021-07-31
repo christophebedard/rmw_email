@@ -27,6 +27,7 @@
 #include "email/service.hpp"
 #include "email/service_handler.hpp"
 #include "email/service_info.hpp"
+#include "email/service_request.hpp"
 #include "email/service_server.hpp"
 
 namespace email
@@ -56,7 +57,7 @@ ServiceServer::has_request()
   return !requests_->empty();
 }
 
-std::optional<ServiceRequest>
+std::optional<struct ServiceRequest>
 ServiceServer::get_request()
 {
   if (!has_request()) {
@@ -65,7 +66,7 @@ ServiceServer::get_request()
   return get_request_with_info().value().first;
 }
 
-std::optional<std::pair<ServiceRequest, ServiceInfo>>
+std::optional<std::pair<struct ServiceRequest, ServiceInfo>>
 ServiceServer::get_request_with_info()
 {
   if (!has_request()) {
@@ -88,7 +89,9 @@ ServiceServer::get_request_with_info()
 }
 
 void
-ServiceServer::send_response(const ServiceRequestId & request_id, const std::string & response)
+ServiceServer::send_response(
+  const struct ServiceRequestId & request_id,
+  const std::string & response)
 {
   // Get & remove raw request data from internal map
   auto request_data = requests_raw_.find(request_id.sequence_number);
