@@ -15,14 +15,13 @@
 #ifndef EMAIL__TYPES_HPP_
 #define EMAIL__TYPES_HPP_
 
-#define SHARED_PTR_CONST(name) \
-  using SharedPtrConst = std::shared_ptr<const struct name>;
-
 #include <map>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <vector>
+
+#include "email/macros.hpp"
 
 namespace email
 {
@@ -68,7 +67,7 @@ struct UserInfo
   {}
   /// Copy constructor.
   UserInfo(const UserInfo &) = default;
-  SHARED_PTR_CONST(UserInfo)
+  EMAIL_SHARED_PTR_CONST(UserInfo)
 };
 
 /// Recipients of an email.
@@ -93,7 +92,7 @@ struct EmailRecipients
   {}
   /// Copy constructor.
   EmailRecipients(const EmailRecipients &) = default;
-  SHARED_PTR_CONST(EmailRecipients)
+  EMAIL_SHARED_PTR_CONST(EmailRecipients)
 };
 
 /// Email headers, with a header key and a value.
