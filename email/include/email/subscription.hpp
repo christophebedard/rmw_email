@@ -83,7 +83,7 @@ private:
   EMAIL_DISABLE_COPY(Subscription)
 
   std::shared_ptr<Logger> logger_;
-  SubscriptionHandler::SubscriptionQueue::SharedPtr messages_;
+  SubscriptionHandler::MessageQueue::SharedPtr messages_;
 };
 
 }  // namespace email
