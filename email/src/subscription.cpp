@@ -33,7 +33,7 @@ namespace email
 Subscription::Subscription(const std::string & topic_name)
 : PubSubObject(topic_name),
   logger_(log::get_or_create("Subscription::" + topic_name)),
-  messages_(std::make_shared<SubscriptionHandler::SubscriptionQueue>())
+  messages_(std::make_shared<SubscriptionHandler::MessageQueue>())
 {
   logger_->debug("created with GID: {}", get_gid());
   // Register with handler

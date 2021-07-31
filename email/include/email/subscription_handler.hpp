@@ -38,7 +38,7 @@ namespace email
 class SubscriptionHandler
 {
 public:
-  using SubscriptionQueue = SafeQueue<std::pair<std::string, MessageInfo>>;
+  using MessageQueue = SafeQueue<std::pair<std::string, MessageInfo>>;
 
   /// Constructor.
   SubscriptionHandler();
@@ -55,7 +55,7 @@ public:
   void
   register_subscription(
     const std::string & topic_name,
-    SubscriptionQueue::SharedPtr message_queue);
+    MessageQueue::SharedPtr message_queue);
 
   /// Handle new email.
   /**
@@ -73,7 +73,7 @@ private:
 
   std::shared_ptr<Logger> logger_;
   std::mutex subscriptions_mutex_;
-  std::multimap<std::string, SubscriptionQueue::SharedPtr> subscriptions_;
+  std::multimap<std::string, MessageQueue::SharedPtr> subscriptions_;
 };
 
 }  // namespace email

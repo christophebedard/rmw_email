@@ -51,7 +51,7 @@ SubscriptionHandler::~SubscriptionHandler()
 void
 SubscriptionHandler::register_subscription(
   const std::string & topic_name,
-  SubscriptionQueue::SharedPtr message_queue)
+  MessageQueue::SharedPtr message_queue)
 {
   {
     std::scoped_lock<std::mutex> lock(subscriptions_mutex_);
