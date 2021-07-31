@@ -24,10 +24,10 @@
 #include <thread>
 #include <vector>
 
+#include "email/email/info.hpp"
 #include "email/email/receiver.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

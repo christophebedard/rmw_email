@@ -17,8 +17,8 @@
 #include <sstream>
 #include <string>
 
+#include "email/email/info.hpp"
 #include "email/email/response_utils.hpp"
-#include "email/types.hpp"
 #include "email/utils.hpp"
 
 namespace email

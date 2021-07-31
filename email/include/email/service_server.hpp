@@ -22,6 +22,7 @@
 #include <string>
 #include <utility>
 
+#include "email/email/info.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
@@ -29,7 +30,6 @@
 #include "email/service.hpp"
 #include "email/service_handler.hpp"
 #include "email/service_info.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

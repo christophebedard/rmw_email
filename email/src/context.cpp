@@ -17,8 +17,8 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/email/info.hpp"
 #include "email/log.hpp"
-#include "email/types.hpp"
 #include "email/utils.hpp"
 
 namespace email

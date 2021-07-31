@@ -21,11 +21,11 @@
 #include <string>
 
 #include "email/curl/executor.hpp"
+#include "email/email/info.hpp"
 #include "email/email/payload_utils.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/utils.hpp"
-#include "email/types.hpp"
 
 namespace email
 {

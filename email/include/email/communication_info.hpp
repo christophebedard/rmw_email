@@ -18,9 +18,9 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "email/email/info.hpp"
 #include "email/gid.hpp"
 #include "email/timestamp.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

@@ -19,6 +19,7 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/email/response_utils.hpp"
 #include "email/gid.hpp"
@@ -27,7 +28,6 @@
 #include "email/safe_queue.hpp"
 #include "email/service_handler.hpp"
 #include "email/service_info.hpp"
-#include "email/types.hpp"
 #include "email/utils.hpp"
 
 namespace email

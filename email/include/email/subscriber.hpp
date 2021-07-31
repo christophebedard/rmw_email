@@ -21,13 +21,13 @@
 #include <string>
 #include <utility>
 
+#include "email/email/info.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/message_info.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
 #include "email/subscription_handler.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

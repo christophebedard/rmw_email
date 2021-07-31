@@ -20,10 +20,10 @@
 #include <thread>
 #include <vector>
 
+#include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/email/receiver.hpp"
 #include "email/log.hpp"
-#include "email/types.hpp"
 
 namespace email
 {

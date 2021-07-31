@@ -12,8 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__TYPES_HPP_
-#define EMAIL__TYPES_HPP_
+#ifndef EMAIL__EMAIL__INFO_HPP_
+#define EMAIL__EMAIL__INFO_HPP_
 
 #include <map>
 #include <memory>
@@ -135,4 +135,4 @@ struct EmailData
 
 }  // namespace email
 
-#endif  // EMAIL__TYPES_HPP_
+#endif  // EMAIL__EMAIL__INFO_HPP_

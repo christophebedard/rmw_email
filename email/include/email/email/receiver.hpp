@@ -24,9 +24,9 @@
 #include <string>
 
 #include "email/curl/executor.hpp"
+#include "email/email/info.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

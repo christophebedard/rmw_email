@@ -18,9 +18,9 @@
 
 #include "email/context.hpp"
 #include "email/curl/info.hpp"
+#include "email/email/info.hpp"
 #include "email/email/receiver.hpp"
 #include "email/init.hpp"
-#include "email/types.hpp"
 
 int main(int argc, char ** argv)
 {

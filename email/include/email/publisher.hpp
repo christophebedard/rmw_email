@@ -19,11 +19,11 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "email/email/info.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/pub_sub.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

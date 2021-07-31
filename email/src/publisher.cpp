@@ -17,13 +17,13 @@
 
 #include "email/communication_info.hpp"
 #include "email/context.hpp"
+#include "email/email/info.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/message_info.hpp"
 #include "email/pub_sub.hpp"
 #include "email/publisher.hpp"
 #include "email/timestamp.hpp"
-#include "email/types.hpp"
 
 namespace email
 {

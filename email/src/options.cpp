@@ -23,9 +23,9 @@
 #include "rcutils/env.h"
 #include "yaml-cpp/yaml.h"
 
+#include "email/email/info.hpp"
 #include "email/log.hpp"
 #include "email/options.hpp"
-#include "email/types.hpp"
 #include "email/utils.hpp"
 
 namespace email
