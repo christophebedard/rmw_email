@@ -20,9 +20,9 @@
 #include <memory>
 #include <string>
 
+#include "email/curl/info.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
-#include "email/types.hpp"
 #include "email/utils.hpp"
 
 namespace email

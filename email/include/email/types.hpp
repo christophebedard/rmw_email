@@ -26,26 +26,6 @@
 namespace email
 {
 
-/// Info for connecting to server.
-struct ConnectionInfo
-{
-  /// Host name without protocol or port.
-  std::string host;
-  /// Username (i.e. email).
-  std::string username;
-  /// Password.
-  std::string password;
-};
-
-/// Info for a standard protocol.
-struct ProtocolInfo
-{
-  /// Protocol, i.e. "<protocol>://".
-  std::string protocol;
-  /// Port.
-  int port;
-};
-
 /// Info for a user.
 struct UserInfo
 {

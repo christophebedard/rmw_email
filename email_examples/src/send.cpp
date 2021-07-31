@@ -16,6 +16,7 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/curl/info.hpp"
 #include "email/email/sender.hpp"
 #include "email/init.hpp"
 #include "email/types.hpp"
