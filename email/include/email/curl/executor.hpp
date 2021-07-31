@@ -16,8 +16,8 @@
 #define EMAIL__CURL__EXECUTOR_HPP_
 
 #include "email/curl/context.hpp"
+#include "email/curl/info.hpp"
 #include "email/macros.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

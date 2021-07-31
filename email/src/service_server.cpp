@@ -20,6 +20,7 @@
 
 #include "email/communication_info.hpp"
 #include "email/context.hpp"
+#include "email/email/info.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/safe_queue.hpp"
@@ -27,7 +28,6 @@
 #include "email/service_handler.hpp"
 #include "email/service_info.hpp"
 #include "email/service_server.hpp"
-#include "email/types.hpp"
 
 namespace email
 {

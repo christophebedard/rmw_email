@@ -17,6 +17,9 @@
 
 #include <memory>
 
+#define EMAIL_SHARED_PTR_CONST(name) \
+  using SharedPtrConst = std::shared_ptr<const struct name>;
+
 /**
  * Disables the copy constructor and operator= for the given class.
  *

@@ -23,8 +23,8 @@
 #include "rcpputils/filesystem_helper.hpp"
 #include "yaml-cpp/yaml.h"
 
+#include "email/email/info.hpp"
 #include "email/log.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

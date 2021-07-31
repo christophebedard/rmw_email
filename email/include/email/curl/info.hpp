@@ -12,39 +12,34 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include "email/context.hpp"
-#include "email/curl/executor.hpp"
-#include "email/curl/info.hpp"
+#ifndef EMAIL__CURL__INFO_HPP_
+#define EMAIL__CURL__INFO_HPP_
+
+#include <string>
 
 namespace email
 {
 
-CurlExecutor::CurlExecutor(
-  const struct ConnectionInfo & connection_info,
-  const struct ProtocolInfo & protocol_info,
-  const bool curl_verbose)
-: context_(connection_info, protocol_info, curl_verbose),
-  is_valid_(false)
-{}
-
-CurlExecutor::~CurlExecutor()
+/// Info for connecting to server.
+struct ConnectionInfo
 {
-  context_.fini();
-}
+  /// Host name without protocol or port.
+  std::string host;
+  /// Username (i.e. email).
+  std::string username;
+  /// Password.
+  std::string password;
+};
 
-bool
-CurlExecutor::init()
+/// Info for a standard protocol.
+struct ProtocolInfo
 {
-  if (!is_valid_) {
-    is_valid_ |= context_.init() && init_options();
-  }
-  return is_valid_;
-}
-
-bool
-CurlExecutor::is_valid() const
-{
-  return is_valid_;
-}
+  /// Protocol, i.e. "<protocol>://".
+  std::string protocol;
+  /// Port.
+  int port;
+};
 
 }  // namespace email
+
+#endif  // EMAIL__CURL__INFO_HPP_

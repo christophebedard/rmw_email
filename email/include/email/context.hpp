@@ -21,6 +21,7 @@
 #include <string>
 
 #include "email/curl/context.hpp"
+#include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
@@ -29,7 +30,6 @@
 #include "email/options.hpp"
 #include "email/service_handler.hpp"
 #include "email/subscription_handler.hpp"
-#include "email/types.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

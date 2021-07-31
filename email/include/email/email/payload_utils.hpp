@@ -21,7 +21,7 @@
 #include <string>
 #include <vector>
 
-#include "email/types.hpp"
+#include "email/email/info.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email

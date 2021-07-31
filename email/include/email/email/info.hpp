@@ -12,11 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__TYPES_HPP_
-#define EMAIL__TYPES_HPP_
-
-#define SHARED_PTR_CONST(name) \
-  using SharedPtrConst = std::shared_ptr<const struct name>;
+#ifndef EMAIL__EMAIL__INFO_HPP_
+#define EMAIL__EMAIL__INFO_HPP_
 
 #include <map>
 #include <memory>
@@ -24,28 +21,10 @@
 #include <string>
 #include <vector>
 
+#include "email/macros.hpp"
+
 namespace email
 {
-
-/// Info for connecting to server.
-struct ConnectionInfo
-{
-  /// Host name without protocol or port.
-  std::string host;
-  /// Username (i.e. email).
-  std::string username;
-  /// Password.
-  std::string password;
-};
-
-/// Info for a standard protocol.
-struct ProtocolInfo
-{
-  /// Protocol, i.e. "<protocol>://".
-  std::string protocol;
-  /// Port.
-  int port;
-};
 
 /// Info for a user.
 struct UserInfo
@@ -68,7 +47,7 @@ struct UserInfo
   {}
   /// Copy constructor.
   UserInfo(const UserInfo &) = default;
-  SHARED_PTR_CONST(UserInfo)
+  EMAIL_SHARED_PTR_CONST(UserInfo)
 };
 
 /// Recipients of an email.
@@ -93,7 +72,7 @@ struct EmailRecipients
   {}
   /// Copy constructor.
   EmailRecipients(const EmailRecipients &) = default;
-  SHARED_PTR_CONST(EmailRecipients)
+  EMAIL_SHARED_PTR_CONST(EmailRecipients)
 };
 
 /// Email headers, with a header key and a value.
@@ -156,4 +135,4 @@ struct EmailData
 
 }  // namespace email
 
-#endif  // EMAIL__TYPES_HPP_
+#endif  // EMAIL__EMAIL__INFO_HPP_
