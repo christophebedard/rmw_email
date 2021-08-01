@@ -19,6 +19,7 @@
 #include <utility>
 
 #include "email/context.hpp"
+#include "email/email/handler.hpp"
 #include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/log.hpp"
@@ -30,7 +31,8 @@ namespace email
 {
 
 SubscriptionHandler::SubscriptionHandler()
-: logger_(log::create("SubscriptionHandler")),
+: EmailHandler(),
+  logger_(log::create("SubscriptionHandler")),
   subscriptions_mutex_(),
   subscriptions_()
 {
@@ -61,7 +63,7 @@ SubscriptionHandler::register_subscription(
 }
 
 void
-SubscriptionHandler::handle(const struct EmailData & data)
+SubscriptionHandler::handle(const struct EmailData & data) const
 {
   logger_->debug("handling new email");
   const std::string & topic = data.content.subject;

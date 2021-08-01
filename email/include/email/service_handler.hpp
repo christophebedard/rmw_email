@@ -22,6 +22,7 @@
 #include <string>
 #include <utility>
 
+#include "email/email/handler.hpp"
 #include "email/email/info.hpp"
 #include "email/gid.hpp"
 #include "email/log.hpp"
@@ -38,7 +39,7 @@ namespace email
 /**
  * Distributes them to the right service server.
  */
-class ServiceHandler
+class ServiceHandler : public EmailHandler
 {
 public:
   using ServiceResponseMap = SafeMap<uint32_t, std::pair<struct EmailData, ServiceInfo>>;
@@ -47,7 +48,7 @@ public:
   /// Constructor.
   ServiceHandler();
 
-  ~ServiceHandler();
+  virtual ~ServiceHandler();
 
   /// Register a service client with the handler.
   /**
@@ -76,7 +77,7 @@ public:
    * \param data the new email data
    */
   void
-  handle(const struct EmailData & data) const;
+  virtual handle(const struct EmailData & data) const;
 
   /// Extract request sequence number from email data.
   /**

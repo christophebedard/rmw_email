@@ -21,6 +21,7 @@
 #include <string>
 #include <utility>
 
+#include "email/email/handler.hpp"
 #include "email/email/info.hpp"
 #include "email/safe_queue.hpp"
 #include "email/log.hpp"
@@ -35,7 +36,7 @@ namespace email
 /**
  * Distributes new messages to the right subscription(s).
  */
-class SubscriptionHandler
+class SubscriptionHandler : public EmailHandler
 {
 public:
   using MessageQueue = SafeQueue<std::pair<std::string, MessageInfo>>;
@@ -43,7 +44,7 @@ public:
   /// Constructor.
   SubscriptionHandler();
 
-  ~SubscriptionHandler();
+  virtual ~SubscriptionHandler();
 
   /// Register a subscription with the handler.
   /**
@@ -66,13 +67,13 @@ public:
    * \param data the new email data
    */
   void
-  handle(const struct EmailData & data);
+  virtual handle(const struct EmailData & data) const;
 
 private:
   EMAIL_DISABLE_COPY(SubscriptionHandler)
 
   std::shared_ptr<Logger> logger_;
-  std::mutex subscriptions_mutex_;
+  mutable std::mutex subscriptions_mutex_;
   std::multimap<std::string, MessageQueue::SharedPtr> subscriptions_;
 };
 
