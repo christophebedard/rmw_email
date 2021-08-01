@@ -83,20 +83,16 @@ ServiceClient::has_response()
 std::optional<std::string>
 ServiceClient::get_response(const uint32_t sequence_number)
 {
-  // TODO(christophebedard) remove double check
-  if (!has_response(sequence_number)) {
+  auto response_with_info_opt = get_response_with_info(sequence_number);
+  if (!response_with_info_opt) {
     return std::nullopt;
   }
-  return get_response_with_info(sequence_number).value().first;
+  return response_with_info_opt.value().first;
 }
 
 std::optional<std::pair<std::string, ServiceInfo>>
 ServiceClient::get_response_with_info(const uint32_t sequence_number)
 {
-  // TODO(christophebedard) remove double check
-  if (!has_response(sequence_number)) {
-    return std::nullopt;
-  }
   auto it = responses_->find(sequence_number);
   if (it == responses_->cend()) {
     return std::nullopt;

@@ -60,10 +60,11 @@ ServiceServer::has_request()
 std::optional<struct ServiceRequest>
 ServiceServer::get_request()
 {
-  if (!has_request()) {
+  auto request_with_info_opt = get_request_with_info();
+  if (!request_with_info_opt) {
     return std::nullopt;
   }
-  return get_request_with_info().value().first;
+  return request_with_info_opt.value().first;
 }
 
 std::optional<std::pair<struct ServiceRequest, ServiceInfo>>

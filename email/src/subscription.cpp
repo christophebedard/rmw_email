@@ -56,10 +56,11 @@ Subscription::has_message() const
 std::optional<std::string>
 Subscription::get_message()
 {
-  if (!has_message()) {
+  auto message_with_info_opt = get_message_with_info();
+  if (!message_with_info_opt) {
     return std::nullopt;
   }
-  return messages_->dequeue().first;
+  return message_with_info_opt.value().first;
 }
 
 std::optional<std::pair<std::string, MessageInfo>>
