@@ -1,4 +1,4 @@
-// Copyright 2020-2021 Christophe Bedard
+// Copyright 2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -15,38 +15,29 @@
 #include <regex>
 #include <string>
 
-#include "email/gid.hpp"
 #include "email/named_object.hpp"
-#include "email/pub_sub.hpp"
 
 namespace email
 {
 
-PubSubObject::PubSubObject(const std::string & topic_name)
-: GidObject(),
-  NamedObject(topic_name)
-{
-  validate_name();
-}
+NamedObject::NamedObject(const std::string & name)
+: object_name_(name)
+{}
 
-PubSubObject::~PubSubObject() {}
+NamedObject::~NamedObject() {}
 
 const std::string &
-PubSubObject::get_topic_name() const
+NamedObject::get_object_name() const
 {
-  return get_object_name();
+  return object_name_;
 }
 
-void
-PubSubObject::validate_name() const
+bool
+NamedObject::has_newline() const
 {
-  const auto & topic_name = get_topic_name();
-  if (topic_name.empty()) {
-    throw TopicNameInvalidError(topic_name, "empty");
-  }
-  if (has_newline()) {
-    throw TopicNameInvalidError(topic_name, "newline");
-  }
+  return std::regex_match(object_name_, NamedObject::REGEX_NEWLINE);
 }
+
+const std::regex NamedObject::REGEX_NEWLINE(".*[\r]?\n.*", std::regex::extended);
 
 }  // namespace email
