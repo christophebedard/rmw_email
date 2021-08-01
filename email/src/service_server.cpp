@@ -76,17 +76,11 @@ ServiceServer::get_request_with_info()
   const auto request = requests_->dequeue();
   const auto email_data = request.first;
   const auto info = request.second;
-  auto sequence_number = ServiceHandler::extract_sequence_number(email_data);
-  if (!sequence_number) {
-    // Should not happen because ServiceHandler should filter those out
-    logger_->error("request without a sequence number");
-    return std::nullopt;
-  }
   // Put raw request data in a map so that we can
   // fetch & use it when sending our response
-  requests_raw_.insert({sequence_number.value(), email_data});
+  requests_raw_.insert({info.sequence_number(), email_data});
   return {{
-    ServiceRequest(sequence_number.value(), info.client_gid(), email_data.content.body), info}};
+    ServiceRequest(info.sequence_number(), info.client_gid(), email_data.content.body), info}};
 }
 
 void

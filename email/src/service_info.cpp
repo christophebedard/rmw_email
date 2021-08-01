@@ -29,7 +29,7 @@ ServiceInfo::ServiceInfo(
   const Timestamp & source_timestamp,
   const Timestamp & received_timestamp,
   const Gid & client_gid,
-  const uint32_t sequence_number)
+  const SequenceNumber sequence_number)
 : base_info_(source_timestamp, received_timestamp, client_gid),
   sequence_number_(sequence_number)
 {}
@@ -54,7 +54,7 @@ ServiceInfo::client_gid() const
   return base_info_.source_gid();
 }
 
-uint32_t
+SequenceNumber
 ServiceInfo::sequence_number() const
 {
   return sequence_number_;
@@ -74,12 +74,12 @@ ServiceInfo::from_headers(const EmailHeaders & headers)
     return std::nullopt;
   }
   // If the header is there, the value *should* be convertible to a sequence number
-  auto sequence_number_opt = utils::optional_stoul(sequence_number_str_opt.value());
+  auto sequence_number_opt = utils::optional_stoll(sequence_number_str_opt.value());
   if (!sequence_number_opt) {
     // TODO(christophebedard) log
     return std::nullopt;
   }
-  const uint32_t sequence_number = sequence_number_opt.value();
+  const SequenceNumber sequence_number = sequence_number_opt.value();
   return ServiceInfo(
     base_info_opt.value().source_timestamp(),
     base_info_opt.value().received_timestamp(),

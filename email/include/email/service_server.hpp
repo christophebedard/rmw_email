@@ -92,7 +92,7 @@ private:
   std::shared_ptr<Logger> logger_;
   ServiceHandler::RequestQueue::SharedPtr requests_;
   std::shared_ptr<EmailSender> sender_;
-  std::map<uint32_t, struct EmailData> requests_raw_;
+  std::map<SequenceNumber, struct EmailData> requests_raw_;
 };
 
 }  // namespace email

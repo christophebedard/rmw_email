@@ -67,7 +67,7 @@ wait_for_message(
 
 std::pair<std::string, ServiceInfo>
 wait_for_response_with_info(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
@@ -81,7 +81,7 @@ wait_for_response_with_info(
 
 std::pair<std::string, ServiceInfo>
 wait_for_response_with_info(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
@@ -90,7 +90,7 @@ wait_for_response_with_info(
 
 std::string
 wait_for_response(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {
@@ -99,7 +99,7 @@ wait_for_response(
 
 std::string
 wait_for_response(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1))
 {

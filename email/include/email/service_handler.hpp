@@ -42,7 +42,7 @@ namespace email
 class ServiceHandler : public EmailHandler
 {
 public:
-  using ServiceResponseMap = SafeMap<uint32_t, std::pair<struct EmailData, ServiceInfo>>;
+  using ServiceResponseMap = SafeMap<SequenceNumber, std::pair<struct EmailData, ServiceInfo>>;
   using RequestQueue = SafeQueue<std::pair<struct EmailData, ServiceInfo>>;
 
   /// Constructor.
@@ -78,15 +78,6 @@ public:
    */
   void
   virtual handle(const struct EmailData & data) const;
-
-  /// Extract request sequence number from email data.
-  /**
-   * \param data the email data
-   * \return the sequence number, or `std::nullopt` if there is none
-   */
-  static
-  std::optional<uint32_t>
-  extract_sequence_number(const struct EmailData & data);
 
   /// Custom header name for service request sequence number.
   /**
