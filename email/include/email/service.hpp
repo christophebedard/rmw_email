@@ -20,6 +20,7 @@
 #include <string>
 
 #include "email/gid.hpp"
+#include "email/gid_object.hpp"
 #include "email/macros.hpp"
 #include "email/named_object.hpp"
 #include "email/visibility_control.hpp"

@@ -17,6 +17,7 @@
 #include <string>
 
 #include "email/gid.hpp"
+#include "email/gid_object.hpp"
 
 TEST(TestGid, gid) {
   email::Gid gid1 = email::Gid::new_gid();
