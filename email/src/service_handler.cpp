@@ -39,6 +39,7 @@ ServiceHandler::ServiceHandler()
   logger_(log::create("ServiceHandler")),
   mutex_clients_(),
   clients_(),
+  clients_last_seq_(),
   mutex_servers_(),
   servers_()
 {
@@ -64,6 +65,9 @@ ServiceHandler::register_service_client(
   {
     std::scoped_lock<std::mutex> lock(mutex_clients_);
     clients_.insert({gid.value(), response_map});
+    // Set last received response sequence number to -1, i.e. none received;
+    // of course note that this assumes that sequence numbers start at 0
+    clients_last_seq_[gid.value()] = -1;
   }
   logger_->debug("service client registered with GID: {}", gid);
 }
@@ -73,7 +77,6 @@ ServiceHandler::register_service_server(
   const std::string & service_name,
   RequestQueue::SharedPtr request_queue)
 {
-  // TODO(christophebedard) throw/return flag if a service server already exists with the name?
   {
     std::scoped_lock<std::mutex> lock(mutex_servers_);
     servers_.insert({service_name, request_queue});
@@ -82,7 +85,7 @@ ServiceHandler::register_service_server(
 }
 
 void
-ServiceHandler::handle(const struct EmailData & data) const
+ServiceHandler::handle(const struct EmailData & data)
 {
   logger_->debug("handling new email");
   const std::string & topic = data.content.subject;
@@ -92,21 +95,43 @@ ServiceHandler::handle(const struct EmailData & data) const
     return;
   }
   const ServiceInfo & service_info = service_info_opt.value();
+  const Gid & client_gid = service_info.client_gid();
 
   // Only a service response if it's a reply email, i.e. if In-Reply-To
   // header is not empty, and if it has a sequence number header
   if (!data.in_reply_to.empty()) {
     std::scoped_lock<std::mutex> lock(mutex_clients_);
-    auto sequence_number = service_info.sequence_number();
-    // Find service clients with matching client GID
-    auto range = clients_.equal_range(service_info.client_gid().value());
-    for (auto it = range.first; it != range.second; ++it) {
+    const SequenceNumber sequence_number = service_info.sequence_number();
+    // Find service client with the corresponding client GID
+    auto client_it = clients_.find(client_gid.value());
+    if (client_it == clients_.cend()) {
       logger_->debug(
-        "adding response with seq number {} to client queue for service: {}",
+        "client with gid {} not found for response with seq number {} for service: {}",
+        client_gid,
         sequence_number,
         topic);
-      // Add data to the map
-      it->second->insert({sequence_number, {data, service_info}});
+    } else {
+      auto service_response_map = client_it->second;
+      // If the client already received a response for this specific request, discard it
+      const SequenceNumber last_response_sequence_number = clients_last_seq_[client_gid.value()];
+      if (sequence_number <= last_response_sequence_number) {
+        logger_->debug(
+          "discarding response with seq number {} (<={}) for client with gid {} for service: {}",
+          sequence_number,
+          last_response_sequence_number,
+          client_gid,
+          topic);
+      } else {
+        logger_->debug(
+          "adding response with seq number {} to client queue with gid {} for service: {}",
+          sequence_number,
+          client_gid,
+          topic);
+        // Set last received sequence number to this new one
+        clients_last_seq_[client_gid.value()] = sequence_number;
+        // Add data and service info to the map
+        service_response_map->insert({sequence_number, {data, service_info}});
+      }
     }
   }
 

@@ -35,7 +35,7 @@ namespace email
 
 ServiceServer::ServiceServer(const std::string & service_name)
 : ServiceObject(service_name),
-  logger_(log::create("ServiceServer::" + service_name)),
+  logger_(log::get_or_create("ServiceServer::" + service_name)),
   requests_(std::make_shared<ServiceHandler::RequestQueue>()),
   sender_(get_global_context()->get_sender()),
   requests_raw_()

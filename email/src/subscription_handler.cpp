@@ -63,7 +63,7 @@ SubscriptionHandler::register_subscription(
 }
 
 void
-SubscriptionHandler::handle(const struct EmailData & data) const
+SubscriptionHandler::handle(const struct EmailData & data)
 {
   logger_->debug("handling new email");
   const std::string & topic = data.content.subject;
