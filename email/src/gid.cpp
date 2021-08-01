@@ -76,16 +76,4 @@ Gid::to_string(const GidValue value)
   return std::to_string(value);
 }
 
-GidObject::GidObject()
-: gid_(Gid::new_gid())
-{}
-
-GidObject::~GidObject() {}
-
-const Gid &
-GidObject::get_gid() const
-{
-  return gid_;
-}
-
 }  // namespace email
