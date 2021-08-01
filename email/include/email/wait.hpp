@@ -22,6 +22,7 @@
 
 #include "email/message_info.hpp"
 #include "email/service_client.hpp"
+#include "email/service_info.hpp"
 #include "email/service_request.hpp"
 #include "email/service_server.hpp"
 #include "email/subscription.hpp"
@@ -92,19 +93,19 @@ wait_for_message(
 EMAIL_PUBLIC
 std::pair<std::string, ServiceInfo>
 wait_for_response_with_info(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a service reponse with info, waiting until it is available.
 /**
  * \see wait_for_response_with_info(
- *    const uint32_t, ServiceClient *, const std::chrono::milliseconds)
+ *    const SequenceNumber, ServiceClient *, const std::chrono::milliseconds)
  */
 EMAIL_PUBLIC
 std::string
 wait_for_response_with_info(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
@@ -120,18 +121,18 @@ wait_for_response_with_info(
 EMAIL_PUBLIC
 std::string
 wait_for_response(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   ServiceClient * client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
 /// Get a service reponse, waiting until it is available.
 /**
- * \see wait_for_response(const uint32_t, ServiceClient *, const std::chrono::milliseconds)
+ * \see wait_for_response(const SequenceNumber, ServiceClient *, const std::chrono::milliseconds)
  */
 EMAIL_PUBLIC
 std::string
 wait_for_response(
-  const uint32_t sequence_number,
+  const SequenceNumber sequence_number,
   std::shared_ptr<ServiceClient> client,
   const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 

@@ -61,7 +61,7 @@ public:
    */
   EMAIL_PUBLIC
   void
-  send_request(const std::string & request, const uint32_t sequence_number);
+  send_request(const std::string & request, const SequenceNumber sequence_number);
 
   /// Send request.
   /**
@@ -71,7 +71,7 @@ public:
    * \return the sequence_number to use for getting the corresponding response
    */
   EMAIL_PUBLIC
-  uint32_t
+  SequenceNumber
   send_request(const std::string & request);
 
   /// Check if the client has an available response to a request.
@@ -81,11 +81,11 @@ public:
    */
   EMAIL_PUBLIC
   bool
-  has_response(const uint32_t sequence_number);
+  has_response(const SequenceNumber sequence_number);
 
   /// Check if the client has an available response to any request.
   /**
-   * Note: `has_response(uint32_t)` should be used instead.
+   * Note: `has_response(SequenceNumber)` should be used instead.
    *
    * \return true if there is an available response, false otherwise
    */
@@ -100,7 +100,7 @@ public:
    */
   EMAIL_PUBLIC
   std::optional<std::string>
-  get_response(const uint32_t sequence_number);
+  get_response(const SequenceNumber sequence_number);
 
   /// Get a response with info if there is one.
   /**
@@ -109,7 +109,7 @@ public:
    */
   EMAIL_PUBLIC
   std::optional<std::pair<std::string, ServiceInfo>>
-  get_response_with_info(const uint32_t sequence_number);
+  get_response_with_info(const SequenceNumber sequence_number);
 
 private:
   EMAIL_DISABLE_COPY(ServiceClient)

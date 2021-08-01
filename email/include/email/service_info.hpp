@@ -26,6 +26,9 @@
 namespace email
 {
 
+/// Sequence number type.
+typedef int64_t SequenceNumber;
+
 /// Service info container.
 /**
  * Contains metadata about a received service request or response.
@@ -39,7 +42,7 @@ public:
     const Timestamp & source_timestamp,
     const Timestamp & received_timestamp,
     const Gid & client_gid,
-    const uint32_t sequence_number);
+    const SequenceNumber sequence_number);
 
   EMAIL_PUBLIC
   ServiceInfo(const ServiceInfo &) = default;
@@ -64,7 +67,7 @@ public:
 
   /// Get the request sequence number.
   EMAIL_PUBLIC
-  uint32_t
+  SequenceNumber
   sequence_number() const;
 
   /// Get a ServiceInfo object from email headers.
@@ -84,7 +87,7 @@ public:
 
 private:
   const CommunicationInfo base_info_;
-  const uint32_t sequence_number_;
+  const SequenceNumber sequence_number_;
 };
 
 }  // namespace email

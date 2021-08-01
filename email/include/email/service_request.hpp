@@ -18,6 +18,7 @@
 #include <string>
 
 #include "email/gid.hpp"
+#include "email/service_info.hpp"
 
 namespace email
 {
@@ -26,11 +27,11 @@ namespace email
 struct ServiceRequestId
 {
   /// Sequence number of the request.
-  uint32_t sequence_number;
+  SequenceNumber sequence_number;
   /// GID of the service client that made the request.
   Gid client_gid;
   /// Constructor.
-  ServiceRequestId(const uint32_t sequence_number_, const Gid & client_gid_)
+  ServiceRequestId(const SequenceNumber sequence_number_, const Gid & client_gid_)
   : sequence_number(sequence_number_),
     client_gid(client_gid_)
   {}
@@ -47,7 +48,7 @@ struct ServiceRequest
   std::string content;
   /// Constructor.
   ServiceRequest(
-    const uint32_t sequence_number_,
+    const SequenceNumber sequence_number_,
     const Gid & client_gid_,
     const std::string & content_)
   : id(sequence_number_, client_gid_),

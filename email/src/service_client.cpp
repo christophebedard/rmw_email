@@ -49,7 +49,7 @@ ServiceClient::~ServiceClient()
 }
 
 void
-ServiceClient::send_request(const std::string & request, const uint32_t sequence_number)
+ServiceClient::send_request(const std::string & request, const SequenceNumber sequence_number)
 {
   // Publisher will add source timestamp
   const EmailHeaders headers = {
@@ -58,18 +58,18 @@ ServiceClient::send_request(const std::string & request, const uint32_t sequence
   pub_.publish(request, headers);
 }
 
-uint32_t
+SequenceNumber
 ServiceClient::send_request(const std::string & request)
 {
-  static std::atomic_uint32_t sequence_number_counter = 0u;
-  const uint32_t sequence_number = sequence_number_counter++;
+  static std::atomic_int64_t sequence_number_counter = 0l;
+  const SequenceNumber sequence_number = sequence_number_counter++;
   logger_->debug("creating request with sequence number: {}", sequence_number);
   send_request(request, sequence_number);
   return sequence_number;
 }
 
 bool
-ServiceClient::has_response(const uint32_t sequence_number)
+ServiceClient::has_response(const SequenceNumber sequence_number)
 {
   return responses_->contains(sequence_number);
 }
@@ -81,7 +81,7 @@ ServiceClient::has_response()
 }
 
 std::optional<std::string>
-ServiceClient::get_response(const uint32_t sequence_number)
+ServiceClient::get_response(const SequenceNumber sequence_number)
 {
   auto response_with_info_opt = get_response_with_info(sequence_number);
   if (!response_with_info_opt) {
@@ -91,7 +91,7 @@ ServiceClient::get_response(const uint32_t sequence_number)
 }
 
 std::optional<std::pair<std::string, ServiceInfo>>
-ServiceClient::get_response_with_info(const uint32_t sequence_number)
+ServiceClient::get_response_with_info(const SequenceNumber sequence_number)
 {
   auto it = responses_->find(sequence_number);
   if (it == responses_->cend()) {

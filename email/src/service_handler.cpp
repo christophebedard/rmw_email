@@ -96,20 +96,17 @@ ServiceHandler::handle(const struct EmailData & data) const
   // Only a service response if it's a reply email, i.e. if In-Reply-To
   // header is not empty, and if it has a sequence number header
   if (!data.in_reply_to.empty()) {
-    // If it has a sequence number header
-    auto sequence_number = extract_sequence_number(data);
-    if (sequence_number) {
-      // Find service clients with matching client GID
-      std::scoped_lock<std::mutex> lock(mutex_clients_);
-      auto range = clients_.equal_range(service_info.client_gid().value());
-      for (auto it = range.first; it != range.second; ++it) {
-        logger_->debug(
-          "adding response with seq number {} to client queue for service: {}",
-          sequence_number.value(),
-          topic);
-        // Add data to the map
-        it->second->insert({sequence_number.value(), {data, service_info}});
-      }
+    std::scoped_lock<std::mutex> lock(mutex_clients_);
+    auto sequence_number = service_info.sequence_number();
+    // Find service clients with matching client GID
+    auto range = clients_.equal_range(service_info.client_gid().value());
+    for (auto it = range.first; it != range.second; ++it) {
+      logger_->debug(
+        "adding response with seq number {} to client queue for service: {}",
+        sequence_number,
+        topic);
+      // Add data to the map
+      it->second->insert({sequence_number, {data, service_info}});
     }
   }
 
@@ -124,17 +121,6 @@ ServiceHandler::handle(const struct EmailData & data) const
       it->second->push({data, service_info});
     }
   }
-}
-
-std::optional<uint32_t>
-ServiceHandler::extract_sequence_number(const struct EmailData & data)
-{
-  auto sequence_number = utils::response::get_header_value(
-    HEADER_SEQUENCE_NUMBER, data.additional_headers);
-  if (!sequence_number) {
-    return std::nullopt;
-  }
-  return utils::optional_stoul(sequence_number.value());
 }
 
 }  // namespace email
