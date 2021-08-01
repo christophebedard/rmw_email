@@ -19,6 +19,7 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/email/handler.hpp"
 #include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/email/response_utils.hpp"
@@ -34,7 +35,8 @@ namespace email
 {
 
 ServiceHandler::ServiceHandler()
-: logger_(log::create("ServiceHandler")),
+: EmailHandler(),
+  logger_(log::create("ServiceHandler")),
   mutex_clients_(),
   clients_(),
   mutex_servers_(),

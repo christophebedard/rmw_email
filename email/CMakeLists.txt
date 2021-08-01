@@ -38,6 +38,7 @@ set(SOURCES
   src/context.cpp
   src/curl/context.cpp
   src/curl/executor.cpp
+  src/email/handler.cpp
   src/email/payload_utils.cpp
   src/email/polling_manager.cpp
   src/email/receiver.cpp
