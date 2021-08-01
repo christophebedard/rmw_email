@@ -21,17 +21,18 @@
 
 #include "email/gid.hpp"
 #include "email/macros.hpp"
+#include "email/named_object.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
 {
 
 /// Error when a service name is invalid.
-class ServiceNameInvalidError : public std::runtime_error
+class ServiceNameInvalidError : public ObjectNameInvalidError
 {
 public:
   explicit ServiceNameInvalidError(const std::string & service_name, const std::string & reason)
-  : std::runtime_error("service name invalid (" + reason + "): '" + service_name + "'")
+  : ObjectNameInvalidError("service", service_name, reason)
   {}
 };
 
@@ -39,7 +40,7 @@ public:
 /**
  * Abstract class representing common service elements.
  */
-class ServiceObject : public GidObject
+class ServiceObject : public GidObject, public NamedObject
 {
 public:
   /// Get the service name.
@@ -47,7 +48,7 @@ public:
    * \return the service name
    */
   EMAIL_PUBLIC
-  std::string
+  const std::string &
   get_service_name() const;
 
 protected:
@@ -58,26 +59,19 @@ protected:
    * \param service_name the service name
    * \throw `ServiceNameInvalidError` if the service name is invalid
    */
-  EMAIL_PUBLIC
   explicit ServiceObject(const std::string & service_name);
 
-  EMAIL_PUBLIC
   virtual ~ServiceObject();
 
 private:
   EMAIL_DISABLE_COPY(ServiceObject)
 
-  /// Validate a service name and throw an error with an explanation if it is not valid.
-  static
+  /// Validate the service name and throw an error with an explanation if it is not valid.
+  /**
+   * \throw `ServiceNameInvalidError` if the service name is invalid
+   */
   void
-  validate_service_name(const std::string & service_name);
-
-  /// Regex which matches on a newline, with an optional carriage return before.
-  static const std::regex REGEX_NEWLINE;
-
-  // TODO(christophebedard) extract service name to/inherit from
-  // PubSubObject (rename) to validate the service name itself
-  const std::string service_name_;
+  virtual validate_name() const;
 };
 
 }  // namespace email

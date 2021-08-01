@@ -21,25 +21,26 @@
 
 #include "email/gid.hpp"
 #include "email/macros.hpp"
+#include "email/named_object.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
 {
 
 /// Error when a topic name is invalid.
-class TopicNameInvalidError : public std::runtime_error
+class TopicNameInvalidError : public ObjectNameInvalidError
 {
 public:
   explicit TopicNameInvalidError(const std::string & topic_name, const std::string & reason)
-  : std::runtime_error("topic name invalid (" + reason + "): '" + topic_name + "'")
+  : ObjectNameInvalidError("topic", topic_name, reason)
   {}
 };
 
 /// Abstract pub or sub object.
 /**
- * Abstract class representing common publishing and subscribing elements.
+ * Abstract class with common publisher and subscription elements.
  */
-class PubSubObject : public GidObject
+class PubSubObject : public GidObject, public NamedObject
 {
 public:
   /// Get the topic name.
@@ -47,7 +48,7 @@ public:
    * \return the topic name
    */
   EMAIL_PUBLIC
-  std::string
+  const std::string &
   get_topic_name() const;
 
 protected:
@@ -58,24 +59,19 @@ protected:
    * \param topic_name the topic name
    * \throw `TopicNameInvalidError` if the topic name is invalid
    */
-  EMAIL_PUBLIC
   explicit PubSubObject(const std::string & topic_name);
 
-  EMAIL_PUBLIC
   virtual ~PubSubObject();
 
 private:
   EMAIL_DISABLE_COPY(PubSubObject)
 
-  /// Validate a topic name and throw an error with an explanation if it is not valid.
-  static
+  /// Validate the topic name and throw an error with an explanation if it is not valid.
+  /**
+   * \throw `TopicNameInvalidError` if the topic name is invalid
+   */
   void
-  validate_topic_name(const std::string & topic_name);
-
-  /// Regex which matches on a newline, with an optional carriage return before.
-  static const std::regex REGEX_NEWLINE;
-
-  const std::string topic_name_;
+  virtual validate_name() const;
 };
 
 }  // namespace email

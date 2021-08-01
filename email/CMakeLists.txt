@@ -49,6 +49,7 @@ set(SOURCES
   src/init.cpp
   src/log.cpp
   src/message_info.cpp
+  src/named_object.cpp
   src/options.cpp
   src/pub_sub.cpp
   src/publisher.cpp
