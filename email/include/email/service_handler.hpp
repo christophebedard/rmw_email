@@ -20,6 +20,7 @@
 #include <mutex>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <unordered_map>
 #include <utility>
 
 #include "email/email/handler.hpp"
@@ -38,6 +39,10 @@ namespace email
 /// Email handler for service servers.
 /**
  * Distributes them to the right service server.
+ *
+ * There can be more than one service server for the same service name.
+ * All service servers may get the request and respond, but only the first response will be used
+ * by the original service client; the rest will be discarded.
  */
 class ServiceHandler : public EmailHandler
 {
@@ -77,7 +82,7 @@ public:
    * \param data the new email data
    */
   void
-  virtual handle(const struct EmailData & data) const;
+  virtual handle(const struct EmailData & data);
 
   /// Custom header name for service request sequence number.
   /**
@@ -91,9 +96,10 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
-  std::multimap<GidValue, ServiceResponseMap::SharedPtr> clients_;
+  std::unordered_map<GidValue, ServiceResponseMap::SharedPtr> clients_;
+  std::unordered_map<GidValue, SequenceNumber> clients_last_seq_;
   mutable std::mutex mutex_servers_;
-  std::multimap<std::string, RequestQueue::SharedPtr> servers_;
+  std::unordered_multimap<std::string, RequestQueue::SharedPtr> servers_;
 };
 
 }  // namespace email

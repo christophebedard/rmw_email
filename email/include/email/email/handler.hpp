@@ -34,7 +34,7 @@ public:
    * \param data the new email data
    */
   void
-  virtual handle(const struct EmailData & data) const = 0;
+  virtual handle(const struct EmailData & data) = 0;
 
 protected:
   /// Constructor.

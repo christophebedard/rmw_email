@@ -19,6 +19,7 @@
 #include <memory>
 #include <mutex>
 #include <string>
+#include <unordered_map>
 #include <utility>
 
 #include "email/email/handler.hpp"
@@ -67,14 +68,14 @@ public:
    * \param data the new email data
    */
   void
-  virtual handle(const struct EmailData & data) const;
+  virtual handle(const struct EmailData & data);
 
 private:
   EMAIL_DISABLE_COPY(SubscriptionHandler)
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex subscriptions_mutex_;
-  std::multimap<std::string, MessageQueue::SharedPtr> subscriptions_;
+  std::unordered_multimap<std::string, MessageQueue::SharedPtr> subscriptions_;
 };
 
 }  // namespace email
