@@ -39,7 +39,7 @@ TEST_F(TestWaitSet, empty) {
   email::WaitSet waitset;
   // Expect true: it should timeout since there is nothing that can satisfy the wait
   EXPECT_TRUE(waitset.wait(std::chrono::milliseconds(0)));
-  EXPECT_TRUE(waitset.wait(std::chrono::seconds(10)));
+  EXPECT_TRUE(waitset.wait(std::chrono::milliseconds(10)));
 }
 
 TEST_F(TestWaitSet, guard_condition_in_use) {
@@ -55,7 +55,9 @@ TEST_F(TestWaitSet, guard_condition_in_use) {
 
   cond.trigger();
   EXPECT_FALSE(waitset1.wait());
-  EXPECT_FALSE(waitset1.wait(std::chrono::milliseconds(0)));
+  waitset1.clear();
+  waitset1.add_guard_condition(&cond);
+  EXPECT_TRUE(waitset1.wait(std::chrono::milliseconds(0)));
 }
 
 TEST_F(TestWaitSet, guard_condition) {
@@ -95,4 +97,33 @@ TEST_F(TestWaitSet, guard_condition) {
     ASSERT_EQ(1u, waitset.get_guard_conditions().size());
     EXPECT_NE(nullptr, waitset.get_guard_conditions()[0]);
   }
+}
+
+TEST_F(TestWaitSet, multiple_waits) {
+  email::WaitSet waitset;
+  email::GuardCondition cond;
+  bool timedout = false;
+
+  waitset.add_guard_condition(&cond);
+  cond.trigger();
+  timedout = waitset.wait(std::chrono::milliseconds(-1));
+  EXPECT_FALSE(timedout);
+  ASSERT_EQ(1u, waitset.get_guard_conditions().size());
+  EXPECT_NE(nullptr, waitset.get_guard_conditions()[0]);
+  waitset.clear();
+
+  waitset.add_guard_condition(&cond);
+  timedout = waitset.wait(std::chrono::milliseconds(1));
+  EXPECT_TRUE(timedout);
+  ASSERT_EQ(1u, waitset.get_guard_conditions().size());
+  EXPECT_EQ(nullptr, waitset.get_guard_conditions()[0]);
+  waitset.clear();
+
+  cond.trigger();
+  waitset.add_guard_condition(&cond);
+  timedout = waitset.wait(std::chrono::milliseconds(-1));
+  EXPECT_FALSE(timedout);
+  ASSERT_EQ(1u, waitset.get_guard_conditions().size());
+  EXPECT_NE(nullptr, waitset.get_guard_conditions()[0]);
+  waitset.clear();
 }
