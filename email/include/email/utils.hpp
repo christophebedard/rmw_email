@@ -126,7 +126,7 @@ full_url(const std::string & protocol, const std::string & host, const int port)
 
 /// Try to call `std::stoul`.
 /**
- * \param std the string to convert to unsigned long
+ * \param str the string to convert to unsigned long
  * \return the number, or `std::nullopt` if it fails
  */
 EMAIL_PUBLIC
@@ -135,7 +135,7 @@ optional_stoul(const std::string & str);
 
 /// Try to call `std::stoi`.
 /**
- * \param std the string to convert to int
+ * \param str the string to convert to int
  * \return the number, or `std::nullopt` if it fails
  */
 EMAIL_PUBLIC
@@ -144,7 +144,7 @@ optional_stoi(const std::string & str);
 
 /// Try to call `std::stoll`.
 /**
- * \param std the string to convert to long int/long
+ * \param str the string to convert to long int/long
  * \return the number, or `std::nullopt` if it fails
  */
 EMAIL_PUBLIC

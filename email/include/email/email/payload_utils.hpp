@@ -41,6 +41,7 @@ namespace payload
  * \param cc the "CC" recipients
  * \param bcc the "BCC" recipients
  * \param content the content of the email
+ * \param additional_headers the additional headers to include
  * \param reply_ref the reply reference (Message-ID of the email to reply to)
  * \return the payload
  */
@@ -58,6 +59,7 @@ build_payload(
 /**
  * \param recipients the recipients
  * \param content the content of the email
+ * \param additional_headers the additional headers to include
  * \param reply_ref the reply reference (Message-ID of the email to reply to)
  * \return the payload
  */
