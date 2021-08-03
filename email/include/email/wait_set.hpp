@@ -115,6 +115,14 @@ public:
   const std::vector<GuardCondition *> &
   get_guard_conditions() const;
 
+  /// Clear the wait set content.
+  /**
+   * This must be called after calling wait() and checking the result.
+   */
+  EMAIL_PUBLIC
+  void
+  clear();
+
 private:
   EMAIL_DISABLE_COPY(WaitSet)
 
@@ -126,8 +134,19 @@ private:
    * \param guard_condition the guard condition
    * \throw `GuardConditionAlreadyInUseError` if guard condition is already used by a wait set
    */
+  static
   void
   check_guard_condition(GuardCondition * guard_condition);
+
+  /// Release guard conditions from this wait set.
+  /**
+   * By resetting the right flags.
+   *
+   * \param guard_conditions the guard conditions (must not have any `nullptr`s)
+   */
+  static
+  void
+  release_guard_conditions(std::vector<GuardCondition *> & guard_condition);
 
   /// Apply ready status to vector of objects.
   /**

@@ -62,6 +62,10 @@ public:
   bool
   exchange_in_use(bool in_use);
 
+  EMAIL_PUBLIC
+  void
+  reset();
+
 private:
   EMAIL_DISABLE_COPY(GuardCondition)
 

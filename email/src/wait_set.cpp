@@ -43,19 +43,37 @@ WaitSet::WaitSet(
   for (auto guard_condition : guard_conditions_) {
     check_guard_condition(guard_condition);
   }
+  logger_->debug("created");
 }
 
 WaitSet::WaitSet(Subscription * subscription)
 : WaitSet({subscription}, {}, {}, {})
 {}
 
-WaitSet::~WaitSet() {}
+WaitSet::~WaitSet()
+{
+  // Make sure to properly clear & release the waitables
+  release_guard_conditions(guard_conditions_);
+  clear();
+  logger_->debug("destroyed");
+}
 
 void
 WaitSet::check_guard_condition(GuardCondition * guard_condition)
 {
   if (guard_condition->exchange_in_use(true)) {
     throw GuardConditionAlreadyInUseError();
+  }
+}
+
+void
+WaitSet::release_guard_conditions(std::vector<GuardCondition *> & guard_conditions)
+{
+  for (auto guard_condition : guard_conditions) {
+    if (guard_condition) {
+      guard_condition->reset();
+      guard_condition->exchange_in_use(false);
+    }
   }
 }
 
@@ -106,6 +124,16 @@ const std::vector<GuardCondition *> &
 WaitSet::get_guard_conditions() const
 {
   return guard_conditions_;
+}
+
+void
+WaitSet::clear()
+{
+  subscriptions_.clear();
+  clients_.clear();
+  servers_.clear();
+  guard_conditions_.clear();
+  logger_->debug("cleared");
 }
 
 bool
@@ -161,6 +189,8 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
       break;
     }
   } while (loop_predicate());
+
+  release_guard_conditions(guard_conditions_);
 
   // Apply statuses to vectors
   apply_status<>(subscriptions_, subscriptions_ready);
