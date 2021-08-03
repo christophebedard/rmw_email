@@ -141,7 +141,7 @@ wait_for_response(
  * For the meaning of the timeout parameter, see `WaitSet::wait`.
  *
  * \param server the server
- * \param the timeout
+ * \param timeout the timeout
  * \return the service request with info
  */
 EMAIL_PUBLIC
@@ -165,7 +165,7 @@ wait_for_request_with_info(
  * For the meaning of the timeout parameter, see `WaitSet::wait`.
  *
  * \param server the server
- * \param the timeout
+ * \param timeout the timeout
  * \return the service request
  */
 EMAIL_PUBLIC

@@ -105,7 +105,7 @@ get_or_create(const std::string & name);
 
 /// Remove an existing logger.
 /**
- * \param name the logger
+ * \param logger the logger
  * \throw `LoggingNotInitializedError` if logging is not intialized
  */
 void
