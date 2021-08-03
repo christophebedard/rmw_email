@@ -170,5 +170,8 @@ extern "C" rmw_ret_t rmw_wait(
     }
   }
 
+  // Clear wait set after checking results
+  email_waitset->clear();
+
   return timedout ? RMW_RET_TIMEOUT : RMW_RET_OK;
 }

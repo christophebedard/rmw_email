@@ -47,4 +47,10 @@ GuardCondition::exchange_in_use(bool in_use)
   return in_use_.exchange(in_use);
 }
 
+void
+GuardCondition::reset()
+{
+  triggered_.store(false);
+}
+
 }  // namespace email
