@@ -1,0 +1,52 @@
+name: Documentation
+on:
+  push:
+    branches:
+      - master
+jobs:
+  docs_gen:
+    name: "Generate and push"
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install doxygen
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y doxygen
+    - name: Set up Python 3
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.8
+    - name: Get gen_docs
+      uses: actions/checkout@v2
+      with:
+        repository: christophebedard/gen_docs
+        ref: master
+        fetch-depth: 0
+        path: gen_docs/
+    - name: Install gen_docs dependencies
+      run: |
+        pip3 install -r gen_docs/requirements.txt
+    - name: Checkout gh-pages branch
+      uses: actions/checkout@v2
+      with:
+        ref: gh-pages
+        fetch-depth: 0
+        path: gh-pages/
+    - name: Insert token into gen_docs config to clone repo
+      run: |
+        sed -i -e 's*https://github.com/christophebedard/rmw_email.git*https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/christophebedard/rmw_email.git*g' gh-pages/gen_docs.yml
+    - name: Gen docs
+      run: |
+        python3 gen_docs/gen_docs.py --config gh-pages/gen_docs.yml
+    - name: Copy docs to gh-pages
+      run: |
+        rm -rf gh-pages/email/
+        cp -R output/master/ gh-pages/api/
+    - name: Commit and push to gh-pages branch
+      run: |
+        cd gh-pages
+        git config --global user.email "3717345+christophebedard@users.noreply.github.com"
+        git config --global user.name "Christophe Bedard [bot]"
+        git add .
+        git commit -m "Update docs"
+        git push origin gh-pages
