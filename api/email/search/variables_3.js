@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['disjunction_5fv_5116',['disjunction_v',['http://en.cppreference.com/w/cpp/types/disjunction.html',1,'std']]]
+  ['from_572',['from',['../structemail_1_1EmailData.html#a2e5bee79a2fd21d2f47090eb3c84c08b',1,'email::EmailData']]]
 ];

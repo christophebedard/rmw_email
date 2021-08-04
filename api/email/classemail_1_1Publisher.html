@@ -78,30 +78,42 @@ $(function() {
 <p>Message publisher.  
  <a href="classemail_1_1Publisher.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="publisher_8hpp_source.html">publisher.hpp</a>&gt;</code></p>
+<p><code>#include &lt;publisher.hpp&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for email::Publisher:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1Publisher__inherit__graph.png" border="0" usemap="#email_1_1Publisher_inherit__map" alt="Inheritance graph"/></div>
+<map name="email_1_1Publisher_inherit__map" id="email_1_1Publisher_inherit__map">
+<area shape="rect" title="Message publisher." alt="" coords="91,155,218,181"/>
+<area shape="rect" href="classemail_1_1PubSubObject.html" title="Abstract pub or sub object." alt="" coords="76,80,233,107"/>
+<area shape="rect" href="classemail_1_1GidObject.html" title="Abstract object with a GID." alt="" coords="5,5,136,32"/>
+<area shape="rect" href="classemail_1_1NamedObject.html" title="Abstract object with a name." alt="" coords="161,5,317,32"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for email::Publisher:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1Publisher__coll__graph.png" border="0" usemap="#email_1_1Publisher_coll__map" alt="Collaboration graph"/></div>
+<map name="email_1_1Publisher_coll__map" id="email_1_1Publisher_coll__map">
+<area shape="rect" title="Message publisher." alt="" coords="91,155,218,181"/>
+<area shape="rect" href="classemail_1_1PubSubObject.html" title="Abstract pub or sub object." alt="" coords="76,80,233,107"/>
+<area shape="rect" href="classemail_1_1GidObject.html" title="Abstract object with a GID." alt="" coords="5,5,136,32"/>
+<area shape="rect" href="classemail_1_1NamedObject.html" title="Abstract object with a name." alt="" coords="161,5,317,32"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a38811fe95dd19f2f704e589b34251682"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#a38811fe95dd19f2f704e589b34251682">Publisher</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;topic_name)</td></tr>
+<tr class="memitem:a38811fe95dd19f2f704e589b34251682"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#a38811fe95dd19f2f704e589b34251682">Publisher</a> (const std::string &amp;topic_name)</td></tr>
 <tr class="memdesc:a38811fe95dd19f2f704e589b34251682"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classemail_1_1Publisher.html#a38811fe95dd19f2f704e589b34251682">More...</a><br /></td></tr>
 <tr class="separator:a38811fe95dd19f2f704e589b34251682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaafeeb59a87dde27dc82c57090781ba"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#acaafeeb59a87dde27dc82c57090781ba">~Publisher</a> ()</td></tr>
 <tr class="separator:acaafeeb59a87dde27dc82c57090781ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe640abb7111f5ac3aa3588a7e643bb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#afe640abb7111f5ac3aa3588a7e643bb1">publish</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;message, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
+<tr class="memitem:afe640abb7111f5ac3aa3588a7e643bb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#afe640abb7111f5ac3aa3588a7e643bb1">publish</a> (const std::string &amp;message, std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
 <tr class="memdesc:afe640abb7111f5ac3aa3588a7e643bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish message.  <a href="classemail_1_1Publisher.html#afe640abb7111f5ac3aa3588a7e643bb1">More...</a><br /></td></tr>
 <tr class="separator:afe640abb7111f5ac3aa3588a7e643bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classemail_1_1PubSubObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classemail_1_1PubSubObject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classemail_1_1PubSubObject.html">email::PubSubObject</a></td></tr>
-<tr class="memitem:a00a22d18eebc82496581344c21e02c32 inherit pub_methods_classemail_1_1PubSubObject"><td class="memItemLeft" align="right" valign="top">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PubSubObject.html#a00a22d18eebc82496581344c21e02c32">get_topic_name</a> () const</td></tr>
+<tr class="memitem:a00a22d18eebc82496581344c21e02c32 inherit pub_methods_classemail_1_1PubSubObject"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PubSubObject.html#a00a22d18eebc82496581344c21e02c32">get_topic_name</a> () const</td></tr>
 <tr class="memdesc:a00a22d18eebc82496581344c21e02c32 inherit pub_methods_classemail_1_1PubSubObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the topic name.  <a href="classemail_1_1PubSubObject.html#a00a22d18eebc82496581344c21e02c32">More...</a><br /></td></tr>
 <tr class="separator:a00a22d18eebc82496581344c21e02c32 inherit pub_methods_classemail_1_1PubSubObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classemail_1_1GidObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classemail_1_1GidObject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classemail_1_1GidObject.html">email::GidObject</a></td></tr>
@@ -112,7 +124,7 @@ Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_methods_classemail_1_1PubSubObject"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classemail_1_1PubSubObject')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classemail_1_1PubSubObject.html">email::PubSubObject</a></td></tr>
-<tr class="memitem:a601bed08338a20e2d63e2332661a61e5 inherit pro_methods_classemail_1_1PubSubObject"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PubSubObject.html#a601bed08338a20e2d63e2332661a61e5">PubSubObject</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;topic_name)</td></tr>
+<tr class="memitem:a601bed08338a20e2d63e2332661a61e5 inherit pro_methods_classemail_1_1PubSubObject"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PubSubObject.html#a601bed08338a20e2d63e2332661a61e5">PubSubObject</a> (const std::string &amp;topic_name)</td></tr>
 <tr class="memdesc:a601bed08338a20e2d63e2332661a61e5 inherit pro_methods_classemail_1_1PubSubObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classemail_1_1PubSubObject.html#a601bed08338a20e2d63e2332661a61e5">More...</a><br /></td></tr>
 <tr class="separator:a601bed08338a20e2d63e2332661a61e5 inherit pro_methods_classemail_1_1PubSubObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30f73a71f66b22671b2be92884e6c81f inherit pro_methods_classemail_1_1PubSubObject"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PubSubObject.html#a30f73a71f66b22671b2be92884e6c81f">~PubSubObject</a> ()</td></tr>
@@ -124,10 +136,10 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a8fce88afdc622182418d32b1c43cc17b inherit pro_methods_classemail_1_1GidObject"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1GidObject.html#a8fce88afdc622182418d32b1c43cc17b">~GidObject</a> ()</td></tr>
 <tr class="separator:a8fce88afdc622182418d32b1c43cc17b inherit pro_methods_classemail_1_1GidObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_methods_classemail_1_1NamedObject"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_classemail_1_1NamedObject')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="classemail_1_1NamedObject.html">email::NamedObject</a></td></tr>
-<tr class="memitem:a73cb596f0cb6c525566738fea946ae3a inherit pro_methods_classemail_1_1NamedObject"><td class="memItemLeft" align="right" valign="top">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1NamedObject.html#a73cb596f0cb6c525566738fea946ae3a">get_object_name</a> () const</td></tr>
+<tr class="memitem:a73cb596f0cb6c525566738fea946ae3a inherit pro_methods_classemail_1_1NamedObject"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1NamedObject.html#a73cb596f0cb6c525566738fea946ae3a">get_object_name</a> () const</td></tr>
 <tr class="memdesc:a73cb596f0cb6c525566738fea946ae3a inherit pro_methods_classemail_1_1NamedObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the object's name.  <a href="classemail_1_1NamedObject.html#a73cb596f0cb6c525566738fea946ae3a">More...</a><br /></td></tr>
 <tr class="separator:a73cb596f0cb6c525566738fea946ae3a inherit pro_methods_classemail_1_1NamedObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f9a29567389176f23b61b8d0d71e774 inherit pro_methods_classemail_1_1NamedObject"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1NamedObject.html#a0f9a29567389176f23b61b8d0d71e774">NamedObject</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;name)</td></tr>
+<tr class="memitem:a0f9a29567389176f23b61b8d0d71e774 inherit pro_methods_classemail_1_1NamedObject"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1NamedObject.html#a0f9a29567389176f23b61b8d0d71e774">NamedObject</a> (const std::string &amp;name)</td></tr>
 <tr class="memdesc:a0f9a29567389176f23b61b8d0d71e774 inherit pro_methods_classemail_1_1NamedObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classemail_1_1NamedObject.html#a0f9a29567389176f23b61b8d0d71e774">More...</a><br /></td></tr>
 <tr class="separator:a0f9a29567389176f23b61b8d0d71e774 inherit pro_methods_classemail_1_1NamedObject"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab6de668d7cc2c1eefda15c5822599a46 inherit pro_methods_classemail_1_1NamedObject"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1NamedObject.html#ab6de668d7cc2c1eefda15c5822599a46">~NamedObject</a> ()</td></tr>
@@ -152,7 +164,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">email::Publisher::Publisher </td>
           <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>topic_name</em></td><td>)</td>
           <td></td>
         </tr>
@@ -209,13 +221,13 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void email::Publisher::publish </td>
           <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>message</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
           <td class="paramname"><em>additional_headers</em> = <code>std::nullopt</code>&#160;</td>
         </tr>
         <tr>
@@ -238,7 +250,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/email/<a class="el" href="publisher_8hpp_source.html">publisher.hpp</a></li>
+<li>include/email/<a class="el" href="publisher_8hpp.html">publisher.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,179,116,206"/>
+<area shape="rect" id="node2" href="$classemail_1_1ContextError.html" title="Generic context error." alt="" coords="199,85,348,111"/>
+<area shape="rect" id="node6" href="$classemail_1_1GuardConditionAlreadyInUseError.html" title="Guard condition already in use error." alt="" coords="164,143,383,184"/>
+<area shape="rect" id="node7" href="$classemail_1_1log_1_1LoggingError.html" title="Generic logging error." alt="" coords="185,209,362,235"/>
+<area shape="rect" id="node9" href="$classemail_1_1ObjectNameInvalidError.html" title="Error when an object name is invalid." alt="" coords="177,267,369,308"/>
+<area shape="rect" id="node3" href="$classemail_1_1ContextAlreadyInitializedError.html" title="Error when the context is already initialized." alt="" coords="431,5,663,47"/>
+<area shape="rect" id="node4" href="$classemail_1_1ContextInitFailedError.html" title="Error when the context initialization fails." alt="" coords="458,71,637,112"/>
+<area shape="rect" id="node5" href="$classemail_1_1ContextNotInitializedError.html" title="Error when the context is not initialized." alt="" coords="445,136,650,177"/>
+<area shape="rect" id="node8" href="$classemail_1_1log_1_1LoggingNotInitializedError.html" title="Error when logging is not initialized." alt="" coords="431,201,664,243"/>
+<area shape="rect" id="node10" href="$classemail_1_1ServiceNameInvalidError.html" title="Error when a service name is invalid." alt="" coords="448,267,647,308"/>
+<area shape="rect" id="node11" href="$classemail_1_1TopicNameInvalidError.html" title="Error when a topic name is invalid." alt="" coords="440,333,655,359"/>
+</map>

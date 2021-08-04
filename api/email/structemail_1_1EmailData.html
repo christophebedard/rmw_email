@@ -79,16 +79,21 @@ $(function() {
 <p>Raw email data with headers.  
  <a href="structemail_1_1EmailData.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="email_2info_8hpp_source.html">info.hpp</a>&gt;</code></p>
+<p><code>#include &lt;info.hpp&gt;</code></p>
 <div class="dynheader">
 Collaboration diagram for email::EmailData:</div>
 <div class="dyncontent">
 <div class="center"><img src="structemail_1_1EmailData__coll__graph.png" border="0" usemap="#email_1_1EmailData_coll__map" alt="Collaboration graph"/></div>
+<map name="email_1_1EmailData_coll__map" id="email_1_1EmailData_coll__map">
+<area shape="rect" title="Raw email data with headers." alt="" coords="117,95,252,121"/>
+<area shape="rect" href="structemail_1_1EmailRecipients.html" title="Recipients of an email." alt="" coords="5,5,177,32"/>
+<area shape="rect" href="structemail_1_1EmailContent.html" title="Content of an email." alt="" coords="202,5,357,32"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a9f77470450820644aaa39f4f56cd0600"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#a9f77470450820644aaa39f4f56cd0600">EmailData</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;message_id_, const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;in_reply_to_, const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;from_, const struct <a class="el" href="structemail_1_1EmailRecipients.html">EmailRecipients</a> &amp;recipients_, const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content_, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers_=std::nullopt)</td></tr>
+<tr class="memitem:a9f77470450820644aaa39f4f56cd0600"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#a9f77470450820644aaa39f4f56cd0600">EmailData</a> (const std::string &amp;message_id_, const std::string &amp;in_reply_to_, const std::string &amp;from_, const struct <a class="el" href="structemail_1_1EmailRecipients.html">EmailRecipients</a> &amp;recipients_, const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content_, std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers_=std::nullopt)</td></tr>
 <tr class="memdesc:a9f77470450820644aaa39f4f56cd0600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="structemail_1_1EmailData.html#a9f77470450820644aaa39f4f56cd0600">More...</a><br /></td></tr>
 <tr class="separator:a9f77470450820644aaa39f4f56cd0600"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46c7549ef1fe19897e30d030eab50127"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#a46c7549ef1fe19897e30d030eab50127">EmailData</a> (const <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;)=default</td></tr>
@@ -97,13 +102,13 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ae160e414dfee99357f5a2e0252ac1278"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#ae160e414dfee99357f5a2e0252ac1278">message_id</a></td></tr>
+<tr class="memitem:ae160e414dfee99357f5a2e0252ac1278"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#ae160e414dfee99357f5a2e0252ac1278">message_id</a></td></tr>
 <tr class="memdesc:ae160e414dfee99357f5a2e0252ac1278"><td class="mdescLeft">&#160;</td><td class="mdescRight">Message-ID header value.  <a href="structemail_1_1EmailData.html#ae160e414dfee99357f5a2e0252ac1278">More...</a><br /></td></tr>
 <tr class="separator:ae160e414dfee99357f5a2e0252ac1278"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab897397c43749238bb5b120f94558844"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#ab897397c43749238bb5b120f94558844">in_reply_to</a></td></tr>
+<tr class="memitem:ab897397c43749238bb5b120f94558844"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#ab897397c43749238bb5b120f94558844">in_reply_to</a></td></tr>
 <tr class="memdesc:ab897397c43749238bb5b120f94558844"><td class="mdescLeft">&#160;</td><td class="mdescRight">In-Reply-To header value.  <a href="structemail_1_1EmailData.html#ab897397c43749238bb5b120f94558844">More...</a><br /></td></tr>
 <tr class="separator:ab897397c43749238bb5b120f94558844"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e5bee79a2fd21d2f47090eb3c84c08b"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#a2e5bee79a2fd21d2f47090eb3c84c08b">from</a></td></tr>
+<tr class="memitem:a2e5bee79a2fd21d2f47090eb3c84c08b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#a2e5bee79a2fd21d2f47090eb3c84c08b">from</a></td></tr>
 <tr class="memdesc:a2e5bee79a2fd21d2f47090eb3c84c08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Origin email.  <a href="structemail_1_1EmailData.html#a2e5bee79a2fd21d2f47090eb3c84c08b">More...</a><br /></td></tr>
 <tr class="separator:a2e5bee79a2fd21d2f47090eb3c84c08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10accb9e498602cf7841471741e41fdd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structemail_1_1EmailRecipients.html">EmailRecipients</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structemail_1_1EmailData.html#a10accb9e498602cf7841471741e41fdd">recipients</a></td></tr>
@@ -131,19 +136,19 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="memname">email::EmailData::EmailData </td>
           <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>message_id_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>in_reply_to_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>from_</em>, </td>
         </tr>
         <tr>
@@ -161,7 +166,7 @@ Public Attributes</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
           <td class="paramname"><em>additional_headers_</em> = <code>std::nullopt</code>&#160;</td>
         </tr>
         <tr>
@@ -217,7 +222,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> email::EmailData::message_id</td>
+          <td class="memname">std::string email::EmailData::message_id</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -233,7 +238,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> email::EmailData::in_reply_to</td>
+          <td class="memname">std::string email::EmailData::in_reply_to</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -249,7 +254,7 @@ Public Attributes</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> email::EmailData::from</td>
+          <td class="memname">std::string email::EmailData::from</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -307,7 +312,7 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li>include/email/email/<a class="el" href="email_2info_8hpp_source.html">info.hpp</a></li>
+<li>include/email/email/<a class="el" href="email_2info_8hpp.html">info.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

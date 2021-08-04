@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['largest_5frequired_5fpool_5fblock_5216',['largest_required_pool_block',['http://en.cppreference.com/w/cpp/memory/pool_options.html',1,'std::pmr::pool_options']]]
+  ['recipients_586',['recipients',['../structemail_1_1EmailData.html#a10accb9e498602cf7841471741e41fdd',1,'email::EmailData']]]
 ];

@@ -78,7 +78,7 @@ $(function() {
 <p>Simple thread-safe map.  
  <a href="classemail_1_1SafeMap.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="safe__map_8hpp_source.html">safe_map.hpp</a>&gt;</code></p>
+<p><code>#include &lt;safe_map.hpp&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -87,19 +87,19 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a563ab30f2d67ffe0303fb7a7637a7dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28c78d46002ecb2d43b866aa03a06c3f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#a28c78d46002ecb2d43b866aa03a06c3f">~SafeMap</a> ()</td></tr>
 <tr class="separator:a28c78d46002ecb2d43b866aa03a06c3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa02ff889b01bf6b6d7d5907f0effdc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#afa02ff889b01bf6b6d7d5907f0effdc1">insert</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; const K, T &gt; &amp;&amp;p)</td></tr>
+<tr class="memitem:afa02ff889b01bf6b6d7d5907f0effdc1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#afa02ff889b01bf6b6d7d5907f0effdc1">insert</a> (std::pair&lt; const K, T &gt; &amp;&amp;p)</td></tr>
 <tr class="separator:afa02ff889b01bf6b6d7d5907f0effdc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed35e5730013f7a427f46896696c443e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#aed35e5730013f7a427f46896696c443e">erase</a> (typename <a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt; K, T &gt;::const_iterator &amp;it)</td></tr>
+<tr class="memitem:aed35e5730013f7a427f46896696c443e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#aed35e5730013f7a427f46896696c443e">erase</a> (typename std::map&lt; K, T &gt;::const_iterator &amp;it)</td></tr>
 <tr class="separator:aed35e5730013f7a427f46896696c443e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aff4db055c899b8d4103fed639fc6f300"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt; K, T &gt;::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#aff4db055c899b8d4103fed639fc6f300">find</a> (const K &amp;k) const</td></tr>
+<tr class="memitem:aff4db055c899b8d4103fed639fc6f300"><td class="memItemLeft" align="right" valign="top">std::map&lt; K, T &gt;::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#aff4db055c899b8d4103fed639fc6f300">find</a> (const K &amp;k) const</td></tr>
 <tr class="separator:aff4db055c899b8d4103fed639fc6f300"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a97478e47a15235d9d08a9ea19f789968"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#a97478e47a15235d9d08a9ea19f789968">empty</a> () const</td></tr>
 <tr class="separator:a97478e47a15235d9d08a9ea19f789968"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8060a7e82eb56a7c26bb0ec1db3b26cb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#a8060a7e82eb56a7c26bb0ec1db3b26cb">contains</a> (const K &amp;k) const</td></tr>
 <tr class="separator:a8060a7e82eb56a7c26bb0ec1db3b26cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0f1ce1776d7e4c46b24b07d72d23ec9"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; typename <a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt; K, T &gt;::const_iterator, typename <a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt; K, T &gt;::const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#af0f1ce1776d7e4c46b24b07d72d23ec9">equal_range</a> (const K &amp;k) const</td></tr>
+<tr class="memitem:af0f1ce1776d7e4c46b24b07d72d23ec9"><td class="memItemLeft" align="right" valign="top">std::pair&lt; typename std::map&lt; K, T &gt;::const_iterator, typename std::map&lt; K, T &gt;::const_iterator &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#af0f1ce1776d7e4c46b24b07d72d23ec9">equal_range</a> (const K &amp;k) const</td></tr>
 <tr class="separator:af0f1ce1776d7e4c46b24b07d72d23ec9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaf04df2a744013504ee3137e3f7a21ec"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt; K, T &gt;::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#aaf04df2a744013504ee3137e3f7a21ec">cend</a> () const noexcept</td></tr>
+<tr class="memitem:aaf04df2a744013504ee3137e3f7a21ec"><td class="memItemLeft" align="right" valign="top">std::map&lt; K, T &gt;::const_iterator&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SafeMap.html#aaf04df2a744013504ee3137e3f7a21ec">cend</a> () const noexcept</td></tr>
 <tr class="separator:aaf04df2a744013504ee3137e3f7a21ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -187,7 +187,7 @@ template&lt;class K , class T &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::insert </td>
           <td>(</td>
-          <td class="paramtype"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; const K, T &gt; &amp;&amp;&#160;</td>
+          <td class="paramtype">std::pair&lt; const K, T &gt; &amp;&amp;&#160;</td>
           <td class="paramname"><em>p</em></td><td>)</td>
           <td></td>
         </tr>
@@ -215,7 +215,7 @@ template&lt;class K , class T &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::erase </td>
           <td>(</td>
-          <td class="paramtype">typename <a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt; K, T &gt;::const_iterator &amp;&#160;</td>
+          <td class="paramtype">typename std::map&lt; K, T &gt;::const_iterator &amp;&#160;</td>
           <td class="paramname"><em>it</em></td><td>)</td>
           <td></td>
         </tr>
@@ -241,7 +241,7 @@ template&lt;class K , class T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt;K, T&gt;::const_iterator <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::find </td>
+          <td class="memname">std::map&lt;K, T&gt;::const_iterator <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::find </td>
           <td>(</td>
           <td class="paramtype">const K &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -324,7 +324,7 @@ template&lt;class K , class T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt;typename <a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt;K, T&gt;::const_iterator, typename <a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt;K, T&gt;::const_iterator&gt; <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::equal_range </td>
+          <td class="memname">std::pair&lt;typename std::map&lt;K, T&gt;::const_iterator, typename std::map&lt;K, T&gt;::const_iterator&gt; <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::equal_range </td>
           <td>(</td>
           <td class="paramtype">const K &amp;&#160;</td>
           <td class="paramname"><em>k</em></td><td>)</td>
@@ -352,7 +352,7 @@ template&lt;class K , class T &gt; </div>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="elRef" href="http://en.cppreference.com/w/cpp/container/map.html">std::map</a>&lt;K, T&gt;::const_iterator <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::cend </td>
+          <td class="memname">std::map&lt;K, T&gt;::const_iterator <a class="el" href="classemail_1_1SafeMap.html">email::SafeMap</a>&lt; K, T &gt;::cend </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -368,7 +368,7 @@ template&lt;class K , class T &gt; </div>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/email/<a class="el" href="safe__map_8hpp_source.html">safe_map.hpp</a></li>
+<li>include/email/<a class="el" href="safe__map_8hpp.html">safe_map.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

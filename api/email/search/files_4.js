@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['email_2ehpp_3253',['email.hpp',['../email_8hpp.html',1,'']]],
-  ['exception_3254',['exception',['http://en.cppreference.com/w/cpp/header/exception.html',1,'']]],
-  ['execution_3255',['execution',['http://en.cppreference.com/w/cpp/header/execution.html',1,'']]],
-  ['executor_2ehpp_3256',['executor.hpp',['../executor_8hpp.html',1,'']]]
+  ['info_2ehpp_348',['info.hpp',['../curl_2info_8hpp.html',1,'(Global Namespace)'],['../email_2info_8hpp.html',1,'(Global Namespace)']]],
+  ['init_2ehpp_349',['init.hpp',['../init_8hpp.html',1,'']]]
 ];

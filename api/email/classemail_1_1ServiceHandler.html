@@ -80,23 +80,31 @@ $(function() {
 <p>Email handler for service servers.  
  <a href="classemail_1_1ServiceHandler.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="service__handler_8hpp_source.html">service_handler.hpp</a>&gt;</code></p>
+<p><code>#include &lt;service_handler.hpp&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for email::ServiceHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1ServiceHandler__inherit__graph.png" border="0" usemap="#email_1_1ServiceHandler_inherit__map" alt="Inheritance graph"/></div>
+<map name="email_1_1ServiceHandler_inherit__map" id="email_1_1ServiceHandler_inherit__map">
+<area shape="rect" title="Email handler for service servers." alt="" coords="5,80,172,107"/>
+<area shape="rect" href="classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="11,5,166,32"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for email::ServiceHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1ServiceHandler__coll__graph.png" border="0" usemap="#email_1_1ServiceHandler_coll__map" alt="Collaboration graph"/></div>
+<map name="email_1_1ServiceHandler_coll__map" id="email_1_1ServiceHandler_coll__map">
+<area shape="rect" title="Email handler for service servers." alt="" coords="5,80,172,107"/>
+<area shape="rect" href="classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="11,5,166,32"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a59fbee3b3806c6c0e58e770deb54c68e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a59fbee3b3806c6c0e58e770deb54c68e">ServiceResponseMap</a> = <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt; <a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a> &gt; &gt;</td></tr>
+<tr class="memitem:a59fbee3b3806c6c0e58e770deb54c68e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a59fbee3b3806c6c0e58e770deb54c68e">ServiceResponseMap</a> = <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt; <a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, std::pair&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a> &gt; &gt;</td></tr>
 <tr class="separator:a59fbee3b3806c6c0e58e770deb54c68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade298da509aef85142d98c336c1e7058"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#ade298da509aef85142d98c336c1e7058">RequestQueue</a> = <a class="el" href="classemail_1_1SafeQueue.html">SafeQueue</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a> &gt; &gt;</td></tr>
+<tr class="memitem:ade298da509aef85142d98c336c1e7058"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#ade298da509aef85142d98c336c1e7058">RequestQueue</a> = <a class="el" href="classemail_1_1SafeQueue.html">SafeQueue</a>&lt; std::pair&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a> &gt; &gt;</td></tr>
 <tr class="separator:ade298da509aef85142d98c336c1e7058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -109,7 +117,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4d9b0e52c4a35897cba9e8a179f60efd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a4d9b0e52c4a35897cba9e8a179f60efd">register_service_client</a> (const <a class="el" href="classemail_1_1Gid.html">Gid</a> &amp;gid, ServiceResponseMap::SharedPtr response_map)</td></tr>
 <tr class="memdesc:a4d9b0e52c4a35897cba9e8a179f60efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service client with the handler.  <a href="classemail_1_1ServiceHandler.html#a4d9b0e52c4a35897cba9e8a179f60efd">More...</a><br /></td></tr>
 <tr class="separator:a4d9b0e52c4a35897cba9e8a179f60efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ca046b67012a04fd08c2871f19986a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">register_service_server</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;service_name, RequestQueue::SharedPtr request_queue)</td></tr>
+<tr class="memitem:a6ca046b67012a04fd08c2871f19986a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">register_service_server</a> (const std::string &amp;service_name, RequestQueue::SharedPtr request_queue)</td></tr>
 <tr class="memdesc:a6ca046b67012a04fd08c2871f19986a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service server with the handler.  <a href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">More...</a><br /></td></tr>
 <tr class="separator:a6ca046b67012a04fd08c2871f19986a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19fc6c955eeecce3e61e7b4efd9fa174"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a19fc6c955eeecce3e61e7b4efd9fa174">handle</a> (const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;data)</td></tr>
@@ -143,7 +151,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classemail_1_1ServiceHandler.html#a59fbee3b3806c6c0e58e770deb54c68e">email::ServiceHandler::ServiceResponseMap</a> =  <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt;<a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt;struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a>&gt; &gt;</td>
+          <td class="memname">using <a class="el" href="classemail_1_1ServiceHandler.html#a59fbee3b3806c6c0e58e770deb54c68e">email::ServiceHandler::ServiceResponseMap</a> =  <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt;<a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, std::pair&lt;struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a>&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -157,7 +165,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classemail_1_1ServiceHandler.html#ade298da509aef85142d98c336c1e7058">email::ServiceHandler::RequestQueue</a> =  <a class="el" href="classemail_1_1SafeQueue.html">SafeQueue</a>&lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt;struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a>&gt; &gt;</td>
+          <td class="memname">using <a class="el" href="classemail_1_1ServiceHandler.html#ade298da509aef85142d98c336c1e7058">email::ServiceHandler::RequestQueue</a> =  <a class="el" href="classemail_1_1SafeQueue.html">SafeQueue</a>&lt;std::pair&lt;struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a>&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -256,7 +264,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void email::ServiceHandler::register_service_server </td>
           <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
           <td class="paramname"><em>service_name</em>, </td>
         </tr>
         <tr>
@@ -348,7 +356,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/email/<a class="el" href="service__handler_8hpp_source.html">service_handler.hpp</a></li>
+<li>include/email/<a class="el" href="service__handler_8hpp.html">service_handler.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

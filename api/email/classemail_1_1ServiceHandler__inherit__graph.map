@@ -1,0 +1,4 @@
+<map id="email::ServiceHandler" name="email::ServiceHandler">
+<area shape="rect" id="node1" title="Email handler for service servers." alt="" coords="5,80,172,107"/>
+<area shape="rect" id="node2" href="$classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="11,5,166,32"/>
+</map>

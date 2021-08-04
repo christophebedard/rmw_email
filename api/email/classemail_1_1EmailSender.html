@@ -80,16 +80,25 @@ $(function() {
 <p>Email sending wrapper for curl.  
  <a href="classemail_1_1EmailSender.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="sender_8hpp_source.html">sender.hpp</a>&gt;</code></p>
+<p><code>#include &lt;sender.hpp&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for email::EmailSender:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1EmailSender__inherit__graph.png" border="0" usemap="#email_1_1EmailSender_inherit__map" alt="Inheritance graph"/></div>
+<map name="email_1_1EmailSender_inherit__map" id="email_1_1EmailSender_inherit__map">
+<area shape="rect" title="Email sending wrapper for curl." alt="" coords="6,80,155,107"/>
+<area shape="rect" href="classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="5,5,156,32"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
 Collaboration diagram for email::EmailSender:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1EmailSender__coll__graph.png" border="0" usemap="#email_1_1EmailSender_coll__map" alt="Collaboration graph"/></div>
+<map name="email_1_1EmailSender_coll__map" id="email_1_1EmailSender_coll__map">
+<area shape="rect" title="Email sending wrapper for curl." alt="" coords="6,171,155,197"/>
+<area shape="rect" href="classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="5,95,156,121"/>
+<area shape="rect" href="classemail_1_1CurlContext.html" title="Basic context wrapper for curl." alt="" coords="9,5,153,32"/>
+</map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -99,10 +108,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a94ef03d82fe38ac9f4a239b1a434f9ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84b1193de252540aca30a78973f30ff9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a84b1193de252540aca30a78973f30ff9">~EmailSender</a> ()</td></tr>
 <tr class="separator:a84b1193de252540aca30a78973f30ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19abb7a09cdb0e636609f02ce27b6b74"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a19abb7a09cdb0e636609f02ce27b6b74">send</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
+<tr class="memitem:a19abb7a09cdb0e636609f02ce27b6b74"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a19abb7a09cdb0e636609f02ce27b6b74">send</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
 <tr class="memdesc:a19abb7a09cdb0e636609f02ce27b6b74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an email.  <a href="classemail_1_1EmailSender.html#a19abb7a09cdb0e636609f02ce27b6b74">More...</a><br /></td></tr>
 <tr class="separator:a19abb7a09cdb0e636609f02ce27b6b74"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d28068f5ef7ff37b2b584c3c8961b1d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a4d28068f5ef7ff37b2b584c3c8961b1d">reply</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;email, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
+<tr class="memitem:a4d28068f5ef7ff37b2b584c3c8961b1d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a4d28068f5ef7ff37b2b584c3c8961b1d">reply</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;email, std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
 <tr class="memdesc:a4d28068f5ef7ff37b2b584c3c8961b1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reply to an email.  <a href="classemail_1_1EmailSender.html#a4d28068f5ef7ff37b2b584c3c8961b1d">More...</a><br /></td></tr>
 <tr class="separator:a4d28068f5ef7ff37b2b584c3c8961b1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classemail_1_1CurlExecutor"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classemail_1_1CurlExecutor')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classemail_1_1CurlExecutor.html">email::CurlExecutor</a></td></tr>
@@ -228,7 +237,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
           <td class="paramname"><em>additional_headers</em> = <code>std::nullopt</code>&#160;</td>
         </tr>
         <tr>
@@ -272,7 +281,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
           <td class="paramname"><em>additional_headers</em> = <code>std::nullopt</code>&#160;</td>
         </tr>
         <tr>
@@ -328,7 +337,7 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>include/email/email/<a class="el" href="sender_8hpp_source.html">sender.hpp</a></li>
+<li>include/email/email/<a class="el" href="sender_8hpp.html">sender.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

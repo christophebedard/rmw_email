@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['negation_5fv_5219',['negation_v',['http://en.cppreference.com/w/cpp/types/negation.html',1,'std']]]
+  ['to_589',['to',['../structemail_1_1EmailRecipients.html#a0f5c1ef98bc6030b7026b9ff7250e466',1,'email::EmailRecipients']]]
 ];
