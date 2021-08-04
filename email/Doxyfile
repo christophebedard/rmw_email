@@ -9,6 +9,11 @@ INPUT                  = ./include
 RECURSIVE              = YES
 OUTPUT_DIRECTORY       = doc_output
 
+# Disable source code pages/links
+SOURCE_BROWSER         = NO
+VERBATIM_HEADERS       = NO
+REFERENCES_LINK_SOURCE = NO
+
 EXTRACT_ALL            = YES
 SORT_MEMBER_DOCS       = NO
 
