@@ -1,0 +1,4 @@
+docs:
+  repo: https://github.com/christophebedard/rmw_email.git
+  versions:
+    master:
