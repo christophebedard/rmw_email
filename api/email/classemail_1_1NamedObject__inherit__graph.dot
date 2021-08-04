@@ -1,0 +1,19 @@
+digraph "email::NamedObject"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="email::NamedObject",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Abstract object with a name."];
+  Node1 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="email::PubSubObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1PubSubObject.html",tooltip="Abstract pub or sub object."];
+  Node2 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="email::Publisher",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1Publisher.html",tooltip="Message publisher."];
+  Node2 -> Node4 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="email::Subscription",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1Subscription.html",tooltip="Message subscription."];
+  Node1 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node5 [label="email::ServiceObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1ServiceObject.html",tooltip="Abstract service object."];
+  Node5 -> Node6 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node6 [label="email::ServiceClient",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1ServiceClient.html",tooltip="Service client."];
+  Node5 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node7 [label="email::ServiceServer",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1ServiceServer.html",tooltip="Service server."];
+}

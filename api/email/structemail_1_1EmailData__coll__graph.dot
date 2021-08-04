@@ -1,0 +1,19 @@
+digraph "email::EmailData"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node1 [label="email::EmailData",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Raw email data with headers."];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" recipients" ,fontname="Helvetica"];
+  Node2 [label="email::EmailRecipients",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structemail_1_1EmailRecipients.html",tooltip="Recipients of an email."];
+  Node3 -> Node2 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" cc\nto\nbcc" ,fontname="Helvetica"];
+  Node3 [label="std::vector\< std::string \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/container/vector.html",tooltip=" "];
+  Node4 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" additional_headers" ,fontname="Helvetica"];
+  Node4 [label="std::map\< std::string,\l std::string \>",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/container/map.html",tooltip=" "];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" from\nmessage_id\nin_reply_to" ,fontname="Helvetica"];
+  Node5 [label="std::string",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/string/basic_string.html",tooltip=" "];
+  Node6 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" content" ,fontname="Helvetica"];
+  Node6 [label="email::EmailContent",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$structemail_1_1EmailContent.html",tooltip="Content of an email."];
+  Node5 -> Node6 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" body\nsubject" ,fontname="Helvetica"];
+}
