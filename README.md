@@ -1,1 +1,1 @@
-# [`email` API documentation](./email/)
+# [`email` API documentation](./api/email/)
