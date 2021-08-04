@@ -29,7 +29,7 @@ jobs:
         vcs-repo-file-url: |
           ${{ github.workspace }}/dependencies.repos
           ${{ matrix.build-type == 'source' && 'https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos' || '' }}
-        import-token: ${{ secrets.REPO_TOKEN }}
+        import-token: ${{ secrets.GITHUB_TOKEN }}
         colcon-defaults: |
           {
             "build": {
