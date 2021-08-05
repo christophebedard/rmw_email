@@ -142,7 +142,7 @@ private:
   /**
    * By resetting the right flags.
    *
-   * \param guard_conditions the guard conditions (must not have any `nullptr`s)
+   * \param guard_condition the guard conditions (must not have any `nullptr`s)
    */
   static
   void
