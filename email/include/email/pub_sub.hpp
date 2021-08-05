@@ -58,7 +58,7 @@ protected:
    * Validates the topic name.
    *
    * \param topic_name the topic name
-   * \throw `TopicNameInvalidError` if the topic name is invalid
+   * \throw TopicNameInvalidError if the topic name is invalid
    */
   explicit PubSubObject(const std::string & topic_name);
 
@@ -69,7 +69,7 @@ private:
 
   /// Validate the topic name and throw an error with an explanation if it is not valid.
   /**
-   * \throw `TopicNameInvalidError` if the topic name is invalid
+   * \throw TopicNameInvalidError if the topic name is invalid
    */
   void
   virtual validate_name() const;

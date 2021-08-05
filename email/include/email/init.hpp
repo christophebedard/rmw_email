@@ -22,8 +22,8 @@ namespace email
 
 /// Initialize context using config file.
 /**
- * \throw `std::runtime_error` if context initialization failed
- * \throw `std::runtime_error` if context is already intialized
+ * \throw std::runtime_error if context initialization failed
+ * \throw std::runtime_error if context is already intialized
  */
 EMAIL_PUBLIC
 void
@@ -33,8 +33,8 @@ init();
 /**
  * \param argc the argument count
  * \param argv the argument vector
- * \throw `std::runtime_error` if context initialization failed
- * \throw `std::runtime_error` if context is already intialized
+ * \throw std::runtime_error if context initialization failed
+ * \throw std::runtime_error if context is already intialized
  */
 EMAIL_PUBLIC
 void

@@ -91,8 +91,8 @@ public:
   /**
    * Shouldn't be called directly: use `email::init()` instead.
    *
-   * \throw `ContextInitFailedError` if context initialization failed
-   * \throw `ContextAlreadyInitializedError` if context is already intialized
+   * \throw ContextInitFailedError if context initialization failed
+   * \throw ContextAlreadyInitializedError if context is already intialized
    */
   void
   init();
@@ -103,8 +103,8 @@ public:
    *
    * The process will exit with error code 1 if parsing of CLI options fails.
    *
-   * \throw `ContextInitFailedError` if context initialization failed
-   * \throw `ContextAlreadyInitializedError` if context is already intialized
+   * \throw ContextInitFailedError if context initialization failed
+   * \throw ContextAlreadyInitializedError if context is already intialized
    */
   void init(int argc, char const * const argv[]);
 
@@ -126,7 +126,7 @@ public:
   /// Get options.
   /**
    * \return the options
-   * \throw `ContextNotInitializedError` if context has not been initialized
+   * \throw ContextNotInitializedError if context has not been initialized
    */
   EMAIL_PUBLIC
   std::shared_ptr<Options>
@@ -137,7 +137,7 @@ public:
    * Will have been initialized.
    *
    * \return the `EmailReceiver` object
-   * \throw `ContextNotInitializedError` if context has not been initialized
+   * \throw ContextNotInitializedError if context has not been initialized
    */
   std::shared_ptr<EmailReceiver>
   get_receiver() const;
@@ -147,7 +147,7 @@ public:
    * Will have been initialized.
    *
    * \return the `EmailSender` object
-   * \throw `ContextNotInitializedError` if context has not been initialized
+   * \throw ContextNotInitializedError if context has not been initialized
    */
   std::shared_ptr<EmailSender>
   get_sender() const;
@@ -157,7 +157,7 @@ public:
    * Will have been started.
    *
    * \return the `PollingManager` object
-   * \throw `ContextNotInitializedError` if context has not been initialized
+   * \throw ContextNotInitializedError if context has not been initialized
    */
   std::shared_ptr<PollingManager>
   get_polling_manager() const;
@@ -165,7 +165,7 @@ public:
   /// Get the subscription handler.
   /**
    * \return the `SubscriptionHandler` object
-   * \throw `ContextNotInitializedError` if context has not been initialized
+   * \throw ContextNotInitializedError if context has not been initialized
    */
   std::shared_ptr<SubscriptionHandler>
   get_subscription_handler() const;
@@ -173,7 +173,7 @@ public:
   /// Get the service handler.
   /**
    * \return the `ServiceHandler` object
-   * \throw `ContextNotInitializedError` if context has not been initialized
+   * \throw ContextNotInitializedError if context has not been initialized
    */
   std::shared_ptr<ServiceHandler>
   get_service_handler() const;

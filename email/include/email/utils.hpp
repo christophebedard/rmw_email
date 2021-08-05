@@ -35,7 +35,7 @@ namespace utils
  * \param format the format string
  * \param args the arguments
  * \return the formatted string
- * \throw `std::runtime_error` if underlying `snprintf()` call fails
+ * \throw std::runtime_error if underlying `snprintf()` call fails
  */
 template<typename ... Args>
 std::string
@@ -54,7 +54,7 @@ string_format(const std::string & format, Args... args)
 /**
  * \param env_var the environment variable name
  * \return the value, or an empty string if it does not exist
- * \throw `std::runtime_error` on error
+ * \throw std::runtime_error on error
  */
 EMAIL_PUBLIC
 std::string
@@ -68,7 +68,7 @@ get_env_var(const std::string & env_var);
  * \param env_var the environment variable name
  * \param default_value the default value to use if not found
  * \return the value or default value
- * \throw `std::runtime_error` on error
+ * \throw std::runtime_error on error
  */
 EMAIL_PUBLIC
 std::string
