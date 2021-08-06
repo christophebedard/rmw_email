@@ -40,15 +40,7 @@ class WaitSet
 public:
   /// Constructor.
   EMAIL_PUBLIC
-  WaitSet(
-    std::vector<Subscription *> subscriptions = {},
-    std::vector<ServiceClient *> clients = {},
-    std::vector<ServiceServer *> servers = {},
-    std::vector<GuardCondition *> guard_conditions = {});
-
-  /// Constructor.
-  EMAIL_PUBLIC
-  explicit WaitSet(Subscription * subscription);
+  WaitSet();
 
   EMAIL_PUBLIC
   ~WaitSet();
@@ -117,7 +109,7 @@ public:
 
   /// Clear the wait set content.
   /**
-   * This must be called after calling wait() and checking the result.
+   * This must be called after calling `wait()` and checking the result.
    */
   EMAIL_PUBLIC
   void

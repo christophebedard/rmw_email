@@ -25,7 +25,7 @@ extern "C" rmw_wait_set_t * rmw_create_wait_set(rmw_context_t * context, size_t 
   RMW_CHECK_ARGUMENT_FOR_NULL(context, nullptr);
   static_cast<void>(max_conditions);
 
-  auto email_waitset = new (std::nothrow) email::WaitSet({}, {}, {}, {});
+  auto email_waitset = new (std::nothrow) email::WaitSet();
   if (nullptr == email_waitset) {
     RMW_SET_ERROR_MSG("failed to allocate waitset impl");
     return nullptr;
