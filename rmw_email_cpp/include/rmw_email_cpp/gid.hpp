@@ -20,8 +20,6 @@
 #include "email/gid.hpp"
 #include "rmw/types.h"
 
-// TODO(christophebedard) test the convert/copy functions
-
 /// Convert an email GID to rmw.
 rmw_gid_t convert_gid(const email::Gid & gid);
 
