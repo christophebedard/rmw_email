@@ -29,26 +29,15 @@ using namespace std::chrono_literals;
 namespace email
 {
 
-WaitSet::WaitSet(
-  std::vector<Subscription *> subscriptions,
-  std::vector<ServiceClient *> clients,
-  std::vector<ServiceServer *> servers,
-  std::vector<GuardCondition *> guard_conditions)
+WaitSet::WaitSet()
 : logger_(log::get_or_create("WaitSet")),
-  subscriptions_(std::move(subscriptions)),
-  clients_(std::move(clients)),
-  servers_(std::move(servers)),
-  guard_conditions_(std::move(guard_conditions))
+  subscriptions_(),
+  clients_(),
+  servers_(),
+  guard_conditions_()
 {
-  for (auto guard_condition : guard_conditions_) {
-    check_guard_condition(guard_condition);
-  }
   logger_->debug("created");
 }
-
-WaitSet::WaitSet(Subscription * subscription)
-: WaitSet({subscription}, {}, {}, {})
-{}
 
 WaitSet::~WaitSet()
 {

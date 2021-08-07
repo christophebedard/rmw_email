@@ -44,14 +44,12 @@ TEST_F(TestWaitSet, empty) {
 
 TEST_F(TestWaitSet, guard_condition_in_use) {
   email::GuardCondition cond;
-  email::WaitSet waitset1({}, {}, {}, {&cond});
-  ASSERT_EQ(1u, waitset1.get_guard_conditions().size());
-  EXPECT_THROW(
-    email::WaitSet waitset2({}, {}, {}, {&cond}),
-    email::GuardConditionAlreadyInUseError);
-  email::WaitSet waitset3;
-  EXPECT_THROW(waitset3.add_guard_condition(&cond), email::GuardConditionAlreadyInUseError);
-  ASSERT_EQ(0u, waitset3.get_guard_conditions().size());
+  email::WaitSet waitset1;
+  waitset1.add_guard_condition(&cond);
+  EXPECT_EQ(1u, waitset1.get_guard_conditions().size());
+  email::WaitSet waitset2;
+  EXPECT_THROW(waitset2.add_guard_condition(&cond), email::GuardConditionAlreadyInUseError);
+  EXPECT_EQ(0u, waitset2.get_guard_conditions().size());
 
   cond.trigger();
   EXPECT_FALSE(waitset1.wait());

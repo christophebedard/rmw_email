@@ -34,7 +34,8 @@ wait_for_message_with_info(
   Subscription * subscription,
   const std::chrono::milliseconds timeout)
 {
-  email::WaitSet waitset({subscription});
+  email::WaitSet waitset;
+  waitset.add_subscription(subscription);
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
 
