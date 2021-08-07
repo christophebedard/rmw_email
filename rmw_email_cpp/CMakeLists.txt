@@ -113,7 +113,7 @@ if(BUILD_TESTING)
     test/test_conversion.cpp
   )
   target_link_libraries(test_conversion ${PROJECT_NAME})
-  ament_target_dependencies(test_conversion dynmsg std_msgs)
+  ament_target_dependencies(test_conversion dynmsg rcl_interfaces std_msgs test_msgs)
 
   # Manually add source files+include dir because rmw_email_cpp isn't exported
   ament_add_gtest(test_gid
