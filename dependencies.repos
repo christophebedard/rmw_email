@@ -405,8 +405,8 @@ repositories:
     version: ros2
   ros2/yaml_cpp_vendor:
     type: git
-    url: https://github.com/christophebedard/yaml_cpp_vendor.git
-    version: fix-handling-of-flags-lists
+    url: https://github.com/ros2/yaml_cpp_vendor.git
+    version: master
   christophebedard/dynamic_message_introspection:
     type: git
     url: https://github.com/christophebedard/dynamic_message_introspection.git
