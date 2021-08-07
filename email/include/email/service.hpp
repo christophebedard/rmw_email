@@ -58,7 +58,7 @@ protected:
    * Validates the service name.
    *
    * \param service_name the service name
-   * \throw `ServiceNameInvalidError` if the service name is invalid
+   * \throw ServiceNameInvalidError if the service name is invalid
    */
   explicit ServiceObject(const std::string & service_name);
 
@@ -69,7 +69,7 @@ private:
 
   /// Validate the service name and throw an error with an explanation if it is not valid.
   /**
-   * \throw `ServiceNameInvalidError` if the service name is invalid
+   * \throw ServiceNameInvalidError if the service name is invalid
    */
   void
   virtual validate_name() const;

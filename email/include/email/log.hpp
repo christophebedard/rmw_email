@@ -67,14 +67,14 @@ enum Level
 /// Initialize logging.
 /**
  * \param level the console logging level
- * \throw `LoggingAlreadyInitializedError` if logging is already intialized
+ * \throw LoggingAlreadyInitializedError if logging is already intialized
  */
 void
 init(const Level & level);
 
 /// Initialize logging using environment variable value for the logging level.
 /**
- * \throw `LoggingAlreadyInitializedError` if logging is already intialized
+ * \throw LoggingAlreadyInitializedError if logging is already intialized
  */
 void
 init_from_env();
@@ -106,7 +106,7 @@ get_or_create(const std::string & name);
 /// Remove an existing logger.
 /**
  * \param logger the logger
- * \throw `LoggingNotInitializedError` if logging is not intialized
+ * \throw LoggingNotInitializedError if logging is not intialized
  */
 void
 remove(const std::shared_ptr<Logger> & logger);

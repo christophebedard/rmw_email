@@ -132,7 +132,7 @@ private:
    * If not, it flags the guard condition as being in use.
    *
    * \param guard_condition the guard condition
-   * \throw `GuardConditionAlreadyInUseError` if guard condition is already used by a wait set
+   * \throw GuardConditionAlreadyInUseError if guard condition is already used by a wait set
    */
   static
   void
@@ -142,7 +142,7 @@ private:
   /**
    * By resetting the right flags.
    *
-   * \param guard_conditions the guard conditions (must not have any `nullptr`s)
+   * \param guard_condition the guard conditions (must not have any `nullptr`s)
    */
   static
   void
