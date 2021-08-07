@@ -12,9 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// TODO(christophebedard) replace cout/endl with proper logging
 #include <yaml-cpp/yaml.h>
-#include <iostream>
 #include <string>
 
 #include "dynmsg/message_reading.hpp"
@@ -29,7 +27,6 @@
 #include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/log.hpp"
 
-// TODO(christophebedard) make this string conversion better
 std::string _yaml_to_string(const YAML::Node & yaml)
 {
   YAML::Emitter emitter;
@@ -70,11 +67,8 @@ bool yaml_to_msg(
     return false;
   }
   memcpy(ros_message, ros_msg.data, members->size_of_);
-  // TODO(christophebedard) figure out how/when to deallocate
-  // when message gets returned by the executor after executing the callback?
+  // TODO(christophebedard) figure out if/how/when to deallocate C messages
   // ros_message_destroy_(&ros_msg, allocator);
-  // TODO(christophebedard) provide ros_message pointer directly so that yaml_to_rosmsg_()
-  // directly into it?
   return true;
 }
 
@@ -101,18 +95,9 @@ std::string msg_to_yaml(
 bool yaml_to_msg(
   const rosidl_typesupport_introspection_cpp::MessageMembers * members,
   const std::string & yaml,
-  void * ros_message,
-  rcutils_allocator_t * allocator)
+  void * ros_message)
 {
-  // Convert to message
-  RosMessage_Cpp ros_msg = dynmsg::cpp::yaml_to_rosmsg_typeinfo(members, yaml, allocator);
-  if (!ros_msg.data && !ros_msg.type_info) {
-    return false;
-  }
-  memcpy(ros_message, ros_msg.data, members->size_of_);
-  // TODO(christophebedard) figure out how/when to deallocate
-  // when message gets returned by the executor after executing the callback?
-  // ros_message_destroy_(&ros_msg, allocator);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(members, yaml, ros_message);
   return true;
 }
 
@@ -180,7 +165,7 @@ bool yaml_to_msg(
     RMW_EMAIL_LOG_DEBUG("yaml_to_msg typesupport: C++");
     auto members = static_cast<const rosidl_typesupport_introspection_cpp::MessageMembers *>(
       ts->data);
-    return details::cpp::yaml_to_msg(members, yaml, ros_message, allocator);
+    return details::cpp::yaml_to_msg(members, yaml, ros_message);
   }
   rcutils_error_string_t error_cpp = rcutils_get_error_string();
   rcutils_reset_error();
