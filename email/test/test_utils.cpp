@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <gtest/gtest.h>
+#include <pthread.h>
 
 #include <optional> // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
@@ -130,4 +131,34 @@ TEST(TestUtils, optional_stox) {
   auto stoll_opt = email::utils::optional_stoll("42");
   ASSERT_TRUE(stoll_opt.has_value());
   EXPECT_EQ(42l, stoll_opt);
+}
+
+TEST(TestUtils, thread_set_name) {
+  const size_t max_len = 16UL;
+  char current_name[max_len] = "";
+  ASSERT_EQ(0, pthread_getname_np(pthread_self(), current_name, max_len));
+
+  char buffer[100] = "";
+
+  char name[] = "123456789012345";
+  email::utils::thread_set_name(name);
+  ASSERT_EQ(0, pthread_getname_np(pthread_self(), buffer, max_len));
+  EXPECT_STREQ(name, buffer);
+  memset(buffer, 0, sizeof(buffer));
+
+  char name_long[] = "1234567890123451234";
+  email::utils::thread_set_name(name_long);
+  ASSERT_EQ(0, pthread_getname_np(pthread_self(), buffer, max_len));
+  EXPECT_STREQ(name, buffer);
+  memset(buffer, 0, sizeof(buffer));
+
+  char name_short[] = "tinky winky";
+  email::utils::thread_set_name(name_short);
+  ASSERT_EQ(0, pthread_getname_np(pthread_self(), buffer, max_len));
+  EXPECT_STREQ(name_short, buffer);
+  memset(buffer, 0, sizeof(buffer));
+
+  email::utils::thread_set_name(current_name);
+
+  EXPECT_DEATH(email::utils::thread_set_name(NULL), "");
 }
