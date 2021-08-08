@@ -219,69 +219,6 @@ void compare_arrays(Arrays * msg)
   EXPECT_EQ(msg->alignment_check, 42);
 }
 
-TEST(TestConversion, test_msgs__BasicTypes_c)
-{
-  // Start with a ROS message, like a test_msgs/BasicTypes
-  test_msgs__msg__BasicTypes * msg = test_msgs__msg__BasicTypes__create();
-  populate_basic_types(msg);
-
-  // Convert it to a YAML representation
-  InterfaceTypeName interface{"test_msgs", "BasicTypes"};
-  RosMessage ros_msg;
-  ros_msg.type_info = dynmsg::c::get_type_info(interface);
-  ros_msg.data = reinterpret_cast<uint8_t *>(msg);
-  YAML::Node yaml_msg = message_to_yaml(ros_msg);
-  std::cout << "message to YAML:" << std::endl;
-  std::cout << yaml_msg << std::endl << std::endl;
-
-  // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
-  std::cout << "YAML:" << std::endl;
-  std::cout << yaml_string << std::endl << std::endl;
-  // ASSERT_STREQ(yaml_string.c_str(), "{}");
-
-  // Convert YAML string back to a ROS message
-  RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
-  auto msg_from_yaml = reinterpret_cast<test_msgs__msg__BasicTypes *>(ros_msg_from_yaml.data);
-
-  compare_basic_types(msg_from_yaml);
-
-  test_msgs__msg__BasicTypes__fini(msg);
-}
-
-TEST(TestConversion, test_msgs__BasicTypes_cpp)
-{
-  test_msgs::msg::BasicTypes msg;
-  populate_basic_types(&msg);
-
-  // Convert it to a YAML representation
-  // std::cout << "rosidl_generator_traits::to_yaml(msg)" << std::endl;
-  // std::cout << rosidl_generator_traits::to_yaml(msg) << std::endl;
-  InterfaceTypeName interface{"test_msgs", "BasicTypes"};
-  RosMessage_Cpp ros_msg;
-  ros_msg.type_info = dynmsg::cpp::get_type_info(interface);
-  ros_msg.data = reinterpret_cast<uint8_t *>(&msg);
-  YAML::Node yaml_msg = dynmsg::cpp::message_to_yaml(ros_msg);
-  std::cout << "message to YAML:" << std::endl;
-  std::cout << yaml_msg << std::endl << std::endl;
-
-  // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
-  std::cout << "YAML:" << std::endl;
-  std::cout << yaml_string << std::endl << std::endl;
-  // EXPECT_STREQ(yaml_string.c_str(), "{}");
-
-  // Convert YAML string back to a ROS message
-  RosMessage_Cpp ros_msg_from_yaml = dynmsg::cpp::yaml_to_rosmsg(interface, yaml_string);
-  auto msg_from_yaml = reinterpret_cast<test_msgs::msg::BasicTypes *>(ros_msg_from_yaml.data);
-
-  compare_basic_types(msg_from_yaml);
-}
-
 void populate_unbounded_sequences(test_msgs__msg__UnboundedSequences * msg)
 {
   rosidl_runtime_c__boolean__Sequence__init(&msg->bool_values, 4);
@@ -349,96 +286,7 @@ void populate_unbounded_sequences(test_msgs__msg__UnboundedSequences * msg)
   msg->uint64_values.data[1] = 27u;
   msg->uint64_values.data[2] = 9u;
   msg->uint64_values.data[3] = 242u;
-  // rosidl_runtime_c__String__Sequence__init(&msg->string_values, 4);
-  // msg->string_values.data[] = ;
-  // msg->string_values.data[] = ;
-  // msg->string_values.data[] = ;
-  // msg->string_values.data[] = ;
-  // test_msgs__msg__BasicTypes__Sequence__init(&msg->basic_types_values, 4);
-  // msg->basic_types_values.data[] = ;
-  // msg->basic_types_values.data[] = ;
-  // msg->basic_types_values.data[] = ;
-  // msg->basic_types_values.data[] = ;
-  // test_msgs__msg__Constants__Sequence__init(&msg->constants_values, 4);
-  // msg->constants_values.data[] = ;
-  // msg->constants_values.data[] = ;
-  // msg->constants_values.data[] = ;
-  // msg->constants_values.data[] = ;
-  // test_msgs__msg__Defaults__Sequence__init(&msg->defaults_values, 4);
-  // msg->defaults_values.data[] = ;
-  // msg->defaults_values.data[] = ;
-  // msg->defaults_values.data[] = ;
-  // msg->defaults_values.data[] = ;
-  // rosidl_runtime_c__boolean__Sequence__init(&msg->bool_values_default, 4);
-  // msg->bool_values_default.data[] = ;
-  // msg->bool_values_default.data[] = ;
-  // msg->bool_values_default.data[] = ;
-  // msg->bool_values_default.data[] = ;
-  // rosidl_runtime_c__octet__Sequence__init(&msg->byte_values_default, 4);
-  // msg->byte_values_default.data[] = ;
-  // msg->byte_values_default.data[] = ;
-  // msg->byte_values_default.data[] = ;
-  // msg->byte_values_default.data[] = ;
-  // rosidl_runtime_c__uint8__Sequence__init(&msg->char_values_default, 4);
-  // msg->char_values_default.data[] = ;
-  // msg->char_values_default.data[] = ;
-  // msg->char_values_default.data[] = ;
-  // msg->char_values_default.data[] = ;
-  // rosidl_runtime_c__float__Sequence__init(&msg->float32_values_default, 4);
-  // msg->float32_values_default.data[] = ;
-  // msg->float32_values_default.data[] = ;
-  // msg->float32_values_default.data[] = ;
-  // msg->float32_values_default.data[] = ;
-  // rosidl_runtime_c__double__Sequence__init(&msg->float64_values_default, 4);
-  // msg->float64_values_default.data[] = ;
-  // msg->float64_values_default.data[] = ;
-  // msg->float64_values_default.data[] = ;
-  // msg->float64_values_default.data[] = ;
-  // rosidl_runtime_c__int8__Sequence__init(&msg->int8_values_default, 4);
-  // msg->int8_values_default.data[] = ;
-  // msg->int8_values_default.data[] = ;
-  // msg->int8_values_default.data[] = ;
-  // msg->int8_values_default.data[] = ;
-  // rosidl_runtime_c__uint8__Sequence__init(&msg->uint8_values_default, 4);
-  // msg->uint8_values_default.data[] = ;
-  // msg->uint8_values_default.data[] = ;
-  // msg->uint8_values_default.data[] = ;
-  // msg->uint8_values_default.data[] = ;
-  // rosidl_runtime_c__int16__Sequence__init(&msg->int16_values_default, 4);
-  // msg->int16_values_default.data[] = ;
-  // msg->int16_values_default.data[] = ;
-  // msg->int16_values_default.data[] = ;
-  // msg->int16_values_default.data[] = ;
-  // rosidl_runtime_c__uint16__Sequence__init(&msg->uint16_values_default, 4);
-  // msg->uint16_values_default.data[] = ;
-  // msg->uint16_values_default.data[] = ;
-  // msg->uint16_values_default.data[] = ;
-  // msg->uint16_values_default.data[] = ;
-  // rosidl_runtime_c__int32__Sequence__init(&msg->int32_values_default, 4);
-  // msg->int32_values_default.data[] = ;
-  // msg->int32_values_default.data[] = ;
-  // msg->int32_values_default.data[] = ;
-  // msg->int32_values_default.data[] = ;
-  // rosidl_runtime_c__uint32__Sequence__init(&msg->uint32_values_default, 4);
-  // msg->uint32_values_default.data[] = ;
-  // msg->uint32_values_default.data[] = ;
-  // msg->uint32_values_default.data[] = ;
-  // msg->uint32_values_default.data[] = ;
-  // rosidl_runtime_c__int64__Sequence__init(&msg->int64_values_default, 4);
-  // msg->int64_values_default.data[] = ;
-  // msg->int64_values_default.data[] = ;
-  // msg->int64_values_default.data[] = ;
-  // msg->int64_values_default.data[] = ;
-  // rosidl_runtime_c__uint64__Sequence__init(&msg->uint64_values_default, 4);
-  // msg->uint64_values_default.data[] = ;
-  // msg->uint64_values_default.data[] = ;
-  // msg->uint64_values_default.data[] = ;
-  // msg->uint64_values_default.data[] = ;
-  // rosidl_runtime_c__String__Sequence__init(&msg->string_values_default, 4);
-  // msg->string_values_default.data[] = ;
-  // msg->string_values_default.data[] = ;
-  // msg->string_values_default.data[] = ;
-  // msg->string_values_default.data[] = ;
+  // And the rest
 }
 
 void populate_unbounded_sequences(test_msgs::msg::UnboundedSequences * msg)
@@ -555,7 +403,6 @@ void compare_unbounded_sequences(test_msgs__msg__UnboundedSequences * msg)
   // And the rest
 }
 
-
 void compare_unbounded_sequences(test_msgs::msg::UnboundedSequences * msg)
 {
   EXPECT_EQ(msg->bool_values[0], true);
@@ -613,6 +460,66 @@ void compare_unbounded_sequences(test_msgs::msg::UnboundedSequences * msg)
   // And the rest
 }
 
+TEST(TestConversion, test_msgs__BasicTypes_c)
+{
+  // Start with a ROS message, like a test_msgs/BasicTypes
+  test_msgs__msg__BasicTypes * msg = test_msgs__msg__BasicTypes__create();
+  populate_basic_types(msg);
+
+  // Convert it to a YAML representation
+  InterfaceTypeName interface{"test_msgs", "BasicTypes"};
+  RosMessage ros_msg;
+  ros_msg.type_info = dynmsg::c::get_type_info(interface);
+  ros_msg.data = reinterpret_cast<uint8_t *>(msg);
+  YAML::Node yaml_msg = message_to_yaml(ros_msg);
+  std::cout << "message to YAML:" << std::endl;
+  std::cout << yaml_msg << std::endl << std::endl;
+
+  // Convert the YAML representation to a string
+  YAML::Emitter emitter;
+  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
+  const std::string yaml_string(emitter.c_str());
+  std::cout << "YAML:" << std::endl;
+  std::cout << yaml_string << std::endl << std::endl;
+
+  // Convert YAML string back to a ROS message
+  RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
+  auto msg_from_yaml = reinterpret_cast<test_msgs__msg__BasicTypes *>(ros_msg_from_yaml.data);
+
+  compare_basic_types(msg_from_yaml);
+
+  test_msgs__msg__BasicTypes__fini(msg);
+}
+
+TEST(TestConversion, test_msgs__BasicTypes_cpp)
+{
+  test_msgs::msg::BasicTypes msg;
+  populate_basic_types(&msg);
+
+  // Convert it to a YAML representation
+  InterfaceTypeName interface{"test_msgs", "BasicTypes"};
+  RosMessage_Cpp ros_msg;
+  ros_msg.type_info = dynmsg::cpp::get_type_info(interface);
+  ros_msg.data = reinterpret_cast<uint8_t *>(&msg);
+  YAML::Node yaml_msg = dynmsg::cpp::message_to_yaml(ros_msg);
+  std::cout << "message to YAML:" << std::endl;
+  std::cout << yaml_msg << std::endl << std::endl;
+
+  // Convert the YAML representation to a string
+  YAML::Emitter emitter;
+  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
+  const std::string yaml_string(emitter.c_str());
+  std::cout << "YAML:" << std::endl;
+  std::cout << yaml_string << std::endl << std::endl;
+
+  // Convert YAML string back to a ROS message
+  test_msgs::msg::BasicTypes msg_from_yaml;
+  void * ros_message = reinterpret_cast<void *>(&msg_from_yaml);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(ros_msg.type_info, yaml_string, ros_message);
+
+  compare_basic_types(&msg_from_yaml);
+}
+
 TEST(TestConversion, test_msgs__UnboundedSequences_c)
 {
   // Start with a ROS message, like a test_msgs/UnboundedSequences
@@ -634,7 +541,6 @@ TEST(TestConversion, test_msgs__UnboundedSequences_c)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // ASSERT_STREQ(yaml_string.c_str(), "{}");
 
   // Convert YAML string back to a ROS message
   RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
@@ -667,14 +573,13 @@ TEST(TestConversion, test_msgs__UnboundedSequences_cpp)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // ASSERT_STREQ(yaml_string.c_str(), "{}");
 
   // Convert YAML string back to a ROS message
-  RosMessage_Cpp ros_msg_from_yaml = dynmsg::cpp::yaml_to_rosmsg(interface, yaml_string);
-  auto msg_from_yaml =
-    reinterpret_cast<test_msgs::msg::UnboundedSequences *>(ros_msg_from_yaml.data);
+  test_msgs::msg::UnboundedSequences msg_from_yaml;
+  void * ros_message = reinterpret_cast<void *>(&msg_from_yaml);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(ros_msg.type_info, yaml_string, ros_message);
 
-  compare_unbounded_sequences(msg_from_yaml);
+  compare_unbounded_sequences(&msg_from_yaml);
 }
 
 TEST(TestConversion, test_msgs__Nested_c)
@@ -698,7 +603,6 @@ TEST(TestConversion, test_msgs__Nested_c)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // EXPECT_STREQ(yaml_string.c_str(), "{}");
 
   // Convert YAML string back to a ROS message
   RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
@@ -715,8 +619,6 @@ TEST(TestConversion, test_msgs__Nested_cpp)
   populate_nested(&msg);
 
   // Convert it to a YAML representation
-  // std::cout << "rosidl_generator_traits::to_yaml(msg)" << std::endl;
-  // std::cout << rosidl_generator_traits::to_yaml(msg) << std::endl;
   InterfaceTypeName interface{"test_msgs", "Nested"};
   RosMessage_Cpp ros_msg;
   ros_msg.type_info = dynmsg::cpp::get_type_info(interface);
@@ -731,13 +633,13 @@ TEST(TestConversion, test_msgs__Nested_cpp)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // EXPECT_STREQ(yaml_string.c_str(), "{}");
 
   // Convert YAML string back to a ROS message
-  RosMessage_Cpp ros_msg_from_yaml = dynmsg::cpp::yaml_to_rosmsg(interface, yaml_string);
-  auto msg_from_yaml = reinterpret_cast<test_msgs::msg::Nested *>(ros_msg_from_yaml.data);
+  test_msgs::msg::Nested msg_from_yaml;
+  void * ros_message = reinterpret_cast<void *>(&msg_from_yaml);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(ros_msg.type_info, yaml_string, ros_message);
 
-  compare_nested(msg_from_yaml);
+  compare_nested(&msg_from_yaml);
 }
 
 TEST(TestConversion, test_msgs__Arrays_c)
@@ -761,7 +663,6 @@ TEST(TestConversion, test_msgs__Arrays_c)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // EXPECT_STREQ(yaml_string.c_str(), "{}");
 
   // Convert YAML string back to a ROS message
   RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
@@ -779,8 +680,6 @@ TEST(TestConversion, test_msgs__Arrays_cpp)
   populate_arrays(&msg);
 
   // Convert it to a YAML representation
-  // std::cout << "rosidl_generator_traits::to_yaml(msg)" << std::endl;
-  // std::cout << rosidl_generator_traits::to_yaml(msg) << std::endl;
   InterfaceTypeName interface{"test_msgs", "Arrays"};
   RosMessage_Cpp ros_msg;
   ros_msg.type_info = dynmsg::cpp::get_type_info(interface);
@@ -795,13 +694,13 @@ TEST(TestConversion, test_msgs__Arrays_cpp)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // EXPECT_STREQ(yaml_string.c_str(), "{}");
 
   // Convert YAML string back to a ROS message
-  RosMessage_Cpp ros_msg_from_yaml = dynmsg::cpp::yaml_to_rosmsg(interface, yaml_string);
-  auto msg_from_yaml = reinterpret_cast<test_msgs::msg::Arrays *>(ros_msg_from_yaml.data);
+  test_msgs::msg::Arrays msg_from_yaml;
+  void * ros_message = reinterpret_cast<void *>(&msg_from_yaml);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(ros_msg.type_info, yaml_string, ros_message);
 
-  compare_arrays(msg_from_yaml);
+  compare_arrays(&msg_from_yaml);
 }
 
 TEST(TestConversion, std_msgs__String_c)
@@ -830,10 +729,8 @@ TEST(TestConversion, std_msgs__String_c)
   // Convert YAML string back to a ROS message
   RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
   auto msg_from_yaml = reinterpret_cast<std_msgs__msg__String *>(ros_msg_from_yaml.data);
-  rosidl_runtime_c__String msg_from_yaml_str = msg_from_yaml->data;
-  std::cout << msg_from_yaml_str.data << std::endl;
 
-  EXPECT_STREQ(msg_from_yaml_str.data, "hello world");
+  EXPECT_STREQ(msg_from_yaml->data.data, "hello world");
 
   std_msgs__msg__String__fini(msg);
 }
@@ -845,8 +742,6 @@ TEST(TestConversion, std_msgs__String_cpp)
   msg.data = "hello world";
 
   // Convert it to a YAML representation
-  // std::cout << "rosidl_generator_traits::to_yaml(msg)" << std::endl;
-  // std::cout << rosidl_generator_traits::to_yaml(msg) << std::endl;
   InterfaceTypeName interface{"std_msgs", "String"};
   RosMessage_Cpp ros_msg;
   ros_msg.type_info = dynmsg::cpp::get_type_info(interface);
@@ -864,10 +759,11 @@ TEST(TestConversion, std_msgs__String_cpp)
   EXPECT_STREQ(yaml_string.c_str(), "{\"data\": \"hello world\"}");
 
   // Convert YAML string back to a ROS message
-  RosMessage_Cpp ros_msg_from_yaml = dynmsg::cpp::yaml_to_rosmsg(interface, yaml_string);
-  auto msg_from_yaml = reinterpret_cast<std_msgs::msg::String *>(ros_msg_from_yaml.data);
-  std::cout << msg_from_yaml->data << std::endl;
-  EXPECT_STREQ(msg_from_yaml->data.c_str(), "hello world");
+  std_msgs::msg::String msg_from_yaml;
+  void * ros_message = reinterpret_cast<void *>(&msg_from_yaml);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(ros_msg.type_info, yaml_string, ros_message);
+
+  EXPECT_STREQ(msg_from_yaml.data.c_str(), "hello world");
 }
 
 TEST(TestConversion, std_msgs__Header_c)
@@ -900,11 +796,7 @@ TEST(TestConversion, std_msgs__Header_c)
   // Convert YAML string back to a ROS message
   RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, emitter.c_str());
   auto msg_from_yaml = reinterpret_cast<std_msgs__msg__Header *>(ros_msg_from_yaml.data);
-  builtin_interfaces__msg__Time msg_from_yaml_time = msg_from_yaml->stamp;
-  rosidl_runtime_c__String msg_from_yaml_str = msg_from_yaml->frame_id;
-  std::cout << "time: sec=" << msg_from_yaml_time.sec <<
-    ", nanosec=" << msg_from_yaml_time.nanosec << std::endl;
-  std::cout << "frame_id=" << msg_from_yaml_str.data << std::endl;
+
   EXPECT_EQ(msg_from_yaml->stamp.sec, 4);
   EXPECT_EQ(msg_from_yaml->stamp.nanosec, 20u);
   EXPECT_STREQ(msg_from_yaml->frame_id.data, "my_frame");
@@ -923,8 +815,6 @@ TEST(TestConversion, std_msgs__Header_cpp)
   msg.stamp = stamp;
 
   // Convert it to a YAML representation
-  // std::cout << "rosidl_generator_traits::to_yaml(msg)" << std::endl;
-  // std::cout << rosidl_generator_traits::to_yaml(msg) << std::endl;
   InterfaceTypeName interface{"std_msgs", "Header"};
   RosMessage_Cpp ros_msg;
   ros_msg.type_info = dynmsg::cpp::get_type_info(interface);
@@ -944,14 +834,13 @@ TEST(TestConversion, std_msgs__Header_cpp)
     "{\"stamp\": {\"sec\": \"4\", \"nanosec\": \"20\"}, \"frame_id\": \"my_frame\"}");
 
   // Convert YAML string back to a ROS message
-  RosMessage_Cpp ros_msg_from_yaml = dynmsg::cpp::yaml_to_rosmsg(interface, emitter.c_str());
-  auto msg_from_yaml = reinterpret_cast<std_msgs::msg::Header *>(ros_msg_from_yaml.data);
-  std::cout << "time: sec=" << msg_from_yaml->stamp.sec <<
-    ", nanosec=" << msg_from_yaml->stamp.nanosec << std::endl;
-  std::cout << "frame_id=" << msg_from_yaml->frame_id << std::endl;
-  EXPECT_EQ(msg_from_yaml->stamp.sec, 4);
-  EXPECT_EQ(msg_from_yaml->stamp.nanosec, 20u);
-  EXPECT_STREQ(msg_from_yaml->frame_id.c_str(), "my_frame");
+  std_msgs::msg::Header msg_from_yaml;
+  void * ros_message = reinterpret_cast<void *>(&msg_from_yaml);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(ros_msg.type_info, yaml_string, ros_message);
+
+  EXPECT_EQ(msg_from_yaml.stamp.sec, 4);
+  EXPECT_EQ(msg_from_yaml.stamp.nanosec, 20u);
+  EXPECT_STREQ(msg_from_yaml.frame_id.c_str(), "my_frame");
 }
 
 TEST(TestConversion, rcl_interfaces__ParameterEvent_c)
@@ -981,7 +870,6 @@ TEST(TestConversion, rcl_interfaces__ParameterEvent_c)
   InterfaceTypeName interface{"rcl_interfaces", "ParameterEvent"};
   RosMessage ros_msg;
   ros_msg.type_info = dynmsg::c::get_type_info(interface);
-  // ros_msg.data = reinterpret_cast<uint8_t *>(&msg);
   ros_msg.data = reinterpret_cast<uint8_t *>(msg);
   YAML::Node yaml_msg = dynmsg::c::message_to_yaml(ros_msg);
   std::cout << "message to YAML:" << std::endl;
@@ -993,12 +881,12 @@ TEST(TestConversion, rcl_interfaces__ParameterEvent_c)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // ASSERT_STREQ(yaml_string.c_str(), "{TODO}");
 
   // Convert YAML string back to a ROS message
   RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
   auto msg_from_yaml =
     reinterpret_cast<rcl_interfaces__msg__ParameterEvent *>(ros_msg_from_yaml.data);
+
   EXPECT_EQ(4, msg_from_yaml->stamp.sec);
   EXPECT_EQ(20u, msg_from_yaml->stamp.nanosec);
   EXPECT_STREQ("/my/node", msg_from_yaml->node.data);
@@ -1038,8 +926,6 @@ TEST(TestConversion, rcl_interfaces__ParameterEvent_cpp)
   msg.new_parameters.push_back(param);
 
   // Convert it to a YAML representation
-  // std::cout << "rosidl_generator_traits::to_yaml(msg)" << std::endl;
-  // std::cout << rosidl_generator_traits::to_yaml(msg) << std::endl;
   InterfaceTypeName interface{"rcl_interfaces", "ParameterEvent"};
   RosMessage_Cpp ros_msg;
   ros_msg.type_info = dynmsg::cpp::get_type_info(interface);
@@ -1054,19 +940,17 @@ TEST(TestConversion, rcl_interfaces__ParameterEvent_cpp)
   const std::string yaml_string(emitter.c_str());
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  // EXPECT_STREQ(
-  //   yaml_string.c_str(),
-  //   "{\"stamp\": {\"sec\": \"4\", \"nanosec\": \"20\"}, \"node\": \"/my/node\", \"new_parameters\": ~, \"changed_parameters\": ~, \"deleted_parameters\": ~}");
 
   // Convert YAML string back to a ROS message
-  RosMessage_Cpp ros_msg_from_yaml = dynmsg::cpp::yaml_to_rosmsg(interface, emitter.c_str());
-  auto msg_from_yaml =
-    reinterpret_cast<rcl_interfaces::msg::ParameterEvent *>(ros_msg_from_yaml.data);
-  EXPECT_STREQ(msg_from_yaml->node.c_str(), "/my/node");
-  EXPECT_EQ(msg_from_yaml->stamp.sec, 4);
-  EXPECT_EQ(msg_from_yaml->stamp.nanosec, 20u);
-  ASSERT_EQ(msg_from_yaml->new_parameters.size(), 1ul);
-  EXPECT_STREQ(msg_from_yaml->new_parameters[0].name.c_str(), "the_param_name");
-  EXPECT_EQ(msg_from_yaml->new_parameters[0].value.type, 1u);
-  EXPECT_EQ(msg_from_yaml->new_parameters[0].value.bool_value, true);
+  rcl_interfaces::msg::ParameterEvent msg_from_yaml;
+  void * ros_message = reinterpret_cast<void *>(&msg_from_yaml);
+  dynmsg::cpp::yaml_to_rosmsg_typeinfo(ros_msg.type_info, yaml_string, ros_message);
+
+  EXPECT_STREQ(msg_from_yaml.node.c_str(), "/my/node");
+  EXPECT_EQ(msg_from_yaml.stamp.sec, 4);
+  EXPECT_EQ(msg_from_yaml.stamp.nanosec, 20u);
+  ASSERT_EQ(msg_from_yaml.new_parameters.size(), 1ul);
+  EXPECT_STREQ(msg_from_yaml.new_parameters[0].name.c_str(), "the_param_name");
+  EXPECT_EQ(msg_from_yaml.new_parameters[0].value.type, 1u);
+  EXPECT_EQ(msg_from_yaml.new_parameters[0].value.bool_value, true);
 }
