@@ -12,6 +12,9 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <pthread.h>
+
+#include <cassert>
 #include <fstream>
 #include <sstream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -127,6 +130,25 @@ optional_stoll(const std::string & str)
   } catch (...) {  // LCOV_EXCL_LINE
   }
   return std::nullopt;
+}
+
+void
+thread_set_name(const char * name)
+{
+  assert(NULL != name);
+#if defined(__linux) || defined(__linux__)
+  // Truncate to 15 characters + the null character
+  const size_t name_max_len = 16UL;
+  char name_buffer[name_max_len] = "";
+  // Copy only up to, but excluding, the mandatory null character,
+  // otherwise the destination string isn't null-terminated
+  (void)strncpy(name_buffer, name, sizeof(name_buffer) - 1);
+  (void)pthread_setname_np(pthread_self(), name_buffer);
+#elif defined(__APPLE__)
+  (void)pthread_setname_np(name);
+#else
+#warning "thread_set_name not supported for this platform"
+#endif
 }
 
 }  // namespace utils
