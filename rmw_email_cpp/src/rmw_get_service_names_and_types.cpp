@@ -31,7 +31,7 @@ extern "C" rmw_ret_t rmw_get_service_names_and_types(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RCUTILS_CHECK_ALLOCATOR(allocator, return RMW_RET_INVALID_ARGUMENT);
   if (RMW_RET_OK != rmw_names_and_types_check_zero(service_names_and_types)) {

@@ -20,6 +20,9 @@
 #include "email/gid.hpp"
 #include "rmw/types.h"
 
+namespace rmw_email_cpp
+{
+
 /// Convert an email GID to rmw.
 rmw_gid_t convert_gid(const email::Gid & gid);
 
@@ -31,5 +34,7 @@ email::Gid convert_writer_guid_to_email_gid(int8_t * writer_guid);
 
 /// Copy rmw GIDs.
 void copy_gids(rmw_gid_t * dest, rmw_gid_t * src);
+
+}  // namespace rmw_email_cpp
 
 #endif  // RMW_EMAIL_CPP__GID_HPP_

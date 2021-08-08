@@ -31,7 +31,7 @@ static rmw_ret_t _init_rmw_event(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     implementation_identifier,
     implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   // Do nothing else
@@ -50,7 +50,7 @@ extern "C" rmw_ret_t rmw_publisher_event_init(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     publisher,
     publisher->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   return _init_rmw_event(
@@ -69,7 +69,7 @@ extern "C" rmw_ret_t rmw_subscription_event_init(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     subscription,
     subscription->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   return _init_rmw_event(
@@ -88,7 +88,7 @@ extern "C" rmw_ret_t rmw_take_event(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     event_handle,
     event_handle->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(event_info, RMW_RET_ERROR);
   RMW_CHECK_ARGUMENT_FOR_NULL(taken, RMW_RET_ERROR);

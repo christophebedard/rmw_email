@@ -29,12 +29,12 @@ extern "C" rmw_ret_t rmw_get_gid_for_publisher(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     publisher,
     publisher->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(gid, RMW_RET_INVALID_ARGUMENT);
 
   auto pub = static_cast<rmw_email_pub_t *>(publisher->data);
-  copy_gids(gid, &pub->gid);
+  rmw_email_cpp::copy_gids(gid, &pub->gid);
   return RMW_RET_OK;
 }
 
@@ -47,13 +47,13 @@ extern "C" rmw_ret_t rmw_compare_gids_equal(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     gid1,
     gid1->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(gid2, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     gid2,
     gid2->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(result, RMW_RET_INVALID_ARGUMENT);
 

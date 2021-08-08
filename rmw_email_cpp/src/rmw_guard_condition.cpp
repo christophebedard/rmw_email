@@ -22,13 +22,13 @@
 extern "C" rmw_guard_condition_t * rmw_create_guard_condition(rmw_context_t * context)
 {
   RMW_CHECK_ARGUMENT_FOR_NULL(context, nullptr);
-  return create_guard_condition();
+  return rmw_email_cpp::create_guard_condition();
 }
 
 extern "C" rmw_ret_t rmw_destroy_guard_condition(rmw_guard_condition_t * guard_condition)
 {
   RMW_CHECK_ARGUMENT_FOR_NULL(guard_condition, RMW_RET_INVALID_ARGUMENT);
-  return destroy_guard_condition(guard_condition);
+  return rmw_email_cpp::destroy_guard_condition(guard_condition);
 }
 
 extern "C" rmw_ret_t rmw_trigger_guard_condition(const rmw_guard_condition_t * guard_condition)
@@ -37,7 +37,7 @@ extern "C" rmw_ret_t rmw_trigger_guard_condition(const rmw_guard_condition_t * g
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     guard_condition,
     guard_condition->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   auto rmw_email_guard_condition = static_cast<rmw_email_guard_condition_t *>(

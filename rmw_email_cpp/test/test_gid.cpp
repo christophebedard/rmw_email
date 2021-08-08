@@ -21,7 +21,7 @@
 TEST(TestGid, convert_gid)
 {
   const email::Gid gid(42u);
-  rmw_gid_t converted_gid = convert_gid(gid);
+  rmw_gid_t converted_gid = rmw_email_cpp::convert_gid(gid);
 
   email::GidValue reconverted_value = 0u;
   memcpy(&reconverted_value, converted_gid.data, sizeof(reconverted_value));
@@ -33,9 +33,9 @@ TEST(TestGid, writer_guid)
   const email::Gid gid(42u);
 
   rmw_request_id_t converted_request_id{};
-  copy_email_gid_to_writer_guid(converted_request_id.writer_guid, gid);
+  rmw_email_cpp::copy_email_gid_to_writer_guid(converted_request_id.writer_guid, gid);
 
-  const email::Gid reconverted_gid = convert_writer_guid_to_email_gid(
+  const email::Gid reconverted_gid = rmw_email_cpp::convert_writer_guid_to_email_gid(
     converted_request_id.writer_guid);
 
   EXPECT_EQ(gid.value(), reconverted_gid.value());

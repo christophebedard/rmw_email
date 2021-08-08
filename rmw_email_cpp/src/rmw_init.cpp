@@ -37,7 +37,7 @@ extern "C" rmw_ret_t rmw_init_options_init(
     return RMW_RET_INVALID_ARGUMENT;
   }
   init_options->instance_id = 0;
-  init_options->implementation_identifier = email_identifier;
+  init_options->implementation_identifier = rmw_email_cpp::identifier;
   init_options->allocator = allocator;
   init_options->impl = nullptr;
   init_options->localhost_only = RMW_LOCALHOST_ONLY_DEFAULT;
@@ -58,7 +58,7 @@ extern "C" rmw_ret_t rmw_init_options_copy(const rmw_init_options_t * src, rmw_i
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     src,
     src->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   if (NULL != dst->implementation_identifier) {
     RMW_SET_ERROR_MSG("expected zero-initialized dst");
@@ -92,7 +92,7 @@ extern "C" rmw_ret_t rmw_init_options_fini(rmw_init_options_t * init_options)
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     init_options,
     init_options->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   rcutils_allocator_t * allocator = &init_options->allocator;
   RCUTILS_CHECK_ALLOCATOR(allocator, return RMW_RET_INVALID_ARGUMENT);
@@ -118,7 +118,7 @@ rmw_context_impl_t::init(rmw_init_options_t * options, size_t domain_id)
   }
 
   // TODO(christophebedard) move to graph cache handler
-  this->graph_guard_condition = create_guard_condition();
+  this->graph_guard_condition = rmw_email_cpp::create_guard_condition();
   if (nullptr == this->graph_guard_condition) {
     cleanup();
     return RMW_RET_BAD_ALLOC;
@@ -153,7 +153,7 @@ void
 rmw_context_impl_t::cleanup()
 {
   if (this->graph_guard_condition) {
-    destroy_guard_condition(this->graph_guard_condition);
+    rmw_email_cpp::destroy_guard_condition(this->graph_guard_condition);
   }
 }
 
@@ -171,7 +171,7 @@ extern "C" rmw_ret_t rmw_init(const rmw_init_options_t * options, rmw_context_t 
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     options,
     options->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_FOR_NULL_WITH_MSG(
     options->enclave,
@@ -186,7 +186,7 @@ extern "C" rmw_ret_t rmw_init(const rmw_init_options_t * options, rmw_context_t 
     [context]() {*context = rmw_get_zero_initialized_context();});
 
   context->instance_id = options->instance_id;
-  context->implementation_identifier = email_identifier;
+  context->implementation_identifier = rmw_email_cpp::identifier;
   // Domain ID isn't used
   context->actual_domain_id = 0u;
 
@@ -217,7 +217,7 @@ extern "C" rmw_ret_t rmw_shutdown(rmw_context_t * context)
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     context,
     context->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   context->impl->is_shutdown = true;
@@ -234,7 +234,7 @@ extern "C" rmw_ret_t rmw_context_fini(rmw_context_t * context)
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     context,
     context->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   if (!context->impl->is_shutdown) {
     RMW_SET_ERROR_MSG("context has not been shutdown");

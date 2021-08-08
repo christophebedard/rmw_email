@@ -43,7 +43,7 @@ extern "C" rmw_wait_set_t * rmw_create_wait_set(rmw_context_t * context, size_t 
     RMW_SET_ERROR_MSG("failed to allocate waitset");
     return nullptr;
   }
-  wait_set->implementation_identifier = email_identifier;
+  wait_set->implementation_identifier = rmw_email_cpp::identifier;
   wait_set->data = rmw_email_waitset;
   return wait_set;
 }
@@ -54,7 +54,7 @@ extern "C" rmw_ret_t rmw_destroy_wait_set(rmw_wait_set_t * wait_set)
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     wait_set,
     wait_set->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   auto rmw_email_waitset = static_cast<rmw_email_wait_set_t *>(wait_set->data);
@@ -78,7 +78,7 @@ extern "C" rmw_ret_t rmw_wait(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     wait_set,
     wait_set->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   auto rmw_email_waitset = static_cast<rmw_email_wait_set_t *>(wait_set->data);

@@ -14,5 +14,10 @@
 
 #include "rmw_email_cpp/identifier.hpp"
 
-const char * email_identifier = "rmw_email_cpp";
-const char * email_serialization_format = "yaml?";
+namespace rmw_email_cpp
+{
+
+const char * identifier = "rmw_email_cpp";
+const char * serialization_format = "yaml?";
+
+}  // namespace rmw_email_cpp

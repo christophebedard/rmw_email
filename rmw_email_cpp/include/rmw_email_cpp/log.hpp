@@ -19,6 +19,6 @@
 
 #include "rmw_email_cpp/identifier.hpp"
 
-#define RMW_EMAIL_LOG_DEBUG(...) RCUTILS_LOG_DEBUG_NAMED(email_identifier, __VA_ARGS__)
+#define RMW_EMAIL_LOG_DEBUG(...) RCUTILS_LOG_DEBUG_NAMED(rmw_email_cpp::identifier, __VA_ARGS__)
 
 #endif  // RMW_EMAIL_CPP__LOG_HPP_

@@ -29,7 +29,7 @@ extern "C" rmw_node_t * rmw_create_node(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     context,
     context->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return nullptr);
   RMW_CHECK_FOR_NULL_WITH_MSG(
     context->impl,
@@ -101,7 +101,7 @@ extern "C" rmw_node_t * rmw_create_node(
 
   cleanup_rmw_email_node.cancel();
   cleanup_node.cancel();
-  node->implementation_identifier = email_identifier;
+  node->implementation_identifier = rmw_email_cpp::identifier;
   node->data = rmw_email_node;
   node->context = context;
   finalize_context.cancel();
@@ -115,7 +115,7 @@ extern "C" rmw_ret_t rmw_destroy_node(rmw_node_t * node)
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   rmw_context_t * context = node->context;
