@@ -151,6 +151,16 @@ EMAIL_PUBLIC
 std::optional<int64_t>
 optional_stoll(const std::string & str);
 
+/// Set thread name if the platform supports it.
+/**
+ * The name might be truncated if the platform has a name length limit.
+ *
+ * \param name the thread name
+ */
+EMAIL_PUBLIC
+void
+thread_set_name(const char * name);
+
 }  // namespace utils
 }  // namespace email
 
