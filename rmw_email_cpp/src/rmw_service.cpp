@@ -35,7 +35,7 @@ extern "C" rmw_service_t * rmw_create_service(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(type_support, nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(service_name, nullptr);
@@ -77,7 +77,7 @@ extern "C" rmw_service_t * rmw_create_service(
     [rmw_service]() {
       rmw_service_free(rmw_service);
     });
-  rmw_service->implementation_identifier = email_identifier;
+  rmw_service->implementation_identifier = rmw_email_cpp::identifier;
   rmw_service->data = rmw_email_server;
   rmw_service->service_name =
     reinterpret_cast<const char *>(rmw_allocate(strlen(service_name) + 1));
@@ -98,13 +98,13 @@ extern "C" rmw_ret_t rmw_destroy_service(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(service, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     service,
     service->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INVALID_ARGUMENT);
 
   rmw_email_server_t * rmw_email_server = static_cast<rmw_email_server_t *>(service->data);
@@ -125,13 +125,13 @@ extern "C" rmw_ret_t rmw_service_server_is_available(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(client, RMW_RET_ERROR);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     client,
     client->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(is_available, RMW_RET_ERROR);
 

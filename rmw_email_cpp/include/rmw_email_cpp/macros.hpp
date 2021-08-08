@@ -22,7 +22,7 @@
 #define RET_ALLOC_X(var, code) do {if (!var) {RET_ERR_X("failed to allocate " #var, code);} \
 } while (0)
 #define RET_WRONG_IMPLID_X(var, code) do { \
-    if ((var)->implementation_identifier != email_identifier) { \
+    if ((var)->implementation_identifier != rmw_email_cpp::identifier) { \
       RET_ERR_X(#var " not from this implementation", code); \
     } \
 } while (0)

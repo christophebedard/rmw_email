@@ -15,7 +15,12 @@
 #ifndef RMW_EMAIL_CPP__IDENTIFIER_HPP_
 #define RMW_EMAIL_CPP__IDENTIFIER_HPP_
 
-extern const char * email_identifier;
-extern const char * email_serialization_format;
+namespace rmw_email_cpp
+{
+
+extern const char * identifier;
+extern const char * serialization_format;
+
+}  // namespace rmw_email_cpp
 
 #endif  // RMW_EMAIL_CPP__IDENTIFIER_HPP_

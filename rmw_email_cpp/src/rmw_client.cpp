@@ -35,7 +35,7 @@ extern "C" rmw_client_t * rmw_create_client(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(type_support, nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(service_name, nullptr);
@@ -77,7 +77,7 @@ extern "C" rmw_client_t * rmw_create_client(
     [rmw_client]() {
       rmw_client_free(rmw_client);
     });
-  rmw_client->implementation_identifier = email_identifier;
+  rmw_client->implementation_identifier = rmw_email_cpp::identifier;
   rmw_client->data = rmw_email_client;
   rmw_client->service_name = reinterpret_cast<const char *>(rmw_allocate(strlen(service_name) + 1));
   RET_NULL_X(rmw_client->service_name, rmw_client_free(rmw_client); return nullptr);
@@ -97,13 +97,13 @@ extern "C" rmw_ret_t rmw_destroy_client(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(client, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     client,
     client->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INVALID_ARGUMENT);
 
   rmw_email_client_t * rmw_email_client = static_cast<rmw_email_client_t *>(client->data);

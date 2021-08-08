@@ -18,7 +18,12 @@
 #include "email/timestamp.hpp"
 #include "rmw/types.h"
 
+namespace rmw_email_cpp
+{
+
 /// Convert timestamp from email to rmw.
 rmw_time_point_value_t convert_timestamp(const email::Timestamp & timestamp);
+
+}  // namespace rmw_email_cpp
 
 #endif  // RMW_EMAIL_CPP__TIMESTAMP_HPP_

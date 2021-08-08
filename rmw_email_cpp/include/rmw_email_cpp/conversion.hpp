@@ -21,6 +21,9 @@
 
 #include "rmw_email_cpp/types.hpp"
 
+namespace rmw_email_cpp
+{
+
 std::string msg_to_yaml(const rmw_email_pub_t * publisher, const void * msg);
 
 bool yaml_to_msg(
@@ -28,5 +31,7 @@ bool yaml_to_msg(
   const std::string & yaml,
   void * ros_message,
   rcutils_allocator_t * allocator);
+
+}  // namespace rmw_email_cpp
 
 #endif  // RMW_EMAIL_CPP__CONVERSION_HPP_

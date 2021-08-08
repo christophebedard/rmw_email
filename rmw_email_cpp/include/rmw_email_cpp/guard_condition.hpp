@@ -18,8 +18,13 @@
 #include "email/guard_condition.hpp"
 #include "rmw/rmw.h"
 
+namespace rmw_email_cpp
+{
+
 rmw_guard_condition_t * create_guard_condition();
 
 rmw_ret_t destroy_guard_condition(rmw_guard_condition_t * guard_condition);
+
+}  // namespace rmw_email_cpp
 
 #endif  // RMW_EMAIL_CPP__GUARD_CONDITION_HPP_

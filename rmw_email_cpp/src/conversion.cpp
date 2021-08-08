@@ -27,7 +27,13 @@
 #include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/log.hpp"
 
-std::string _yaml_to_string(const YAML::Node & yaml)
+namespace rmw_email_cpp
+{
+
+namespace details
+{
+
+std::string yaml_to_string(const YAML::Node & yaml)
 {
   YAML::Emitter emitter;
   // Make the YAML a one-line
@@ -35,8 +41,6 @@ std::string _yaml_to_string(const YAML::Node & yaml)
   return emitter.c_str();
 }
 
-namespace details
-{
 namespace c
 {
 
@@ -50,7 +54,7 @@ std::string msg_to_yaml(
   // ros_msg.data = reinterpret_cast<const uint8_t *>(msg);
   ros_msg.data = const_cast<uint8_t *>(reinterpret_cast<const uint8_t *>(msg));
   YAML::Node yaml = dynmsg::c::message_to_yaml(ros_msg);
-  const auto & str = _yaml_to_string(yaml);
+  const auto & str = yaml_to_string(yaml);
   RMW_EMAIL_LOG_DEBUG("message C: %s", str.c_str());
   return str;
 }
@@ -87,7 +91,7 @@ std::string msg_to_yaml(
   // ros_msg.data = reinterpret_cast<const uint8_t *>(msg);
   ros_msg.data = const_cast<uint8_t *>(reinterpret_cast<const uint8_t *>(msg));
   YAML::Node yaml = dynmsg::cpp::message_to_yaml(ros_msg);
-  const auto & str = _yaml_to_string(yaml);
+  const auto & str = yaml_to_string(yaml);
   RMW_EMAIL_LOG_DEBUG("message C++: %s", str.c_str());
   return str;
 }
@@ -175,3 +179,5 @@ bool yaml_to_msg(
           "C:" + std::string(error_c.str) + "\n"
           "C++:" + std::string(error_cpp.str));
 }
+
+}  // namespace rmw_email_cpp

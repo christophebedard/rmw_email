@@ -15,7 +15,12 @@
 #include "email/timestamp.hpp"
 #include "rmw/types.h"
 
+namespace rmw_email_cpp
+{
+
 rmw_time_point_value_t convert_timestamp(const email::Timestamp & timestamp)
 {
   return timestamp.nanoseconds();
 }
+
+}  // namespace rmw_email_cpp

@@ -19,6 +19,9 @@
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/types.hpp"
 
+namespace rmw_email_cpp
+{
+
 rmw_guard_condition_t * create_guard_condition()
 {
   auto email_guard_condition = new (std::nothrow) email::GuardCondition();
@@ -39,7 +42,7 @@ rmw_guard_condition_t * create_guard_condition()
     RMW_SET_ERROR_MSG("failed to allocate guard condition");
     return nullptr;
   }
-  guard_condition->implementation_identifier = email_identifier;
+  guard_condition->implementation_identifier = rmw_email_cpp::identifier;
   guard_condition->data = rmw_email_guard_condition;
   return guard_condition;
 }
@@ -54,3 +57,5 @@ rmw_ret_t destroy_guard_condition(rmw_guard_condition_t * guard_condition)
   delete guard_condition;
   return RMW_RET_OK;
 }
+
+}  // namespace rmw_email_cpp

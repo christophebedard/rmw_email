@@ -37,7 +37,7 @@ extern "C" rmw_ret_t rmw_send_request(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     client,
     client->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(ros_request, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(sequence_id, RMW_RET_INVALID_ARGUMENT);
@@ -65,7 +65,7 @@ extern "C" rmw_ret_t rmw_take_request(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     service,
     service->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(request_header, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(ros_request, RMW_RET_INVALID_ARGUMENT);
@@ -91,8 +91,9 @@ extern "C" rmw_ret_t rmw_take_request(
 
   // Copy data to request header
   request_header->request_id.sequence_number = request.id.sequence_number;
-  copy_email_gid_to_writer_guid(request_header->request_id.writer_guid, info.client_gid());
-  request_header->source_timestamp = convert_timestamp(info.source_timestamp());
-  request_header->received_timestamp = convert_timestamp(info.received_timestamp());
+  rmw_email_cpp::copy_email_gid_to_writer_guid(
+    request_header->request_id.writer_guid, info.client_gid());
+  request_header->source_timestamp = rmw_email_cpp::convert_timestamp(info.source_timestamp());
+  request_header->received_timestamp = rmw_email_cpp::convert_timestamp(info.received_timestamp());
   return RMW_RET_OK;
 }

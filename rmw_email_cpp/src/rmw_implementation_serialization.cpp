@@ -17,10 +17,10 @@
 
 extern "C" const char * rmw_get_implementation_identifier()
 {
-  return email_identifier;
+  return rmw_email_cpp::identifier;
 }
 
 extern "C" const char * rmw_get_serialization_format()
 {
-  return email_serialization_format;
+  return rmw_email_cpp::serialization_format;
 }

@@ -62,7 +62,7 @@ static rmw_publisher_t * _create_publisher(
   pub->email_pub = email_pub;
 
   // Get GID from email publisher
-  pub->gid = convert_gid(email_pub->get_gid());
+  pub->gid = rmw_email_cpp::convert_gid(email_pub->get_gid());
 
   // Put everything together
   rmw_publisher_t * rmw_publisher = rmw_publisher_allocate();
@@ -73,7 +73,7 @@ static rmw_publisher_t * _create_publisher(
       rmw_publisher_free(rmw_publisher);
     });
 
-  rmw_publisher->implementation_identifier = email_identifier;
+  rmw_publisher->implementation_identifier = rmw_email_cpp::identifier;
   rmw_publisher->data = pub;
   rmw_publisher->topic_name = reinterpret_cast<char *>(rmw_allocate(strlen(topic_name) + 1));
   RET_ALLOC_X(rmw_publisher->topic_name, return nullptr);
@@ -109,7 +109,7 @@ extern "C" rmw_publisher_t * rmw_create_publisher(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(type_supports, nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, nullptr);
@@ -142,12 +142,12 @@ extern "C" rmw_ret_t rmw_destroy_publisher(rmw_node_t * node, rmw_publisher_t * 
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     publisher,
     publisher->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   return _destroy_publisher(publisher);
@@ -161,7 +161,7 @@ extern "C" rmw_ret_t rmw_publisher_count_matched_subscriptions(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     publisher,
     publisher->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(subscription_count, RMW_RET_INVALID_ARGUMENT);
 
@@ -181,7 +181,7 @@ rmw_ret_t rmw_publisher_get_actual_qos(const rmw_publisher_t * publisher, rmw_qo
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     publisher,
     publisher->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(qos, RMW_RET_INVALID_ARGUMENT);
 
@@ -210,7 +210,7 @@ extern "C" rmw_ret_t rmw_publisher_wait_for_all_acked(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     publisher,
     publisher->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   // TODO(christophebedard) RFC 3798?
@@ -227,7 +227,7 @@ extern "C" rmw_ret_t rmw_count_publishers(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, RMW_RET_INVALID_ARGUMENT);
 

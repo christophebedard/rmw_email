@@ -18,10 +18,13 @@
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 
+namespace rmw_email_cpp
+{
+
 rmw_gid_t convert_gid(const email::Gid & gid)
 {
   rmw_gid_t rmw_gid = {};
-  rmw_gid.implementation_identifier = email_identifier;
+  rmw_gid.implementation_identifier = rmw_email_cpp::identifier;
 
   const email::GidValue new_id = gid.value();
   static_assert(
@@ -55,7 +58,9 @@ email::Gid convert_writer_guid_to_email_gid(int8_t * writer_guid)
 void copy_gids(rmw_gid_t * dest, rmw_gid_t * src)
 {
   // *dest = *src;
-  dest->implementation_identifier = email_identifier;
+  dest->implementation_identifier = rmw_email_cpp::identifier;
   memset(dest->data, 0, sizeof(dest->data));
   memcpy(dest->data, &src->data, sizeof(src->data));
 }
+
+}  // namespace rmw_email_cpp

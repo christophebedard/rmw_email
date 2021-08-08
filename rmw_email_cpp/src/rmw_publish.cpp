@@ -33,7 +33,7 @@ extern "C" rmw_ret_t rmw_publish(
     publisher, "publisher handle is null",
     return RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
-    publisher, publisher->implementation_identifier, email_identifier,
+    publisher, publisher->implementation_identifier, rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_FOR_NULL_WITH_MSG(
     ros_message, "ros message handle is null",
@@ -50,7 +50,7 @@ extern "C" rmw_ret_t rmw_publish(
     return RMW_RET_ERROR);
 
   // Convert to YAML string and publish
-  const std::string msg_yaml = msg_to_yaml(rmw_email_pub, ros_message);
+  const std::string msg_yaml = rmw_email_cpp::msg_to_yaml(rmw_email_pub, ros_message);
   assert(!msg_yaml.empty());
   email_pub->publish(msg_yaml);
   return RMW_RET_OK;
@@ -66,7 +66,7 @@ extern "C" rmw_ret_t rmw_publish_serialized_message(
     publisher, "publisher handle is null",
     return RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
-    publisher, publisher->implementation_identifier, email_identifier,
+    publisher, publisher->implementation_identifier, rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_FOR_NULL_WITH_MSG(
     serialized_message, "serialized message handle is null",

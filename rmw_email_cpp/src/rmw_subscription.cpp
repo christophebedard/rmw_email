@@ -59,7 +59,7 @@ static rmw_subscription_t * _create_subscription(
   sub->email_sub = email_sub;
 
   // Get GID from email subscription
-  sub->gid = convert_gid(email_sub->get_gid());
+  sub->gid = rmw_email_cpp::convert_gid(email_sub->get_gid());
 
   // Put everything together
   rmw_subscription_t * rmw_subscription = rmw_subscription_allocate();
@@ -70,7 +70,7 @@ static rmw_subscription_t * _create_subscription(
       rmw_subscription_free(rmw_subscription);
     });
 
-  rmw_subscription->implementation_identifier = email_identifier;
+  rmw_subscription->implementation_identifier = rmw_email_cpp::identifier;
   rmw_subscription->data = sub;
   rmw_subscription->topic_name = reinterpret_cast<char *>(rmw_allocate(strlen(topic_name) + 1));
   RET_ALLOC_X(rmw_subscription->topic_name, return nullptr);
@@ -93,7 +93,7 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(type_supports, nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, nullptr);
@@ -137,12 +137,12 @@ extern "C" rmw_ret_t rmw_destroy_subscription(rmw_node_t * node, rmw_subscriptio
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     subscription,
     subscription->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
   return _destroy_subscription(subscription);
@@ -155,7 +155,7 @@ extern "C" rmw_ret_t rmw_subscription_count_matched_publishers(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     subscription,
     subscription->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(publisher_count, RMW_RET_INVALID_ARGUMENT);
 
@@ -172,7 +172,7 @@ extern "C" rmw_ret_t rmw_subscription_get_actual_qos(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     subscription,
     subscription->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(qos, RMW_RET_INVALID_ARGUMENT);
 
@@ -189,7 +189,7 @@ extern "C" rmw_ret_t rmw_count_subscribers(
   RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
     node,
     node->implementation_identifier,
-    email_identifier,
+    rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, RMW_RET_INVALID_ARGUMENT);
 
