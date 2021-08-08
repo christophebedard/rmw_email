@@ -24,6 +24,7 @@
 #include "email/email/polling_manager.hpp"
 #include "email/email/receiver.hpp"
 #include "email/log.hpp"
+#include "email/utils.hpp"
 
 namespace email
 {
@@ -83,6 +84,8 @@ PollingManager::shutdown()
 void
 PollingManager::poll_thread()
 {
+  utils::thread_set_name("email-polling");
+  logger_->debug("poll_thread start");
   while (!do_shutdown_.load()) {
     // Get new email
     std::optional<struct EmailData> email_data = std::nullopt;
@@ -104,6 +107,7 @@ PollingManager::poll_thread()
       }
     }
   }
+  logger_->debug("poll_thread end");
 }
 
 }  // namespace email
