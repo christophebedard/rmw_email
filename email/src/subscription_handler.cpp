@@ -23,6 +23,7 @@
 #include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/log.hpp"
+#include "email/lttng.hpp"
 #include "email/message_info.hpp"
 #include "email/safe_queue.hpp"
 #include "email/subscription_handler.hpp"
@@ -82,6 +83,10 @@ SubscriptionHandler::handle(const struct EmailData & data)
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
       logger_->debug("adding message to subscription queue with topic: {}", topic);
+      EMAIL_TRACEPOINT(
+        subscription_handle,
+        static_cast<const void *>(it->second.get()),
+        msg_info.source_timestamp().nanoseconds());
       it->second->push({msg, msg_info});
     }
   }

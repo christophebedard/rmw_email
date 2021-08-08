@@ -32,6 +32,21 @@ message(STATUS "Found CURL version: ${CURL_VERSION_STRING}")
 message(STATUS "Using CURL include dir(s): ${CURL_INCLUDE_DIRS}")
 message(STATUS "Using CURL lib(s): ${CURL_LIBRARIES}")
 
+option(EMAIL_ENABLE_TRACING "Enable building with static tracepoints using LTTng" OFF)
+if(EMAIL_ENABLE_TRACING)
+  find_package(PkgConfig)
+  if(PkgConfig_FOUND)
+    pkg_check_modules(LTTNG lttng-ust)
+    if(LTTNG_FOUND)
+      message(STATUS "Building with LTTng instrumentation support")
+      set(EMAIL_HAS_LTTNG_TRACING "1")
+    else()
+      message(FATAL_ERROR "EMAIL_ENABLE_TRACING requires lttng-ust")
+    endif()
+  endif()
+endif()
+configure_file(include/${PROJECT_NAME}/config.hpp.in include/${PROJECT_NAME}/config.hpp)
+
 # Lib
 set(SOURCES
   src/communication_info.cpp
@@ -67,6 +82,10 @@ set(SOURCES
   src/wait_set.cpp
 )
 
+if(EMAIL_HAS_LTTNG_TRACING)
+  list(APPEND SOURCES src/lttng.cpp)
+endif()
+
 add_library(${PROJECT_NAME} SHARED ${SOURCES})
 if(CURL_USE_VENDOR)
   ament_target_dependencies(${PROJECT_NAME} libcurl_vendor)
@@ -85,8 +104,12 @@ if(WIN32)
   target_compile_definitions(${PROJECT_NAME} PRIVATE "EMAIL_BUILDING_DLL")
 endif()
 target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
+if(EMAIL_HAS_LTTNG_TRACING)
+  target_link_libraries(${PROJECT_NAME} ${LTTNG_LIBRARIES} "-rdynamic")
+endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>"
   "$<INSTALL_INTERFACE:include>"
 )
 ament_export_include_directories(include)
@@ -107,8 +130,9 @@ else()
 endif()
 
 install(
-  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/
+  DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ ${CMAKE_CURRENT_BINARY_DIR}/include/
   DESTINATION include
+  PATTERN "*.in" EXCLUDE
 )
 install(
   TARGETS ${PROJECT_NAME}
