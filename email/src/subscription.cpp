@@ -21,6 +21,7 @@
 #include "email/context.hpp"
 #include "email/email/info.hpp"
 #include "email/log.hpp"
+#include "email/lttng.hpp"
 #include "email/message_info.hpp"
 #include "email/pub_sub.hpp"
 #include "email/safe_queue.hpp"
@@ -40,6 +41,12 @@ Subscription::Subscription(const std::string & topic_name)
   get_global_context()->get_subscription_handler()->register_subscription(
     get_topic_name(),
     messages_);
+  EMAIL_TRACEPOINT(
+    create_subscription,
+    static_cast<const void *>(this),
+    get_topic_name().c_str(),
+    get_gid().value(),
+    static_cast<const void *>(messages_.get()));
 }
 
 Subscription::~Subscription()

@@ -19,6 +19,7 @@
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
 #include "rmw/validate_full_topic_name.h"
+#include "tracetools/tracetools.h"
 
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
@@ -79,6 +80,7 @@ static rmw_subscription_t * _create_subscription(
   rmw_subscription->can_loan_messages = false;
 
   cleanup_rmw_subscription.cancel();
+  TRACEPOINT(rmw_subscription_init, static_cast<const void *>(rmw_subscription), sub->gid.data);
   return rmw_subscription;
 }
 

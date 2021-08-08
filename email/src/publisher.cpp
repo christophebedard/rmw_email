@@ -20,6 +20,7 @@
 #include "email/email/info.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
+#include "email/lttng.hpp"
 #include "email/message_info.hpp"
 #include "email/pub_sub.hpp"
 #include "email/publisher.hpp"
@@ -34,6 +35,11 @@ Publisher::Publisher(const std::string & topic_name)
   sender_(get_global_context()->get_sender())
 {
   logger_->debug("created with GID: {}", get_gid());
+  EMAIL_TRACEPOINT(
+    create_publisher,
+    static_cast<const void *>(this),
+    get_topic_name().c_str(),
+    get_gid().value());
 }
 
 Publisher::~Publisher()
@@ -44,16 +50,23 @@ Publisher::~Publisher()
 void
 Publisher::publish(const std::string & message, std::optional<EmailHeaders> additional_headers)
 {
+  const Timestamp source_timestamp = Timestamp::now();
   // Add GID and source timestamp to headers
   EmailHeaders headers = {
     {MessageInfo::HEADER_PUBLISHER_GID, get_gid().to_string()},
-    {CommunicationInfo::HEADER_SOURCE_TIMESTAMP, Timestamp::now().to_string()}};
+    {CommunicationInfo::HEADER_SOURCE_TIMESTAMP, source_timestamp.to_string()}};
   // Insert given additional header and overwrite the above map if necessary
   if (additional_headers.has_value()) {
     for (auto const & [header_name, value] : additional_headers.value()) {
       headers[header_name] = value;
     }
   }
+
+  EMAIL_TRACEPOINT(
+    publish,
+    static_cast<const void *>(this),
+    static_cast<const void *>(&message),
+    source_timestamp.nanoseconds());
 
   struct EmailContent content {get_topic_name(), message};
   if (!sender_->send(content, headers)) {

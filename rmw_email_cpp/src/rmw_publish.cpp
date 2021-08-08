@@ -15,9 +15,11 @@
 #include <string>
 
 #include "email/publisher.hpp"
+#include "email/lttng.hpp"
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
+#include "tracetools/tracetools.h"
 
 #include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/identifier.hpp"
@@ -52,6 +54,8 @@ extern "C" rmw_ret_t rmw_publish(
   // Convert to YAML string and publish
   const std::string msg_yaml = rmw_email_cpp::msg_to_yaml(rmw_email_pub, ros_message);
   assert(!msg_yaml.empty());
+  TRACEPOINT(rmw_publish, ros_message);
+  EMAIL_TRACEPOINT(rmw_publish_yaml, ros_message, static_cast<const void *>(&msg_yaml));
   email_pub->publish(msg_yaml);
   return RMW_RET_OK;
 }
