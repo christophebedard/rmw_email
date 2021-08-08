@@ -19,6 +19,7 @@
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
 #include "rmw/validate_full_topic_name.h"
+#include "tracetools/tracetools.h"
 
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
@@ -82,6 +83,7 @@ static rmw_publisher_t * _create_publisher(
   rmw_publisher->can_loan_messages = false;
 
   cleanup_rmw_publisher.cancel();
+  TRACEPOINT(rmw_publisher_init, static_cast<const void *>(rmw_publisher), pub->gid.data);
   return rmw_publisher;
 }
 

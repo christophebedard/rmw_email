@@ -24,11 +24,12 @@ endif()
 find_package(dynmsg REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(rcpputils REQUIRED)
+find_package(rmw REQUIRED)
 find_package(rosidl_runtime_c REQUIRED)
 find_package(rosidl_runtime_cpp REQUIRED)
 find_package(rosidl_typesupport_introspection_c REQUIRED)
 find_package(rosidl_typesupport_introspection_cpp REQUIRED)
-find_package(rmw REQUIRED)
+find_package(tracetools REQUIRED)
 
 set(${PROJECT_NAME}_SOURCES
   src/conversion.cpp
@@ -75,6 +76,7 @@ ament_target_dependencies(${PROJECT_NAME}
   rosidl_typesupport_introspection_c
   rosidl_typesupport_introspection_cpp
   rmw
+  tracetools
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
@@ -88,6 +90,7 @@ ament_export_dependencies(rosidl_runtime_c)
 ament_export_dependencies(rosidl_runtime_cpp)
 ament_export_dependencies(rosidl_typesupport_introspection_c)
 ament_export_dependencies(rosidl_typesupport_introspection_cpp)
+ament_export_dependencies(tracetools)
 
 configure_rmw_library(${PROJECT_NAME})
 ament_export_libraries(${PROJECT_NAME})

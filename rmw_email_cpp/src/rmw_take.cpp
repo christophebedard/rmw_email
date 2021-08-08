@@ -20,6 +20,7 @@
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
+#include "tracetools/tracetools.h"
 
 #include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/gid.hpp"
@@ -51,24 +52,33 @@ static rmw_ret_t _rmw_take(
   auto msg_with_info_opt = email_sub->get_message_with_info();
   if (!msg_with_info_opt.has_value()) {
     *taken = false;
-    return ret;
-  }
-  *taken = true;
+  } else {
+    *taken = true;
 
-  auto msg_with_info = msg_with_info_opt.value();
-  const std::string & msg_yaml = msg_with_info.first;
-  rcutils_allocator_t allocator = rcutils_get_default_allocator();
-  if (!rmw_email_cpp::yaml_to_msg(rmw_email_sub, msg_yaml, ros_message, &allocator)) {
-    ret = RMW_RET_ERROR;
-  }
-  if (message_info) {
+    auto msg_with_info = msg_with_info_opt.value();
+    const std::string & msg_yaml = msg_with_info.first;
+    rcutils_allocator_t allocator = rcutils_get_default_allocator();
+    if (!rmw_email_cpp::yaml_to_msg(rmw_email_sub, msg_yaml, ros_message, &allocator)) {
+      ret = RMW_RET_ERROR;
+    }
     const email::MessageInfo msg_info = msg_with_info.second;
-    message_info->publisher_gid = rmw_email_cpp::convert_gid(msg_info.publisher_gid());
-    message_info->source_timestamp = rmw_email_cpp::convert_timestamp(msg_info.source_timestamp());
-    message_info->received_timestamp =
-      rmw_email_cpp::convert_timestamp(msg_info.received_timestamp());
-    message_info->from_intra_process = false;
+    if (message_info) {
+      message_info->publisher_gid = rmw_email_cpp::convert_gid(msg_info.publisher_gid());
+      message_info->source_timestamp =
+        rmw_email_cpp::convert_timestamp(msg_info.source_timestamp());
+      message_info->received_timestamp =
+        rmw_email_cpp::convert_timestamp(msg_info.received_timestamp());
+      message_info->from_intra_process = false;
+    }
   }
+
+  TRACEPOINT(
+    rmw_take,
+    static_cast<const void *>(subscription),
+    ros_message,
+    (msg_with_info_opt.has_value() ?
+    msg_with_info_opt.value().second.source_timestamp().nanoseconds() : 0LL),
+    *taken);
   return ret;
 }
 
