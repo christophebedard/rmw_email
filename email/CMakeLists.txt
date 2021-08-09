@@ -105,7 +105,7 @@ if(WIN32)
 endif()
 target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
 if(EMAIL_HAS_LTTNG_TRACING)
-  target_link_libraries(${PROJECT_NAME} ${LTTNG_LIBRARIES} "-rdynamic")
+  target_link_libraries(${PROJECT_NAME} ${LTTNG_LIBRARIES})
 endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
