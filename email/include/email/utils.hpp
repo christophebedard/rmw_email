@@ -151,7 +151,18 @@ EMAIL_PUBLIC
 std::optional<int64_t>
 optional_stoll(const std::string & str);
 
-/// Set thread name if the platform supports it.
+/// Get the name of the current thread if the platform supports it.
+/**
+ * The platform might have a minimum buffer length requirement (16 for Linux).
+ *
+ * \param name the buffer in which to write the name
+ * \param len the length of the buffer
+ */
+EMAIL_PUBLIC
+void
+thread_get_name(char * name, size_t len);
+
+/// Set the name of the current thread if the platform supports it.
 /**
  * The name might be truncated if the platform has a name length limit.
  *
@@ -160,6 +171,16 @@ optional_stoll(const std::string & str);
 EMAIL_PUBLIC
 void
 thread_set_name(const char * name);
+
+/// Append a suffix to name of the current thread if the platform supports it.
+/**
+ * The current name will be truncated to fit the suffix if needed.
+ *
+ * \param suffix the suffix
+ */
+EMAIL_PUBLIC
+void
+thread_append_name(const char * suffix);
 
 }  // namespace utils
 }  // namespace email

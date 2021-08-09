@@ -13,7 +13,6 @@
 // limitations under the License.
 
 #include <gtest/gtest.h>
-#include <pthread.h>
 
 #include <optional> // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
@@ -133,32 +132,80 @@ TEST(TestUtils, optional_stox) {
   EXPECT_EQ(42l, stoll_opt);
 }
 
-TEST(TestUtils, thread_set_name) {
+TEST(TestUtils, thread_get_set_name) {
   const size_t max_len = 16UL;
   char current_name[max_len] = "";
-  ASSERT_EQ(0, pthread_getname_np(pthread_self(), current_name, max_len));
+  email::utils::thread_get_name(current_name, max_len);
 
   char buffer[100] = "";
 
   char name[] = "123456789012345";
   email::utils::thread_set_name(name);
-  ASSERT_EQ(0, pthread_getname_np(pthread_self(), buffer, max_len));
+  email::utils::thread_get_name(buffer, max_len);
   EXPECT_STREQ(name, buffer);
   memset(buffer, 0, sizeof(buffer));
 
   char name_long[] = "1234567890123451234";
   email::utils::thread_set_name(name_long);
-  ASSERT_EQ(0, pthread_getname_np(pthread_self(), buffer, max_len));
+  email::utils::thread_get_name(buffer, max_len);
   EXPECT_STREQ(name, buffer);
   memset(buffer, 0, sizeof(buffer));
 
   char name_short[] = "tinky winky";
   email::utils::thread_set_name(name_short);
-  ASSERT_EQ(0, pthread_getname_np(pthread_self(), buffer, max_len));
+  email::utils::thread_get_name(buffer, max_len);
   EXPECT_STREQ(name_short, buffer);
   memset(buffer, 0, sizeof(buffer));
 
   email::utils::thread_set_name(current_name);
 
+  EXPECT_DEATH(email::utils::thread_get_name(NULL, 16UL), "");
+  EXPECT_DEATH(email::utils::thread_get_name(buffer, 15UL), "");
   EXPECT_DEATH(email::utils::thread_set_name(NULL), "");
+}
+
+TEST(TestUtils, thread_append_name) {
+  const size_t max_len = 16UL;
+  char current_name[max_len] = "";
+  email::utils::thread_get_name(current_name, max_len);
+
+  char buffer[100] = "";
+
+  char name[] = "1234";
+  email::utils::thread_set_name(name);
+  email::utils::thread_append_name("-suffix");
+  email::utils::thread_get_name(buffer, max_len);
+  EXPECT_STREQ(buffer, "1234-suffix");
+
+  char name_empty[] = "";
+  email::utils::thread_set_name(name_empty);
+  email::utils::thread_append_name("-suffix");
+  email::utils::thread_get_name(buffer, max_len);
+  EXPECT_STREQ(buffer, "-suffix");
+
+  email::utils::thread_set_name(name_empty);
+  email::utils::thread_append_name("123456789012345");
+  email::utils::thread_get_name(buffer, max_len);
+  EXPECT_STREQ(buffer, "123456789012345");
+
+  email::utils::thread_set_name(name_empty);
+  email::utils::thread_append_name("1234567890123450");
+  email::utils::thread_get_name(buffer, max_len);
+  EXPECT_STREQ(buffer, "123456789012345");
+
+  char name_partly_truncated[] = "1234567890";
+  email::utils::thread_set_name(name_partly_truncated);
+  email::utils::thread_append_name("-suffix");
+  email::utils::thread_get_name(buffer, max_len);
+  EXPECT_STREQ(buffer, "12345678-suffix");
+
+  char name_truncated[] = "123456789012345";
+  email::utils::thread_set_name(name_truncated);
+  email::utils::thread_append_name("-suffix");
+  email::utils::thread_get_name(buffer, max_len);
+  EXPECT_STREQ(buffer, "12345678-suffix");
+
+  email::utils::thread_set_name(current_name);
+
+  EXPECT_DEATH(email::utils::thread_append_name(NULL), "");
 }
