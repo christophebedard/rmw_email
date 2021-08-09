@@ -133,10 +133,25 @@ optional_stoll(const std::string & str)
 }
 
 void
+thread_get_name(char * name, size_t len)
+{
+  assert(NULL != name);
+  assert(len >= 16UL);
+#ifdef __linux__
+  (void)pthread_getname_np(pthread_self(), name, len);
+#elif defined(__APPLE__)
+  (void)pthread_getname_np(pthread_self(), name, len);
+#else
+  // TODO(christophebedard) implement for Windows
+#warning "thread_get_name not supported for this platform"
+#endif
+}
+
+void
 thread_set_name(const char * name)
 {
   assert(NULL != name);
-#if defined(__linux) || defined(__linux__)
+#ifdef __linux__
   // Truncate to 15 characters + the null character
   const size_t name_max_len = 16UL;
   char name_buffer[name_max_len] = "";
@@ -147,7 +162,32 @@ thread_set_name(const char * name)
 #elif defined(__APPLE__)
   (void)pthread_setname_np(name);
 #else
+  // TODO(christophebedard) implement for Windows
 #warning "thread_set_name not supported for this platform"
+#endif
+}
+
+void
+thread_append_name(const char * suffix)
+{
+  assert(NULL != suffix);
+#if defined(__linux__) || defined(__APPLE__)
+  // Get current name
+  const size_t name_max_len = 16UL;
+  char name_buffer[name_max_len] = "";
+  thread_get_name(name_buffer, name_max_len);
+
+  // Figure out where we should add the suffix
+  size_t name_len_limit = name_max_len - strlen(suffix) - 1;
+  size_t name_len = strlen(name_buffer);
+  if (name_len > name_len_limit) {
+    name_len = name_len_limit;
+  }
+
+  (void)strncpy(name_buffer + name_len, suffix, name_max_len - name_len);
+  thread_set_name(name_buffer);
+#else
+#warning "thread_append_name not supported for this platform"
 #endif
 }
 

@@ -84,7 +84,7 @@ PollingManager::shutdown()
 void
 PollingManager::poll_thread()
 {
-  utils::thread_set_name("email-polling");
+  utils::thread_append_name("-poll");
   logger_->debug("poll_thread start");
   while (!do_shutdown_.load()) {
     // Get new email
