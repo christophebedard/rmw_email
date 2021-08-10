@@ -70,6 +70,7 @@ extern "C" rmw_service_t * rmw_create_service(
       delete rmw_email_server;
     });
   rmw_email_server->email_server = email_server;
+  rmw_email_server->type_supports = *type_support;
 
   rmw_service_t * rmw_service = rmw_service_allocate();
   RET_NULL_X(rmw_service, return nullptr);

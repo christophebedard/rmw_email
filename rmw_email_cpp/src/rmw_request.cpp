@@ -14,14 +14,14 @@
 
 #include <string>
 
-// #include "rmw/error_handling.h"
-#include "rmw/impl/cpp/macros.hpp"
-#include "rmw/rmw.h"
-
 #include "email/service_client.hpp"
 #include "email/service_info.hpp"
 #include "email/service_request.hpp"
 #include "email/service_server.hpp"
+#include "rmw/impl/cpp/macros.hpp"
+#include "rmw/rmw.h"
+
+#include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/log.hpp"
@@ -46,8 +46,8 @@ extern "C" rmw_ret_t rmw_send_request(
   email::ServiceClient * email_client = rmw_email_client->email_client;
 
   // Convert request to YAML string
-  // TODO(christophebedard) convert ros_request to YAML string
-  const std::string request = "";
+  const std::string request =
+    rmw_email_cpp::msg_to_yaml_service(&rmw_email_client->type_supports, ros_request, false);
 
   // Send request
   const auto sequence_number = email_client->send_request(request);
@@ -74,6 +74,7 @@ extern "C" rmw_ret_t rmw_take_request(
   auto rmw_email_server = static_cast<rmw_email_server_t *>(service->data);
   email::ServiceServer * email_server = rmw_email_server->email_server;
 
+  // Take request and info
   rmw_ret_t ret = RMW_RET_OK;
   auto request_with_info_opt = email_server->get_request_with_info();
   if (!request_with_info_opt.has_value()) {
@@ -82,18 +83,23 @@ extern "C" rmw_ret_t rmw_take_request(
     return ret;
   }
   *taken = true;
+  auto request_with_info = request_with_info_opt.value();
+  const struct email::ServiceRequest request = request_with_info.first;
+  const email::ServiceInfo info = request_with_info.second;
 
-  const struct email::ServiceRequest request = request_with_info_opt.value().first;
-  const email::ServiceInfo info = request_with_info_opt.value().second;
-  // TODO(christophebedard) convert YAML string back to ros_request
-  static_cast<void>(request.content);
-  // *ros_request
+  // Convert YAML string back to request
+  rcutils_allocator_t allocator = rcutils_get_default_allocator();
+  if (!rmw_email_cpp::yaml_to_msg_service(
+      &rmw_email_server->type_supports, request.content, ros_request, &allocator, true))
+  {
+    ret = RMW_RET_ERROR;
+  }
 
-  // Copy data to request header
+  // Copy info to request header
   request_header->request_id.sequence_number = request.id.sequence_number;
   rmw_email_cpp::copy_email_gid_to_writer_guid(
     request_header->request_id.writer_guid, info.client_gid());
   request_header->source_timestamp = rmw_email_cpp::convert_timestamp(info.source_timestamp());
   request_header->received_timestamp = rmw_email_cpp::convert_timestamp(info.received_timestamp());
-  return RMW_RET_OK;
+  return ret;
 }

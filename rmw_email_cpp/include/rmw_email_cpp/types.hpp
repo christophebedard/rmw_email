@@ -104,12 +104,16 @@ typedef struct rmw_email_client_t
 {
   /// Pointer to the actual service client
   email::ServiceClient * email_client;
+  /// Type supports
+  rosidl_service_type_support_t type_supports;
 } rmw_email_client_t;
 
 typedef struct rmw_email_server_t
 {
   /// Pointer to the actual service server
   email::ServiceServer * email_server;
+  /// Type supports
+  rosidl_service_type_support_t type_supports;
 } rmw_email_server_t;
 
 typedef struct rmw_email_wait_set_t

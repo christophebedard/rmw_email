@@ -14,14 +14,14 @@
 
 #include <string>
 
-// #include "rmw/error_handling.h"
-#include "rmw/impl/cpp/macros.hpp"
-#include "rmw/rmw.h"
-
 #include "email/service_client.hpp"
 #include "email/service_info.hpp"
 #include "email/service_request.hpp"
 #include "email/service_server.hpp"
+#include "rmw/impl/cpp/macros.hpp"
+#include "rmw/rmw.h"
+
+#include "rmw_email_cpp/conversion.hpp"
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/log.hpp"
@@ -46,22 +46,22 @@ extern "C" rmw_ret_t rmw_send_response(
   email::ServiceServer * email_server = rmw_email_server->email_server;
 
   // Convert response to YAML string
-  // TODO(christophebedard) convert ros_response to YAML string
-  const std::string response = "";
+  const std::string response =
+    rmw_email_cpp::msg_to_yaml_service(&rmw_email_server->type_supports, ros_response, true);
 
   // Convert request header to request ID
   const email::Gid client_gid =
     rmw_email_cpp::convert_writer_guid_to_email_gid(request_header->writer_guid);
   const struct email::ServiceRequestId request_id(request_header->sequence_number, client_gid);
 
-  // Send
+  // And send both
   email_server->send_response(request_id, response);
   return RMW_RET_OK;
 }
 
 extern "C" rmw_ret_t rmw_take_response(
   const rmw_client_t * client,
-  rmw_service_info_t * request_header,
+  rmw_service_info_t * response_header,
   void * ros_response,
   bool * taken)
 {
@@ -71,16 +71,16 @@ extern "C" rmw_ret_t rmw_take_response(
     client->implementation_identifier,
     rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
-  RMW_CHECK_ARGUMENT_FOR_NULL(request_header, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_ARGUMENT_FOR_NULL(response_header, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(ros_response, RMW_RET_INVALID_ARGUMENT);
   RMW_CHECK_ARGUMENT_FOR_NULL(taken, RMW_RET_INVALID_ARGUMENT);
 
   auto rmw_email_client = static_cast<rmw_email_client_t *>(client->data);
   email::ServiceClient * email_client = rmw_email_client->email_client;
 
+  // Take response and info using the sequence number from the request header
   rmw_ret_t ret = RMW_RET_OK;
-
-  const auto sequence_number = request_header->request_id.sequence_number;
+  const auto sequence_number = response_header->request_id.sequence_number;
   auto response_with_info_opt = email_client->get_response_with_info(sequence_number);
   if (!response_with_info_opt.has_value()) {
     *taken = false;
@@ -88,18 +88,23 @@ extern "C" rmw_ret_t rmw_take_response(
     return ret;
   }
   *taken = true;
+  auto response_with_info = response_with_info_opt.value();
+  const std::string response = response_with_info.first;
+  const email::ServiceInfo info = response_with_info.second;
 
-  const std::string response = response_with_info_opt.value().first;
-  const email::ServiceInfo info = response_with_info_opt.value().second;
-  // TODO(christophebedard) convert YAML string back to ros_response
-  static_cast<void>(response);
-  // *ros_response
+  // Convert YAML string back to response
+  rcutils_allocator_t allocator = rcutils_get_default_allocator();
+  if (!rmw_email_cpp::yaml_to_msg_service(
+      &rmw_email_client->type_supports, response, ros_response, &allocator, false))
+  {
+    ret = RMW_RET_ERROR;
+  }
 
-  // Copy data to request header
-  request_header->request_id.sequence_number = info.sequence_number();
+  // Copy info to request header
+  response_header->request_id.sequence_number = info.sequence_number();
   rmw_email_cpp::copy_email_gid_to_writer_guid(
-    request_header->request_id.writer_guid, info.client_gid());
-  request_header->source_timestamp = rmw_email_cpp::convert_timestamp(info.source_timestamp());
-  request_header->received_timestamp = rmw_email_cpp::convert_timestamp(info.received_timestamp());
-  return RMW_RET_OK;
+    response_header->request_id.writer_guid, info.client_gid());
+  response_header->source_timestamp = rmw_email_cpp::convert_timestamp(info.source_timestamp());
+  response_header->received_timestamp = rmw_email_cpp::convert_timestamp(info.received_timestamp());
+  return ret;
 }
