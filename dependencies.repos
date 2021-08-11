@@ -74,7 +74,7 @@ repositories:
   ros-tracing/ros2_tracing:
     type: git
     url: https://gitlab.com/ros-tracing/ros2_tracing.git
-    version: master
+    version: instrumentation-publish-subscribe-take-executor
   ros-visualization/interactive_markers:
     type: git
     url: https://github.com/ros-visualization/interactive_markers.git
