@@ -55,6 +55,8 @@ extern "C" rmw_ret_t rmw_send_response(
   const struct email::ServiceRequestId request_id(request_header->sequence_number, client_gid);
 
   // And send both
+  RMW_EMAIL_LOG_DEBUG(
+    "sending response with sequence number: %ld", request_header->sequence_number);
   email_server->send_response(request_id, response);
   return RMW_RET_OK;
 }
@@ -81,6 +83,7 @@ extern "C" rmw_ret_t rmw_take_response(
   // Take response and info using the sequence number from the request header
   rmw_ret_t ret = RMW_RET_OK;
   const auto sequence_number = response_header->request_id.sequence_number;
+  RMW_EMAIL_LOG_DEBUG("taking response with info for sequence number: %ld", sequence_number);
   auto response_with_info_opt = email_client->get_response_with_info(sequence_number);
   if (!response_with_info_opt.has_value()) {
     *taken = false;

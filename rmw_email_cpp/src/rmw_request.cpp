@@ -52,6 +52,7 @@ extern "C" rmw_ret_t rmw_send_request(
   // Send request
   const auto sequence_number = email_client->send_request(request);
   *sequence_id = sequence_number;
+  RMW_EMAIL_LOG_DEBUG("sent request with sequence number: %ld", *sequence_id);
   return RMW_RET_OK;
 }
 
@@ -101,5 +102,6 @@ extern "C" rmw_ret_t rmw_take_request(
     request_header->request_id.writer_guid, info.client_gid());
   request_header->source_timestamp = rmw_email_cpp::convert_timestamp(info.source_timestamp());
   request_header->received_timestamp = rmw_email_cpp::convert_timestamp(info.received_timestamp());
+  RMW_EMAIL_LOG_DEBUG("request taken with sequence number: %ld", request.id.sequence_number);
   return ret;
 }
