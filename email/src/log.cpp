@@ -144,6 +144,7 @@ init(const Level & level)
   root_logger = std::make_shared<spdlog::logger>("root", sinks.begin(), sinks.end());
   root_logger->set_level(spdlog::level::debug);
   spdlog::register_logger(root_logger);
+  root_logger->flush_on(spdlog::level::warn);
   root_logger->debug("logging to file: {}", log_to_file ? "true" : "false");
   root_logger->debug("logging level set to: {}", level_to_string(level));
 
@@ -205,6 +206,7 @@ shutdown()
   root_logger->debug("shutting down");
   spdlog::drop_all();
   spdlog::shutdown();
+  root_logger->flush();
   root_logger = nullptr;
   sink_console = nullptr;
   is_logging_initialized = false;
