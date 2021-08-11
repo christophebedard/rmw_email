@@ -58,6 +58,13 @@ public:
     (void)map_.erase(it);
   }
 
+  void
+  erase(typename std::map<K, T>::iterator & it)
+  {
+    std::scoped_lock<std::mutex> lock(map_mutex_);
+    (void)map_.erase(it);
+  }
+
   typename std::map<K, T>::const_iterator
   find(const K & k) const
   {
@@ -87,14 +94,14 @@ public:
   }
 
   typename std::map<K, T>::iterator
-  begin() const noexcept
+  begin() noexcept
   {
     std::scoped_lock<std::mutex> lock(map_mutex_);
     return map_.begin();
   }
 
   typename std::map<K, T>::iterator
-  end() const noexcept
+  end() noexcept
   {
     std::scoped_lock<std::mutex> lock(map_mutex_);
     return map_.end();

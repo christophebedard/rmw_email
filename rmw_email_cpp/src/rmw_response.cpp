@@ -82,9 +82,8 @@ extern "C" rmw_ret_t rmw_take_response(
 
   // Take response and info using the sequence number from the request header
   rmw_ret_t ret = RMW_RET_OK;
-  const auto sequence_number = response_header->request_id.sequence_number;
-  RMW_EMAIL_LOG_DEBUG("taking response with info for sequence number: %ld", sequence_number);
-  auto response_with_info_opt = email_client->get_response_with_info(sequence_number);
+  RMW_EMAIL_LOG_DEBUG("taking response with info");
+  auto response_with_info_opt = email_client->get_response_with_info();
   if (!response_with_info_opt.has_value()) {
     *taken = false;
     RMW_EMAIL_LOG_DEBUG("taking response with info failed");
@@ -103,7 +102,7 @@ extern "C" rmw_ret_t rmw_take_response(
     ret = RMW_RET_ERROR;
   }
 
-  // Copy info to request header
+  // Copy info to response header
   response_header->request_id.sequence_number = info.sequence_number();
   rmw_email_cpp::copy_email_gid_to_writer_guid(
     response_header->request_id.writer_guid, info.client_gid());

@@ -111,6 +111,16 @@ public:
   std::optional<std::pair<std::string, ServiceInfo>>
   get_response_with_info(const SequenceNumber sequence_number);
 
+  /// Get a response with info if there is one.
+  /**
+   * This returns the first response in the internal map.
+   *
+   * \return the response with info, or `std::nullopt` if there is none
+   */
+  EMAIL_PUBLIC
+  std::optional<std::pair<std::string, ServiceInfo>>
+  get_response_with_info();
+
 private:
   EMAIL_DISABLE_COPY(ServiceClient)
 
