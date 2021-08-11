@@ -36,6 +36,7 @@ set(${PROJECT_NAME}_SOURCES
   src/gid.cpp
   src/guard_condition.cpp
   src/identifier.cpp
+  src/take.cpp
   src/timestamp.cpp
 
   src/rmw_client.cpp
