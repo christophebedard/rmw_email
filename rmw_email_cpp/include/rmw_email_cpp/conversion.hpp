@@ -26,11 +26,23 @@ namespace rmw_email_cpp
 
 std::string msg_to_yaml(const rmw_email_pub_t * publisher, const void * msg);
 
+std::string msg_to_yaml_service(
+  const rosidl_service_type_support_t * type_support,
+  const void * ros_request_or_response,
+  const bool is_service);
+
 bool yaml_to_msg(
   const rmw_email_sub_t * subscription,
   const std::string & yaml,
   void * ros_message,
   rcutils_allocator_t * allocator);
+
+bool yaml_to_msg_service(
+  const rosidl_service_type_support_t * type_support,
+  const std::string & yaml,
+  void * ros_request_or_response,
+  rcutils_allocator_t * allocator,
+  const bool is_service);
 
 }  // namespace rmw_email_cpp
 

@@ -104,4 +104,19 @@ ServiceClient::get_response_with_info(const SequenceNumber sequence_number)
   return {{response, info}};
 }
 
+
+std::optional<std::pair<std::string, ServiceInfo>>
+ServiceClient::get_response_with_info()
+{
+  auto it = responses_->begin();
+  if (it == responses_->end()) {
+    return std::nullopt;
+  }
+  const auto email_data = it->second.first;
+  const auto info = it->second.second;
+  const std::string response = email_data.content.body;
+  responses_->erase(it);
+  return {{response, info}};
+}
+
 }  // namespace email

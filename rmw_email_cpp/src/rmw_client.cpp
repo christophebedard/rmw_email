@@ -70,6 +70,7 @@ extern "C" rmw_client_t * rmw_create_client(
       delete rmw_email_client;
     });
   rmw_email_client->email_client = email_client;
+  rmw_email_client->type_supports = *type_support;
 
   rmw_client_t * rmw_client = rmw_client_allocate();
   RET_NULL_X(rmw_client, return nullptr);

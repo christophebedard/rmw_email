@@ -26,7 +26,7 @@ namespace email
 
 /// Simple thread-safe map.
 /**
- * Note: probably not ideal.
+ * Note: probably not actually thread safe.
  *
  * \tparam K the key element type
  * \tparam T the mapped element type
@@ -58,6 +58,13 @@ public:
     (void)map_.erase(it);
   }
 
+  void
+  erase(typename std::map<K, T>::iterator & it)
+  {
+    std::scoped_lock<std::mutex> lock(map_mutex_);
+    (void)map_.erase(it);
+  }
+
   typename std::map<K, T>::const_iterator
   find(const K & k) const
   {
@@ -84,6 +91,27 @@ public:
   {
     std::scoped_lock<std::mutex> lock(map_mutex_);
     return map_.equal_range(k);
+  }
+
+  typename std::map<K, T>::iterator
+  begin() noexcept
+  {
+    std::scoped_lock<std::mutex> lock(map_mutex_);
+    return map_.begin();
+  }
+
+  typename std::map<K, T>::iterator
+  end() noexcept
+  {
+    std::scoped_lock<std::mutex> lock(map_mutex_);
+    return map_.end();
+  }
+
+  typename std::map<K, T>::const_iterator
+  cbegin() const noexcept
+  {
+    std::scoped_lock<std::mutex> lock(map_mutex_);
+    return map_.cbegin();
   }
 
   typename std::map<K, T>::const_iterator

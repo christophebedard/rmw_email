@@ -48,20 +48,24 @@ static rmw_ret_t _rmw_take(
   auto rmw_email_sub = static_cast<rmw_email_sub_t *>(subscription->data);
   email::Subscription * email_sub = rmw_email_sub->email_sub;
 
+  // Take message with info
   rmw_ret_t ret = RMW_RET_OK;
   auto msg_with_info_opt = email_sub->get_message_with_info();
   if (!msg_with_info_opt.has_value()) {
     *taken = false;
   } else {
     *taken = true;
-
     auto msg_with_info = msg_with_info_opt.value();
     const std::string & msg_yaml = msg_with_info.first;
+    const email::MessageInfo msg_info = msg_with_info.second;
+
+    // Convert YAML string back to message
     rcutils_allocator_t allocator = rcutils_get_default_allocator();
     if (!rmw_email_cpp::yaml_to_msg(rmw_email_sub, msg_yaml, ros_message, &allocator)) {
       ret = RMW_RET_ERROR;
     }
-    const email::MessageInfo msg_info = msg_with_info.second;
+
+    // Copy info if needed
     if (message_info) {
       message_info->publisher_gid = rmw_email_cpp::convert_gid(msg_info.publisher_gid());
       message_info->source_timestamp =

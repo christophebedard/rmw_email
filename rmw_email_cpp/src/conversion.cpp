@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <yaml-cpp/yaml.h>
+
 #include <string>
 
 #include "dynmsg/message_reading.hpp"
@@ -20,8 +21,10 @@
 #include "rcutils/allocator.h"
 #include "rosidl_typesupport_introspection_c/identifier.h"
 #include "rosidl_typesupport_introspection_c/message_introspection.h"
+#include "rosidl_typesupport_introspection_c/service_introspection.h"
 #include "rosidl_typesupport_introspection_cpp/identifier.hpp"
 #include "rosidl_typesupport_introspection_cpp/message_introspection.hpp"
+#include "rosidl_typesupport_introspection_cpp/service_introspection.hpp"
 #include "rmw/error_handling.h"
 
 #include "rmw_email_cpp/conversion.hpp"
@@ -143,6 +146,48 @@ std::string msg_to_yaml(
           "C++:" + std::string(error_cpp.str));
 }
 
+std::string msg_to_yaml_service(
+  const rosidl_service_type_support_t * type_support,
+  const void * ros_request_or_response,
+  const bool is_service)
+{
+  const rosidl_service_type_support_t * ts = nullptr;
+  ts = get_service_typesupport_handle(
+    type_support,
+    rosidl_typesupport_introspection_c__identifier);
+  if (ts) {
+    RMW_EMAIL_LOG_DEBUG("msg_to_yaml_service typesupport: C");
+    auto service_members = static_cast<const rosidl_typesupport_introspection_c__ServiceMembers *>(
+      ts->data);
+    // If this is a service (server), msg->yaml converts a response
+    const rosidl_typesupport_introspection_c__MessageMembers * members =
+      is_service ? service_members->response_members_ : service_members->request_members_;
+    return details::c::msg_to_yaml(members, ros_request_or_response);
+  }
+  rcutils_error_string_t error_c = rcutils_get_error_string();
+  rcutils_reset_error();
+
+  ts = get_service_typesupport_handle(
+    type_support,
+    rosidl_typesupport_introspection_cpp::typesupport_identifier);
+  if (ts) {
+    RMW_EMAIL_LOG_DEBUG("msg_to_yaml_service typesupport: C++");
+    auto service_members =
+      static_cast<const rosidl_typesupport_introspection_cpp::ServiceMembers *>(
+      ts->data);
+    const rosidl_typesupport_introspection_cpp::MessageMembers * members =
+      is_service ? service_members->response_members_ : service_members->request_members_;
+    return details::cpp::msg_to_yaml(members, ros_request_or_response);
+  }
+  rcutils_error_string_t error_cpp = rcutils_get_error_string();
+  rcutils_reset_error();
+
+  throw std::runtime_error(
+          "msg_to_yaml_service couldn't find typesupport:\n"
+          "C:" + std::string(error_c.str) + "\n"
+          "C++:" + std::string(error_cpp.str));
+}
+
 bool yaml_to_msg(
   const rmw_email_sub_t * subscription,
   const std::string & yaml,
@@ -176,6 +221,50 @@ bool yaml_to_msg(
 
   throw std::runtime_error(
           "yaml_to_msg couldn't find typesupport:\n"
+          "C:" + std::string(error_c.str) + "\n"
+          "C++:" + std::string(error_cpp.str));
+}
+
+bool yaml_to_msg_service(
+  const rosidl_service_type_support_t * type_support,
+  const std::string & yaml,
+  void * ros_request_or_response,
+  rcutils_allocator_t * allocator,
+  const bool is_service)
+{
+  const rosidl_service_type_support_t * ts = nullptr;
+  ts = get_service_typesupport_handle(
+    type_support,
+    rosidl_typesupport_introspection_c__identifier);
+  if (ts) {
+    RMW_EMAIL_LOG_DEBUG("yaml_to_msg_service typesupport: C");
+    auto service_members = static_cast<const rosidl_typesupport_introspection_c__ServiceMembers *>(
+      ts->data);
+    // If this is a service (server), yaml->msg converts a request
+    const rosidl_typesupport_introspection_c__MessageMembers * members =
+      is_service ? service_members->request_members_ : service_members->response_members_;
+    return details::c::yaml_to_msg(members, yaml, ros_request_or_response, allocator);
+  }
+  rcutils_error_string_t error_c = rcutils_get_error_string();
+  rcutils_reset_error();
+
+  ts = get_service_typesupport_handle(
+    type_support,
+    rosidl_typesupport_introspection_cpp::typesupport_identifier);
+  if (ts) {
+    RMW_EMAIL_LOG_DEBUG("yaml_to_msg_service typesupport: C++");
+    auto service_members =
+      static_cast<const rosidl_typesupport_introspection_cpp::ServiceMembers *>(
+      ts->data);
+    const rosidl_typesupport_introspection_cpp::MessageMembers * members =
+      is_service ? service_members->request_members_ : service_members->response_members_;
+    return details::cpp::yaml_to_msg(members, yaml, ros_request_or_response);
+  }
+  rcutils_error_string_t error_cpp = rcutils_get_error_string();
+  rcutils_reset_error();
+
+  throw std::runtime_error(
+          "yaml_to_msg_service couldn't find typesupport:\n"
           "C:" + std::string(error_c.str) + "\n"
           "C++:" + std::string(error_cpp.str));
 }
