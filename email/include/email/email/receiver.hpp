@@ -78,6 +78,8 @@ private:
 
   /// Get the NEXTUID value.
   /**
+   * This value represents the predicted UID value of the next email, if there ever is a new email.
+   *
    * \return the NEXTUID, or `std::nullopt` if it failed
    */
   std::optional<int>
@@ -85,6 +87,8 @@ private:
 
   /// Get an email from its UID.
   /**
+   * Will fail if there is no email with that UID.
+   *
    * \param uid the UID
    * \return the email data, or `std::nullopt` if it failed
    */
