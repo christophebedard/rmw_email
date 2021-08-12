@@ -22,8 +22,10 @@ int main()
   email::init();
   email::Publisher pub1("/my_topic");
   email::Publisher pub2("/my_other_topic");
-  std::cout << "publishing messages" << std::endl;
+  std::cout << "publishing messages on topics:" << std::endl;
+  std::cout << "\t'" << pub1.get_topic_name() << "'" << std::endl;
   pub1.publish("my awesome message!");
+  std::cout << "\t'" << pub2.get_topic_name() << "'" << std::endl;
   pub2.publish("my other awesome message!");
   email::shutdown();
   return 0;
