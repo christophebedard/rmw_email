@@ -97,9 +97,13 @@ EmailReceiver::get_email()
   while (!next_email && !do_shutdown_.load()) {
     next_email = get_email_from_uid(current_uid_);
   }
-  // Increment current UID pointer: this allows us to
-  // not miss emails when there are multiple new ones.
-  if (current_uid_ < next_uid_) {
+  // Increment our current UID pointer, but only up to the previous 'next UID' value + 1.
+  // This allows us to not miss emails when there are multiple new ones.
+  // If we fetched the only new email (above), current UID will be equal to the initial next UID
+  // and so we increment the pointer to wait for the next one.
+  // If there was more than one new email, current UID will be lower than next UID and so we
+  // increment the pointer to get the next new email.
+  if (current_uid_ <= next_uid_) {
     current_uid_++;
   }
   return next_email;
