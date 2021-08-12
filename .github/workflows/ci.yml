@@ -11,8 +11,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            build-type: binary
+          # - os: ubuntu-latest
+          #   build-type: binary
           - os: ubuntu-latest
             build-type: source
           # - os: macos-latest
