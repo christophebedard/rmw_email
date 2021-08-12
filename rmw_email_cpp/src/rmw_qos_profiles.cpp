@@ -29,12 +29,15 @@ extern "C" rmw_ret_t rmw_qos_profile_check_compatible(
   size_t reason_size)
 {
   RMW_CHECK_ARGUMENT_FOR_NULL(compatibility, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_ARGUMENT_FOR_NULL(compatibility, RMW_RET_INVALID_ARGUMENT);
   if (!reason && 0u != reason_size) {
     RMW_SET_ERROR_MSG("reason parameter is null, but reason_size parameter is not zero");
     return RMW_RET_INVALID_ARGUMENT;
   }
 
   // TODO(christophebedard) figure out
+  static_cast<void>(publisher_profile);
+  static_cast<void>(subscription_profile);
   *compatibility = RMW_QOS_COMPATIBILITY_OK;
   return RMW_RET_OK;
 }

@@ -42,6 +42,7 @@ extern "C" rmw_ret_t rmw_get_publishers_info_by_topic(
   }
 
   // TODO(christophebedard) figure out
+  static_cast<void>(no_mangle);
   return RMW_RET_OK;
 }
 
@@ -65,5 +66,6 @@ extern "C" rmw_ret_t rmw_get_subscriptions_info_by_topic(
   }
 
   // TODO(christophebedard) figure out
+  static_cast<void>(no_mangle);
   return RMW_RET_OK;
 }

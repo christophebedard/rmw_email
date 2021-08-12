@@ -17,6 +17,8 @@
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/names_and_types.h"
 #include "rmw/rmw.h"
+#include "rmw/validate_namespace.h"
+#include "rmw/validate_node_name.h"
 // #include "rmw/sanity_checks.h"
 
 #include "rmw_email_cpp/identifier.hpp"
@@ -39,7 +41,31 @@ extern "C" rmw_ret_t rmw_get_subscriber_names_and_types_by_node(
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RCUTILS_CHECK_ALLOCATOR(allocator, return RMW_RET_INVALID_ARGUMENT);
 
+  // Validate node name
+  int validation_result = RMW_NODE_NAME_VALID;
+  rmw_ret_t ret = rmw_validate_node_name(node_name, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  // Validate namespace
+  validation_result = RMW_NAMESPACE_VALID;
+  ret = rmw_validate_namespace(node_namespace, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  if (RMW_NAMESPACE_VALID != validation_result) {
+    const char * reason = rmw_namespace_validation_result_string(validation_result);
+    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("node_namespace argument is invalid: %s", reason);
+    return RMW_RET_INVALID_ARGUMENT;
+  }
+  // Check names and types
+  ret = rmw_names_and_types_check_zero(topic_names_and_types);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+
   // TODO(christophebedard) figure out
+  static_cast<void>(no_demangle);
   return RMW_RET_OK;
 }
 
@@ -59,7 +85,31 @@ extern "C" rmw_ret_t rmw_get_publisher_names_and_types_by_node(
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RCUTILS_CHECK_ALLOCATOR(allocator, return RMW_RET_INVALID_ARGUMENT);
 
+  // Validate node name
+  int validation_result = RMW_NODE_NAME_VALID;
+  rmw_ret_t ret = rmw_validate_node_name(node_name, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  // Validate namespace
+  validation_result = RMW_NAMESPACE_VALID;
+  ret = rmw_validate_namespace(node_namespace, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  if (RMW_NAMESPACE_VALID != validation_result) {
+    const char * reason = rmw_namespace_validation_result_string(validation_result);
+    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("node_namespace argument is invalid: %s", reason);
+    return RMW_RET_INVALID_ARGUMENT;
+  }
+  // Check names and types
+  ret = rmw_names_and_types_check_zero(topic_names_and_types);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+
   // TODO(christophebedard) figure out
+  static_cast<void>(no_demangle);
   return RMW_RET_OK;
 }
 
@@ -79,6 +129,29 @@ rmw_get_service_names_and_types_by_node(
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RCUTILS_CHECK_ALLOCATOR(allocator, return RMW_RET_INVALID_ARGUMENT);
 
+  // Validate node name
+  int validation_result = RMW_NODE_NAME_VALID;
+  rmw_ret_t ret = rmw_validate_node_name(node_name, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  // Validate namespace
+  validation_result = RMW_NAMESPACE_VALID;
+  ret = rmw_validate_namespace(node_namespace, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  if (RMW_NAMESPACE_VALID != validation_result) {
+    const char * reason = rmw_namespace_validation_result_string(validation_result);
+    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("node_namespace argument is invalid: %s", reason);
+    return RMW_RET_INVALID_ARGUMENT;
+  }
+  // Check names and types
+  ret = rmw_names_and_types_check_zero(service_names_and_types);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+
   // TODO(christophebedard) figure out
   return RMW_RET_OK;
 }
@@ -97,6 +170,29 @@ extern "C" rmw_ret_t rmw_get_client_names_and_types_by_node(
     rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
   RCUTILS_CHECK_ALLOCATOR(allocator, return RMW_RET_INVALID_ARGUMENT);
+
+  // Validate node name
+  int validation_result = RMW_NODE_NAME_VALID;
+  rmw_ret_t ret = rmw_validate_node_name(node_name, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  // Validate namespace
+  validation_result = RMW_NAMESPACE_VALID;
+  ret = rmw_validate_namespace(node_namespace, &validation_result, nullptr);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+  if (RMW_NAMESPACE_VALID != validation_result) {
+    const char * reason = rmw_namespace_validation_result_string(validation_result);
+    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("node_namespace argument is invalid: %s", reason);
+    return RMW_RET_INVALID_ARGUMENT;
+  }
+  // Check names and types
+  ret = rmw_names_and_types_check_zero(service_names_and_types);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
 
   // TODO(christophebedard) figure out
   return RMW_RET_OK;
