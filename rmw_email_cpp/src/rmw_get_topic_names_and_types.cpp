@@ -40,5 +40,6 @@ extern "C" rmw_ret_t rmw_get_topic_names_and_types(
   }
 
   // TODO(christophebedard) figure out
+  static_cast<void>(no_demangle);
   return RMW_RET_OK;
 }
