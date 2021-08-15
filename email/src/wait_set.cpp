@@ -155,6 +155,7 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
       if (!subscriptions_ready[i] && subscriptions_[i]->has_message()) {
         subscriptions_ready[i] = true;
         success = true;
+        logger_->debug("ready subscription: {}", subscriptions_[i]->get_topic_name());
       }
     }
     // Clients
@@ -162,6 +163,7 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
       if (!clients_ready[i] && clients_[i]->has_response()) {
         clients_ready[i] = true;
         success = true;
+        logger_->debug("ready client: {}", clients_[i]->get_service_name());
       }
     }
     // Servers
@@ -169,6 +171,7 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
       if (!servers_ready[i] && servers_[i]->has_request()) {
         servers_ready[i] = true;
         success = true;
+        logger_->debug("ready server: {}", servers_[i]->get_service_name());
       }
     }
     // Guard conditions
@@ -176,6 +179,7 @@ WaitSet::wait(const std::chrono::milliseconds timeout)
       if (!guard_conditions_ready[i] && guard_conditions_[i]->triggered()) {
         guard_conditions_ready[i] = true;
         success = true;
+        logger_->debug("ready guard condition");
       }
     }
     if (success) {

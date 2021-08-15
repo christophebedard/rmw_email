@@ -18,6 +18,7 @@
 #include "rmw/rmw.h"
 
 #include "rmw_email_cpp/identifier.hpp"
+#include "rmw_email_cpp/log.hpp"
 #include "rmw_email_cpp/types.hpp"
 
 extern "C" rmw_wait_set_t * rmw_create_wait_set(rmw_context_t * context, size_t max_conditions)
@@ -117,6 +118,11 @@ extern "C" rmw_ret_t rmw_wait(
 
   /// Wait
   // If a timeout isn't provided, we wait forever until ready
+  RMW_EMAIL_LOG_DEBUG(
+    "wait timeout: %lu s, %lu ns (%s)",
+    (wait_timeout ? wait_timeout->sec : 0UL),
+    (wait_timeout ? wait_timeout->nsec : 0UL),
+    (wait_timeout ? "non-null" : "null"));
   std::chrono::milliseconds wait_timeout_chrono_ms = std::chrono::milliseconds(-1);
   if (wait_timeout) {
     auto wait_timeout_chrono =

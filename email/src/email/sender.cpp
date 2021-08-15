@@ -108,6 +108,7 @@ EmailSender::send(
   const struct EmailContent & content,
   std::optional<EmailHeaders> additional_headers)
 {
+  logger()->debug("send");
   return send_payload(
     utils::payload::build_payload(recipients_, content, additional_headers, std::nullopt));
 }
