@@ -1,5 +1,7 @@
 # `email` design
 
+**Note**: for a rendered version of this document, see: https://christophebedard.com/rmw_email/design/email/
+
 ## Overall architecture
 
 ```plantuml
