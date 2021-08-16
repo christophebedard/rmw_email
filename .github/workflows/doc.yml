@@ -45,6 +45,7 @@ jobs:
     - name: Gen design docs
       run: |
         mkdir -p pandoc/email/ && cd pandoc/email/
+        sed -i '/christophebedard.com/d' ../../repos/master/email/doc/design.md
         pandoc ../../repos/master/email/doc/design.md --filter pandoc-plantuml > index.html
     - name: Copy docs to gh-pages
       run: |
