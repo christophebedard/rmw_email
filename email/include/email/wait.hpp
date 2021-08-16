@@ -103,7 +103,7 @@ wait_for_response_with_info(
  *    const SequenceNumber, ServiceClient *, const std::chrono::milliseconds)
  */
 EMAIL_PUBLIC
-std::string
+std::pair<std::string, ServiceInfo>
 wait_for_response_with_info(
   const SequenceNumber sequence_number,
   std::shared_ptr<ServiceClient> client,
