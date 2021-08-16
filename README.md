@@ -44,7 +44,7 @@ This repository contains a few packages:
 * [`email`](./email/): simple publish/subscribe & service middleware using emails to exchange strings
    * This package claims to be in the **Quality Level TODO** category, see the [Quality Declaration](./email/QUALITY_DECLARATION.md) for more details.
    * See the [API documentation](https://christophebedard.com/rmw_email/api/email/).
-   * See the [design document](./email/doc/design.md).
+   * See the [design document](./email/doc/design.md) ([rendered version](https://christophebedard.com/rmw_email/design/email/)).
 * [`email_examples`](./email_examples/): various examples using `email`
    * See [*`email` examples*](#email-examples).
 * [`rmw_email_cpp`](./rmw_email_cpp/): ROS 2 `rmw` implementation using `email` as the middleware
