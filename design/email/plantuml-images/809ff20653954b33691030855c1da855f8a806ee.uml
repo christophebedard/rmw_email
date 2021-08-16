@@ -1,0 +1,45 @@
+@startuml
+
+class GuardCondition {
+   +trigger()
+   +triggered(): bool
+   +exchange_in_use(bool in_use): bool
+   +reset()
+}
+hide GuardCondition fields
+hide GuardCondition circle
+
+class WaitSet {
+   -subscriptions: vector<Subscription *>
+   -clients: vector<ServiceClient *>
+   -servers: vector<ServiceServer *>
+   -guard_conditions: vector<Subscription *>
+   +add_subscription(Subscription *)
+   +add_client(ServiceClient *)
+   +add_server(ServiceServer *)
+   +add_guard_condition(GuardCondition *)
+   +get_subscriptions(): vector<Subscription *>
+   +get_clients(): vector<ServiceClient *>
+   +get_servers(): vector<ServiceServer *>
+   +get_guard_conditions(): vector<GuardCondition *>
+   +wait(milliseconds timeout): bool
+   +clear()
+}
+hide WaitSet circle
+
+class wait. {
+   .. Subscription ..
+   +wait_for_message(Subscription * subscription, milliseconds timeout): string
+   +wait_for_message_with_info(Subscription * subscription, milliseconds timeout): pair<string, MessageInfo>
+   .. Service client ..
+   +wait_for_response(SequenceNumber seq, ServiceClient * client, milliseconds timeout): string
+   +wait_for_response_with_info(SequenceNumber seq, ServiceClient * client, milliseconds timeout): pair<string, ServiceInfo>
+   .. Service server ..
+   +wait_for_request(ServiceServer * server, milliseconds timeout): ServiceRequest
+   +wait_for_request_with_info(ServiceServer * server, milliseconds timeout): pair<ServiceRequest, ServiceInfo>
+}
+hide wait. circle
+hide wait. fields
+WaitSet <-- wait
+
+@enduml

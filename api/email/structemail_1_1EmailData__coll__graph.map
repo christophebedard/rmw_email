@@ -1,0 +1,8 @@
+<map id="email::EmailData" name="email::EmailData">
+<area shape="rect" id="node1" title="Raw email data with headers." alt="" coords="637,140,772,167"/>
+<area shape="rect" id="node2" href="$structemail_1_1EmailRecipients.html" title="Recipients of an email." alt="" coords="288,36,460,63"/>
+<area shape="rect" id="node3" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/container/vector.html" title=" " alt="" coords="5,36,192,63"/>
+<area shape="rect" id="node4" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/container/map.html" title=" " alt="" coords="293,87,455,129"/>
+<area shape="rect" id="node5" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/string/basic_string.html" title=" " alt="" coords="55,211,142,237"/>
+<area shape="rect" id="node6" href="$structemail_1_1EmailContent.html" title="Content of an email." alt="" coords="297,245,451,272"/>
+</map>

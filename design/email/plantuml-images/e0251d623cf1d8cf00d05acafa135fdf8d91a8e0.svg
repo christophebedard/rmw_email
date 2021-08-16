@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="519px" preserveAspectRatio="none" style="width:1111px;height:519px;" version="1.1" viewBox="0 0 1111 519" width="1111px" zoomAndPan="magnify"><defs><filter height="300%" id="fs1btr44ywhjh" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--class Timestamp--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="83.1875" id="Timestamp" style="stroke: #A80036; stroke-width: 1.5;" width="333" x="128" y="127"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="68" x="260.5" y="143.1387">Timestamp</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="129" x2="460" y1="150.9688" y2="150.9688"/><ellipse cx="139" cy="162.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="130" x="148" y="165.1792">nanoseconds(): int64_t</text><ellipse cx="139" cy="175.6758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="99" x="148" y="177.9839">to_string(): string</text><ellipse cx="139" cy="188.4805" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="307" x="148" y="190.7886">from_string(string timestamp): optional&lt;Timestamp&gt;</text><line style="stroke: #000000; stroke-width: 1.0;" x1="148" x2="455" y1="192.7886" y2="192.7886"/><ellipse cx="139" cy="201.2852" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="103" x="148" y="203.5933">now(): Timestamp</text><line style="stroke: #000000; stroke-width: 1.0;" x1="148" x2="251" y1="205.5933" y2="205.5933"/><!--class GidValue--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="58.7422" id="GidValue" style="stroke: #A80036; stroke-width: 1.5;" width="64" x="624.5" y="8"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="62" x="625.5" y="24.1387">«typedef»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="55" x="629" y="38.1074">GidValue</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="625.5" x2="687.5" y1="45.9375" y2="45.9375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="45" x="630.5" y="60.1479">uint32_t</text><!--class Gid--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="83.1875" id="Gid" style="stroke: #A80036; stroke-width: 1.5;" width="244" x="534.5" y="127"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="20" x="646.5" y="143.1387">Gid</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="535.5" x2="777.5" y1="150.9688" y2="150.9688"/><ellipse cx="545.5" cy="162.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="96" x="554.5" y="165.1792">value(): GidValue</text><ellipse cx="545.5" cy="175.6758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="99" x="554.5" y="177.9839">to_string(): string</text><ellipse cx="545.5" cy="188.4805" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="218" x="554.5" y="190.7886">from_string(string gid): optional&lt;Gid&gt;</text><line style="stroke: #000000; stroke-width: 1.0;" x1="554.5" x2="772.5" y1="192.7886" y2="192.7886"/><ellipse cx="545.5" cy="201.2852" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="81" x="554.5" y="203.5933">new_gid(): Gid</text><line style="stroke: #000000; stroke-width: 1.0;" x1="554.5" x2="635.5" y1="205.5933" y2="205.5933"/><!--class SequenceNumber--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="58.7422" id="SequenceNumber" style="stroke: #A80036; stroke-width: 1.5;" width="118" x="832.5" y="139"/><text fill="#000000" font-family="sans-serif" font-size="12" font-style="italic" lengthAdjust="spacingAndGlyphs" textLength="62" x="860.5" y="155.1387">«typedef»</text><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="112" x="835.5" y="169.1074">SequenceNumber</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="833.5" x2="949.5" y1="176.9375" y2="176.9375"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="38" x="838.5" y="191.1479">int64_t</text><!--class CommunicationInfo--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="83.1875" id="CommunicationInfo" style="stroke: #A80036; stroke-width: 1.5;" width="577" x="6" y="270"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="119" x="235" y="286.1387">CommunicationInfo</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="7" x2="582" y1="293.9688" y2="293.9688"/><ellipse cx="17" cy="305.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="186" x="26" y="308.1792">source_timestamp(): Timestamp</text><ellipse cx="17" cy="318.6758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="26" y="320.9839">received_timestamp(): Timestamp</text><ellipse cx="17" cy="331.4805" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="97" x="26" y="333.7886">source_gid(): Gid</text><ellipse cx="17" cy="344.2852" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="551" x="26" y="346.5933">from_headers(EmailHeaders headers, string source_gid_header): optional&lt;CommunicationInfo&gt;</text><line style="stroke: #000000; stroke-width: 1.0;" x1="26" x2="577" y1="348.5933" y2="348.5933"/><!--class MessageInfo--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="83.1875" id="MessageInfo" style="stroke: #A80036; stroke-width: 1.5;" width="387" x="101" y="419.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="79" x="255" y="435.6387">MessageInfo</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="102" x2="487" y1="443.4688" y2="443.4688"/><ellipse cx="112" cy="455.3711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="186" x="121" y="457.6792">source_timestamp(): Timestamp</text><ellipse cx="112" cy="468.1758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="121" y="470.4839">received_timestamp(): Timestamp</text><ellipse cx="112" cy="480.9805" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="111" x="121" y="483.2886">publisher_gid(): Gid</text><ellipse cx="112" cy="493.7852" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="361" x="121" y="496.0933">from_headers(EmailHeaders headers): optional&lt;MessageInfo&gt;</text><line style="stroke: #000000; stroke-width: 1.0;" x1="121" x2="482" y1="498.0933" y2="498.0933"/><!--class ServiceInfo--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="95.9922" id="ServiceInfo" style="stroke: #A80036; stroke-width: 1.5;" width="378" x="722.5" y="413"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="68" x="877.5" y="429.1387">ServiceInfo</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="723.5" x2="1099.5" y1="436.9688" y2="436.9688"/><ellipse cx="733.5" cy="448.8711" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="186" x="742.5" y="451.1792">source_timestamp(): Timestamp</text><ellipse cx="733.5" cy="461.6758" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="195" x="742.5" y="463.9839">received_timestamp(): Timestamp</text><ellipse cx="733.5" cy="474.4805" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="88" x="742.5" y="476.7886">client_gid(): Gid</text><ellipse cx="733.5" cy="487.2852" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="222" x="742.5" y="489.5933">sequence_number(): SequenceNumber</text><ellipse cx="733.5" cy="500.0898" fill="#84BE84" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" text-decoration="underline" textLength="352" x="742.5" y="502.3979">from_headers(EmailHeaders headers): optional&lt;ServiceInfo&gt;</text><line style="stroke: #000000; stroke-width: 1.0;" x1="742.5" x2="1094.5" y1="504.3979" y2="504.3979"/><!--class ServiceRequestId--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="57.5781" id="ServiceRequestId" style="stroke: #A80036; stroke-width: 1.5;" width="240" x="618.5" y="282.5"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="108" x="684.5" y="298.6387">ServiceRequestId</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="619.5" x2="857.5" y1="306.4688" y2="306.4688"/><ellipse cx="629.5" cy="318.3711" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="214" x="638.5" y="320.6792">sequence_number: SequenceNumber</text><ellipse cx="629.5" cy="331.1758" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="80" x="638.5" y="333.4839">client_gid: Gid</text><!--class ServiceRequest--><rect fill="#FEFECE" filter="url(#fs1btr44ywhjh)" height="57.5781" id="ServiceRequest" style="stroke: #A80036; stroke-width: 1.5;" width="142" x="545.5" y="432"/><text fill="#000000" font-family="sans-serif" font-size="12" lengthAdjust="spacingAndGlyphs" textLength="97" x="568" y="448.1387">ServiceRequest</text><line style="stroke: #A80036; stroke-width: 1.5;" x1="546.5" x2="686.5" y1="455.9688" y2="455.9688"/><ellipse cx="556.5" cy="467.8711" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="116" x="565.5" y="470.1792">id: ServiceRequestId</text><ellipse cx="556.5" cy="480.6758" fill="none" rx="3" ry="3" style="stroke: #038048; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="11" lengthAdjust="spacingAndGlyphs" textLength="83" x="565.5" y="482.9839">content: string</text><!--link GidValue to Gid--><path d="M656.5,80.19 C656.5,95.1 656.5,111.88 656.5,126.72 " fill="none" id="GidValue-Gid" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="656.5,67.13,652.5,73.13,656.5,79.13,660.5,73.13,656.5,67.13" style="stroke: #A80036; stroke-width: 1.0;"/><!--link Timestamp to CommunicationInfo--><path d="M294.5,223.44 C294.5,238.84 294.5,255.35 294.5,269.81 " fill="none" id="Timestamp-CommunicationInfo" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="294.5,210.28,290.5,216.28,294.5,222.28,298.5,216.28,294.5,210.28" style="stroke: #A80036; stroke-width: 1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacingAndGlyphs" textLength="8" x="285.8625" y="230.1965">2</text><!--link Gid to CommunicationInfo--><path d="M539.95,214.9 C494.49,232.6 442.8,252.74 398.61,269.95 " fill="none" id="Gid-CommunicationInfo" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="552.28,210.09,545.2378,208.5383,541.0969,214.4419,548.1391,215.9936,552.28,210.09" style="stroke: #A80036; stroke-width: 1.0;"/><!--link CommunicationInfo to MessageInfo--><path d="M294.5,366.24 C294.5,383.8 294.5,403.01 294.5,419.44 " fill="none" id="CommunicationInfo-MessageInfo" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="294.5,353.2,290.5,359.2,294.5,365.2,298.5,359.2,294.5,353.2" style="stroke: #A80036; stroke-width: 1.0;"/><!--link CommunicationInfo to ServiceInfo--><path d="M476.71,356.06 C554.08,374.56 644.26,396.11 722.37,414.79 " fill="none" id="CommunicationInfo-ServiceInfo" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="463.91,353,468.8131,358.2877,475.5798,355.7955,470.6768,350.5078,463.91,353" style="stroke: #A80036; stroke-width: 1.0;"/><!--link SequenceNumber to ServiceInfo--><path d="M894.37,211.17 C898.05,264.62 904.41,357.08 908.26,412.99 " fill="none" id="SequenceNumber-ServiceInfo" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="893.47,198.15,889.8885,204.4088,894.2884,210.1221,897.8699,203.8632,893.47,198.15" style="stroke: #A80036; stroke-width: 1.0;"/><!--link SequenceNumber to ServiceRequestId--><path d="M850.7,207.1 C824.99,230.8 792.33,260.89 768.89,282.49 " fill="none" id="SequenceNumber-ServiceRequestId" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="860.54,198.03,853.4167,199.1516,851.7122,206.1584,858.8356,205.0368,860.54,198.03" style="stroke: #A80036; stroke-width: 1.0;"/><!--link Gid to ServiceRequestId--><path d="M686.87,221.73 C698.81,242.25 712.04,264.99 722.11,282.32 " fill="none" id="Gid-ServiceRequestId" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="680.22,210.28,679.7807,217.4777,686.2558,220.6516,686.6951,213.4538,680.22,210.28" style="stroke: #A80036; stroke-width: 1.0;"/><!--link ServiceRequestId to ServiceRequest--><path d="M706.73,350.91 C685.87,376.13 659.03,408.58 640.06,431.51 " fill="none" id="ServiceRequestId-ServiceRequest" style="stroke: #A80036; stroke-width: 1.0;"/><polygon fill="#A80036" points="715.27,340.59,708.3647,342.6677,707.6267,349.841,714.532,347.7632,715.27,340.59" style="stroke: #A80036; stroke-width: 1.0;"/><!--
+@startuml
+
+class Timestamp {
+   +nanoseconds(): int64_t
+   +to_string(): string
+   +from_string(string timestamp): optional<Timestamp> {static}
+   +now(): Timestamp {static}
+}
+hide Timestamp fields
+hide Timestamp circle
+
+class GidValue <<typedef>> {
+   uint32_t
+}
+hide GidValue circle
+hide GidValue methods
+class Gid {
+   +value(): GidValue
+   +to_string(): string
+   +from_string(string gid): optional<Gid> {static}
+   +new_gid(): Gid {static}
+}
+hide Gid fields
+hide Gid circle
+GidValue *- - Gid
+
+class SequenceNumber <<typedef>> {
+   int64_t
+}
+hide SequenceNumber circle
+hide SequenceNumber methods
+
+
+class CommunicationInfo {
+   +source_timestamp(): Timestamp
+   +received_timestamp(): Timestamp
+   +source_gid(): Gid
+   +from_headers(EmailHeaders headers, string source_gid_header): optional<CommunicationInfo> {static}
+}
+hide CommunicationInfo fields
+hide CommunicationInfo circle
+Timestamp "2" *- - CommunicationInfo
+Gid *- - CommunicationInfo
+
+class MessageInfo {
+   +source_timestamp(): Timestamp
+   +received_timestamp(): Timestamp
+   +publisher_gid(): Gid
+   +from_headers(EmailHeaders headers): optional<MessageInfo> {static}
+}
+hide MessageInfo fields
+hide MessageInfo circle
+CommunicationInfo *- - MessageInfo
+
+class ServiceInfo {
+   +source_timestamp(): Timestamp
+   +received_timestamp(): Timestamp
+   +client_gid(): Gid
+   +sequence_number(): SequenceNumber
+   +from_headers(EmailHeaders headers): optional<ServiceInfo> {static}
+}
+hide ServiceInfo fields
+hide ServiceInfo circle
+CommunicationInfo *- - ServiceInfo
+SequenceNumber *- - ServiceInfo
+
+class ServiceRequestId {
+   +sequence_number: SequenceNumber
+   +client_gid: Gid
+}
+hide ServiceRequestId circle
+hide ServiceRequestId methods
+SequenceNumber *- - ServiceRequestId
+Gid *- - ServiceRequestId
+
+class ServiceRequest {
+   +id: ServiceRequestId
+   +content: string
+}
+hide ServiceRequest circle
+hide ServiceRequest methods
+ServiceRequestId *- - ServiceRequest
+
+@enduml
+
+PlantUML version 1.2018.13(Mon Nov 26 17:11:51 UTC 2018)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Java Version: 11.0.11+9
+Operating System: Linux
+OS Version: 5.8.0-1039-azure
+Default Encoding: UTF-8
+Language: en
+Country: null
+--></g></svg>

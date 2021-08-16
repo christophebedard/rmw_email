@@ -1,0 +1,5 @@
+<map id="email::ContextAlreadyInitializedError" name="email::ContextAlreadyInitializedError">
+<area shape="rect" id="node1" title="Error when the context is already initialized." alt="" coords="5,155,237,196"/>
+<area shape="rect" id="node2" href="$classemail_1_1ContextError.html" title="Generic context error." alt="" coords="47,80,196,107"/>
+<area shape="rect" id="node3" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/error/runtime_error.html" title=" " alt="" coords="52,5,191,32"/>
+</map>

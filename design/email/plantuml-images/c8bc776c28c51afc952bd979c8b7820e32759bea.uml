@@ -1,0 +1,161 @@
+@startuml
+
+class CurlContext {
+   +init()
+   +fini()
+   +get_handle(): CURL *
+   +execute()
+}
+hide CurlContext fields
+hide CurlContext circle
+
+class CurlExecutor {
+   +init()
+   #init_options() {abstract}
+   #context: CurlContext
+}
+hide CurlExecutor fields
+hide CurlExecutor circle
+CurlContext *-- CurlExecutor
+
+
+class EmailSender {
+   +send(EmailContent, optional<EmailHeaders>)
+   +reply(EmailContent, EmailData, optional<EmailHeaders>)
+   #init_options() {abstract}
+}
+hide EmailSender fields
+hide EmailSender circle
+CurlExecutor <|-- EmailSender
+
+class EmailReceiver {
+   +get_email(): optional<EmailData>
+   #init_options() {abstract}
+   -get_nextuid(): optional<int>
+   -get_email_from_uid(int): optional<EmailData>
+   -execute(optional<string>, url_options, optional<string> custom_request): optional<string>
+}
+hide EmailReceiver fields
+hide EmailReceiver circle
+CurlExecutor <|-- EmailReceiver
+
+
+class PollingManager {
+   -thread
+   -poll_thread()
+   -handlers
+   +start()
+   +shutdown()
+   +register_handler(function<void (EmailData)>)
+}
+EmailReceiver o-- PollingManager
+hide PollingManager circle
+
+abstract class EmailHandler {
+   +handle(EmailData) {abstract}
+}
+hide EmailHandler fields
+hide EmailHandler circle
+
+
+class SubscriptionHandler {
+   -subscriptions
+   +register_subscription(string topic_name, queue<pair<string, MessageInfo>> message_queue)
+   +handle(EmailData) {abstract}
+}
+hide SubscriptionHandler fields
+hide SubscriptionHandler circle
+EmailHandler <|-- SubscriptionHandler
+PollingManager "registers with" <-- SubscriptionHandler
+
+class ServiceHandler {
+   -clients
+   -servers
+   +register_service_client(Gid, map<SequenceNumber, pair<EmailData, ServiceInfo>> response_map)
+   +register_service_server(string service_name, queue<pair<EmailData, ServiceInfo>> request_queue)
+   +handle(EmailData) {abstract}
+}
+hide ServiceHandler fields
+hide ServiceHandler circle
+EmailHandler <|-- ServiceHandler
+PollingManager "registers with" <-- ServiceHandler
+
+
+class GidObject {
+   -gid
+   +get_gid()
+}
+hide GidObject circle
+class NamedObject {
+   -object_name: string
+   #get_object_name(): string
+   #validate_name() {abstract}
+}
+hide NamedObject circle
+
+class PubSubObject {
+   +get_topic_name(): string
+   -validate_name() {abstract}
+}
+hide PubSubObject fields
+hide PubSubObject circle
+GidObject <|-- PubSubObject
+NamedObject <|-- PubSubObject
+
+class ServiceObject {
+   +get_service_name(): string
+   -validate_name() {abstract}
+}
+hide ServiceObject fields
+hide ServiceObject circle
+GidObject <|-- ServiceObject
+NamedObject <|-- ServiceObject
+
+
+class Publisher {
+   +publish(string message, optional<EmailHeaders> additional_headers)
+}
+hide Publisher fields
+hide Publisher circle
+PubSubObject <|-- Publisher
+EmailSender o-- Publisher
+
+class Subscription {
+   -messages: queue<pair<string, MessageInfo>>
+   +has_message(): bool
+   +get_message(): optional<string>
+   +get_message_with_info(): optional<pair<string, MessageInfo>>
+}
+hide Subscription circle
+PubSubObject <|-- Subscription
+SubscriptionHandler "registers with" <-- Subscription
+
+
+class ServiceClient {
+   -responses: map<SequenceNumber, pair<EmailData, ServiceInfo>>
+   +send_request(string request, SequenceNumber seq)
+   +send_request(request): SequenceNumber
+   +has_response(SequenceNumber seq): bool
+   +has_response(): bool
+   +get_response(SequenceNumber seq): optional<string>
+   +get_response_with_info(SequenceNumber seq): optional<pair<string, ServiceInfo>>
+   +get_response_with_info(): optional<pair<string, ServiceInfo>>
+}
+hide ServiceClient circle
+ServiceObject <|-- ServiceClient
+Publisher *-- ServiceClient
+ServiceHandler "registers with" <-- ServiceClient
+
+class ServiceServer {
+   -requests: queue<pair<EmailData, ServiceInfo>>
+   +has_request(): bool
+   +get_request(): optional<ServiceRequest>
+   +get_request_with_info(): optional<pair<ServiceRequest, ServiceInfo>>
+   +send_response(ServiceRequestId request_id, string response)
+}
+hide ServiceServer circle
+ServiceObject <|-- ServiceServer
+EmailSender *-- ServiceServer
+ServiceHandler "registers with" <-- ServiceServer
+
+@enduml
