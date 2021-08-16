@@ -1,0 +1,11 @@
+digraph "include/email/email" {
+  compound=true
+  node [ fontsize="10", fontname="Helvetica"];
+  edge [ labelfontsize="10", labelfontname="Helvetica"];
+  subgraph clusterdir_ad3ce1c7f1742348b8130f4dda8e17a5 {
+    graph [ bgcolor="#ddddee", pencolor="black", label="email" fontname="Helvetica", fontsize="10", URL="dir_ad3ce1c7f1742348b8130f4dda8e17a5.html"]
+  dir_fd73adbdd9e4cd884094af8b77dc3fe5 [shape=box, label="email", style="filled", fillcolor="#eeeeff", pencolor="black", URL="dir_fd73adbdd9e4cd884094af8b77dc3fe5.html"];
+  }
+  dir_0a571530ab715c042e6dcc1943a3a21e [shape=box label="curl" URL="dir_0a571530ab715c042e6dcc1943a3a21e.html"];
+  dir_fd73adbdd9e4cd884094af8b77dc3fe5->dir_0a571530ab715c042e6dcc1943a3a21e [headlabel="2", labeldistance=1.5 headhref="dir_000003_000002.html"];
+}

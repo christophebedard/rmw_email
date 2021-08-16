@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['sequence_5fnumber_587',['sequence_number',['../structemail_1_1ServiceRequestId.html#aebfd4e4852b50376f5748d53fc343dc1',1,'email::ServiceRequestId']]],
-  ['subject_588',['subject',['../structemail_1_1EmailContent.html#a77bd9eb7cbea591d799bcc305e43b611',1,'email::EmailContent']]]
+  ['max_5fblocks_5fper_5fchunk_5226',['max_blocks_per_chunk',['http://en.cppreference.com/w/cpp/memory/pool_options.html',1,'std::pmr::pool_options']]],
+  ['message_5fid_5227',['message_id',['../structemail_1_1EmailData.html#ae160e414dfee99357f5a2e0252ac1278',1,'email::EmailData']]]
 ];

@@ -1,7 +1,0 @@
-<map id="email::PubSubObject" name="email::PubSubObject">
-<area shape="rect" id="node1" title="Abstract pub or sub object." alt="" coords="76,80,233,107"/>
-<area shape="rect" id="node4" href="$classemail_1_1Publisher.html" title="Message publisher." alt="" coords="11,155,138,181"/>
-<area shape="rect" id="node5" href="$classemail_1_1Subscription.html" title="Message subscription." alt="" coords="163,155,309,181"/>
-<area shape="rect" id="node2" href="$classemail_1_1GidObject.html" title="Abstract object with a GID." alt="" coords="5,5,136,32"/>
-<area shape="rect" id="node3" href="$classemail_1_1NamedObject.html" title="Abstract object with a name." alt="" coords="161,5,317,32"/>
-</map>

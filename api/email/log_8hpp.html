@@ -77,9 +77,9 @@ $(function() {
 <div class="title">log.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;stdexcept&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/memory.html">memory</a>&gt;</code><br />
+<code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/stdexcept.html">stdexcept</a>&gt;</code><br />
+<code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/string.html">string</a>&gt;</code><br />
 <code>#include &quot;rcpputils/filesystem_helper.hpp&quot;</code><br />
 <code>#include &quot;spdlog/spdlog.h&quot;</code><br />
 <code>#include &quot;spdlog/fmt/ostr.h&quot;</code><br />
@@ -89,45 +89,11 @@ $(function() {
 Include dependency graph for log.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="log_8hpp__incl.png" border="0" usemap="#include_2email_2log_8hpp" alt=""/></div>
-<map name="include_2email_2log_8hpp" id="include_2email_2log_8hpp">
-<area shape="rect" title=" " alt="" coords="305,5,468,32"/>
-<area shape="rect" title=" " alt="" coords="5,169,83,196"/>
-<area shape="rect" title=" " alt="" coords="107,169,194,196"/>
-<area shape="rect" title=" " alt="" coords="219,169,277,196"/>
-<area shape="rect" title=" " alt="" coords="474,80,625,121"/>
-<area shape="rect" title=" " alt="" coords="649,87,773,114"/>
-<area shape="rect" title=" " alt="" coords="797,87,931,114"/>
-<area shape="rect" title=" " alt="" coords="710,169,842,196"/>
-<area shape="rect" href="utils_8hpp.html" title=" " alt="" coords="279,87,398,114"/>
-<area shape="rect" title=" " alt="" coords="301,169,376,196"/>
-<area shape="rect" title=" " alt="" coords="401,169,463,196"/>
-<area shape="rect" href="visibility__control_8hpp.html" title=" " alt="" coords="487,169,686,196"/>
-</map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
 <div class="center"><img src="log_8hpp__dep__incl.png" border="0" usemap="#include_2email_2log_8hppdep" alt=""/></div>
-<map name="include_2email_2log_8hppdep" id="include_2email_2log_8hppdep">
-<area shape="rect" title=" " alt="" coords="691,5,854,32"/>
-<area shape="rect" href="context_8hpp.html" title=" " alt="" coords="166,445,357,471"/>
-<area shape="rect" href="curl_2context_8hpp.html" title=" " alt="" coords="262,80,400,121"/>
-<area shape="rect" href="receiver_8hpp.html" title=" " alt="" coords="245,259,396,300"/>
-<area shape="rect" href="polling__manager_8hpp.html" title=" " alt="" coords="239,348,402,389"/>
-<area shape="rect" href="sender_8hpp.html" title=" " alt="" coords="558,259,709,300"/>
-<area shape="rect" href="publisher_8hpp.html" title=" " alt="" coords="476,355,679,382"/>
-<area shape="rect" href="service__client_8hpp.html" title=" " alt="" coords="694,437,856,479"/>
-<area shape="rect" href="wait__set_8hpp.html" title=" " alt="" coords="1066,527,1209,568"/>
-<area shape="rect" href="service__server_8hpp.html" title=" " alt="" coords="880,437,1041,479"/>
-<area shape="rect" href="guard__condition_8hpp.html" title=" " alt="" coords="1362,169,1513,211"/>
-<area shape="rect" href="options_8hpp.html" title=" " alt="" coords="46,87,237,114"/>
-<area shape="rect" href="service__handler_8hpp.html" title=" " alt="" coords="704,348,865,389"/>
-<area shape="rect" href="subscription_8hpp.html" title=" " alt="" coords="1066,445,1287,471"/>
-<area shape="rect" href="subscription__handler_8hpp.html" title=" " alt="" coords="992,348,1185,389"/>
-<area shape="rect" href="executor_8hpp.html" title=" " alt="" coords="358,169,496,211"/>
-<area shape="rect" href="email_8hpp.html" title=" " alt="" coords="806,616,984,643"/>
-<area shape="rect" href="wait_8hpp.html" title=" " alt="" coords="871,534,1042,561"/>
-</map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
@@ -181,13 +147,13 @@ Functions</h2></td></tr>
 <tr class="memitem:aba50b69230431fca149b16fe3fbcaa9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#aba50b69230431fca149b16fe3fbcaa9c">email::log::init_from_env</a> ()</td></tr>
 <tr class="memdesc:aba50b69230431fca149b16fe3fbcaa9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize logging using environment variable value for the logging level.  <a href="namespaceemail_1_1log.html#aba50b69230431fca149b16fe3fbcaa9c">More...</a><br /></td></tr>
 <tr class="separator:aba50b69230431fca149b16fe3fbcaa9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82cb3ebe95d6b4e4bc16fd417bf65b8e"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; Logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#a82cb3ebe95d6b4e4bc16fd417bf65b8e">email::log::create</a> (const std::string &amp;name)</td></tr>
+<tr class="memitem:a82cb3ebe95d6b4e4bc16fd417bf65b8e"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; Logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#a82cb3ebe95d6b4e4bc16fd417bf65b8e">email::log::create</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;name)</td></tr>
 <tr class="memdesc:a82cb3ebe95d6b4e4bc16fd417bf65b8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create logger from the root logger.  <a href="namespaceemail_1_1log.html#a82cb3ebe95d6b4e4bc16fd417bf65b8e">More...</a><br /></td></tr>
 <tr class="separator:a82cb3ebe95d6b4e4bc16fd417bf65b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5f6effef314d9faef6dee3b4d78f4ce"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; Logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#ab5f6effef314d9faef6dee3b4d78f4ce">email::log::get_or_create</a> (const std::string &amp;name)</td></tr>
+<tr class="memitem:ab5f6effef314d9faef6dee3b4d78f4ce"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; Logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#ab5f6effef314d9faef6dee3b4d78f4ce">email::log::get_or_create</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;name)</td></tr>
 <tr class="memdesc:ab5f6effef314d9faef6dee3b4d78f4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get an existing logger or create it from the root logger.  <a href="namespaceemail_1_1log.html#ab5f6effef314d9faef6dee3b4d78f4ce">More...</a><br /></td></tr>
 <tr class="separator:ab5f6effef314d9faef6dee3b4d78f4ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae637767284f0246349f0c09c4a7b30f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#aae637767284f0246349f0c09c4a7b30f">email::log::remove</a> (const std::shared_ptr&lt; Logger &gt; &amp;logger)</td></tr>
+<tr class="memitem:aae637767284f0246349f0c09c4a7b30f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#aae637767284f0246349f0c09c4a7b30f">email::log::remove</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; Logger &gt; &amp;logger)</td></tr>
 <tr class="memdesc:aae637767284f0246349f0c09c4a7b30f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Remove an existing logger.  <a href="namespaceemail_1_1log.html#aae637767284f0246349f0c09c4a7b30f">More...</a><br /></td></tr>
 <tr class="separator:aae637767284f0246349f0c09c4a7b30f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7f5f3d63616c0073e304d2b20f86841"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1log.html#ab7f5f3d63616c0073e304d2b20f86841">email::log::shutdown</a> ()</td></tr>

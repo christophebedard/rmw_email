@@ -74,29 +74,17 @@ $(function() {
 <div class="title">payload_utils.hpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;memory&gt;</code><br />
-<code>#include &lt;optional&gt;</code><br />
-<code>#include &lt;regex&gt;</code><br />
-<code>#include &lt;string&gt;</code><br />
-<code>#include &lt;vector&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/memory.html">memory</a>&gt;</code><br />
+<code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/optional.html">optional</a>&gt;</code><br />
+<code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/regex.html">regex</a>&gt;</code><br />
+<code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/string.html">string</a>&gt;</code><br />
+<code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/vector.html">vector</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="email_2info_8hpp.html">email/email/info.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="visibility__control_8hpp.html">email/visibility_control.hpp</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for payload_utils.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="payload__utils_8hpp__incl.png" border="0" usemap="#include_2email_2email_2payload__utils_8hpp" alt=""/></div>
-<map name="include_2email_2email_2payload__utils_8hpp" id="include_2email_2email_2payload__utils_8hpp">
-<area shape="rect" title=" " alt="" coords="431,5,582,47"/>
-<area shape="rect" title=" " alt="" coords="260,244,337,271"/>
-<area shape="rect" title=" " alt="" coords="5,169,80,196"/>
-<area shape="rect" title=" " alt="" coords="613,95,672,121"/>
-<area shape="rect" title=" " alt="" coords="392,169,451,196"/>
-<area shape="rect" title=" " alt="" coords="475,169,538,196"/>
-<area shape="rect" href="email_2info_8hpp.html" title=" " alt="" coords="220,95,377,121"/>
-<area shape="rect" href="visibility__control_8hpp.html" title=" " alt="" coords="695,95,894,121"/>
-<area shape="rect" title=" " alt="" coords="155,169,205,196"/>
-<area shape="rect" href="macros_8hpp.html" title=" " alt="" coords="229,169,368,196"/>
-</map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -111,16 +99,16 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad30b9776687e2e98638b32759ad2bc3d"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#ad30b9776687e2e98638b32759ad2bc3d">email::utils::payload::build_payload</a> (const std::vector&lt; std::string &gt; &amp;to, const std::vector&lt; std::string &gt; &amp;cc, const std::vector&lt; std::string &gt; &amp;bcc, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</td></tr>
+<tr class="memitem:ad30b9776687e2e98638b32759ad2bc3d"><td class="memItemLeft" align="right" valign="top">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#ad30b9776687e2e98638b32759ad2bc3d">email::utils::payload::build_payload</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/container/vector.html">std::vector</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &gt; &amp;to, const <a class="elRef" href="http://en.cppreference.com/w/cpp/container/vector.html">std::vector</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &gt; &amp;cc, const <a class="elRef" href="http://en.cppreference.com/w/cpp/container/vector.html">std::vector</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &gt; &amp;bcc, const struct EmailContent &amp;content, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; EmailHeaders &gt; additional_headers=std::nullopt, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &gt; reply_ref=std::nullopt)</td></tr>
 <tr class="memdesc:ad30b9776687e2e98638b32759ad2bc3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build curl email payload from recipients and content.  <a href="namespaceemail_1_1utils_1_1payload.html#ad30b9776687e2e98638b32759ad2bc3d">More...</a><br /></td></tr>
 <tr class="separator:ad30b9776687e2e98638b32759ad2bc3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac522857948a8c609ea73e96600cb8e2a"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#ac522857948a8c609ea73e96600cb8e2a">email::utils::payload::build_payload</a> (EmailRecipients::SharedPtrConst recipients, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</td></tr>
+<tr class="memitem:ac522857948a8c609ea73e96600cb8e2a"><td class="memItemLeft" align="right" valign="top">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#ac522857948a8c609ea73e96600cb8e2a">email::utils::payload::build_payload</a> (EmailRecipients::SharedPtrConst recipients, const struct EmailContent &amp;content, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; EmailHeaders &gt; additional_headers=std::nullopt, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &gt; reply_ref=std::nullopt)</td></tr>
 <tr class="memdesc:ac522857948a8c609ea73e96600cb8e2a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Build curl email payload from recipients and content.  <a href="namespaceemail_1_1utils_1_1payload.html#ac522857948a8c609ea73e96600cb8e2a">More...</a><br /></td></tr>
 <tr class="separator:ac522857948a8c609ea73e96600cb8e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae288cd99e7a54273aea6372c959f76c9"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#ae288cd99e7a54273aea6372c959f76c9">email::utils::payload::join_list</a> (const std::vector&lt; std::string &gt; &amp;list)</td></tr>
+<tr class="memitem:ae288cd99e7a54273aea6372c959f76c9"><td class="memItemLeft" align="right" valign="top">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#ae288cd99e7a54273aea6372c959f76c9">email::utils::payload::join_list</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/container/vector.html">std::vector</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &gt; &amp;list)</td></tr>
 <tr class="memdesc:ae288cd99e7a54273aea6372c959f76c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create a string list of emails.  <a href="namespaceemail_1_1utils_1_1payload.html#ae288cd99e7a54273aea6372c959f76c9">More...</a><br /></td></tr>
 <tr class="separator:ae288cd99e7a54273aea6372c959f76c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a455c37a8a129ddcf90c1835f001c0579"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#a455c37a8a129ddcf90c1835f001c0579">email::utils::payload::cut_string_if_newline</a> (const std::string &amp;string)</td></tr>
+<tr class="memitem:a455c37a8a129ddcf90c1835f001c0579"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1payload.html#a455c37a8a129ddcf90c1835f001c0579">email::utils::payload::cut_string_if_newline</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;string)</td></tr>
 <tr class="memdesc:a455c37a8a129ddcf90c1835f001c0579"><td class="mdescLeft">&#160;</td><td class="mdescRight">Cut a string before a newline if needed.  <a href="namespaceemail_1_1utils_1_1payload.html#a455c37a8a129ddcf90c1835f001c0579">More...</a><br /></td></tr>
 <tr class="separator:a455c37a8a129ddcf90c1835f001c0579"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>

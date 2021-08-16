@@ -1,0 +1,13 @@
+digraph "email::Publisher"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="email::Publisher",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Message publisher."];
+  Node2 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node2 [label="email::PubSubObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1PubSubObject.html",tooltip="Abstract pub or sub object."];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="email::GidObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1GidObject.html",tooltip="Abstract object with a GID."];
+  Node4 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="email::NamedObject",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classemail_1_1NamedObject.html",tooltip="Abstract object with a name."];
+}
