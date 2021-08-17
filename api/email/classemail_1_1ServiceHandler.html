@@ -102,8 +102,8 @@ Collaboration diagram for email::ServiceHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a59fbee3b3806c6c0e58e770deb54c68e"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a59fbee3b3806c6c0e58e770deb54c68e">ServiceResponseMap</a> = <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt; <a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a> &gt; &gt;</td></tr>
-<tr class="separator:a59fbee3b3806c6c0e58e770deb54c68e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3c029c330a62190ed1c6f5d99fcd22c"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#ae3c029c330a62190ed1c6f5d99fcd22c">ResponseMap</a> = <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt; <a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a> &gt; &gt;</td></tr>
+<tr class="separator:ae3c029c330a62190ed1c6f5d99fcd22c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade298da509aef85142d98c336c1e7058"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#ade298da509aef85142d98c336c1e7058">RequestQueue</a> = <a class="el" href="classemail_1_1SafeQueue.html">SafeQueue</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a> &gt; &gt;</td></tr>
 <tr class="separator:ade298da509aef85142d98c336c1e7058"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -114,9 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac8b733ebb32ee7203ad714aedd911601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71953e56a4f95c3154e6d815bd67e624"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a71953e56a4f95c3154e6d815bd67e624">~ServiceHandler</a> ()</td></tr>
 <tr class="separator:a71953e56a4f95c3154e6d815bd67e624"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d9b0e52c4a35897cba9e8a179f60efd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a4d9b0e52c4a35897cba9e8a179f60efd">register_service_client</a> (const <a class="el" href="classemail_1_1Gid.html">Gid</a> &amp;gid, ServiceResponseMap::SharedPtr response_map)</td></tr>
-<tr class="memdesc:a4d9b0e52c4a35897cba9e8a179f60efd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service client with the handler.  <a href="classemail_1_1ServiceHandler.html#a4d9b0e52c4a35897cba9e8a179f60efd">More...</a><br /></td></tr>
-<tr class="separator:a4d9b0e52c4a35897cba9e8a179f60efd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30204d7f6af4853e101d641cc8dfe7d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a30204d7f6af4853e101d641cc8dfe7d7">register_service_client</a> (const <a class="el" href="classemail_1_1Gid.html">Gid</a> &amp;gid, ResponseMap::SharedPtr response_map)</td></tr>
+<tr class="memdesc:a30204d7f6af4853e101d641cc8dfe7d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service client with the handler.  <a href="classemail_1_1ServiceHandler.html#a30204d7f6af4853e101d641cc8dfe7d7">More...</a><br /></td></tr>
+<tr class="separator:a30204d7f6af4853e101d641cc8dfe7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ca046b67012a04fd08c2871f19986a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">register_service_server</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;service_name, RequestQueue::SharedPtr request_queue)</td></tr>
 <tr class="memdesc:a6ca046b67012a04fd08c2871f19986a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service server with the handler.  <a href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">More...</a><br /></td></tr>
 <tr class="separator:a6ca046b67012a04fd08c2871f19986a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,14 +144,14 @@ Additional Inherited Members</h2></td></tr>
 <p>Distributes them to the right service server.</p>
 <p>There can be more than one service server for the same service name. All service servers may get the request and respond, but only the first response will be used by the original service client; the rest will be discarded. </p>
 </div><h2 class="groupheader">Member Typedef Documentation</h2>
-<a id="a59fbee3b3806c6c0e58e770deb54c68e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a59fbee3b3806c6c0e58e770deb54c68e">&#9670;&nbsp;</a></span>ServiceResponseMap</h2>
+<a id="ae3c029c330a62190ed1c6f5d99fcd22c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3c029c330a62190ed1c6f5d99fcd22c">&#9670;&nbsp;</a></span>ResponseMap</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">using <a class="el" href="classemail_1_1ServiceHandler.html#a59fbee3b3806c6c0e58e770deb54c68e">email::ServiceHandler::ServiceResponseMap</a> =  <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt;<a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt;struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a>&gt; &gt;</td>
+          <td class="memname">using <a class="el" href="classemail_1_1ServiceHandler.html#ae3c029c330a62190ed1c6f5d99fcd22c">email::ServiceHandler::ResponseMap</a> =  <a class="el" href="classemail_1_1SafeMap.html">SafeMap</a>&lt;<a class="el" href="namespaceemail.html#a0de800b4ba159d6e3892ce756a690103">SequenceNumber</a>, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt;struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a>, <a class="el" href="classemail_1_1ServiceInfo.html">ServiceInfo</a>&gt; &gt;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -218,8 +218,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a4d9b0e52c4a35897cba9e8a179f60efd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4d9b0e52c4a35897cba9e8a179f60efd">&#9670;&nbsp;</a></span>register_service_client()</h2>
+<a id="a30204d7f6af4853e101d641cc8dfe7d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30204d7f6af4853e101d641cc8dfe7d7">&#9670;&nbsp;</a></span>register_service_client()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -233,7 +233,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ServiceResponseMap::SharedPtr&#160;</td>
+          <td class="paramtype">ResponseMap::SharedPtr&#160;</td>
           <td class="paramname"><em>response_map</em>&#160;</td>
         </tr>
         <tr>
