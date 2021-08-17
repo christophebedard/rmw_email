@@ -60,7 +60,7 @@ ServiceHandler::~ServiceHandler()
 void
 ServiceHandler::register_service_client(
   const Gid & gid,
-  ServiceResponseMap::SharedPtr response_map)
+  ResponseMap::SharedPtr response_map)
 {
   {
     std::scoped_lock<std::mutex> lock(mutex_clients_);

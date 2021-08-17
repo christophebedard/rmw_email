@@ -47,7 +47,7 @@ namespace email
 class ServiceHandler : public EmailHandler
 {
 public:
-  using ServiceResponseMap = SafeMap<SequenceNumber, std::pair<struct EmailData, ServiceInfo>>;
+  using ResponseMap = SafeMap<SequenceNumber, std::pair<struct EmailData, ServiceInfo>>;
   using RequestQueue = SafeQueue<std::pair<struct EmailData, ServiceInfo>>;
 
   /// Constructor.
@@ -63,7 +63,7 @@ public:
   void
   register_service_client(
     const Gid & gid,
-    ServiceResponseMap::SharedPtr response_map);
+    ResponseMap::SharedPtr response_map);
 
   /// Register a service server with the handler.
   /**
@@ -96,7 +96,7 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
-  std::unordered_map<GidValue, ServiceResponseMap::SharedPtr> clients_;
+  std::unordered_map<GidValue, ResponseMap::SharedPtr> clients_;
   std::unordered_map<GidValue, SequenceNumber> clients_last_seq_;
   mutable std::mutex mutex_servers_;
   std::unordered_multimap<std::string, RequestQueue::SharedPtr> servers_;
