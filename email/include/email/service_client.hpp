@@ -125,7 +125,7 @@ private:
   EMAIL_DISABLE_COPY(ServiceClient)
 
   std::shared_ptr<Logger> logger_;
-  ServiceHandler::ServiceResponseMap::SharedPtr responses_;
+  ServiceHandler::ResponseMap::SharedPtr responses_;
   Publisher pub_;
 };
 

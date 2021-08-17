@@ -34,7 +34,7 @@ namespace email
 ServiceClient::ServiceClient(const std::string & service_name)
 : ServiceObject(service_name),
   logger_(log::get_or_create("ServiceClient::" + service_name)),
-  responses_(std::make_shared<ServiceHandler::ServiceResponseMap>()),
+  responses_(std::make_shared<ServiceHandler::ResponseMap>()),
   pub_(get_service_name())
 {
   logger_->debug("created with GID: {}", get_gid());
