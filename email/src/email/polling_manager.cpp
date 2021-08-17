@@ -78,7 +78,7 @@ PollingManager::shutdown()
   logger_->debug("shutting down");
   receiver_->shutdown();
   if (has_started()) {
-    do_shutdown_ = true;
+    do_shutdown_.store(true);
     if (thread_.joinable()) {
       thread_.join();
     }

@@ -140,7 +140,7 @@ EmailSender::send_payload(const std::string & payload)
   // Reset upload data
   upload_ctx_.payload = payload.c_str();
   // TODO(christophebedard) use 'uz' suffix when switching to C++23
-  upload_ctx_.lines_read = 0u;
+  upload_ctx_.lines_read = 0UL;
   if (!context_.execute()) {
     return false;
   }

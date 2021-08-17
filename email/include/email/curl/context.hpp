@@ -17,6 +17,7 @@
 
 #include <curl/curl.h>
 
+#include <atomic>
 #include <memory>
 #include <string>
 
@@ -100,6 +101,7 @@ private:
   const struct ConnectionInfo connection_info_;
   const std::string full_url_;
   bool curl_verbose_;
+  std::atomic_bool is_init_;
 };
 
 }  // namespace email
