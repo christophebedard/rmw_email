@@ -1,10 +1,141 @@
 <h1 id="email-design"><code>email</code> design</h1>
+<ol type="1">
+<li><a href="#use-of-emails">Use of emails</a>
+<ol type="1">
+<li><a href="#as-a-message-container">As a message container</a></li>
+<li><a href="#headers">Headers</a></li>
+<li><a href="#polling">Polling</a></li>
+</ol></li>
+<li><a href="#overall-architecture">Overall architecture</a></li>
+<li><a href="#waiting-on-messages">Waiting on messages</a></li>
+<li><a href="#data-containers">Data containers</a>
+<ol type="1">
+<li><a href="#email">Email</a></li>
+<li><a href="#messages">Messages</a></li>
+</ol></li>
+</ol>
+<h2 id="use-of-emails">Use of emails</h2>
+<h3 id="as-a-message-container">As a message container</h3>
+<p>Emails are used as a container to send and receive string messages.</p>
+<p>The email subject is used for the topic name or service name. The email body contains the string message.</p>
+<h3 id="headers">Headers</h3>
+<p>Emails include both standard and non-standard (i.e., custom) headers. Email headers are used to include metadata about each communication instance in a structured way without polluting the content itself (i.e., email body). See <a href="#data-containers"><em>Data containers</em></a>. These custom headers do not have a <code>X-</code> prefix as per <a href="https://datatracker.ietf.org/doc/html/rfc6648">RFC 6648</a>.</p>
+<p>This metadata is thus also used to be able to differentiate between publisher/subscription messages and service requests/responses. See <a href="#overall-architecture"><em>Overall architecture</em></a>.</p>
+<p>The headers of the service response emails are set so that the email is a reply to the original service request email. This is done by setting the values of the <code>In-Reply-To</code> and <code>References</code> headers of the response email to the value of the <code>Message-ID</code> header of the request email. See <a href="https://datatracker.ietf.org/doc/html/rfc5322#page-26">page 26 of RFC 5322</a>.</p>
+<p>The use of these headers also helps differentiate between a service request and a service response.</p>
+<h3 id="polling">Polling</h3>
+<p>To poll for new emails using the IMAP protocol commands, we can:</p>
+<ul>
+<li>first run an <code>EXAMINE INBOX</code> command to get the UID value of the next email
+<ul>
+<li>a UID is simply a unique identifier for each email
+<ul>
+<li>see <a href="https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.1.1">RFC 3501 section 2.3.1.1</a></li>
+</ul></li>
+<li>the next UID value is called <code>UIDNEXT</code> in the command response</li>
+<li>see <a href="https://datatracker.ietf.org/doc/html/rfc3501#section-6.3.2">RFC 3501 section 6.3.2</a> for the <code>EXAMINE</code> command and response</li>
+</ul></li>
+<li>then periodically try to fetch en email using that UID
+<ul>
+<li>if there is no new email, the command will fail
+<ul>
+<li>keep trying</li>
+</ul></li>
+<li>if there is a new email, we increment an internal UID counter</li>
+<li>then we repeat this step with this new value</li>
+</ul></li>
+</ul>
 <h2 id="overall-architecture">Overall architecture</h2>
-<p><img src="plantuml-images/c8bc776c28c51afc952bd979c8b7820e32759bea.svg" /></p>
-<p>TODO briefly explain.</p>
+<p>There are three main layers to send and receive messages:</p>
+<ol type="1">
+<li><code>curl</code>: context, executor
+<ul>
+<li>does basic <code>libcurl</code> initialization</li>
+<li>connects to remote server</li>
+</ul></li>
+<li>email: sender, receiver
+<ul>
+<li>uses the first layer with <code>libcurl</code> to execute commands to:
+<ul>
+<li>send emails through <code>smtps</code> (secure SMTP)</li>
+<li>poll for emails through <code>imaps</code> (secure IMAP)</li>
+</ul></li>
+<li>email senders can send an email that is a reply to an email received by an email receiver</li>
+<li>see <a href="#use-of-emails"><em>Use of emails</em></a></li>
+</ul></li>
+<li>publisher/subscription and service client/server
+<ul>
+<li>publishers are simply email senders</li>
+<li>subscriptions indirectly use email receivers</li>
+<li>service clients use publishers to send requests and indirectly use email receivers to receive responses</li>
+<li>service servers indirectly use email receivers to receive requests and use email senders to send responses by replying to the request email</li>
+</ul></li>
+</ol>
+<p>Internal handling of emails/mesages is done as follows:</p>
+<ol type="1">
+<li>polling manager
+<ul>
+<li>uses an email receiver to poll for new emails on a thread</li>
+<li>calls all registered handlers when a new email is received</li>
+</ul></li>
+<li>handlers: subscription, service client/server
+<ul>
+<li>all handlers register with the polling manager</li>
+<li>handlers check whether the new email applies to them
+<ul>
+<li>see <a href="#use-of-emails"><em>Use of emails</em></a></li>
+</ul></li>
+<li>if so, they pass it on to the right object(s) that registered with them
+<ul>
+<li>according to topic name or service name</li>
+</ul></li>
+</ul></li>
+<li>subscriptions, service clients/servers
+<ul>
+<li>all subscriptions register with the subscription handler</li>
+<li>all service clients and servers register with the service handler</li>
+<li>new messages, service requests or service responses are added to the corresponding queues or maps
+<ul>
+<li>subscriptions have a message queue</li>
+<li>service clients have a response map</li>
+<li>service servers have a request queue</li>
+</ul></li>
+<li>users can either poll the subscription/client/server directly for new messages/requests/responses or wait on it
+<ul>
+<li>see <a href="#waiting-on-messages"><em>Waiting on messages</em></a></li>
+</ul></li>
+</ul></li>
+</ol>
+<p><img src="plantuml-images/e3b9b259f328210548380c026cb15e26c16ae23a.svg" /></p>
+<h2 id="waiting-on-messages">Waiting on messages</h2>
+<p>Subscriptions and service clients/servers must be waited on through polling. Wait sets can be used to wait on new messages, service requests or service responses. Some utility functions can be used to wait on a specific object using a wait set.</p>
+<p>Wait sets also support guard conditions as another way to control waiting.</p>
 <p><img src="plantuml-images/809ff20653954b33691030855c1da855f8a806ee.svg" /></p>
-<h2 id="containers">Containers</h2>
+<h2 id="data-containers">Data containers</h2>
 <h3 id="email">Email</h3>
+<p>Emails contain:</p>
+<ul>
+<li>recipients</li>
+<li>subject</li>
+<li>body</li>
+<li>headers (metadata)</li>
+</ul>
 <p><img src="plantuml-images/cae4c33cce63bddcbe2fd6117329b4348bbce745.svg" /></p>
 <h3 id="messages">Messages</h3>
+<p>Basic metadata is provided for all communication instances (i.e., messages, service requests or service responses):</p>
+<ul>
+<li>source timestamp</li>
+<li>reception timestamp</li>
+<li>GID of the source object (i.e., publisher, service client or service server)
+<ul>
+<li>a GID is just a unique identifier</li>
+</ul></li>
+</ul>
+<p>Additionally, for service requests/responses:</p>
+<ul>
+<li>sequence number of the request
+<ul>
+<li>for service responses, this is the sequence number of the original request</li>
+</ul></li>
+</ul>
 <p><img src="plantuml-images/e0251d623cf1d8cf00d05acafa135fdf8d91a8e0.svg" /></p>

@@ -42,8 +42,8 @@ CurlExecutor <|-- EmailReceiver
 
 class PollingManager {
    -thread
+   -handlers: vector<function<void (EmailData)>>
    -poll_thread()
-   -handlers
    +start()
    +shutdown()
    +register_handler(function<void (EmailData)>)
@@ -82,8 +82,8 @@ PollingManager "registers with" <-- ServiceHandler
 
 
 class GidObject {
-   -gid
-   +get_gid()
+   -gid: Gid
+   +get_gid(): Gid
 }
 hide GidObject circle
 class NamedObject {
