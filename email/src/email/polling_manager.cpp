@@ -95,8 +95,16 @@ PollingManager::poll_thread()
   while (!do_shutdown_.load()) {
     // Get new email
     std::optional<struct EmailData> email_data = std::nullopt;
-    while (!email_data && !do_shutdown_.load()) {
+    // Use a 'while true' to avoid duplicating code
+    while (true) {
       email_data = receiver_->get_email();
+      // Sleep a bit if polling wasn't successful;
+      // avoid sleeping for now reason,
+      // either before polling or after polling when we're shutting down
+      const bool keep_polling = !email_data && !do_shutdown_.load();
+      if (!keep_polling) {
+        break;
+      }
       std::this_thread::sleep_for(POLLING_PERIOD);
     }
     // Break now if shutting down
