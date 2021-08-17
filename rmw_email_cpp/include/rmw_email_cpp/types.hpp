@@ -38,23 +38,10 @@ struct rmw_context_impl_t
 
   bool is_shutdown{false};
 
-  rmw_context_impl_t()
-  {}
+  rmw_context_impl_t();
 
   /// Context destruction, called when deleting this.
-  ~rmw_context_impl_t()
-  {
-    // Shutdown middleware
-    email::shutdown();
-
-    // Make sure we didn't get destroyed while there's still a node
-    if (0u != this->node_count) {
-      RCUTILS_SAFE_FWRITE_TO_STDERR(
-        "Not all nodes were finished before finishing the context\n."
-        "Ensure `rmw_destroy_node` is called for all nodes before `rmw_context_fini`,"
-        "to avoid leaking.\n");
-    }
-  }
+  ~rmw_context_impl_t();
 
   /// Called whenever a new node is created.
   rmw_ret_t

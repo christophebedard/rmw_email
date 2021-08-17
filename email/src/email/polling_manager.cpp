@@ -37,11 +37,14 @@ PollingManager::PollingManager(std::shared_ptr<EmailReceiver> receiver)
   handlers_mutex_(),
   handlers_(),
   logger_(log::create("PollingManager"))
-{}
+{
+  logger_->debug("initialized");
+}
 
 PollingManager::~PollingManager()
 {
   logger_->debug("destroying");
+  shutdown();
 }
 
 void
@@ -76,8 +79,11 @@ PollingManager::shutdown()
   receiver_->shutdown();
   if (has_started()) {
     do_shutdown_ = true;
-    thread_.join();
+    if (thread_.joinable()) {
+      thread_.join();
+    }
   }
+  has_started_ = false;
   logger_->debug("shut down");
 }
 

@@ -41,7 +41,8 @@ Context::Context()
 
 Context::~Context()
 {
-  if (!is_valid()) {
+  logger_->debug("destroying");
+  if (is_valid()) {
     (void)shutdown();
   }
 }
@@ -60,6 +61,7 @@ Context::init()
   options_ = options.value();
 
   is_valid_ = true;
+  logger_->debug("initialized");
 }
 
 void
@@ -97,9 +99,11 @@ Context::shutdown()
   // Only call shutdown() if they have been init, otherwise they will get initialized
   if (is_receiver_init_) {
     get_receiver()->shutdown();
+    is_receiver_init_ = false;
   }
   if (is_polling_manager_init_) {
     get_polling_manager()->shutdown();
+    is_polling_manager_init_ = false;
   }
   logger_->debug("shut down");
   log::shutdown();

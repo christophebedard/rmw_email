@@ -24,6 +24,7 @@
 
 #include "rmw_email_cpp/guard_condition.hpp"
 #include "rmw_email_cpp/identifier.hpp"
+#include "rmw_email_cpp/log.hpp"
 #include "rmw_email_cpp/types.hpp"
 
 extern "C" rmw_ret_t rmw_init_options_init(
@@ -100,6 +101,26 @@ extern "C" rmw_ret_t rmw_init_options_fini(rmw_init_options_t * init_options)
   rmw_ret_t ret = rmw_security_options_fini(&init_options->security_options, allocator);
   *init_options = rmw_get_zero_initialized_init_options();
   return ret;
+}
+
+rmw_context_impl_t::rmw_context_impl_t()
+{
+  RMW_EMAIL_LOG_DEBUG("initializing context implementation");
+}
+
+rmw_context_impl_t::~rmw_context_impl_t()
+{
+  RMW_EMAIL_LOG_DEBUG("shutting down context implementation");
+  // Shutdown middleware
+  email::shutdown();
+
+  // Make sure we didn't get destroyed while there's still a node
+  if (0u != this->node_count) {
+    RCUTILS_SAFE_FWRITE_TO_STDERR(
+      "Not all nodes were finished before finishing the context\n."
+      "Ensure `rmw_destroy_node` is called for all nodes before `rmw_context_fini`,"
+      "to avoid leaking.\n");
+  }
 }
 
 rmw_ret_t
