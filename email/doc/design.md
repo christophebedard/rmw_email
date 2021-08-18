@@ -92,6 +92,20 @@ Internal handling of emails/mesages is done as follows:
    * users can either poll the subscription/client/server directly for new messages/requests/responses or wait on it
       * see [*Waiting on messages*](#waiting-on-messages)
 
+A global context owns global objects (i.e., all effectively singletons):
+
+* options container
+* email receiver, email sender
+* polling manager
+* subscription handler, service handler
+
+Those objects are made available globally to anything that needs them:
+
+* publishers and service servers to get the email sender
+* polling manager to get the email receiver
+* subscription handler and service handler to register with the polling manager
+* subscriptions and service clients/servers to register with the subscription handler and service handler, respectively
+
 ```plantuml
 @startuml
 
@@ -230,6 +244,22 @@ class ServiceServer {
 ServiceObject <|-- ServiceServer
 EmailSender o-- ServiceServer
 ServiceHandler "registers with" <-- ServiceServer
+
+
+class Context <<Singleton>> {
+   +get_options(): shared_ptr<Options>
+   +get_receiver(): shared_ptr<EmailReceiver>
+   +get_sender(): shared_ptr<EmailSender>
+   +get_polling_manager(): shared_ptr<PollingManager>
+   +get_subscription_handle(): shared_ptr<SubscriptionHandler>
+   +get_service_handle(): shared_ptr<ServiceHandler>
+}
+Options *-- Context
+EmailReceiver *-- Context
+EmailSender *-- Context
+PollingManager *-- Context
+SubscriptionHandler *-- Context
+ServiceHandler *-- Context
 
 @enduml
 ```
