@@ -110,7 +110,6 @@ class CurlContext {
 class CurlExecutor {
    +init()
    #init_options() {abstract}
-   #context: CurlContext
 }
 CurlContext *-- CurlExecutor
 
