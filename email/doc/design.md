@@ -229,7 +229,7 @@ class ServiceServer {
    +send_response(ServiceRequestId request_id, string response)
 }
 ServiceObject <|-- ServiceServer
-EmailSender *-- ServiceServer
+EmailSender o-- ServiceServer
 ServiceHandler "registers with" <-- ServiceServer
 
 @enduml
