@@ -324,9 +324,9 @@ class WaitSet {
    +wait(milliseconds timeout): bool
    +clear()
 }
-Subscription "0..*" o-- "0..1" WaitSet
-ServiceClient "0..*" o-- "0..1" WaitSet
-ServiceServer "0..*" o-- "0..1" WaitSet
+Subscription "0..*" o-- WaitSet
+ServiceClient "0..*" o-- WaitSet
+ServiceServer "0..*" o-- WaitSet
 GuardCondition "0..*" o-- "0..1" WaitSet
 
 class wait. {
