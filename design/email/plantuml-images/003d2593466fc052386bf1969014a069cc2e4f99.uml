@@ -1,34 +1,31 @@
 @startuml
 
+hide empty attributes
+hide empty methods
+hide circle
+
+
 class Timestamp {
    +nanoseconds(): int64_t
    +to_string(): string
    +from_string(string timestamp): optional<Timestamp> {static}
    +now(): Timestamp {static}
 }
-hide Timestamp fields
-hide Timestamp circle
 
 class GidValue <<typedef>> {
    uint32_t
 }
-hide GidValue circle
-hide GidValue methods
 class Gid {
    +value(): GidValue
    +to_string(): string
    +from_string(string gid): optional<Gid> {static}
    +new_gid(): Gid {static}
 }
-hide Gid fields
-hide Gid circle
 GidValue *-- Gid
 
 class SequenceNumber <<typedef>> {
    int64_t
 }
-hide SequenceNumber circle
-hide SequenceNumber methods
 
 
 class CommunicationInfo {
@@ -37,8 +34,6 @@ class CommunicationInfo {
    +source_gid(): Gid
    +from_headers(EmailHeaders headers, string source_gid_header): optional<CommunicationInfo> {static}
 }
-hide CommunicationInfo fields
-hide CommunicationInfo circle
 Timestamp "2" *-- CommunicationInfo
 Gid *-- CommunicationInfo
 
@@ -48,8 +43,6 @@ class MessageInfo {
    +publisher_gid(): Gid
    +from_headers(EmailHeaders headers): optional<MessageInfo> {static}
 }
-hide MessageInfo fields
-hide MessageInfo circle
 CommunicationInfo *-- MessageInfo
 
 class ServiceInfo {
@@ -59,8 +52,6 @@ class ServiceInfo {
    +sequence_number(): SequenceNumber
    +from_headers(EmailHeaders headers): optional<ServiceInfo> {static}
 }
-hide ServiceInfo fields
-hide ServiceInfo circle
 CommunicationInfo *-- ServiceInfo
 SequenceNumber *-- ServiceInfo
 
@@ -68,8 +59,6 @@ class ServiceRequestId {
    +sequence_number: SequenceNumber
    +client_gid: Gid
 }
-hide ServiceRequestId circle
-hide ServiceRequestId methods
 SequenceNumber *-- ServiceRequestId
 Gid *-- ServiceRequestId
 
@@ -77,8 +66,6 @@ class ServiceRequest {
    +id: ServiceRequestId
    +content: string
 }
-hide ServiceRequest circle
-hide ServiceRequest methods
 ServiceRequestId *-- ServiceRequest
 
 @enduml

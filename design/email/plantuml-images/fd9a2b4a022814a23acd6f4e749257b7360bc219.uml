@@ -1,19 +1,21 @@
 @startuml
 
+hide empty attributes
+hide empty methods
+hide circle
+
+class Subscription
+class ServiceClient
+class ServiceServer
+
 class GuardCondition {
    +trigger()
    +triggered(): bool
    +exchange_in_use(bool in_use): bool
    +reset()
 }
-hide GuardCondition fields
-hide GuardCondition circle
 
 class WaitSet {
-   -subscriptions: vector<Subscription *>
-   -clients: vector<ServiceClient *>
-   -servers: vector<ServiceServer *>
-   -guard_conditions: vector<Subscription *>
    +add_subscription(Subscription *)
    +add_client(ServiceClient *)
    +add_server(ServiceServer *)
@@ -25,7 +27,10 @@ class WaitSet {
    +wait(milliseconds timeout): bool
    +clear()
 }
-hide WaitSet circle
+Subscription "0..*" o-- WaitSet
+ServiceClient "0..*" o-- WaitSet
+ServiceServer "0..*" o-- WaitSet
+GuardCondition "0..*" o-- "0..1" WaitSet
 
 class wait. {
    .. Subscription ..
@@ -38,8 +43,6 @@ class wait. {
    +wait_for_request(ServiceServer * server, milliseconds timeout): ServiceRequest
    +wait_for_request_with_info(ServiceServer * server, milliseconds timeout): pair<ServiceRequest, ServiceInfo>
 }
-hide wait. circle
-hide wait. fields
-WaitSet <-- wait
+WaitSet "internally uses" <-- wait
 
 @enduml

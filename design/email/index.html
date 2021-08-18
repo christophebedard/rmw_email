@@ -106,11 +106,33 @@
 </ul></li>
 </ul></li>
 </ol>
-<p><img src="plantuml-images/e3b9b259f328210548380c026cb15e26c16ae23a.svg" /></p>
+<p><img src="plantuml-images/89ba92b523974b6364d5ae47bbd5a6e71a9d4df0.svg" /></p>
+<p>A global context owns global objects (i.e., all effectively singletons):</p>
+<ul>
+<li>options container</li>
+<li>email receiver, email sender</li>
+<li>polling manager</li>
+<li>subscription handler, service handler</li>
+</ul>
+<p>Those objects are made available globally to anything that needs them:</p>
+<ul>
+<li>publishers and service servers to get the email sender</li>
+<li>polling manager to get the email receiver</li>
+<li>subscription handler and service handler to register with the polling manager</li>
+<li>subscriptions and service clients/servers to register with the subscription handler and service handler, respectively</li>
+</ul>
+<p><img src="plantuml-images/e28bccf8db239991888db9751c5af3578e913cc9.svg" /></p>
 <h2 id="waiting-on-messages">Waiting on messages</h2>
-<p>Subscriptions and service clients/servers must be waited on through polling. Wait sets can be used to wait on new messages, service requests or service responses. Some utility functions can be used to wait on a specific object using a wait set.</p>
-<p>Wait sets also support guard conditions as another way to control waiting.</p>
-<p><img src="plantuml-images/809ff20653954b33691030855c1da855f8a806ee.svg" /></p>
+<p>Subscriptions and service clients/servers must be waited on through polling. Wait sets can be used to wait for new messages, service requests or service responses. Some utility functions can be used to wait on a specific entity using a wait set without needing to manually create a wait set for that single entity.</p>
+<p>Wait sets also support guard conditions as simple conditions with triggers. A guard condition cannot be added to more than one wait set at a time.</p>
+<p>Wait sets are empty when created; entities can be added after creation. Wait sets can contain any number of each kind of entity and they can also contain none. Waiting on an empty wait set is valid and is equivalent to a sleep call. Wait sets can be used to wait on the same set of entities multiple times They can also be cleared and re-used to wait on a different set of entities.</p>
+<p>Waiting can be:</p>
+<ul>
+<li>blocking indefinitely with a negative timeout value</li>
+<li>non-blocking with a timeout value equal to zero</li>
+<li>blocking with a timeout if the value is greater than zero</li>
+</ul>
+<p><img src="plantuml-images/fd9a2b4a022814a23acd6f4e749257b7360bc219.svg" /></p>
 <h2 id="data-containers">Data containers</h2>
 <h3 id="email">Email</h3>
 <p>Emails contain:</p>
@@ -120,7 +142,7 @@
 <li>body</li>
 <li>headers (metadata)</li>
 </ul>
-<p><img src="plantuml-images/cae4c33cce63bddcbe2fd6117329b4348bbce745.svg" /></p>
+<p><img src="plantuml-images/365280eb0175e6fc0e9a5d8df39bf4c03628103d.svg" /></p>
 <h3 id="messages">Messages</h3>
 <p>Basic metadata is provided for all communication instances (i.e., messages, service requests or service responses):</p>
 <ul>
@@ -138,4 +160,4 @@
 <li>for service responses, this is the sequence number of the original request</li>
 </ul></li>
 </ul>
-<p><img src="plantuml-images/e0251d623cf1d8cf00d05acafa135fdf8d91a8e0.svg" /></p>
+<p><img src="plantuml-images/003d2593466fc052386bf1969014a069cc2e4f99.svg" /></p>

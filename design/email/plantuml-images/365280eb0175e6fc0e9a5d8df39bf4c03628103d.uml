@@ -1,20 +1,21 @@
 @startuml
 
+hide empty attributes
+hide empty methods
+hide circle
+
+
 /'
 class ConnectionInfo {
    +host: string
    +username: string
    +password: string
 }
-hide ConnectionInfo circle
-hide ConnectionInfo methods
 
 class ProtocolInfo {
    +protocol: string
    +port: int
 }
-hide ProtocolInfo circle
-hide ProtocolInfo methods
 
 class UserInfo {
    +host_smtp: string
@@ -29,21 +30,15 @@ class EmailRecipients {
    +cc: vector<string>
    +bcc: vector<string>
 }
-hide EmailRecipients circle
-hide EmailRecipients methods
 
 class EmailHeaders <<typedef>> {
    map<string, string>
 }
-hide EmailHeaders circle
-hide EmailHeaders methods
 
 class EmailContent {
    +subject: string
    +body: string
 }
-hide EmailContent circle
-hide EmailContent methods
 
 class EmailData {
    +message_id: string
@@ -53,8 +48,6 @@ class EmailData {
    +content: EmailContent
    +additional_headers: EmailHeaders
 }
-hide EmailData circle
-hide EmailData methods
 EmailRecipients *-- EmailData
 EmailContent *-- EmailData
 EmailHeaders *-- EmailData

@@ -1,21 +1,21 @@
 @startuml
 
+hide empty attributes
+hide empty methods
+hide circle
+
+
 class CurlContext {
    +init()
    +fini()
    +get_handle(): CURL *
    +execute()
 }
-hide CurlContext fields
-hide CurlContext circle
 
 class CurlExecutor {
    +init()
    #init_options() {abstract}
-   #context: CurlContext
 }
-hide CurlExecutor fields
-hide CurlExecutor circle
 CurlContext *-- CurlExecutor
 
 
@@ -24,8 +24,6 @@ class EmailSender {
    +reply(EmailContent, EmailData, optional<EmailHeaders>)
    #init_options() {abstract}
 }
-hide EmailSender fields
-hide EmailSender circle
 CurlExecutor <|-- EmailSender
 
 class EmailReceiver {
@@ -35,8 +33,6 @@ class EmailReceiver {
    -get_email_from_uid(int): optional<EmailData>
    -execute(optional<string>, url_options, optional<string> custom_request): optional<string>
 }
-hide EmailReceiver fields
-hide EmailReceiver circle
 CurlExecutor <|-- EmailReceiver
 
 
@@ -49,34 +45,27 @@ class PollingManager {
    +register_handler(function<void (EmailData)>)
 }
 EmailReceiver o-- PollingManager
-hide PollingManager circle
 
 abstract class EmailHandler {
    +handle(EmailData) {abstract}
 }
-hide EmailHandler fields
-hide EmailHandler circle
 
 
 class SubscriptionHandler {
-   -subscriptions
+   -subscriptions: map<string, queue<pair<string, MessageInfo>>>
    +register_subscription(string topic_name, queue<pair<string, MessageInfo>> message_queue)
    +handle(EmailData) {abstract}
 }
-hide SubscriptionHandler fields
-hide SubscriptionHandler circle
 EmailHandler <|-- SubscriptionHandler
 PollingManager "registers with" <-- SubscriptionHandler
 
 class ServiceHandler {
-   -clients
-   -servers
+   -clients: map<GidValue, shared_ptr<map<SequenceNumber, pair<EmailData, ServiceInfo>>>>
+   -servers: map<string, shared_ptr<queue<pair<EmailData, ServiceInfo>>>>
    +register_service_client(Gid, map<SequenceNumber, pair<EmailData, ServiceInfo>> response_map)
    +register_service_server(string service_name, queue<pair<EmailData, ServiceInfo>> request_queue)
    +handle(EmailData) {abstract}
 }
-hide ServiceHandler fields
-hide ServiceHandler circle
 EmailHandler <|-- ServiceHandler
 PollingManager "registers with" <-- ServiceHandler
 
@@ -85,20 +74,16 @@ class GidObject {
    -gid: Gid
    +get_gid(): Gid
 }
-hide GidObject circle
 class NamedObject {
    -object_name: string
    #get_object_name(): string
    #validate_name() {abstract}
 }
-hide NamedObject circle
 
 class PubSubObject {
    +get_topic_name(): string
    -validate_name() {abstract}
 }
-hide PubSubObject fields
-hide PubSubObject circle
 GidObject <|-- PubSubObject
 NamedObject <|-- PubSubObject
 
@@ -106,8 +91,6 @@ class ServiceObject {
    +get_service_name(): string
    -validate_name() {abstract}
 }
-hide ServiceObject fields
-hide ServiceObject circle
 GidObject <|-- ServiceObject
 NamedObject <|-- ServiceObject
 
@@ -115,8 +98,6 @@ NamedObject <|-- ServiceObject
 class Publisher {
    +publish(string message, optional<EmailHeaders> additional_headers)
 }
-hide Publisher fields
-hide Publisher circle
 PubSubObject <|-- Publisher
 EmailSender o-- Publisher
 
@@ -126,7 +107,6 @@ class Subscription {
    +get_message(): optional<string>
    +get_message_with_info(): optional<pair<string, MessageInfo>>
 }
-hide Subscription circle
 PubSubObject <|-- Subscription
 SubscriptionHandler "registers with" <-- Subscription
 
@@ -141,7 +121,6 @@ class ServiceClient {
    +get_response_with_info(SequenceNumber seq): optional<pair<string, ServiceInfo>>
    +get_response_with_info(): optional<pair<string, ServiceInfo>>
 }
-hide ServiceClient circle
 ServiceObject <|-- ServiceClient
 Publisher *-- ServiceClient
 ServiceHandler "registers with" <-- ServiceClient
@@ -153,9 +132,8 @@ class ServiceServer {
    +get_request_with_info(): optional<pair<ServiceRequest, ServiceInfo>>
    +send_response(ServiceRequestId request_id, string response)
 }
-hide ServiceServer circle
 ServiceObject <|-- ServiceServer
-EmailSender *-- ServiceServer
+EmailSender o-- ServiceServer
 ServiceHandler "registers with" <-- ServiceServer
 
 @enduml

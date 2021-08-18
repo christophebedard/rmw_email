@@ -1,0 +1,22 @@
+@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+class Context <<Singleton>> {
+   +get_options(): shared_ptr<Options>
+   +get_receiver(): shared_ptr<EmailReceiver>
+   +get_sender(): shared_ptr<EmailSender>
+   +get_polling_manager(): shared_ptr<PollingManager>
+   +get_subscription_handle(): shared_ptr<SubscriptionHandler>
+   +get_service_handle(): shared_ptr<ServiceHandler>
+}
+Options *-- Context
+EmailReceiver *-- Context
+EmailSender *-- Context
+PollingManager *-- Context
+SubscriptionHandler *-- Context
+ServiceHandler *-- Context
+
+@enduml
