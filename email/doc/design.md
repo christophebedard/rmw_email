@@ -148,7 +148,7 @@ abstract class EmailHandler {
 
 
 class SubscriptionHandler {
-   -subscriptions
+   -subscriptions: map<string, queue<pair<string, MessageInfo>>>
    +register_subscription(string topic_name, queue<pair<string, MessageInfo>> message_queue)
    +handle(EmailData) {abstract}
 }
@@ -156,8 +156,8 @@ EmailHandler <|-- SubscriptionHandler
 PollingManager "registers with" <-- SubscriptionHandler
 
 class ServiceHandler {
-   -clients
-   -servers
+   -clients: map<GidValue, shared_ptr<map<SequenceNumber, pair<EmailData, ServiceInfo>>>>
+   -servers: map<string, shared_ptr<queue<pair<EmailData, ServiceInfo>>>>
    +register_service_client(Gid, map<SequenceNumber, pair<EmailData, ServiceInfo>> response_map)
    +register_service_server(string service_name, queue<pair<EmailData, ServiceInfo>> request_queue)
    +handle(EmailData) {abstract}
