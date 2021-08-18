@@ -95,6 +95,8 @@ Internal handling of emails/mesages is done as follows:
 ```plantuml
 @startuml
 
+hide empty attributes
+hide empty methods
 hide circle
 
 
@@ -104,14 +106,12 @@ class CurlContext {
    +get_handle(): CURL *
    +execute()
 }
-hide CurlContext fields
 
 class CurlExecutor {
    +init()
    #init_options() {abstract}
    #context: CurlContext
 }
-hide CurlExecutor fields
 CurlContext *-- CurlExecutor
 
 
@@ -120,7 +120,6 @@ class EmailSender {
    +reply(EmailContent, EmailData, optional<EmailHeaders>)
    #init_options() {abstract}
 }
-hide EmailSender fields
 CurlExecutor <|-- EmailSender
 
 class EmailReceiver {
@@ -130,7 +129,6 @@ class EmailReceiver {
    -get_email_from_uid(int): optional<EmailData>
    -execute(optional<string>, url_options, optional<string> custom_request): optional<string>
 }
-hide EmailReceiver fields
 CurlExecutor <|-- EmailReceiver
 
 
@@ -147,7 +145,6 @@ EmailReceiver o-- PollingManager
 abstract class EmailHandler {
    +handle(EmailData) {abstract}
 }
-hide EmailHandler fields
 
 
 class SubscriptionHandler {
@@ -155,7 +152,6 @@ class SubscriptionHandler {
    +register_subscription(string topic_name, queue<pair<string, MessageInfo>> message_queue)
    +handle(EmailData) {abstract}
 }
-hide SubscriptionHandler fields
 EmailHandler <|-- SubscriptionHandler
 PollingManager "registers with" <-- SubscriptionHandler
 
@@ -166,7 +162,6 @@ class ServiceHandler {
    +register_service_server(string service_name, queue<pair<EmailData, ServiceInfo>> request_queue)
    +handle(EmailData) {abstract}
 }
-hide ServiceHandler fields
 EmailHandler <|-- ServiceHandler
 PollingManager "registers with" <-- ServiceHandler
 
@@ -185,7 +180,6 @@ class PubSubObject {
    +get_topic_name(): string
    -validate_name() {abstract}
 }
-hide PubSubObject fields
 GidObject <|-- PubSubObject
 NamedObject <|-- PubSubObject
 
@@ -193,7 +187,6 @@ class ServiceObject {
    +get_service_name(): string
    -validate_name() {abstract}
 }
-hide ServiceObject fields
 GidObject <|-- ServiceObject
 NamedObject <|-- ServiceObject
 
@@ -201,7 +194,6 @@ NamedObject <|-- ServiceObject
 class Publisher {
    +publish(string message, optional<EmailHeaders> additional_headers)
 }
-hide Publisher fields
 PubSubObject <|-- Publisher
 EmailSender o-- Publisher
 
@@ -254,6 +246,8 @@ Wait sets also support guard conditions as another way to control waiting.
 ```plantuml
 @startuml
 
+hide empty attributes
+hide empty methods
 hide circle
 
 
@@ -263,7 +257,6 @@ class GuardCondition {
    +exchange_in_use(bool in_use): bool
    +reset()
 }
-hide GuardCondition fields
 
 class WaitSet {
    -subscriptions: vector<Subscription *>
@@ -293,7 +286,6 @@ class wait. {
    +wait_for_request(ServiceServer * server, milliseconds timeout): ServiceRequest
    +wait_for_request_with_info(ServiceServer * server, milliseconds timeout): pair<ServiceRequest, ServiceInfo>
 }
-hide wait. fields
 WaitSet <-- wait
 
 @enduml
@@ -313,6 +305,8 @@ Emails contain:
 ```plantuml
 @startuml
 
+hide empty attributes
+hide empty methods
 hide circle
 
 
@@ -322,13 +316,11 @@ class ConnectionInfo {
    +username: string
    +password: string
 }
-hide ConnectionInfo methods
 
 class ProtocolInfo {
    +protocol: string
    +port: int
 }
-hide ProtocolInfo methods
 
 class UserInfo {
    +host_smtp: string
@@ -343,18 +335,15 @@ class EmailRecipients {
    +cc: vector<string>
    +bcc: vector<string>
 }
-hide EmailRecipients methods
 
 class EmailHeaders <<typedef>> {
    map<string, string>
 }
-hide EmailHeaders methods
 
 class EmailContent {
    +subject: string
    +body: string
 }
-hide EmailContent methods
 
 class EmailData {
    +message_id: string
@@ -364,7 +353,6 @@ class EmailData {
    +content: EmailContent
    +additional_headers: EmailHeaders
 }
-hide EmailData methods
 EmailRecipients *-- EmailData
 EmailContent *-- EmailData
 EmailHeaders *-- EmailData
@@ -389,6 +377,8 @@ Additionally, for service requests/responses:
 ```plantuml
 @startuml
 
+hide empty attributes
+hide empty methods
 hide circle
 
 
@@ -398,25 +388,21 @@ class Timestamp {
    +from_string(string timestamp): optional<Timestamp> {static}
    +now(): Timestamp {static}
 }
-hide Timestamp fields
 
 class GidValue <<typedef>> {
    uint32_t
 }
-hide GidValue methods
 class Gid {
    +value(): GidValue
    +to_string(): string
    +from_string(string gid): optional<Gid> {static}
    +new_gid(): Gid {static}
 }
-hide Gid fields
 GidValue *-- Gid
 
 class SequenceNumber <<typedef>> {
    int64_t
 }
-hide SequenceNumber methods
 
 
 class CommunicationInfo {
@@ -425,7 +411,6 @@ class CommunicationInfo {
    +source_gid(): Gid
    +from_headers(EmailHeaders headers, string source_gid_header): optional<CommunicationInfo> {static}
 }
-hide CommunicationInfo fields
 Timestamp "2" *-- CommunicationInfo
 Gid *-- CommunicationInfo
 
@@ -435,7 +420,6 @@ class MessageInfo {
    +publisher_gid(): Gid
    +from_headers(EmailHeaders headers): optional<MessageInfo> {static}
 }
-hide MessageInfo fields
 CommunicationInfo *-- MessageInfo
 
 class ServiceInfo {
@@ -445,7 +429,6 @@ class ServiceInfo {
    +sequence_number(): SequenceNumber
    +from_headers(EmailHeaders headers): optional<ServiceInfo> {static}
 }
-hide ServiceInfo fields
 CommunicationInfo *-- ServiceInfo
 SequenceNumber *-- ServiceInfo
 
@@ -453,7 +436,6 @@ class ServiceRequestId {
    +sequence_number: SequenceNumber
    +client_gid: Gid
 }
-hide ServiceRequestId methods
 SequenceNumber *-- ServiceRequestId
 Gid *-- ServiceRequestId
 
@@ -461,7 +443,6 @@ class ServiceRequest {
    +id: ServiceRequestId
    +content: string
 }
-hide ServiceRequest methods
 ServiceRequestId *-- ServiceRequest
 
 @enduml
