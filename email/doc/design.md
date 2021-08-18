@@ -95,22 +95,22 @@ Internal handling of emails/mesages is done as follows:
 ```plantuml
 @startuml
 
+hide empty attributes
+hide empty methods
+hide circle
+
+
 class CurlContext {
    +init()
    +fini()
    +get_handle(): CURL *
    +execute()
 }
-hide CurlContext fields
-hide CurlContext circle
 
 class CurlExecutor {
    +init()
    #init_options() {abstract}
-   #context: CurlContext
 }
-hide CurlExecutor fields
-hide CurlExecutor circle
 CurlContext *-- CurlExecutor
 
 
@@ -119,8 +119,6 @@ class EmailSender {
    +reply(EmailContent, EmailData, optional<EmailHeaders>)
    #init_options() {abstract}
 }
-hide EmailSender fields
-hide EmailSender circle
 CurlExecutor <|-- EmailSender
 
 class EmailReceiver {
@@ -130,8 +128,6 @@ class EmailReceiver {
    -get_email_from_uid(int): optional<EmailData>
    -execute(optional<string>, url_options, optional<string> custom_request): optional<string>
 }
-hide EmailReceiver fields
-hide EmailReceiver circle
 CurlExecutor <|-- EmailReceiver
 
 
@@ -144,34 +140,27 @@ class PollingManager {
    +register_handler(function<void (EmailData)>)
 }
 EmailReceiver o-- PollingManager
-hide PollingManager circle
 
 abstract class EmailHandler {
    +handle(EmailData) {abstract}
 }
-hide EmailHandler fields
-hide EmailHandler circle
 
 
 class SubscriptionHandler {
-   -subscriptions
+   -subscriptions: map<string, queue<pair<string, MessageInfo>>>
    +register_subscription(string topic_name, queue<pair<string, MessageInfo>> message_queue)
    +handle(EmailData) {abstract}
 }
-hide SubscriptionHandler fields
-hide SubscriptionHandler circle
 EmailHandler <|-- SubscriptionHandler
 PollingManager "registers with" <-- SubscriptionHandler
 
 class ServiceHandler {
-   -clients
-   -servers
+   -clients: map<GidValue, shared_ptr<map<SequenceNumber, pair<EmailData, ServiceInfo>>>>
+   -servers: map<string, shared_ptr<queue<pair<EmailData, ServiceInfo>>>>
    +register_service_client(Gid, map<SequenceNumber, pair<EmailData, ServiceInfo>> response_map)
    +register_service_server(string service_name, queue<pair<EmailData, ServiceInfo>> request_queue)
    +handle(EmailData) {abstract}
 }
-hide ServiceHandler fields
-hide ServiceHandler circle
 EmailHandler <|-- ServiceHandler
 PollingManager "registers with" <-- ServiceHandler
 
@@ -180,20 +169,16 @@ class GidObject {
    -gid: Gid
    +get_gid(): Gid
 }
-hide GidObject circle
 class NamedObject {
    -object_name: string
    #get_object_name(): string
    #validate_name() {abstract}
 }
-hide NamedObject circle
 
 class PubSubObject {
    +get_topic_name(): string
    -validate_name() {abstract}
 }
-hide PubSubObject fields
-hide PubSubObject circle
 GidObject <|-- PubSubObject
 NamedObject <|-- PubSubObject
 
@@ -201,8 +186,6 @@ class ServiceObject {
    +get_service_name(): string
    -validate_name() {abstract}
 }
-hide ServiceObject fields
-hide ServiceObject circle
 GidObject <|-- ServiceObject
 NamedObject <|-- ServiceObject
 
@@ -210,8 +193,6 @@ NamedObject <|-- ServiceObject
 class Publisher {
    +publish(string message, optional<EmailHeaders> additional_headers)
 }
-hide Publisher fields
-hide Publisher circle
 PubSubObject <|-- Publisher
 EmailSender o-- Publisher
 
@@ -221,7 +202,6 @@ class Subscription {
    +get_message(): optional<string>
    +get_message_with_info(): optional<pair<string, MessageInfo>>
 }
-hide Subscription circle
 PubSubObject <|-- Subscription
 SubscriptionHandler "registers with" <-- Subscription
 
@@ -236,7 +216,6 @@ class ServiceClient {
    +get_response_with_info(SequenceNumber seq): optional<pair<string, ServiceInfo>>
    +get_response_with_info(): optional<pair<string, ServiceInfo>>
 }
-hide ServiceClient circle
 ServiceObject <|-- ServiceClient
 Publisher *-- ServiceClient
 ServiceHandler "registers with" <-- ServiceClient
@@ -248,10 +227,48 @@ class ServiceServer {
    +get_request_with_info(): optional<pair<ServiceRequest, ServiceInfo>>
    +send_response(ServiceRequestId request_id, string response)
 }
-hide ServiceServer circle
 ServiceObject <|-- ServiceServer
-EmailSender *-- ServiceServer
+EmailSender o-- ServiceServer
 ServiceHandler "registers with" <-- ServiceServer
+
+@enduml
+```
+
+A global context owns global objects (i.e., all effectively singletons):
+
+* options container
+* email receiver, email sender
+* polling manager
+* subscription handler, service handler
+
+Those objects are made available globally to anything that needs them:
+
+* publishers and service servers to get the email sender
+* polling manager to get the email receiver
+* subscription handler and service handler to register with the polling manager
+* subscriptions and service clients/servers to register with the subscription handler and service handler, respectively
+
+```plantuml
+@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+class Context <<Singleton>> {
+   +get_options(): shared_ptr<Options>
+   +get_receiver(): shared_ptr<EmailReceiver>
+   +get_sender(): shared_ptr<EmailSender>
+   +get_polling_manager(): shared_ptr<PollingManager>
+   +get_subscription_handle(): shared_ptr<SubscriptionHandler>
+   +get_service_handle(): shared_ptr<ServiceHandler>
+}
+Options *-- Context
+EmailReceiver *-- Context
+EmailSender *-- Context
+PollingManager *-- Context
+SubscriptionHandler *-- Context
+ServiceHandler *-- Context
 
 @enduml
 ```
@@ -259,13 +276,34 @@ ServiceHandler "registers with" <-- ServiceServer
 ## Waiting on messages
 
 Subscriptions and service clients/servers must be waited on through polling.
-Wait sets can be used to wait on new messages, service requests or service responses.
-Some utility functions can be used to wait on a specific object using a wait set.
+Wait sets can be used to wait for new messages, service requests or service responses.
+Some utility functions can be used to wait on a specific entity using a wait set without needing to manually create a wait set for that single entity.
 
-Wait sets also support guard conditions as another way to control waiting.
+Wait sets also support guard conditions as simple conditions with triggers.
+A guard condition cannot be added to more than one wait set at a time.
+
+Wait sets are empty when created; entities can be added after creation.
+Wait sets can contain any number of each kind of entity and they can also contain none.
+Waiting on an empty wait set is valid and is equivalent to a sleep call.
+Wait sets can be used to wait on the same set of entities multiple times
+They can also be cleared and re-used to wait on a different set of entities.
+
+Waiting can be:
+
+* blocking indefinitely with a negative timeout value
+* non-blocking with a timeout value equal to zero
+* blocking with a timeout if the value is greater than zero 
 
 ```plantuml
 @startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+class Subscription
+class ServiceClient
+class ServiceServer
 
 class GuardCondition {
    +trigger()
@@ -273,14 +311,8 @@ class GuardCondition {
    +exchange_in_use(bool in_use): bool
    +reset()
 }
-hide GuardCondition fields
-hide GuardCondition circle
 
 class WaitSet {
-   -subscriptions: vector<Subscription *>
-   -clients: vector<ServiceClient *>
-   -servers: vector<ServiceServer *>
-   -guard_conditions: vector<Subscription *>
    +add_subscription(Subscription *)
    +add_client(ServiceClient *)
    +add_server(ServiceServer *)
@@ -292,7 +324,10 @@ class WaitSet {
    +wait(milliseconds timeout): bool
    +clear()
 }
-hide WaitSet circle
+Subscription "0..*" o-- WaitSet
+ServiceClient "0..*" o-- WaitSet
+ServiceServer "0..*" o-- WaitSet
+GuardCondition "0..*" o-- "0..1" WaitSet
 
 class wait. {
    .. Subscription ..
@@ -305,9 +340,7 @@ class wait. {
    +wait_for_request(ServiceServer * server, milliseconds timeout): ServiceRequest
    +wait_for_request_with_info(ServiceServer * server, milliseconds timeout): pair<ServiceRequest, ServiceInfo>
 }
-hide wait. circle
-hide wait. fields
-WaitSet <-- wait
+WaitSet "internally uses" <-- wait
 
 @enduml
 ```
@@ -326,21 +359,22 @@ Emails contain:
 ```plantuml
 @startuml
 
+hide empty attributes
+hide empty methods
+hide circle
+
+
 /'
 class ConnectionInfo {
    +host: string
    +username: string
    +password: string
 }
-hide ConnectionInfo circle
-hide ConnectionInfo methods
 
 class ProtocolInfo {
    +protocol: string
    +port: int
 }
-hide ProtocolInfo circle
-hide ProtocolInfo methods
 
 class UserInfo {
    +host_smtp: string
@@ -355,21 +389,15 @@ class EmailRecipients {
    +cc: vector<string>
    +bcc: vector<string>
 }
-hide EmailRecipients circle
-hide EmailRecipients methods
 
 class EmailHeaders <<typedef>> {
    map<string, string>
 }
-hide EmailHeaders circle
-hide EmailHeaders methods
 
 class EmailContent {
    +subject: string
    +body: string
 }
-hide EmailContent circle
-hide EmailContent methods
 
 class EmailData {
    +message_id: string
@@ -379,8 +407,6 @@ class EmailData {
    +content: EmailContent
    +additional_headers: EmailHeaders
 }
-hide EmailData circle
-hide EmailData methods
 EmailRecipients *-- EmailData
 EmailContent *-- EmailData
 EmailHeaders *-- EmailData
@@ -405,35 +431,32 @@ Additionally, for service requests/responses:
 ```plantuml
 @startuml
 
+hide empty attributes
+hide empty methods
+hide circle
+
+
 class Timestamp {
    +nanoseconds(): int64_t
    +to_string(): string
    +from_string(string timestamp): optional<Timestamp> {static}
    +now(): Timestamp {static}
 }
-hide Timestamp fields
-hide Timestamp circle
 
 class GidValue <<typedef>> {
    uint32_t
 }
-hide GidValue circle
-hide GidValue methods
 class Gid {
    +value(): GidValue
    +to_string(): string
    +from_string(string gid): optional<Gid> {static}
    +new_gid(): Gid {static}
 }
-hide Gid fields
-hide Gid circle
 GidValue *-- Gid
 
 class SequenceNumber <<typedef>> {
    int64_t
 }
-hide SequenceNumber circle
-hide SequenceNumber methods
 
 
 class CommunicationInfo {
@@ -442,8 +465,6 @@ class CommunicationInfo {
    +source_gid(): Gid
    +from_headers(EmailHeaders headers, string source_gid_header): optional<CommunicationInfo> {static}
 }
-hide CommunicationInfo fields
-hide CommunicationInfo circle
 Timestamp "2" *-- CommunicationInfo
 Gid *-- CommunicationInfo
 
@@ -453,8 +474,6 @@ class MessageInfo {
    +publisher_gid(): Gid
    +from_headers(EmailHeaders headers): optional<MessageInfo> {static}
 }
-hide MessageInfo fields
-hide MessageInfo circle
 CommunicationInfo *-- MessageInfo
 
 class ServiceInfo {
@@ -464,8 +483,6 @@ class ServiceInfo {
    +sequence_number(): SequenceNumber
    +from_headers(EmailHeaders headers): optional<ServiceInfo> {static}
 }
-hide ServiceInfo fields
-hide ServiceInfo circle
 CommunicationInfo *-- ServiceInfo
 SequenceNumber *-- ServiceInfo
 
@@ -473,8 +490,6 @@ class ServiceRequestId {
    +sequence_number: SequenceNumber
    +client_gid: Gid
 }
-hide ServiceRequestId circle
-hide ServiceRequestId methods
 SequenceNumber *-- ServiceRequestId
 Gid *-- ServiceRequestId
 
@@ -482,8 +497,6 @@ class ServiceRequest {
    +id: ServiceRequestId
    +content: string
 }
-hide ServiceRequest circle
-hide ServiceRequest methods
 ServiceRequestId *-- ServiceRequest
 
 @enduml
