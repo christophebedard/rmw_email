@@ -237,10 +237,23 @@ ServiceHandler "registers with" <-- ServiceServer
 ## Waiting on messages
 
 Subscriptions and service clients/servers must be waited on through polling.
-Wait sets can be used to wait on new messages, service requests or service responses.
-Some utility functions can be used to wait on a specific object using a wait set.
+Wait sets can be used to wait for new messages, service requests or service responses.
+Some utility functions can be used to wait on a specific entity using a wait set without needing to manually create a wait set for that single entity.
 
-Wait sets also support guard conditions as another way to control waiting.
+Wait sets also support guard conditions as simple conditions with triggers.
+A guard condition cannot be added to more than one wait set at a time.
+
+Wait sets are empty when created; entities can be added after creation.
+Wait sets can contain any number of each kind of entity and they can also contain none.
+Waiting on an empty wait set is valid and is equivalent to a sleep call.
+Wait sets can be used to wait on the same set of entities multiple times
+They can also be cleared and re-used to wait on a different set of entities.
+
+Waiting can be:
+
+* blocking indefinitely with a negative timeout value
+* non-blocking with a timeout value equal to zero
+* blocking with a timeout if the value is greater than zero 
 
 ```plantuml
 @startuml
@@ -249,6 +262,9 @@ hide empty attributes
 hide empty methods
 hide circle
 
+class Subscription
+class ServiceClient
+class ServiceServer
 
 class GuardCondition {
    +trigger()
@@ -258,10 +274,6 @@ class GuardCondition {
 }
 
 class WaitSet {
-   -subscriptions: vector<Subscription *>
-   -clients: vector<ServiceClient *>
-   -servers: vector<ServiceServer *>
-   -guard_conditions: vector<Subscription *>
    +add_subscription(Subscription *)
    +add_client(ServiceClient *)
    +add_server(ServiceServer *)
@@ -273,6 +285,10 @@ class WaitSet {
    +wait(milliseconds timeout): bool
    +clear()
 }
+Subscription "0..*" o-- "0..1" WaitSet
+ServiceClient "0..*" o-- "0..1" WaitSet
+ServiceServer "0..*" o-- "0..1" WaitSet
+GuardCondition "0..*" o-- "0..1" WaitSet
 
 class wait. {
    .. Subscription ..
@@ -285,7 +301,7 @@ class wait. {
    +wait_for_request(ServiceServer * server, milliseconds timeout): ServiceRequest
    +wait_for_request_with_info(ServiceServer * server, milliseconds timeout): pair<ServiceRequest, ServiceInfo>
 }
-WaitSet <-- wait
+WaitSet "internally uses" <-- wait
 
 @enduml
 ```
