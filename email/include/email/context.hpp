@@ -185,11 +185,14 @@ private:
   void
   init_common();
 
-  std::shared_ptr<Logger> logger_;
-  std::shared_ptr<Options> options_;
   bool is_valid_;
-  mutable bool is_receiver_init_;
-  mutable bool is_polling_manager_init_;
+  std::shared_ptr<Options> options_;
+  std::shared_ptr<Logger> logger_;
+  std::shared_ptr<EmailSender> sender_;
+  std::shared_ptr<EmailReceiver> receiver_;
+  std::shared_ptr<PollingManager> polling_manager_;
+  std::shared_ptr<SubscriptionHandler> subscription_handler_;
+  std::shared_ptr<ServiceHandler> service_handler_;
 };
 
 /// Get the global context.

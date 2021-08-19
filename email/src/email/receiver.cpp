@@ -69,7 +69,7 @@ EmailReceiver::init_options()
 void
 EmailReceiver::shutdown()
 {
-  do_shutdown_ = true;
+  do_shutdown_.store(true);
 }
 
 std::optional<struct EmailData>
@@ -135,6 +135,10 @@ EmailReceiver::execute(
   std::optional<std::string> url_options,
   std::optional<std::string> custom_request)
 {
+  if (do_shutdown_.load()) {
+    return std::nullopt;
+  }
+
   std::string request_url(context_.get_full_url());
   if (url_options) {
     request_url += url_options.value();

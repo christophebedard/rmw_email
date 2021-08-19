@@ -14,6 +14,8 @@
 
 #include <curl/curl.h>
 
+#include <atomic>
+#include <cassert>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
@@ -37,17 +39,24 @@ CurlContext::CurlContext(
       protocol_info.protocol,
       connection_info_.host,
       protocol_info.port)),
-  curl_verbose_(curl_verbose)
+  curl_verbose_(curl_verbose),
+  is_init_(false)
 {}
 
 CurlContext::~CurlContext()
 {
   logger_->debug("destroying");
+  fini();
 }
 
 bool
 CurlContext::init()
 {
+  if (is_init_.load()) {
+    return true;
+  }
+
+  assert(!handle_);
   handle_ = curl_easy_init();
   if (!handle_) {
     logger_->critical("curl_easy_init() failed");
@@ -64,6 +73,7 @@ CurlContext::init()
   if (curl_verbose_) {
     curl_easy_setopt(handle_, CURLOPT_VERBOSE, 1L);
   }
+  is_init_.store(true);
   logger_->debug("initialized");
   return true;
 }
@@ -71,13 +81,24 @@ CurlContext::init()
 void
 CurlContext::fini()
 {
+  if (!is_init_.load()) {
+    return;
+  }
+  is_init_.store(false);
+  assert(handle_);
   curl_easy_cleanup(handle_);
+  handle_ = nullptr;
   logger_->debug("finalized");
 }
 
 bool
 CurlContext::execute()
 {
+  if (!is_init_.load()) {
+    logger_->warn("trying to execute without an initalized context");
+    return false;
+  }
+  assert(handle_);
   CURLcode res = curl_easy_perform(handle_);
   if (CURLE_OK != res) {
     // Some error codes are "expected," i.e. they're not real failures
