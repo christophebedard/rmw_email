@@ -47,6 +47,7 @@ This repository contains a few packages:
    * This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](./email/QUALITY_DECLARATION.md) for more details.
 * [`email_examples`](./email_examples/): various examples using `email`
    * See [*`email` examples*](#email-examples).
+   * This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](./email_examples/QUALITY_DECLARATION.md) for more details.
 * [`rmw_email_cpp`](./rmw_email_cpp/): ROS 2 `rmw` implementation using `email` as the middleware
    * See [*supported features*](#supported-features).
    * This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](./rmw_email_cpp/QUALITY_DECLARATION.md) for more details.
