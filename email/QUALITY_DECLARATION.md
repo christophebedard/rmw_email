@@ -24,20 +24,15 @@ The current version can be found in its [package.xml](package.xml), and its chan
 
 All symbols in the installed headers that are declared with [`EMAIL_PUBLIC`](./include/email/visibility_control.hpp) are considered part of the public API.
 
-### API Stability Policy [1.iv]
+### API Stability Within a Released ROS Distribution [1.iv]/[1.vi]
 <!-- no -->
 
 `email` could break public API within a released ROS distribution, i.e. there might be major releases once the ROS distribution is released.
 
-### ABI Stability Policy [1.v]
+### ABI Stability Within a Released ROS Distribution [1.v]/[1.vi]
 <!-- no -->
 
 `email` contains C++ code and therefore must be concerned with ABI stability, and might not maintain ABI stability within a ROS distribution.
-
-### ABI and ABI Stability Within a Released ROS Distribution [1.vi]
-<!-- no -->
-
-`email` could break API or ABI within a released ROS distribution, i.e. there might be major releases once the ROS distribution is released.
 
 ## Change Control Process [2]
 
@@ -82,7 +77,7 @@ There is documentation for all of the features, and new features require documen
 ### Public API Documentation [3.ii]
 <!-- yes -->
 
-The API [is publicly available](https://christophebedard.com/rmw_email/api/email/).
+`email`'s API [is publicly available](https://christophebedard.com/rmw_email/api/email/).
 
 ### License [3.iii]
 <!-- yes -->
@@ -109,7 +104,7 @@ Some tests are located in the [`test`](./test) directory.
 ### Public API Testing [4.ii]
 <!-- no -->
 
-Not all parts of the public API have.
+Not all parts of the public API have tests.
 Some tests are located in the [`test`](./test) directory.
 The tests aim to cover both typical usage and corner cases, but are quantified by contributing to code coverage.
 
@@ -176,13 +171,13 @@ It is **Quality Level 1**, see its [Quality Declaration document](https://github
 
 The `libcurl` library, possibly through the `libcurl_vendor` package, provides a C API for multiprotocol file transfer.
 
-It currently has no quality level.
+It currently has no quality declaration.
 
 #### `yaml-cpp`
 
 The `yaml-cpp` library, possibly through the `yaml_cpp_vendor` package, provides an API for parsing and emitting YAML in C++.
 
-It currently has no quality level.
+It currently has no quality declaration.
 
 ## Platform Support [6]
 <!-- no -->
@@ -229,7 +224,7 @@ The table below compares the requirements in REP-2004 with the current state of 
 |4.i| Feature items tests | x |
 |4.ii| Public API tests | x |
 |4.iii.a| Using coverage | ✓ |
-|4.iii.b| Coverage policy | ✓ |
+|4.iii.b| Coverage policy | x |
 |4.iv.a| Performance tests | x |
 |4.iv.b| Performance tests policy | x |
 |4.v.a| Code style enforcement (linters) | ✓ |

@@ -12,8 +12,8 @@
 
   <depend>dynmsg</depend>
   <depend>email</depend>
-  <depend>rcutils</depend>
   <depend>rcpputils</depend>
+  <depend>rcutils</depend>
   <depend>rmw</depend>
   <depend>rosidl_runtime_c</depend>
   <depend>rosidl_runtime_cpp</depend>
