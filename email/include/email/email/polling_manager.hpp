@@ -20,6 +20,7 @@
 #include <functional>
 #include <memory>
 #include <mutex>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <thread>
 #include <vector>
@@ -43,8 +44,11 @@ public:
   /// Constructor.
   /**
    * \param receiver the email receiver to use for getting emails
+   * \param polling_period the polling period, or `std::optional` to use the default value
    */
-  explicit PollingManager(std::shared_ptr<EmailReceiver> receiver);
+  explicit PollingManager(
+    std::shared_ptr<EmailReceiver> receiver,
+    const std::optional<std::chrono::nanoseconds> polling_period);
 
   ~PollingManager();
 
@@ -83,14 +87,13 @@ private:
   poll_thread();
 
   std::shared_ptr<EmailReceiver> receiver_;
+  const std::optional<std::chrono::nanoseconds> polling_period_;
   bool has_started_;
   std::atomic_bool do_shutdown_;
   std::thread thread_;
   std::mutex handlers_mutex_;
   std::vector<HandlerFunction> handlers_;
   std::shared_ptr<Logger> logger_;
-
-  static constexpr auto POLLING_PERIOD = std::chrono::milliseconds(1);
 };
 
 }  // namespace email

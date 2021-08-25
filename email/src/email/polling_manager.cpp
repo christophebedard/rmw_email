@@ -16,9 +16,12 @@
 #include <chrono>
 #include <memory>
 #include <mutex>
+#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <thread>
 #include <vector>
+
+#include "spdlog/fmt/bundled/chrono.h"
 
 #include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
@@ -29,8 +32,11 @@
 namespace email
 {
 
-PollingManager::PollingManager(std::shared_ptr<EmailReceiver> receiver)
+PollingManager::PollingManager(
+  std::shared_ptr<EmailReceiver> receiver,
+  const std::optional<std::chrono::nanoseconds> polling_period)
 : receiver_(receiver),
+  polling_period_(polling_period),
   has_started_(false),
   do_shutdown_(false),
   thread_({}),
@@ -38,7 +44,10 @@ PollingManager::PollingManager(std::shared_ptr<EmailReceiver> receiver)
   handlers_(),
   logger_(log::create("PollingManager"))
 {
-  logger_->debug("initialized");
+  logger_->debug(
+    fmt::format(
+      "initialized: period={}",
+      (polling_period_.has_value() ? fmt::to_string(polling_period_.value()) : "(default)")));
 }
 
 PollingManager::~PollingManager()
@@ -97,7 +106,7 @@ PollingManager::poll_thread()
     std::optional<struct EmailData> email_data = std::nullopt;
     // Use a 'while true' to avoid duplicating code
     while (true) {
-      email_data = receiver_->get_email();
+      email_data = receiver_->get_email(polling_period_);
       // Sleep a bit if polling wasn't successful;
       // avoid sleeping for now reason,
       // either before polling or after polling when we're shutting down
@@ -105,7 +114,6 @@ PollingManager::poll_thread()
       if (!keep_polling) {
         break;
       }
-      std::this_thread::sleep_for(POLLING_PERIOD);
     }
     // Break now if shutting down
     if (do_shutdown_.load()) {

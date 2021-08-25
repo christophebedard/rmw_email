@@ -112,7 +112,7 @@ Context::init_common()
   receiver_->init();
 
   assert(!polling_manager_);
-  polling_manager_ = std::make_shared<PollingManager>(receiver_);
+  polling_manager_ = std::make_shared<PollingManager>(receiver_, options_->polling_period());
   polling_manager_->start();
 
   assert(!subscription_handler_);

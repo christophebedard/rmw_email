@@ -15,6 +15,7 @@
 #ifndef EMAIL__OPTIONS_HPP_
 #define EMAIL__OPTIONS_HPP_
 
+#include <chrono>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
@@ -44,12 +45,15 @@ public:
    * \param user_info the user info
    * \param recipients the recipients
    * \param curl_verbose the curl verbose status
+   * \param polling_period the polling period
    */
   EMAIL_PUBLIC
   Options(
     UserInfo::SharedPtrConst user_info,
     EmailRecipients::SharedPtrConst recipients,
-    bool curl_verbose);
+    const bool curl_verbose,
+    const std::optional<std::chrono::nanoseconds> polling_period);
+
   EMAIL_PUBLIC
   ~Options();
 
@@ -76,6 +80,14 @@ public:
   EMAIL_PUBLIC
   bool
   curl_verbose() const;
+
+  /// Get the polling period value.
+  /**
+   * \return the polling period
+   */
+  EMAIL_PUBLIC
+  std::optional<std::chrono::nanoseconds>
+  polling_period() const;
 
   /// Parse options from CLI arguments.
   /**
@@ -124,7 +136,8 @@ private:
 
   UserInfo::SharedPtrConst user_info_;
   EmailRecipients::SharedPtrConst recipients_;
-  bool curl_verbose_;
+  const bool curl_verbose_;
+  const std::optional<std::chrono::nanoseconds> polling_period_;
 
   static constexpr const char * ENV_VAR_CURL_VERBOSE = "EMAIL_CURL_VERBOSE";
   static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";

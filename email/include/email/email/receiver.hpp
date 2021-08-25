@@ -62,11 +62,22 @@ public:
 
   /// Get a new email.
   /**
+   * This function fetches a new email through polling.
+   *
+   * The caller can specify a polling period, which will be used as a target polling rate.
+   * This means that, if the internal polling call takes more time than the polling period,
+   * the next call will be executed right away.
+   *
+   * If the polling period value is equal to 0, the sleep call will be skipped,
+   * and polling will be done as fast as possible.
+   * This is the default value.
+   *
+   * \param polling_period the polling period
    * \return the new email, or `std::nullopt` if it failed
    */
   EMAIL_PUBLIC
   std::optional<struct EmailData>
-  get_email();
+  get_email(std::optional<std::chrono::nanoseconds> polling_period = std::nullopt);
 
 protected:
   virtual
