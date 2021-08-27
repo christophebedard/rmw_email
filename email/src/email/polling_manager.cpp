@@ -45,9 +45,8 @@ PollingManager::PollingManager(
   logger_(log::create("PollingManager"))
 {
   logger_->debug(
-    fmt::format(
-      "initialized: period={}",
-      (polling_period_.has_value() ? fmt::to_string(polling_period_.value()) : "(default)")));
+    "initialized: period={}",
+    (polling_period_.has_value() ? fmt::to_string(polling_period_.value()) : "(default)"));
 }
 
 PollingManager::~PollingManager()
