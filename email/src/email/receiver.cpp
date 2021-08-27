@@ -83,7 +83,7 @@ EmailReceiver::get_email(std::optional<std::chrono::nanoseconds> polling_period)
     return std::nullopt;
   }
   std::chrono::nanoseconds period = polling_period.value_or(std::chrono::nanoseconds(0));
-  logger_->debug(fmt::format("polling: period={}", period));
+  logger_->debug("polling: period={}", period);
   // Update next UID
   std::optional<int> next_uid = get_nextuid();
   if (!next_uid) {
