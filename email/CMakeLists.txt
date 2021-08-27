@@ -157,6 +157,10 @@ if(BUILD_TESTING)
     test/test_log.cpp
   )
   target_link_libraries(test_log ${PROJECT_NAME})
+  ament_add_gtest(test_options
+    test/test_options.cpp
+  )
+  target_link_libraries(test_options ${PROJECT_NAME})
   ament_add_gtest(test_communication_info
     test/test_communication_info.cpp
   )
