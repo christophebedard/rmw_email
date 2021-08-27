@@ -149,7 +149,9 @@ private:
 
   static constexpr const char * ENV_VAR_CURL_VERBOSE = "EMAIL_CURL_VERBOSE";
   static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";
-  static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT = "email.yml";
+  static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT_PATH =
+    "EMAIL_CONFIG_FILE_DEFAULT_PATH";
+  static constexpr const char * CONFIG_FILE_DEFAULT_NAME = "email.yml";
   static constexpr const char * USAGE_CLI_ARGS =
     "usage: HOST_SMTP HOST_IMAP EMAIL PASSWORD EMAIL_TO [-v|--curl-verbose]";
 };

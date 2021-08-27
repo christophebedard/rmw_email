@@ -195,16 +195,18 @@ Options::parse_options_from_file()
   // First try using path from environment variable or the default value
   const std::string config_file_path = utils::get_env_var_or_default(
     Options::ENV_VAR_CONFIG_FILE,
-    (rcpputils::fs::current_path() / Options::ENV_VAR_CONFIG_FILE_DEFAULT).string());
-  if (config_file_path.empty()) {
-    logger()->error("env var empty: {}", Options::ENV_VAR_CONFIG_FILE);
-    return std::nullopt;
-  }
+    (rcpputils::fs::current_path() / Options::CONFIG_FILE_DEFAULT_NAME).string());
+
+  // Value can't be empty here because the default value is used if the env var is empty
   auto options = Options::parse_options_file(config_file_path);
   if (!options) {
     // Try reading backup config file
+    // Use file path from environment variable if defined,
+    // otherwise use the default name relative to the home directory
     const rcpputils::fs::path backup_file_path =
-      rcpputils::fs::path(rcutils_get_home_dir()) / Options::ENV_VAR_CONFIG_FILE_DEFAULT;
+      utils::get_env_var_or_default(
+      Options::ENV_VAR_CONFIG_FILE_DEFAULT_PATH,
+      (rcpputils::fs::path(rcutils_get_home_dir()) / Options::CONFIG_FILE_DEFAULT_NAME).string());
     logger()->debug("trying backup config file path: {}", backup_file_path);
     options = Options::parse_options_file(backup_file_path);
     if (!options) {
