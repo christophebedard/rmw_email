@@ -89,9 +89,9 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7fa5ed5065e0c00beae12fe82093c52e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PollingManager.html#a7fa5ed5065e0c00beae12fe82093c52e">PollingManager</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="classemail_1_1EmailReceiver.html">EmailReceiver</a> &gt; receiver)</td></tr>
-<tr class="memdesc:a7fa5ed5065e0c00beae12fe82093c52e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classemail_1_1PollingManager.html#a7fa5ed5065e0c00beae12fe82093c52e">More...</a><br /></td></tr>
-<tr class="separator:a7fa5ed5065e0c00beae12fe82093c52e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21701ede1e27783c03b8f4103f057387"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PollingManager.html#a21701ede1e27783c03b8f4103f057387">PollingManager</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="classemail_1_1EmailReceiver.html">EmailReceiver</a> &gt; receiver, const <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/chrono/duration.html">std::chrono::nanoseconds</a> &gt; polling_period)</td></tr>
+<tr class="memdesc:a21701ede1e27783c03b8f4103f057387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classemail_1_1PollingManager.html#a21701ede1e27783c03b8f4103f057387">More...</a><br /></td></tr>
+<tr class="separator:a21701ede1e27783c03b8f4103f057387"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fe590820846230f5280bc8b1b625bfa"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PollingManager.html#a9fe590820846230f5280bc8b1b625bfa">~PollingManager</a> ()</td></tr>
 <tr class="separator:a9fe590820846230f5280bc8b1b625bfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada4ac3a931faab269f51bf3eb47107be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PollingManager.html#ada4ac3a931faab269f51bf3eb47107be">register_handler</a> (const <a class="el" href="classemail_1_1PollingManager.html#afa05fad5b42110b2dfcda3f5103d0de6">HandlerFunction</a> &amp;handler)</td></tr>
@@ -128,8 +128,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7fa5ed5065e0c00beae12fe82093c52e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7fa5ed5065e0c00beae12fe82093c52e">&#9670;&nbsp;</a></span>PollingManager()</h2>
+<a id="a21701ede1e27783c03b8f4103f057387"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21701ede1e27783c03b8f4103f057387">&#9670;&nbsp;</a></span>PollingManager()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -141,8 +141,18 @@ Public Member Functions</h2></td></tr>
           <td class="memname">email::PollingManager::PollingManager </td>
           <td>(</td>
           <td class="paramtype"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="classemail_1_1EmailReceiver.html">EmailReceiver</a> &gt;&#160;</td>
-          <td class="paramname"><em>receiver</em></td><td>)</td>
+          <td class="paramname"><em>receiver</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="elRef" href="http://en.cppreference.com/w/cpp/chrono/duration.html">std::chrono::nanoseconds</a> &gt;&#160;</td>
+          <td class="paramname"><em>polling_period</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -156,6 +166,7 @@ Public Member Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">receiver</td><td>the email receiver to use for getting emails </td></tr>
+    <tr><td class="paramname">polling_period</td><td>the polling period, or <code><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a></code> to use the default value </td></tr>
   </table>
   </dd>
 </dl>

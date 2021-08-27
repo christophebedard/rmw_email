@@ -27,7 +27,7 @@ class EmailSender {
 CurlExecutor <|-- EmailSender
 
 class EmailReceiver {
-   +get_email(): optional<EmailData>
+   +get_email(nanoseconds polling_period): optional<EmailData>
    #init_options() {abstract}
    -get_nextuid(): optional<int>
    -get_email_from_uid(int): optional<EmailData>
