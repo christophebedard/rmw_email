@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <chrono>
 #include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -34,10 +35,12 @@ namespace email
 Options::Options(
   UserInfo::SharedPtrConst user_info,
   EmailRecipients::SharedPtrConst recipients,
-  bool curl_verbose)
+  const bool curl_verbose,
+  const std::optional<std::chrono::nanoseconds> polling_period)
 : user_info_(user_info),
   recipients_(recipients),
-  curl_verbose_(curl_verbose)
+  curl_verbose_(curl_verbose),
+  polling_period_(polling_period)
 {}
 
 Options::~Options() {}
@@ -58,6 +61,12 @@ bool
 Options::curl_verbose() const
 {
   return curl_verbose_;
+}
+
+std::optional<std::chrono::nanoseconds>
+Options::polling_period() const
+{
+  return polling_period_;
 }
 
 std::optional<std::shared_ptr<Options>>
@@ -84,7 +93,8 @@ Options::parse_options_from_args(int argc, char const * const argv[])
   return std::make_shared<Options>(
     user_info,
     recipients,
-    curl_verbose);
+    curl_verbose,
+    std::nullopt);
 }
 
 std::optional<std::shared_ptr<Options>>
@@ -121,6 +131,17 @@ Options::yaml_to_options(YAML::Node node)
     return std::nullopt;
   }
 
+  std::optional<std::chrono::nanoseconds> polling_period = std::nullopt;
+  if (node_email["polling-period"]) {
+    const auto polling_period_str = node_email["polling-period"].as<std::string>();
+    const auto polling_period_ns = utils::optional_stoll(polling_period_str);
+    if (!polling_period_ns) {
+      logger()->error("invalid value in options: email.polling-period: {}", polling_period_str);
+      return std::nullopt;
+    }
+    polling_period = std::chrono::nanoseconds(polling_period_ns.value());
+  }
+
   UserInfo::SharedPtrConst user_info = std::make_shared<const struct UserInfo>(
     node_user["url-smtp"].as<std::string>(),
     node_user["url-imap"].as<std::string>(),
@@ -135,7 +156,8 @@ Options::yaml_to_options(YAML::Node node)
   return std::make_shared<Options>(
     user_info,
     recipients,
-    !curl_verbose_env_var.empty());
+    !curl_verbose_env_var.empty(),
+    polling_period);
 }
 
 std::optional<std::shared_ptr<Options>>

@@ -22,6 +22,9 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
+#include <thread>
+
+#include "spdlog/fmt/bundled/chrono.h"
 
 #include "email/curl/executor.hpp"
 #include "email/email/info.hpp"
@@ -73,12 +76,14 @@ EmailReceiver::shutdown()
 }
 
 std::optional<struct EmailData>
-EmailReceiver::get_email()
+EmailReceiver::get_email(std::optional<std::chrono::nanoseconds> polling_period)
 {
   if (!is_valid()) {
     logger_->warn("not initialized!");
     return std::nullopt;
   }
+  std::chrono::nanoseconds period = polling_period.value_or(std::chrono::nanoseconds(0));
+  logger_->debug(fmt::format("polling: period={}", period));
   // Update next UID
   std::optional<int> next_uid = get_nextuid();
   if (!next_uid) {
@@ -94,8 +99,13 @@ EmailReceiver::get_email()
   logger_->debug("next_uid   ={}", next_uid_);
   // Try until we get an email or until we have to stop
   std::optional<struct EmailData> next_email = std::nullopt;
+  std::chrono::steady_clock::time_point last_poll;
   while (!next_email && !do_shutdown_.load()) {
+    last_poll = std::chrono::steady_clock::now();
     next_email = get_email_from_uid(current_uid_);
+    if (!do_shutdown_.load() && std::chrono::nanoseconds::zero() != period) {
+      std::this_thread::sleep_until(last_poll + period);
+    }
   }
   // Increment our current UID pointer, but only up to the previous 'next UID' value + 1.
   // This allows us to not miss emails when there are multiple new ones.
