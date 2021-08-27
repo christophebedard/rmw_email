@@ -129,6 +129,14 @@ public:
   parse_options_file(const rcpputils::fs::path & file_path);
 
 private:
+  /// Implementation for `yaml_to_options_impl` that may throw.
+  /**
+   * \throw YAML::Exception if there is an error parsing the YAML node
+   */
+  static
+  std::optional<std::shared_ptr<Options>>
+  yaml_to_options_impl(YAML::Node);
+
   /// Get logger.
   static
   std::shared_ptr<Logger>

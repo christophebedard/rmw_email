@@ -98,10 +98,9 @@ Options::parse_options_from_args(int argc, char const * const argv[])
 }
 
 std::optional<std::shared_ptr<Options>>
-Options::yaml_to_options(YAML::Node node)
+Options::yaml_to_options_impl(YAML::Node node)
 {
   logger()->debug("options:\n{}", node);
-
   // Validate content
   if (!node["email"]) {
     logger()->error("missing top-level 'email' key in options");
@@ -161,6 +160,17 @@ Options::yaml_to_options(YAML::Node node)
 }
 
 std::optional<std::shared_ptr<Options>>
+Options::yaml_to_options(YAML::Node node)
+{
+  try {
+    return Options::yaml_to_options_impl(node);
+  } catch (const YAML::Exception & e) {
+    logger()->error("error when parsing YAML node: {}", e.what());
+    return std::nullopt;
+  }
+}
+
+std::optional<std::shared_ptr<Options>>
 Options::parse_options_file(const rcpputils::fs::path & file_path)
 {
   logger()->debug("parsing options file: {}", file_path);
@@ -172,7 +182,7 @@ Options::parse_options_file(const rcpputils::fs::path & file_path)
   const std::string path = file_path.string();
   try {
     node = YAML::LoadFile(path);
-  } catch (const YAML::BadFile & e) {
+  } catch (const YAML::Exception & e) {
     logger()->error("could not load options file '{}': {}", path, e.what());
     return std::nullopt;
   }
