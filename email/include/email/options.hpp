@@ -129,6 +129,14 @@ public:
   parse_options_file(const rcpputils::fs::path & file_path);
 
 private:
+  /// Implementation for `yaml_to_options_impl` that may throw.
+  /**
+   * \throw YAML::Exception if there is an error parsing the YAML node
+   */
+  static
+  std::optional<std::shared_ptr<Options>>
+  yaml_to_options_impl(YAML::Node);
+
   /// Get logger.
   static
   std::shared_ptr<Logger>
@@ -141,7 +149,9 @@ private:
 
   static constexpr const char * ENV_VAR_CURL_VERBOSE = "EMAIL_CURL_VERBOSE";
   static constexpr const char * ENV_VAR_CONFIG_FILE = "EMAIL_CONFIG_FILE";
-  static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT = "email.yml";
+  static constexpr const char * ENV_VAR_CONFIG_FILE_DEFAULT_PATH =
+    "EMAIL_CONFIG_FILE_DEFAULT_PATH";
+  static constexpr const char * CONFIG_FILE_DEFAULT_NAME = "email.yml";
   static constexpr const char * USAGE_CLI_ARGS =
     "usage: HOST_SMTP HOST_IMAP EMAIL PASSWORD EMAIL_TO [-v|--curl-verbose]";
 };
