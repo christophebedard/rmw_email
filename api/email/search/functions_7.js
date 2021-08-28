@@ -24,7 +24,7 @@ var searchData=
   ['get_5femail_3906',['get_email',['../classemail_1_1EmailReceiver.html#aad2dde7fb9cebfea01b30b1f2a1d6df1',1,'email::EmailReceiver']]],
   ['get_5femail_5fcontent_5ffrom_5fresponse_3907',['get_email_content_from_response',['../namespaceemail_1_1utils_1_1response.html#ae5589c66596fc92d8265d795b4ef9d4b',1,'email::utils::response']]],
   ['get_5femail_5fdata_5ffrom_5fresponse_3908',['get_email_data_from_response',['../namespaceemail_1_1utils_1_1response.html#a653d46e023a23fecac67b8b95e32ff6b',1,'email::utils::response']]],
-  ['get_5femail_5fheaders_5ffrom_5fresponse_3909',['get_email_headers_from_response',['../namespaceemail_1_1utils_1_1response.html#a081a05ff855aa0986bde6e174a52417b',1,'email::utils::response']]],
+  ['get_5femail_5fheaders_5ffrom_5fresponse_3909',['get_email_headers_from_response',['../namespaceemail_1_1utils_1_1response.html#a5a53dc0d1ceb86baec63678cc7dc060b',1,'email::utils::response']]],
   ['get_5fenv_5fvar_3910',['get_env_var',['../namespaceemail_1_1utils.html#a48891b8793ba17bf280aef8d8c62f392',1,'email::utils']]],
   ['get_5fenv_5fvar_5for_5fdefault_3911',['get_env_var_or_default',['../namespaceemail_1_1utils.html#ae02d06fc8aab9fc0e6c0e2f08e4bb976',1,'email::utils']]],
   ['get_5ffull_5furl_3912',['get_full_url',['../classemail_1_1CurlContext.html#a14124af9ca8da6dece85f64e79689469',1,'email::CurlContext']]],
