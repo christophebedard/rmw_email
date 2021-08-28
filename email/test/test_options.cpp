@@ -181,3 +181,53 @@ email:
   EXPECT_TRUE(rcpputils::fs::remove(file));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", NULL));
 }
+
+TEST_F(TestOptions, parse_options_from_args) {
+  // Bad
+  const char * const argv_bad[] = {"a", "b"};
+  EXPECT_FALSE(email::Options::parse_options_from_args(0, nullptr).has_value());
+  EXPECT_FALSE(email::Options::parse_options_from_args(2, argv_bad).has_value());
+  EXPECT_FALSE(email::Options::parse_options_from_args(6, nullptr).has_value());
+  EXPECT_FALSE(email::Options::parse_options_from_args(7, nullptr).has_value());
+
+  std::optional<std::shared_ptr<email::Options>> options;
+
+  // Good without curl verbose
+  const char * const argv_good[] = {
+    "exe", "some.url", "some.other.url", "my@email.ca", "tinkywinky", "to@email.com"};
+  options = email::Options::parse_options_from_args(
+    (sizeof(argv_good) / sizeof(char *)), argv_good);
+  ASSERT_TRUE(options.has_value());
+  EXPECT_STREQ("some.url", options.value()->get_user_info()->host_smtp.c_str());
+  EXPECT_STREQ("some.other.url", options.value()->get_user_info()->host_imap.c_str());
+  EXPECT_STREQ("my@email.ca", options.value()->get_user_info()->username.c_str());
+  EXPECT_STREQ("tinkywinky", options.value()->get_user_info()->password.c_str());
+  ASSERT_EQ(1UL, options.value()->get_recipients()->to.size());
+  EXPECT_STREQ("to@email.com", options.value()->get_recipients()->to[0].c_str());
+  EXPECT_FALSE(options.value()->curl_verbose());
+
+  // Good with curl verbose
+  const char * const argv_good_v[] = {
+    "exe", "some.url", "some.other.url", "my@email.ca", "tinkywinky", "to@email.com", "-v"};
+  options = email::Options::parse_options_from_args(
+    (sizeof(argv_good_v) / sizeof(char *)), argv_good_v);
+  ASSERT_TRUE(options.has_value());
+  EXPECT_TRUE(options.value()->curl_verbose());
+
+  const char * const argv_good_cv[] = {
+    "exe", "some.url", "some.other.url", "my@email.ca",
+    "tinkywinky", "to@email.com", "--curl-verbose"};
+  options = email::Options::parse_options_from_args(
+    (sizeof(argv_good_cv) / sizeof(char *)), argv_good_cv);
+  ASSERT_TRUE(options.has_value());
+  EXPECT_TRUE(options.value()->curl_verbose());
+
+  // Bad curl verbose flag
+  const char * const argv_bad_cv[] = {
+    "exe", "some.url", "some.other.url", "my@email.ca",
+    "tinkywinky", "to@email.com", "--bad-option"};
+  options = email::Options::parse_options_from_args(
+    (sizeof(argv_bad_cv) / sizeof(char *)), argv_bad_cv);
+  ASSERT_TRUE(options.has_value());
+  EXPECT_FALSE(options.value()->curl_verbose());
+}

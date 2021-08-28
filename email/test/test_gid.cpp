@@ -66,3 +66,8 @@ TEST(TestGidObject, init) {
   auto gid_object = GidObjectStub();
   EXPECT_NE(0u, gid_object.get_gid().value());
 }
+
+TEST(TestGid, format) {
+  email::Gid gid(42U);
+  EXPECT_STREQ("42", fmt::to_string(gid).c_str());
+}

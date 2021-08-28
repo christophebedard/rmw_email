@@ -72,7 +72,7 @@ Options::polling_period() const
 std::optional<std::shared_ptr<Options>>
 Options::parse_options_from_args(int argc, char const * const argv[])
 {
-  if (!(6 == argc || 7 == argc)) {
+  if (!(6 == argc || 7 == argc) || nullptr == argv) {
     std::cerr << Options::USAGE_CLI_ARGS << std::endl;
     return std::nullopt;
   }
