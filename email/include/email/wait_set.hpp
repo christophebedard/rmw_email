@@ -68,21 +68,33 @@ public:
   wait(const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
 
   /// Add a subscription.
+  /**
+   * Must not be `nullptr`.
+   */
   EMAIL_PUBLIC
   void
   add_subscription(Subscription * subscription);
 
   /// Add a client.
+  /**
+   * Must not be `nullptr`.
+   */
   EMAIL_PUBLIC
   void
   add_client(ServiceClient * client);
 
   /// Add a server.
+  /**
+   * Must not be `nullptr`.
+   */
   EMAIL_PUBLIC
   void
   add_server(ServiceServer * server);
 
   /// Add a guard condition.
+  /**
+   * Must not be `nullptr`.
+   */
   EMAIL_PUBLIC
   void
   add_guard_condition(GuardCondition * guard_condition);
