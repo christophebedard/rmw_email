@@ -52,7 +52,7 @@ get_first_match_group(const std::string & string, const std::regex & regex)
   }
   // Only expecting one group besides the first global match itself
   if (matches.size() != 2) {
-    return std::nullopt;
+    return std::nullopt;  // LCOV_EXCL_LINE
   }
   return matches[1].str();
 }
@@ -83,7 +83,7 @@ get_nextuid_from_response(const std::string & response)
   return utils::optional_stoi(match_group.value());
 }
 
-std::optional<EmailHeaders>
+EmailHeaders
 get_email_headers_from_response(const std::string & response)
 {
   EmailHeaders headers;
@@ -96,7 +96,7 @@ get_email_headers_from_response(const std::string & response)
     }
     // A header match should have a size of 2 (key + value) + 1 (the first global match itself)
     if (matches.size() != 3) {
-      continue;
+      continue;  // LCOV_EXCL_LINE
     }
     headers.insert({matches[1].str(), matches[2].str()});
   }
@@ -120,11 +120,7 @@ get_email_content_from_response(const std::string & response, EmailHeaders & hea
 std::optional<struct EmailData>
 get_email_data_from_response(const std::string & response)
 {
-  auto match_headers = get_email_headers_from_response(response);
-  if (!match_headers) {
-    return std::nullopt;
-  }
-  auto headers = match_headers.value();
+  auto headers = get_email_headers_from_response(response);
 
   auto match_from = take_value_from_headers(HEADER_FROM, headers);
   auto match_in_reply_to = take_value_from_headers(HEADER_IN_REPLY_TO, headers);

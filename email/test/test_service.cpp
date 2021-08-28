@@ -27,6 +27,7 @@ public:
 };
 
 TEST(TestService, validate_service_name) {
+  EXPECT_NO_THROW(ServiceObjectStub("/my_service"));
   EXPECT_THROW(ServiceObjectStub(""), email::ServiceNameInvalidError);
   EXPECT_THROW(ServiceObjectStub("aaa\n"), email::ServiceNameInvalidError);
   EXPECT_THROW(ServiceObjectStub("\nbbb"), email::ServiceNameInvalidError);
