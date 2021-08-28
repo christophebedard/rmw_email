@@ -48,7 +48,7 @@ get_nextuid_from_response(const std::string & response);
  * \return the headers
  */
 EMAIL_PUBLIC
-std::optional<EmailHeaders>
+EmailHeaders
 get_email_headers_from_response(const std::string & response);
 
 /// Get email content from raw request response.

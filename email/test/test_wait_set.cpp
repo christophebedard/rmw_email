@@ -40,6 +40,19 @@ TEST_F(TestWaitSet, empty) {
   // Expect true: it should timeout since there is nothing that can satisfy the wait
   EXPECT_TRUE(waitset.wait(std::chrono::milliseconds(0)));
   EXPECT_TRUE(waitset.wait(std::chrono::milliseconds(10)));
+
+  EXPECT_EQ(0UL, waitset.get_subscriptions().size());
+  EXPECT_EQ(0UL, waitset.get_clients().size());
+  EXPECT_EQ(0UL, waitset.get_servers().size());
+  EXPECT_EQ(0UL, waitset.get_guard_conditions().size());
+}
+
+TEST_F(TestWaitSet, add) {
+  email::WaitSet waitset;
+  EXPECT_DEATH(waitset.add_subscription(nullptr), "Assertion .* failed");
+  EXPECT_DEATH(waitset.add_client(nullptr), "Assertion .* failed");
+  EXPECT_DEATH(waitset.add_server(nullptr), "Assertion .* failed");
+  EXPECT_DEATH(waitset.add_guard_condition(nullptr), "Assertion .* failed");
 }
 
 TEST_F(TestWaitSet, guard_condition_in_use) {

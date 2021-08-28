@@ -35,8 +35,9 @@ TEST(TestResponseUtils, get_nextuid_from_response) {
 }
 
 TEST(TestResponseUtils, get_email_data_from_response) {
-  auto data_opt_fail = email::utils::response::get_email_data_from_response("");
-  EXPECT_FALSE(data_opt_fail.has_value());
+  std::optional<email::EmailData> data_opt;
+  data_opt = email::utils::response::get_email_data_from_response("");
+  EXPECT_FALSE(data_opt.has_value());
 
   // Typical use-case with an additional/non-standard header (Sequence-ID)
   const std::string response = \
@@ -50,7 +51,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the email's body\r\n";
-  auto data_opt = email::utils::response::get_email_data_from_response(response);
+  data_opt = email::utils::response::get_email_data_from_response(response);
   ASSERT_TRUE(data_opt.has_value());
   auto data = data_opt.value();
   EXPECT_EQ(data.message_id, "<some.id@mx.google.com>");
@@ -66,6 +67,81 @@ TEST(TestResponseUtils, get_email_data_from_response) {
   ASSERT_NE(custom_header_find, data.additional_headers.end());
   EXPECT_EQ(custom_header_find->first, "Sequence-ID");
   EXPECT_EQ(custom_header_find->second, "123");
+
+  // Missing subject/body
+  const std::string response_missing_subject = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject!?!?: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_missing_subject);
+  EXPECT_FALSE(data_opt.has_value());
+  const std::string response_missing_body = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_missing_body);
+  EXPECT_FALSE(data_opt.has_value());
+
+  // Missing recipients
+  const std::string response_missing_to = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_missing_to);
+  EXPECT_FALSE(data_opt.has_value());
+  const std::string response_missing_cc = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_missing_cc);
+  EXPECT_FALSE(data_opt.has_value());
+  const std::string response_missing_bcc = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_missing_bcc);
+  EXPECT_FALSE(data_opt.has_value());
+  const std::string response_missing_all_recipients = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the email's body\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_missing_all_recipients);
+  EXPECT_FALSE(data_opt.has_value());
 }
 
 TEST(TestResponseUtils, get_header_value) {

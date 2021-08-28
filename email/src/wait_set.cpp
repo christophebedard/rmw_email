@@ -69,6 +69,7 @@ WaitSet::release_guard_conditions(std::vector<GuardCondition *> & guard_conditio
 void
 WaitSet::add_subscription(Subscription * subscription)
 {
+  assert(subscription);
   logger_->debug("adding subscription: {}", subscription->get_topic_name());
   subscriptions_.push_back(subscription);
 }
@@ -76,6 +77,7 @@ WaitSet::add_subscription(Subscription * subscription)
 void
 WaitSet::add_client(ServiceClient * client)
 {
+  assert(client);
   logger_->debug("adding client: {}", client->get_service_name());
   clients_.push_back(client);
 }
@@ -83,6 +85,7 @@ WaitSet::add_client(ServiceClient * client)
 void
 WaitSet::add_server(ServiceServer * server)
 {
+  assert(server);
   logger_->debug("adding server: {}", server->get_service_name());
   servers_.push_back(server);
 }
@@ -90,6 +93,7 @@ WaitSet::add_server(ServiceServer * server)
 void
 WaitSet::add_guard_condition(GuardCondition * guard_condition)
 {
+  assert(guard_condition);
   check_guard_condition(guard_condition);
   logger_->debug("adding guard condition");
   guard_conditions_.push_back(guard_condition);
