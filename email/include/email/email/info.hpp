@@ -21,6 +21,8 @@
 #include <string>
 #include <vector>
 
+#include "spdlog/fmt/bundled/format.h"
+
 #include "email/macros.hpp"
 
 namespace email
@@ -134,5 +136,72 @@ struct EmailData
 };
 
 }  // namespace email
+
+/// Formatting for email::EmailRecipients objects.
+template<>
+struct fmt::formatter<email::EmailRecipients>: formatter<string_view>
+{
+  template<typename FormatContext>
+  auto format(const email::EmailRecipients & r, FormatContext & ctx)
+  {
+    return formatter<string_view>::format(
+      fmt::format(
+        "To: {}\nCc: {}\nBcc: {}",
+        fmt::join(r.to, ","),
+        fmt::join(r.cc, ","),
+        fmt::join(r.bcc, ",")),
+      ctx);
+  }
+};
+
+/// Formatting for email::EmailContent objects.
+template<>
+struct fmt::formatter<email::EmailContent>: formatter<string_view>
+{
+  template<typename FormatContext>
+  auto format(const email::EmailContent & c, FormatContext & ctx)
+  {
+    return formatter<string_view>::format(
+      fmt::format("Subject: {}\n\n{}\n", c.subject, c.body),
+      ctx);
+  }
+};
+
+/// Formatting for email::EmailHeaders objects.
+template<>
+struct fmt::formatter<email::EmailHeaders>: formatter<string_view>
+{
+  template<typename FormatContext>
+  auto format(const email::EmailHeaders & h, FormatContext & ctx)
+  {
+    // TODO(christophebedard) improve this
+    std::string str;
+    bool first = true;
+    for (const auto & [k, v] : h) {
+      if (first) {
+        first = false;
+      } else {
+        str += "\n";
+      }
+      str += fmt::format("{}: {}", k, v);
+    }
+    return formatter<string_view>::format(str, ctx);
+  }
+};
+
+/// Formatting for email::EmailData objects.
+template<>
+struct fmt::formatter<email::EmailData>: formatter<string_view>
+{
+  template<typename FormatContext>
+  auto format(const email::EmailData & d, FormatContext & ctx)
+  {
+    return formatter<string_view>::format(
+      fmt::format(
+        "{}\nMessage-Id: {}\nIn-Reply-To: {}\nFrom: {}\n{}\n{}",
+        d.additional_headers, d.message_id, d.in_reply_to, d.from, d.recipients, d.content),
+      ctx);
+  }
+};
 
 #endif  // EMAIL__EMAIL__INFO_HPP_
