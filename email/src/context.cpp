@@ -17,7 +17,9 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/email/curl_sender.hpp"
 #include "email/email/info.hpp"
+#include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/utils.hpp"
 
@@ -99,11 +101,11 @@ Context::init_common()
   // Initialize in the right order: some objects might fetch
   // other objects from the context on creation or initialization
   assert(!sender_);
-  sender_ = std::make_shared<EmailSender>(
+  sender_ = std::make_shared<CurlEmailSender>(
     options_->get_user_info(),
     options_->get_recipients(),
     options_->curl_verbose());
-  sender_->init();
+  std::dynamic_pointer_cast<CurlEmailSender>(sender_)->init();
 
   assert(!receiver_);
   receiver_ = std::make_shared<EmailReceiver>(

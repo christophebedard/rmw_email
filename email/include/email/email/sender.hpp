@@ -1,4 +1,4 @@
-// Copyright 2020-2021 Christophe Bedard
+// Copyright 2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -18,9 +18,7 @@
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
-#include <vector>
 
-#include "email/curl/executor.hpp"
 #include "email/email/info.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
@@ -29,26 +27,24 @@
 namespace email
 {
 
-/// Email sending wrapper for curl.
+/// Abstract email sender.
 /**
- * Sets the options and executes commands to send emails with curl.
+ * Sends emails.
  * The recipients are always the same.
  * Only the email subject & body can change from one sent email to another.
  */
-class EmailSender : public CurlExecutor
+class EmailSender
 {
 public:
   /// Constructor.
   /**
    * \param user_info the user information for sending emails
    * \param recipients the email recipients
-   * \param curl_verbose the curl verbose status
    */
   EMAIL_PUBLIC
   explicit EmailSender(
     UserInfo::SharedPtrConst user_info,
-    EmailRecipients::SharedPtrConst recipients,
-    const bool curl_verbose);
+    EmailRecipients::SharedPtrConst recipients);
 
   EMAIL_PUBLIC
   virtual ~EmailSender();
@@ -60,6 +56,7 @@ public:
    * \return true if successful, false otherwise
    */
   EMAIL_PUBLIC
+  virtual
   bool
   send(
     const struct EmailContent & content,
@@ -73,6 +70,7 @@ public:
    * \return true if successful, false otherwise
    */
   EMAIL_PUBLIC
+  virtual
   bool
   reply(
     const struct EmailContent & content,
@@ -80,41 +78,25 @@ public:
     std::optional<EmailHeaders> additional_headers = std::nullopt);
 
 protected:
-  virtual
-  bool
-  init_options();
-
-private:
-  EMAIL_DISABLE_COPY(EmailSender)
-
   /// Send payload.
   /**
    * \param payload the payload
    * \return true if successful, false otherwise
    */
+  virtual
   bool
-  send_payload(const std::string & payload);
-
-  /// Read callback for curl upload.
-  static
-  size_t
-  read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp);
+  send_payload(const std::string & payload) = 0;
 
   /// Get logger.
   static
   std::shared_ptr<Logger>
   logger();
 
-  /// Utility struct for uploading data with curl.
-  struct UploadData
-  {
-    const char * payload;
-    size_t lines_read;
-  };
+private:
+  EMAIL_DISABLE_COPY(EmailSender)
 
+  UserInfo::SharedPtrConst user_info_;
   EmailRecipients::SharedPtrConst recipients_;
-  struct curl_slist * recipients_list_;
-  struct UploadData upload_ctx_;
 };
 
 }  // namespace email
