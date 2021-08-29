@@ -60,7 +60,7 @@ public:
   bool
   send(
     const struct EmailContent & content,
-    std::optional<EmailHeaders> additional_headers = std::nullopt);
+    std::optional<EmailHeaders> additional_headers = std::nullopt) = 0;
 
   /// Reply to an email.
   /**
@@ -75,28 +75,19 @@ public:
   reply(
     const struct EmailContent & content,
     const struct EmailData & email,
-    std::optional<EmailHeaders> additional_headers = std::nullopt);
+    std::optional<EmailHeaders> additional_headers = std::nullopt) = 0;
 
 protected:
-  /// Send payload.
-  /**
-   * \param payload the payload
-   * \return true if successful, false otherwise
-   */
-  virtual
-  bool
-  send_payload(const std::string & payload) = 0;
-
   /// Get logger.
   static
   std::shared_ptr<Logger>
   logger();
 
-private:
-  EMAIL_DISABLE_COPY(EmailSender)
-
   UserInfo::SharedPtrConst user_info_;
   EmailRecipients::SharedPtrConst recipients_;
+
+private:
+  EMAIL_DISABLE_COPY(EmailSender)
 };
 
 }  // namespace email

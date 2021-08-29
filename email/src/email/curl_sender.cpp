@@ -106,6 +106,32 @@ CurlEmailSender::init_options()
 }
 
 bool
+CurlEmailSender::send(
+  const struct EmailContent & content,
+  std::optional<EmailHeaders> additional_headers)
+{
+  logger()->debug("send");
+  return send_payload(
+    utils::payload::build_payload(recipients_, content, additional_headers, std::nullopt));
+}
+
+bool
+CurlEmailSender::reply(
+  const struct EmailContent & content,
+  const struct EmailData & email,
+  std::optional<EmailHeaders> additional_headers)
+{
+  return send_payload(
+    utils::payload::build_payload(
+      {email.from},
+      {},
+      {},
+      content,
+      additional_headers,
+      email.message_id));
+}
+
+bool
 CurlEmailSender::send_payload(const std::string & payload)
 {
   if (!is_valid()) {

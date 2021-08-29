@@ -1,4 +1,4 @@
-// Copyright 2020-2021 Christophe Bedard
+// Copyright 2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -12,15 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#ifndef EMAIL__EMAIL__CURL_SENDER_HPP_
-#define EMAIL__EMAIL__CURL_SENDER_HPP_
+#ifndef EMAIL__EMAIL__INTRA_SENDER_HPP_
+#define EMAIL__EMAIL__INTRA_SENDER_HPP_
 
 #include <memory>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
-#include "email/curl/executor.hpp"
 #include "email/email/info.hpp"
+#include "email/email/intra_receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/macros.hpp"
 #include "email/visibility_control.hpp"
@@ -28,27 +27,26 @@
 namespace email
 {
 
-/// Email sending wrapper for curl.
+/// Intraprocess email sender.
 /**
- * Sets the options and executes commands to send emails with curl.
+ * Simply builds an email object and sends it to the intraprocess email receiver.
  */
-class CurlEmailSender : public EmailSender, public CurlExecutor
+class IntraEmailSender : public EmailSender
 {
 public:
   /// Constructor.
   /**
    * \param user_info the user information for sending emails
    * \param recipients the email recipients
-   * \param curl_verbose the curl verbose status
    */
   EMAIL_PUBLIC
-  explicit CurlEmailSender(
+  explicit IntraEmailSender(
     UserInfo::SharedPtrConst user_info,
     EmailRecipients::SharedPtrConst recipients,
-    const bool curl_verbose);
+    std::shared_ptr<IntraEmailReceiver> receiver);
 
   EMAIL_PUBLIC
-  virtual ~CurlEmailSender();
+  virtual ~IntraEmailSender();
 
   EMAIL_PUBLIC
   virtual
@@ -65,39 +63,16 @@ public:
     const struct EmailData & email,
     std::optional<EmailHeaders> additional_headers = std::nullopt);
 
-protected:
-  virtual
-  bool
-  init_options();
-
 private:
-  EMAIL_DISABLE_COPY(CurlEmailSender)
+  EMAIL_DISABLE_COPY(IntraEmailSender)
 
-  /// Send payload.
-  /**
-   * \param payload the payload
-   * \return true if successful, false otherwise
-   */
-  bool
-  send_payload(const std::string & payload);
+  /// Send email data to receiver.
+  void
+  send_email_data(const struct EmailData & data);
 
-  /// Read callback for curl upload.
-  static
-  size_t
-  read_payload_callback(void * ptr, size_t size, size_t nmemb, void * userp);
-
-  /// Utility struct for uploading data with curl.
-  struct UploadData
-  {
-    const char * payload;
-    size_t lines_read;
-  };
-
-  EmailRecipients::SharedPtrConst recipients_;
-  struct curl_slist * recipients_list_;
-  struct UploadData upload_ctx_;
+  std::shared_ptr<IntraEmailReceiver> receiver_;
 };
 
 }  // namespace email
 
-#endif  // EMAIL__EMAIL__CURL_SENDER_HPP_
+#endif  // EMAIL__EMAIL__INTRA_SENDER_HPP_

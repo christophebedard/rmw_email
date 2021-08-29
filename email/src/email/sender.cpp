@@ -13,13 +13,10 @@
 // limitations under the License.
 
 #include <memory>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
 #include "email/email/info.hpp"
-#include "email/email/payload_utils.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
-#include "email/utils.hpp"
 
 namespace email
 {
@@ -34,32 +31,6 @@ EmailSender::EmailSender(
 EmailSender::~EmailSender()
 {
   logger()->debug("destroying");
-}
-
-bool
-EmailSender::send(
-  const struct EmailContent & content,
-  std::optional<EmailHeaders> additional_headers)
-{
-  logger()->debug("send");
-  return send_payload(
-    utils::payload::build_payload(recipients_, content, additional_headers, std::nullopt));
-}
-
-bool
-EmailSender::reply(
-  const struct EmailContent & content,
-  const struct EmailData & email,
-  std::optional<EmailHeaders> additional_headers)
-{
-  return send_payload(
-    utils::payload::build_payload(
-      {email.from},
-      {},
-      {},
-      content,
-      additional_headers,
-      email.message_id));
 }
 
 std::shared_ptr<Logger>

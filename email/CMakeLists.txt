@@ -56,6 +56,8 @@ set(SOURCES
   src/email/curl_receiver.cpp
   src/email/curl_sender.cpp
   src/email/handler.cpp
+  src/email/intra_receiver.cpp
+  src/email/intra_sender.cpp
   src/email/payload_utils.cpp
   src/email/polling_manager.cpp
   src/email/receiver.cpp

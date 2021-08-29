@@ -188,11 +188,12 @@ private:
   bool is_valid_;
   std::shared_ptr<Options> options_;
   std::shared_ptr<Logger> logger_;
-  std::shared_ptr<EmailSender> sender_;
   std::shared_ptr<EmailReceiver> receiver_;
+  std::shared_ptr<EmailSender> sender_;
   std::shared_ptr<PollingManager> polling_manager_;
   std::shared_ptr<SubscriptionHandler> subscription_handler_;
   std::shared_ptr<ServiceHandler> service_handler_;
+  bool intraprocess_;
 };
 
 /// Get the global context.
