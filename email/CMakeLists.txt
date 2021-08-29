@@ -53,6 +53,7 @@ set(SOURCES
   src/context.cpp
   src/curl/context.cpp
   src/curl/executor.cpp
+  src/email/curl_receiver.cpp
   src/email/curl_sender.cpp
   src/email/handler.cpp
   src/email/payload_utils.cpp

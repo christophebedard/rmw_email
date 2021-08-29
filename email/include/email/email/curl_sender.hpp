@@ -55,11 +55,6 @@ protected:
   bool
   init_options();
 
-  /// Send payload.
-  /**
-   * \param payload the payload
-   * \return true if successful, false otherwise
-   */
   virtual
   bool
   send_payload(const std::string & payload);

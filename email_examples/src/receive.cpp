@@ -18,15 +18,15 @@
 
 #include "email/context.hpp"
 #include "email/curl/info.hpp"
+#include "email/email/curl_receiver.hpp"
 #include "email/email/info.hpp"
-#include "email/email/receiver.hpp"
 #include "email/init.hpp"
 
 int main(int argc, char ** argv)
 {
   email::init(argc, argv);
   auto options = email::get_global_context()->get_options();
-  email::EmailReceiver receiver(options->get_user_info(), options->curl_verbose());
+  email::CurlEmailReceiver receiver(options->get_user_info(), options->curl_verbose());
   if (!receiver.init()) {
     return 1;
   }

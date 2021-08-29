@@ -17,8 +17,10 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/email/curl_receiver.hpp"
 #include "email/email/curl_sender.hpp"
 #include "email/email/info.hpp"
+#include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 #include "email/utils.hpp"
@@ -108,10 +110,10 @@ Context::init_common()
   std::dynamic_pointer_cast<CurlEmailSender>(sender_)->init();
 
   assert(!receiver_);
-  receiver_ = std::make_shared<EmailReceiver>(
+  receiver_ = std::make_shared<CurlEmailReceiver>(
     options_->get_user_info(),
     options_->curl_verbose());
-  receiver_->init();
+  std::dynamic_pointer_cast<CurlEmailReceiver>(receiver_)->init();
 
   assert(!polling_manager_);
   polling_manager_ = std::make_shared<PollingManager>(receiver_, options_->polling_period());
