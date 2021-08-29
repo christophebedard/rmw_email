@@ -1,4 +1,4 @@
-// Copyright 2020 Christophe Bedard
+// Copyright 2020-2021 Christophe Bedard
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,15 +17,15 @@
 
 #include "email/context.hpp"
 #include "email/curl/info.hpp"
+#include "email/email/curl_sender.hpp"
 #include "email/email/info.hpp"
-#include "email/email/sender.hpp"
 #include "email/init.hpp"
 
 int main(int argc, char ** argv)
 {
   email::init(argc, argv);
   auto options = email::get_global_context()->get_options();
-  email::EmailSender sender(
+  email::CurlEmailSender sender(
     options->get_user_info(),
     options->get_recipients(),
     options->curl_verbose());
