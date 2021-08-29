@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structemail_1_1EmailRecipients.html" title="Recipients of an email." alt="" coords="5,5,177,32"/>
+<area shape="rect" id="node1" href="$classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="5,56,155,83"/>
+<area shape="rect" id="node2" href="$classemail_1_1CurlEmailSender.html" title="Email sending wrapper for curl." alt="" coords="203,5,377,32"/>
+<area shape="rect" id="node3" href="$classemail_1_1EmailReceiver.html" title="Email reception wrapper for curl." alt="" coords="209,56,371,83"/>
+<area shape="rect" id="node4" href="$classemail_1_1EmailSender.html" title="Abstract email sender." alt="" coords="5,5,155,32"/>
 </map>
