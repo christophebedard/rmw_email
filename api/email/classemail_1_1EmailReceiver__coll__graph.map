@@ -1,5 +1,5 @@
 <map id="email::EmailReceiver" name="email::EmailReceiver">
-<area shape="rect" id="node1" title="Email reception wrapper for curl." alt="" coords="5,171,167,197"/>
-<area shape="rect" id="node2" href="$classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="11,95,161,121"/>
-<area shape="rect" id="node3" href="$classemail_1_1CurlContext.html" title="Basic context wrapper for curl." alt="" coords="14,5,158,32"/>
+<area shape="rect" id="node1" title="Abstract email receiver." alt="" coords="83,95,245,121"/>
+<area shape="rect" id="node2" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/atomic/atomic.html" title=" " alt="" coords="5,5,136,32"/>
+<area shape="rect" id="node3" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/memory/shared_ptr.html" title=" " alt="" coords="161,5,354,32"/>
 </map>
