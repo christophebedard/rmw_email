@@ -11,4 +11,4 @@ jobs:
     - uses: christophebedard/tag-version-commit@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-        version_assertion_command: 'grep -q "<version>$version</version>" email/package.xml && grep -q "<version>$version</version>" email_examples/package.xml'
+        version_assertion_command: 'grep -q "<version>$version</version>" email/package.xml && grep -q "<version>$version</version>" email_examples/package.xml && grep -q "<version>$version</version>" rmw_email_cpp/package.xml'
