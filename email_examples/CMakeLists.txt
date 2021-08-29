@@ -18,6 +18,8 @@ find_package(ament_cmake_ros REQUIRED)
 find_package(email REQUIRED)
 
 # Examples & executables for testing the lib
+add_example(intra_pub_sub_wait_message_info)
+add_example(intra_service_client_server_wait_service_info)
 add_example(send)
 add_example(receive)
 add_example(pub)
