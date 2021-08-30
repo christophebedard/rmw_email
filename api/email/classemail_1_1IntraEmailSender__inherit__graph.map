@@ -1,0 +1,4 @@
+<map id="email::IntraEmailSender" name="email::IntraEmailSender">
+<area shape="rect" id="node1" title="Intraprocess email sender." alt="" coords="5,80,184,107"/>
+<area shape="rect" id="node2" href="$classemail_1_1EmailSender.html" title="Abstract email sender." alt="" coords="20,5,169,32"/>
+</map>

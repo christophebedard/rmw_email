@@ -69,8 +69,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classemail_1_1EmailSender-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">email::EmailSender Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -86,8 +86,9 @@ Inheritance diagram for email::EmailSender:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1EmailSender__inherit__graph.png" border="0" usemap="#email_1_1EmailSender_inherit__map" alt="Inheritance graph"/></div>
 <map name="email_1_1EmailSender_inherit__map" id="email_1_1EmailSender_inherit__map">
-<area shape="rect" title="Abstract email sender." alt="" coords="18,5,167,32"/>
+<area shape="rect" title="Abstract email sender." alt="" coords="118,5,267,32"/>
 <area shape="rect" href="classemail_1_1CurlEmailSender.html" title="Email sending wrapper for curl." alt="" coords="5,80,180,107"/>
+<area shape="rect" href="classemail_1_1IntraEmailSender.html" title="Intraprocess email sender." alt="" coords="205,80,383,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -98,24 +99,25 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a19c42bc427b45455b76dc3bf1b0f53c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84b1193de252540aca30a78973f30ff9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a84b1193de252540aca30a78973f30ff9">~EmailSender</a> ()</td></tr>
 <tr class="separator:a84b1193de252540aca30a78973f30ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa8c079809d9f03ca9bd8b7de33e71db8"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#aa8c079809d9f03ca9bd8b7de33e71db8">send</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
-<tr class="memdesc:aa8c079809d9f03ca9bd8b7de33e71db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an email.  <a href="classemail_1_1EmailSender.html#aa8c079809d9f03ca9bd8b7de33e71db8">More...</a><br /></td></tr>
-<tr class="separator:aa8c079809d9f03ca9bd8b7de33e71db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a408f295f521adb06dd899951bb4d093f"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a408f295f521adb06dd899951bb4d093f">reply</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;email, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
-<tr class="memdesc:a408f295f521adb06dd899951bb4d093f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reply to an email.  <a href="classemail_1_1EmailSender.html#a408f295f521adb06dd899951bb4d093f">More...</a><br /></td></tr>
-<tr class="separator:a408f295f521adb06dd899951bb4d093f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
-Protected Member Functions</h2></td></tr>
-<tr class="memitem:a298a1a4b45d50c5a96835b6748fcc393"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a298a1a4b45d50c5a96835b6748fcc393">send_payload</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;payload)=0</td></tr>
-<tr class="memdesc:a298a1a4b45d50c5a96835b6748fcc393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send payload.  <a href="classemail_1_1EmailSender.html#a298a1a4b45d50c5a96835b6748fcc393">More...</a><br /></td></tr>
-<tr class="separator:a298a1a4b45d50c5a96835b6748fcc393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12487f6d865d3839438cfb0814bbf1ec"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a12487f6d865d3839438cfb0814bbf1ec">send</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)=0</td></tr>
+<tr class="memdesc:a12487f6d865d3839438cfb0814bbf1ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Send an email.  <a href="classemail_1_1EmailSender.html#a12487f6d865d3839438cfb0814bbf1ec">More...</a><br /></td></tr>
+<tr class="separator:a12487f6d865d3839438cfb0814bbf1ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7b5de33bdb15b17f88cfccde80aa881"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#ad7b5de33bdb15b17f88cfccde80aa881">reply</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;email, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)=0</td></tr>
+<tr class="memdesc:ad7b5de33bdb15b17f88cfccde80aa881"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reply to an email.  <a href="classemail_1_1EmailSender.html#ad7b5de33bdb15b17f88cfccde80aa881">More...</a><br /></td></tr>
+<tr class="separator:ad7b5de33bdb15b17f88cfccde80aa881"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
 <tr class="memitem:af10fd3a823d5f5355f6cd3a784a7d3d8"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="namespaceemail.html#a8d76c558a86ae3983f1b8f138c036e61">Logger</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#af10fd3a823d5f5355f6cd3a784a7d3d8">logger</a> ()</td></tr>
 <tr class="memdesc:af10fd3a823d5f5355f6cd3a784a7d3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get logger.  <a href="classemail_1_1EmailSender.html#af10fd3a823d5f5355f6cd3a784a7d3d8">More...</a><br /></td></tr>
 <tr class="separator:af10fd3a823d5f5355f6cd3a784a7d3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a87a4c9432e8db945701989171c9522e5"><td class="memItemLeft" align="right" valign="top">UserInfo::SharedPtrConst&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a87a4c9432e8db945701989171c9522e5">user_info_</a></td></tr>
+<tr class="separator:a87a4c9432e8db945701989171c9522e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a658248e662fb6fc080ac9f60a5c5d65d"><td class="memItemLeft" align="right" valign="top">EmailRecipients::SharedPtrConst&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a658248e662fb6fc080ac9f60a5c5d65d">recipients_</a></td></tr>
+<tr class="separator:a658248e662fb6fc080ac9f60a5c5d65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract email sender. </p>
@@ -192,8 +194,8 @@ Static Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="aa8c079809d9f03ca9bd8b7de33e71db8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8c079809d9f03ca9bd8b7de33e71db8">&#9670;&nbsp;</a></span>send()</h2>
+<a id="a12487f6d865d3839438cfb0814bbf1ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12487f6d865d3839438cfb0814bbf1ec">&#9670;&nbsp;</a></span>send()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -221,7 +223,7 @@ Static Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -236,10 +238,12 @@ Static Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise </dd></dl>
 
+<p>Implemented in <a class="el" href="classemail_1_1CurlEmailSender.html#a8aacb118cf3750a293f1b48e8c035252">email::CurlEmailSender</a>, and <a class="el" href="classemail_1_1IntraEmailSender.html#acf49287658ab7a3325ac99b4d6eb68ee">email::IntraEmailSender</a>.</p>
+
 </div>
 </div>
-<a id="a408f295f521adb06dd899951bb4d093f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a408f295f521adb06dd899951bb4d093f">&#9670;&nbsp;</a></span>reply()</h2>
+<a id="ad7b5de33bdb15b17f88cfccde80aa881"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7b5de33bdb15b17f88cfccde80aa881">&#9670;&nbsp;</a></span>reply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -273,7 +277,7 @@ Static Protected Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -289,42 +293,7 @@ Static Protected Member Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise </dd></dl>
 
-</div>
-</div>
-<a id="a298a1a4b45d50c5a96835b6748fcc393"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a298a1a4b45d50c5a96835b6748fcc393">&#9670;&nbsp;</a></span>send_payload()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool email::EmailSender::send_payload </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
-          <td class="paramname"><em>payload</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Send payload. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">payload</td><td>the payload </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise </dd></dl>
-
-<p>Implemented in <a class="el" href="classemail_1_1CurlEmailSender.html#a5f13c553972dbf2cc57d04746bf0872f">email::CurlEmailSender</a>.</p>
+<p>Implemented in <a class="el" href="classemail_1_1CurlEmailSender.html#a1abbf80344254931d8107ef757a2a13a">email::CurlEmailSender</a>, and <a class="el" href="classemail_1_1IntraEmailSender.html#acf01f816b22eee5c16173f6c7dedaafd">email::IntraEmailSender</a>.</p>
 
 </div>
 </div>
@@ -352,6 +321,51 @@ Static Protected Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get logger. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a87a4c9432e8db945701989171c9522e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a87a4c9432e8db945701989171c9522e5">&#9670;&nbsp;</a></span>user_info_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">UserInfo::SharedPtrConst email::EmailSender::user_info_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a658248e662fb6fc080ac9f60a5c5d65d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a658248e662fb6fc080ac9f60a5c5d65d">&#9670;&nbsp;</a></span>recipients_</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EmailRecipients::SharedPtrConst email::EmailSender::recipients_</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>

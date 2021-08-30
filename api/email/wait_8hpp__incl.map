@@ -1,44 +1,45 @@
 <map id="include/email/wait.hpp" name="include/email/wait.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="1467,5,1638,32"/>
-<area shape="rect" id="node2" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/chrono.html" title=" " alt="" coords="1646,162,1712,189"/>
-<area shape="rect" id="node3" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/memory.html" title=" " alt="" coords="3723,572,3800,599"/>
-<area shape="rect" id="node4" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/string.html" title=" " alt="" coords="2035,497,2094,524"/>
-<area shape="rect" id="node5" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/utility.html" title=" " alt="" coords="4125,326,4185,353"/>
-<area shape="rect" id="node6" href="$message__info_8hpp.html" title=" " alt="" coords="940,244,1122,271"/>
-<area shape="rect" id="node15" href="$visibility__control_8hpp.html" title=" " alt="" coords="1028,497,1226,524"/>
-<area shape="rect" id="node17" href="$service__client_8hpp.html" title=" " alt="" coords="2396,80,2578,107"/>
-<area shape="rect" id="node38" href="$service__info_8hpp.html" title=" " alt="" coords="744,244,915,271"/>
-<area shape="rect" id="node39" href="$service__request_8hpp.html" title=" " alt="" coords="1174,162,1368,189"/>
-<area shape="rect" id="node40" href="$service__server_8hpp.html" title=" " alt="" coords="1460,80,1645,107"/>
-<area shape="rect" id="node41" href="$subscription_8hpp.html" title=" " alt="" coords="2135,80,2306,107"/>
-<area shape="rect" id="node7" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/optional.html" title=" " alt="" coords="394,497,468,524"/>
-<area shape="rect" id="node8" href="$communication__info_8hpp.html" title=" " alt="" coords="748,319,912,360"/>
-<area shape="rect" id="node9" href="$email_2info_8hpp.html" title=" " alt="" coords="2304,415,2462,442"/>
-<area shape="rect" id="node13" href="$gid_8hpp.html" title=" " alt="" coords="1292,415,1402,442"/>
-<area shape="rect" id="node16" href="$timestamp_8hpp.html" title=" " alt="" coords="747,415,910,442"/>
-<area shape="rect" id="node10" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/map.html" title=" " alt="" coords="4539,497,4590,524"/>
-<area shape="rect" id="node11" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/vector.html" title=" " alt="" coords="2889,497,2952,524"/>
-<area shape="rect" id="node12" href="$macros_8hpp.html" title=" " alt="" coords="3746,497,3884,524"/>
-<area shape="rect" id="node14" title=" " alt="" coords="1281,497,1413,524"/>
-<area shape="rect" id="node18" href="$log_8hpp.html" title=" " alt="" coords="3149,326,3260,353"/>
-<area shape="rect" id="node24" href="$publisher_8hpp.html" title=" " alt="" coords="2412,162,2562,189"/>
-<area shape="rect" id="node30" href="$safe__map_8hpp.html" title=" " alt="" coords="4144,244,4299,271"/>
-<area shape="rect" id="node32" href="$service_8hpp.html" title=" " alt="" coords="2200,244,2339,271"/>
-<area shape="rect" id="node33" href="$service__handler_8hpp.html" title=" " alt="" coords="2678,162,2872,189"/>
-<area shape="rect" id="node19" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/stdexcept.html" title=" " alt="" coords="3412,497,3498,524"/>
-<area shape="rect" id="node20" title=" " alt="" coords="2721,408,2872,449"/>
-<area shape="rect" id="node21" title=" " alt="" coords="2896,415,3020,442"/>
-<area shape="rect" id="node22" title=" " alt="" coords="3184,497,3316,524"/>
-<area shape="rect" id="node23" href="$utils_8hpp.html" title=" " alt="" coords="3096,415,3214,442"/>
-<area shape="rect" id="node25" href="$sender_8hpp.html" title=" " alt="" coords="1798,244,1973,271"/>
-<area shape="rect" id="node26" href="$pub__sub_8hpp.html" title=" " alt="" coords="2414,244,2560,271"/>
-<area shape="rect" id="node27" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/regex.html" title=" " alt="" coords="2486,415,2544,442"/>
-<area shape="rect" id="node28" href="$gid__object_8hpp.html" title=" " alt="" coords="2356,326,2514,353"/>
-<area shape="rect" id="node29" href="$named__object_8hpp.html" title=" " alt="" coords="3336,326,3518,353"/>
-<area shape="rect" id="node31" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/mutex.html" title=" " alt="" coords="3898,326,3962,353"/>
-<area shape="rect" id="node34" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/unordered_map.html" title=" " alt="" coords="3196,244,3320,271"/>
-<area shape="rect" id="node35" href="$handler_8hpp.html" title=" " alt="" coords="2889,244,3069,271"/>
-<area shape="rect" id="node36" href="$safe__queue_8hpp.html" title=" " alt="" coords="3700,244,3866,271"/>
-<area shape="rect" id="node37" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/queue.html" title=" " alt="" coords="3986,326,4049,353"/>
-<area shape="rect" id="node42" href="$subscription__handler_8hpp.html" title=" " alt="" coords="3480,155,3622,196"/>
+<area shape="rect" id="node1" title=" " alt="" coords="2611,5,2781,32"/>
+<area shape="rect" id="node2" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/chrono.html" title=" " alt="" coords="1521,162,1588,189"/>
+<area shape="rect" id="node3" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/memory.html" title=" " alt="" coords="1437,587,1515,613"/>
+<area shape="rect" id="node4" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/string.html" title=" " alt="" coords="971,505,1029,531"/>
+<area shape="rect" id="node5" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/utility.html" title=" " alt="" coords="4611,326,4671,353"/>
+<area shape="rect" id="node6" href="$message__info_8hpp.html" title=" " alt="" coords="2901,244,3083,271"/>
+<area shape="rect" id="node16" href="$visibility__control_8hpp.html" title=" " alt="" coords="2923,505,3122,531"/>
+<area shape="rect" id="node18" href="$service__client_8hpp.html" title=" " alt="" coords="2065,80,2247,107"/>
+<area shape="rect" id="node39" href="$service__info_8hpp.html" title=" " alt="" coords="3159,244,3329,271"/>
+<area shape="rect" id="node40" href="$service__request_8hpp.html" title=" " alt="" coords="2599,162,2793,189"/>
+<area shape="rect" id="node41" href="$service__server_8hpp.html" title=" " alt="" coords="3159,80,3345,107"/>
+<area shape="rect" id="node42" href="$subscription_8hpp.html" title=" " alt="" coords="2451,80,2621,107"/>
+<area shape="rect" id="node7" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/optional.html" title=" " alt="" coords="3456,505,3531,531"/>
+<area shape="rect" id="node8" href="$communication__info_8hpp.html" title=" " alt="" coords="3111,319,3275,360"/>
+<area shape="rect" id="node9" href="$email_2info_8hpp.html" title=" " alt="" coords="3551,415,3708,442"/>
+<area shape="rect" id="node14" href="$gid_8hpp.html" title=" " alt="" coords="2621,415,2731,442"/>
+<area shape="rect" id="node17" href="$timestamp_8hpp.html" title=" " alt="" coords="3060,415,3223,442"/>
+<area shape="rect" id="node10" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/map.html" title=" " alt="" coords="4603,505,4653,531"/>
+<area shape="rect" id="node11" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/vector.html" title=" " alt="" coords="1446,505,1509,531"/>
+<area shape="rect" id="node12" title=" " alt="" coords="3555,497,3703,539"/>
+<area shape="rect" id="node13" href="$macros_8hpp.html" title=" " alt="" coords="2311,505,2449,531"/>
+<area shape="rect" id="node15" title=" " alt="" coords="2610,505,2742,531"/>
+<area shape="rect" id="node19" href="$log_8hpp.html" title=" " alt="" coords="1677,326,1787,353"/>
+<area shape="rect" id="node25" href="$publisher_8hpp.html" title=" " alt="" coords="1967,162,2118,189"/>
+<area shape="rect" id="node31" href="$safe__map_8hpp.html" title=" " alt="" coords="4012,244,4167,271"/>
+<area shape="rect" id="node33" href="$service_8hpp.html" title=" " alt="" coords="1257,244,1396,271"/>
+<area shape="rect" id="node34" href="$service__handler_8hpp.html" title=" " alt="" coords="3827,162,4021,189"/>
+<area shape="rect" id="node20" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/stdexcept.html" title=" " alt="" coords="754,505,841,531"/>
+<area shape="rect" id="node21" title=" " alt="" coords="1790,408,1941,449"/>
+<area shape="rect" id="node22" title=" " alt="" coords="1965,415,2089,442"/>
+<area shape="rect" id="node23" title=" " alt="" coords="1159,505,1291,531"/>
+<area shape="rect" id="node24" href="$utils_8hpp.html" title=" " alt="" coords="1342,415,1461,442"/>
+<area shape="rect" id="node26" href="$sender_8hpp.html" title=" " alt="" coords="2549,244,2723,271"/>
+<area shape="rect" id="node27" href="$pub__sub_8hpp.html" title=" " alt="" coords="1087,244,1233,271"/>
+<area shape="rect" id="node28" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/regex.html" title=" " alt="" coords="701,415,760,442"/>
+<area shape="rect" id="node29" href="$gid__object_8hpp.html" title=" " alt="" coords="1863,326,2022,353"/>
+<area shape="rect" id="node30" href="$named__object_8hpp.html" title=" " alt="" coords="994,326,1177,353"/>
+<area shape="rect" id="node32" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/mutex.html" title=" " alt="" coords="3983,326,4047,353"/>
+<area shape="rect" id="node35" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/unordered_map.html" title=" " alt="" coords="3813,244,3937,271"/>
+<area shape="rect" id="node36" href="$handler_8hpp.html" title=" " alt="" coords="3455,244,3635,271"/>
+<area shape="rect" id="node37" href="$safe__queue_8hpp.html" title=" " alt="" coords="4191,244,4358,271"/>
+<area shape="rect" id="node38" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/queue.html" title=" " alt="" coords="4295,326,4358,353"/>
+<area shape="rect" id="node43" href="$subscription__handler_8hpp.html" title=" " alt="" coords="3021,155,3163,196"/>
 </map>

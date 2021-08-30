@@ -1,11 +1,12 @@
 <map id="include/email/email/sender.hpp" name="include/email/email/sender.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="320,5,471,47"/>
+<area shape="rect" id="node1" title=" " alt="" coords="395,5,545,47"/>
 <area shape="rect" id="node2" href="$context_8hpp.html" title=" " alt="" coords="5,102,196,129"/>
 <area shape="rect" id="node3" href="$curl__sender_8hpp.html" title=" " alt="" coords="220,95,371,136"/>
-<area shape="rect" id="node4" href="$publisher_8hpp.html" title=" " alt="" coords="395,102,596,129"/>
-<area shape="rect" id="node9" href="$service__server_8hpp.html" title=" " alt="" coords="600,184,761,225"/>
-<area shape="rect" id="node5" href="$email_8hpp.html" title=" " alt="" coords="410,363,589,389"/>
-<area shape="rect" id="node6" href="$service__client_8hpp.html" title=" " alt="" coords="415,184,576,225"/>
-<area shape="rect" id="node7" href="$wait_8hpp.html" title=" " alt="" coords="414,281,585,307"/>
-<area shape="rect" id="node8" href="$wait__set_8hpp.html" title=" " alt="" coords="609,273,752,315"/>
+<area shape="rect" id="node4" href="$intra__sender_8hpp.html" title=" " alt="" coords="395,95,545,136"/>
+<area shape="rect" id="node5" href="$publisher_8hpp.html" title=" " alt="" coords="569,102,771,129"/>
+<area shape="rect" id="node10" href="$service__server_8hpp.html" title=" " alt="" coords="775,184,936,225"/>
+<area shape="rect" id="node6" href="$email_8hpp.html" title=" " alt="" coords="585,363,763,389"/>
+<area shape="rect" id="node7" href="$service__client_8hpp.html" title=" " alt="" coords="589,184,751,225"/>
+<area shape="rect" id="node8" href="$wait_8hpp.html" title=" " alt="" coords="589,281,759,307"/>
+<area shape="rect" id="node9" href="$wait__set_8hpp.html" title=" " alt="" coords="784,273,927,315"/>
 </map>
