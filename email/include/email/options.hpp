@@ -45,6 +45,7 @@ public:
    * \param user_info the user info
    * \param recipients the recipients
    * \param curl_verbose the curl verbose status
+   * \param intraprocess the intraprocess status
    * \param polling_period the polling period
    */
   EMAIL_PUBLIC
@@ -52,6 +53,7 @@ public:
     UserInfo::SharedPtrConst user_info,
     EmailRecipients::SharedPtrConst recipients,
     const bool curl_verbose,
+    const bool intraprocess,
     const std::optional<std::chrono::nanoseconds> polling_period);
 
   EMAIL_PUBLIC
@@ -80,6 +82,14 @@ public:
   EMAIL_PUBLIC
   bool
   curl_verbose() const;
+
+  /// Get the intraprocess status.
+  /**
+   * \return true if intraprocess, false otherwise
+   */
+  EMAIL_PUBLIC
+  bool
+  intraprocess() const;
 
   /// Get the polling period value.
   /**
@@ -145,6 +155,7 @@ private:
   UserInfo::SharedPtrConst user_info_;
   EmailRecipients::SharedPtrConst recipients_;
   const bool curl_verbose_;
+  const bool intraprocess_;
   const std::optional<std::chrono::nanoseconds> polling_period_;
 
   static constexpr const char * ENV_VAR_CURL_VERBOSE = "EMAIL_CURL_VERBOSE";

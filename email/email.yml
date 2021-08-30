@@ -9,3 +9,4 @@ email:
     cc:
     bcc:
   polling-period:
+  intraprocess:

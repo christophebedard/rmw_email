@@ -193,7 +193,6 @@ private:
   std::shared_ptr<PollingManager> polling_manager_;
   std::shared_ptr<SubscriptionHandler> subscription_handler_;
   std::shared_ptr<ServiceHandler> service_handler_;
-  bool intraprocess_;
 };
 
 /// Get the global context.

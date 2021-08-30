@@ -49,8 +49,7 @@ Context::Context()
   sender_(nullptr),
   polling_manager_(nullptr),
   subscription_handler_(nullptr),
-  service_handler_(nullptr),
-  intraprocess_(false)
+  service_handler_(nullptr)
 {}
 
 Context::~Context()
@@ -103,14 +102,12 @@ Context::init_common()
   spdlog::get("root")->debug("logging initialized");
   logger_ = log::create("Context");
 
-  // TODO(christophebedard) move this to options/config file
-  intraprocess_ = true;
-  logger_->debug("intraprocess: {}", intraprocess_);
+  logger_->debug("intraprocess: {}", options_->intraprocess());
 
   // Initialize in the right order: some objects might fetch
   // other objects from the context on creation or initialization
   assert(!receiver_);
-  if (!intraprocess_) {
+  if (!options_->intraprocess()) {
     receiver_ = std::make_shared<CurlEmailReceiver>(
       options_->get_user_info(),
       options_->curl_verbose());
@@ -120,7 +117,7 @@ Context::init_common()
   }
 
   assert(!sender_);
-  if (!intraprocess_) {
+  if (!options_->intraprocess()) {
     sender_ = std::make_shared<CurlEmailSender>(
       options_->get_user_info(),
       options_->get_recipients(),

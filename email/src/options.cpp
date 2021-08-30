@@ -36,10 +36,12 @@ Options::Options(
   UserInfo::SharedPtrConst user_info,
   EmailRecipients::SharedPtrConst recipients,
   const bool curl_verbose,
+  const bool intraprocess,
   const std::optional<std::chrono::nanoseconds> polling_period)
 : user_info_(user_info),
   recipients_(recipients),
   curl_verbose_(curl_verbose),
+  intraprocess_(intraprocess),
   polling_period_(polling_period)
 {}
 
@@ -61,6 +63,12 @@ bool
 Options::curl_verbose() const
 {
   return curl_verbose_;
+}
+
+bool
+Options::intraprocess() const
+{
+  return intraprocess_;
 }
 
 std::optional<std::chrono::nanoseconds>
@@ -94,6 +102,7 @@ Options::parse_options_from_args(int argc, char const * const argv[])
     user_info,
     recipients,
     curl_verbose,
+    false,
     std::nullopt);
 }
 
@@ -130,6 +139,11 @@ Options::yaml_to_options_impl(YAML::Node node)
     return std::nullopt;
   }
 
+  bool intraprocess = false;
+  if (node_email["intraprocess"]) {
+    intraprocess = "true" == node_email["intraprocess"].as<std::string>();
+  }
+
   std::optional<std::chrono::nanoseconds> polling_period = std::nullopt;
   if (node_email["polling-period"]) {
     const auto polling_period_str = node_email["polling-period"].as<std::string>();
@@ -156,6 +170,7 @@ Options::yaml_to_options_impl(YAML::Node node)
     user_info,
     recipients,
     !curl_verbose_env_var.empty(),
+    intraprocess,
     polling_period);
 }
 
