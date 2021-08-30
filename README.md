@@ -120,6 +120,8 @@ As for the values:
       * `to` must be defined and must contain at least one email address, but `cc` and `bcc` are optional
    * `polling-period`: email polling period in nanoseconds
       * optional; by default, polling will be done as fast as possible
+   * `intraprocess`: enable intraprocess mode by setting to `true`
+      * optional; by default, intraprocess is disabled
 
 Using the same configuration file with the same email for the `username` and `to` fields (i.e., same email address for sending & receiving) for all your executables will work.
 Alternatively, you can use two different configuration files for two different executables, e.g., if they're sending emails to each other.
