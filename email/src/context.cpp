@@ -20,6 +20,8 @@
 #include "email/email/curl_receiver.hpp"
 #include "email/email/curl_sender.hpp"
 #include "email/email/info.hpp"
+#include "email/email/intra_sender.hpp"
+#include "email/email/intra_receiver.hpp"
 #include "email/email/receiver.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
@@ -43,11 +45,12 @@ Context::Context()
 : is_valid_(false),
   options_(nullptr),
   logger_(nullptr),
-  sender_(nullptr),
   receiver_(nullptr),
+  sender_(nullptr),
   polling_manager_(nullptr),
   subscription_handler_(nullptr),
-  service_handler_(nullptr)
+  service_handler_(nullptr),
+  intraprocess_(false)
 {}
 
 Context::~Context()
@@ -100,20 +103,35 @@ Context::init_common()
   spdlog::get("root")->debug("logging initialized");
   logger_ = log::create("Context");
 
+  // TODO(christophebedard) move this to options/config file
+  intraprocess_ = true;
+  logger_->debug("intraprocess: {}", intraprocess_);
+
   // Initialize in the right order: some objects might fetch
   // other objects from the context on creation or initialization
-  assert(!sender_);
-  sender_ = std::make_shared<CurlEmailSender>(
-    options_->get_user_info(),
-    options_->get_recipients(),
-    options_->curl_verbose());
-  std::dynamic_pointer_cast<CurlEmailSender>(sender_)->init();
-
   assert(!receiver_);
-  receiver_ = std::make_shared<CurlEmailReceiver>(
-    options_->get_user_info(),
-    options_->curl_verbose());
-  std::dynamic_pointer_cast<CurlEmailReceiver>(receiver_)->init();
+  if (!intraprocess_) {
+    receiver_ = std::make_shared<CurlEmailReceiver>(
+      options_->get_user_info(),
+      options_->curl_verbose());
+    std::dynamic_pointer_cast<CurlEmailReceiver>(receiver_)->init();
+  } else {
+    receiver_ = std::make_shared<IntraEmailReceiver>(options_->get_user_info());
+  }
+
+  assert(!sender_);
+  if (!intraprocess_) {
+    sender_ = std::make_shared<CurlEmailSender>(
+      options_->get_user_info(),
+      options_->get_recipients(),
+      options_->curl_verbose());
+    std::dynamic_pointer_cast<CurlEmailSender>(sender_)->init();
+  } else {
+    sender_ = std::make_shared<IntraEmailSender>(
+      options_->get_user_info(),
+      options_->get_recipients(),
+      std::dynamic_pointer_cast<IntraEmailReceiver>(receiver_));
+  }
 
   assert(!polling_manager_);
   polling_manager_ = std::make_shared<PollingManager>(receiver_, options_->polling_period());
@@ -148,12 +166,12 @@ Context::shutdown()
   polling_manager_->shutdown();
   polling_manager_ = nullptr;
 
+  assert(sender_);
+  sender_ = nullptr;
+
   assert(receiver_);
   receiver_->shutdown();
   receiver_ = nullptr;
-
-  assert(sender_);
-  sender_ = nullptr;
 
   logger_->debug("shut down");
   log::shutdown();
