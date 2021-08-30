@@ -121,7 +121,6 @@ CurlExecutor <|-- CurlEmailSender
 class EmailReceiver {
    +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
    +shutdown()
-   #init_options() {abstract}
 }
 class CurlEmailReceiver {
    +get_email(nanoseconds polling_period): optional<EmailData> {abstract
@@ -190,7 +189,6 @@ class EmailSender {
 class EmailReceiver {
    +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
    +shutdown()
-   #init_options() {abstract}
 }
 
 
