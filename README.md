@@ -166,3 +166,8 @@ The [`email_examples` package](./email_examples/) contains simple examples using
    * [simple service server with busy waiting](./email_examples/src/service_server.cpp)
    * [service server using wait utilities](./email_examples/src/service_server_wait.cpp)
    * [service server with request info](./email_examples/src/service_server_wait_service_info.cpp)
+* intraprocess (meant to be used with the [intraprocess option enabled](#configuration))
+   * publisher & subscription
+      * [simple publisher with a subscription with message info in the same process](./email_examples/src/intra_pub_sub_wait_message_info.cpp)
+   * service client & service server
+      * [service client and service server with service info in the same process](./email_examples/src/intra_service_client_server_wait_service_info.cpp)
