@@ -92,6 +92,17 @@ Internal handling of emails/mesages is done as follows:
    * users can either poll the subscription/client/server directly for new messages/requests/responses or wait on it
       * see [*Waiting on messages*](#waiting-on-messages)
 
+For intraprocess communication, a different set of email sender and email receiver is used:
+
+1. intraprocess email sender
+   * has a reference to the intraprocess email receiver
+   * when sending or replying, it simply hands the email over to the intraprocess email receiver
+1. intraprocess email receiver
+   * has a function that receives a new email, adds a random message ID, and adds it to its queue
+      * faking/adding a message ID is required to support downstream logic that depends on email replies
+      * see [*Headers*](#headers)
+   * when queried for a new email by the polling manager, it simply returns one from its queue if there is one
+
 ```plantuml
 @startuml
 
@@ -115,20 +126,48 @@ CurlContext *-- CurlExecutor
 
 
 class EmailSender {
-   +send(EmailContent, optional<EmailHeaders>)
-   +reply(EmailContent, EmailData, optional<EmailHeaders>)
+   +send(EmailContent, optional<EmailHeaders>): bool {abstract}
+   +reply(EmailContent, EmailData, optional<EmailHeaders>): bool {abstract}
+}
+
+class CurlEmailSender {
+   +send(EmailContent, optional<EmailHeaders>): bool {abstract}
+   +reply(EmailContent, EmailData, optional<EmailHeaders>): bool {abstract}
    #init_options() {abstract}
 }
-CurlExecutor <|-- EmailSender
+EmailSender <|-- CurlEmailSender
+CurlExecutor <|-- CurlEmailSender
+
 
 class EmailReceiver {
-   +get_email(nanoseconds polling_period): optional<EmailData>
+   +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
+   +shutdown()
+   #init_options() {abstract}
+}
+class CurlEmailReceiver {
+   +get_email(nanoseconds polling_period): optional<EmailData> {abstract
    #init_options() {abstract}
    -get_nextuid(): optional<int>
    -get_email_from_uid(int): optional<EmailData>
    -execute(optional<string>, url_options, optional<string> custom_request): optional<string>
 }
-CurlExecutor <|-- EmailReceiver
+EmailReceiver <|-- CurlEmailReceiver
+CurlExecutor <|-- CurlEmailReceiver
+
+
+class IntraEmailReceiver {
+   -emails: queue<EmailData>
+   +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
+   +receive(EmailData data)
+}
+EmailReceiver <|-- IntraEmailReceiver
+
+class IntraEmailSender {
+   +send(EmailContent, optional<EmailHeaders>): bool {abstract}
+   +reply(EmailContent, EmailData, optional<EmailHeaders>): bool {abstract}
+}
+EmailSender <|-- IntraEmailSender
+IntraEmailReceiver o-- IntraEmailSender
 
 
 class PollingManager {

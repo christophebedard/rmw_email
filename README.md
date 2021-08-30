@@ -37,6 +37,8 @@ Service responses are email replies to the corresponding email request (this is 
    <img src="./rmw_email_cpp/img/example_service.png" alt="example of resulting emails for a service request and then response">
 </p>
 
+`email` also has an [intraprocess communication mode](#configuration) to bypass actually sending and receiving emails.
+
 ## Packages
 
 This repository contains a few packages:
@@ -122,6 +124,8 @@ As for the values:
       * optional; by default, polling will be done as fast as possible
    * `intraprocess`: enable intraprocess mode by setting to `true`
       * optional; by default, intraprocess is disabled
+      * this makes `email` act as if it was sending emails to itself and entirely bypasses actually sending and receiving emails
+      * all other options have no effect in practice if intraprocess is enabled
 
 Using the same configuration file with the same email for the `username` and `to` fields (i.e., same email address for sending & receiving) for all your executables will work.
 Alternatively, you can use two different configuration files for two different executables, e.g., if they're sending emails to each other.
