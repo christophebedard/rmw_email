@@ -140,13 +140,15 @@ Options::yaml_to_options_impl(YAML::Node node)
   }
 
   bool intraprocess = false;
-  if (node_email["intraprocess"]) {
-    intraprocess = "true" == node_email["intraprocess"].as<std::string>();
+  YAML::Node intraprocess_node = node_email["intraprocess"];
+  if (intraprocess_node && !intraprocess_node.IsNull()) {
+    intraprocess = "true" == intraprocess_node.as<std::string>();
   }
 
   std::optional<std::chrono::nanoseconds> polling_period = std::nullopt;
-  if (node_email["polling-period"]) {
-    const auto polling_period_str = node_email["polling-period"].as<std::string>();
+  YAML::Node polling_period_node = node_email["polling-period"];
+  if (polling_period_node && !polling_period_node.IsNull()) {
+    const auto polling_period_str = polling_period_node.as<std::string>();
     const auto polling_period_ns = utils::optional_stoll(polling_period_str);
     if (!polling_period_ns) {
       logger()->error("invalid value in options: email.polling-period: {}", polling_period_str);
