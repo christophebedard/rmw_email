@@ -106,7 +106,24 @@
 </ul></li>
 </ul></li>
 </ol>
-<p><img src="plantuml-images/42f575190db6a4bc2313d1aad13b263b8decd811.svg" /></p>
+<p>For intraprocess communication, a different set of email sender and email receiver is used:</p>
+<ol type="1">
+<li>intraprocess email sender
+<ul>
+<li>has a reference to the intraprocess email receiver</li>
+<li>when sending or replying, it simply hands the email over to the intraprocess email receiver</li>
+</ul></li>
+<li>intraprocess email receiver
+<ul>
+<li>has a function that receives a new email, adds a random message ID, and adds it to its queue
+<ul>
+<li>faking/adding a message ID is required to support downstream logic that depends on email replies</li>
+<li>see <a href="#headers"><em>Headers</em></a></li>
+</ul></li>
+<li>when queried for a new email by the polling manager, it simply returns one from its queue if there is one</li>
+</ul></li>
+</ol>
+<p><img src="plantuml-images/a4e9264a4903e2ee733cd4e48fc4a6ddb6274825.svg" /></p>
 <p>A global context owns global objects (i.e., all effectively singletons):</p>
 <ul>
 <li>options container</li>

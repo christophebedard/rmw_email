@@ -20,20 +20,48 @@ CurlContext *-- CurlExecutor
 
 
 class EmailSender {
-   +send(EmailContent, optional<EmailHeaders>)
-   +reply(EmailContent, EmailData, optional<EmailHeaders>)
+   +send(EmailContent, optional<EmailHeaders>): bool {abstract}
+   +reply(EmailContent, EmailData, optional<EmailHeaders>): bool {abstract}
+}
+
+class CurlEmailSender {
+   +send(EmailContent, optional<EmailHeaders>): bool {abstract}
+   +reply(EmailContent, EmailData, optional<EmailHeaders>): bool {abstract}
    #init_options() {abstract}
 }
-CurlExecutor <|-- EmailSender
+EmailSender <|-- CurlEmailSender
+CurlExecutor <|-- CurlEmailSender
+
 
 class EmailReceiver {
-   +get_email(nanoseconds polling_period): optional<EmailData>
+   +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
+   +shutdown()
+   #init_options() {abstract}
+}
+class CurlEmailReceiver {
+   +get_email(nanoseconds polling_period): optional<EmailData> {abstract
    #init_options() {abstract}
    -get_nextuid(): optional<int>
    -get_email_from_uid(int): optional<EmailData>
    -execute(optional<string>, url_options, optional<string> custom_request): optional<string>
 }
-CurlExecutor <|-- EmailReceiver
+EmailReceiver <|-- CurlEmailReceiver
+CurlExecutor <|-- CurlEmailReceiver
+
+
+class IntraEmailReceiver {
+   -emails: queue<EmailData>
+   +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
+   +receive(EmailData data)
+}
+EmailReceiver <|-- IntraEmailReceiver
+
+class IntraEmailSender {
+   +send(EmailContent, optional<EmailHeaders>): bool {abstract}
+   +reply(EmailContent, EmailData, optional<EmailHeaders>): bool {abstract}
+}
+EmailSender <|-- IntraEmailSender
+IntraEmailReceiver o-- IntraEmailSender
 
 
 class PollingManager {
