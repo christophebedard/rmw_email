@@ -7,6 +7,9 @@
    1. [Headers](#headers)
    1. [Polling](#polling)
 1. [Overall architecture](#overall-architecture)
+   1. [Sending and receiving emails](#sending-and-receiving-emails)
+   1. [Internal handling of emails](#Internal-handling-of-emails)
+   1. [Global context](#global-context)
 1. [Waiting on messages](#waiting-on-messages)
 1. [Data containers](#data-containers)
    1. [Email](#email)
@@ -53,6 +56,8 @@ To poll for new emails using the IMAP protocol commands, we can:
    * then we repeat this step with this new value
 
 ## Overall architecture
+
+### Sending and receiving emails
 
 There are three main layers to send and receive messages:
 
@@ -151,6 +156,8 @@ EmailSender -right[hidden]- EmailReceiver
 
 @enduml
 ```
+
+### Internal handling of emails
 
 Internal handling of emails/mesages is done as follows:
 
@@ -294,6 +301,8 @@ ServiceHandler "registers with" <-- ServiceServer
 
 @enduml
 ```
+
+### Global context
 
 A global context owns global objects (i.e., all effectively singletons):
 
