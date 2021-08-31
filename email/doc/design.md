@@ -7,6 +7,9 @@
    1. [Headers](#headers)
    1. [Polling](#polling)
 1. [Overall architecture](#overall-architecture)
+   1. [Sending and receiving emails](#sending-and-receiving-emails)
+   1. [Internal handling of emails](#internal-handling-of-emails)
+   1. [Global context](#global-context)
 1. [Waiting on messages](#waiting-on-messages)
 1. [Data containers](#data-containers)
    1. [Email](#email)
@@ -54,6 +57,8 @@ To poll for new emails using the IMAP protocol commands, we can:
 
 ## Overall architecture
 
+### Sending and receiving emails
+
 There are three main layers to send and receive messages:
 
 1. `curl`: context, executor
@@ -71,27 +76,6 @@ There are three main layers to send and receive messages:
    * service clients use publishers to send requests and indirectly use email receivers to receive responses
    * service servers indirectly use email receivers to receive requests and use email senders to send responses by replying to the request email
 
-Internal handling of emails/mesages is done as follows:
-
-1. polling manager
-   * uses an email receiver to poll for new emails on a thread
-   * calls all registered handlers when a new email is received
-1. handlers: subscription, service client/server
-   * all handlers register with the polling manager
-   * handlers check whether the new email applies to them
-      * see [*Use of emails*](#use-of-emails)
-   * if so, they pass it on to the right object(s) that registered with them
-      * according to topic name or service name
-1. subscriptions, service clients/servers
-   * all subscriptions register with the subscription handler
-   * all service clients and servers register with the service handler
-   * new messages, service requests or service responses are added to the corresponding queues or maps
-      * subscriptions have a message queue
-      * service clients have a response map
-      * service servers have a request queue
-   * users can either poll the subscription/client/server directly for new messages/requests/responses or wait on it
-      * see [*Waiting on messages*](#waiting-on-messages)
-
 For intraprocess communication, a different set of email sender and email receiver is used:
 
 1. intraprocess email sender
@@ -101,7 +85,7 @@ For intraprocess communication, a different set of email sender and email receiv
    * has a function that receives a new email, adds a random message ID, and adds it to its queue
       * faking/adding a message ID is required to support downstream logic that depends on email replies
       * see [*Headers*](#headers)
-   * when queried for a new email by the polling manager, it simply returns one from its queue if there is one
+   * when queried for a new email, it simply returns one from its queue if it's not empty
 
 ```plantuml
 @startuml
@@ -142,7 +126,6 @@ CurlExecutor <|-- CurlEmailSender
 class EmailReceiver {
    +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
    +shutdown()
-   #init_options() {abstract}
 }
 class CurlEmailReceiver {
    +get_email(nanoseconds polling_period): optional<EmailData> {abstract
@@ -168,6 +151,52 @@ class IntraEmailSender {
 }
 EmailSender <|-- IntraEmailSender
 IntraEmailReceiver o-- IntraEmailSender
+
+EmailSender -right[hidden]- EmailReceiver
+
+@enduml
+```
+
+### Internal handling of emails
+
+Internal handling of emails/mesages is done as follows:
+
+1. polling manager
+   * uses an email receiver to poll for new emails on a thread
+   * calls all registered handlers when a new email is received
+1. handlers: subscription, service client/server
+   * all handlers register with the polling manager
+   * handlers check whether the new email applies to them
+      * see [*Use of emails*](#use-of-emails)
+   * if so, they pass it on to the right object(s) that registered with them
+      * according to topic name or service name
+1. subscriptions, service clients/servers
+   * all subscriptions register with the subscription handler
+   * all service clients and servers register with the service handler
+   * new messages, service requests or service responses are added to the corresponding queues or maps
+      * subscriptions have a message queue
+      * service clients have a response map
+      * service servers have a request queue
+   * users can either poll the subscription/client/server directly for new messages/requests/responses or wait on it
+      * see [*Waiting on messages*](#waiting-on-messages)
+
+```plantuml
+@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+
+class EmailSender {
+   +send(EmailContent, optional<EmailHeaders>): bool {abstract}
+   +reply(EmailContent, EmailData, optional<EmailHeaders>): bool {abstract}
+}
+
+class EmailReceiver {
+   +get_email(nanoseconds polling_period): optional<EmailData> {abstract}
+   +shutdown()
+}
 
 
 class PollingManager {
@@ -272,6 +301,8 @@ ServiceHandler "registers with" <-- ServiceServer
 
 @enduml
 ```
+
+### Global context
 
 A global context owns global objects (i.e., all effectively singletons):
 
