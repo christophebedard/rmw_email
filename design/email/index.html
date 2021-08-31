@@ -6,7 +6,12 @@
 <li><a href="#headers">Headers</a></li>
 <li><a href="#polling">Polling</a></li>
 </ol></li>
-<li><a href="#overall-architecture">Overall architecture</a></li>
+<li><a href="#overall-architecture">Overall architecture</a>
+<ol type="1">
+<li><a href="#sending-and-receiving-emails">Sending and receiving emails</a></li>
+<li><a href="#Internal-handling-of-emails">Internal handling of emails</a></li>
+<li><a href="#global-context">Global context</a></li>
+</ol></li>
 <li><a href="#waiting-on-messages">Waiting on messages</a></li>
 <li><a href="#data-containers">Data containers</a>
 <ol type="1">
@@ -46,6 +51,7 @@
 </ul></li>
 </ul>
 <h2 id="overall-architecture">Overall architecture</h2>
+<h3 id="sending-and-receiving-emails">Sending and receiving emails</h3>
 <p>There are three main layers to send and receive messages:</p>
 <ol type="1">
 <li><code>curl</code>: context, executor
@@ -71,6 +77,25 @@
 <li>service servers indirectly use email receivers to receive requests and use email senders to send responses by replying to the request email</li>
 </ul></li>
 </ol>
+<p>For intraprocess communication, a different set of email sender and email receiver is used:</p>
+<ol type="1">
+<li>intraprocess email sender
+<ul>
+<li>has a reference to the intraprocess email receiver</li>
+<li>when sending or replying, it simply hands the email over to the intraprocess email receiver</li>
+</ul></li>
+<li>intraprocess email receiver
+<ul>
+<li>has a function that receives a new email, adds a random message ID, and adds it to its queue
+<ul>
+<li>faking/adding a message ID is required to support downstream logic that depends on email replies</li>
+<li>see <a href="#headers"><em>Headers</em></a></li>
+</ul></li>
+<li>when queried for a new email, it simply returns one from its queue if it’s not empty</li>
+</ul></li>
+</ol>
+<p><img src="plantuml-images/9efdd7a871cba1c389361bc5c202056f42546e6a.svg" /></p>
+<h3 id="internal-handling-of-emails">Internal handling of emails</h3>
 <p>Internal handling of emails/mesages is done as follows:</p>
 <ol type="1">
 <li>polling manager
@@ -106,24 +131,8 @@
 </ul></li>
 </ul></li>
 </ol>
-<p>For intraprocess communication, a different set of email sender and email receiver is used:</p>
-<ol type="1">
-<li>intraprocess email sender
-<ul>
-<li>has a reference to the intraprocess email receiver</li>
-<li>when sending or replying, it simply hands the email over to the intraprocess email receiver</li>
-</ul></li>
-<li>intraprocess email receiver
-<ul>
-<li>has a function that receives a new email, adds a random message ID, and adds it to its queue
-<ul>
-<li>faking/adding a message ID is required to support downstream logic that depends on email replies</li>
-<li>see <a href="#headers"><em>Headers</em></a></li>
-</ul></li>
-<li>when queried for a new email by the polling manager, it simply returns one from its queue if there is one</li>
-</ul></li>
-</ol>
-<p><img src="plantuml-images/a4e9264a4903e2ee733cd4e48fc4a6ddb6274825.svg" /></p>
+<p><img src="plantuml-images/e8fe8b3bcbafefd7aa6a06af2dee05198ed0a517.svg" /></p>
+<h3 id="global-context">Global context</h3>
 <p>A global context owns global objects (i.e., all effectively singletons):</p>
 <ul>
 <li>options container</li>
