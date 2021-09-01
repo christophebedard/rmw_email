@@ -49,6 +49,22 @@
 #include "rosidl_runtime_c/string_functions.h"
 #include "rosidl_runtime_c/u16string_functions.h"
 
+std::string yaml_to_string(
+  const YAML::Node & yaml,
+  const bool double_quoted = false,
+  const bool flow_style = false)
+{
+  YAML::Emitter emitter;
+  if (double_quoted) {
+    emitter << YAML::DoubleQuoted;
+  }
+  if (flow_style) {
+    emitter << YAML::Flow;
+  }
+  emitter << yaml;
+  return emitter.c_str();
+}
+
 template<typename BasicTypes>
 void populate_basic_types(BasicTypes * msg)
 {
@@ -476,9 +492,7 @@ TEST(TestConversion, test_msgs__BasicTypes_c)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -506,9 +520,7 @@ TEST(TestConversion, test_msgs__BasicTypes_cpp)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -536,9 +548,7 @@ TEST(TestConversion, test_msgs__UnboundedSequences_c)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -568,9 +578,7 @@ TEST(TestConversion, test_msgs__UnboundedSequences_cpp)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -598,9 +606,7 @@ TEST(TestConversion, test_msgs__Nested_c)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -628,9 +634,7 @@ TEST(TestConversion, test_msgs__Nested_cpp)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -658,9 +662,7 @@ TEST(TestConversion, test_msgs__Arrays_c)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -689,9 +691,7 @@ TEST(TestConversion, test_msgs__Arrays_cpp)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -719,12 +719,10 @@ TEST(TestConversion, std_msgs__String_c)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  EXPECT_STREQ(yaml_string.c_str(), "{\"data\": \"hello world\"}");
+  EXPECT_STREQ(yaml_string.c_str(), "data: hello world");
 
   // Convert YAML string back to a ROS message
   RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
@@ -751,12 +749,11 @@ TEST(TestConversion, std_msgs__String_cpp)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
-  EXPECT_STREQ(yaml_string.c_str(), "{\"data\": \"hello world\"}");
+  EXPECT_STREQ(
+    yaml_string.c_str(), "data: hello world");
 
   // Convert YAML string back to a ROS message
   std_msgs::msg::String msg_from_yaml;
@@ -784,17 +781,18 @@ TEST(TestConversion, std_msgs__Header_c)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
   EXPECT_STREQ(
-    yaml_string.c_str(),
-    "{\"stamp\": {\"sec\": \"4\", \"nanosec\": \"20\"}, \"frame_id\": \"my_frame\"}");
+    yaml_string.c_str(), 1 + R"(
+stamp:
+  sec: 4
+  nanosec: 20
+frame_id: my_frame)");
 
   // Convert YAML string back to a ROS message
-  RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, emitter.c_str());
+  RosMessage ros_msg_from_yaml = dynmsg::c::yaml_to_rosmsg(interface, yaml_string);
   auto msg_from_yaml = reinterpret_cast<std_msgs__msg__Header *>(ros_msg_from_yaml.data);
 
   EXPECT_EQ(msg_from_yaml->stamp.sec, 4);
@@ -824,14 +822,15 @@ TEST(TestConversion, std_msgs__Header_cpp)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
   EXPECT_STREQ(
-    yaml_string.c_str(),
-    "{\"stamp\": {\"sec\": \"4\", \"nanosec\": \"20\"}, \"frame_id\": \"my_frame\"}");
+    yaml_string.c_str(), 1 + R"(
+stamp:
+  sec: 4
+  nanosec: 20
+frame_id: my_frame)");
 
   // Convert YAML string back to a ROS message
   std_msgs::msg::Header msg_from_yaml;
@@ -876,9 +875,7 @@ TEST(TestConversion, rcl_interfaces__ParameterEvent_c)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 
@@ -935,9 +932,7 @@ TEST(TestConversion, rcl_interfaces__ParameterEvent_cpp)
   std::cout << yaml_msg << std::endl << std::endl;
 
   // Convert the YAML representation to a string
-  YAML::Emitter emitter;
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml_msg;
-  const std::string yaml_string(emitter.c_str());
+  const std::string yaml_string = yaml_to_string(yaml_msg);
   std::cout << "YAML:" << std::endl;
   std::cout << yaml_string << std::endl << std::endl;
 

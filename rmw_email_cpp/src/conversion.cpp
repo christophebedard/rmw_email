@@ -36,11 +36,29 @@ namespace rmw_email_cpp
 namespace details
 {
 
-std::string yaml_to_string(const YAML::Node & yaml)
+/// Convert YAML node to string.
+/**
+ * Flow style is one-line, JSON-like.
+ * Non-flow style is block style, which is the normal multi-line style.
+ *
+ * \param yaml the YAML node
+ * \param double_quoted whether to double quote all keys and values or not
+ * \param flow_style whether to use flow-style or not
+ * \return the YAML node as a string
+ */
+std::string yaml_to_string(
+  const YAML::Node & yaml,
+  const bool double_quoted = false,
+  const bool flow_style = false)
 {
   YAML::Emitter emitter;
-  // Make the YAML a one-line
-  emitter << YAML::DoubleQuoted << YAML::Flow << yaml;
+  if (double_quoted) {
+    emitter << YAML::DoubleQuoted;
+  }
+  if (flow_style) {
+    emitter << YAML::Flow;
+  }
+  emitter << yaml;
   return emitter.c_str();
 }
 
