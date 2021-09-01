@@ -86,7 +86,11 @@
  *   - email/curl/executor.hpp
  *   - email/curl/info.hpp
  * - Email interface
+ *   - email/email/curl_receiver.hpp
+ *   - email/email/curl_sender.hpp
  *   - email/email/info.hpp
+ *   - email/email/intra_receiver.hpp
+ *   - email/email/intra_sender.hpp
  *   - email/email/payload_utils.hpp
  *   - email/email/receiver.hpp
  *   - email/email/response_utils.hpp

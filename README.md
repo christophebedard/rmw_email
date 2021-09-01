@@ -17,10 +17,11 @@ ROS 2 over email.
 
 ## Overview
 
-`rmw_email_cpp` uses [type support introspection](https://docs.ros.org/en/rolling/Concepts/About-Internal-Interfaces.html#dynamic-type-support) to convert messages to YAML objects.
+[`rmw_email_cpp`](#packages) uses [type support introspection](https://docs.ros.org/en/rolling/Concepts/About-Internal-Interfaces.html#dynamic-type-support) to convert messages to YAML objects.
 This is done for both C and C++ type supports using the [`dynmsg` package](https://github.com/christophebedard/dynamic_message_introspection/tree/feature).
+The YAML objects are converted to simple strings.
 
-The YAML objects are then converted to strings and sent via email using the [`email` package](#packages).
+Those strings are then sent via email using the [`email` package](#packages).
 The topic name is used as the email subject; the email body contains the YAML string representing the message.
 Messages can therefore easily be read.
 
