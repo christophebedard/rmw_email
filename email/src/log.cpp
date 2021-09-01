@@ -145,7 +145,7 @@ init(const Level & level)
   root_logger->set_level(spdlog::level::debug);
   spdlog::register_logger(root_logger);
   root_logger->flush_on(spdlog::level::warn);
-  root_logger->debug("logging to file: {}", log_to_file ? "true" : "false");
+  root_logger->debug("logging to file: {}", log_to_file);
   root_logger->debug("logging level set to: {}", level_to_string(level));
 
   is_logging_initialized = true;
