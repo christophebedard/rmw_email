@@ -52,11 +52,10 @@ build_payload(
   // seems to handle it correctly even if it contains "\n" instead of "\r\n" even
   // if RFC 5322 says that CR & LF characters should always go together as a pair,
   // so we do not try to replace lone LF characters in the body with CRLF sequences.
-  // TODO(christophebedard) remove the CRLF sequence after the body?
   return utils::string_format(
     "%s"
     "In-Reply-To: %s\r\nReferences: %s\r\n"
-    "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s\r\n",
+    "To: %s\r\nCc: %s\r\nBcc: %s\r\nSubject: %s\r\n\r\n%s",
     additional_headers_stream.str().c_str(),
     (reply_ref.has_value() ? reply_ref.value().c_str() : ""),
     (reply_ref.has_value() ? reply_ref.value().c_str() : ""),

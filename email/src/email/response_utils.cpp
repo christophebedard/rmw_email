@@ -35,13 +35,10 @@ static constexpr auto HEADER_IN_REPLY_TO = "In-Reply-To";
 static constexpr auto HEADER_MESSAGE_ID = "Message-ID";
 static constexpr auto HEADER_SUBJECT = "Subject";
 static constexpr auto HEADER_TO = "To";
-// Summary of RFC 5322:
+// From RFC 5322:
 // CR and LF always go together as a pair (CRLF), although here we make the CR character optional.
 // The body is separated from the headers by an empty line, so there are two (CR)LF sequences.
-// We assume that there is a (CR)LF sequence after the body that isn't part of the body;
-// any additional (CR)LF sequence is assumed to be part of the body itself.
-// TODO(christophebedard) remove the above requirement/assumption?
-static const std::regex REGEX_BODY(R"((?:\r?\n){2}((?:.*(?:\r?\n)?)*)(?:\r?\n))");
+static const std::regex REGEX_BODY(R"((?:\r?\n){2}((?:.*(?:\r?\n)?)*))");
 static const std::regex REGEX_HEADER(R"(([a-zA-Z\-]+): (.*)\r)");
 static const std::regex REGEX_NEXTUID(R"(OK \[UIDNEXT ([0-9]+)\] Predicted next UID)");
 
