@@ -85,9 +85,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a5a53dc0d1ceb86baec63678cc7dc060b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1response.html#a5a53dc0d1ceb86baec63678cc7dc060b">get_email_headers_from_response</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;response)</td></tr>
 <tr class="memdesc:a5a53dc0d1ceb86baec63678cc7dc060b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get headers from request response.  <a href="namespaceemail_1_1utils_1_1response.html#a5a53dc0d1ceb86baec63678cc7dc060b">More...</a><br /></td></tr>
 <tr class="separator:a5a53dc0d1ceb86baec63678cc7dc060b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5589c66596fc92d8265d795b4ef9d4b"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1response.html#ae5589c66596fc92d8265d795b4ef9d4b">get_email_content_from_response</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;response)</td></tr>
-<tr class="memdesc:ae5589c66596fc92d8265d795b4ef9d4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get email content from raw request response.  <a href="namespaceemail_1_1utils_1_1response.html#ae5589c66596fc92d8265d795b4ef9d4b">More...</a><br /></td></tr>
-<tr class="separator:ae5589c66596fc92d8265d795b4ef9d4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b5d710f645d106f79a0c1d15c7f9d75"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1response.html#a6b5d710f645d106f79a0c1d15c7f9d75">get_email_content_from_response</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;response, <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &amp;headers)</td></tr>
+<tr class="memdesc:a6b5d710f645d106f79a0c1d15c7f9d75"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get email content from raw request response.  <a href="namespaceemail_1_1utils_1_1response.html#a6b5d710f645d106f79a0c1d15c7f9d75">More...</a><br /></td></tr>
+<tr class="separator:a6b5d710f645d106f79a0c1d15c7f9d75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a653d46e023a23fecac67b8b95e32ff6b"><td class="memItemLeft" align="right" valign="top"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceemail_1_1utils_1_1response.html#a653d46e023a23fecac67b8b95e32ff6b">get_email_data_from_response</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;response)</td></tr>
 <tr class="memdesc:a653d46e023a23fecac67b8b95e32ff6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get raw email data from raw request response.  <a href="namespaceemail_1_1utils_1_1response.html#a653d46e023a23fecac67b8b95e32ff6b">More...</a><br /></td></tr>
 <tr class="separator:a653d46e023a23fecac67b8b95e32ff6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,8 +153,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ae5589c66596fc92d8265d795b4ef9d4b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5589c66596fc92d8265d795b4ef9d4b">&#9670;&nbsp;</a></span>get_email_content_from_response()</h2>
+<a id="a6b5d710f645d106f79a0c1d15c7f9d75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b5d710f645d106f79a0c1d15c7f9d75">&#9670;&nbsp;</a></span>get_email_content_from_response()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -163,8 +163,18 @@ Functions</h2></td></tr>
           <td class="memname"><a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt;struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a>&gt; email::utils::response::get_email_content_from_response </td>
           <td>(</td>
           <td class="paramtype">const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;&#160;</td>
-          <td class="paramname"><em>response</em></td><td>)</td>
+          <td class="paramname"><em>response</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &amp;&#160;</td>
+          <td class="paramname"><em>headers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -173,6 +183,7 @@ Functions</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">response</td><td>the result of the request </td></tr>
+    <tr><td class="paramname">headers</td><td>the headers already parsed from the response </td></tr>
   </table>
   </dd>
 </dl>
