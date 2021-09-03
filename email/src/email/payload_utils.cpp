@@ -49,7 +49,10 @@ build_payload(
   }
   // Subjects containing newlines will have the second+ line(s) be moved to the body,
   // but for the sake of simplicity, we will cut it out. As for the body, curl
-  // seems to handle it correctly even if it contains "\n" instead of "\r\n"
+  // seems to handle it correctly even if it contains "\n" instead of "\r\n" even
+  // if RFC 5322 says that CR & LF characters should always go together as a pair,
+  // so we do not try to replace lone LF characters in the body with CRLF sequences.
+  // TODO(christophebedard) remove the CRLF sequence after the body?
   return utils::string_format(
     "%s"
     "In-Reply-To: %s\r\nReferences: %s\r\n"

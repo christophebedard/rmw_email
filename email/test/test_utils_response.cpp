@@ -53,7 +53,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "this is the email's body\r\n";
   data_opt = email::utils::response::get_email_data_from_response(response);
   ASSERT_TRUE(data_opt.has_value());
-  auto data = data_opt.value();
+  email::EmailData data = data_opt.value();
   EXPECT_EQ(data.message_id, "<some.id@mx.google.com>");
   EXPECT_EQ(data.in_reply_to, "");
   EXPECT_EQ(data.from, "some@email.com");
@@ -142,6 +142,68 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "this is the email's body\r\n";
   data_opt = email::utils::response::get_email_data_from_response(response_missing_all_recipients);
   EXPECT_FALSE(data_opt.has_value());
+
+  // Multi-line body
+  const std::string response_multiline_body = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the\r\n" \
+    " email's \r\n" \
+    "body\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_multiline_body);
+  ASSERT_TRUE(data_opt.has_value());
+  data = data_opt.value();
+  EXPECT_EQ(data.content.subject, "this is my awesome subject");
+  EXPECT_EQ(data.content.body, "this is the\r\n email's \r\nbody");
+
+  // Multi-line body without CR
+  // (although RFC 5322 says that CR & LF should always go together as CRLF)
+  const std::string response_multiline_body_nocr = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the\n" \
+    " email's \n" \
+    "body\n";
+  data_opt = email::utils::response::get_email_data_from_response(response_multiline_body_nocr);
+  ASSERT_TRUE(data_opt.has_value());
+  data = data_opt.value();
+  EXPECT_EQ(data.content.subject, "this is my awesome subject");
+  EXPECT_EQ(data.content.body, "this is the\n email's \nbody");
+
+  // Multi-line body with trailing newline
+  const std::string response_multiline_body_trailing_crlf = \
+    "Message-ID: <some.id@mx.google.com>\r\n" \
+    "Date: Sat, 17 Oct 2020 11:06:37 -0700 (PDT)\r\n" \
+    "From: some@email.com\r\n" \
+    "Sequence-ID: 123\r\n" \
+    "In-Reply-To: \r\nReferences: \r\n" \
+    "To: my@email.com\r\n" \
+    "Cc: \r\n" \
+    "Bcc: \r\n" \
+    "Subject: this is my awesome subject\r\n\r\n" \
+    "this is the\r\n" \
+    " email's \r\n" \
+    "body\r\n\r\n";
+  data_opt = email::utils::response::get_email_data_from_response(
+    response_multiline_body_trailing_crlf);
+  ASSERT_TRUE(data_opt.has_value());
+  data = data_opt.value();
+  EXPECT_EQ(data.content.subject, "this is my awesome subject");
+  EXPECT_EQ(data.content.body, "this is the\r\n email's \r\nbody\r\n");
 }
 
 TEST(TestResponseUtils, get_header_value) {
