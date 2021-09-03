@@ -54,11 +54,12 @@ get_email_headers_from_response(const std::string & response);
 /// Get email content from raw request response.
 /**
  * \param response the result of the request
+ * \param headers the headers already parsed from the response
  * \return the email content, or `std::nullopt` if it failed
  */
 EMAIL_PUBLIC
 std::optional<struct EmailContent>
-get_email_content_from_response(const std::string & response);
+get_email_content_from_response(const std::string & response, EmailHeaders & headers);
 
 /// Get raw email data from raw request response.
 /**

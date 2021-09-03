@@ -47,7 +47,7 @@ TEST(TestPayloadUtils, build_payload) {
     "Cc: \r\n" \
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   email::EmailRecipients::SharedPtrConst recipients_one =
     std::make_shared<const struct email::EmailRecipients>("my@email.com");
   const struct email::EmailContent content_one_line = {
@@ -62,7 +62,7 @@ TEST(TestPayloadUtils, build_payload) {
     "Cc: onecc@email.ca\r\n" \
     "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   email::EmailRecipients::SharedPtrConst recipients_multiple =
     std::make_shared<const struct email::EmailRecipients>(
     std::vector<std::string>{"my@email.com", "another@email.com"},
@@ -82,7 +82,7 @@ TEST(TestPayloadUtils, build_payload) {
     "Cc: onecc@email.ca\r\n" \
     "Bcc: first@email.ca, second@email.net, third@email.de\r\n" \
     "Subject: this is my awesome subject that stops here\r\n\r\n" \
-    "this is the email's body\non multiple lines!\r\n";
+    "this is the email's body\non multiple lines!";
   EXPECT_EQ(
     payload_multiple_recipients_newlines,
     email::utils::payload::build_payload(recipients_multiple, content_multiple_lines));
@@ -94,7 +94,7 @@ TEST(TestPayloadUtils, build_payload) {
     "Cc: \r\n" \
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   const std::string reply_ref = "thisisaref";
   EXPECT_EQ(
     payload_reply_ref,
@@ -116,7 +116,7 @@ TEST(TestPayloadUtils, build_payload) {
     "Cc: \r\n" \
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   EXPECT_EQ(
     payload_additional_headers,
     email::utils::payload::build_payload(

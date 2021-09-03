@@ -17,6 +17,7 @@
 #include <optional> // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "email/email/payload_utils.hpp"
 #include "email/email/response_utils.hpp"
 
 TEST(TestResponseUtils, get_nextuid_from_response) {
@@ -50,7 +51,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Cc: \r\n" \
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   data_opt = email::utils::response::get_email_data_from_response(response);
   ASSERT_TRUE(data_opt.has_value());
   email::EmailData data = data_opt.value();
@@ -79,7 +80,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Cc: \r\n" \
     "Bcc: \r\n" \
     "Subject!?!?: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   data_opt = email::utils::response::get_email_data_from_response(response_missing_subject);
   EXPECT_FALSE(data_opt.has_value());
   const std::string response_missing_body = \
@@ -105,7 +106,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Cc: \r\n" \
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   data_opt = email::utils::response::get_email_data_from_response(response_missing_to);
   EXPECT_FALSE(data_opt.has_value());
   const std::string response_missing_cc = \
@@ -117,7 +118,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "To: my@email.com\r\n" \
     "Bcc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   data_opt = email::utils::response::get_email_data_from_response(response_missing_cc);
   EXPECT_FALSE(data_opt.has_value());
   const std::string response_missing_bcc = \
@@ -129,7 +130,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "To: my@email.com\r\n" \
     "Cc: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   data_opt = email::utils::response::get_email_data_from_response(response_missing_bcc);
   EXPECT_FALSE(data_opt.has_value());
   const std::string response_missing_all_recipients = \
@@ -139,7 +140,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Sequence-ID: 123\r\n" \
     "In-Reply-To: \r\nReferences: \r\n" \
     "Subject: this is my awesome subject\r\n\r\n" \
-    "this is the email's body\r\n";
+    "this is the email's body";
   data_opt = email::utils::response::get_email_data_from_response(response_missing_all_recipients);
   EXPECT_FALSE(data_opt.has_value());
 
@@ -156,7 +157,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the\r\n" \
     " email's \r\n" \
-    "body\r\n";
+    "body";
   data_opt = email::utils::response::get_email_data_from_response(response_multiline_body);
   ASSERT_TRUE(data_opt.has_value());
   data = data_opt.value();
@@ -177,7 +178,7 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the\n" \
     " email's \n" \
-    "body\n";
+    "body";
   data_opt = email::utils::response::get_email_data_from_response(response_multiline_body_nocr);
   ASSERT_TRUE(data_opt.has_value());
   data = data_opt.value();
@@ -197,13 +198,64 @@ TEST(TestResponseUtils, get_email_data_from_response) {
     "Subject: this is my awesome subject\r\n\r\n" \
     "this is the\r\n" \
     " email's \r\n" \
-    "body\r\n\r\n";
+    "body\r\n";
   data_opt = email::utils::response::get_email_data_from_response(
     response_multiline_body_trailing_crlf);
   ASSERT_TRUE(data_opt.has_value());
   data = data_opt.value();
   EXPECT_EQ(data.content.subject, "this is my awesome subject");
   EXPECT_EQ(data.content.body, "this is the\r\n email's \r\nbody\r\n");
+}
+
+TEST(TestResponseUtils, payload_to_response) {
+  std::string payload;
+  std::optional<struct email::EmailContent> content;
+  email::EmailHeaders headers;
+  email::EmailHeaders::iterator header_find;
+
+  // The email payload string isn't exactly the same as the received response string, but it
+  // should be close enough to simulate some kind of end-to-end test (payload building and then
+  // response parsing) for some elements of the response.
+
+  // Typical use-case
+  payload = email::utils::payload::build_payload(
+    {"my@email.com"},
+    {},
+    {},
+    {{"this is my awesome subject"}, {"the \nawesome\nemail \nbody"}});
+  headers = email::utils::response::get_email_headers_from_response(payload);
+  content = email::utils::response::get_email_content_from_response(payload, headers);
+  ASSERT_TRUE(content.has_value());
+  EXPECT_EQ(content.value().subject, "this is my awesome subject");
+  EXPECT_EQ(content.value().body, "the \nawesome\nemail \nbody");
+  header_find = headers.find("To");
+  ASSERT_NE(header_find, headers.end());
+  EXPECT_EQ(header_find->first, "To");
+  EXPECT_EQ(header_find->second, "my@email.com");
+
+  // Single line
+  payload = email::utils::payload::build_payload(
+    {"my@email.com"},
+    {},
+    {},
+    {{"this is my awesome subject"}, {"the body"}});
+  headers = email::utils::response::get_email_headers_from_response(payload);
+  content = email::utils::response::get_email_content_from_response(payload, headers);
+  ASSERT_TRUE(content.has_value());
+  EXPECT_EQ(content.value().subject, "this is my awesome subject");
+  EXPECT_EQ(content.value().body, "the body");
+
+  // Trailing newlines
+  payload = email::utils::payload::build_payload(
+    {"my@email.com"},
+    {},
+    {},
+    {{"this is my awesome subject"}, {"the body\n\n"}});
+  headers = email::utils::response::get_email_headers_from_response(payload);
+  content = email::utils::response::get_email_content_from_response(payload, headers);
+  ASSERT_TRUE(content.has_value());
+  EXPECT_EQ(content.value().subject, "this is my awesome subject");
+  EXPECT_EQ(content.value().body, "the body\n\n");
 }
 
 TEST(TestResponseUtils, get_header_value) {
