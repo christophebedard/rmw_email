@@ -153,6 +153,10 @@ if(BUILD_TESTING)
   ament_lint_auto_find_test_dependencies()
 
   find_package(ament_cmake_gtest REQUIRED)
+  ament_add_gtest(test_cli
+    test/test_cli.cpp
+  )
+  target_link_libraries(test_cli ${PROJECT_NAME})
   ament_add_gtest(test_communication_info
     test/test_communication_info.cpp
   )
@@ -161,6 +165,10 @@ if(BUILD_TESTING)
     test/test_containers.cpp
   )
   target_link_libraries(test_containers ${PROJECT_NAME})
+  ament_add_gtest(test_context
+    test/test_context.cpp
+  )
+  target_link_libraries(test_context ${PROJECT_NAME})
   ament_add_gtest(test_end_to_end
     test/test_end_to_end.cpp
   )

@@ -15,6 +15,7 @@
 #include <gtest/gtest.h>
 
 #include <fstream>
+#include <memory>
 #include <set>
 #include <string>
 
@@ -64,6 +65,13 @@ email:
 
 TEST_F(TestEndToEnd, intraprocess_init) {
   EXPECT_THROW(email::init(), email::ContextAlreadyInitializedError);
+
+  EXPECT_TRUE(email::get_global_context()->get_options());
+  EXPECT_TRUE(email::get_global_context()->get_receiver());
+  EXPECT_TRUE(email::get_global_context()->get_sender());
+  EXPECT_TRUE(email::get_global_context()->get_polling_manager());
+  EXPECT_TRUE(email::get_global_context()->get_subscription_handler());
+  EXPECT_TRUE(email::get_global_context()->get_service_handler());
 }
 
 TEST_F(TestEndToEnd, intraprocess_pub_sub) {
@@ -273,4 +281,37 @@ TEST_F(TestEndToEnd, intraprocess_service) {
   ASSERT_TRUE(res_3_opt.has_value());
   auto res_3 = res_3_opt.value();
   EXPECT_STREQ(res_3.c_str(), "your tubbytoast");
+}
+
+TEST_F(TestEndToEnd, intraprocess_wait) {
+  auto pub = std::make_shared<email::Publisher>("/my_topic");
+  auto sub = std::make_shared<email::Subscription>("/my_topic");
+  auto client = std::make_shared<email::ServiceClient>("/my_service");
+  auto server = std::make_shared<email::ServiceServer>("/my_service");
+
+  pub->publish("eh-oh!");
+  pub->publish("oh no!");
+  auto seq1 = client->send_request("tubbycustard, please");
+  auto seq2 = client->send_request("more tubbycustard, please");
+
+  auto msg = email::wait_for_message(sub);
+  auto msg_with_info = email::wait_for_message_with_info(sub);
+  auto req = email::wait_for_request(server);
+  auto req_with_info = email::wait_for_request_with_info(server);
+
+  EXPECT_STREQ(msg.c_str(), "eh-oh!");
+  EXPECT_STREQ(msg_with_info.first.c_str(), "oh no!");
+  EXPECT_EQ(req.id.sequence_number, seq1);
+  EXPECT_STREQ(req.content.c_str(), "tubbycustard, please");
+  EXPECT_EQ(req_with_info.first.id.sequence_number, seq2);
+  EXPECT_STREQ(req_with_info.first.content.c_str(), "more tubbycustard, please");
+
+  server->send_response(req.id, "your tubbytoast");
+  server->send_response(req_with_info.first.id, "your tubbycustard");
+
+  auto res = email::wait_for_response(seq1, client);
+  auto res_with_info = email::wait_for_response_with_info(seq2, client);
+
+  EXPECT_STREQ(res.c_str(), "your tubbytoast");
+  EXPECT_STREQ(res_with_info.first.c_str(), "your tubbycustard");
 }
