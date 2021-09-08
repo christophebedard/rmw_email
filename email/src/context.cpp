@@ -57,9 +57,9 @@ Context::~Context()
   // Logger might not have been initialized
   if (logger_) {
     logger_->debug("destroying");
-  }
-  if (is_valid()) {
-    (void)shutdown();
+    if (is_valid()) {
+      logger_->error("context should have been shut down before destruction");
+    }
   }
 }
 
@@ -155,20 +155,15 @@ Context::shutdown()
   logger_->debug("shutting down");
 
   // Finalize in the reverse order
-  assert(service_handler_);
   service_handler_ = nullptr;
 
-  assert(subscription_handler_);
   subscription_handler_ = nullptr;
 
-  assert(polling_manager_);
   polling_manager_->shutdown();
   polling_manager_ = nullptr;
 
-  assert(sender_);
   sender_ = nullptr;
 
-  assert(receiver_);
   receiver_->shutdown();
   receiver_ = nullptr;
 

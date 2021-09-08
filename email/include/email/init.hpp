@@ -42,6 +42,8 @@ init(int argc, char const * const argv[]);
 
 /// Shut down context.
 /**
+ * This should be called at the end before exiting.
+ *
  * \return true if successful, false otherwise
  */
 EMAIL_PUBLIC

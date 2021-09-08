@@ -175,19 +175,21 @@ TEST_F(TestEndToEnd, intraprocess_service) {
   email::SequenceNumber seq2 = client2.send_request("an awesome request");
   EXPECT_NE(seq1, seq2);
 
+  EXPECT_FALSE(client1.has_response(seq1));
+  EXPECT_FALSE(client2.has_response(seq2));
   EXPECT_FALSE(client1.get_response(seq1).has_value());
   EXPECT_FALSE(client2.get_response(seq2).has_value());
 
   email::WaitSet waitset;
   waitset.add_server(&server1);
   EXPECT_FALSE(waitset.wait());
+  ASSERT_TRUE(server1.has_request());
   waitset.clear();
   waitset.add_server(&server2);
   EXPECT_FALSE(waitset.wait());
+  ASSERT_TRUE(server2.has_request());
   waitset.clear();
 
-  ASSERT_TRUE(server1.has_request());
-  ASSERT_TRUE(server2.has_request());
   auto req_with_info_1_opt = server1.get_request_with_info();
   auto req_with_info_2_opt = server2.get_request_with_info();
   ASSERT_TRUE(req_with_info_1_opt.has_value());
@@ -224,13 +226,15 @@ TEST_F(TestEndToEnd, intraprocess_service) {
 
   waitset.add_client(&client1);
   EXPECT_FALSE(waitset.wait());
+  ASSERT_TRUE(client1.has_response());
+  ASSERT_TRUE(client1.has_response(seq1));
   waitset.clear();
   waitset.add_client(&client2);
   EXPECT_FALSE(waitset.wait());
+  ASSERT_TRUE(client2.has_response());
+  ASSERT_TRUE(client2.has_response(seq2));
   waitset.clear();
 
-  ASSERT_TRUE(client1.has_response());
-  ASSERT_TRUE(client2.has_response());
   auto res_with_info_1_opt = client1.get_response_with_info();
   auto res_with_info_2_opt = client2.get_response_with_info();
   ASSERT_TRUE(res_with_info_1_opt.has_value());
