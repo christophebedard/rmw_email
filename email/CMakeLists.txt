@@ -161,6 +161,10 @@ if(BUILD_TESTING)
     test/test_containers.cpp
   )
   target_link_libraries(test_containers ${PROJECT_NAME})
+  ament_add_gtest(test_end_to_end
+    test/test_end_to_end.cpp
+  )
+  target_link_libraries(test_end_to_end ${PROJECT_NAME})
   ament_add_gtest(test_gid
     test/test_gid.cpp
   )
