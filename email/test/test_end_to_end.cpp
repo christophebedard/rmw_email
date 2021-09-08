@@ -287,6 +287,54 @@ TEST_F(TestEndToEnd, intraprocess_service) {
   EXPECT_STREQ(res_3.c_str(), "your tubbytoast");
 }
 
+TEST_F(TestEndToEnd, intraprocess_service_failures) {
+  email::ServiceClient client("/my_service");
+  email::ServiceServer server("/my_service");
+
+  auto seq = client.send_request("tubbytoast");
+  auto req = email::wait_for_request(&server);
+  server.send_response(req.id, "your tubbytoast");
+  auto res = email::wait_for_response(seq, &client);
+
+  // Invalid service request ID
+  email::ServiceRequestId id(0L, email::Gid(0));
+  server.send_response(id, "some response");
+
+  // Unknown service client for response
+  const struct email::EmailRecipients recipients({"tinkywinky@tubby.dome"}, {}, {});
+  const email::EmailHeaders headers_unknown_client = {
+    {"Source-Timestamp", "123"},
+    {"Client-GID", "456"},
+    {"Request-Sequence-Number", "789"}
+  };
+  const struct email::EmailData data_unknown_client(
+    "message ID",
+    "original message ID",
+    "",
+    recipients,
+    {"subject", "body"},
+    headers_unknown_client);
+  email::get_global_context()->get_service_handler()->handle(data_unknown_client);
+
+  // Response already sent
+  server.send_response(req.id, "your tubbytoast");
+
+  // Response already received
+  const email::EmailHeaders headers_already_received = {
+    {"Source-Timestamp", "123"},
+    {"Client-GID", client.get_gid().to_string()},
+    {"Request-Sequence-Number", std::to_string(req.id.sequence_number)}
+  };
+  const struct email::EmailData data_already_received(
+    "message ID",
+    "original message ID",
+    "",
+    recipients,
+    {"subject", "body"},
+    headers_already_received);
+  email::get_global_context()->get_service_handler()->handle(data_already_received);
+}
+
 TEST_F(TestEndToEnd, intraprocess_wait) {
   auto pub = std::make_shared<email::Publisher>("/my_topic");
   auto sub = std::make_shared<email::Subscription>("/my_topic");
