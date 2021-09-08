@@ -18,12 +18,13 @@
 #include <string>
 
 #include "email/context.hpp"
+#include "email/init.hpp"
 #include "rcpputils/filesystem_helper.hpp"
 #include "rcutils/env.h"
 
-TEST(TestContext, init) {
+TEST(TestContext, init_fail) {
   rcpputils::fs::path file =
-    rcpputils::fs::temp_directory_path() / "TestContext-init.email.yml";
+    rcpputils::fs::temp_directory_path() / "TestContext-init_fail.email.yml";
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", file.string().c_str()));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", file.string().c_str()));
 
@@ -40,4 +41,32 @@ TEST(TestContext, init) {
 
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", NULL));
+}
+
+TEST(TestContext, shutdown_fail) {
+  rcpputils::fs::path config_file =
+    rcpputils::fs::temp_directory_path() / "TestContext-shutdown.email.yml";
+  ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", config_file.string().c_str()));
+  std::ofstream config_file_stream;
+  config_file_stream = std::ofstream(config_file.string().c_str());
+  config_file_stream <<
+    R"(
+email:
+  user:
+    url-smtp: some.url
+    url-imap: some.other.url
+    username: my@email.ca
+    password: tinkywinky
+  recipients:
+    to: to@email.com
+  polling-period:
+  intraprocess: true
+)";
+  config_file_stream.close();
+
+  // Init global context and force destruction without calling shutdown
+  email::init();
+
+  EXPECT_TRUE(rcpputils::fs::remove(config_file));
+  ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
 }

@@ -74,7 +74,7 @@ public:
 /// Context object with global resources.
 /**
  * It gets initialized only once.
- * It owns global objects which get created & initialized when needed.
+ * It owns global objects which get created & initialized.
  */
 class Context
 {
@@ -110,7 +110,8 @@ public:
 
   /// Shut down context.
   /**
-   * Shouldn't be called directly: use `email::shutdown()` instead.
+   * This should be called at the end before context destruction.
+   * However, it shouldn't be called directly: use `email::shutdown()` instead.
    *
    * \return true if successful, false otherwise
    */
