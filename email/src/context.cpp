@@ -54,7 +54,10 @@ Context::Context()
 
 Context::~Context()
 {
-  logger_->debug("destroying");
+  // Logger might not have been initialized
+  if (logger_) {
+    logger_->debug("destroying");
+  }
   if (is_valid()) {
     (void)shutdown();
   }
@@ -66,7 +69,6 @@ Context::init()
   if (is_valid()) {
     throw ContextAlreadyInitializedError();
   }
-  is_valid_ = true;
 
   auto options = Options::parse_options_from_file();
   if (!options) {
@@ -83,7 +85,6 @@ Context::init(int argc, char const * const argv[])
   if (is_valid()) {
     throw ContextAlreadyInitializedError();
   }
-  is_valid_ = true;
 
   auto options = Options::parse_options_from_args(argc, argv);
   if (!options) {
@@ -98,6 +99,7 @@ Context::init(int argc, char const * const argv[])
 void
 Context::init_common()
 {
+  is_valid_ = true;
   log::init_from_env();
   spdlog::get("root")->debug("logging initialized");
   logger_ = log::create("Context");
