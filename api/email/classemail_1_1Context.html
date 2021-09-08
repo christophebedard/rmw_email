@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p><a class="el" href="classemail_1_1Context.html" title="Context object with global resources.">Context</a> object with global resources. </p>
-<p>It gets initialized only once. It owns global objects which get created &amp; initialized when needed. </p>
+<p>It gets initialized only once. It owns global objects which get created &amp; initialized. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a83781e2984ad65b512ae6e8575e4bb40"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a83781e2984ad65b512ae6e8575e4bb40">&#9670;&nbsp;</a></span>Context()</h2>
@@ -242,7 +242,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Shut down context. </p>
-<p>Shouldn't be called directly: use <code><a class="el" href="namespaceemail.html#a7a0e2779940792a4753a9b163fd1bbc4" title="Shut down context.">email::shutdown()</a></code> instead.</p>
+<p>This should be called at the end before context destruction. However, it shouldn't be called directly: use <code><a class="el" href="namespaceemail.html#a7a0e2779940792a4753a9b163fd1bbc4" title="Shut down context.">email::shutdown()</a></code> instead.</p>
 <dl class="section return"><dt>Returns</dt><dd>true if successful, false otherwise </dd></dl>
 
 </div>
