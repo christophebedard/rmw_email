@@ -43,12 +43,14 @@ ServiceHandler::ServiceHandler()
   mutex_servers_(),
   servers_()
 {
+  // *INDENT-OFF* (uncrustify wants to put the lcov exclude comment on the next line)
   // Register handler with the polling manager
   get_global_context()->get_polling_manager()->register_handler(
-    std::bind(
+    std::bind(  // LCOV_EXCL_LINE (for some reason this is never marked as executed)
       &ServiceHandler::handle,
       this,
       std::placeholders::_1));
+  // *INDENT-ON*
   logger_->debug("initialized");
 }
 
