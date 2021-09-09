@@ -24,6 +24,8 @@
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/macros.hpp"
+#include "rmw_email_cpp/qos.hpp"
+#include "rmw_email_cpp/type_support.hpp"
 #include "rmw_email_cpp/types.hpp"
 
 extern "C" rmw_ret_t rmw_init_publisher_allocation(
@@ -120,6 +122,17 @@ extern "C" rmw_publisher_t * rmw_create_publisher(
     return nullptr;
   }
   RMW_CHECK_ARGUMENT_FOR_NULL(qos_policies, nullptr);
+  if (!rmw_email_cpp::is_valid_qos(qos_policies)) {
+    RMW_SET_ERROR_MSG("qos_policies is invalid");
+    return nullptr;
+  }
+
+  // Validate type support
+  const rosidl_message_type_support_t * valid_type_support =
+    rmw_email_cpp::validate_type_support_message(type_supports);
+  if (nullptr == valid_type_support) {
+    return nullptr;
+  }
 
   // Validate topic name
   // TODO(christophebedard) extract to function since rmw_create_subscription does the same thing
@@ -134,7 +147,7 @@ extern "C" rmw_publisher_t * rmw_create_publisher(
     return nullptr;
   }
 
-  return _create_publisher(topic_name, publisher_options, type_supports);
+  return _create_publisher(topic_name, publisher_options, valid_type_support);
 }
 
 extern "C" rmw_ret_t rmw_destroy_publisher(rmw_node_t * node, rmw_publisher_t * publisher)

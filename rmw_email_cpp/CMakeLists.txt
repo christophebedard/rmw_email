@@ -36,8 +36,10 @@ set(${PROJECT_NAME}_SOURCES
   src/gid.cpp
   src/guard_condition.cpp
   src/identifier.cpp
+  src/qos.cpp
   src/take.cpp
   src/timestamp.cpp
+  src/type_support.cpp
 
   src/rmw_client.cpp
   src/rmw_event.cpp
