@@ -109,20 +109,20 @@ Some tests are located in the [`test`](./test) directory.
 The tests aim to cover both typical usage and corner cases, but are quantified by contributing to code coverage.
 
 ### Coverage [4.iii]
-<!-- yes & no -->
+<!-- yes & yes -->
 
 `email` tries to follow the recommendations for ROS Core packages in the [ROS 2 Developer Guide](https://docs.ros.org/en/rolling/Contributing/Developer-Guide.html#code-coverage), and opts to use line coverage instead of branch coverage.
 
 This includes:
 
 - tracking and reporting line coverage statistics
-<!-- - achieving and maintaining a reasonable branch line coverage (90-100%) -->
-<!-- - no lines are manually skipped in coverage calculations -->
+- achieving and maintaining a reasonable branch line coverage (90-100%)
+- no lines are manually skipped in coverage calculations (unless it is for technical reasons)
 
 Changes are required to make a best effort to keep or increase coverage before being accepted, but decreases are allowed if properly justified and accepted by reviewers.
 
-Current coverage statistics can be viewed [here](https://app.codecov.io/gh/christophebedard/rmw_email).
-<!-- `email` has a line coverage `>= 95%`, which is calculated over all directories within `email`. -->
+Current coverage statistics can be viewed [here](https://app.codecov.io/gh/christophebedard/rmw_email) and in the [latest *Test* workflow](https://github.com/christophebedard/rmw_email/actions/workflows/ci.yml).
+`email` has a line coverage `>= 90%`, which is calculated over all non-test directories within `email`.
 
 ### Performance [4.iv]
 <!-- no -->
@@ -224,7 +224,7 @@ The table below compares the requirements in REP-2004 with the current state of 
 |4.i| Feature items tests | x |
 |4.ii| Public API tests | x |
 |4.iii.a| Using coverage | ✓ |
-|4.iii.b| Coverage policy | x |
+|4.iii.b| Coverage policy | ✓ |
 |4.iv.a| Performance tests | x |
 |4.iv.b| Performance tests policy | x |
 |4.v.a| Code style enforcement (linters) | ✓ |
