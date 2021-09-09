@@ -23,6 +23,7 @@ jobs:
       with:
         required-ros-distributions: ${{ matrix.build-type == 'binary' && 'rolling' || '' }}
     - uses: ros-tooling/action-ros-ci@master
+      id: action-ros-ci
       with:
         package-name: email email_examples rmw_email_cpp
         target-ros2-distro: rolling
@@ -38,9 +39,20 @@ jobs:
               ]
             }
           }
+    - name: Generate coverage information separately
+      run: |
+        colcon lcov-result --packages-select email --filter **/email/test/* --lcov-base lcov-email --verbose
+        colcon lcov-result --packages-select rmw_email_cpp --filter **/rmw_email_cpp/test/* --lcov-base lcov-rmw_email_cpp --verbose
+      working-directory: ${{ steps.action-ros-ci.outputs.ros-workspace-directory-name }}
     - uses: codecov/codecov-action@v1
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: ros_ws/lcov/total_coverage.info
-        flags: unittests
-        name: codecov-umbrella
+        file: ros_ws/lcov-email/total_coverage.info
+        flags: email
+        name: email
+    - uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        file: ros_ws/lcov-rmw_email_cpp/total_coverage.info
+        flags: rmw-email-cpp
+        name: rmw-email-cpp
