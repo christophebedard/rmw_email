@@ -25,6 +25,7 @@
 #include <thread>
 #include <vector>
 
+#include "email/email/handler.hpp"
 #include "email/email/info.hpp"
 #include "email/email/receiver.hpp"
 #include "email/log.hpp"
@@ -52,17 +53,14 @@ public:
 
   ~PollingManager();
 
-  /// Alias for handler function.
-  using HandlerFunction = std::function<void (const struct EmailData &)>;
-
   /// Register a handler with the manager.
   /**
-   * The handler function will be called when there is a new email.
+   * The handler's handling function will be called when there is a new email.
    *
    * \param handler the handler to call with new emails
    */
   void
-  register_handler(const HandlerFunction & handler);
+  register_handler(std::weak_ptr<EmailHandler> handler);
 
   /// Get status.
   /**
@@ -92,7 +90,7 @@ private:
   std::atomic_bool do_shutdown_;
   std::thread thread_;
   std::mutex handlers_mutex_;
-  std::vector<HandlerFunction> handlers_;
+  std::vector<std::weak_ptr<EmailHandler>> handlers_;
   std::shared_ptr<Logger> logger_;
 };
 

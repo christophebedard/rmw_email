@@ -15,6 +15,8 @@
 #ifndef EMAIL__EMAIL__HANDLER_HPP_
 #define EMAIL__EMAIL__HANDLER_HPP_
 
+#include <memory>
+
 #include "email/email/info.hpp"
 
 namespace email
@@ -24,7 +26,7 @@ namespace email
 /**
  * Gets new emails and handles them by conditionally passing them on.
  */
-class EmailHandler
+class EmailHandler : public std::enable_shared_from_this<EmailHandler>
 {
 public:
   /// Handle new email.
