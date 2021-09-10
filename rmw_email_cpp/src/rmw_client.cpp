@@ -23,6 +23,8 @@
 
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/macros.hpp"
+#include "rmw_email_cpp/qos.hpp"
+#include "rmw_email_cpp/type_support.hpp"
 #include "rmw_email_cpp/types.hpp"
 
 extern "C" rmw_client_t * rmw_create_client(
@@ -40,6 +42,17 @@ extern "C" rmw_client_t * rmw_create_client(
   RMW_CHECK_ARGUMENT_FOR_NULL(type_support, nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(service_name, nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(qos_policies, nullptr);
+  if (!rmw_email_cpp::is_valid_qos(qos_policies)) {
+    RMW_SET_ERROR_MSG("qos_policies is invalid");
+    return nullptr;
+  }
+
+  // Validate type support
+  const rosidl_service_type_support_t * valid_type_support =
+    rmw_email_cpp::validate_type_support_service(type_support);
+  if (nullptr == valid_type_support) {
+    return nullptr;
+  }
 
   // Validate service name
   if (!qos_policies->avoid_ros_namespace_conventions) {
@@ -70,7 +83,7 @@ extern "C" rmw_client_t * rmw_create_client(
       delete rmw_email_client;
     });
   rmw_email_client->email_client = email_client;
-  rmw_email_client->type_supports = *type_support;
+  rmw_email_client->type_supports = *valid_type_support;
 
   rmw_client_t * rmw_client = rmw_client_allocate();
   RET_NULL_X(rmw_client, return nullptr);
