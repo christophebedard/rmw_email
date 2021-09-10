@@ -17,7 +17,9 @@
 namespace email
 {
 
-EmailHandler::EmailHandler() {}
+EmailHandler::EmailHandler()
+: registered_(false)
+{}
 
 EmailHandler::~EmailHandler() {}
 

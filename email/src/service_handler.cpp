@@ -63,6 +63,7 @@ ServiceHandler::register_handler()
       }
       // Do nothing if the pointer could not be locked
     });
+  registered_.store(true);
   logger_->debug("registered");
 }
 
@@ -71,6 +72,7 @@ ServiceHandler::register_service_client(
   const Gid & gid,
   ResponseMap::SharedPtr response_map)
 {
+  assert(registered_.load());
   {
     std::scoped_lock<std::mutex> lock(mutex_clients_);
     clients_.insert({gid.value(), response_map});
@@ -86,6 +88,7 @@ ServiceHandler::register_service_server(
   const std::string & service_name,
   RequestQueue::SharedPtr request_queue)
 {
+  assert(registered_.load());
   {
     std::scoped_lock<std::mutex> lock(mutex_servers_);
     servers_.insert({service_name, request_queue});

@@ -57,6 +57,7 @@ SubscriptionHandler::register_handler()
       }
       // Do nothing if the pointer could not be locked
     });
+  registered_.store(true);
   logger_->debug("registered");
 }
 
@@ -65,6 +66,7 @@ SubscriptionHandler::register_subscription(
   const std::string & topic_name,
   MessageQueue::SharedPtr message_queue)
 {
+  assert(registered_.load());
   {
     std::scoped_lock<std::mutex> lock(subscriptions_mutex_);
     subscriptions_.insert({topic_name, message_queue});

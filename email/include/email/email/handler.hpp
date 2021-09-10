@@ -15,6 +15,8 @@
 #ifndef EMAIL__EMAIL__HANDLER_HPP_
 #define EMAIL__EMAIL__HANDLER_HPP_
 
+#include <atomic>
+
 #include "email/email/info.hpp"
 
 namespace email
@@ -51,6 +53,8 @@ protected:
   EmailHandler();
 
   virtual ~EmailHandler();
+
+  std::atomic_bool registered_;
 };
 
 }  // namespace email
