@@ -37,7 +37,8 @@ namespace email
 /**
  * Distributes new messages to the right subscription(s).
  */
-class SubscriptionHandler : public EmailHandler
+class SubscriptionHandler : public EmailHandler,
+  public std::enable_shared_from_this<SubscriptionHandler>
 {
 public:
   using MessageQueue = SafeQueue<std::pair<std::string, MessageInfo>>;
@@ -59,16 +60,17 @@ public:
     const std::string & topic_name,
     MessageQueue::SharedPtr message_queue);
 
+  virtual
+  void
+  register_handler();
+
   /// Handle new email.
   /**
-   * To be called by the `PollingManager`.
-   *
    * Adds the message to the queues of subscriptions with topic names that match the new message.
-   *
-   * \param data the new email data
    */
+  virtual
   void
-  virtual handle(const struct EmailData & data);
+  handle(const struct EmailData & data);
 
 private:
   EMAIL_DISABLE_COPY(SubscriptionHandler)
