@@ -23,6 +23,7 @@
 #include "email/email.hpp"
 #include "rcpputils/filesystem_helper.hpp"
 #include "rcutils/env.h"
+#include "rcutils/testing/fault_injection.h"
 
 class TestEndToEnd : public ::testing::Test
 {
@@ -287,6 +288,15 @@ TEST_F(TestEndToEnd, intraprocess_service) {
   EXPECT_STREQ(res_3.c_str(), "your tubbytoast");
 }
 
+TEST_F(TestEndToEnd, intraprocess_pub_sub_failures) {
+  email::Publisher pub("/my_topic");
+
+  RCUTILS_FAULT_INJECTION_TEST(
+  {
+    pub.publish("big hug!");
+  });
+}
+
 TEST_F(TestEndToEnd, intraprocess_service_failures) {
   email::ServiceClient client("/my_service");
   email::ServiceServer server("/my_service");
@@ -295,6 +305,9 @@ TEST_F(TestEndToEnd, intraprocess_service_failures) {
   auto req = email::wait_for_request(&server);
   server.send_response(req.id, "your tubbytoast");
   auto res = email::wait_for_response(seq, &client);
+
+  // Response already sent
+  server.send_response(req.id, "your tubbytoast");
 
   // Invalid service request ID
   email::ServiceRequestId id(0L, email::Gid(0));
@@ -316,9 +329,6 @@ TEST_F(TestEndToEnd, intraprocess_service_failures) {
     headers_unknown_client);
   email::get_global_context()->get_service_handler()->handle(data_unknown_client);
 
-  // Response already sent
-  server.send_response(req.id, "your tubbytoast");
-
   // Response already received
   const email::EmailHeaders headers_already_received = {
     {"Source-Timestamp", "123"},
@@ -333,6 +343,17 @@ TEST_F(TestEndToEnd, intraprocess_service_failures) {
     {"subject", "body"},
     headers_already_received);
   email::get_global_context()->get_service_handler()->handle(data_already_received);
+
+  // Response failure
+  auto seq2 = client.send_request("again again!");
+  auto req2 = email::wait_for_request(&server);
+  RCUTILS_FAULT_INJECTION_TEST(
+  {
+    // :(
+    server.send_response(req2.id, "your tubbytoast again!");
+  });
+  // Will never get the response, which currently means an assert will fail
+  EXPECT_DEATH(email::wait_for_response(seq2, &client, std::chrono::milliseconds(1)), "");
 }
 
 TEST_F(TestEndToEnd, intraprocess_wait) {

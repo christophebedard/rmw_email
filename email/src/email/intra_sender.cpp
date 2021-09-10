@@ -16,6 +16,8 @@
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
+#include "rcutils/testing/fault_injection.h"
+
 #include "email/email/info.hpp"
 #include "email/email/intra_receiver.hpp"
 #include "email/email/intra_sender.hpp"
@@ -51,8 +53,7 @@ IntraEmailSender::send(
     *recipients_,
     content,
     additional_headers);
-  send_email_data(data);
-  return true;
+  return send_email_data(data);
 }
 
 bool
@@ -70,15 +71,16 @@ IntraEmailSender::reply(
     recipients,
     content,
     additional_headers);
-  send_email_data(data);
-  return true;
+  return send_email_data(data);
 }
 
-void
+bool
 IntraEmailSender::send_email_data(const struct EmailData & data)
 {
+  RCUTILS_FAULT_INJECTION_MAYBE_RETURN_ERROR(false);
   logger()->debug("data:\n{}", data);
   receiver_->receive(data);
+  return true;
 }
 
 }  // namespace email
