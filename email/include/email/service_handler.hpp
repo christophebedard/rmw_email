@@ -44,7 +44,7 @@ namespace email
  * All service servers may get the request and respond, but only the first response will be used
  * by the original service client; the rest will be discarded.
  */
-class ServiceHandler : public EmailHandler
+class ServiceHandler : public EmailHandler, public std::enable_shared_from_this<ServiceHandler>
 {
 public:
   using ResponseMap = SafeMap<SequenceNumber, std::pair<struct EmailData, ServiceInfo>>;

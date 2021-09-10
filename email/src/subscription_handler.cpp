@@ -39,7 +39,13 @@ SubscriptionHandler::SubscriptionHandler()
 {
   // Register handler with the polling manager
   get_global_context()->get_polling_manager()->register_handler(
-    std::weak_ptr<EmailHandler>(this->shared_from_this()));
+    [handler = std::weak_ptr<SubscriptionHandler>(this->shared_from_this())](
+      const struct EmailData & data) {
+      if (auto handler_ptr = handler.lock()) {
+        handler_ptr->handle(data);
+      }
+      // Do nothing if the pointer could not be locked
+    });
   logger_->debug("initialized");
 }
 

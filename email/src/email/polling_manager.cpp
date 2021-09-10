@@ -23,7 +23,6 @@
 
 #include "spdlog/fmt/bundled/chrono.h"
 
-#include "email/email/handler.hpp"
 #include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
 #include "email/email/receiver.hpp"
@@ -57,7 +56,7 @@ PollingManager::~PollingManager()
 }
 
 void
-PollingManager::register_handler(std::weak_ptr<EmailHandler> handler)
+PollingManager::register_handler(const HandlerFunction & handler)
 {
   {
     std::scoped_lock<std::mutex> lock(handlers_mutex_);
@@ -124,12 +123,8 @@ PollingManager::poll_thread()
     {
       std::scoped_lock<std::mutex> lock(handlers_mutex_);
       for (auto it = handlers_.begin(); it != handlers_.end(); ++it) {
-        if (auto handler = it->lock()) {
-          logger_->debug("calling handler");
-          handler->handle(data);
-        } else {
-          logger_->debug("handler could not be locked");
-        }
+        logger_->debug("calling handler");
+        it->operator()(data);
       }
     }
   }

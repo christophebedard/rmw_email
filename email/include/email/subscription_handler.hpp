@@ -37,7 +37,8 @@ namespace email
 /**
  * Distributes new messages to the right subscription(s).
  */
-class SubscriptionHandler : public EmailHandler
+class SubscriptionHandler : public EmailHandler,
+  public std::enable_shared_from_this<SubscriptionHandler>
 {
 public:
   using MessageQueue = SafeQueue<std::pair<std::string, MessageInfo>>;
