@@ -18,13 +18,13 @@
 #include "rmw/error_handling.h"
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
-#include "rmw/validate_full_topic_name.h"
 #include "tracetools/tracetools.h"
 
 #include "rmw_email_cpp/gid.hpp"
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/macros.hpp"
 #include "rmw_email_cpp/qos.hpp"
+#include "rmw_email_cpp/topic_service_name.hpp"
 #include "rmw_email_cpp/type_support.hpp"
 #include "rmw_email_cpp/types.hpp"
 
@@ -119,15 +119,7 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
   }
 
   // Validate topic name
-  // TODO(christophebedard) extract to function since rmw_create_publisher does the same thing
-  int validation_result = RMW_TOPIC_VALID;
-  rmw_ret_t ret = rmw_validate_full_topic_name(topic_name, &validation_result, nullptr);
-  if (RMW_RET_OK != ret) {
-    return nullptr;
-  }
-  if (RMW_TOPIC_VALID != validation_result) {
-    const char * reason = rmw_full_topic_name_validation_result_string(validation_result);
-    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("invalid topic name: %s", reason);
+  if (RMW_RET_OK != rmw_email_cpp::validate_topic_name(topic_name)) {
     return nullptr;
   }
 
@@ -209,15 +201,9 @@ extern "C" rmw_ret_t rmw_count_subscribers(
   RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, RMW_RET_INVALID_ARGUMENT);
 
   // Validate topic name
-  int validation_result = RMW_TOPIC_VALID;
-  rmw_ret_t ret = rmw_validate_full_topic_name(topic_name, &validation_result, nullptr);
+  rmw_ret_t ret = rmw_email_cpp::validate_topic_name(topic_name);
   if (RMW_RET_OK != ret) {
     return ret;
-  }
-  if (RMW_TOPIC_VALID != validation_result) {
-    const char * reason = rmw_full_topic_name_validation_result_string(validation_result);
-    RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("topic_name argument is invalid: %s", reason);
-    return RMW_RET_INVALID_ARGUMENT;
   }
 
   RMW_CHECK_ARGUMENT_FOR_NULL(count, RMW_RET_INVALID_ARGUMENT);

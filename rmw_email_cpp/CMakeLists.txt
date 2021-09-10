@@ -39,6 +39,7 @@ set(${PROJECT_NAME}_SOURCES
   src/qos.cpp
   src/take.cpp
   src/timestamp.cpp
+  src/topic_service_name.cpp
   src/type_support.cpp
 
   src/rmw_client.cpp
