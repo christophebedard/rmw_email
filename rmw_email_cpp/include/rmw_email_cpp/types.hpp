@@ -28,8 +28,6 @@
 
 struct rmw_context_impl_t
 {
-  // TODO(christophebedard) add missing stuff
-
   // TODO(christophebedard) move to graph cache handler?
   rmw_guard_condition_t * graph_guard_condition{nullptr};
 
@@ -56,7 +54,6 @@ struct rmw_context_impl_t
   cleanup();
 };
 
-// TODO(christophebedard) add concept of "node" to email?
 typedef struct rmw_email_node_t
 {
 } rmw_email_node_t;
