@@ -20,7 +20,8 @@
 #include "email/email/payload_utils.hpp"
 #include "email/email/response_utils.hpp"
 
-TEST(TestResponseUtils, get_nextuid_from_response) {
+TEST(TestResponseUtils, get_nextuid_from_response)
+{
   auto nextuid_opt_fail = email::utils::response::get_nextuid_from_response("whatever 42");
   EXPECT_FALSE(nextuid_opt_fail.has_value());
 
@@ -35,7 +36,8 @@ TEST(TestResponseUtils, get_nextuid_from_response) {
   EXPECT_EQ(42, nextuid);
 }
 
-TEST(TestResponseUtils, get_email_data_from_response) {
+TEST(TestResponseUtils, get_email_data_from_response)
+{
   std::optional<email::EmailData> data_opt;
   data_opt = email::utils::response::get_email_data_from_response("");
   EXPECT_FALSE(data_opt.has_value());
@@ -207,7 +209,8 @@ TEST(TestResponseUtils, get_email_data_from_response) {
   EXPECT_EQ(data.content.body, "this is the\r\n email's \r\nbody\r\n");
 }
 
-TEST(TestResponseUtils, payload_to_response) {
+TEST(TestResponseUtils, payload_to_response)
+{
   std::string payload;
   std::optional<struct email::EmailContent> content;
   email::EmailHeaders headers;
@@ -258,7 +261,8 @@ TEST(TestResponseUtils, payload_to_response) {
   EXPECT_EQ(content.value().body, "the body\n\n");
 }
 
-TEST(TestResponseUtils, get_header_value) {
+TEST(TestResponseUtils, get_header_value)
+{
   auto value_opt_fail = email::utils::response::get_header_value("doesntexist", {});
   EXPECT_FALSE(value_opt_fail.has_value());
 

@@ -17,7 +17,8 @@
 #include "email/safe_map.hpp"
 #include "email/safe_queue.hpp"
 
-TEST(TestContainers, safe_map) {
+TEST(TestContainers, safe_map)
+{
   email::SafeMap<int, int> map;
   EXPECT_TRUE(map.empty());
   EXPECT_FALSE(map.contains(1));
@@ -37,7 +38,8 @@ TEST(TestContainers, safe_map) {
   EXPECT_TRUE(map.empty());
 }
 
-TEST(TestContainers, safe_queue) {
+TEST(TestContainers, safe_queue)
+{
   email::SafeQueue<int> queue;
   EXPECT_TRUE(queue.empty());
   queue.push(1);

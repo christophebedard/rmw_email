@@ -22,7 +22,8 @@
 #include "rcpputils/filesystem_helper.hpp"
 #include "rcutils/env.h"
 
-TEST(TestContext, init_fail) {
+TEST(TestContext, init_fail)
+{
   rcpputils::fs::path file =
     rcpputils::fs::temp_directory_path() / "TestContext-init_fail.email.yml";
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", file.string().c_str()));
@@ -43,7 +44,8 @@ TEST(TestContext, init_fail) {
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", NULL));
 }
 
-TEST(TestContext, shutdown_fail) {
+TEST(TestContext, shutdown_fail)
+{
   rcpputils::fs::path config_file =
     rcpputils::fs::temp_directory_path() / "TestContext-shutdown.email.yml";
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", config_file.string().c_str()));

@@ -20,7 +20,8 @@
 
 #include "email/email/payload_utils.hpp"
 
-TEST(TestPayloadUtils, join_list) {
+TEST(TestPayloadUtils, join_list)
+{
   const std::vector<std::string> vect_empty = {};
   EXPECT_EQ("", email::utils::payload::join_list(vect_empty));
 
@@ -39,7 +40,8 @@ TEST(TestPayloadUtils, join_list) {
     email::utils::payload::join_list(vect_three));
 }
 
-TEST(TestPayloadUtils, build_payload) {
+TEST(TestPayloadUtils, build_payload)
+{
   // Check handling of multiple recipients
   const std::string payload_one_recipient = \
     "In-Reply-To: \r\nReferences: \r\n" \
@@ -126,7 +128,8 @@ TEST(TestPayloadUtils, build_payload) {
       std::nullopt));
 }
 
-TEST(TestPayloadUtils, cut_string_if_newline) {
+TEST(TestPayloadUtils, cut_string_if_newline)
+{
   std::string no_newline = "this is a string without any newline";
   EXPECT_EQ(no_newline, email::utils::payload::cut_string_if_newline(no_newline));
 

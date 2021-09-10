@@ -35,7 +35,8 @@ public:
   }
 };
 
-TEST_F(TestWaitSet, empty) {
+TEST_F(TestWaitSet, empty)
+{
   email::WaitSet waitset;
   // Expect true: it should timeout since there is nothing that can satisfy the wait
   EXPECT_TRUE(waitset.wait(std::chrono::milliseconds(0)));
@@ -47,7 +48,8 @@ TEST_F(TestWaitSet, empty) {
   EXPECT_EQ(0UL, waitset.get_guard_conditions().size());
 }
 
-TEST_F(TestWaitSet, add) {
+TEST_F(TestWaitSet, add)
+{
   email::WaitSet waitset;
   EXPECT_DEATH(waitset.add_subscription(nullptr), "Assertion .* failed");
   EXPECT_DEATH(waitset.add_client(nullptr), "Assertion .* failed");
@@ -55,7 +57,8 @@ TEST_F(TestWaitSet, add) {
   EXPECT_DEATH(waitset.add_guard_condition(nullptr), "Assertion .* failed");
 }
 
-TEST_F(TestWaitSet, guard_condition_in_use) {
+TEST_F(TestWaitSet, guard_condition_in_use)
+{
   email::GuardCondition cond;
   email::WaitSet waitset1;
   waitset1.add_guard_condition(&cond);
@@ -71,7 +74,8 @@ TEST_F(TestWaitSet, guard_condition_in_use) {
   EXPECT_TRUE(waitset1.wait(std::chrono::milliseconds(0)));
 }
 
-TEST_F(TestWaitSet, guard_condition) {
+TEST_F(TestWaitSet, guard_condition)
+{
   {
     // Should time out, and guard cond should be set to nullptr since it wasn't triggered
     email::GuardCondition cond;
@@ -110,7 +114,8 @@ TEST_F(TestWaitSet, guard_condition) {
   }
 }
 
-TEST_F(TestWaitSet, multiple_waits) {
+TEST_F(TestWaitSet, multiple_waits)
+{
   email::WaitSet waitset;
   email::GuardCondition cond;
   bool timedout = false;

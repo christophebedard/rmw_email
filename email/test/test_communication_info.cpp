@@ -23,7 +23,8 @@
 #include "email/service_handler.hpp"
 #include "email/timestamp.hpp"
 
-TEST(TestMessageInfo, init) {
+TEST(TestMessageInfo, init)
+{
   auto ts_source = email::Timestamp::now();
   auto ts_received = email::Timestamp::now();
   auto pub_gid = email::Gid::new_gid();
@@ -33,7 +34,8 @@ TEST(TestMessageInfo, init) {
   EXPECT_EQ(pub_gid.value(), msg_info.publisher_gid().value());
 }
 
-TEST(TestMessageInfo, from_headers) {
+TEST(TestMessageInfo, from_headers)
+{
   auto info = email::MessageInfo::from_headers(
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},
@@ -63,7 +65,8 @@ TEST(TestMessageInfo, from_headers) {
   }).has_value());
 }
 
-TEST(TestServiceInfo, init) {
+TEST(TestServiceInfo, init)
+{
   auto ts_source = email::Timestamp::now();
   auto ts_received = email::Timestamp::now();
   auto client_gid = email::Gid::new_gid();
@@ -75,7 +78,8 @@ TEST(TestServiceInfo, init) {
   EXPECT_EQ(sequence_number, srv_info.sequence_number());
 }
 
-TEST(TestServiceInfo, from_headers) {
+TEST(TestServiceInfo, from_headers)
+{
   auto info = email::ServiceInfo::from_headers(
   {
     {email::CommunicationInfo::HEADER_SOURCE_TIMESTAMP, "123"},

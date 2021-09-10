@@ -40,7 +40,8 @@ public:
   }
 };
 
-TEST_F(TestOptions, yaml_to_options) {
+TEST_F(TestOptions, yaml_to_options)
+{
   // Empty node
   YAML::Node node;
   EXPECT_FALSE(email::Options::yaml_to_options(node).has_value());
@@ -107,7 +108,8 @@ TEST_F(TestOptions, yaml_to_options) {
   ASSERT_FALSE(options.has_value());
 }
 
-TEST_F(TestOptions, parse_options_file) {
+TEST_F(TestOptions, parse_options_file)
+{
   rcpputils::fs::path file;
 
   // Exists, but directory
@@ -136,7 +138,8 @@ TEST_F(TestOptions, parse_options_file) {
   EXPECT_TRUE(rcpputils::fs::remove(file));
 }
 
-TEST_F(TestOptions, parse_options_from_file) {
+TEST_F(TestOptions, parse_options_from_file)
+{
   // Good file
   rcpputils::fs::path file =
     rcpputils::fs::temp_directory_path() / "TestOptions-parse_options_from_file.email.yml";
@@ -182,7 +185,8 @@ email:
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", NULL));
 }
 
-TEST_F(TestOptions, parse_options_from_args) {
+TEST_F(TestOptions, parse_options_from_args)
+{
   // Bad
   const char * const argv_bad[] = {"a", "b"};
   EXPECT_FALSE(email::Options::parse_options_from_args(0, nullptr).has_value());

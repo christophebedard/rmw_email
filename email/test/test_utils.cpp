@@ -22,17 +22,20 @@
 
 #include "email/utils.hpp"
 
-TEST(TestUtils, string_format) {
+TEST(TestUtils, string_format)
+{
   EXPECT_STREQ("answer is: 42!", email::utils::string_format("answer is: %d!", 42).c_str());
 }
 
-TEST(TestUtils, get_env_var) {
+TEST(TestUtils, get_env_var)
+{
   EXPECT_STREQ("", email::utils::get_env_var("SHOULDNT_EXIST").c_str());
   // See CMakeLists.txt for declaration of this env var
   EXPECT_STREQ("value42", email::utils::get_env_var("EMAIL_TEST_UTILS_TEST_ENV_VAR").c_str());
 }
 
-TEST(TestUtils, get_env_var_or_default) {
+TEST(TestUtils, get_env_var_or_default)
+{
   EXPECT_STREQ(
     "defaultvalue",
     email::utils::get_env_var_or_default("SHOULDNT_EXIST", "defaultvalue").c_str());
@@ -42,7 +45,8 @@ TEST(TestUtils, get_env_var_or_default) {
     email::utils::get_env_var_or_default("EMAIL_TEST_UTILS_TEST_ENV_VAR", "defaultvalue").c_str());
 }
 
-TEST(TestUtils, read_file) {
+TEST(TestUtils, read_file)
+{
   EXPECT_FALSE(email::utils::read_file("doesntexist.txt").has_value());
 
   auto filepath = email::utils::get_env_var("EMAIL_TEST_UTILS_FILE");
@@ -52,7 +56,8 @@ TEST(TestUtils, read_file) {
   EXPECT_FALSE(file_content.value().empty());
 }
 
-TEST(TestUtils, split_email_list_string) {
+TEST(TestUtils, split_email_list_string)
+{
   EXPECT_TRUE(email::utils::split_email_list("").empty());
 
   const std::string list_single = "my@email.com";
@@ -79,7 +84,8 @@ TEST(TestUtils, split_email_list_string) {
   EXPECT_EQ("lastone@geemail.com", vector_multiple_space[2]);
 }
 
-TEST(TestUtils, split_email_list_yaml) {
+TEST(TestUtils, split_email_list_yaml)
+{
   YAML::Node node_vector;
   node_vector.push_back("my@email.com");
   node_vector.push_back("another@email.com");
@@ -103,17 +109,20 @@ TEST(TestUtils, split_email_list_yaml) {
   EXPECT_EQ(0UL, vector_nothing.size());
 }
 
-TEST(TestUtils, yaml_to_string) {
+TEST(TestUtils, yaml_to_string)
+{
   YAML::Node node;
   node["key"] = "value";
   EXPECT_STREQ("{\"key\": \"value\"}", email::utils::yaml_to_string(node).c_str());
 }
 
-TEST(TestUtils, full_url) {
+TEST(TestUtils, full_url)
+{
   EXPECT_STREQ("https://google.com:42/", email::utils::full_url("https", "google.com", 42).c_str());
 }
 
-TEST(TestUtils, optional_stox) {
+TEST(TestUtils, optional_stox)
+{
   auto stoi_opt_fail = email::utils::optional_stoi("abc");
   EXPECT_FALSE(stoi_opt_fail.has_value());
   auto stoul_opt_fail = email::utils::optional_stoul("abc");
@@ -132,7 +141,8 @@ TEST(TestUtils, optional_stox) {
   EXPECT_EQ(42l, stoll_opt);
 }
 
-TEST(TestUtils, thread_get_set_name) {
+TEST(TestUtils, thread_get_set_name)
+{
   const size_t max_len = 16UL;
   char current_name[max_len] = "";
   email::utils::thread_get_name(current_name, max_len);
@@ -164,7 +174,8 @@ TEST(TestUtils, thread_get_set_name) {
   EXPECT_DEATH(email::utils::thread_set_name(NULL), "");
 }
 
-TEST(TestUtils, thread_append_name) {
+TEST(TestUtils, thread_append_name)
+{
   const size_t max_len = 16UL;
   char current_name[max_len] = "";
   email::utils::thread_get_name(current_name, max_len);

@@ -21,7 +21,8 @@
 #include "rcpputils/filesystem_helper.hpp"
 #include "rcutils/env.h"
 
-TEST(TestLog, init) {
+TEST(TestLog, init)
+{
   EXPECT_NO_THROW(email::log::shutdown());
 
   email::log::init(email::log::Level::debug);
@@ -34,7 +35,8 @@ TEST(TestLog, init) {
   email::log::shutdown();
 }
 
-TEST(TestLog, init_log_levels) {
+TEST(TestLog, init_log_levels)
+{
   EXPECT_TRUE(rcutils_set_env("EMAIL_LOG_LEVEL", "debug"));
   email::log::init_from_env();
   email::log::shutdown();
@@ -58,7 +60,8 @@ TEST(TestLog, init_log_levels) {
   email::log::shutdown();
 }
 
-TEST(TestLog, get) {
+TEST(TestLog, get)
+{
   EXPECT_THROW(
     email::log::remove(std::shared_ptr<email::Logger>(nullptr)),
     email::log::LoggingNotInitializedError);
@@ -73,7 +76,8 @@ TEST(TestLog, get) {
   email::log::shutdown();
 }
 
-TEST(TestLog, file) {
+TEST(TestLog, file)
+{
   auto logfile_path = rcpputils::fs::create_temp_directory("TestLog_file") / "log";
   EXPECT_TRUE(rcutils_set_env("EMAIL_LOG_FILE", logfile_path.string().c_str()));
   email::log::init_from_env();

@@ -19,7 +19,8 @@
 #include "email/gid.hpp"
 #include "email/gid_object.hpp"
 
-TEST(TestGid, gid) {
+TEST(TestGid, gid)
+{
   email::Gid gid1 = email::Gid::new_gid();
   email::Gid gid2 = email::Gid::new_gid();
   email::Gid gid3 = email::Gid::new_gid();
@@ -43,7 +44,8 @@ TEST(TestGid, gid) {
   EXPECT_EQ(1u, gid3.value() - gid2.value());
 }
 
-TEST(TestGid, string) {
+TEST(TestGid, string)
+{
   email::Gid gid = email::Gid::new_gid();
   auto str = gid.to_string();
   auto gid_str_opt = email::Gid::from_string(str);
@@ -62,12 +64,14 @@ public:
   {}
 };
 
-TEST(TestGidObject, init) {
+TEST(TestGidObject, init)
+{
   auto gid_object = GidObjectStub();
   EXPECT_NE(0u, gid_object.get_gid().value());
 }
 
-TEST(TestGid, format) {
+TEST(TestGid, format)
+{
   email::Gid gid(42U);
   EXPECT_STREQ("42", fmt::to_string(gid).c_str());
 }

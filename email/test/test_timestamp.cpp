@@ -18,7 +18,8 @@
 
 #include "email/timestamp.hpp"
 
-TEST(TestTimestamp, init) {
+TEST(TestTimestamp, init)
+{
   email::Timestamp ts1 = email::Timestamp::now();
   EXPECT_NE(0u, ts1.nanoseconds());
 
@@ -28,7 +29,8 @@ TEST(TestTimestamp, init) {
   EXPECT_LT(ts1.nanoseconds(), ts2.nanoseconds());
 }
 
-TEST(TestTimestamp, string) {
+TEST(TestTimestamp, string)
+{
   email::Timestamp ts = email::Timestamp::now();
   auto str = ts.to_string();
   auto ts_str_opt = email::Timestamp::from_string(str);
@@ -38,6 +40,7 @@ TEST(TestTimestamp, string) {
   EXPECT_FALSE(email::Timestamp::from_string("abc").has_value());
 }
 
-TEST(TestTimestamp, format) {
+TEST(TestTimestamp, format)
+{
   printf("%s\n", fmt::format("timestamp: {}", email::Timestamp::now()).c_str());
 }
