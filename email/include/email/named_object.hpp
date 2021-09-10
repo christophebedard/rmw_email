@@ -60,8 +60,9 @@ protected:
   virtual ~NamedObject();
 
   /// Validate the object's name and throw an error with an explanation if it is not valid.
+  virtual
   void
-  virtual validate_name() const = 0;
+  validate_name() const = 0;
 
   /// Check if the object's name contains a newline.
   bool

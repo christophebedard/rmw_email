@@ -71,8 +71,9 @@ private:
   /**
    * \throw ServiceNameInvalidError if the service name is invalid
    */
+  virtual
   void
-  virtual validate_name() const;
+  validate_name() const;
 };
 
 }  // namespace email

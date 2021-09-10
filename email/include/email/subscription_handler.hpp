@@ -68,8 +68,9 @@ public:
   /**
    * Adds the message to the queues of subscriptions with topic names that match the new message.
    */
+  virtual
   void
-  virtual handle(const struct EmailData & data);
+  handle(const struct EmailData & data);
 
 private:
   EMAIL_DISABLE_COPY(SubscriptionHandler)
