@@ -67,7 +67,7 @@ private:
   EMAIL_DISABLE_COPY(IntraEmailSender)
 
   /// Send email data to receiver.
-  void
+  bool
   send_email_data(const struct EmailData & data);
 
   std::shared_ptr<IntraEmailReceiver> receiver_;
