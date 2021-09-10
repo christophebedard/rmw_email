@@ -44,20 +44,6 @@
 
 #include "email/gid.hpp"
 
-// TODO(christophebedard) move to rmw_email_cpp
-TRACEPOINT_EVENT(
-  TRACEPOINT_PROVIDER,
-  rmw_publish_yaml,
-  TP_ARGS(
-    const void *, message_arg,
-    const void *, message_yaml_arg
-  ),
-  TP_FIELDS(
-    ctf_integer_hex(const void *, message, message_arg)
-    ctf_integer_hex(const void *, message_yaml, message_yaml_arg)
-  )
-)
-
 TRACEPOINT_EVENT(
   TRACEPOINT_PROVIDER,
   create_publisher,
