@@ -43,6 +43,17 @@ ServiceHandler::ServiceHandler()
   mutex_servers_(),
   servers_()
 {
+  logger_->debug("initialized");
+}
+
+ServiceHandler::~ServiceHandler()
+{
+  logger_->debug("destroying");
+}
+
+void
+ServiceHandler::register_handler()
+{
   // Register handler with the polling manager
   get_global_context()->get_polling_manager()->register_handler(
     [handler = std::weak_ptr<ServiceHandler>(this->shared_from_this())](
@@ -52,12 +63,7 @@ ServiceHandler::ServiceHandler()
       }
       // Do nothing if the pointer could not be locked
     });
-  logger_->debug("initialized");
-}
-
-ServiceHandler::~ServiceHandler()
-{
-  logger_->debug("destroying");
+  logger_->debug("registered");
 }
 
 void

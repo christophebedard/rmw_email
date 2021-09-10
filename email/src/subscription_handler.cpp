@@ -37,6 +37,17 @@ SubscriptionHandler::SubscriptionHandler()
   subscriptions_mutex_(),
   subscriptions_()
 {
+  logger_->debug("initialized");
+}
+
+SubscriptionHandler::~SubscriptionHandler()
+{
+  logger_->debug("destroying");
+}
+
+void
+SubscriptionHandler::register_handler()
+{
   // Register handler with the polling manager
   get_global_context()->get_polling_manager()->register_handler(
     [handler = std::weak_ptr<SubscriptionHandler>(this->shared_from_this())](
@@ -46,12 +57,7 @@ SubscriptionHandler::SubscriptionHandler()
       }
       // Do nothing if the pointer could not be locked
     });
-  logger_->debug("initialized");
-}
-
-SubscriptionHandler::~SubscriptionHandler()
-{
-  logger_->debug("destroying");
+  logger_->debug("registered");
 }
 
 void

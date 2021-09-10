@@ -75,14 +75,17 @@ public:
     const std::string & service_name,
     RequestQueue::SharedPtr request_queue);
 
+  virtual
+  void
+  register_handler();
+
   /// Handle new email.
   /**
-   * To be called by the `PollingManager`.
-   *
-   * \param data the new email data
+   * Adds the response or request to the maps or queues of matching clients and servers.
    */
+  virtual
   void
-  virtual handle(const struct EmailData & data);
+  handle(const struct EmailData & data);
 
   /// Custom header name for service request sequence number.
   /**

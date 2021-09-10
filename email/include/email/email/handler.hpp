@@ -27,14 +27,24 @@ namespace email
 class EmailHandler
 {
 public:
+  /// Register this handler.
+  /**
+   * Registers this handler so that it is called with new emails.
+   * To be called after creation.
+   */
+  virtual
+  void
+  register_handler() = 0;
+
   /// Handle new email.
   /**
    * To be called by the `PollingManager`.
    *
    * \param data the new email data
    */
+  virtual
   void
-  virtual handle(const struct EmailData & data) = 0;
+  handle(const struct EmailData & data) = 0;
 
 protected:
   /// Constructor.

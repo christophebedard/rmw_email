@@ -60,13 +60,13 @@ public:
     const std::string & topic_name,
     MessageQueue::SharedPtr message_queue);
 
+  virtual
+  void
+  register_handler();
+
   /// Handle new email.
   /**
-   * To be called by the `PollingManager`.
-   *
    * Adds the message to the queues of subscriptions with topic names that match the new message.
-   *
-   * \param data the new email data
    */
   void
   virtual handle(const struct EmailData & data);
