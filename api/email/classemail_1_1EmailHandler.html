@@ -93,6 +93,9 @@ Inheritance diagram for email::EmailHandler:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a81daa8681b6a028fa9c7a64e57bf8124"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailHandler.html#a81daa8681b6a028fa9c7a64e57bf8124">register_handler</a> ()=0</td></tr>
+<tr class="memdesc:a81daa8681b6a028fa9c7a64e57bf8124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register this handler.  <a href="classemail_1_1EmailHandler.html#a81daa8681b6a028fa9c7a64e57bf8124">More...</a><br /></td></tr>
+<tr class="separator:a81daa8681b6a028fa9c7a64e57bf8124"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4f58d53157b09b2b8e70a77538f2b37f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailHandler.html#a4f58d53157b09b2b8e70a77538f2b37f">handle</a> (const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;data)=0</td></tr>
 <tr class="memdesc:a4f58d53157b09b2b8e70a77538f2b37f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle new email.  <a href="classemail_1_1EmailHandler.html#a4f58d53157b09b2b8e70a77538f2b37f">More...</a><br /></td></tr>
 <tr class="separator:a4f58d53157b09b2b8e70a77538f2b37f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -162,6 +165,36 @@ Protected Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a81daa8681b6a028fa9c7a64e57bf8124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81daa8681b6a028fa9c7a64e57bf8124">&#9670;&nbsp;</a></span>register_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void email::EmailHandler::register_handler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register this handler. </p>
+<p>Registers this handler so that it is called with new emails. To be called after creation. </p>
+
+<p>Implemented in <a class="el" href="classemail_1_1ServiceHandler.html#a9354f4d9eac73c306863f7f923739f95">email::ServiceHandler</a>, and <a class="el" href="classemail_1_1SubscriptionHandler.html#af825fa807ce6b33280c97af670eb4120">email::SubscriptionHandler</a>.</p>
+
+</div>
+</div>
 <a id="a4f58d53157b09b2b8e70a77538f2b37f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4f58d53157b09b2b8e70a77538f2b37f">&#9670;&nbsp;</a></span>handle()</h2>
 

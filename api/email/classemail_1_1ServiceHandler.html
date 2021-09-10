@@ -86,8 +86,9 @@ Inheritance diagram for email::ServiceHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1ServiceHandler__inherit__graph.png" border="0" usemap="#email_1_1ServiceHandler_inherit__map" alt="Inheritance graph"/></div>
 <map name="email_1_1ServiceHandler_inherit__map" id="email_1_1ServiceHandler_inherit__map">
-<area shape="rect" title="Email handler for service servers." alt="" coords="5,80,172,107"/>
-<area shape="rect" href="classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="11,5,166,32"/>
+<area shape="rect" title="Email handler for service servers." alt="" coords="105,95,271,121"/>
+<area shape="rect" href="classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="5,13,160,39"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this.html" title=" " alt="" coords="185,5,405,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
@@ -95,8 +96,9 @@ Collaboration diagram for email::ServiceHandler:</div>
 <div class="dyncontent">
 <div class="center"><img src="classemail_1_1ServiceHandler__coll__graph.png" border="0" usemap="#email_1_1ServiceHandler_coll__map" alt="Collaboration graph"/></div>
 <map name="email_1_1ServiceHandler_coll__map" id="email_1_1ServiceHandler_coll__map">
-<area shape="rect" title="Email handler for service servers." alt="" coords="5,80,172,107"/>
-<area shape="rect" href="classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="11,5,166,32"/>
+<area shape="rect" title="Email handler for service servers." alt="" coords="105,95,271,121"/>
+<area shape="rect" href="classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="5,13,160,39"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this.html" title=" " alt="" coords="185,5,405,47"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
@@ -120,9 +122,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6ca046b67012a04fd08c2871f19986a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">register_service_server</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;service_name, RequestQueue::SharedPtr request_queue)</td></tr>
 <tr class="memdesc:a6ca046b67012a04fd08c2871f19986a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service server with the handler.  <a href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">More...</a><br /></td></tr>
 <tr class="separator:a6ca046b67012a04fd08c2871f19986a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9354f4d9eac73c306863f7f923739f95"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a9354f4d9eac73c306863f7f923739f95">register_handler</a> ()</td></tr>
+<tr class="memdesc:a9354f4d9eac73c306863f7f923739f95"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register this handler.  <a href="classemail_1_1ServiceHandler.html#a9354f4d9eac73c306863f7f923739f95">More...</a><br /></td></tr>
+<tr class="separator:a9354f4d9eac73c306863f7f923739f95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19fc6c955eeecce3e61e7b4efd9fa174"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a19fc6c955eeecce3e61e7b4efd9fa174">handle</a> (const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;data)</td></tr>
 <tr class="memdesc:a19fc6c955eeecce3e61e7b4efd9fa174"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle new email.  <a href="classemail_1_1ServiceHandler.html#a19fc6c955eeecce3e61e7b4efd9fa174">More...</a><br /></td></tr>
 <tr class="separator:a19fc6c955eeecce3e61e7b4efd9fa174"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_methods_enable_shared_from_this"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_enable_shared_from_this')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el"  href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this.html">std::enable_shared_from_this&lt; ServiceHandler &gt;</a></td></tr>
+<tr class="memitem: inherit pub_methods_enable_shared_from_this"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this/enable_shared_from_this.html">enable_shared_from_this</a> (T... args)</td></tr>
+<tr class="separator: inherit pub_methods_enable_shared_from_this"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem: inherit pub_methods_enable_shared_from_this"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this/operator=.html">operator=</a> (T... args)</td></tr>
+<tr class="separator: inherit pub_methods_enable_shared_from_this"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem: inherit pub_methods_enable_shared_from_this"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this/shared_from_this.html">shared_from_this</a> (T... args)</td></tr>
+<tr class="separator: inherit pub_methods_enable_shared_from_this"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem: inherit pub_methods_enable_shared_from_this"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this/weak_from_this.html">weak_from_this</a> (T... args)</td></tr>
+<tr class="separator: inherit pub_methods_enable_shared_from_this"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem: inherit pub_methods_enable_shared_from_this"><td class="memItemLeft" align="right" valign="top">T&#160;</td><td class="memItemRight" valign="bottom"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/enable_shared_from_this/~enable_shared_from_this.html">~enable_shared_from_this</a> (T... args)</td></tr>
+<tr class="separator: inherit pub_methods_enable_shared_from_this"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
@@ -292,6 +308,36 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
+<a id="a9354f4d9eac73c306863f7f923739f95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9354f4d9eac73c306863f7f923739f95">&#9670;&nbsp;</a></span>register_handler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void email::ServiceHandler::register_handler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Register this handler. </p>
+<p>Registers this handler so that it is called with new emails. To be called after creation. </p>
+
+<p>Implements <a class="el" href="classemail_1_1EmailHandler.html#a81daa8681b6a028fa9c7a64e57bf8124">email::EmailHandler</a>.</p>
+
+</div>
+</div>
 <a id="a19fc6c955eeecce3e61e7b4efd9fa174"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a19fc6c955eeecce3e61e7b4efd9fa174">&#9670;&nbsp;</a></span>handle()</h2>
 
@@ -317,13 +363,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Handle new email. </p>
-<p>To be called by the <code><a class="el" href="classemail_1_1PollingManager.html" title="Manager for polling for new emails.">PollingManager</a></code>.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">data</td><td>the new email data </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Adds the response or request to the maps or queues of matching clients and servers. </p>
 
 <p>Implements <a class="el" href="classemail_1_1EmailHandler.html#a4f58d53157b09b2b8e70a77538f2b37f">email::EmailHandler</a>.</p>
 

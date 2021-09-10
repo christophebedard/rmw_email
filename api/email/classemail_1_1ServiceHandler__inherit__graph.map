@@ -1,4 +1,5 @@
 <map id="email::ServiceHandler" name="email::ServiceHandler">
-<area shape="rect" id="node1" title="Email handler for service servers." alt="" coords="5,80,172,107"/>
-<area shape="rect" id="node2" href="$classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="11,5,166,32"/>
+<area shape="rect" id="node1" title="Email handler for service servers." alt="" coords="105,95,271,121"/>
+<area shape="rect" id="node2" href="$classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="5,13,160,39"/>
+<area shape="rect" id="node3" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/memory/enable_shared_from_this.html" title=" " alt="" coords="185,5,405,47"/>
 </map>
