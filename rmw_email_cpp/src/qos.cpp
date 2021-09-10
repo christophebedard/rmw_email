@@ -25,8 +25,7 @@ bool is_valid_qos(const rmw_qos_profile_t * qos_profile)
          RMW_QOS_POLICY_HISTORY_UNKNOWN != qos_profile->history &&
          RMW_QOS_POLICY_RELIABILITY_UNKNOWN != qos_profile->reliability &&
          RMW_QOS_POLICY_DURABILITY_UNKNOWN != qos_profile->durability &&
-         RMW_QOS_POLICY_LIVELINESS_UNKNOWN != qos_profile->liveliness &&
-         1 <= qos_profile->depth && INT32_MAX >= qos_profile->depth;
+         RMW_QOS_POLICY_LIVELINESS_UNKNOWN != qos_profile->liveliness;
 }
 
 }  // namespace rmw_email_cpp
