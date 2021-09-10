@@ -19,11 +19,11 @@
 #include "rmw/impl/cpp/macros.hpp"
 #include "rmw/rmw.h"
 #include "rmw/types.h"
-#include "rmw/validate_full_topic_name.h"
 
 #include "rmw_email_cpp/identifier.hpp"
 #include "rmw_email_cpp/macros.hpp"
 #include "rmw_email_cpp/qos.hpp"
+#include "rmw_email_cpp/topic_service_name.hpp"
 #include "rmw_email_cpp/type_support.hpp"
 #include "rmw_email_cpp/types.hpp"
 
@@ -55,17 +55,8 @@ extern "C" rmw_client_t * rmw_create_client(
   }
 
   // Validate service name
-  if (!qos_policies->avoid_ros_namespace_conventions) {
-    int validation_result = RMW_TOPIC_VALID;
-    rmw_ret_t ret = rmw_validate_full_topic_name(service_name, &validation_result, nullptr);
-    if (RMW_RET_OK != ret) {
-      return nullptr;
-    }
-    if (RMW_TOPIC_VALID != validation_result) {
-      const char * reason = rmw_full_topic_name_validation_result_string(validation_result);
-      RMW_SET_ERROR_MSG_WITH_FORMAT_STRING("service_name argument is invalid: %s", reason);
-      return nullptr;
-    }
+  if (RMW_RET_OK != rmw_email_cpp::validate_service_name(service_name, qos_policies)) {
+    return nullptr;
   }
 
   // Create email service client
