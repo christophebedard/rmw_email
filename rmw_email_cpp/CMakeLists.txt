@@ -31,11 +31,26 @@ find_package(rosidl_typesupport_introspection_c REQUIRED)
 find_package(rosidl_typesupport_introspection_cpp REQUIRED)
 find_package(tracetools REQUIRED)
 
+option(TRACETOOLS_DISABLED "Explicitly disable support for tracing" ${DISABLED_DEFAULT})
+if(NOT TRACETOOLS_DISABLED)
+  # Set RMW_EMAIL_CPP_LTTNG_ENABLED if we can find lttng-ust
+  find_package(PkgConfig)
+  if(PkgConfig_FOUND)
+    pkg_check_modules(LTTNG lttng-ust)
+    if(LTTNG_FOUND)
+      set(RMW_EMAIL_CPP_LTTNG_ENABLED TRUE)
+      message("LTTng found: tracing enabled")
+    endif()
+  endif()
+endif()
+configure_file(include/${PROJECT_NAME}/config.hpp.in include/${PROJECT_NAME}/config.hpp)
+
 set(${PROJECT_NAME}_SOURCES
   src/conversion.cpp
   src/gid.cpp
   src/guard_condition.cpp
   src/identifier.cpp
+  src/lttng.cpp
   src/qos.cpp
   src/take.cpp
   src/timestamp.cpp
@@ -84,6 +99,7 @@ ament_target_dependencies(${PROJECT_NAME}
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>"
 )
 
 ament_export_dependencies(dynmsg)
