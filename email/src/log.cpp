@@ -138,7 +138,6 @@ init(const Level & level)
     // Set to debug so that everything gets logged to file
     sink_file->set_level(spdlog::level::debug);
     sinks.push_back(sink_file);
-    // TODO(christophebedard) flush periodically using spdlog::flush_every()?
   }
 
   root_logger = std::make_shared<spdlog::logger>("root", sinks.begin(), sinks.end());

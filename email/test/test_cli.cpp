@@ -17,7 +17,8 @@
 #include "email/context.hpp"
 #include "email/init.hpp"
 
-TEST(TestCli, init) {
+TEST(TestCli, init)
+{
   EXPECT_DEATH(email::init(0, nullptr), "");
   EXPECT_FALSE(email::shutdown());
 

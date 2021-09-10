@@ -141,7 +141,6 @@ CurlEmailSender::send_payload(const std::string & payload)
   logger()->debug("PAYLOAD:\n{}", payload);
   // Reset upload data
   upload_ctx_.payload = payload.c_str();
-  // TODO(christophebedard) use 'uz' suffix when switching to C++23
   upload_ctx_.lines_read = 0UL;
   if (!context_.execute()) {
     return false;

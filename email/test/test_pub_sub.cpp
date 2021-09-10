@@ -27,7 +27,8 @@ public:
   {}
 };
 
-TEST(TestPubSub, validate_topic_name) {
+TEST(TestPubSub, validate_topic_name)
+{
   EXPECT_NO_THROW(PubSubObjectStub("/my_topic"));
   EXPECT_THROW(PubSubObjectStub(""), email::TopicNameInvalidError);
   EXPECT_THROW(PubSubObjectStub("aaa\n"), email::TopicNameInvalidError);
@@ -39,7 +40,8 @@ TEST(TestPubSub, validate_topic_name) {
   EXPECT_THROW(PubSubObjectStub("aaa\r\nccc"), email::TopicNameInvalidError);
 }
 
-TEST(TestPubSub, gid) {
+TEST(TestPubSub, gid)
+{
   // Just check that they don't have the same GID
   PubSubObjectStub o1("/my_topic");
   PubSubObjectStub o2("/my_other_topic");

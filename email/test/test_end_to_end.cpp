@@ -64,7 +64,8 @@ email:
   rcpputils::fs::path config_file;
 };
 
-TEST_F(TestEndToEnd, intraprocess_init) {
+TEST_F(TestEndToEnd, intraprocess_init)
+{
   EXPECT_THROW(email::init(), email::ContextAlreadyInitializedError);
 
   EXPECT_TRUE(email::get_global_context()->get_options());
@@ -75,7 +76,8 @@ TEST_F(TestEndToEnd, intraprocess_init) {
   EXPECT_TRUE(email::get_global_context()->get_service_handler());
 }
 
-TEST_F(TestEndToEnd, intraprocess_pub_sub) {
+TEST_F(TestEndToEnd, intraprocess_pub_sub)
+{
   email::Publisher pub1("/my_topic");
   email::Publisher pub2("/other_topic");
   email::Subscription sub1("/my_topic");
@@ -143,7 +145,8 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub) {
   ASSERT_STREQ(msg_3.c_str(), "eh-oh!");
 }
 
-TEST_F(TestEndToEnd, intraprocess_service) {
+TEST_F(TestEndToEnd, intraprocess_service)
+{
   email::ServiceClient client1("/my_service");
   email::ServiceClient client2("/other_service");
   email::ServiceServer server1("/my_service");
@@ -288,7 +291,8 @@ TEST_F(TestEndToEnd, intraprocess_service) {
   EXPECT_STREQ(res_3.c_str(), "your tubbytoast");
 }
 
-TEST_F(TestEndToEnd, intraprocess_pub_sub_failures) {
+TEST_F(TestEndToEnd, intraprocess_pub_sub_failures)
+{
   email::Publisher pub("/my_topic");
 
   RCUTILS_FAULT_INJECTION_TEST(
@@ -297,7 +301,8 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub_failures) {
   });
 }
 
-TEST_F(TestEndToEnd, intraprocess_service_failures) {
+TEST_F(TestEndToEnd, intraprocess_service_failures)
+{
   email::ServiceClient client("/my_service");
   email::ServiceServer server("/my_service");
 
@@ -356,7 +361,8 @@ TEST_F(TestEndToEnd, intraprocess_service_failures) {
   EXPECT_DEATH(email::wait_for_response(seq2, &client, std::chrono::milliseconds(1)), "");
 }
 
-TEST_F(TestEndToEnd, intraprocess_wait) {
+TEST_F(TestEndToEnd, intraprocess_wait)
+{
   auto pub = std::make_shared<email::Publisher>("/my_topic");
   auto sub = std::make_shared<email::Subscription>("/my_topic");
   auto client = std::make_shared<email::ServiceClient>("/my_service");
