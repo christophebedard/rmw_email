@@ -1,11 +1,12 @@
 <map id="include/email/email/handler.hpp" name="include/email/email/handler.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="183,5,334,47"/>
-<area shape="rect" id="node2" href="$email_2info_8hpp.html" title=" " alt="" coords="180,95,337,121"/>
-<area shape="rect" id="node3" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/map.html" title=" " alt="" coords="5,177,56,203"/>
-<area shape="rect" id="node4" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/memory.html" title=" " alt="" coords="328,259,405,285"/>
-<area shape="rect" id="node5" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/optional.html" title=" " alt="" coords="131,177,205,203"/>
-<area shape="rect" id="node6" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/string.html" title=" " alt="" coords="229,177,288,203"/>
-<area shape="rect" id="node7" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/vector.html" title=" " alt="" coords="313,177,375,203"/>
-<area shape="rect" id="node8" title=" " alt="" coords="399,169,547,211"/>
-<area shape="rect" id="node9" href="$macros_8hpp.html" title=" " alt="" coords="572,177,711,203"/>
+<area shape="rect" id="node1" title=" " alt="" coords="115,5,266,47"/>
+<area shape="rect" id="node2" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/atomic.html" title=" " alt="" coords="89,95,156,121"/>
+<area shape="rect" id="node3" href="$email_2info_8hpp.html" title=" " alt="" coords="180,95,337,121"/>
+<area shape="rect" id="node4" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/map.html" title=" " alt="" coords="5,177,56,203"/>
+<area shape="rect" id="node5" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/memory.html" title=" " alt="" coords="328,259,405,285"/>
+<area shape="rect" id="node6" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/optional.html" title=" " alt="" coords="131,177,205,203"/>
+<area shape="rect" id="node7" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/string.html" title=" " alt="" coords="229,177,288,203"/>
+<area shape="rect" id="node8" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/header/vector.html" title=" " alt="" coords="313,177,375,203"/>
+<area shape="rect" id="node9" title=" " alt="" coords="399,169,547,211"/>
+<area shape="rect" id="node10" href="$macros_8hpp.html" title=" " alt="" coords="572,177,711,203"/>
 </map>

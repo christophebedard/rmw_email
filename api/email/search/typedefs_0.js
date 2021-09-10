@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['emailheader_5320',['EmailHeader',['../namespaceemail.html#a79f0f6247c3270688400eb20c9564c96',1,'email']]],
-  ['emailheaders_5321',['EmailHeaders',['../namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f',1,'email']]]
+  ['emailheader_5322',['EmailHeader',['../namespaceemail.html#a79f0f6247c3270688400eb20c9564c96',1,'email']]],
+  ['emailheaders_5323',['EmailHeaders',['../namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f',1,'email']]]
 ];
