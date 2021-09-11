@@ -117,12 +117,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac8b733ebb32ee7203ad714aedd911601"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a71953e56a4f95c3154e6d815bd67e624"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a71953e56a4f95c3154e6d815bd67e624">~ServiceHandler</a> ()</td></tr>
 <tr class="separator:a71953e56a4f95c3154e6d815bd67e624"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30204d7f6af4853e101d641cc8dfe7d7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a30204d7f6af4853e101d641cc8dfe7d7">register_service_client</a> (const <a class="el" href="classemail_1_1Gid.html">Gid</a> &amp;gid, ResponseMap::SharedPtr response_map)</td></tr>
-<tr class="memdesc:a30204d7f6af4853e101d641cc8dfe7d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service client with the handler.  <a href="classemail_1_1ServiceHandler.html#a30204d7f6af4853e101d641cc8dfe7d7">More...</a><br /></td></tr>
-<tr class="separator:a30204d7f6af4853e101d641cc8dfe7d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ca046b67012a04fd08c2871f19986a4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">register_service_server</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;service_name, RequestQueue::SharedPtr request_queue)</td></tr>
-<tr class="memdesc:a6ca046b67012a04fd08c2871f19986a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service server with the handler.  <a href="classemail_1_1ServiceHandler.html#a6ca046b67012a04fd08c2871f19986a4">More...</a><br /></td></tr>
-<tr class="separator:a6ca046b67012a04fd08c2871f19986a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf9a84643b846d50a59e707989af52be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#abf9a84643b846d50a59e707989af52be">register_service_client</a> (const <a class="el" href="classemail_1_1Gid.html">Gid</a> &amp;gid, ResponseMap::WeakPtr response_map)</td></tr>
+<tr class="memdesc:abf9a84643b846d50a59e707989af52be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service client with the handler.  <a href="classemail_1_1ServiceHandler.html#abf9a84643b846d50a59e707989af52be">More...</a><br /></td></tr>
+<tr class="separator:abf9a84643b846d50a59e707989af52be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6c2a8e5bdcee9c8f68ef5f48160736b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#aa6c2a8e5bdcee9c8f68ef5f48160736b">register_service_server</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;service_name, RequestQueue::WeakPtr request_queue)</td></tr>
+<tr class="memdesc:aa6c2a8e5bdcee9c8f68ef5f48160736b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a service server with the handler.  <a href="classemail_1_1ServiceHandler.html#aa6c2a8e5bdcee9c8f68ef5f48160736b">More...</a><br /></td></tr>
+<tr class="separator:aa6c2a8e5bdcee9c8f68ef5f48160736b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ffdec6079165b77924bc0e7e4fc7382"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1ServiceHandler.html#a1ffdec6079165b77924bc0e7e4fc7382">register_handler</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="classemail_1_1PollingManager.html">PollingManager</a> &gt; polling_manager)</td></tr>
 <tr class="memdesc:a1ffdec6079165b77924bc0e7e4fc7382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register this handler.  <a href="classemail_1_1ServiceHandler.html#a1ffdec6079165b77924bc0e7e4fc7382">More...</a><br /></td></tr>
 <tr class="separator:a1ffdec6079165b77924bc0e7e4fc7382"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -238,8 +238,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a30204d7f6af4853e101d641cc8dfe7d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a30204d7f6af4853e101d641cc8dfe7d7">&#9670;&nbsp;</a></span>register_service_client()</h2>
+<a id="abf9a84643b846d50a59e707989af52be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abf9a84643b846d50a59e707989af52be">&#9670;&nbsp;</a></span>register_service_client()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -253,7 +253,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">ResponseMap::SharedPtr&#160;</td>
+          <td class="paramtype">ResponseMap::WeakPtr&#160;</td>
           <td class="paramname"><em>response_map</em>&#160;</td>
         </tr>
         <tr>
@@ -275,8 +275,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a6ca046b67012a04fd08c2871f19986a4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6ca046b67012a04fd08c2871f19986a4">&#9670;&nbsp;</a></span>register_service_server()</h2>
+<a id="aa6c2a8e5bdcee9c8f68ef5f48160736b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6c2a8e5bdcee9c8f68ef5f48160736b">&#9670;&nbsp;</a></span>register_service_server()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -290,7 +290,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">RequestQueue::SharedPtr&#160;</td>
+          <td class="paramtype">RequestQueue::WeakPtr&#160;</td>
           <td class="paramname"><em>request_queue</em>&#160;</td>
         </tr>
         <tr>

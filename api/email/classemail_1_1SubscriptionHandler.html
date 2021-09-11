@@ -114,9 +114,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4f580d0f7505ff64e14b7e74ee38861c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5da1131267e3764c91e22b9c8c4d786"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#af5da1131267e3764c91e22b9c8c4d786">~SubscriptionHandler</a> ()</td></tr>
 <tr class="separator:af5da1131267e3764c91e22b9c8c4d786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7938b18695e1e1a19e90a0d5534c75d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#ab7938b18695e1e1a19e90a0d5534c75d">register_subscription</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;topic_name, MessageQueue::SharedPtr message_queue)</td></tr>
-<tr class="memdesc:ab7938b18695e1e1a19e90a0d5534c75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a subscription with the handler.  <a href="classemail_1_1SubscriptionHandler.html#ab7938b18695e1e1a19e90a0d5534c75d">More...</a><br /></td></tr>
-<tr class="separator:ab7938b18695e1e1a19e90a0d5534c75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b2d9f6a6346020e67447c2117300434"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#a4b2d9f6a6346020e67447c2117300434">register_subscription</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;topic_name, MessageQueue::WeakPtr message_queue)</td></tr>
+<tr class="memdesc:a4b2d9f6a6346020e67447c2117300434"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a subscription with the handler.  <a href="classemail_1_1SubscriptionHandler.html#a4b2d9f6a6346020e67447c2117300434">More...</a><br /></td></tr>
+<tr class="separator:a4b2d9f6a6346020e67447c2117300434"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa57488fcda9056d279f87d474306525a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#aa57488fcda9056d279f87d474306525a">register_handler</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="classemail_1_1PollingManager.html">PollingManager</a> &gt; polling_manager)</td></tr>
 <tr class="memdesc:aa57488fcda9056d279f87d474306525a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register this handler.  <a href="classemail_1_1SubscriptionHandler.html#aa57488fcda9056d279f87d474306525a">More...</a><br /></td></tr>
 <tr class="separator:aa57488fcda9056d279f87d474306525a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,8 +211,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="ab7938b18695e1e1a19e90a0d5534c75d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab7938b18695e1e1a19e90a0d5534c75d">&#9670;&nbsp;</a></span>register_subscription()</h2>
+<a id="a4b2d9f6a6346020e67447c2117300434"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b2d9f6a6346020e67447c2117300434">&#9670;&nbsp;</a></span>register_subscription()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -226,7 +226,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">MessageQueue::SharedPtr&#160;</td>
+          <td class="paramtype">MessageQueue::WeakPtr&#160;</td>
           <td class="paramname"><em>message_queue</em>&#160;</td>
         </tr>
         <tr>
