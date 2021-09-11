@@ -27,7 +27,7 @@ class PollingManager {
 EmailReceiver o-- PollingManager
 
 abstract class EmailHandler {
-   +register_handler() {abstract}
+   +register_handler(shared_ptr<PollingManager>) {abstract}
    +handle(EmailData) {abstract}
 }
 
@@ -35,7 +35,7 @@ abstract class EmailHandler {
 class SubscriptionHandler {
    -subscriptions: map<string, queue<pair<string, MessageInfo>>>
    +register_subscription(string topic_name, queue<pair<string, MessageInfo>> message_queue)
-   +register_handler() {abstract}
+   +register_handler(shared_ptr<PollingManager>) {abstract}
    +handle(EmailData) {abstract}
 }
 EmailHandler <|-- SubscriptionHandler
@@ -46,7 +46,7 @@ class ServiceHandler {
    -servers: map<string, shared_ptr<queue<pair<EmailData, ServiceInfo>>>>
    +register_service_client(Gid, map<SequenceNumber, pair<EmailData, ServiceInfo>> response_map)
    +register_service_server(string service_name, queue<pair<EmailData, ServiceInfo>> request_queue)
-   +register_handler() {abstract}
+   +register_handler(shared_ptr<PollingManager>) {abstract}
    +handle(EmailData) {abstract}
 }
 EmailHandler <|-- ServiceHandler
