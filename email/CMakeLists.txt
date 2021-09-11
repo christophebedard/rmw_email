@@ -177,6 +177,10 @@ if(BUILD_TESTING)
     test/test_gid.cpp
   )
   target_link_libraries(test_gid ${PROJECT_NAME})
+  ament_add_gtest(test_handlers
+    test/test_handlers.cpp
+  )
+  target_link_libraries(test_handlers ${PROJECT_NAME})
   ament_add_gtest(test_log
     test/test_log.cpp
   )

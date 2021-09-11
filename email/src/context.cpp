@@ -138,11 +138,11 @@ Context::init_common()
 
   assert(!subscription_handler_);
   subscription_handler_ = std::make_shared<SubscriptionHandler>();
-  subscription_handler_->register_handler();
+  subscription_handler_->register_handler(polling_manager_);
 
   assert(!service_handler_);
   service_handler_ = std::make_shared<ServiceHandler>();
-  service_handler_->register_handler();
+  service_handler_->register_handler(polling_manager_);
 
   logger_->debug("initialized");
 }
