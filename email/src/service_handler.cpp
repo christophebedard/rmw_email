@@ -17,6 +17,7 @@
 #include <mutex>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
+#include <vector>
 
 #include "email/email/handler.hpp"
 #include "email/email/info.hpp"
@@ -69,7 +70,7 @@ ServiceHandler::register_handler(std::shared_ptr<PollingManager> polling_manager
 void
 ServiceHandler::register_service_client(
   const Gid & gid,
-  ResponseMap::SharedPtr response_map)
+  ResponseMap::WeakPtr response_map)
 {
   assert(registered_.load());
   {
@@ -85,7 +86,7 @@ ServiceHandler::register_service_client(
 void
 ServiceHandler::register_service_server(
   const std::string & service_name,
-  RequestQueue::SharedPtr request_queue)
+  RequestQueue::WeakPtr request_queue)
 {
   assert(registered_.load());
   {
@@ -122,7 +123,6 @@ ServiceHandler::handle(const struct EmailData & data)
         sequence_number,
         topic);
     } else {
-      auto service_response_map = client_it->second;
       // If the client already received a response for this specific request, discard it
       const SequenceNumber last_response_sequence_number = clients_last_seq_[client_gid.value()];
       if (sequence_number <= last_response_sequence_number) {
@@ -132,7 +132,7 @@ ServiceHandler::handle(const struct EmailData & data)
           last_response_sequence_number,
           client_gid,
           topic);
-      } else {
+      } else if (auto service_response_map = client_it->second.lock()) {
         logger_->debug(
           "adding response with seq number {} to client queue with gid {} for service: {}",
           sequence_number,
@@ -142,6 +142,10 @@ ServiceHandler::handle(const struct EmailData & data)
         clients_last_seq_[client_gid.value()] = sequence_number;
         // Add data and service info to the map
         service_response_map->insert({sequence_number, {data, service_info}});
+      } else {
+        // Client no longer exists since its response map could not be locked, so remove it
+        logger_->debug("removing client: {}", topic);
+        clients_.erase(client_it);
       }
     }
   }
@@ -150,11 +154,21 @@ ServiceHandler::handle(const struct EmailData & data)
   if (data.in_reply_to.empty()) {
     // Find service servers with matching topic
     std::scoped_lock<std::mutex> lock(mutex_servers_);
+    std::vector<decltype(servers_)::iterator> to_remove;
     auto range = servers_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
-      // Push message content to the queue
-      logger_->debug("adding request to service queue for service: {}", topic);
-      it->second->push({data, service_info});
+      if (auto server_request_queue = it->second.lock()) {
+        // Push message content to the queue
+        logger_->debug("adding request to service queue for service: {}", topic);
+        server_request_queue->push({data, service_info});
+      } else {
+        // Server no longer exists since its request queue could not be locked, so remove it
+        logger_->debug("removing server: {}", topic);
+        to_remove.push_back(it);
+      }
+    }
+    for (auto it = to_remove.begin(); it != to_remove.end(); ++it) {
+      servers_.erase(*it);
     }
   }
 }

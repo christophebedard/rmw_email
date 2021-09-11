@@ -40,6 +40,7 @@ public:
     queue_()
   {}
   EMAIL_SHARED_PTR(SafeQueue)
+  EMAIL_WEAK_PTR(SafeQueue)
 
   ~SafeQueue() {}
 

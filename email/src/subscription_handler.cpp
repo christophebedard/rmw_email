@@ -17,6 +17,7 @@
 #include <mutex>
 #include <string>
 #include <utility>
+#include <vector>
 
 #include "email/email/handler.hpp"
 #include "email/email/info.hpp"
@@ -63,7 +64,7 @@ SubscriptionHandler::register_handler(std::shared_ptr<PollingManager> polling_ma
 void
 SubscriptionHandler::register_subscription(
   const std::string & topic_name,
-  MessageQueue::SharedPtr message_queue)
+  MessageQueue::WeakPtr message_queue)
 {
   assert(registered_.load());
   {
@@ -89,15 +90,25 @@ SubscriptionHandler::handle(const struct EmailData & data)
   // Push it to the right queue
   {
     std::scoped_lock<std::mutex> lock(subscriptions_mutex_);
+    std::vector<decltype(subscriptions_)::iterator> to_remove;
     auto range = subscriptions_.equal_range(topic);
     for (auto it = range.first; it != range.second; ++it) {
       // Push message content to the queue
-      logger_->debug("adding message to subscription queue with topic: {}", topic);
-      EMAIL_TRACEPOINT(
-        subscription_handle,
-        static_cast<const void *>(it->second.get()),
-        msg_info.source_timestamp().nanoseconds());
-      it->second->push({msg, msg_info});
+      if (auto message_queue = it->second.lock()) {
+        logger_->debug("adding message to subscription queue with topic: {}", topic);
+        EMAIL_TRACEPOINT(
+          subscription_handle,
+          static_cast<const void *>(message_queue.get()),
+          msg_info.source_timestamp().nanoseconds());
+        message_queue->push({msg, msg_info});
+      } else {
+        // Subscription no longer exists since its queue could not be locked, so remove it
+        logger_->debug("removing subscription: {}", topic);
+        to_remove.push_back(it);
+      }
+    }
+    for (auto it = to_remove.begin(); it != to_remove.end(); ++it) {
+      subscriptions_.erase(*it);
     }
   }
 }
