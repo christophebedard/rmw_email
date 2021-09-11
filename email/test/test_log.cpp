@@ -78,10 +78,12 @@ TEST(TestLog, get)
 
 TEST(TestLog, file)
 {
-  auto logfile_path = rcpputils::fs::create_temp_directory("TestLog_file") / "log";
+  auto temp_dir = rcpputils::fs::create_temp_directory("TestLog_file");
+  auto logfile_path = temp_dir / "log";
   EXPECT_TRUE(rcutils_set_env("EMAIL_LOG_FILE", logfile_path.string().c_str()));
   email::log::init_from_env();
 
-  EXPECT_TRUE(rcutils_set_env("EMAIL_LOG_FILE", nullptr));
   email::log::shutdown();
+  EXPECT_TRUE(rcutils_set_env("EMAIL_LOG_FILE", nullptr));
+  EXPECT_TRUE(rcpputils::fs::remove_all(temp_dir));
 }
