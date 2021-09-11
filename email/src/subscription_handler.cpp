@@ -48,6 +48,7 @@ SubscriptionHandler::~SubscriptionHandler()
 void
 SubscriptionHandler::register_handler(std::shared_ptr<PollingManager> polling_manager)
 {
+  assert(!registered_.load());
   // Register handler with the polling manager
   polling_manager->register_handler(
     [handler = std::weak_ptr<SubscriptionHandler>(this->shared_from_this())](

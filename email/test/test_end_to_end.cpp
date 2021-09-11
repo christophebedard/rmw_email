@@ -293,6 +293,15 @@ TEST_F(TestEndToEnd, intraprocess_service)
 
 TEST_F(TestEndToEnd, intraprocess_pub_sub_failures)
 {
+  // Try re-registering subscription handler
+  {
+    auto global_context = email::get_global_context();
+    auto subscription_handler = global_context->get_subscription_handler();
+    EXPECT_DEATH(
+      subscription_handler->register_handler(global_context->get_polling_manager()),
+      "Assertion .* failed");
+  }
+
   email::Publisher pub("/my_topic");
 
   // Publishing failure
@@ -314,6 +323,15 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub_failures)
 
 TEST_F(TestEndToEnd, intraprocess_service_failures)
 {
+  // Try re-registering service handler
+  {
+    auto global_context = email::get_global_context();
+    auto service_handler = global_context->get_service_handler();
+    EXPECT_DEATH(
+      service_handler->register_handler(global_context->get_polling_manager()),
+      "Assertion .* failed");
+  }
+
   email::ServiceClient client("/my_service");
   email::ServiceServer server("/my_service");
 
@@ -369,7 +387,9 @@ TEST_F(TestEndToEnd, intraprocess_service_failures)
     server.send_response(req2.id, "your tubbytoast again!");
   });
   // Will never get the response, which currently means an assert will fail
-  EXPECT_DEATH(email::wait_for_response(seq2, &client, std::chrono::milliseconds(1)), "");
+  EXPECT_DEATH(
+    email::wait_for_response(seq2, &client, std::chrono::milliseconds(1)),
+    "Assertion .* failed");
 
   // Created, registered, then destroyed, so they should be removed from the handler
   auto client2 = std::make_shared<email::ServiceClient>("/my_service");

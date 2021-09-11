@@ -27,10 +27,14 @@ TEST(TestHandlers, service_handler_fail)
   // Register service client & server without having registered the service handler itself
   auto client_gid = email::Gid::new_gid();
   auto client_response_map = std::make_shared<email::ServiceHandler::ResponseMap>();
-  EXPECT_DEATH(service_handler->register_service_client(client_gid, client_response_map), "");
+  EXPECT_DEATH(
+    service_handler->register_service_client(client_gid, client_response_map),
+    "Assertion .* failed");
 
   auto server_request_queue = std::make_shared<email::ServiceHandler::RequestQueue>();
-  EXPECT_DEATH(service_handler->register_service_server("/my_service", server_request_queue), "");
+  EXPECT_DEATH(
+    service_handler->register_service_server("/my_service", server_request_queue),
+    "Assertion .* failed");
 }
 
 TEST(TestHandlers, subscription_handler_fail)
@@ -39,5 +43,7 @@ TEST(TestHandlers, subscription_handler_fail)
 
   // Register subscription without having registered the subscription handler itself
   auto message_queue = std::make_shared<email::SubscriptionHandler::MessageQueue>();
-  EXPECT_DEATH(subscription_handler->register_subscription("/my_topic", message_queue), "");
+  EXPECT_DEATH(
+    subscription_handler->register_subscription("/my_topic", message_queue),
+    "Assertion .* failed");
 }
