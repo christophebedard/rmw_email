@@ -69,7 +69,7 @@ CurlEmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, vo
   size_t len = strlen(data);
   if (len > max_size) {
     len = max_size;
-    logger()->error("truncated to len={}", len);
+    logger()->debug("truncated to len={}", len);
   }
   memcpy(ptr, data, len);
   upload_ctx->lines_read += len;
