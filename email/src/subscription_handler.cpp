@@ -18,7 +18,6 @@
 #include <string>
 #include <utility>
 
-#include "email/context.hpp"
 #include "email/email/handler.hpp"
 #include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"
@@ -46,10 +45,10 @@ SubscriptionHandler::~SubscriptionHandler()
 }
 
 void
-SubscriptionHandler::register_handler()
+SubscriptionHandler::register_handler(std::shared_ptr<PollingManager> polling_manager)
 {
   // Register handler with the polling manager
-  get_global_context()->get_polling_manager()->register_handler(
+  polling_manager->register_handler(
     [handler = std::weak_ptr<SubscriptionHandler>(this->shared_from_this())](
       const struct EmailData & data) {
       if (auto handler_ptr = handler.lock()) {

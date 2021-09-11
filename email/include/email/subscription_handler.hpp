@@ -24,6 +24,7 @@
 
 #include "email/email/handler.hpp"
 #include "email/email/info.hpp"
+#include "email/email/polling_manager.hpp"
 #include "email/safe_queue.hpp"
 #include "email/log.hpp"
 #include "email/macros.hpp"
@@ -62,7 +63,7 @@ public:
 
   virtual
   void
-  register_handler();
+  register_handler(std::shared_ptr<PollingManager> polling_manager);
 
   /// Handle new email.
   /**

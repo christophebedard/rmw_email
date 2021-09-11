@@ -16,8 +16,10 @@
 #define EMAIL__EMAIL__HANDLER_HPP_
 
 #include <atomic>
+#include <memory>
 
 #include "email/email/info.hpp"
+#include "email/email/polling_manager.hpp"
 
 namespace email
 {
@@ -31,12 +33,14 @@ class EmailHandler
 public:
   /// Register this handler.
   /**
-   * Registers this handler so that it is called with new emails.
+   * Registers this handler with the `PollingManager` so that it is called with new emails.
    * To be called after creation.
+   *
+   * \param polling_manager the polling manager to register with
    */
   virtual
   void
-  register_handler() = 0;
+  register_handler(std::shared_ptr<PollingManager> polling_manager) = 0;
 
   /// Handle new email.
   /**
