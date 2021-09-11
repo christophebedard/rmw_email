@@ -59,7 +59,7 @@ public:
   void
   register_subscription(
     const std::string & topic_name,
-    MessageQueue::SharedPtr message_queue);
+    MessageQueue::WeakPtr message_queue);
 
   virtual
   void
@@ -78,7 +78,7 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex subscriptions_mutex_;
-  std::unordered_multimap<std::string, MessageQueue::SharedPtr> subscriptions_;
+  std::unordered_multimap<std::string, MessageQueue::WeakPtr> subscriptions_;
 };
 
 }  // namespace email

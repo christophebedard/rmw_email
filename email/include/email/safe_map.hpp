@@ -41,6 +41,7 @@ public:
     map_()
   {}
   EMAIL_SHARED_PTR(SafeMap)
+  EMAIL_WEAK_PTR(SafeMap)
 
   ~SafeMap() {}
 

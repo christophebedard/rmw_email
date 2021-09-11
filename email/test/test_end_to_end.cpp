@@ -295,10 +295,21 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub_failures)
 {
   email::Publisher pub("/my_topic");
 
+  // Publishing failure
   RCUTILS_FAULT_INJECTION_TEST(
   {
     pub.publish("big hug!");
   });
+
+  // Created, registered, then destroyed, so it should be removed from the handler
+  {
+    email::Subscription sub("/my_topic");
+  }
+  pub.publish("big hug!");
+  // Create another one and wait on message just to make sure we wait for the above to be done
+  email::Subscription sub2("/my_topic");
+  pub.publish("big hug!");
+  EXPECT_STREQ(email::wait_for_message(&sub2).c_str(), "big hug!");
 }
 
 TEST_F(TestEndToEnd, intraprocess_service_failures)
@@ -359,6 +370,25 @@ TEST_F(TestEndToEnd, intraprocess_service_failures)
   });
   // Will never get the response, which currently means an assert will fail
   EXPECT_DEATH(email::wait_for_response(seq2, &client, std::chrono::milliseconds(1)), "");
+
+  // Created, registered, then destroyed, so they should be removed from the handler
+  auto client2 = std::make_shared<email::ServiceClient>("/my_service");
+  auto server2 = std::make_shared<email::ServiceServer>("/my_service");
+  server2.reset();
+  auto seq3 = client2->send_request("tubbycustard");
+  static_cast<void>(seq3);
+  auto req3 = email::wait_for_request(&server);
+  client2.reset();
+  EXPECT_STREQ(req3.content.c_str(), "tubbycustard");
+  server.send_response(req3.id, "your tubbycustard");
+  // Send another request/response and wait just to make sure we wait for the one above,
+  // since we can't wait on the response if we destroy the client
+  auto seq4 = client.send_request("more tubbytoast");
+  auto req4 = email::wait_for_request(&server);
+  EXPECT_STREQ(req4.content.c_str(), "more tubbytoast");
+  server.send_response(req4.id, "more tubbytoast!");
+  auto res4 = email::wait_for_response(seq4, &client);
+  EXPECT_STREQ(res4.c_str(), "more tubbytoast!");
 }
 
 TEST_F(TestEndToEnd, intraprocess_wait)

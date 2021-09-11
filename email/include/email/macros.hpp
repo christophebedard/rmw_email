@@ -35,4 +35,10 @@
 #define EMAIL_SHARED_PTR(...) \
   using SharedPtr = std::shared_ptr<__VA_ARGS__>;
 
+/**
+ * Declare std::weak_ptr<T>.
+ */
+#define EMAIL_WEAK_PTR(...) \
+  using WeakPtr = std::weak_ptr<__VA_ARGS__>;
+
 #endif  // EMAIL__MACROS_HPP_

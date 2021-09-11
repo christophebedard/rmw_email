@@ -64,7 +64,7 @@ public:
   void
   register_service_client(
     const Gid & gid,
-    ResponseMap::SharedPtr response_map);
+    ResponseMap::WeakPtr response_map);
 
   /// Register a service server with the handler.
   /**
@@ -74,7 +74,7 @@ public:
   void
   register_service_server(
     const std::string & service_name,
-    RequestQueue::SharedPtr request_queue);
+    RequestQueue::WeakPtr request_queue);
 
   virtual
   void
@@ -100,10 +100,10 @@ private:
 
   std::shared_ptr<Logger> logger_;
   mutable std::mutex mutex_clients_;
-  std::unordered_map<GidValue, ResponseMap::SharedPtr> clients_;
+  std::unordered_map<GidValue, ResponseMap::WeakPtr> clients_;
   std::unordered_map<GidValue, SequenceNumber> clients_last_seq_;
   mutable std::mutex mutex_servers_;
-  std::unordered_multimap<std::string, RequestQueue::SharedPtr> servers_;
+  std::unordered_multimap<std::string, RequestQueue::WeakPtr> servers_;
 };
 
 }  // namespace email
