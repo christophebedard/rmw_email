@@ -83,6 +83,7 @@ $(function() {
 <code>#include &lt;<a class="elRef" href="http://en.cppreference.com/w/cpp/header/utility.html">utility</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="handler_8hpp.html">email/email/handler.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="email_2info_8hpp.html">email/email/info.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="polling__manager_8hpp.html">email/email/polling_manager.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gid_8hpp.html">email/gid.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="log_8hpp.html">email/log.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="macros_8hpp.html">email/macros.hpp</a>&quot;</code><br />
@@ -95,35 +96,40 @@ Include dependency graph for service_handler.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="service__handler_8hpp__incl.png" border="0" usemap="#include_2email_2service__handler_8hpp" alt=""/></div>
 <map name="include_2email_2service__handler_8hpp" id="include_2email_2service__handler_8hpp">
-<area shape="rect" title=" " alt="" coords="985,5,1146,47"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/map.html" title=" " alt="" coords="761,355,812,382"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/memory.html" title=" " alt="" coords="597,437,675,464"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/mutex.html" title=" " alt="" coords="916,177,980,203"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/optional.html" title=" " alt="" coords="1659,355,1733,382"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/string.html" title=" " alt="" coords="1003,355,1061,382"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/unordered_map.html" title=" " alt="" coords="793,95,917,121"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/utility.html" title=" " alt="" coords="1005,177,1065,203"/>
-<area shape="rect" href="handler_8hpp.html" title=" " alt="" coords="1286,95,1466,121"/>
-<area shape="rect" href="email_2info_8hpp.html" title=" " alt="" coords="1196,266,1353,293"/>
-<area shape="rect" href="macros_8hpp.html" title=" " alt="" coords="1085,355,1224,382"/>
-<area shape="rect" href="gid_8hpp.html" title=" " alt="" coords="1479,266,1590,293"/>
-<area shape="rect" href="visibility__control_8hpp.html" title=" " alt="" coords="1786,355,1985,382"/>
-<area shape="rect" href="log_8hpp.html" title=" " alt="" coords="419,177,530,203"/>
-<area shape="rect" href="safe__map_8hpp.html" title=" " alt="" coords="613,95,768,121"/>
-<area shape="rect" href="safe__queue_8hpp.html" title=" " alt="" coords="1043,95,1210,121"/>
-<area shape="rect" href="service__info_8hpp.html" title=" " alt="" coords="1620,95,1791,121"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/atomic.html" title=" " alt="" coords="1279,177,1345,203"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/vector.html" title=" " alt="" coords="674,355,737,382"/>
-<area shape="rect" title=" " alt="" coords="1299,348,1447,389"/>
-<area shape="rect" title=" " alt="" coords="1471,355,1603,382"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/stdexcept.html" title=" " alt="" coords="511,355,598,382"/>
-<area shape="rect" title=" " alt="" coords="242,259,393,300"/>
-<area shape="rect" title=" " alt="" coords="94,266,218,293"/>
-<area shape="rect" title=" " alt="" coords="355,355,487,382"/>
-<area shape="rect" href="utils_8hpp.html" title=" " alt="" coords="519,266,638,293"/>
-<area shape="rect" href="http://en.cppreference.com/w/cpp/header/queue.html" title=" " alt="" coords="1141,177,1203,203"/>
-<area shape="rect" href="communication__info_8hpp.html" title=" " alt="" coords="1623,169,1787,211"/>
-<area shape="rect" href="timestamp_8hpp.html" title=" " alt="" coords="1615,266,1777,293"/>
+<area shape="rect" title=" " alt="" coords="1377,5,1539,47"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/map.html" title=" " alt="" coords="1735,430,1786,457"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/memory.html" title=" " alt="" coords="546,512,623,539"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/mutex.html" title=" " alt="" coords="1453,266,1517,293"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/optional.html" title=" " alt="" coords="2197,512,2271,539"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/string.html" title=" " alt="" coords="1425,512,1483,539"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/unordered_map.html" title=" " alt="" coords="1195,95,1319,121"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/utility.html" title=" " alt="" coords="1643,266,1703,293"/>
+<area shape="rect" href="handler_8hpp.html" title=" " alt="" coords="771,95,951,121"/>
+<area shape="rect" href="email_2info_8hpp.html" title=" " alt="" coords="1250,348,1407,375"/>
+<area shape="rect" href="macros_8hpp.html" title=" " alt="" coords="1421,430,1559,457"/>
+<area shape="rect" href="polling__manager_8hpp.html" title=" " alt="" coords="933,169,1081,211"/>
+<area shape="rect" href="log_8hpp.html" title=" " alt="" coords="209,348,320,375"/>
+<area shape="rect" href="visibility__control_8hpp.html" title=" " alt="" coords="1875,512,2073,539"/>
+<area shape="rect" href="gid_8hpp.html" title=" " alt="" coords="1949,348,2060,375"/>
+<area shape="rect" href="safe__map_8hpp.html" title=" " alt="" coords="1495,177,1650,203"/>
+<area shape="rect" href="safe__queue_8hpp.html" title=" " alt="" coords="1725,177,1892,203"/>
+<area shape="rect" href="service__info_8hpp.html" title=" " alt="" coords="2117,177,2287,203"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/atomic.html" title=" " alt="" coords="455,348,522,375"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/vector.html" title=" " alt="" coords="824,512,887,539"/>
+<area shape="rect" title=" " alt="" coords="1248,423,1396,464"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/chrono.html" title=" " alt="" coords="1058,348,1125,375"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/functional.html" title=" " alt="" coords="899,266,985,293"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/thread.html" title=" " alt="" coords="1010,266,1074,293"/>
+<area shape="rect" href="receiver_8hpp.html" title=" " alt="" coords="639,266,823,293"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/stdexcept.html" title=" " alt="" coords="5,512,92,539"/>
+<area shape="rect" title=" " alt="" coords="371,423,521,464"/>
+<area shape="rect" title=" " alt="" coords="223,430,347,457"/>
+<area shape="rect" title=" " alt="" coords="1912,430,2044,457"/>
+<area shape="rect" title=" " alt="" coords="299,512,431,539"/>
+<area shape="rect" href="utils_8hpp.html" title=" " alt="" coords="699,430,817,457"/>
+<area shape="rect" href="http://en.cppreference.com/w/cpp/header/queue.html" title=" " alt="" coords="1779,266,1841,293"/>
+<area shape="rect" href="communication__info_8hpp.html" title=" " alt="" coords="2120,259,2284,300"/>
+<area shape="rect" href="timestamp_8hpp.html" title=" " alt="" coords="2135,348,2298,375"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">

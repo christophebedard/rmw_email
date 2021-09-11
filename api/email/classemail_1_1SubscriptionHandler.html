@@ -117,9 +117,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ab7938b18695e1e1a19e90a0d5534c75d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#ab7938b18695e1e1a19e90a0d5534c75d">register_subscription</a> (const <a class="elRef" href="http://en.cppreference.com/w/cpp/string/basic_string.html">std::string</a> &amp;topic_name, MessageQueue::SharedPtr message_queue)</td></tr>
 <tr class="memdesc:ab7938b18695e1e1a19e90a0d5534c75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register a subscription with the handler.  <a href="classemail_1_1SubscriptionHandler.html#ab7938b18695e1e1a19e90a0d5534c75d">More...</a><br /></td></tr>
 <tr class="separator:ab7938b18695e1e1a19e90a0d5534c75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af825fa807ce6b33280c97af670eb4120"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#af825fa807ce6b33280c97af670eb4120">register_handler</a> ()</td></tr>
-<tr class="memdesc:af825fa807ce6b33280c97af670eb4120"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register this handler.  <a href="classemail_1_1SubscriptionHandler.html#af825fa807ce6b33280c97af670eb4120">More...</a><br /></td></tr>
-<tr class="separator:af825fa807ce6b33280c97af670eb4120"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa57488fcda9056d279f87d474306525a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#aa57488fcda9056d279f87d474306525a">register_handler</a> (<a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="classemail_1_1PollingManager.html">PollingManager</a> &gt; polling_manager)</td></tr>
+<tr class="memdesc:aa57488fcda9056d279f87d474306525a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Register this handler.  <a href="classemail_1_1SubscriptionHandler.html#aa57488fcda9056d279f87d474306525a">More...</a><br /></td></tr>
+<tr class="separator:aa57488fcda9056d279f87d474306525a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a59ca1ab4299475b961cdbb7baf252da8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1SubscriptionHandler.html#a59ca1ab4299475b961cdbb7baf252da8">handle</a> (const struct <a class="el" href="structemail_1_1EmailData.html">EmailData</a> &amp;data)</td></tr>
 <tr class="memdesc:a59ca1ab4299475b961cdbb7baf252da8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handle new email.  <a href="classemail_1_1SubscriptionHandler.html#a59ca1ab4299475b961cdbb7baf252da8">More...</a><br /></td></tr>
 <tr class="separator:a59ca1ab4299475b961cdbb7baf252da8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -249,8 +249,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="af825fa807ce6b33280c97af670eb4120"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af825fa807ce6b33280c97af670eb4120">&#9670;&nbsp;</a></span>register_handler()</h2>
+<a id="aa57488fcda9056d279f87d474306525a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa57488fcda9056d279f87d474306525a">&#9670;&nbsp;</a></span>register_handler()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -261,7 +261,8 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">virtual void email::SubscriptionHandler::register_handler </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype"><a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="classemail_1_1PollingManager.html">PollingManager</a> &gt;&#160;</td>
+          <td class="paramname"><em>polling_manager</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -273,9 +274,15 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Register this handler. </p>
-<p>Registers this handler so that it is called with new emails. To be called after creation. </p>
+<p>Registers this handler with the <code><a class="el" href="classemail_1_1PollingManager.html" title="Manager for polling for new emails.">PollingManager</a></code> so that it is called with new emails. To be called after creation.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">polling_manager</td><td>the polling manager to register with </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p>Implements <a class="el" href="classemail_1_1EmailHandler.html#a81daa8681b6a028fa9c7a64e57bf8124">email::EmailHandler</a>.</p>
+<p>Implements <a class="el" href="classemail_1_1EmailHandler.html#a4760f8a9513bc50c2d453644da51ab1e">email::EmailHandler</a>.</p>
 
 </div>
 </div>
