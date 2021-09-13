@@ -16,9 +16,7 @@
 #define EMAIL__EMAIL__INTRA_RECEIVER_HPP_
 
 #include <chrono>
-#include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
-#include <string>
 
 #include "email/email/info.hpp"
 #include "email/email/receiver.hpp"
@@ -38,11 +36,8 @@ class IntraEmailReceiver : public EmailReceiver
 {
 public:
   /// Constructor.
-  /**
-   * \param user_info the user information for receiving emails
-   */
   EMAIL_PUBLIC
-  explicit IntraEmailReceiver(UserInfo::SharedPtrConst user_info);
+  IntraEmailReceiver();
 
   EMAIL_PUBLIC
   virtual ~IntraEmailReceiver();

@@ -36,11 +36,8 @@ class EmailReceiver
 {
 public:
   /// Constructor.
-  /**
-   * \param user_info the user information for receiving emails
-   */
   EMAIL_PUBLIC
-  explicit EmailReceiver(UserInfo::SharedPtrConst user_info);
+  EmailReceiver();
 
   EMAIL_PUBLIC
   virtual ~EmailReceiver();
@@ -75,7 +72,6 @@ public:
 
 protected:
   std::shared_ptr<Logger> logger_;
-  UserInfo::SharedPtrConst user_info_;
   std::atomic_bool do_shutdown_;
 
 private:

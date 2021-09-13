@@ -36,14 +36,10 @@ class IntraEmailSender : public EmailSender
 public:
   /// Constructor.
   /**
-   * \param user_info the user information for sending emails
-   * \param recipients the email recipients
+   * \param receiver the intraprocess email receiver
    */
   EMAIL_PUBLIC
-  explicit IntraEmailSender(
-    UserInfo::SharedPtrConst user_info,
-    EmailRecipients::SharedPtrConst recipients,
-    std::shared_ptr<IntraEmailReceiver> receiver);
+  explicit IntraEmailSender(std::shared_ptr<IntraEmailReceiver> receiver);
 
   EMAIL_PUBLIC
   virtual ~IntraEmailSender();
@@ -71,6 +67,8 @@ private:
   send_email_data(const struct EmailData & data);
 
   std::shared_ptr<IntraEmailReceiver> receiver_;
+  const std::string from_;
+  const struct EmailRecipients recipients_;
 };
 
 }  // namespace email

@@ -40,18 +40,21 @@ class Options
 public:
   /// Constructor.
   /**
+   * The user info, recipients, and polling period values are optional if intraprocess is enabled.
+   * The curl verbose option is meaningless if intraprocess is enabled.
+   *
    * Not to be called directly: use `parse_options_from_*()` instead.
    *
-   * \param user_info the user info
-   * \param recipients the recipients
+   * \param user_info the user info, or `std::nullopt` if intraprocess
+   * \param recipients the recipients, or `std::nullopt` if intraprocess
    * \param curl_verbose the curl verbose status
    * \param intraprocess the intraprocess status
    * \param polling_period the polling period
    */
   EMAIL_PUBLIC
   Options(
-    UserInfo::SharedPtrConst user_info,
-    EmailRecipients::SharedPtrConst recipients,
+    std::optional<UserInfo::SharedPtrConst> user_info,
+    std::optional<EmailRecipients::SharedPtrConst> recipients,
     const bool curl_verbose,
     const bool intraprocess,
     const std::optional<std::chrono::nanoseconds> polling_period);
@@ -61,18 +64,18 @@ public:
 
   /// Get user information data.
   /**
-   * \return the `UserInfo` object
+   * \return the `UserInfo` object, or `std::nullopt`
    */
   EMAIL_PUBLIC
-  UserInfo::SharedPtrConst
+  std::optional<UserInfo::SharedPtrConst>
   get_user_info() const;
 
   /// Get email recipient data.
   /**
-   * \return the `EmailRecipients` object
+   * \return the `EmailRecipients` object, or `std::nullopt`
    */
   EMAIL_PUBLIC
-  EmailRecipients::SharedPtrConst
+  std::optional<EmailRecipients::SharedPtrConst>
   get_recipients() const;
 
   /// Get the curl verbose status.
@@ -152,8 +155,8 @@ private:
   std::shared_ptr<Logger>
   logger();
 
-  UserInfo::SharedPtrConst user_info_;
-  EmailRecipients::SharedPtrConst recipients_;
+  std::optional<UserInfo::SharedPtrConst> user_info_;
+  std::optional<EmailRecipients::SharedPtrConst> recipients_;
   const bool curl_verbose_;
   const bool intraprocess_;
   const std::optional<std::chrono::nanoseconds> polling_period_;

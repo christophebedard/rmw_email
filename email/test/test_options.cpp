@@ -38,6 +38,8 @@ public:
   {
     email::log::shutdown();
   }
+
+  rcpputils::fs::path tmp{rcpputils::fs::temp_directory_path()};
 };
 
 TEST_F(TestOptions, yaml_to_options)
@@ -69,43 +71,85 @@ TEST_F(TestOptions, yaml_to_options)
   EXPECT_FALSE(email::Options::yaml_to_options(node).has_value());
 
   std::optional<std::shared_ptr<email::Options>> options;
+  std::shared_ptr<email::Options> options_val;
 
   // With required 'to' value
   node["email"]["recipients"]["to"] = "to@email.com";
   options = email::Options::yaml_to_options(node);
   ASSERT_TRUE(options.has_value());
+  options_val = options.value();
 
-  EXPECT_STREQ("some.url", options.value()->get_user_info()->host_smtp.c_str());
-  EXPECT_STREQ("some.other.url", options.value()->get_user_info()->host_imap.c_str());
-  EXPECT_STREQ("my@email.ca", options.value()->get_user_info()->username.c_str());
-  EXPECT_STREQ("tinkywinky", options.value()->get_user_info()->password.c_str());
-  ASSERT_EQ(1UL, options.value()->get_recipients()->to.size());
-  EXPECT_STREQ("to@email.com", options.value()->get_recipients()->to[0].c_str());
-  EXPECT_EQ(0UL, options.value()->get_recipients()->cc.size());
-  EXPECT_EQ(0UL, options.value()->get_recipients()->bcc.size());
-  EXPECT_EQ(false, options.value()->curl_verbose());
-  EXPECT_FALSE(options.value()->polling_period().has_value());
-
-  // Optional values
-  node["email"]["recipients"]["cc"] = "cc@email.com";
-  node["email"]["recipients"]["bcc"] = "bcc@email.com";
-  options = email::Options::yaml_to_options(node);
-  ASSERT_TRUE(options.has_value());
-  ASSERT_EQ(1UL, options.value()->get_recipients()->cc.size());
-  ASSERT_EQ(1UL, options.value()->get_recipients()->bcc.size());
-  EXPECT_STREQ("cc@email.com", options.value()->get_recipients()->cc[0].c_str());
-  EXPECT_STREQ("bcc@email.com", options.value()->get_recipients()->bcc[0].c_str());
-
-  node["email"]["polling-period"] = "1000";
-  options = email::Options::yaml_to_options(node);
-  ASSERT_TRUE(options.has_value());
-  ASSERT_TRUE(options.value()->polling_period().has_value());
-  EXPECT_EQ(std::chrono::nanoseconds(1000), options.value()->polling_period().value());
+  EXPECT_STREQ("some.url", options_val->get_user_info().value()->host_smtp.c_str());
+  EXPECT_STREQ("some.other.url", options_val->get_user_info().value()->host_imap.c_str());
+  EXPECT_STREQ("my@email.ca", options_val->get_user_info().value()->username.c_str());
+  EXPECT_STREQ("tinkywinky", options_val->get_user_info().value()->password.c_str());
+  ASSERT_EQ(1UL, options_val->get_recipients().value()->to.size());
+  EXPECT_STREQ("to@email.com", options_val->get_recipients().value()->to[0].c_str());
+  EXPECT_EQ(0UL, options_val->get_recipients().value()->cc.size());
+  EXPECT_EQ(0UL, options_val->get_recipients().value()->bcc.size());
+  EXPECT_EQ(false, options_val->curl_verbose());
+  EXPECT_FALSE(options_val->polling_period().has_value());
 
   // Bad polling period value
   node["email"]["polling-period"] = "laalaa";
   options = email::Options::yaml_to_options(node);
-  ASSERT_FALSE(options.has_value());
+  EXPECT_FALSE(options.has_value());
+
+  // Optional values
+  node["email"]["polling-period"] = "123";
+  options = email::Options::yaml_to_options(node);
+  ASSERT_TRUE(options.has_value());
+  options_val = options.value();
+  ASSERT_TRUE(options_val->polling_period().has_value());
+  EXPECT_EQ(std::chrono::nanoseconds(123), options_val->polling_period().value());
+  EXPECT_FALSE(options_val->intraprocess());
+
+  node["email"]["recipients"]["cc"] = "cc@email.com";
+  node["email"]["recipients"]["bcc"] = "bcc@email.com";
+  options = email::Options::yaml_to_options(node);
+  ASSERT_TRUE(options.has_value());
+  options_val = options.value();
+  ASSERT_EQ(1UL, options_val->get_recipients().value()->cc.size());
+  ASSERT_EQ(1UL, options_val->get_recipients().value()->bcc.size());
+  EXPECT_STREQ("cc@email.com", options_val->get_recipients().value()->cc[0].c_str());
+  EXPECT_STREQ("bcc@email.com", options_val->get_recipients().value()->bcc[0].c_str());
+  EXPECT_FALSE(options_val->intraprocess());
+
+  node["email"]["intraprocess"] = "false";
+  options = email::Options::yaml_to_options(node);
+  ASSERT_TRUE(options.has_value());
+  options_val = options.value();
+  EXPECT_FALSE(options_val->intraprocess());
+
+  node["email"]["intraprocess"] = "true";
+  options = email::Options::yaml_to_options(node);
+  ASSERT_TRUE(options.has_value());
+  options_val = options.value();
+  EXPECT_TRUE(options_val->intraprocess());
+}
+
+
+TEST_F(TestOptions, yaml_to_options_intraprocess)
+{
+  YAML::Node node;
+  node["email"] = YAML::Node();
+
+  std::optional<std::shared_ptr<email::Options>> options;
+  std::shared_ptr<email::Options> options_val;
+
+  // User info and recipients must be provided if intraprocess is not enabled
+  node["email"]["intraprocess"] = "false";
+  options = email::Options::yaml_to_options(node);
+  EXPECT_FALSE(options.has_value());
+
+  node["email"]["intraprocess"] = "true";
+  options = email::Options::yaml_to_options(node);
+  ASSERT_TRUE(options.has_value());
+  options_val = options.value();
+  EXPECT_TRUE(options_val->intraprocess());
+  EXPECT_FALSE(options_val->get_user_info().has_value());
+  EXPECT_FALSE(options_val->get_recipients().has_value());
+  EXPECT_FALSE(options_val->polling_period().has_value());
 }
 
 TEST_F(TestOptions, parse_options_file)
@@ -118,11 +162,11 @@ TEST_F(TestOptions, parse_options_file)
   EXPECT_TRUE(rcpputils::fs::remove(file));
 
   // File, but doesn't exist
-  file = rcpputils::fs::temp_directory_path() / "TestOptions-parse_options_file-not-created";
+  file = tmp / "TestOptions-parse_options_file-not-created";
   EXPECT_FALSE(email::Options::parse_options_file(file).has_value());
 
   // Bad YAML file
-  file = rcpputils::fs::temp_directory_path() / "TestOptions-parse_options_file-created";
+  file = tmp / "TestOptions-parse_options_file-created";
   std::ofstream file_stream;
 
   file_stream = std::ofstream(file.string().c_str());
@@ -141,8 +185,7 @@ TEST_F(TestOptions, parse_options_file)
 TEST_F(TestOptions, parse_options_from_file)
 {
   // Good file
-  rcpputils::fs::path file =
-    rcpputils::fs::temp_directory_path() / "TestOptions-parse_options_from_file.email.yml";
+  rcpputils::fs::path file = tmp / "TestOptions-parse_options_from_file.email.yml";
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", file.string().c_str()));
   std::ofstream file_stream;
   file_stream = std::ofstream(file.string().c_str());
@@ -160,14 +203,18 @@ email:
   file_stream.close();
 
   std::optional<std::shared_ptr<email::Options>> options;
+  std::shared_ptr<email::Options> options_val;
+
   options = email::Options::parse_options_from_file();
   ASSERT_TRUE(options.has_value());
-  EXPECT_STREQ("some.url", options.value()->get_user_info()->host_smtp.c_str());
-  EXPECT_STREQ("some.other.url", options.value()->get_user_info()->host_imap.c_str());
-  EXPECT_STREQ("my@email.ca", options.value()->get_user_info()->username.c_str());
-  EXPECT_STREQ("tinkywinky", options.value()->get_user_info()->password.c_str());
-  ASSERT_EQ(1UL, options.value()->get_recipients()->to.size());
-  EXPECT_STREQ("to@email.com", options.value()->get_recipients()->to[0].c_str());
+  options_val = options.value();
+  EXPECT_STREQ("some.url", options_val->get_user_info().value()->host_smtp.c_str());
+  EXPECT_STREQ("some.other.url", options_val->get_user_info().value()->host_imap.c_str());
+  EXPECT_STREQ("my@email.ca", options_val->get_user_info().value()->username.c_str());
+  EXPECT_STREQ("tinkywinky", options_val->get_user_info().value()->password.c_str());
+  ASSERT_EQ(1UL, options_val->get_recipients().value()->to.size());
+  EXPECT_STREQ("to@email.com", options_val->get_recipients().value()->to[0].c_str());
+  EXPECT_FALSE(options_val->intraprocess());
 
   EXPECT_TRUE(rcpputils::fs::remove(file));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
@@ -185,6 +232,35 @@ email:
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", NULL));
 }
 
+TEST_F(TestOptions, parse_options_from_file_intraprocess)
+{
+  // Good file
+  rcpputils::fs::path file = tmp / "TestOptions-parse_options_from_file_intraprocess.email.yml";
+  ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", file.string().c_str()));
+  std::ofstream file_stream;
+  file_stream = std::ofstream(file.string().c_str());
+  file_stream <<
+    R"(
+email:
+  intraprocess: true
+)";
+  file_stream.close();
+
+  std::optional<std::shared_ptr<email::Options>> options;
+  std::shared_ptr<email::Options> options_val;
+
+  options = email::Options::parse_options_from_file();
+  ASSERT_TRUE(options.has_value());
+  options_val = options.value();
+  EXPECT_TRUE(options_val->intraprocess());
+  EXPECT_FALSE(options_val->get_user_info().has_value());
+  EXPECT_FALSE(options_val->get_recipients().has_value());
+  EXPECT_FALSE(options_val->polling_period().has_value());
+
+  EXPECT_TRUE(rcpputils::fs::remove(file));
+  ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
+}
+
 TEST_F(TestOptions, parse_options_from_args)
 {
   // Bad
@@ -195,6 +271,7 @@ TEST_F(TestOptions, parse_options_from_args)
   EXPECT_FALSE(email::Options::parse_options_from_args(7, nullptr).has_value());
 
   std::optional<std::shared_ptr<email::Options>> options;
+  std::shared_ptr<email::Options> options_val;
 
   // Good without curl verbose
   const char * const argv_good[] = {
@@ -202,13 +279,15 @@ TEST_F(TestOptions, parse_options_from_args)
   options = email::Options::parse_options_from_args(
     (sizeof(argv_good) / sizeof(char *)), argv_good);
   ASSERT_TRUE(options.has_value());
-  EXPECT_STREQ("some.url", options.value()->get_user_info()->host_smtp.c_str());
-  EXPECT_STREQ("some.other.url", options.value()->get_user_info()->host_imap.c_str());
-  EXPECT_STREQ("my@email.ca", options.value()->get_user_info()->username.c_str());
-  EXPECT_STREQ("tinkywinky", options.value()->get_user_info()->password.c_str());
-  ASSERT_EQ(1UL, options.value()->get_recipients()->to.size());
-  EXPECT_STREQ("to@email.com", options.value()->get_recipients()->to[0].c_str());
-  EXPECT_FALSE(options.value()->curl_verbose());
+  options_val = options.value();
+  EXPECT_STREQ("some.url", options_val->get_user_info().value()->host_smtp.c_str());
+  EXPECT_STREQ("some.other.url", options_val->get_user_info().value()->host_imap.c_str());
+  EXPECT_STREQ("my@email.ca", options_val->get_user_info().value()->username.c_str());
+  EXPECT_STREQ("tinkywinky", options_val->get_user_info().value()->password.c_str());
+  ASSERT_EQ(1UL, options_val->get_recipients().value()->to.size());
+  EXPECT_STREQ("to@email.com", options_val->get_recipients().value()->to[0].c_str());
+  EXPECT_FALSE(options_val->curl_verbose());
+  EXPECT_FALSE(options_val->intraprocess());
 
   // Good with curl verbose
   const char * const argv_good_v[] = {
@@ -216,7 +295,9 @@ TEST_F(TestOptions, parse_options_from_args)
   options = email::Options::parse_options_from_args(
     (sizeof(argv_good_v) / sizeof(char *)), argv_good_v);
   ASSERT_TRUE(options.has_value());
-  EXPECT_TRUE(options.value()->curl_verbose());
+  options_val = options.value();
+  EXPECT_TRUE(options_val->curl_verbose());
+  EXPECT_FALSE(options_val->intraprocess());
 
   const char * const argv_good_cv[] = {
     "exe", "some.url", "some.other.url", "my@email.ca",
@@ -224,7 +305,9 @@ TEST_F(TestOptions, parse_options_from_args)
   options = email::Options::parse_options_from_args(
     (sizeof(argv_good_cv) / sizeof(char *)), argv_good_cv);
   ASSERT_TRUE(options.has_value());
-  EXPECT_TRUE(options.value()->curl_verbose());
+  options_val = options.value();
+  EXPECT_TRUE(options_val->curl_verbose());
+  EXPECT_FALSE(options_val->intraprocess());
 
   // Bad curl verbose flag
   const char * const argv_bad_cv[] = {
@@ -233,5 +316,14 @@ TEST_F(TestOptions, parse_options_from_args)
   options = email::Options::parse_options_from_args(
     (sizeof(argv_bad_cv) / sizeof(char *)), argv_bad_cv);
   ASSERT_TRUE(options.has_value());
-  EXPECT_FALSE(options.value()->curl_verbose());
+  options_val = options.value();
+  EXPECT_FALSE(options_val->curl_verbose());
+  EXPECT_FALSE(options_val->intraprocess());
+}
+
+TEST_F(TestOptions, intraprocess)
+{
+  // User info and recipients must be provided if intraprocess is not enabled
+  EXPECT_DEATH(
+    email::Options(std::nullopt, std::nullopt, false, false, std::nullopt), "Assertion .* failed");
 }

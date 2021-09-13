@@ -35,7 +35,7 @@ CurlEmailSender::CurlEmailSender(
   UserInfo::SharedPtrConst user_info,
   EmailRecipients::SharedPtrConst recipients,
   const bool curl_verbose)
-: EmailSender(user_info, recipients),
+: EmailSender(),
   CurlExecutor(
     {user_info->host_smtp, user_info->username, user_info->password},
     {"smtps", 465},
