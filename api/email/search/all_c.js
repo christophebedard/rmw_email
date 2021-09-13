@@ -31,7 +31,7 @@ var searchData=
   ['lgamma_1210',['lgamma',['http://en.cppreference.com/w/cpp/numeric/math/lgamma.html',1,'std']]],
   ['limits_1211',['limits',['http://en.cppreference.com/w/cpp/header/limits.html',1,'']]],
   ['linear_5fcongruential_5fengine_1212',['linear_congruential_engine',['http://en.cppreference.com/w/cpp/numeric/random/linear_congruential_engine.html',1,'std::linear_congruential_engine'],['http://en.cppreference.com/w/cpp/numeric/random/linear_congruential_engine/linear_congruential_engine.html',1,'std::linear_congruential_engine::linear_congruential_engine()']]],
-  ['list_1213',['list',['http://en.cppreference.com/w/cpp/container/list.html',1,'std::list'],['http://en.cppreference.com/w/cpp/container/list.html',1,'std::pmr::list'],['http://en.cppreference.com/w/cpp/header/list.html',1,'(Global Namespace)'],['http://en.cppreference.com/w/cpp/container/list/list.html',1,'std::list::list()'],['http://en.cppreference.com/w/cpp/container/list/list.html',1,'std::pmr::list::list()']]],
+  ['list_1213',['list',['http://en.cppreference.com/w/cpp/container/list.html',1,'std::pmr::list'],['http://en.cppreference.com/w/cpp/container/list.html',1,'std::list'],['http://en.cppreference.com/w/cpp/header/list.html',1,'(Global Namespace)'],['http://en.cppreference.com/w/cpp/container/list/list.html',1,'std::list::list()'],['http://en.cppreference.com/w/cpp/container/list/list.html',1,'std::pmr::list::list()']]],
   ['llabs_1214',['llabs',['http://en.cppreference.com/w/cpp/numeric/math/abs.html',1,'std']]],
   ['lldiv_1215',['lldiv',['http://en.cppreference.com/w/cpp/numeric/math/div.html',1,'std']]],
   ['lldiv_5ft_1216',['lldiv_t',['http://en.cppreference.com/w/cpp/numeric/math/div.html',1,'std']]],

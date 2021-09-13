@@ -70,7 +70,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classemail_1_1EmailSender-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">email::EmailSender Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -94,9 +93,9 @@ Inheritance diagram for email::EmailSender:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a19c42bc427b45455b76dc3bf1b0f53c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a19c42bc427b45455b76dc3bf1b0f53c0">EmailSender</a> (UserInfo::SharedPtrConst user_info, EmailRecipients::SharedPtrConst recipients)</td></tr>
-<tr class="memdesc:a19c42bc427b45455b76dc3bf1b0f53c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classemail_1_1EmailSender.html#a19c42bc427b45455b76dc3bf1b0f53c0">More...</a><br /></td></tr>
-<tr class="separator:a19c42bc427b45455b76dc3bf1b0f53c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a067e65d5a0c78bd30217eaab577420"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a6a067e65d5a0c78bd30217eaab577420">EmailSender</a> ()</td></tr>
+<tr class="memdesc:a6a067e65d5a0c78bd30217eaab577420"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="classemail_1_1EmailSender.html#a6a067e65d5a0c78bd30217eaab577420">More...</a><br /></td></tr>
+<tr class="separator:a6a067e65d5a0c78bd30217eaab577420"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84b1193de252540aca30a78973f30ff9"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a84b1193de252540aca30a78973f30ff9">~EmailSender</a> ()</td></tr>
 <tr class="separator:a84b1193de252540aca30a78973f30ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12487f6d865d3839438cfb0814bbf1ec"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a12487f6d865d3839438cfb0814bbf1ec">send</a> (const struct <a class="el" href="structemail_1_1EmailContent.html">EmailContent</a> &amp;content, <a class="elRef" href="http://en.cppreference.com/w/cpp/utility/optional.html">std::optional</a>&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)=0</td></tr>
@@ -111,60 +110,27 @@ Static Protected Member Functions</h2></td></tr>
 <tr class="memitem:af10fd3a823d5f5355f6cd3a784a7d3d8"><td class="memItemLeft" align="right" valign="top">static <a class="elRef" href="http://en.cppreference.com/w/cpp/memory/shared_ptr.html">std::shared_ptr</a>&lt; <a class="el" href="namespaceemail.html#a8d76c558a86ae3983f1b8f138c036e61">Logger</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#af10fd3a823d5f5355f6cd3a784a7d3d8">logger</a> ()</td></tr>
 <tr class="memdesc:af10fd3a823d5f5355f6cd3a784a7d3d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get logger.  <a href="classemail_1_1EmailSender.html#af10fd3a823d5f5355f6cd3a784a7d3d8">More...</a><br /></td></tr>
 <tr class="separator:af10fd3a823d5f5355f6cd3a784a7d3d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
-Protected Attributes</h2></td></tr>
-<tr class="memitem:a87a4c9432e8db945701989171c9522e5"><td class="memItemLeft" align="right" valign="top">UserInfo::SharedPtrConst&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a87a4c9432e8db945701989171c9522e5">user_info_</a></td></tr>
-<tr class="separator:a87a4c9432e8db945701989171c9522e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a658248e662fb6fc080ac9f60a5c5d65d"><td class="memItemLeft" align="right" valign="top">EmailRecipients::SharedPtrConst&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1EmailSender.html#a658248e662fb6fc080ac9f60a5c5d65d">recipients_</a></td></tr>
-<tr class="separator:a658248e662fb6fc080ac9f60a5c5d65d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Abstract email sender. </p>
-<p>Sends emails. The recipients are always the same. Only the email subject &amp; body can change from one sent email to another. </p>
+<p>Sends emails. Only the email subject &amp; body can change from one sent email to another. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a19c42bc427b45455b76dc3bf1b0f53c0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19c42bc427b45455b76dc3bf1b0f53c0">&#9670;&nbsp;</a></span>EmailSender()</h2>
+<a id="a6a067e65d5a0c78bd30217eaab577420"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a067e65d5a0c78bd30217eaab577420">&#9670;&nbsp;</a></span>EmailSender()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">email::EmailSender::EmailSender </td>
           <td>(</td>
-          <td class="paramtype">UserInfo::SharedPtrConst&#160;</td>
-          <td class="paramname"><em>user_info</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">EmailRecipients::SharedPtrConst&#160;</td>
-          <td class="paramname"><em>recipients</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
 <p>Constructor. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">user_info</td><td>the user information for sending emails </td></tr>
-    <tr><td class="paramname">recipients</td><td>the email recipients </td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
@@ -321,51 +287,6 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get logger. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Member Data Documentation</h2>
-<a id="a87a4c9432e8db945701989171c9522e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87a4c9432e8db945701989171c9522e5">&#9670;&nbsp;</a></span>user_info_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">UserInfo::SharedPtrConst email::EmailSender::user_info_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a658248e662fb6fc080ac9f60a5c5d65d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a658248e662fb6fc080ac9f60a5c5d65d">&#9670;&nbsp;</a></span>recipients_</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">EmailRecipients::SharedPtrConst email::EmailSender::recipients_</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
 
 </div>
 </div>
