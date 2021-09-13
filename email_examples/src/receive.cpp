@@ -26,7 +26,10 @@ int main(int argc, char ** argv)
 {
   email::init(argc, argv);
   auto options = email::get_global_context()->get_options();
-  email::CurlEmailReceiver receiver(options->get_user_info(), options->curl_verbose());
+  if (options->intraprocess()) {
+    return 1;
+  }
+  email::CurlEmailReceiver receiver(options->get_user_info().value(), options->curl_verbose());
   if (!receiver.init()) {
     return 1;
   }

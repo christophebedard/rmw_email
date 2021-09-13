@@ -39,7 +39,7 @@ namespace email
 CurlEmailReceiver::CurlEmailReceiver(
   UserInfo::SharedPtrConst user_info,
   const bool curl_verbose)
-: EmailReceiver(user_info),
+: EmailReceiver(),
   CurlExecutor(
     {user_info->host_imap, user_info->username, user_info->password},
     {"imaps", 993},

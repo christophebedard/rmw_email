@@ -14,19 +14,13 @@
 
 #include <memory>
 
-#include "email/email/info.hpp"
 #include "email/email/sender.hpp"
 #include "email/log.hpp"
 
 namespace email
 {
 
-EmailSender::EmailSender(
-  UserInfo::SharedPtrConst user_info,
-  EmailRecipients::SharedPtrConst recipients)
-: user_info_(user_info),
-  recipients_(recipients)
-{}
+EmailSender::EmailSender() {}
 
 EmailSender::~EmailSender()
 {

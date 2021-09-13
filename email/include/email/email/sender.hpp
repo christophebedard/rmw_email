@@ -17,7 +17,6 @@
 
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
-#include <string>
 
 #include "email/email/info.hpp"
 #include "email/log.hpp"
@@ -30,21 +29,14 @@ namespace email
 /// Abstract email sender.
 /**
  * Sends emails.
- * The recipients are always the same.
  * Only the email subject & body can change from one sent email to another.
  */
 class EmailSender
 {
 public:
   /// Constructor.
-  /**
-   * \param user_info the user information for sending emails
-   * \param recipients the email recipients
-   */
   EMAIL_PUBLIC
-  explicit EmailSender(
-    UserInfo::SharedPtrConst user_info,
-    EmailRecipients::SharedPtrConst recipients);
+  EmailSender();
 
   EMAIL_PUBLIC
   virtual ~EmailSender();
@@ -82,9 +74,6 @@ protected:
   static
   std::shared_ptr<Logger>
   logger();
-
-  UserInfo::SharedPtrConst user_info_;
-  EmailRecipients::SharedPtrConst recipients_;
 
 private:
   EMAIL_DISABLE_COPY(EmailSender)

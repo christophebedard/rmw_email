@@ -110,25 +110,26 @@ Context::init_common()
   // other objects from the context on creation or initialization
   assert(!receiver_);
   if (!options_->intraprocess()) {
+    assert(options_->get_user_info().has_value());
     receiver_ = std::make_shared<CurlEmailReceiver>(
-      options_->get_user_info(),
+      options_->get_user_info().value(),
       options_->curl_verbose());
     std::dynamic_pointer_cast<CurlEmailReceiver>(receiver_)->init();
   } else {
-    receiver_ = std::make_shared<IntraEmailReceiver>(options_->get_user_info());
+    receiver_ = std::make_shared<IntraEmailReceiver>();
   }
 
   assert(!sender_);
   if (!options_->intraprocess()) {
+    assert(options_->get_user_info().has_value());
+    assert(options_->get_recipients().has_value());
     sender_ = std::make_shared<CurlEmailSender>(
-      options_->get_user_info(),
-      options_->get_recipients(),
+      options_->get_user_info().value(),
+      options_->get_recipients().value(),
       options_->curl_verbose());
     std::dynamic_pointer_cast<CurlEmailSender>(sender_)->init();
   } else {
     sender_ = std::make_shared<IntraEmailSender>(
-      options_->get_user_info(),
-      options_->get_recipients(),
       std::dynamic_pointer_cast<IntraEmailReceiver>(receiver_));
   }
 

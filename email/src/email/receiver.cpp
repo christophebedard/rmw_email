@@ -13,19 +13,15 @@
 // limitations under the License.
 
 #include <atomic>
-#include <memory>
-#include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 
-#include "email/email/info.hpp"
 #include "email/email/receiver.hpp"
 #include "email/log.hpp"
 
 namespace email
 {
 
-EmailReceiver::EmailReceiver(UserInfo::SharedPtrConst user_info)
+EmailReceiver::EmailReceiver()
 : logger_(log::create("EmailReceiver")),
-  user_info_(user_info),
   do_shutdown_(false)
 {}
 

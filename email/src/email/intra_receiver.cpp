@@ -13,9 +13,7 @@
 // limitations under the License.
 
 #include <chrono>
-#include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
-#include <string>
 
 #include "email/email/intra_receiver.hpp"
 #include "email/email/info.hpp"
@@ -27,8 +25,8 @@
 namespace email
 {
 
-IntraEmailReceiver::IntraEmailReceiver(UserInfo::SharedPtrConst user_info)
-: EmailReceiver(user_info),
+IntraEmailReceiver::IntraEmailReceiver()
+: EmailReceiver(),
   emails_()
 {}
 

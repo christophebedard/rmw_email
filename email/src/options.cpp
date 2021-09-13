@@ -33,8 +33,8 @@ namespace email
 {
 
 Options::Options(
-  UserInfo::SharedPtrConst user_info,
-  EmailRecipients::SharedPtrConst recipients,
+  std::optional<UserInfo::SharedPtrConst> user_info,
+  std::optional<EmailRecipients::SharedPtrConst> recipients,
   const bool curl_verbose,
   const bool intraprocess,
   const std::optional<std::chrono::nanoseconds> polling_period)
@@ -43,17 +43,19 @@ Options::Options(
   curl_verbose_(curl_verbose),
   intraprocess_(intraprocess),
   polling_period_(polling_period)
-{}
+{
+  assert(intraprocess_ || (user_info_.has_value() && recipients_.has_value()));
+}
 
 Options::~Options() {}
 
-UserInfo::SharedPtrConst
+std::optional<UserInfo::SharedPtrConst>
 Options::get_user_info() const
 {
   return user_info_;
 }
 
-EmailRecipients::SharedPtrConst
+std::optional<EmailRecipients::SharedPtrConst>
 Options::get_recipients() const
 {
   return recipients_;
@@ -116,62 +118,71 @@ Options::yaml_to_options_impl(YAML::Node node)
     return std::nullopt;
   }
   YAML::Node node_email = node["email"];
-  if (!node_email["user"]) {
-    logger()->error("missing key in options: email.user");
-    return std::nullopt;
-  }
-  YAML::Node node_user = node_email["user"];
-  // Need all values under email.user
-  for (const auto & user_key : {"url-smtp", "url-imap", "username", "password"}) {
-    if (!node_user[user_key]) {
-      logger()->error("missing key in options: email.user.{}", user_key);
-      return std::nullopt;
-    }
-  }
-  if (!node_email["recipients"]) {
-    logger()->error("missing key in options: email.recipients");
-    return std::nullopt;
-  }
-  YAML::Node node_recipients = node_email["recipients"];
-  // Only require 'to', the rest are optional
-  if (!node_recipients["to"]) {
-    logger()->error("missing key in options: email.recipients.to");
-    return std::nullopt;
-  }
 
+  // Check intraprocess option value now, since we can skip some of the rest if it is enabled
   bool intraprocess = false;
   YAML::Node intraprocess_node = node_email["intraprocess"];
   if (intraprocess_node && !intraprocess_node.IsNull()) {
     intraprocess = "true" == intraprocess_node.as<std::string>();
   }
 
+  std::optional<UserInfo::SharedPtrConst> user_info = std::nullopt;
+  std::optional<EmailRecipients::SharedPtrConst> recipients = std::nullopt;
+  bool curl_verbose = false;
   std::optional<std::chrono::nanoseconds> polling_period = std::nullopt;
-  YAML::Node polling_period_node = node_email["polling-period"];
-  if (polling_period_node && !polling_period_node.IsNull()) {
-    const auto polling_period_str = polling_period_node.as<std::string>();
-    const auto polling_period_ns = utils::optional_stoll(polling_period_str);
-    if (!polling_period_ns) {
-      logger()->error("invalid value in options: email.polling-period: {}", polling_period_str);
+  if (!intraprocess) {
+    if (!node_email["user"]) {
+      logger()->error("missing key in options: email.user");
       return std::nullopt;
     }
-    polling_period = std::chrono::nanoseconds(polling_period_ns.value());
+    YAML::Node node_user = node_email["user"];
+    // Need all values under email.user
+    for (const auto & user_key : {"url-smtp", "url-imap", "username", "password"}) {
+      if (!node_user[user_key]) {
+        logger()->error("missing key in options: email.user.{}", user_key);
+        return std::nullopt;
+      }
+    }
+    if (!node_email["recipients"]) {
+      logger()->error("missing key in options: email.recipients");
+      return std::nullopt;
+    }
+    YAML::Node node_recipients = node_email["recipients"];
+    // Only require 'to', the rest are optional
+    if (!node_recipients["to"]) {
+      logger()->error("missing key in options: email.recipients.to");
+      return std::nullopt;
+    }
+
+    user_info = std::make_shared<const struct UserInfo>(
+      node_user["url-smtp"].as<std::string>(),
+      node_user["url-imap"].as<std::string>(),
+      node_user["username"].as<std::string>(),
+      node_user["password"].as<std::string>());
+    recipients =
+      std::make_shared<const struct EmailRecipients>(
+      utils::split_email_list(node_recipients["to"]),
+      utils::split_email_list(node_recipients["cc"]),
+      utils::split_email_list(node_recipients["bcc"]));
+    const std::string curl_verbose_env_var = utils::get_env_var(Options::ENV_VAR_CURL_VERBOSE);
+    curl_verbose = !curl_verbose_env_var.empty();
+
+    YAML::Node polling_period_node = node_email["polling-period"];
+    if (polling_period_node && !polling_period_node.IsNull()) {
+      const auto polling_period_str = polling_period_node.as<std::string>();
+      const auto polling_period_ns = utils::optional_stoll(polling_period_str);
+      if (!polling_period_ns) {
+        logger()->error("invalid value in options: email.polling-period: {}", polling_period_str);
+        return std::nullopt;
+      }
+      polling_period = std::chrono::nanoseconds(polling_period_ns.value());
+    }
   }
 
-  UserInfo::SharedPtrConst user_info = std::make_shared<const struct UserInfo>(
-    node_user["url-smtp"].as<std::string>(),
-    node_user["url-imap"].as<std::string>(),
-    node_user["username"].as<std::string>(),
-    node_user["password"].as<std::string>());
-  EmailRecipients::SharedPtrConst recipients =
-    std::make_shared<const struct EmailRecipients>(
-    utils::split_email_list(node_recipients["to"]),
-    utils::split_email_list(node_recipients["cc"]),
-    utils::split_email_list(node_recipients["bcc"]));
-  const std::string curl_verbose_env_var = utils::get_env_var(Options::ENV_VAR_CURL_VERBOSE);
   return std::make_shared<Options>(
     user_info,
     recipients,
-    !curl_verbose_env_var.empty(),
+    curl_verbose,
     intraprocess,
     polling_period);
 }

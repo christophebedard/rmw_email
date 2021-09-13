@@ -27,12 +27,11 @@
 namespace email
 {
 
-IntraEmailSender::IntraEmailSender(
-  UserInfo::SharedPtrConst user_info,
-  EmailRecipients::SharedPtrConst recipients,
-  std::shared_ptr<IntraEmailReceiver> receiver)
-: EmailSender(user_info, recipients),
-  receiver_(receiver)
+IntraEmailSender::IntraEmailSender(std::shared_ptr<IntraEmailReceiver> receiver)
+: EmailSender(),
+  receiver_(receiver),
+  from_("intra@process.local"),
+  recipients_("intra@process.local")
 {}
 
 IntraEmailSender::~IntraEmailSender()
@@ -49,8 +48,8 @@ IntraEmailSender::send(
   struct EmailData data(
     "",
     "",
-    user_info_->username,
-    *recipients_,
+    from_,
+    recipients_,
     content,
     additional_headers);
   return send_email_data(data);
@@ -67,7 +66,7 @@ IntraEmailSender::reply(
   struct EmailData data(
     "",
     email.message_id,
-    user_info_->username,
+    from_,
     recipients,
     content,
     additional_headers);
