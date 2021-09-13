@@ -2,4 +2,4 @@ repositories:
   christophebedard/dynamic_message_introspection:
     type: git
     url: https://github.com/christophebedard/dynamic_message_introspection.git
-    version: feature
+    version: add-cpp-support-and-refactor
