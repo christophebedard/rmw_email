@@ -12,6 +12,7 @@ ROS 2 over email.
 1. [Supported features](#supported-features)
 1. [How to use](#how-to-use)
 1. [Configuration](#configuration)
+1. [Tracing](#tracing)
 1. [Logging](#logging)
 1. [`email` examples](#email-examples)
 
@@ -130,6 +131,18 @@ As for the values:
 
 Using the same configuration file with the same email for the `username` and `to` fields (i.e., same email address for sending & receiving) for all your executables will work.
 Alternatively, you can use two different configuration files for two different executables, e.g., if they're sending emails to each other.
+
+## Tracing
+
+`email` has LTTng tracepoints for publishers and subscriptions.
+See [`email/include/email/lttng.hpp`](./email/include/email/lttng.hpp).
+Tracepoints are automatically included if LTTng is installed and detected.
+To completely remove them, build with `--cmake-args -DEMAIL_ENABLE_TRACING=OFF`.
+
+`rmw_email_cpp` supports the [`ros2_tracing`](https://gitlab.com/ros-tracing/ros2_tracing) tracepoints for the `rmw` layer.
+It also has another LTTng tracepoint in order to link ROS 2 messages to `email` messages.
+See [`rmw_email_cpp/include/rmw_email_cpp/lttng.hpp`](./rmw_email_cpp/include/rmw_email_cpp/lttng.hpp).
+See [`ros2_tracing`'s README](https://gitlab.com/ros-tracing/ros2_tracing#building) for information on how to enable or disable tracepoints.
 
 ## Logging
 
