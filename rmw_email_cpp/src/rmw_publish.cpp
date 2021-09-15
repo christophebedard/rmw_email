@@ -78,6 +78,7 @@ extern "C" rmw_ret_t rmw_publish_serialized_message(
 
   auto pub = static_cast<email::Publisher *>(publisher->data);
   assert(pub);
+  static_cast<void>(pub);
 
   RMW_SET_ERROR_MSG("rmw_publish_serialized_message not implemented for rmw_email_cpp");
   return RMW_RET_UNSUPPORTED;

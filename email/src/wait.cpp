@@ -38,6 +38,7 @@ wait_for_message_with_info(
   waitset.add_subscription(subscription);
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
+  static_cast<void>(timedout);
 
   return subscription->get_message_with_info().value();
 }
@@ -76,6 +77,7 @@ wait_for_response_with_info(
   waitset.add_client(client);
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
+  static_cast<void>(timedout);
 
   return client->get_response_with_info(sequence_number).value();
 }
@@ -116,6 +118,7 @@ wait_for_request_with_info(
   waitset.add_server(server);
   const bool timedout = waitset.wait(timeout);
   assert(!timedout);
+  static_cast<void>(timedout);
 
   return server->get_request_with_info().value();
 }
