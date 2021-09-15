@@ -132,12 +132,6 @@ if(BUILD_TESTING)
 
   find_package(ament_cmake_gtest REQUIRED)
 
-  ament_add_gtest(test_conversion
-    test/test_conversion.cpp
-  )
-  target_link_libraries(test_conversion ${PROJECT_NAME})
-  ament_target_dependencies(test_conversion dynmsg rcl_interfaces std_msgs test_msgs)
-
   # Manually add source files+include dir because rmw_email_cpp isn't exported
   ament_add_gtest(test_gid
     test/test_gid.cpp
