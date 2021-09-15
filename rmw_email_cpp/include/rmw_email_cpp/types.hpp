@@ -26,7 +26,7 @@
 #include "email/wait_set.hpp"
 #include "rmw/rmw.h"
 
-struct rmw_context_impl_t
+struct rmw_context_impl_s
 {
   // TODO(christophebedard) move to graph cache handler?
   rmw_guard_condition_t * graph_guard_condition{nullptr};
@@ -36,10 +36,10 @@ struct rmw_context_impl_t
 
   bool is_shutdown{false};
 
-  rmw_context_impl_t();
+  rmw_context_impl_s();
 
   /// Context destruction, called when deleting this.
-  ~rmw_context_impl_t();
+  ~rmw_context_impl_s();
 
   /// Called whenever a new node is created.
   rmw_ret_t

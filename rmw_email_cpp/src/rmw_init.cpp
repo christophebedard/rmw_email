@@ -103,12 +103,12 @@ extern "C" rmw_ret_t rmw_init_options_fini(rmw_init_options_t * init_options)
   return ret;
 }
 
-rmw_context_impl_t::rmw_context_impl_t()
+rmw_context_impl_s::rmw_context_impl_s()
 {
   RMW_EMAIL_LOG_DEBUG("initializing context implementation");
 }
 
-rmw_context_impl_t::~rmw_context_impl_t()
+rmw_context_impl_s::~rmw_context_impl_s()
 {
   RMW_EMAIL_LOG_DEBUG("shutting down context implementation");
   // Shutdown middleware
@@ -124,7 +124,7 @@ rmw_context_impl_t::~rmw_context_impl_t()
 }
 
 rmw_ret_t
-rmw_context_impl_t::init(rmw_init_options_t * options, size_t domain_id)
+rmw_context_impl_s::init(rmw_init_options_t * options, size_t domain_id)
 {
   static_cast<void>(options);
   // There's no concept of "domain" with email, duh
@@ -159,7 +159,7 @@ rmw_context_impl_t::init(rmw_init_options_t * options, size_t domain_id)
 }
 
 rmw_ret_t
-rmw_context_impl_t::fini()
+rmw_context_impl_s::fini()
 {
   std::scoped_lock<std::mutex> lock(mutex_initialization);
   if (0u != --this->node_count) {
@@ -171,7 +171,7 @@ rmw_context_impl_t::fini()
 }
 
 void
-rmw_context_impl_t::cleanup()
+rmw_context_impl_s::cleanup()
 {
   if (this->graph_guard_condition) {
     rmw_email_cpp::destroy_guard_condition(this->graph_guard_condition);
