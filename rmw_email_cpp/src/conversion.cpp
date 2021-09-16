@@ -18,6 +18,7 @@
 
 #include "dynmsg/message_reading.hpp"
 #include "dynmsg/msg_parser.hpp"
+#include "dynmsg/yaml_utils.hpp"
 #include "rcutils/allocator.h"
 #include "rosidl_typesupport_introspection_c/identifier.h"
 #include "rosidl_typesupport_introspection_c/message_introspection.h"
@@ -38,28 +39,11 @@ namespace details
 
 /// Convert YAML node to string.
 /**
- * Flow style is one-line, JSON-like.
- * Non-flow style is block style, which is the normal multi-line style.
- *
- * \param yaml the YAML node
- * \param double_quoted whether to double quote all keys and values or not
- * \param flow_style whether to use flow-style or not
- * \return the YAML node as a string
+ * Not double quoted, block style.
  */
-std::string yaml_to_string(
-  const YAML::Node & yaml,
-  const bool double_quoted = false,
-  const bool flow_style = false)
+inline std::string yaml_to_string(const YAML::Node & yaml)
 {
-  YAML::Emitter emitter;
-  if (double_quoted) {
-    emitter << YAML::DoubleQuoted;
-  }
-  if (flow_style) {
-    emitter << YAML::Flow;
-  }
-  emitter << yaml;
-  return emitter.c_str();
+  return dynmsg::yaml_to_string(yaml, false, false);
 }
 
 namespace c
