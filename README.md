@@ -142,7 +142,7 @@ As for the values:
       * this makes `email` act as if it was sending emails to itself and entirely bypasses actually sending and receiving emails
       * all other options are optional and have no effect in practice if intraprocess is enabled
 
-Using the same configuration file with the same email for the `username` and `to` fields (i.e., same email address for sending & receiving) for all your executables will work.
+Using the same configuration file with the same email for the `username` and `to` fields (i.e., same email address for sending & receiving) for multiple executables should work.
 Alternatively, you can use two different configuration files for two different executables, e.g., if they're sending emails to each other.
 
 ## Tracing
