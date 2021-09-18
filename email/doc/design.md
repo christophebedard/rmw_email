@@ -82,7 +82,7 @@ For intraprocess communication, a different set of email sender and email receiv
    * has a reference to the intraprocess email receiver
    * when sending or replying, it simply hands the email over to the intraprocess email receiver
 1. intraprocess email receiver
-   * has a function that receives a new email, adds a random message ID, and adds it to its queue
+   * has a function that receives a new email, adds a random `Message-ID` header value, and adds it to its queue
       * faking/adding a message ID is required to support downstream logic that depends on email replies
       * see [*Headers*](#headers)
    * when queried for a new email, it simply returns one from its queue if it's not empty
