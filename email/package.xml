@@ -2,8 +2,8 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>email</name>
-  <version>0.7.0</version>
-  <description>Pub/sub using emails.</description>
+  <version>0.8.0</version>
+  <description>Pub/sub and service middleware using emails.</description>
   <maintainer email="bedard.christophe@gmail.com">Christophe Bedard</maintainer>
   <license>Apache License 2.0</license>
   <author email="bedard.christophe@gmail.com">Christophe Bedard</author>
