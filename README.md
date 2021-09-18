@@ -12,6 +12,7 @@ For an overview of the motivation and process behind this project, see this blog
 1. [Overview](#overview)
 1. [Packages](#packages)
 1. [Supported features](#supported-features)
+   1. [Platform support](#platform-support)
 1. [Performance](#performance)
 1. [How to use](#how-to-use)
 1. [Configuration](#configuration)
@@ -69,6 +70,12 @@ The following table shows the features currently supported/unsupported by `rmw_e
 | services, actions | :heavy_check_mark: |
 | introspection using `ros2 *` commands | :x: |
 | QoS, rmw events | :x: |
+
+### Platform support
+
+rmw_email was primarily developed on Ubuntu.
+However, it should work on macOS and Windows without too much effort.
+See [REP 2000](https://www.ros.org/reps/rep-2000.html#rolling-ridley-june-2020-ongoing).
 
 ## Performance
 
