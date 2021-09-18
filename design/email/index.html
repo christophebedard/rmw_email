@@ -86,7 +86,7 @@
 </ul></li>
 <li>intraprocess email receiver
 <ul>
-<li>has a function that receives a new email, adds a random message ID, and adds it to its queue
+<li>has a function that receives a new email, adds a random <code>Message-ID</code> header value, and adds it to its queue
 <ul>
 <li>faking/adding a message ID is required to support downstream logic that depends on email replies</li>
 <li>see <a href="#headers"><em>Headers</em></a></li>
