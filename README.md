@@ -1,10 +1,11 @@
 # rmw_email
 
-[![Latest GitHub tag](https://img.shields.io/github/v/tag/christophebedard/rmw_email?sort=semver&label=v)](https://github.com/christophebedard/rmw_email/tags)
+[![Latest GitHub tag](https://img.shields.io/github/v/tag/christophebedard/rmw_email?sort=semver&label=version)](https://github.com/christophebedard/rmw_email/tags)
 [![GitHub workflow status](https://github.com/christophebedard/rmw_email/workflows/Test/badge.svg)](https://github.com/christophebedard/rmw_email/actions)
 [![License](https://img.shields.io/github/license/christophebedard/rmw_email)](https://github.com/christophebedard/rmw_email/blob/master/LICENSE)
 
 ROS 2 over email.
+rmw_email contains a middleware that sends & receives strings over email and an RMW implementation that allows ROS 2 to use this middleware to exchange messages.
 
 For an overview of the motivation and process behind this project, see this blog post: [christophebedard.com/ros-2-over-email](https://christophebedard.com/ros-2-over-email/).
 
@@ -49,17 +50,17 @@ Service responses are email replies to the corresponding email request (this is 
 This repository contains a few packages:
 
 * [`email`](./email/): simple publish/subscribe & service middleware using emails to exchange strings
-   * ![](https://img.shields.io/badge/coverage%3A%20email-%3E%2094%25-brightgreen)
    * See the [API documentation](https://christophebedard.com/rmw_email/api/email/).
    * See the [design document](./email/doc/design.md) ([rendered version](https://christophebedard.com/rmw_email/design/email/)).
    * This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](./email/QUALITY_DECLARATION.md) for more details.
+   * ![](https://img.shields.io/badge/coverage%3A%20email-%3E%2094%25-brightgreen)
 * [`email_examples`](./email_examples/): various examples using `email`
    * See [*`email` examples*](#email-examples).
    * This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](./email_examples/QUALITY_DECLARATION.md) for more details.
 * [`rmw_email_cpp`](./rmw_email_cpp/): ROS 2 `rmw` implementation using `email` as the middleware
-   * ![](https://img.shields.io/badge/coverage%3A%20rmw__email__cpp-%3E%2060%25-orange)
    * See [*supported features*](#supported-features).
    * This package claims to be in the **Quality Level 4** category, see the [Quality Declaration](./rmw_email_cpp/QUALITY_DECLARATION.md) for more details.
+   * ![](https://img.shields.io/badge/coverage%3A%20rmw__email__cpp-%3E%2060%25-orange)
 
 ## Supported features
 
