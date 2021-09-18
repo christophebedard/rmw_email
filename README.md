@@ -7,6 +7,8 @@
 
 ROS 2 over email.
 
+For an overview of the motivation and process behind this project, see this blog post: [christophebedard.com/ros-2-over-email](https://christophebedard.com/ros-2-over-email/).
+
 1. [Overview](#overview)
 1. [Packages](#packages)
 1. [Supported features](#supported-features)
