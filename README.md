@@ -7,9 +7,12 @@
 
 ROS 2 over email.
 
+For an overview of the motivation and process behind this project, see this blog post: [christophebedard.com/ros-2-over-email](https://christophebedard.com/ros-2-over-email/).
+
 1. [Overview](#overview)
 1. [Packages](#packages)
 1. [Supported features](#supported-features)
+   1. [Platform support](#platform-support)
 1. [Performance](#performance)
 1. [How to use](#how-to-use)
 1. [Configuration](#configuration)
@@ -67,6 +70,12 @@ The following table shows the features currently supported/unsupported by `rmw_e
 | services, actions | :heavy_check_mark: |
 | introspection using `ros2 *` commands | :x: |
 | QoS, rmw events | :x: |
+
+### Platform support
+
+rmw_email was primarily developed on Ubuntu.
+However, it should work on macOS and Windows without too much effort.
+See [REP 2000](https://www.ros.org/reps/rep-2000.html#rolling-ridley-june-2020-ongoing).
 
 ## Performance
 
@@ -140,7 +149,7 @@ As for the values:
       * this makes `email` act as if it was sending emails to itself and entirely bypasses actually sending and receiving emails
       * all other options are optional and have no effect in practice if intraprocess is enabled
 
-Using the same configuration file with the same email for the `username` and `to` fields (i.e., same email address for sending & receiving) for all your executables will work.
+Using the same configuration file with the same email for the `username` and `to` fields (i.e., same email address for sending & receiving) for multiple executables should work.
 Alternatively, you can use two different configuration files for two different executables, e.g., if they're sending emails to each other.
 
 ## Tracing
