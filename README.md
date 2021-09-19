@@ -81,13 +81,13 @@ See [REP 2000](https://www.ros.org/reps/rep-2000.html#rolling-ridley-june-2020-o
 
 ## Performance
 
-We can use [`performance_test`](https://gitlab.com/ApexAI/performance_test) to compare the performance of `rmw_email_cpp` to another RMW implementation.
+We can use [performance_test](https://gitlab.com/ApexAI/performance_test) to compare the performance of `rmw_email_cpp` to another RMW implementation.
 
 <p align="center">
    <img src="./rmw_email_cpp/img/perf_comparison.png" alt="latency comparison between rmw_email_cpp and rmw_cyclonedds_cpp">
 </p>
 
-See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`](./rmw_email_cpp/perf/perf_plot.py) scripts to run `performance_test` and generate a plot like the one above.
+See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`](./rmw_email_cpp/perf/perf_plot.py) scripts to run performance_test and generate a plot like the one above.
 
 ## How to use
 
@@ -99,19 +99,19 @@ See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`]
 1. Clone dependencies
    ```sh
    $ cd ~/ws/
-   $ vcs import src/ --input https://raw.githubusercontent.com/christophebedard/rmw_email/master/dependencies.repos
+   $ vcs import src --input https://raw.githubusercontent.com/christophebedard/rmw_email/master/dependencies.repos
    ```
 1. Build
    ```sh
-   $ cd ~/ws/src/
+   $ cd ~/ws/
    $ colcon build  # ...
    ```
-1. Create an `email` configuration file for your executable(s)  
+1. Create `email` configuration file(s) for your executable(s)  
    See [*configuration*](#configuration).
 1. Use by setting the `RMW_IMPLEMENTATION` environment variable to `rmw_email_cpp` and the `EMAIL_CONFIG_FILE` environment variable to your configuration file, e.g.
    ```sh
    $ cd ~/ws/
-   $ source install/setup.bash  # etc.
+   $ source install/setup.bash
    $ export RMW_IMPLEMENTATION=rmw_email_cpp
    $ export EMAIL_CONFIG_FILE=path/to/email.yml
    $ ros2 run demo_nodes_cpp talker
@@ -120,7 +120,7 @@ See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`]
 
 ## Configuration
 
-In order to send & receive emails, a YAML configuration file has to be provided.
+In order to send & receive emails, a YAML configuration file must be provided.
 By default, the path to the config file is `email.yml`, relative to the current working directory.
 However, the path can be changed using the `EMAIL_CONFIG_FILE` environment variable, e.g., `EMAIL_CONFIG_FILE=other/dir/myemail.yml`.
 If that file does not exist, `~/email.yml` will be used as a backup if it exists.
