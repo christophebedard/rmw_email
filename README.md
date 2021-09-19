@@ -120,7 +120,7 @@ See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`]
 
 ## Configuration
 
-In order to send & receive emails, a YAML configuration file has to be provided.
+In order to send & receive emails, a YAML configuration file must be provided.
 By default, the path to the config file is `email.yml`, relative to the current working directory.
 However, the path can be changed using the `EMAIL_CONFIG_FILE` environment variable, e.g., `EMAIL_CONFIG_FILE=other/dir/myemail.yml`.
 If that file does not exist, `~/email.yml` will be used as a backup if it exists.
