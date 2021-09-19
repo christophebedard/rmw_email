@@ -81,13 +81,13 @@ See [REP 2000](https://www.ros.org/reps/rep-2000.html#rolling-ridley-june-2020-o
 
 ## Performance
 
-We can use [`performance_test`](https://gitlab.com/ApexAI/performance_test) to compare the performance of `rmw_email_cpp` to another RMW implementation.
+We can use [performance_test](https://gitlab.com/ApexAI/performance_test) to compare the performance of `rmw_email_cpp` to another RMW implementation.
 
 <p align="center">
    <img src="./rmw_email_cpp/img/perf_comparison.png" alt="latency comparison between rmw_email_cpp and rmw_cyclonedds_cpp">
 </p>
 
-See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`](./rmw_email_cpp/perf/perf_plot.py) scripts to run `performance_test` and generate a plot like the one above.
+See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`](./rmw_email_cpp/perf/perf_plot.py) scripts to run performance_test and generate a plot like the one above.
 
 ## How to use
 
