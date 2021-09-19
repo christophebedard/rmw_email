@@ -106,7 +106,7 @@ See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`]
    $ cd ~/ws/
    $ colcon build  # ...
    ```
-1. Create an `email` configuration file for your executable(s)  
+1. Create `email` configuration file(s) for your executable(s)  
    See [*configuration*](#configuration).
 1. Use by setting the `RMW_IMPLEMENTATION` environment variable to `rmw_email_cpp` and the `EMAIL_CONFIG_FILE` environment variable to your configuration file, e.g.
    ```sh
