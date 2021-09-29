@@ -22,6 +22,10 @@ For an overview of the motivation and process behind this project, see this blog
 
 ## Overview
 
+<p align="center">
+   <img src="./rmw_email_cpp/img/overview_diagram.png" alt="overview diagram, from ROS 2 (rcl) to the email server(s) and back up to ROS 2">
+</p>
+
 [`rmw_email_cpp`](#packages) uses [type support introspection](https://docs.ros.org/en/rolling/Concepts/About-Internal-Interfaces.html#dynamic-type-support) to convert messages to YAML objects.
 This is done for both C and C++ type supports using the [`dynmsg` package](https://github.com/christophebedard/dynamic_message_introspection/tree/add-cpp-support-and-refactor).
 The YAML objects are then converted to strings.
