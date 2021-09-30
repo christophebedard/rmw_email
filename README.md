@@ -23,7 +23,7 @@ For an overview of the motivation and process behind this project, see this blog
 ## Overview
 
 <p align="center">
-   <img src="./rmw_email_cpp/img/overview_diagram.png" alt="overview diagram, from ROS 2 (rcl) to the email server(s) and back up to ROS 2">
+   <a href="./rmw_email_cpp/img/overview_diagram.drawio"><img src="./rmw_email_cpp/img/overview_diagram.png" alt="overview diagram, from ROS 2 (rcl) to the email server(s) and back up to ROS 2"></a>
 </p>
 
 [`rmw_email_cpp`](#packages) uses [type support introspection](https://docs.ros.org/en/rolling/Concepts/About-Internal-Interfaces.html#dynamic-type-support) to convert messages to YAML objects.
@@ -35,7 +35,7 @@ The topic name is used as the email subject; the email body contains the YAML st
 Messages can therefore easily be read.
 
 <p align="center">
-   <img src="./rmw_email_cpp/img/example_pub_sub.png" alt="example of resulting emails after two 'hello world' messages on the '/chatter' topic">
+   <a href="./rmw_email_cpp/img/example_pub_sub.png"><img src="./rmw_email_cpp/img/example_pub_sub.png" alt="example of resulting emails after two 'hello world' messages on the '/chatter' topic"></a>
 </p>
 
 To receive messages, this process is repeated in the opposite direction.
@@ -44,7 +44,7 @@ Successive messages on the same topic generally end up in the same email thread 
 Service responses are email replies to the corresponding email request (this is handled by `email`).
 
 <p align="center">
-   <img src="./rmw_email_cpp/img/example_service.png" alt="example of resulting emails for a service request and then response">
+   <a href="./rmw_email_cpp/img/example_service.png"><img src="./rmw_email_cpp/img/example_service.png" alt="example of resulting emails for a service request and then response"></a>
 </p>
 
 `email` also has an [intraprocess communication mode](#configuration) to bypass actually sending and receiving emails.
@@ -88,7 +88,7 @@ See [REP 2000](https://www.ros.org/reps/rep-2000.html#rolling-ridley-june-2020-o
 We can use [performance_test](https://gitlab.com/ApexAI/performance_test) to compare the performance of `rmw_email_cpp` to another RMW implementation.
 
 <p align="center">
-   <img src="./rmw_email_cpp/img/perf_comparison.png" alt="latency comparison between rmw_email_cpp and rmw_cyclonedds_cpp">
+   <a href="./rmw_email_cpp/img/perf_comparison.png"><img src="./rmw_email_cpp/img/perf_comparison.png" alt="latency comparison between rmw_email_cpp and rmw_cyclonedds_cpp"></a>
 </p>
 
 See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`](./rmw_email_cpp/perf/perf_plot.py) scripts to run performance_test and generate a plot like the one above.
