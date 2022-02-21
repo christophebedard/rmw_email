@@ -1,5 +1,5 @@
 repositories:
-  christophebedard/dynamic_message_introspection:
+  osrf/dynamic_message_introspection:
     type: git
-    url: https://github.com/christophebedard/dynamic_message_introspection.git
-    version: add-cpp-support-and-refactor
+    url: https://github.com/osrf/dynamic_message_introspection.git
+    version: main

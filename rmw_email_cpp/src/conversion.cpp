@@ -71,13 +71,13 @@ bool yaml_to_msg(
   rcutils_allocator_t * allocator)
 {
   // Convert to message
-  RosMessage ros_msg = dynmsg::c::yaml_to_rosmsg_typeinfo(members, yaml, allocator);
+  RosMessage ros_msg = dynmsg::c::yaml_and_typeinfo_to_rosmsg(members, yaml, allocator);
   if (!ros_msg.data && !ros_msg.type_info) {
     return false;
   }
   memcpy(ros_message, ros_msg.data, members->size_of_);
   // TODO(christophebedard) figure out if/how/when to deallocate C messages
-  // ros_message_destroy_(&ros_msg, allocator);
+  // ros_message_destroy_with_allocator(&ros_msg, allocator);
   return true;
 }
 
@@ -106,7 +106,7 @@ bool yaml_to_msg(
   const std::string & yaml,
   void * ros_message)
 {
-  dynmsg::cpp::yaml_to_rosmsg_typeinfo(members, yaml, ros_message);
+  dynmsg::cpp::yaml_and_typeinfo_to_rosmsg(members, yaml, ros_message);
   return true;
 }
 
