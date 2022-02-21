@@ -22,7 +22,7 @@
 #include <string>
 #include <vector>
 
-#include "rcpputils/get_env.hpp"
+#include "rcpputils/env.hpp"
 #include "rcpputils/split.hpp"
 
 #include "email/utils.hpp"
