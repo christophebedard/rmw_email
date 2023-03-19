@@ -35,7 +35,7 @@ rmw_gid_t convert_gid(const email::Gid & gid)
   return rmw_gid;
 }
 
-void copy_email_gid_to_writer_guid(int8_t * writer_guid, const email::Gid & gid)
+void copy_email_gid_to_writer_guid(uint8_t * writer_guid, const email::Gid & gid)
 {
   const email::GidValue gid_value = gid.value();
   static_assert(
@@ -44,7 +44,7 @@ void copy_email_gid_to_writer_guid(int8_t * writer_guid, const email::Gid & gid)
   memcpy(writer_guid, &gid_value, sizeof(gid_value));
 }
 
-email::Gid convert_writer_guid_to_email_gid(int8_t * writer_guid)
+email::Gid convert_writer_guid_to_email_gid(uint8_t * writer_guid)
 {
   email::GidValue gid_value = 0u;
   static_assert(
