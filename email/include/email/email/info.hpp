@@ -21,7 +21,7 @@
 #include <string>
 #include <vector>
 
-#include "spdlog/fmt/bundled/format.h"
+#include "spdlog/fmt/fmt.h"
 
 #include "email/macros.hpp"
 
