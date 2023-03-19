@@ -44,7 +44,7 @@ TEST(TestContext, init_fail)
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", NULL));
 }
 
-TEST(TestContext, shutdown_fail)
+TEST(TestContext, init_shutdown)
 {
   rcpputils::fs::path config_file =
     rcpputils::fs::temp_directory_path() / "TestContext-shutdown.email.yml";
@@ -66,8 +66,10 @@ email:
 )";
   config_file_stream.close();
 
-  // Init global context and force destruction without calling shutdown
+  ASSERT_FALSE(email::shutdown());
   email::init();
+  ASSERT_TRUE(email::shutdown());
+  ASSERT_FALSE(email::shutdown());
 
   EXPECT_TRUE(rcpputils::fs::remove(config_file));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
