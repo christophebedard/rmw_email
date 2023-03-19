@@ -27,10 +27,10 @@ namespace rmw_email_cpp
 rmw_gid_t convert_gid(const email::Gid & gid);
 
 /// Copy an email GID to a writer GUID.
-void copy_email_gid_to_writer_guid(int8_t * writer_guid, const email::Gid & gid);
+void copy_email_gid_to_writer_guid(uint8_t * writer_guid, const email::Gid & gid);
 
 /// Convert a writer GUID to an email GID.
-email::Gid convert_writer_guid_to_email_gid(int8_t * writer_guid);
+email::Gid convert_writer_guid_to_email_gid(uint8_t * writer_guid);
 
 /// Copy rmw GIDs.
 void copy_gids(rmw_gid_t * dest, rmw_gid_t * src);
