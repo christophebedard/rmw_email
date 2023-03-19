@@ -21,7 +21,7 @@
 #include <thread>
 #include <vector>
 
-#include "spdlog/fmt/bundled/chrono.h"
+#include "spdlog/fmt/chrono.h"
 
 #include "email/email/info.hpp"
 #include "email/email/polling_manager.hpp"

@@ -24,7 +24,7 @@
 #include <string>
 #include <thread>
 
-#include "spdlog/fmt/bundled/chrono.h"
+#include "spdlog/fmt/chrono.h"
 
 #include "email/curl/executor.hpp"
 #include "email/email/curl_receiver.hpp"
