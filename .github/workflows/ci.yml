@@ -11,14 +11,14 @@ jobs:
     strategy:
       matrix:
         include:
-          # - os: ubuntu-latest
+          # - os: ubuntu-22.04
           #   build-type: binary
-          - os: ubuntu-latest
+          - os: ubuntu-22.04
             build-type: source
           # - os: macos-latest
           #   build-type: source
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: ros-tooling/setup-ros@master
       with:
         required-ros-distributions: ${{ matrix.build-type == 'binary' && 'rolling' || '' }}
@@ -44,15 +44,15 @@ jobs:
         colcon lcov-result --packages-select email --filter **/email/test/* --lcov-base lcov-email --verbose
         colcon lcov-result --packages-select rmw_email_cpp --filter **/rmw_email_cpp/test/* --lcov-base lcov-rmw_email_cpp --verbose
       working-directory: ${{ steps.action-ros-ci.outputs.ros-workspace-directory-name }}
-    - uses: codecov/codecov-action@v1
+    - uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: ros_ws/lcov-email/total_coverage.info
+        files: ros_ws/lcov-email/total_coverage.info
         flags: email
         name: email
-    - uses: codecov/codecov-action@v1
+    - uses: codecov/codecov-action@v3
       with:
         token: ${{ secrets.CODECOV_TOKEN }}
-        file: ros_ws/lcov-rmw_email_cpp/total_coverage.info
+        files: ros_ws/lcov-rmw_email_cpp/total_coverage.info
         flags: rmw-email-cpp
         name: rmw-email-cpp
