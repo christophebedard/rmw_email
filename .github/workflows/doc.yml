@@ -2,7 +2,7 @@ name: Documentation
 on:
   push:
     branches:
-      - master
+      - rolling
 jobs:
   docs_gen:
     name: "Generate and push"
@@ -36,21 +36,21 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
       with:
-        ref: master
+        ref: rolling
         fetch-depth: 0
-        path: repos/master/
+        path: repos/rolling/
     - name: Gen API docs
       run: |
         python3 gen_docs/gen_docs.py --config gh-pages/gen_docs.yml --skip-clone
     - name: Gen design docs
       run: |
         mkdir -p pandoc/email/ && cd pandoc/email/
-        sed -i '/christophebedard.com/d' ../../repos/master/email/doc/design.md
-        pandoc ../../repos/master/email/doc/design.md --filter pandoc-plantuml > index.html
+        sed -i '/christophebedard.com/d' ../../repos/rolling/email/doc/design.md
+        pandoc ../../repos/rolling/email/doc/design.md --filter pandoc-plantuml > index.html
     - name: Copy docs to gh-pages
       run: |
         rm -rf gh-pages/api/
-        mv -T output/master/ gh-pages/api/
+        mv -T output/rolling/ gh-pages/api/
         rm -rf gh-pages/design/
         mv -T pandoc/ gh-pages/design/
     - name: Commit and push to gh-pages branch

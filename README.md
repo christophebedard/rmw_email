@@ -2,7 +2,7 @@
 
 [![Latest GitHub tag](https://img.shields.io/github/v/tag/christophebedard/rmw_email?sort=semver&label=version)](https://github.com/christophebedard/rmw_email/tags)
 [![GitHub workflow status](https://github.com/christophebedard/rmw_email/workflows/Test/badge.svg)](https://github.com/christophebedard/rmw_email/actions)
-[![License](https://img.shields.io/github/license/christophebedard/rmw_email)](https://github.com/christophebedard/rmw_email/blob/master/LICENSE)
+[![License](https://img.shields.io/github/license/christophebedard/rmw_email)](https://github.com/christophebedard/rmw_email/blob/rolling/LICENSE)
 
 ROS 2 over email.
 rmw_email contains a middleware that sends & receives strings over email and an RMW implementation that allows ROS 2 to use this middleware to exchange messages.
@@ -103,7 +103,7 @@ See the [`perf_test.sh`](./rmw_email_cpp/perf/perf_test.sh) and [`perf_plot.sh`]
 1. Clone dependencies
    ```sh
    $ cd ~/ws/
-   $ vcs import src --input https://raw.githubusercontent.com/christophebedard/rmw_email/master/dependencies.repos
+   $ vcs import src --input https://raw.githubusercontent.com/christophebedard/rmw_email/rolling/dependencies.repos
    ```
 1. Build
    ```sh
@@ -165,10 +165,10 @@ See [`email/include/email/lttng.hpp`](./email/include/email/lttng.hpp).
 Tracepoints are automatically included if LTTng is installed and detected.
 To completely remove them, build with `--cmake-args -DEMAIL_ENABLE_TRACING=OFF`.
 
-`rmw_email_cpp` supports the [`ros2_tracing`](https://gitlab.com/ros-tracing/ros2_tracing) tracepoints for the `rmw` layer.
+`rmw_email_cpp` supports the [`ros2_tracing`](https://github.com/ros2/ros2_tracing) tracepoints for the `rmw` layer.
 It also has another LTTng tracepoint in order to link ROS 2 messages to `email` messages.
 See [`rmw_email_cpp/include/rmw_email_cpp/lttng.hpp`](./rmw_email_cpp/include/rmw_email_cpp/lttng.hpp).
-See [`ros2_tracing`'s README](https://gitlab.com/ros-tracing/ros2_tracing#building) for information on how to enable or disable tracepoints.
+See [`ros2_tracing`'s README](https://github.com/ros2/ros2_tracing#building) for information on how to enable or disable tracepoints.
 
 ## Logging
 

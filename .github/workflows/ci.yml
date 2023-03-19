@@ -3,7 +3,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - rolling
 jobs:
   test:
     name: "Build and test"
@@ -29,7 +29,7 @@ jobs:
         target-ros2-distro: rolling
         vcs-repo-file-url: |
           ${{ github.workspace }}/dependencies.repos
-          ${{ matrix.build-type == 'source' && 'https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos' || '' }}
+          ${{ matrix.build-type == 'source' && 'https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos' || '' }}
         import-token: ${{ secrets.GITHUB_TOKEN }}
         colcon-defaults: |
           {

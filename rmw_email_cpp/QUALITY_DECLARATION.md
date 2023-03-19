@@ -22,17 +22,17 @@ The current version can be found in its [package.xml](package.xml), and its chan
 ### Public API Declaration [1.iii]
 <!-- yes -->
 
-`rmw_email_cpp`'s public API is [`rmw`'s public API](https://github.com/ros2/rmw/blob/master/rmw/QUALITY_DECLARATION.md#public-api-declaration-1iii).
+`rmw_email_cpp`'s public API is [`rmw`'s public API](https://github.com/ros2/rmw/blob/rolling/rmw/QUALITY_DECLARATION.md#public-api-declaration-1iii).
 
 ### API Stability Within a Released ROS Distribution [1.iv]/[1.vi]
 <!-- yes -->
 
-`rmw_email_cpp` will not break public API within a released ROS distribution, i.e. no major releases once the ROS distribution is released, as per [`rmw`'s Quality Declaration](https://github.com/ros2/rmw/blob/master/rmw/QUALITY_DECLARATION.md#api-stability-within-a-released-ros-distribution-1iv1vi).
+`rmw_email_cpp` will not break public API within a released ROS distribution, i.e. no major releases once the ROS distribution is released, as per [`rmw`'s Quality Declaration](https://github.com/ros2/rmw/blob/rolling/rmw/QUALITY_DECLARATION.md#api-stability-within-a-released-ros-distribution-1iv1vi).
 
 ### ABI Stability Within a Released ROS Distribution [1.v]/[1.vi]
 <!-- yes -->
 
-`rmw_email_cpp` will maintain ABI stability within a ROS distribution, as per [`rmw`'s Quality Declaration](https://github.com/ros2/rmw/blob/master/rmw/QUALITY_DECLARATION.md#abi-stability-within-a-released-ros-distribution-1v1vi).
+`rmw_email_cpp` will maintain ABI stability within a ROS distribution, as per [`rmw`'s Quality Declaration](https://github.com/ros2/rmw/blob/rolling/rmw/QUALITY_DECLARATION.md#abi-stability-within-a-released-ros-distribution-1v1vi).
 
 ## Change Control Process [2]
 
@@ -71,34 +71,34 @@ All pull requests must resolve related documentation changes before merging.
 ### Feature Documentation [3.i]
 <!-- yes -->
 
-`rmw_email_cpp`'s feature list is based on [`rmw`'s feature list](https://github.com/ros2/rmw/blob/master/rmw/QUALITY_DECLARATION.md#feature-documentation-3i).
+`rmw_email_cpp`'s feature list is based on [`rmw`'s feature list](https://github.com/ros2/rmw/blob/rolling/rmw/QUALITY_DECLARATION.md#feature-documentation-3i).
 Some of `rmw` features are currently not supported and are [documented in this repository's README](../README.md#supported-features).
 
 ### Public API Documentation [3.ii]
 <!-- yes -->
 
-`rmw_email_cpp`'s API is based on [`rmw`'s API](https://github.com/ros2/rmw/blob/master/rmw/QUALITY_DECLARATION.md#public-api-documentation-3ii).
+`rmw_email_cpp`'s API is based on [`rmw`'s API](https://github.com/ros2/rmw/blob/rolling/rmw/QUALITY_DECLARATION.md#public-api-documentation-3ii).
 
 ### License [3.iii]
 <!-- yes -->
 
 The license for `rmw_email_cpp` is Apache 2.0, and a summary is in each source file, the type is declared in the [`package.xml`](./package.xml) manifest file, and a full copy of the license is in the [`LICENSE`](../LICENSE) file.
 
-There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/master/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
+There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/rolling/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
 
 ### Copyright Statements [3.iv]
 <!-- yes -->
 
 The copyright holders each provide a statement of copyright in each source code file in `rmw_email_cpp`.
 
-There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/master/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
+There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/rolling/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
 
 ## Testing [4]
 
 ### Feature Testing [4.i]
 <!-- no -->
 
-All features in `rmw_email_cpp` have tests through [`rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/master/rmw_implementation/test) and [`test_rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/master/test_rmw_implementation/test) which simulate typical usage.
+All features in `rmw_email_cpp` have tests through [`rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/rolling/rmw_implementation/test) and [`test_rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/rolling/test_rmw_implementation/test) which simulate typical usage.
 Some other feature-related unit tests are located in the [`test`](./test) directory.
 
 Not all of those tests currently pass.
@@ -106,7 +106,7 @@ Not all of those tests currently pass.
 ### Public API Testing [4.ii]
 <!-- no -->
 
-All parts of the public API have tests through [`rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/master/rmw_implementation/test) and [`test_rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/master/test_rmw_implementation/test).
+All parts of the public API have tests through [`rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/rolling/rmw_implementation/test) and [`test_rmw_implementation`](https://github.com/ros2/rmw_implementation/tree/rolling/test_rmw_implementation/test).
 The tests aim to cover both typical usage and corner cases, but are quantified by contributing to code coverage.
 
 Not all of those tests currently pass.
@@ -163,31 +163,31 @@ It currently has no quality declaration.
 
 The `rcpputils` package provides an API which contains common utilities and data structures useful when programming in C++.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/master/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/rolling/QUALITY_DECLARATION.md).
 
 #### `rcutils`
 
 The `rcutils` package provides an API which contains common utilities and data structures useful when programming in C.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcutils/blob/master/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcutils/blob/rolling/QUALITY_DECLARATION.md).
 
 #### `rmw`
 
 The `rmw` package is itself the ROS middleware API.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rmw/blob/master/rmw/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rmw/blob/rolling/rmw/QUALITY_DECLARATION.md).
 
 #### `rosidl_runtime_c`
 
 The `rosidl_runtime_c` package provides definitions, initialization and finalization functions, and macros for getting and working with rosidl typesupport types in C.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rosidl/blob/master/rosidl_runtime_c/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rosidl/blob/rolling/rosidl_runtime_c/QUALITY_DECLARATION.md).
 
 #### `rosidl_runtime_cpp`
 
 The `rosidl_runtime_cpp` package provides definitions and templated functions for getting and working with rosidl typesupport types in C++.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rosidl/blob/master/rosidl_runtime_cpp/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rosidl/blob/rolling/rosidl_runtime_cpp/QUALITY_DECLARATION.md).
 
 #### `rosidl_typesupport_introspection_c`
 
@@ -205,7 +205,7 @@ It currently has no quality declaration.
 
 The `tracetools` package provides an API and tools to support instrumenting ROS packages, including core packages.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://gitlab.com/ros-tracing/ros2_tracing/-/blob/master/tracetools/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/ros2_tracing/blob/rolling/tracetools/QUALITY_DECLARATION.md).
 
 ### Direct Runtime non-ROS Dependency [5.iii]
 <!-- yes -->

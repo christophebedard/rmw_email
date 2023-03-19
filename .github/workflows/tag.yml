@@ -2,7 +2,7 @@ name: Tag
 on:
   push:
     branches:
-      - master
+      - rolling
 jobs:
   tag:
     runs-on: ubuntu-latest

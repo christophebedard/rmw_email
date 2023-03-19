@@ -1,7 +1,7 @@
 # All settings not listed here will use the Doxygen default values.
 
 PROJECT_NAME           = "email"
-PROJECT_NUMBER         = master
+PROJECT_NUMBER         = rolling
 PROJECT_BRIEF          = "Email-based middleware"
 
 INPUT                  = ./include
