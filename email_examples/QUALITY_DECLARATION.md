@@ -84,14 +84,14 @@ There is however [a list of the examples it provides](../README.md#email-example
 
 The license for `email_examples` is Apache 2.0, and a summary is in each source file, the type is declared in the [`package.xml`](./package.xml) manifest file, and a full copy of the license is in the [`LICENSE`](../LICENSE) file.
 
-There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/master/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
+There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/rolling/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
 
 ### Copyright Statements [3.iv]
 <!-- yes -->
 
 The copyright holders each provide a statement of copyright in each source code file in `email_examples`.
 
-There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/master/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
+There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/rolling/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
 
 ## Testing [4]
 

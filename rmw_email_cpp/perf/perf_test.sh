@@ -31,8 +31,8 @@
 # Workspace setup:
 #   $ mkdir -p ws/src
 #   $ cd ws
-#   $ vcs import src --input https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
-#   $ vcs import src --input https://raw.githubusercontent.com/christophebedard/rmw_email/master/dependencies.repos
+#   $ vcs import src --input https://raw.githubusercontent.com/ros2/ros2/rolling/ros2.repos
+#   $ vcs import src --input https://raw.githubusercontent.com/christophebedard/rmw_email/rolling/dependencies.repos
 #   $ cd src
 #   $ git clone https://github.com/christophebedard/rmw_email.git
 #   $ git clone https://gitlab.com/ApexAI/performance_test.git

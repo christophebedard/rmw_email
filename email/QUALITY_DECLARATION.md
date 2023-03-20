@@ -84,14 +84,14 @@ There is documentation for all of the features, and new features require documen
 
 The license for `email` is Apache 2.0, and a summary is in each source file, the type is declared in the [`package.xml`](./package.xml) manifest file, and a full copy of the license is in the [`LICENSE`](../LICENSE) file.
 
-There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/master/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
+There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/rolling/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
 
 ### Copyright Statements [3.iv]
 <!-- yes -->
 
 The copyright holders each provide a statement of copyright in each source code file in `email`.
 
-There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/master/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
+There is an automated test using [`ament_copyright`](https://github.com/ament/ament_lint/tree/rolling/ament_copyright) through `ament_lint_common` that ensures each file has a license statement.
 
 ## Testing [4]
 
@@ -154,13 +154,13 @@ It also has several test dependencies, which do not affect the resulting quality
 
 The `rcpputils` package provides an API which contains common utilities and data structures useful when programming in C++.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/master/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcpputils/blob/rolling/QUALITY_DECLARATION.md).
 
 #### `rcutils`
 
 The `rcutils` package provides an API which contains common utilities and data structures useful when programming in C.
 
-It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcutils/blob/master/QUALITY_DECLARATION.md).
+It is **Quality Level 1**, see its [Quality Declaration document](https://github.com/ros2/rcutils/blob/rolling/QUALITY_DECLARATION.md).
 
 ### Direct Runtime non-ROS Dependency [5.iii]
 <!-- no -->
