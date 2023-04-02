@@ -1,0 +1,166 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1SafeQueue" kind="class" language="C++" prot="public">
+    <compoundname>email::SafeQueue</compoundname>
+    <includes local="no">safe_queue.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1SafeQueue_1a0ea093bd20b0d0cc1502fdcce80212b2" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex email::SafeQueue&lt; T &gt;::queue_mutex_</definition>
+        <argsstring></argsstring>
+        <name>queue_mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="86" column="22" bodyfile="include/email/safe_queue.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1SafeQueue_1a4dd6884ec1fddb186ea871a92f9d05e3" prot="private" static="no" mutable="no">
+        <type>std::queue&lt; T &gt;</type>
+        <definition>std::queue&lt;T&gt; email::SafeQueue&lt; T &gt;::queue_</definition>
+        <argsstring></argsstring>
+        <name>queue_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="87" column="14" bodyfile="include/email/safe_queue.hpp" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1SafeQueue_1a22036feff6b0264298c3b8780f318fed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>email::SafeQueue&lt; T &gt;::SafeQueue</definition>
+        <argsstring>()</argsstring>
+        <name>SafeQueue</name>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="38" column="3" bodyfile="include/email/safe_queue.hpp" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeQueue_1add6639ea70ecb072ff4472af0a674471" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>email::SafeQueue&lt; T &gt;::~SafeQueue</definition>
+        <argsstring>()</argsstring>
+        <name>~SafeQueue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="45" column="3" bodyfile="include/email/safe_queue.hpp" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeQueue_1a548ee01f7a0733d5f8760bf85c762d68" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::SafeQueue&lt; T &gt;::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="48" column="3" bodyfile="include/email/safe_queue.hpp" bodystart="48" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeQueue_1af490c5923c3e2567357ba39580b01729" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::SafeQueue&lt; T &gt;::push</definition>
+        <argsstring>(const T &amp;element)</argsstring>
+        <name>push</name>
+        <param>
+          <type>const T &amp;</type>
+          <declname>element</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="55" column="3" bodyfile="include/email/safe_queue.hpp" bodystart="55" bodyend="59"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeQueue_1a9a939e531527ca5d84da0586f1341532" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::SafeQueue&lt; T &gt;::pop</definition>
+        <argsstring>()</argsstring>
+        <name>pop</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="62" column="3" bodyfile="include/email/safe_queue.hpp" bodystart="62" bodyend="66"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeQueue_1ab982a1cb410d935efe1a438c80bffa97" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T &amp;</type>
+        <definition>const T&amp; email::SafeQueue&lt; T &gt;::front</definition>
+        <argsstring>() const</argsstring>
+        <name>front</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="69" column="3" bodyfile="include/email/safe_queue.hpp" bodystart="69" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeQueue_1abbc26904adc2e3180df5c12e16bc5307" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>const T</type>
+        <definition>const T email::SafeQueue&lt; T &gt;::dequeue</definition>
+        <argsstring>()</argsstring>
+        <name>dequeue</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_queue.hpp" line="76" column="3" bodyfile="include/email/safe_queue.hpp" bodystart="76" bodyend="81"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Simple thread-safe queue. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Note: probably not ideal.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the queue element type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="include/email/safe_queue.hpp" line="34" column="1" bodyfile="include/email/safe_queue.hpp" bodystart="35" bodyend="88"/>
+    <listofallmembers>
+      <member refid="classemail_1_1SafeQueue_1abbc26904adc2e3180df5c12e16bc5307" prot="public" virt="non-virtual"><scope>email::SafeQueue</scope><name>dequeue</name></member>
+      <member refid="classemail_1_1SafeQueue_1a548ee01f7a0733d5f8760bf85c762d68" prot="public" virt="non-virtual"><scope>email::SafeQueue</scope><name>empty</name></member>
+      <member refid="classemail_1_1SafeQueue_1ab982a1cb410d935efe1a438c80bffa97" prot="public" virt="non-virtual"><scope>email::SafeQueue</scope><name>front</name></member>
+      <member refid="classemail_1_1SafeQueue_1a9a939e531527ca5d84da0586f1341532" prot="public" virt="non-virtual"><scope>email::SafeQueue</scope><name>pop</name></member>
+      <member refid="classemail_1_1SafeQueue_1af490c5923c3e2567357ba39580b01729" prot="public" virt="non-virtual"><scope>email::SafeQueue</scope><name>push</name></member>
+      <member refid="classemail_1_1SafeQueue_1a4dd6884ec1fddb186ea871a92f9d05e3" prot="private" virt="non-virtual"><scope>email::SafeQueue</scope><name>queue_</name></member>
+      <member refid="classemail_1_1SafeQueue_1a0ea093bd20b0d0cc1502fdcce80212b2" prot="private" virt="non-virtual"><scope>email::SafeQueue</scope><name>queue_mutex_</name></member>
+      <member refid="classemail_1_1SafeQueue_1a22036feff6b0264298c3b8780f318fed" prot="public" virt="non-virtual"><scope>email::SafeQueue</scope><name>SafeQueue</name></member>
+      <member refid="classemail_1_1SafeQueue_1add6639ea70ecb072ff4472af0a674471" prot="public" virt="non-virtual"><scope>email::SafeQueue</scope><name>~SafeQueue</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

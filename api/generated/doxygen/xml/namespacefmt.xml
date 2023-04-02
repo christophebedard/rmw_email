@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespacefmt" kind="namespace" language="C++">
+    <compoundname>fmt</compoundname>
+    <innerclass refid="structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4" prot="public">fmt::formatter&lt; email::EmailRecipients &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01email_1_1EmailContent_01_4" prot="public">fmt::formatter&lt; email::EmailContent &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4" prot="public">fmt::formatter&lt; email::EmailHeaders &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01email_1_1EmailData_01_4" prot="public">fmt::formatter&lt; email::EmailData &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01email_1_1Gid_01_4" prot="public">fmt::formatter&lt; email::Gid &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4" prot="public">fmt::formatter&lt; rcpputils::fs::path &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01YAML_1_1Node_01_4" prot="public">fmt::formatter&lt; YAML::Node &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4" prot="public">fmt::formatter&lt; email::Timestamp &gt;</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="[generated]" line="1" column="1"/>
+  </compounddef>
+</doxygen>

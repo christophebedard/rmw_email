@@ -1,0 +1,25 @@
+.. _exhale_struct_structfmt_1_1formatter_3_01YAML_1_1Node_01_4:
+
+Template Struct formatter< YAML::Node >
+=======================================
+
+- Defined in :ref:`file_include_email_log.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public formatter< string_view >``
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: fmt::formatter< YAML::Node >
+   :members:
+   :protected-members:
+   :undoc-members:

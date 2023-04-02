@@ -1,0 +1,13 @@
+.. _exhale_function_namespaceemail_1_1log_1aae637767284f0246349f0c09c4a7b30f:
+
+Function email::log::remove
+===========================
+
+- Defined in :ref:`file_include_email_log.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::log::remove(const std::shared_ptr<Logger>&)

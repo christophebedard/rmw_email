@@ -1,0 +1,13 @@
+.. _exhale_define_lttng_8hpp_1a41a6d81b1a679e3ef9d0f0ada1e3cbd3:
+
+Define EMAIL_TRACEPOINT
+=======================
+
+- Defined in :ref:`file_include_email_lttng.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: EMAIL_TRACEPOINT

@@ -1,0 +1,13 @@
+.. _exhale_function_namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1:
+
+Function email::init()
+======================
+
+- Defined in :ref:`file_include_email_init.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::init()

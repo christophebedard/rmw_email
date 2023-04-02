@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_0a571530ab715c042e6dcc1943a3a21e" kind="dir">
+    <compoundname>include/email/curl</compoundname>
+    <innerfile refid="curl_2context_8hpp">context.hpp</innerfile>
+    <innerfile refid="executor_8hpp">executor.hpp</innerfile>
+    <innerfile refid="curl_2info_8hpp">info.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/email/curl/"/>
+  </compounddef>
+</doxygen>

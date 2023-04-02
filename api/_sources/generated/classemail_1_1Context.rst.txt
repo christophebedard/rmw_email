@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1Context:
+
+Class Context
+=============
+
+- Defined in :ref:`file_include_email_context.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::Context
+   :members:
+   :protected-members:
+   :undoc-members:

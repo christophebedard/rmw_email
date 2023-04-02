@@ -1,0 +1,61 @@
+
+.. _file_include_email_init.hpp:
+
+File init.hpp
+=============
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/init.hpp``)
+---------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_init.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``email/visibility_control.hpp`` (:ref:`file_include_email_visibility_control.hpp`)
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_email.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespaceemail_1a31064318c3c135912c70c384f25d3305`
+
+- :ref:`exhale_function_namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1`
+
+- :ref:`exhale_function_namespaceemail_1a7a0e2779940792a4753a9b163fd1bbc4`
+

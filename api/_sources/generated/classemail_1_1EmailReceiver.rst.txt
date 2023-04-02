@@ -1,0 +1,26 @@
+.. _exhale_class_classemail_1_1EmailReceiver:
+
+Class EmailReceiver
+===================
+
+- Defined in :ref:`file_include_email_email_receiver.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public email::CurlEmailReceiver`` (:ref:`exhale_class_classemail_1_1CurlEmailReceiver`)
+- ``public email::IntraEmailReceiver`` (:ref:`exhale_class_classemail_1_1IntraEmailReceiver`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::EmailReceiver
+   :members:
+   :protected-members:
+   :undoc-members:

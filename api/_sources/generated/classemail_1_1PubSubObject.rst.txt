@@ -1,0 +1,33 @@
+.. _exhale_class_classemail_1_1PubSubObject:
+
+Class PubSubObject
+==================
+
+- Defined in :ref:`file_include_email_pub_sub.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Types
+**********
+
+- ``public email::GidObject`` (:ref:`exhale_class_classemail_1_1GidObject`)
+- ``public email::NamedObject`` (:ref:`exhale_class_classemail_1_1NamedObject`)
+
+
+Derived Types
+*************
+
+- ``public email::Publisher`` (:ref:`exhale_class_classemail_1_1Publisher`)
+- ``public email::Subscription`` (:ref:`exhale_class_classemail_1_1Subscription`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::PubSubObject
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,16 @@
+.. _exhale_struct_structemail_1_1ServiceRequestId:
+
+Struct ServiceRequestId
+=======================
+
+- Defined in :ref:`file_include_email_service_request.hpp`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: email::ServiceRequestId
+   :members:
+   :protected-members:
+   :undoc-members:

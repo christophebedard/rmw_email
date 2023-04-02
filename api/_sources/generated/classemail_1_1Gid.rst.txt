@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1Gid:
+
+Class Gid
+=========
+
+- Defined in :ref:`file_include_email_gid.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::Gid
+   :members:
+   :protected-members:
+   :undoc-members:

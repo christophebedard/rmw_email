@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1PollingManager:
+
+Class PollingManager
+====================
+
+- Defined in :ref:`file_include_email_email_polling_manager.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::PollingManager
+   :members:
+   :protected-members:
+   :undoc-members:

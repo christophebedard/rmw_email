@@ -1,0 +1,13 @@
+.. _exhale_define_macros_8hpp_1afb828ba1d458a13870c719025fcbf806:
+
+Define EMAIL_WEAK_PTR
+=====================
+
+- Defined in :ref:`file_include_email_macros.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: EMAIL_WEAK_PTR

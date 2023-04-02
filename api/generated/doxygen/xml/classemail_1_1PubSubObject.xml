@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1PubSubObject" kind="class" language="C++" prot="public">
+    <compoundname>email::PubSubObject</compoundname>
+    <basecompoundref refid="classemail_1_1GidObject" prot="public" virt="non-virtual">email::GidObject</basecompoundref>
+    <basecompoundref refid="classemail_1_1NamedObject" prot="public" virt="non-virtual">email::NamedObject</basecompoundref>
+    <derivedcompoundref refid="classemail_1_1Publisher" prot="public" virt="non-virtual">email::Publisher</derivedcompoundref>
+    <derivedcompoundref refid="classemail_1_1Subscription" prot="public" virt="non-virtual">email::Subscription</derivedcompoundref>
+    <includes local="no">pub_sub.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1PubSubObject_1a00a22d18eebc82496581344c21e02c32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; email::PubSubObject::get_topic_name</definition>
+        <argsstring>() const</argsstring>
+        <name>get_topic_name</name>
+        <briefdescription>
+<para>Get the topic name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the topic name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/pub_sub.hpp" line="53" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classemail_1_1PubSubObject_1a601bed08338a20e2d63e2332661a61e5" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::PubSubObject::PubSubObject</definition>
+        <argsstring>(const std::string &amp;topic_name)</argsstring>
+        <name>PubSubObject</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>topic_name</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Validates the topic name.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>topic_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the topic name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1TopicNameInvalidError" kindref="compound">TopicNameInvalidError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the topic name is invalid </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/pub_sub.hpp" line="63" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1PubSubObject_1a30f73a71f66b22671b2be92884e6c81f" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual email::PubSubObject::~PubSubObject</definition>
+        <argsstring>()</argsstring>
+        <name>~PubSubObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/pub_sub.hpp" line="65" column="11"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classemail_1_1PubSubObject_1a88516103b3a396e2ae0987efd50815eb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>virtual void email::PubSubObject::validate_name</definition>
+        <argsstring>() const</argsstring>
+        <name>validate_name</name>
+        <reimplements refid="classemail_1_1NamedObject_1ab2b95bd3169bcecfbda7002cbf3c8586">validate_name</reimplements>
+        <briefdescription>
+<para>Validate the topic name and throw an error with an explanation if it is not valid. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1TopicNameInvalidError" kindref="compound">TopicNameInvalidError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if the topic name is invalid </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/pub_sub.hpp" line="76" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract pub or sub object. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Abstract class with common publisher and subscription elements. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>email::GidObject</label>
+        <link refid="classemail_1_1GidObject"/>
+      </node>
+      <node id="4">
+        <label>email::Publisher</label>
+        <link refid="classemail_1_1Publisher"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>email::PubSubObject</label>
+        <link refid="classemail_1_1PubSubObject"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>email::Subscription</label>
+        <link refid="classemail_1_1Subscription"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>email::GidObject</label>
+        <link refid="classemail_1_1GidObject"/>
+      </node>
+      <node id="1">
+        <label>email::PubSubObject</label>
+        <link refid="classemail_1_1PubSubObject"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/email/pub_sub.hpp" line="44" column="1" bodyfile="include/email/pub_sub.hpp" bodystart="45" bodyend="77"/>
+    <listofallmembers>
+      <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_gid</name></member>
+      <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_object_name</name></member>
+      <member refid="classemail_1_1PubSubObject_1a00a22d18eebc82496581344c21e02c32" prot="public" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_topic_name</name></member>
+      <member refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>GidObject</name></member>
+      <member refid="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>has_newline</name></member>
+      <member refid="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>NamedObject</name></member>
+      <member refid="classemail_1_1PubSubObject_1a601bed08338a20e2d63e2332661a61e5" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>PubSubObject</name></member>
+      <member refid="classemail_1_1PubSubObject_1a88516103b3a396e2ae0987efd50815eb" prot="private" virt="virtual"><scope>email::PubSubObject</scope><name>validate_name</name></member>
+      <member refid="classemail_1_1GidObject_1a8fce88afdc622182418d32b1c43cc17b" prot="protected" virt="virtual"><scope>email::PubSubObject</scope><name>~GidObject</name></member>
+      <member refid="classemail_1_1NamedObject_1ab6de668d7cc2c1eefda15c5822599a46" prot="protected" virt="virtual"><scope>email::PubSubObject</scope><name>~NamedObject</name></member>
+      <member refid="classemail_1_1PubSubObject_1a30f73a71f66b22671b2be92884e6c81f" prot="protected" virt="virtual"><scope>email::PubSubObject</scope><name>~PubSubObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

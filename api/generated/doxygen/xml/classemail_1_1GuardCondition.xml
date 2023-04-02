@@ -1,0 +1,153 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1GuardCondition" kind="class" language="C++" prot="public">
+    <compoundname>email::GuardCondition</compoundname>
+    <includes local="no">guard_condition.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1GuardCondition_1abe6d05bc0057bb638856e7dba6015f9b" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Logger&gt; email::GuardCondition::logger_</definition>
+        <argsstring></argsstring>
+        <name>logger_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="72" column="19" bodyfile="include/email/guard_condition.hpp" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1GuardCondition_1ab93e28bb85cb840d8dfedc2f22da7054" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; email::GuardCondition::in_use_</definition>
+        <argsstring></argsstring>
+        <name>in_use_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="73" column="15" bodyfile="include/email/guard_condition.hpp" bodystart="73" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1GuardCondition_1af8149296d82612e42e8ac04b044bbf1e" prot="private" static="no" mutable="no">
+        <type>std::atomic&lt; bool &gt;</type>
+        <definition>std::atomic&lt;bool&gt; email::GuardCondition::triggered_</definition>
+        <argsstring></argsstring>
+        <name>triggered_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="74" column="15" bodyfile="include/email/guard_condition.hpp" bodystart="74" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1GuardCondition_1aad2ca2fad5110992f0ab770fc9767a86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::GuardCondition::GuardCondition</definition>
+        <argsstring>()</argsstring>
+        <name>GuardCondition</name>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="48" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1GuardCondition_1a8726f63c5f17c97999f9375d8ed02562" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::GuardCondition::~GuardCondition</definition>
+        <argsstring>()</argsstring>
+        <name>~GuardCondition</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="51" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1GuardCondition_1af5b7229bfff55135b648e5ad952662ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::GuardCondition::trigger</definition>
+        <argsstring>()</argsstring>
+        <name>trigger</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="55" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1GuardCondition_1acc1fcecf964084e4802fbac2570cb3eb" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::GuardCondition::triggered</definition>
+        <argsstring>() const</argsstring>
+        <name>triggered</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="59" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1GuardCondition_1a7cc9a581f7101e588984f1a5c98b33c6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::GuardCondition::exchange_in_use</definition>
+        <argsstring>(bool in_use)</argsstring>
+        <name>exchange_in_use</name>
+        <param>
+          <type>bool</type>
+          <declname>in_use</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="63" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1GuardCondition_1a65e1eece1c8ea4b7b3afcf6e605dc29c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::GuardCondition::reset</definition>
+        <argsstring>()</argsstring>
+        <name>reset</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/guard_condition.hpp" line="67" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Guard condition. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Condition that can be waited on and triggered by another thread. <simplesect kind="see"><para><ref refid="classemail_1_1WaitSet" kindref="compound">WaitSet</ref> </para>
+</simplesect>
+</para>
+    </detaileddescription>
+    <location file="include/email/guard_condition.hpp" line="43" column="1" bodyfile="include/email/guard_condition.hpp" bodystart="44" bodyend="75"/>
+    <listofallmembers>
+      <member refid="classemail_1_1GuardCondition_1a7cc9a581f7101e588984f1a5c98b33c6" prot="public" virt="non-virtual"><scope>email::GuardCondition</scope><name>exchange_in_use</name></member>
+      <member refid="classemail_1_1GuardCondition_1aad2ca2fad5110992f0ab770fc9767a86" prot="public" virt="non-virtual"><scope>email::GuardCondition</scope><name>GuardCondition</name></member>
+      <member refid="classemail_1_1GuardCondition_1ab93e28bb85cb840d8dfedc2f22da7054" prot="private" virt="non-virtual"><scope>email::GuardCondition</scope><name>in_use_</name></member>
+      <member refid="classemail_1_1GuardCondition_1abe6d05bc0057bb638856e7dba6015f9b" prot="private" virt="non-virtual"><scope>email::GuardCondition</scope><name>logger_</name></member>
+      <member refid="classemail_1_1GuardCondition_1a65e1eece1c8ea4b7b3afcf6e605dc29c" prot="public" virt="non-virtual"><scope>email::GuardCondition</scope><name>reset</name></member>
+      <member refid="classemail_1_1GuardCondition_1af5b7229bfff55135b648e5ad952662ba" prot="public" virt="non-virtual"><scope>email::GuardCondition</scope><name>trigger</name></member>
+      <member refid="classemail_1_1GuardCondition_1acc1fcecf964084e4802fbac2570cb3eb" prot="public" virt="non-virtual"><scope>email::GuardCondition</scope><name>triggered</name></member>
+      <member refid="classemail_1_1GuardCondition_1af8149296d82612e42e8ac04b044bbf1e" prot="private" virt="non-virtual"><scope>email::GuardCondition</scope><name>triggered_</name></member>
+      <member refid="classemail_1_1GuardCondition_1a8726f63c5f17c97999f9375d8ed02562" prot="public" virt="non-virtual"><scope>email::GuardCondition</scope><name>~GuardCondition</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

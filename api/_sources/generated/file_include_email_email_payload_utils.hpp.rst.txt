@@ -1,0 +1,73 @@
+
+.. _file_include_email_email_payload_utils.hpp:
+
+File payload_utils.hpp
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email_email>` (``include/email/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/email/payload_utils.hpp``)
+------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_email_payload_utils.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``email/email/info.hpp`` (:ref:`file_include_email_email_info.hpp`)
+
+- ``email/visibility_control.hpp`` (:ref:`file_include_email_visibility_control.hpp`)
+
+- ``memory``
+
+- ``optional``
+
+- ``regex``
+
+- ``string``
+
+- ``vector``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+- :ref:`namespace_email__utils`
+
+- :ref:`namespace_email__utils__payload`
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1ac522857948a8c609ea73e96600cb8e2a`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1a455c37a8a129ddcf90c1835f001c0579`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1ae288cd99e7a54273aea6372c959f76c9`
+

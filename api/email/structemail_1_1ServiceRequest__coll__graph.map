@@ -1,6 +1,0 @@
-<map id="email::ServiceRequest" name="email::ServiceRequest">
-<area shape="rect" id="node1" title="Service request, with a request ID and some content." alt="" coords="129,184,297,211"/>
-<area shape="rect" id="node2" href="$structemail_1_1ServiceRequestId.html" title="Service request ID, with a sequence number and a client GID." alt="" coords="5,95,185,121"/>
-<area shape="rect" id="node3" href="$classemail_1_1Gid.html" title="Unique ID (GID)." alt="" coords="51,5,140,32"/>
-<area shape="rect" id="node4" href="/home/runner/work/rmw_email/rmw_email/gen_docs/data/cppreference-doxygen-web.tag.xml$cpp/string/basic_string.html" title=" " alt="" coords="209,95,296,121"/>
-</map>

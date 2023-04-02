@@ -1,0 +1,136 @@
+
+.. _program_listing_file_include_email_wait.hpp:
+
+Program Listing for File wait.hpp
+=================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_email_wait.hpp>` (``include/email/wait.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright 2021 Christophe Bedard
+   //
+   // Licensed under the Apache License, Version 2.0 (the "License");
+   // you may not use this file except in compliance with the License.
+   // You may obtain a copy of the License at
+   //
+   //     http://www.apache.org/licenses/LICENSE-2.0
+   //
+   // Unless required by applicable law or agreed to in writing, software
+   // distributed under the License is distributed on an "AS IS" BASIS,
+   // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   // See the License for the specific language governing permissions and
+   // limitations under the License.
+   
+   #ifndef EMAIL__WAIT_HPP_
+   #define EMAIL__WAIT_HPP_
+   
+   #include <chrono>
+   #include <memory>
+   #include <string>
+   #include <utility>
+   
+   #include "email/message_info.hpp"
+   #include "email/service_client.hpp"
+   #include "email/service_info.hpp"
+   #include "email/service_request.hpp"
+   #include "email/service_server.hpp"
+   #include "email/subscription.hpp"
+   #include "email/visibility_control.hpp"
+   
+   namespace email
+   {
+   
+   
+   EMAIL_PUBLIC
+   std::pair<std::string, MessageInfo>
+   wait_for_message_with_info(
+     Subscription * subscription,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::pair<std::string, MessageInfo>
+   wait_for_message_with_info(
+     std::shared_ptr<Subscription> subscription,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::string
+   wait_for_message(
+     Subscription * subscription,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::string
+   wait_for_message(
+     std::shared_ptr<Subscription> subscription,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::pair<std::string, ServiceInfo>
+   wait_for_response_with_info(
+     const SequenceNumber sequence_number,
+     ServiceClient * client,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::pair<std::string, ServiceInfo>
+   wait_for_response_with_info(
+     const SequenceNumber sequence_number,
+     std::shared_ptr<ServiceClient> client,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::string
+   wait_for_response(
+     const SequenceNumber sequence_number,
+     ServiceClient * client,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::string
+   wait_for_response(
+     const SequenceNumber sequence_number,
+     std::shared_ptr<ServiceClient> client,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::pair<struct ServiceRequest, ServiceInfo>
+   wait_for_request_with_info(
+     ServiceServer * server,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   std::pair<struct ServiceRequest, ServiceInfo>
+   wait_for_request_with_info(
+     std::shared_ptr<ServiceServer> server,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   struct ServiceRequest
+   wait_for_request(
+     ServiceServer * server,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   
+   EMAIL_PUBLIC
+   struct ServiceRequest
+   wait_for_request(
+     std::shared_ptr<ServiceServer> server,
+     const std::chrono::milliseconds timeout = std::chrono::milliseconds(-1));
+   
+   }  // namespace email
+   
+   #endif  // EMAIL__WAIT_HPP_

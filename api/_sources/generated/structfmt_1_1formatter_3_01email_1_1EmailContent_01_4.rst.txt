@@ -1,0 +1,25 @@
+.. _exhale_struct_structfmt_1_1formatter_3_01email_1_1EmailContent_01_4:
+
+Template Struct formatter< email::EmailContent >
+================================================
+
+- Defined in :ref:`file_include_email_email_info.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public formatter< string_view >``
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: fmt::formatter< email::EmailContent >
+   :members:
+   :protected-members:
+   :undoc-members:

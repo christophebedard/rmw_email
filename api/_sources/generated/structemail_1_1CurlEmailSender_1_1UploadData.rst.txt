@@ -1,0 +1,22 @@
+.. _exhale_struct_structemail_1_1CurlEmailSender_1_1UploadData:
+
+Struct CurlEmailSender::UploadData
+==================================
+
+- Defined in :ref:`file_include_email_email_curl_sender.hpp`
+
+
+Nested Relationships
+--------------------
+
+This struct is a nested type of :ref:`exhale_class_classemail_1_1CurlEmailSender`.
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: email::CurlEmailSender::UploadData
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,110 @@
+
+.. _file_include_email_visibility_control.hpp:
+
+File visibility_control.hpp
+===========================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/visibility_control.hpp``)
+-----------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_visibility_control.hpp.rst
+
+
+
+
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_communication_info.hpp`
+
+- :ref:`file_include_email_context.hpp`
+
+- :ref:`file_include_email_curl_executor.hpp`
+
+- :ref:`file_include_email_email_curl_receiver.hpp`
+
+- :ref:`file_include_email_email_curl_sender.hpp`
+
+- :ref:`file_include_email_email_intra_receiver.hpp`
+
+- :ref:`file_include_email_email_intra_sender.hpp`
+
+- :ref:`file_include_email_email_payload_utils.hpp`
+
+- :ref:`file_include_email_email_polling_manager.hpp`
+
+- :ref:`file_include_email_email_receiver.hpp`
+
+- :ref:`file_include_email_email_response_utils.hpp`
+
+- :ref:`file_include_email_email_sender.hpp`
+
+- :ref:`file_include_email_gid.hpp`
+
+- :ref:`file_include_email_guard_condition.hpp`
+
+- :ref:`file_include_email_init.hpp`
+
+- :ref:`file_include_email_message_info.hpp`
+
+- :ref:`file_include_email_options.hpp`
+
+- :ref:`file_include_email_pub_sub.hpp`
+
+- :ref:`file_include_email_publisher.hpp`
+
+- :ref:`file_include_email_service.hpp`
+
+- :ref:`file_include_email_service_client.hpp`
+
+- :ref:`file_include_email_service_handler.hpp`
+
+- :ref:`file_include_email_service_info.hpp`
+
+- :ref:`file_include_email_service_server.hpp`
+
+- :ref:`file_include_email_subscription.hpp`
+
+- :ref:`file_include_email_subscription_handler.hpp`
+
+- :ref:`file_include_email_timestamp.hpp`
+
+- :ref:`file_include_email_utils.hpp`
+
+- :ref:`file_include_email_wait.hpp`
+
+- :ref:`file_include_email_wait_set.hpp`
+
+
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_visibility__control_8hpp_1a94c93836ac70e948a23100bef086e18d`
+
+- :ref:`exhale_define_visibility__control_8hpp_1a43b93e86e1237b12352cbe1a0bf6037b`
+
+- :ref:`exhale_define_visibility__control_8hpp_1a6d306507fc30a742b84e4618b31f0a06`
+
+- :ref:`exhale_define_visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75`
+
+- :ref:`exhale_define_visibility__control_8hpp_1a5c16dda9cae66fb57f21b90ad814a120`
+

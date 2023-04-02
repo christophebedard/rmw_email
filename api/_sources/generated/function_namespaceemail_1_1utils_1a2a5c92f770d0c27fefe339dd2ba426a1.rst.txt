@@ -1,0 +1,13 @@
+.. _exhale_function_namespaceemail_1_1utils_1a2a5c92f770d0c27fefe339dd2ba426a1:
+
+Function email::utils::optional_stoi
+====================================
+
+- Defined in :ref:`file_include_email_utils.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::utils::optional_stoi(const std::string&)

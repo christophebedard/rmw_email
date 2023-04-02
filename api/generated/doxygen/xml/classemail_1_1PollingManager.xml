@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1PollingManager" kind="class" language="C++" prot="public">
+    <compoundname>email::PollingManager</compoundname>
+    <includes local="no">polling_manager.hpp</includes>
+      <sectiondef kind="public-type">
+      <memberdef kind="typedef" id="classemail_1_1PollingManager_1afa05fad5b42110b2dfcda3f5103d0de6" prot="public" static="no">
+        <type>std::function&lt; void(const struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &amp;)&gt;</type>
+        <definition>using email::PollingManager::HandlerFunction =  std::function&lt;void (const struct EmailData &amp;)&gt;</definition>
+        <argsstring></argsstring>
+        <name>HandlerFunction</name>
+        <briefdescription>
+<para>Alias for handler function. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="56" column="3" bodyfile="include/email/email/polling_manager.hpp" bodystart="56" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a6a1e7d02e1aecbf3dafe8f23ee054b6d" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;EmailReceiver&gt; email::PollingManager::receiver_</definition>
+        <argsstring></argsstring>
+        <name>receiver_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="89" column="19" bodyfile="include/email/email/polling_manager.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a0ea87b7e1f81c02e2fc1b581b4d6f120" prot="private" static="no" mutable="no">
+        <type>const std::optional&lt; std::chrono::nanoseconds &gt;</type>
+        <definition>const std::optional&lt;std::chrono::nanoseconds&gt; email::PollingManager::polling_period_</definition>
+        <argsstring></argsstring>
+        <name>polling_period_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="90" column="23" bodyfile="include/email/email/polling_manager.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a97c0b66f2b631cbfef85b0972ad78293" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool email::PollingManager::has_started_</definition>
+        <argsstring></argsstring>
+        <name>has_started_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="91" column="8" bodyfile="include/email/email/polling_manager.hpp" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a7cccb94c62af1c4ba050ee42d5a202dc" prot="private" static="no" mutable="no">
+        <type>std::atomic_bool</type>
+        <definition>std::atomic_bool email::PollingManager::do_shutdown_</definition>
+        <argsstring></argsstring>
+        <name>do_shutdown_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="92" column="20" bodyfile="include/email/email/polling_manager.hpp" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a909238eedecbd4d40d7240b0aac617bd" prot="private" static="no" mutable="no">
+        <type>std::thread</type>
+        <definition>std::thread email::PollingManager::thread_</definition>
+        <argsstring></argsstring>
+        <name>thread_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="93" column="15" bodyfile="include/email/email/polling_manager.hpp" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a81430425e33648210c2ce9dd482a5652" prot="private" static="no" mutable="no">
+        <type>std::mutex</type>
+        <definition>std::mutex email::PollingManager::handlers_mutex_</definition>
+        <argsstring></argsstring>
+        <name>handlers_mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="94" column="14" bodyfile="include/email/email/polling_manager.hpp" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a101a7aeb0cc4df05573406006d8c9c43" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="classemail_1_1PollingManager_1afa05fad5b42110b2dfcda3f5103d0de6" kindref="member">HandlerFunction</ref> &gt;</type>
+        <definition>std::vector&lt;HandlerFunction&gt; email::PollingManager::handlers_</definition>
+        <argsstring></argsstring>
+        <name>handlers_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="95" column="15" bodyfile="include/email/email/polling_manager.hpp" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1PollingManager_1a452d1e69c6912951adc1f821998b5dfb" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Logger&gt; email::PollingManager::logger_</definition>
+        <argsstring></argsstring>
+        <name>logger_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="96" column="19" bodyfile="include/email/email/polling_manager.hpp" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1PollingManager_1a21701ede1e27783c03b8f4103f057387" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::PollingManager::PollingManager</definition>
+        <argsstring>(std::shared_ptr&lt; EmailReceiver &gt; receiver, const std::optional&lt; std::chrono::nanoseconds &gt; polling_period)</argsstring>
+        <name>PollingManager</name>
+        <param>
+          <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref> &gt;</type>
+          <declname>receiver</declname>
+        </param>
+        <param>
+          <type>const std::optional&lt; std::chrono::nanoseconds &gt;</type>
+          <declname>polling_period</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>receiver</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the email receiver to use for getting emails </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>polling_period</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the polling period, or <computeroutput>std::optional</computeroutput> to use the default value </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="49" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1PollingManager_1a9fe590820846230f5280bc8b1b625bfa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::PollingManager::~PollingManager</definition>
+        <argsstring>()</argsstring>
+        <name>~PollingManager</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="53" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1PollingManager_1ada4ac3a931faab269f51bf3eb47107be" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::PollingManager::register_handler</definition>
+        <argsstring>(const HandlerFunction &amp;handler)</argsstring>
+        <name>register_handler</name>
+        <param>
+          <type>const <ref refid="classemail_1_1PollingManager_1afa05fad5b42110b2dfcda3f5103d0de6" kindref="member">HandlerFunction</ref> &amp;</type>
+          <declname>handler</declname>
+        </param>
+        <briefdescription>
+<para>Register a handler with the manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The handler function will be called when there is a new email.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>handler</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the handler to call with new emails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="65" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1PollingManager_1a296452624039c89821173b200d26074b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::PollingManager::has_started</definition>
+        <argsstring>() const</argsstring>
+        <name>has_started</name>
+        <briefdescription>
+<para>Get status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if it has been started, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="72" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1PollingManager_1aa783b059813426b2508da384cb9e8b74" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::PollingManager::start</definition>
+        <argsstring>()</argsstring>
+        <name>start</name>
+        <briefdescription>
+<para>Start manager. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="76" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1PollingManager_1a896bf5d847844d5c5ef8cad3599b67ca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::PollingManager::shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>shutdown</name>
+        <briefdescription>
+<para>Shut down manager and internal thread. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="80" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classemail_1_1PollingManager_1a716352b352b0e550db0e0f97e07c0946" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::PollingManager::poll_thread</definition>
+        <argsstring>()</argsstring>
+        <name>poll_thread</name>
+        <briefdescription>
+<para>Thread function for polling for new emails. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/polling_manager.hpp" line="87" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Manager for polling for new emails. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Does the polling for new emails and distributes them to handlers. </para>
+    </detaileddescription>
+    <location file="include/email/email/polling_manager.hpp" line="41" column="1" bodyfile="include/email/email/polling_manager.hpp" bodystart="42" bodyend="97"/>
+    <listofallmembers>
+      <member refid="classemail_1_1PollingManager_1a7cccb94c62af1c4ba050ee42d5a202dc" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>do_shutdown_</name></member>
+      <member refid="classemail_1_1PollingManager_1afa05fad5b42110b2dfcda3f5103d0de6" prot="public" virt="non-virtual"><scope>email::PollingManager</scope><name>HandlerFunction</name></member>
+      <member refid="classemail_1_1PollingManager_1a101a7aeb0cc4df05573406006d8c9c43" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>handlers_</name></member>
+      <member refid="classemail_1_1PollingManager_1a81430425e33648210c2ce9dd482a5652" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>handlers_mutex_</name></member>
+      <member refid="classemail_1_1PollingManager_1a296452624039c89821173b200d26074b" prot="public" virt="non-virtual"><scope>email::PollingManager</scope><name>has_started</name></member>
+      <member refid="classemail_1_1PollingManager_1a97c0b66f2b631cbfef85b0972ad78293" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>has_started_</name></member>
+      <member refid="classemail_1_1PollingManager_1a452d1e69c6912951adc1f821998b5dfb" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>logger_</name></member>
+      <member refid="classemail_1_1PollingManager_1a716352b352b0e550db0e0f97e07c0946" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>poll_thread</name></member>
+      <member refid="classemail_1_1PollingManager_1a0ea87b7e1f81c02e2fc1b581b4d6f120" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>polling_period_</name></member>
+      <member refid="classemail_1_1PollingManager_1a21701ede1e27783c03b8f4103f057387" prot="public" virt="non-virtual"><scope>email::PollingManager</scope><name>PollingManager</name></member>
+      <member refid="classemail_1_1PollingManager_1a6a1e7d02e1aecbf3dafe8f23ee054b6d" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>receiver_</name></member>
+      <member refid="classemail_1_1PollingManager_1ada4ac3a931faab269f51bf3eb47107be" prot="public" virt="non-virtual"><scope>email::PollingManager</scope><name>register_handler</name></member>
+      <member refid="classemail_1_1PollingManager_1a896bf5d847844d5c5ef8cad3599b67ca" prot="public" virt="non-virtual"><scope>email::PollingManager</scope><name>shutdown</name></member>
+      <member refid="classemail_1_1PollingManager_1aa783b059813426b2508da384cb9e8b74" prot="public" virt="non-virtual"><scope>email::PollingManager</scope><name>start</name></member>
+      <member refid="classemail_1_1PollingManager_1a909238eedecbd4d40d7240b0aac617bd" prot="private" virt="non-virtual"><scope>email::PollingManager</scope><name>thread_</name></member>
+      <member refid="classemail_1_1PollingManager_1a9fe590820846230f5280bc8b1b625bfa" prot="public" virt="non-virtual"><scope>email::PollingManager</scope><name>~PollingManager</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

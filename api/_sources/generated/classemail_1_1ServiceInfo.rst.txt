@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1ServiceInfo:
+
+Class ServiceInfo
+=================
+
+- Defined in :ref:`file_include_email_service_info.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::ServiceInfo
+   :members:
+   :protected-members:
+   :undoc-members:

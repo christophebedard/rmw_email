@@ -1,0 +1,33 @@
+.. _exhale_class_classemail_1_1ServiceObject:
+
+Class ServiceObject
+===================
+
+- Defined in :ref:`file_include_email_service.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Types
+**********
+
+- ``public email::GidObject`` (:ref:`exhale_class_classemail_1_1GidObject`)
+- ``public email::NamedObject`` (:ref:`exhale_class_classemail_1_1NamedObject`)
+
+
+Derived Types
+*************
+
+- ``public email::ServiceClient`` (:ref:`exhale_class_classemail_1_1ServiceClient`)
+- ``public email::ServiceServer`` (:ref:`exhale_class_classemail_1_1ServiceServer`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::ServiceObject
+   :members:
+   :protected-members:
+   :undoc-members:

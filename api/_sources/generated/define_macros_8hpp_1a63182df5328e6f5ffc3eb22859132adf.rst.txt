@@ -1,0 +1,13 @@
+.. _exhale_define_macros_8hpp_1a63182df5328e6f5ffc3eb22859132adf:
+
+Define EMAIL_SHARED_PTR_CONST
+=============================
+
+- Defined in :ref:`file_include_email_macros.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: EMAIL_SHARED_PTR_CONST

@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structemail_1_1UserInfo" kind="struct" language="C++" prot="public">
+    <compoundname>email::UserInfo</compoundname>
+    <includes local="no">info.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structemail_1_1UserInfo_1a9a7c93eb5a5fad244eb3699f361ae666" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::UserInfo::host_smtp</definition>
+        <argsstring></argsstring>
+        <name>host_smtp</name>
+        <briefdescription>
+<para>SMTP host, without the port or protocol. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/info.hpp" line="35" column="15" bodyfile="include/email/email/info.hpp" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structemail_1_1UserInfo_1aa810688adcf8ce581af198d138b1a3f5" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::UserInfo::host_imap</definition>
+        <argsstring></argsstring>
+        <name>host_imap</name>
+        <briefdescription>
+<para>IMAP host, without the port or protocol. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/info.hpp" line="37" column="15" bodyfile="include/email/email/info.hpp" bodystart="37" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structemail_1_1UserInfo_1abe9be20a65e424a216f61fae0cf50078" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::UserInfo::username</definition>
+        <argsstring></argsstring>
+        <name>username</name>
+        <briefdescription>
+<para>Username (i.e. email). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/info.hpp" line="39" column="15" bodyfile="include/email/email/info.hpp" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structemail_1_1UserInfo_1adb5cc631ca7e5c0669685b5faf9fcef9" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::UserInfo::password</definition>
+        <argsstring></argsstring>
+        <name>password</name>
+        <briefdescription>
+<para>Password. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/info.hpp" line="41" column="15" bodyfile="include/email/email/info.hpp" bodystart="41" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structemail_1_1UserInfo_1a079c1b6f41d419aac969bf43a9ca81f8" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>email::UserInfo::UserInfo</definition>
+        <argsstring>(const std::string &amp;host_smtp_, const std::string &amp;host_imap_, const std::string &amp;username_, const std::string &amp;password_)</argsstring>
+        <name>UserInfo</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>host_smtp_</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>host_imap_</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>username_</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>password_</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/info.hpp" line="43" column="3" bodyfile="include/email/email/info.hpp" bodystart="43" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="structemail_1_1UserInfo_1a6cdf509b065f465665368ea9c595302c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::UserInfo::UserInfo</definition>
+        <argsstring>(const UserInfo &amp;)=default</argsstring>
+        <name>UserInfo</name>
+        <param>
+          <type>const <ref refid="structemail_1_1UserInfo" kindref="compound">UserInfo</ref> &amp;</type>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/info.hpp" line="51" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Info for a user. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/email/email/info.hpp" line="32" column="1" bodyfile="include/email/email/info.hpp" bodystart="33" bodyend="53"/>
+    <listofallmembers>
+      <member refid="structemail_1_1UserInfo_1aa810688adcf8ce581af198d138b1a3f5" prot="public" virt="non-virtual"><scope>email::UserInfo</scope><name>host_imap</name></member>
+      <member refid="structemail_1_1UserInfo_1a9a7c93eb5a5fad244eb3699f361ae666" prot="public" virt="non-virtual"><scope>email::UserInfo</scope><name>host_smtp</name></member>
+      <member refid="structemail_1_1UserInfo_1adb5cc631ca7e5c0669685b5faf9fcef9" prot="public" virt="non-virtual"><scope>email::UserInfo</scope><name>password</name></member>
+      <member refid="structemail_1_1UserInfo_1a079c1b6f41d419aac969bf43a9ca81f8" prot="public" virt="non-virtual"><scope>email::UserInfo</scope><name>UserInfo</name></member>
+      <member refid="structemail_1_1UserInfo_1a6cdf509b065f465665368ea9c595302c" prot="public" virt="non-virtual"><scope>email::UserInfo</scope><name>UserInfo</name></member>
+      <member refid="structemail_1_1UserInfo_1abe9be20a65e424a216f61fae0cf50078" prot="public" virt="non-virtual"><scope>email::UserInfo</scope><name>username</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

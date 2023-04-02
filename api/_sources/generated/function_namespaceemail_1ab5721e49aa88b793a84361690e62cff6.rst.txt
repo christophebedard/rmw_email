@@ -1,0 +1,13 @@
+.. _exhale_function_namespaceemail_1ab5721e49aa88b793a84361690e62cff6:
+
+Function email::wait_for_message(Subscription \*, const std::chrono::milliseconds)
+==================================================================================
+
+- Defined in :ref:`file_include_email_wait.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::wait_for_message(Subscription *, const std::chrono::milliseconds)

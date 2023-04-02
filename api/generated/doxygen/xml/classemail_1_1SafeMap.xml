@@ -1,0 +1,281 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1SafeMap" kind="class" language="C++" prot="public">
+    <compoundname>email::SafeMap</compoundname>
+    <includes local="no">safe_map.hpp</includes>
+    <templateparamlist>
+      <param>
+        <type>class K</type>
+      </param>
+      <param>
+        <type>class T</type>
+      </param>
+    </templateparamlist>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1SafeMap_1a5c4901961cf8262882eee5830bcdf41a" prot="private" static="no" mutable="yes">
+        <type>std::mutex</type>
+        <definition>std::mutex email::SafeMap&lt; K, T &gt;::map_mutex_</definition>
+        <argsstring></argsstring>
+        <name>map_mutex_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="128" column="22" bodyfile="include/email/safe_map.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1SafeMap_1a8b4811ab48eb98437e0a41a004c393b1" prot="private" static="no" mutable="no">
+        <type>std::map&lt; K, T &gt;</type>
+        <definition>std::map&lt;K, T&gt; email::SafeMap&lt; K, T &gt;::map_</definition>
+        <argsstring></argsstring>
+        <name>map_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="129" column="12" bodyfile="include/email/safe_map.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a563ab30f2d67ffe0303fb7a7637a7dd4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>email::SafeMap&lt; K, T &gt;::SafeMap</definition>
+        <argsstring>()</argsstring>
+        <name>SafeMap</name>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="39" column="3" bodyfile="include/email/safe_map.hpp" bodystart="39" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a28c78d46002ecb2d43b866aa03a06c3f" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>email::SafeMap&lt; K, T &gt;::~SafeMap</definition>
+        <argsstring>()</argsstring>
+        <name>~SafeMap</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="46" column="3" bodyfile="include/email/safe_map.hpp" bodystart="46" bodyend="46"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1afa02ff889b01bf6b6d7d5907f0effdc1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::SafeMap&lt; K, T &gt;::insert</definition>
+        <argsstring>(std::pair&lt; const K, T &gt; &amp;&amp;p)</argsstring>
+        <name>insert</name>
+        <param>
+          <type>std::pair&lt; const K, T &gt; &amp;&amp;</type>
+          <declname>p</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="49" column="3" bodyfile="include/email/safe_map.hpp" bodystart="49" bodyend="53"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1aed35e5730013f7a427f46896696c443e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::SafeMap&lt; K, T &gt;::erase</definition>
+        <argsstring>(typename std::map&lt; K, T &gt;::const_iterator &amp;it)</argsstring>
+        <name>erase</name>
+        <param>
+          <type>typename std::map&lt; K, T &gt;::const_iterator &amp;</type>
+          <declname>it</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="56" column="3" bodyfile="include/email/safe_map.hpp" bodystart="56" bodyend="60"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a804ed1b4f45d89f4860171b46ecd68a5" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::SafeMap&lt; K, T &gt;::erase</definition>
+        <argsstring>(typename std::map&lt; K, T &gt;::iterator &amp;it)</argsstring>
+        <name>erase</name>
+        <param>
+          <type>typename std::map&lt; K, T &gt;::iterator &amp;</type>
+          <declname>it</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="63" column="3" bodyfile="include/email/safe_map.hpp" bodystart="63" bodyend="67"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1aff4db055c899b8d4103fed639fc6f300" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::map&lt; K, T &gt;::const_iterator</type>
+        <definition>std::map&lt;K, T&gt;::const_iterator email::SafeMap&lt; K, T &gt;::find</definition>
+        <argsstring>(const K &amp;k) const</argsstring>
+        <name>find</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="70" column="3" bodyfile="include/email/safe_map.hpp" bodystart="70" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a97478e47a15235d9d08a9ea19f789968" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::SafeMap&lt; K, T &gt;::empty</definition>
+        <argsstring>() const</argsstring>
+        <name>empty</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="77" column="3" bodyfile="include/email/safe_map.hpp" bodystart="77" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a8060a7e82eb56a7c26bb0ec1db3b26cb" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::SafeMap&lt; K, T &gt;::contains</definition>
+        <argsstring>(const K &amp;k) const</argsstring>
+        <name>contains</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="84" column="3" bodyfile="include/email/safe_map.hpp" bodystart="84" bodyend="88"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1af0f1ce1776d7e4c46b24b07d72d23ec9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>std::pair&lt; typename std::map&lt; K, T &gt;::const_iterator, typename std::map&lt; K, T &gt;::const_iterator &gt;</type>
+        <definition>std::pair&lt;typename std::map&lt;K, T&gt;::const_iterator, typename std::map&lt;K, T&gt;::const_iterator&gt; email::SafeMap&lt; K, T &gt;::equal_range</definition>
+        <argsstring>(const K &amp;k) const</argsstring>
+        <name>equal_range</name>
+        <param>
+          <type>const K &amp;</type>
+          <declname>k</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="91" column="3" bodyfile="include/email/safe_map.hpp" bodystart="91" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a3e3ced069a9413c52681a03948893587" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::map&lt; K, T &gt;::iterator</type>
+        <definition>std::map&lt;K, T&gt;::iterator email::SafeMap&lt; K, T &gt;::begin</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>begin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="98" column="3" bodyfile="include/email/safe_map.hpp" bodystart="98" bodyend="102"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a60b6d858638f84927240c6923a301661" prot="public" static="no" const="no" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::map&lt; K, T &gt;::iterator</type>
+        <definition>std::map&lt;K, T&gt;::iterator email::SafeMap&lt; K, T &gt;::end</definition>
+        <argsstring>() noexcept</argsstring>
+        <name>end</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="105" column="3" bodyfile="include/email/safe_map.hpp" bodystart="105" bodyend="109"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1a504fe23def42764bc68fbd39c7a51b90" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::map&lt; K, T &gt;::const_iterator</type>
+        <definition>std::map&lt;K, T&gt;::const_iterator email::SafeMap&lt; K, T &gt;::cbegin</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>cbegin</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="112" column="3" bodyfile="include/email/safe_map.hpp" bodystart="112" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1SafeMap_1aaf04df2a744013504ee3137e3f7a21ec" prot="public" static="no" const="yes" explicit="no" inline="yes" noexcept="yes" virt="non-virtual">
+        <type>std::map&lt; K, T &gt;::const_iterator</type>
+        <definition>std::map&lt;K, T&gt;::const_iterator email::SafeMap&lt; K, T &gt;::cend</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>cend</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/safe_map.hpp" line="119" column="3" bodyfile="include/email/safe_map.hpp" bodystart="119" bodyend="123"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Simple thread-safe map. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Note: probably not actually thread safe.</para>
+<para><parameterlist kind="templateparam"><parameteritem>
+<parameternamelist>
+<parametername>K</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the key element type </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>T</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the mapped element type </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+    </detaileddescription>
+    <location file="include/email/safe_map.hpp" line="35" column="1" bodyfile="include/email/safe_map.hpp" bodystart="36" bodyend="130"/>
+    <listofallmembers>
+      <member refid="classemail_1_1SafeMap_1a3e3ced069a9413c52681a03948893587" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>begin</name></member>
+      <member refid="classemail_1_1SafeMap_1a504fe23def42764bc68fbd39c7a51b90" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>cbegin</name></member>
+      <member refid="classemail_1_1SafeMap_1aaf04df2a744013504ee3137e3f7a21ec" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>cend</name></member>
+      <member refid="classemail_1_1SafeMap_1a8060a7e82eb56a7c26bb0ec1db3b26cb" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>contains</name></member>
+      <member refid="classemail_1_1SafeMap_1a97478e47a15235d9d08a9ea19f789968" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>empty</name></member>
+      <member refid="classemail_1_1SafeMap_1a60b6d858638f84927240c6923a301661" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>end</name></member>
+      <member refid="classemail_1_1SafeMap_1af0f1ce1776d7e4c46b24b07d72d23ec9" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>equal_range</name></member>
+      <member refid="classemail_1_1SafeMap_1aed35e5730013f7a427f46896696c443e" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>erase</name></member>
+      <member refid="classemail_1_1SafeMap_1a804ed1b4f45d89f4860171b46ecd68a5" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>erase</name></member>
+      <member refid="classemail_1_1SafeMap_1aff4db055c899b8d4103fed639fc6f300" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>find</name></member>
+      <member refid="classemail_1_1SafeMap_1afa02ff889b01bf6b6d7d5907f0effdc1" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>insert</name></member>
+      <member refid="classemail_1_1SafeMap_1a8b4811ab48eb98437e0a41a004c393b1" prot="private" virt="non-virtual"><scope>email::SafeMap</scope><name>map_</name></member>
+      <member refid="classemail_1_1SafeMap_1a5c4901961cf8262882eee5830bcdf41a" prot="private" virt="non-virtual"><scope>email::SafeMap</scope><name>map_mutex_</name></member>
+      <member refid="classemail_1_1SafeMap_1a563ab30f2d67ffe0303fb7a7637a7dd4" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>SafeMap</name></member>
+      <member refid="classemail_1_1SafeMap_1a28c78d46002ecb2d43b866aa03a06c3f" prot="public" virt="non-virtual"><scope>email::SafeMap</scope><name>~SafeMap</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

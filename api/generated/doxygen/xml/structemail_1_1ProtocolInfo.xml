@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structemail_1_1ProtocolInfo" kind="struct" language="C++" prot="public">
+    <compoundname>email::ProtocolInfo</compoundname>
+    <includes local="no">info.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structemail_1_1ProtocolInfo_1ad0780b8e284c99614dd3112bb9d1a851" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::ProtocolInfo::protocol</definition>
+        <argsstring></argsstring>
+        <name>protocol</name>
+        <briefdescription>
+<para>Protocol, i.e. &quot;&lt;protocol&gt;://&quot;. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/curl/info.hpp" line="38" column="15" bodyfile="include/email/curl/info.hpp" bodystart="38" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structemail_1_1ProtocolInfo_1a4053b3cd3367f009612736d3d15d8311" prot="public" static="no" mutable="no">
+        <type>int</type>
+        <definition>int email::ProtocolInfo::port</definition>
+        <argsstring></argsstring>
+        <name>port</name>
+        <briefdescription>
+<para>Port. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/curl/info.hpp" line="40" column="7" bodyfile="include/email/curl/info.hpp" bodystart="40" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Info for a standard protocol. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/email/curl/info.hpp" line="35" column="1" bodyfile="include/email/curl/info.hpp" bodystart="36" bodyend="41"/>
+    <listofallmembers>
+      <member refid="structemail_1_1ProtocolInfo_1a4053b3cd3367f009612736d3d15d8311" prot="public" virt="non-virtual"><scope>email::ProtocolInfo</scope><name>port</name></member>
+      <member refid="structemail_1_1ProtocolInfo_1ad0780b8e284c99614dd3112bb9d1a851" prot="public" virt="non-virtual"><scope>email::ProtocolInfo</scope><name>protocol</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

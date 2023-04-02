@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="dir_fd73adbdd9e4cd884094af8b77dc3fe5" kind="dir">
+    <compoundname>include/email/email</compoundname>
+    <innerfile refid="curl__receiver_8hpp">curl_receiver.hpp</innerfile>
+    <innerfile refid="curl__sender_8hpp">curl_sender.hpp</innerfile>
+    <innerfile refid="handler_8hpp">handler.hpp</innerfile>
+    <innerfile refid="email_2info_8hpp">info.hpp</innerfile>
+    <innerfile refid="intra__receiver_8hpp">intra_receiver.hpp</innerfile>
+    <innerfile refid="intra__sender_8hpp">intra_sender.hpp</innerfile>
+    <innerfile refid="payload__utils_8hpp">payload_utils.hpp</innerfile>
+    <innerfile refid="polling__manager_8hpp">polling_manager.hpp</innerfile>
+    <innerfile refid="receiver_8hpp">receiver.hpp</innerfile>
+    <innerfile refid="response__utils_8hpp">response_utils.hpp</innerfile>
+    <innerfile refid="sender_8hpp">sender.hpp</innerfile>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/email/email/"/>
+  </compounddef>
+</doxygen>

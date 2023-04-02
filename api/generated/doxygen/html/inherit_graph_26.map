@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="5,242,89,269"/>
+<area shape="rect" id="node2" href="$structfmt_1_1formatter_3_01YAML_1_1Node_01_4.html" title="Formatting for YAML::Node objects." alt="" coords="148,5,313,47"/>
+<area shape="rect" id="node3" href="$structfmt_1_1formatter_3_01email_1_1EmailContent_01_4.html" title="Formatting for email::EmailContent objects." alt="" coords="147,71,314,112"/>
+<area shape="rect" id="node4" href="$structfmt_1_1formatter_3_01email_1_1EmailData_01_4.html" title="Formatting for email::EmailData objects." alt="" coords="147,136,314,177"/>
+<area shape="rect" id="node5" href="$structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4.html" title="Formatting for email::EmailHeaders objects." alt="" coords="147,201,314,243"/>
+<area shape="rect" id="node6" href="$structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4.html" title="Formatting for email::EmailRecipients objects." alt="" coords="147,267,314,308"/>
+<area shape="rect" id="node7" href="$structfmt_1_1formatter_3_01email_1_1Gid_01_4.html" title="Formatting for GIDs." alt="" coords="147,332,314,373"/>
+<area shape="rect" id="node8" href="$structfmt_1_1formatter_3_01email_1_1Timestamp_01_4.html" title="Formatting for Timestamp objects." alt="" coords="147,397,314,439"/>
+<area shape="rect" id="node9" href="$structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html" title="Formatting for rcpputils::fs::path objects." alt="" coords="137,463,324,504"/>
+</map>

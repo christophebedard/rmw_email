@@ -1,0 +1,369 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1ServiceClient" kind="class" language="C++" prot="public">
+    <compoundname>email::ServiceClient</compoundname>
+    <basecompoundref refid="classemail_1_1ServiceObject" prot="public" virt="non-virtual">email::ServiceObject</basecompoundref>
+    <includes local="no">service_client.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1ServiceClient_1a89fb7a13fe3245cafa36c33d149fee4d" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Logger&gt; email::ServiceClient::logger_</definition>
+        <argsstring></argsstring>
+        <name>logger_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="127" column="19" bodyfile="include/email/service_client.hpp" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1ServiceClient_1ad3f2f929e4710a9caec0334db1ba3d09" prot="private" static="no" mutable="no">
+        <type>ServiceHandler::ResponseMap::SharedPtr</type>
+        <definition>ServiceHandler::ResponseMap::SharedPtr email::ServiceClient::responses_</definition>
+        <argsstring></argsstring>
+        <name>responses_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="128" column="42" bodyfile="include/email/service_client.hpp" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1ServiceClient_1aec62c9d678f3e71088b6db38eac86a96" prot="private" static="no" mutable="no">
+        <type><ref refid="classemail_1_1Publisher" kindref="compound">Publisher</ref></type>
+        <definition>Publisher email::ServiceClient::pub_</definition>
+        <argsstring></argsstring>
+        <name>pub_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="129" column="13" bodyfile="include/email/service_client.hpp" bodystart="129" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1a5886f94bb1d643190851f39d55e9744c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::ServiceClient::ServiceClient</definition>
+        <argsstring>(const std::string &amp;service_name)</argsstring>
+        <name>ServiceClient</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>service_name</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>service_name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the service name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="49" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1a1756de449953a1e333baa595d0b290b7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::ServiceClient::~ServiceClient</definition>
+        <argsstring>()</argsstring>
+        <name>~ServiceClient</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="52" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1a264ad9aea4e1f069720f17cf40c1992e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::ServiceClient::send_request</definition>
+        <argsstring>(const std::string &amp;request, const SequenceNumber sequence_number)</argsstring>
+        <name>send_request</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>request</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+          <declname>sequence_number</declname>
+        </param>
+        <briefdescription>
+<para>Send request with specific ID. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For asynchronous sending of a request. TODO(christophebedard) remove this one since we don&apos;t need it</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>request</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the request </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>sequence_number</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the sequence number; to use for getting the corresponding response </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="64" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1ab34679e8f8f5fdfed3b3241a4ada78a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+        <definition>SequenceNumber email::ServiceClient::send_request</definition>
+        <argsstring>(const std::string &amp;request)</argsstring>
+        <name>send_request</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>request</declname>
+        </param>
+        <briefdescription>
+<para>Send request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>For asynchronous sending of a request.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>request</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the request </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the sequence_number to use for getting the corresponding response </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="75" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1a574ead1860f97d09941cd2b013fb4d37" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::ServiceClient::has_response</definition>
+        <argsstring>(const SequenceNumber sequence_number)</argsstring>
+        <name>has_response</name>
+        <param>
+          <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+          <declname>sequence_number</declname>
+        </param>
+        <briefdescription>
+<para>Check if the client has an available response to a request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sequence_number</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the request sequence number </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if there is an available response, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="84" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1a69bb6e1a7db8495b79aa19e47f0236d7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::ServiceClient::has_response</definition>
+        <argsstring>()</argsstring>
+        <name>has_response</name>
+        <briefdescription>
+<para>Check if the client has an available response to any request. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Note: <computeroutput><ref refid="classemail_1_1ServiceClient_1a574ead1860f97d09941cd2b013fb4d37" kindref="member">has_response(SequenceNumber)</ref></computeroutput> should be used instead.</para>
+<para><simplesect kind="return"><para>true if there is an available response, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="94" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1a71b844e2b5f1ff60f059d7658f9c11df" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::string &gt;</type>
+        <definition>std::optional&lt;std::string&gt; email::ServiceClient::get_response</definition>
+        <argsstring>(const SequenceNumber sequence_number)</argsstring>
+        <name>get_response</name>
+        <param>
+          <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+          <declname>sequence_number</declname>
+        </param>
+        <briefdescription>
+<para>Get a response if there is one. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sequence_number</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the request sequence number </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the response, or <computeroutput>std::nullopt</computeroutput> if there is none </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="103" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1abfc9d9d393aefa5052e6940e9125782b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::pair&lt; std::string, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt; &gt;</type>
+        <definition>std::optional&lt;std::pair&lt;std::string, ServiceInfo&gt; &gt; email::ServiceClient::get_response_with_info</definition>
+        <argsstring>(const SequenceNumber sequence_number)</argsstring>
+        <name>get_response_with_info</name>
+        <param>
+          <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+          <declname>sequence_number</declname>
+        </param>
+        <briefdescription>
+<para>Get a response with info if there is one. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>sequence_number</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the request sequence number </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the response with info, or <computeroutput>std::nullopt</computeroutput> if there is none </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="112" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceClient_1acf7b778520df726f526d6de97637038f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; std::pair&lt; std::string, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt; &gt;</type>
+        <definition>std::optional&lt;std::pair&lt;std::string, ServiceInfo&gt; &gt; email::ServiceClient::get_response_with_info</definition>
+        <argsstring>()</argsstring>
+        <name>get_response_with_info</name>
+        <briefdescription>
+<para>Get a response with info if there is one. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This returns the first response in the internal map.</para>
+<para><simplesect kind="return"><para>the response with info, or <computeroutput>std::nullopt</computeroutput> if there is none </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_client.hpp" line="122" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Service client. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Sends a request to a service server and gets a response. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>email::GidObject</label>
+        <link refid="classemail_1_1GidObject"/>
+      </node>
+      <node id="1">
+        <label>email::ServiceClient</label>
+        <link refid="classemail_1_1ServiceClient"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>email::ServiceObject</label>
+        <link refid="classemail_1_1ServiceObject"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>email::GidObject</label>
+        <link refid="classemail_1_1GidObject"/>
+      </node>
+      <node id="1">
+        <label>email::ServiceClient</label>
+        <link refid="classemail_1_1ServiceClient"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>email::ServiceObject</label>
+        <link refid="classemail_1_1ServiceObject"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+        <childnode refid="4" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
+    </collaborationgraph>
+    <location file="include/email/service_client.hpp" line="41" column="1" bodyfile="include/email/service_client.hpp" bodystart="42" bodyend="130"/>
+    <listofallmembers>
+      <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>get_gid</name></member>
+      <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" virt="non-virtual"><scope>email::ServiceClient</scope><name>get_object_name</name></member>
+      <member refid="classemail_1_1ServiceClient_1a71b844e2b5f1ff60f059d7658f9c11df" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>get_response</name></member>
+      <member refid="classemail_1_1ServiceClient_1abfc9d9d393aefa5052e6940e9125782b" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>get_response_with_info</name></member>
+      <member refid="classemail_1_1ServiceClient_1acf7b778520df726f526d6de97637038f" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>get_response_with_info</name></member>
+      <member refid="classemail_1_1ServiceObject_1a7f96bf4bb03c956939682468cd5dd4ea" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>get_service_name</name></member>
+      <member refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" prot="protected" virt="non-virtual"><scope>email::ServiceClient</scope><name>GidObject</name></member>
+      <member refid="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" virt="non-virtual"><scope>email::ServiceClient</scope><name>has_newline</name></member>
+      <member refid="classemail_1_1ServiceClient_1a574ead1860f97d09941cd2b013fb4d37" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>has_response</name></member>
+      <member refid="classemail_1_1ServiceClient_1a69bb6e1a7db8495b79aa19e47f0236d7" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>has_response</name></member>
+      <member refid="classemail_1_1ServiceClient_1a89fb7a13fe3245cafa36c33d149fee4d" prot="private" virt="non-virtual"><scope>email::ServiceClient</scope><name>logger_</name></member>
+      <member refid="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" prot="protected" virt="non-virtual"><scope>email::ServiceClient</scope><name>NamedObject</name></member>
+      <member refid="classemail_1_1ServiceClient_1aec62c9d678f3e71088b6db38eac86a96" prot="private" virt="non-virtual"><scope>email::ServiceClient</scope><name>pub_</name></member>
+      <member refid="classemail_1_1ServiceClient_1ad3f2f929e4710a9caec0334db1ba3d09" prot="private" virt="non-virtual"><scope>email::ServiceClient</scope><name>responses_</name></member>
+      <member refid="classemail_1_1ServiceClient_1a264ad9aea4e1f069720f17cf40c1992e" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>send_request</name></member>
+      <member refid="classemail_1_1ServiceClient_1ab34679e8f8f5fdfed3b3241a4ada78a6" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>send_request</name></member>
+      <member refid="classemail_1_1ServiceClient_1a5886f94bb1d643190851f39d55e9744c" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>ServiceClient</name></member>
+      <member refid="classemail_1_1ServiceObject_1a6adfe99b703c35e74156ecd4336cd2da" prot="protected" virt="non-virtual"><scope>email::ServiceClient</scope><name>ServiceObject</name></member>
+      <member refid="classemail_1_1GidObject_1a8fce88afdc622182418d32b1c43cc17b" prot="protected" virt="virtual"><scope>email::ServiceClient</scope><name>~GidObject</name></member>
+      <member refid="classemail_1_1NamedObject_1ab6de668d7cc2c1eefda15c5822599a46" prot="protected" virt="virtual"><scope>email::ServiceClient</scope><name>~NamedObject</name></member>
+      <member refid="classemail_1_1ServiceClient_1a1756de449953a1e333baa595d0b290b7" prot="public" virt="non-virtual"><scope>email::ServiceClient</scope><name>~ServiceClient</name></member>
+      <member refid="classemail_1_1ServiceObject_1a96f6d5e8cd18f0e2ec7f1229fdd6f110" prot="protected" virt="virtual"><scope>email::ServiceClient</scope><name>~ServiceObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

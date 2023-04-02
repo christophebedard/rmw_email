@@ -1,0 +1,13 @@
+.. _exhale_function_namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d:
+
+Function email::utils::payload::build_payload(const std::vector<std::string>&, const std::vector<std::string>&, const std::vector<std::string>&, const struct EmailContent&, std::optional<EmailHeaders>, std::optional<std::string>)
+=====================================================================================================================================================================================================================================
+
+- Defined in :ref:`file_include_email_email_payload_utils.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::utils::payload::build_payload(const std::vector<std::string>&, const std::vector<std::string>&, const std::vector<std::string>&, const struct EmailContent&, std::optional<EmailHeaders>, std::optional<std::string>)

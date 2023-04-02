@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1CurlContext:
+
+Class CurlContext
+=================
+
+- Defined in :ref:`file_include_email_curl_context.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::CurlContext
+   :members:
+   :protected-members:
+   :undoc-members:

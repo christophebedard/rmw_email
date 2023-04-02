@@ -1,0 +1,67 @@
+
+.. _file_include_email_named_object.hpp:
+
+File named_object.hpp
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/named_object.hpp``)
+-----------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_named_object.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``email/macros.hpp`` (:ref:`file_include_email_macros.hpp`)
+
+- ``regex``
+
+- ``stdexcept``
+
+- ``string``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_pub_sub.hpp`
+
+- :ref:`file_include_email_service.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classemail_1_1NamedObject`
+
+- :ref:`exhale_class_classemail_1_1ObjectNameInvalidError`
+

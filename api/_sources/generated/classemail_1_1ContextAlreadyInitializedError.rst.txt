@@ -1,0 +1,25 @@
+.. _exhale_class_classemail_1_1ContextAlreadyInitializedError:
+
+Class ContextAlreadyInitializedError
+====================================
+
+- Defined in :ref:`file_include_email_context.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public email::ContextError`` (:ref:`exhale_class_classemail_1_1ContextError`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::ContextAlreadyInitializedError
+   :members:
+   :protected-members:
+   :undoc-members:

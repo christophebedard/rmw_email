@@ -1,0 +1,49 @@
+
+.. _file_include_email_email.hpp:
+
+File email.hpp
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/email.hpp``)
+----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_email.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``email/init.hpp`` (:ref:`file_include_email_init.hpp`)
+
+- ``email/publisher.hpp`` (:ref:`file_include_email_publisher.hpp`)
+
+- ``email/service_client.hpp`` (:ref:`file_include_email_service_client.hpp`)
+
+- ``email/service_server.hpp`` (:ref:`file_include_email_service_server.hpp`)
+
+- ``email/subscription.hpp`` (:ref:`file_include_email_subscription.hpp`)
+
+- ``email/wait.hpp`` (:ref:`file_include_email_wait.hpp`)
+
+- ``email/wait_set.hpp`` (:ref:`file_include_email_wait_set.hpp`)
+
+
+
+
+

@@ -1,0 +1,13 @@
+.. _exhale_define_visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75:
+
+Define EMAIL_PUBLIC
+===================
+
+- Defined in :ref:`file_include_email_visibility_control.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: EMAIL_PUBLIC

@@ -1,0 +1,69 @@
+
+.. _file_include_email_guard_condition.hpp:
+
+File guard_condition.hpp
+========================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/guard_condition.hpp``)
+--------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_guard_condition.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``atomic``
+
+- ``email/log.hpp`` (:ref:`file_include_email_log.hpp`)
+
+- ``email/macros.hpp`` (:ref:`file_include_email_macros.hpp`)
+
+- ``email/visibility_control.hpp`` (:ref:`file_include_email_visibility_control.hpp`)
+
+- ``memory``
+
+- ``stdexcept``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_wait_set.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classemail_1_1GuardCondition`
+
+- :ref:`exhale_class_classemail_1_1GuardConditionAlreadyInUseError`
+

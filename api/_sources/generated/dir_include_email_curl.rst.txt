@@ -1,0 +1,22 @@
+.. _dir_include_email_curl:
+
+
+Directory curl
+==============
+
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``include/email/curl``
+
+
+Files
+-----
+
+- :ref:`file_include_email_curl_context.hpp`
+- :ref:`file_include_email_curl_executor.hpp`
+- :ref:`file_include_email_curl_info.hpp`
+
+

@@ -1,0 +1,26 @@
+.. _exhale_class_classemail_1_1SubscriptionHandler:
+
+Class SubscriptionHandler
+=========================
+
+- Defined in :ref:`file_include_email_subscription_handler.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Types
+**********
+
+- ``public email::EmailHandler`` (:ref:`exhale_class_classemail_1_1EmailHandler`)
+- ``public std::enable_shared_from_this< SubscriptionHandler >``
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::SubscriptionHandler
+   :members:
+   :protected-members:
+   :undoc-members:

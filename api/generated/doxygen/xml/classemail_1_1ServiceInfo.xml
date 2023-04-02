@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1ServiceInfo" kind="class" language="C++" prot="public">
+    <compoundname>email::ServiceInfo</compoundname>
+    <includes local="no">service_info.hpp</includes>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classemail_1_1ServiceInfo_1ae1a34f4d40383fe81f2487bdaf14edfb" prot="public" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr auto</type>
+        <definition>constexpr auto email::ServiceInfo::HEADER_CLIENT_GID</definition>
+        <argsstring></argsstring>
+        <name>HEADER_CLIENT_GID</name>
+        <initializer>= &quot;Client-GID&quot;</initializer>
+        <briefdescription>
+<para>Custom header name for service client GID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="86" column="25" bodyfile="include/email/service_info.hpp" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1ServiceInfo_1aef17f130ef3ec9b0fa4fbab7b60e6c3d" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classemail_1_1CommunicationInfo" kindref="compound">CommunicationInfo</ref></type>
+        <definition>const CommunicationInfo email::ServiceInfo::base_info_</definition>
+        <argsstring></argsstring>
+        <name>base_info_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="89" column="27" bodyfile="include/email/service_info.hpp" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1ServiceInfo_1af3f8e9e1212a998582cea28040c9e68c" prot="private" static="no" mutable="no">
+        <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+        <definition>const SequenceNumber email::ServiceInfo::sequence_number_</definition>
+        <argsstring></argsstring>
+        <name>sequence_number_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="90" column="24" bodyfile="include/email/service_info.hpp" bodystart="90" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1aefebdb81432c3a220ed9fe493cbb0d80" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::ServiceInfo::ServiceInfo</definition>
+        <argsstring>(const Timestamp &amp;source_timestamp, const Timestamp &amp;received_timestamp, const Gid &amp;client_gid, const SequenceNumber sequence_number)</argsstring>
+        <name>ServiceInfo</name>
+        <param>
+          <type>const <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &amp;</type>
+          <declname>source_timestamp</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &amp;</type>
+          <declname>received_timestamp</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classemail_1_1Gid" kindref="compound">Gid</ref> &amp;</type>
+          <declname>client_gid</declname>
+        </param>
+        <param>
+          <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+          <declname>sequence_number</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="41" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1a0e61b08f5bc6a1c6c779bc59aeaed8c3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::ServiceInfo::ServiceInfo</definition>
+        <argsstring>(const ServiceInfo &amp;)=default</argsstring>
+        <name>ServiceInfo</name>
+        <param>
+          <type>const <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="48" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1a771610c25c91d4aab45c9bc8c0d9989c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::ServiceInfo::~ServiceInfo</definition>
+        <argsstring>()</argsstring>
+        <name>~ServiceInfo</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="51" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1aa43d1644eb146528c2d6f48231b6c721" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &amp;</type>
+        <definition>const Timestamp&amp; email::ServiceInfo::source_timestamp</definition>
+        <argsstring>() const</argsstring>
+        <name>source_timestamp</name>
+        <briefdescription>
+<para>Get the request or response source timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="56" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1a3c0d5e5899c80a2a989056d1ed70c441" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &amp;</type>
+        <definition>const Timestamp&amp; email::ServiceInfo::received_timestamp</definition>
+        <argsstring>() const</argsstring>
+        <name>received_timestamp</name>
+        <briefdescription>
+<para>Get the request or response reception timestamp. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="61" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1ad77d23bb1f88131cda1583b1afb2441a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classemail_1_1Gid" kindref="compound">Gid</ref> &amp;</type>
+        <definition>const Gid&amp; email::ServiceInfo::client_gid</definition>
+        <argsstring>() const</argsstring>
+        <name>client_gid</name>
+        <briefdescription>
+<para>Get the service client GID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="66" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1a5791f0d08dabaa8fe7c8cc1a1cef0326" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
+        <definition>SequenceNumber email::ServiceInfo::sequence_number</definition>
+        <argsstring>() const</argsstring>
+        <name>sequence_number</name>
+        <briefdescription>
+<para>Get the request sequence number. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="71" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classemail_1_1ServiceInfo_1a34fd237258ec87524ee5edddd1550b21" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt;</type>
+        <definition>static std::optional&lt;ServiceInfo&gt; email::ServiceInfo::from_headers</definition>
+        <argsstring>(const EmailHeaders &amp;headers)</argsstring>
+        <name>from_headers</name>
+        <param>
+          <type>const <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref> &amp;</type>
+          <declname>headers</declname>
+        </param>
+        <briefdescription>
+<para>Get a <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> object from email headers. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The received timestamp will be created using <ref refid="classemail_1_1Timestamp_1acd6a1543ca548deb496e54f7d4dd616c" kindref="member">Timestamp::now()</ref>.</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>headers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the email headers </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the service info object, or <computeroutput>std::nullopt</computeroutput> if the email headers don&apos;t contain the expected info </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/service_info.hpp" line="83" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Service info container. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Contains metadata about a received service request or response. </para>
+    </detaileddescription>
+    <location file="include/email/service_info.hpp" line="36" column="1" bodyfile="include/email/service_info.hpp" bodystart="37" bodyend="91"/>
+    <listofallmembers>
+      <member refid="classemail_1_1ServiceInfo_1aef17f130ef3ec9b0fa4fbab7b60e6c3d" prot="private" virt="non-virtual"><scope>email::ServiceInfo</scope><name>base_info_</name></member>
+      <member refid="classemail_1_1ServiceInfo_1ad77d23bb1f88131cda1583b1afb2441a" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>client_gid</name></member>
+      <member refid="classemail_1_1ServiceInfo_1a34fd237258ec87524ee5edddd1550b21" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>from_headers</name></member>
+      <member refid="classemail_1_1ServiceInfo_1ae1a34f4d40383fe81f2487bdaf14edfb" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>HEADER_CLIENT_GID</name></member>
+      <member refid="classemail_1_1ServiceInfo_1a3c0d5e5899c80a2a989056d1ed70c441" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>received_timestamp</name></member>
+      <member refid="classemail_1_1ServiceInfo_1a5791f0d08dabaa8fe7c8cc1a1cef0326" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>sequence_number</name></member>
+      <member refid="classemail_1_1ServiceInfo_1af3f8e9e1212a998582cea28040c9e68c" prot="private" virt="non-virtual"><scope>email::ServiceInfo</scope><name>sequence_number_</name></member>
+      <member refid="classemail_1_1ServiceInfo_1aefebdb81432c3a220ed9fe493cbb0d80" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>ServiceInfo</name></member>
+      <member refid="classemail_1_1ServiceInfo_1a0e61b08f5bc6a1c6c779bc59aeaed8c3" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>ServiceInfo</name></member>
+      <member refid="classemail_1_1ServiceInfo_1aa43d1644eb146528c2d6f48231b6c721" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>source_timestamp</name></member>
+      <member refid="classemail_1_1ServiceInfo_1a771610c25c91d4aab45c9bc8c0d9989c" prot="public" virt="non-virtual"><scope>email::ServiceInfo</scope><name>~ServiceInfo</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

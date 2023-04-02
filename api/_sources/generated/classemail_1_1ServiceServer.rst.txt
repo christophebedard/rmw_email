@@ -1,0 +1,25 @@
+.. _exhale_class_classemail_1_1ServiceServer:
+
+Class ServiceServer
+===================
+
+- Defined in :ref:`file_include_email_service_server.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public email::ServiceObject`` (:ref:`exhale_class_classemail_1_1ServiceObject`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::ServiceServer
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,61 @@
+
+.. _file_include_email_curl_info.hpp:
+
+File info.hpp
+=============
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email_curl>` (``include/email/curl``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/curl/info.hpp``)
+--------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_curl_info.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``string``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_curl_context.hpp`
+
+- :ref:`file_include_email_curl_executor.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structemail_1_1ConnectionInfo`
+
+- :ref:`exhale_struct_structemail_1_1ProtocolInfo`
+

@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1NamedObject" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>email::NamedObject</compoundname>
+    <derivedcompoundref refid="classemail_1_1PubSubObject" prot="public" virt="non-virtual">email::PubSubObject</derivedcompoundref>
+    <derivedcompoundref refid="classemail_1_1ServiceObject" prot="public" virt="non-virtual">email::ServiceObject</derivedcompoundref>
+    <includes local="no">named_object.hpp</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classemail_1_1NamedObject_1a817e47064f17aa35a2e1be38388d7cb2" prot="private" static="yes" mutable="no">
+        <type>const std::regex</type>
+        <definition>const std::regex email::NamedObject::REGEX_NEWLINE</definition>
+        <argsstring></argsstring>
+        <name>REGEX_NEWLINE</name>
+        <briefdescription>
+<para>Regex which matches on a newline, with an optional carriage return before. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="75" column="27" bodyfile="include/email/named_object.hpp" bodystart="75" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1NamedObject_1a5492f8579731f890e47e247a042ef027" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string email::NamedObject::object_name_</definition>
+        <argsstring></argsstring>
+        <name>object_name_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="77" column="21" bodyfile="include/email/named_object.hpp" bodystart="77" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; email::NamedObject::get_object_name</definition>
+        <argsstring>() const</argsstring>
+        <name>get_object_name</name>
+        <briefdescription>
+<para>Get the object&apos;s name. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the name </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="52" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::NamedObject::NamedObject</definition>
+        <argsstring>(const std::string &amp;name)</argsstring>
+        <name>NamedObject</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>name</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>name</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the name </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="58" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1NamedObject_1ab6de668d7cc2c1eefda15c5822599a46" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual email::NamedObject::~NamedObject</definition>
+        <argsstring>()</argsstring>
+        <name>~NamedObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="60" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1NamedObject_1ab2b95bd3169bcecfbda7002cbf3c8586" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="pure-virtual">
+        <type>void</type>
+        <definition>virtual void email::NamedObject::validate_name</definition>
+        <argsstring>() const =0</argsstring>
+        <name>validate_name</name>
+        <reimplementedby refid="classemail_1_1PubSubObject_1a88516103b3a396e2ae0987efd50815eb">validate_name</reimplementedby>
+        <reimplementedby refid="classemail_1_1ServiceObject_1ae83db10cea705d2bea2c61be2f37d912">validate_name</reimplementedby>
+        <briefdescription>
+<para>Validate the object&apos;s name and throw an error with an explanation if it is not valid. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="65" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::NamedObject::has_newline</definition>
+        <argsstring>() const</argsstring>
+        <name>has_newline</name>
+        <briefdescription>
+<para>Check if the object&apos;s name contains a newline. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="69" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract object with a name. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Abstract class for objects that have a name (like a topic name or a service name) that needs to be validated. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="6">
+        <label>email::ServiceClient</label>
+        <link refid="classemail_1_1ServiceClient"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>email::Publisher</label>
+        <link refid="classemail_1_1Publisher"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>email::PubSubObject</label>
+        <link refid="classemail_1_1PubSubObject"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>email::Subscription</label>
+        <link refid="classemail_1_1Subscription"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>email::ServiceObject</label>
+        <link refid="classemail_1_1ServiceObject"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>email::ServiceServer</label>
+        <link refid="classemail_1_1ServiceServer"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/email/named_object.hpp" line="44" column="1" bodyfile="include/email/named_object.hpp" bodystart="45" bodyend="78"/>
+    <listofallmembers>
+      <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" virt="non-virtual"><scope>email::NamedObject</scope><name>get_object_name</name></member>
+      <member refid="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" virt="non-virtual"><scope>email::NamedObject</scope><name>has_newline</name></member>
+      <member refid="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" prot="protected" virt="non-virtual"><scope>email::NamedObject</scope><name>NamedObject</name></member>
+      <member refid="classemail_1_1NamedObject_1a5492f8579731f890e47e247a042ef027" prot="private" virt="non-virtual"><scope>email::NamedObject</scope><name>object_name_</name></member>
+      <member refid="classemail_1_1NamedObject_1a817e47064f17aa35a2e1be38388d7cb2" prot="private" virt="non-virtual"><scope>email::NamedObject</scope><name>REGEX_NEWLINE</name></member>
+      <member refid="classemail_1_1NamedObject_1ab2b95bd3169bcecfbda7002cbf3c8586" prot="protected" virt="pure-virtual"><scope>email::NamedObject</scope><name>validate_name</name></member>
+      <member refid="classemail_1_1NamedObject_1ab6de668d7cc2c1eefda15c5822599a46" prot="protected" virt="virtual"><scope>email::NamedObject</scope><name>~NamedObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
