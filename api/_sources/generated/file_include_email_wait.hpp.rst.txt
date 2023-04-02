@@ -73,9 +73,9 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespaceemail_1ae337962e644aa83d44bb241471fcb5a2`
-
 - :ref:`exhale_function_namespaceemail_1ab5721e49aa88b793a84361690e62cff6`
+
+- :ref:`exhale_function_namespaceemail_1ae337962e644aa83d44bb241471fcb5a2`
 
 - :ref:`exhale_function_namespaceemail_1aa59c37dd2056e5079d933232a16a3396`
 

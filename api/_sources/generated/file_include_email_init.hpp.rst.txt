@@ -53,9 +53,9 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespaceemail_1a31064318c3c135912c70c384f25d3305`
-
 - :ref:`exhale_function_namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1`
+
+- :ref:`exhale_function_namespaceemail_1a31064318c3c135912c70c384f25d3305`
 
 - :ref:`exhale_function_namespaceemail_1a7a0e2779940792a4753a9b163fd1bbc4`
 
