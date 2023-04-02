@@ -1,0 +1,13 @@
+.. _exhale_function_namespaceemail_1_1utils_1ae02d06fc8aab9fc0e6c0e2f08e4bb976:
+
+Function email::utils::get_env_var_or_default
+=============================================
+
+- Defined in :ref:`file_include_email_utils.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::utils::get_env_var_or_default(const std::string&, const std::string&)

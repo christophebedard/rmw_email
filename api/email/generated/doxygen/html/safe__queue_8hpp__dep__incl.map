@@ -1,0 +1,14 @@
+<map id="include/email/safe_queue.hpp" name="include/email/safe_queue.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="373,5,516,47"/>
+<area shape="rect" id="node2" href="$intra__receiver_8hpp.html" title=" " alt="" coords="40,95,191,136"/>
+<area shape="rect" id="node4" href="$service__handler_8hpp.html" title=" " alt="" coords="364,95,525,136"/>
+<area shape="rect" id="node10" href="$service__server_8hpp.html" title=" " alt="" coords="180,184,341,225"/>
+<area shape="rect" id="node11" href="$subscription_8hpp.html" title=" " alt="" coords="766,191,987,218"/>
+<area shape="rect" id="node12" href="$subscription__handler_8hpp.html" title=" " alt="" coords="549,95,743,136"/>
+<area shape="rect" id="node3" href="$intra__sender_8hpp.html" title=" " alt="" coords="5,184,156,225"/>
+<area shape="rect" id="node5" href="$context_8hpp.html" title=" " alt="" coords="551,191,741,218"/>
+<area shape="rect" id="node6" href="$service__client_8hpp.html" title=" " alt="" coords="365,184,527,225"/>
+<area shape="rect" id="node7" href="$email_8hpp.html" title=" " alt="" coords="475,363,654,389"/>
+<area shape="rect" id="node8" href="$wait_8hpp.html" title=" " alt="" coords="298,281,469,307"/>
+<area shape="rect" id="node9" href="$wait__set_8hpp.html" title=" " alt="" coords="493,273,636,315"/>
+</map>

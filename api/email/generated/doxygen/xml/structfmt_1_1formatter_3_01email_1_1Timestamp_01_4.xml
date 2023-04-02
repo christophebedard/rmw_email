@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4" kind="struct" language="C++" prot="public">
+    <compoundname>fmt::formatter&lt; email::Timestamp &gt;</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
+    <includes local="no">timestamp.hpp</includes>
+    <templateparamlist>
+    </templateparamlist>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4_1a1863002ca9a1269d1f2b2451416ef191" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <templateparamlist>
+          <param>
+            <type>typename FormatContext</type>
+          </param>
+        </templateparamlist>
+        <type>auto</type>
+        <definition>auto fmt::formatter&lt; email::Timestamp &gt;::format</definition>
+        <argsstring>(const email::Timestamp &amp;ts, FormatContext &amp;ctx)</argsstring>
+        <name>format</name>
+        <param>
+          <type>const <ref refid="classemail_1_1Timestamp" kindref="compound">email::Timestamp</ref> &amp;</type>
+          <declname>ts</declname>
+        </param>
+        <param>
+          <type>FormatContext &amp;</type>
+          <declname>ctx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/timestamp.hpp" line="90" column="8" bodyfile="include/email/timestamp.hpp" bodystart="90" bodyend="93"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Formatting for Timestamp objects. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>fmt::formatter&lt; email::Timestamp &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>fmt::formatter&lt; email::Timestamp &gt;</label>
+        <link refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>formatter&lt; string_view &gt;</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/email/timestamp.hpp" line="87" column="1" bodyfile="include/email/timestamp.hpp" bodystart="88" bodyend="94"/>
+    <listofallmembers>
+      <member refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4_1a1863002ca9a1269d1f2b2451416ef191" prot="public" virt="non-virtual"><scope>fmt::formatter&lt; email::Timestamp &gt;</scope><name>format</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

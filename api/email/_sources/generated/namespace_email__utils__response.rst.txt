@@ -1,0 +1,41 @@
+
+.. _namespace_email__utils__response:
+
+Namespace email::utils::response
+================================
+
+
+Utilities for extracting information from an email formatted according to RFC 5322. 
+
+
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+
+
+
+Detailed Description
+--------------------
+
+See: https://tools.ietf.org/html/rfc5322 
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1response_1a6b5d710f645d106f79a0c1d15c7f9d75`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1response_1a653d46e023a23fecac67b8b95e32ff6b`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1response_1a5a53dc0d1ceb86baec63678cc7dc060b`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1response_1a30fbb8f3e4152b10b3998d176b5212d0`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1response_1a86761af16b95987441640bea6861132a`

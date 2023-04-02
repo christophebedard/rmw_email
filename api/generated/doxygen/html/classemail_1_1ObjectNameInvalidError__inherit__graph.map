@@ -1,6 +1,0 @@
-<map id="email::ObjectNameInvalidError" name="email::ObjectNameInvalidError">
-<area shape="rect" id="node1" title="Error when an object name is invalid." alt="" coords="123,80,315,121"/>
-<area shape="rect" id="node3" href="$classemail_1_1ServiceNameInvalidError.html" title="Error when a service name is invalid." alt="" coords="5,169,204,211"/>
-<area shape="rect" id="node4" href="$classemail_1_1TopicNameInvalidError.html" title="Error when a topic name is invalid." alt="" coords="228,177,443,203"/>
-<area shape="rect" id="node2" title=" " alt="" coords="150,5,289,32"/>
-</map>

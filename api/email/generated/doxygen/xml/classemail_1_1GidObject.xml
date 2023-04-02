@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1GidObject" kind="class" language="C++" prot="public">
+    <compoundname>email::GidObject</compoundname>
+    <derivedcompoundref refid="classemail_1_1PubSubObject" prot="public" virt="non-virtual">email::PubSubObject</derivedcompoundref>
+    <derivedcompoundref refid="classemail_1_1ServiceObject" prot="public" virt="non-virtual">email::ServiceObject</derivedcompoundref>
+    <includes local="no">gid_object.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1GidObject_1a11dbeba9ef928d13a0b28d2758b75ae3" prot="private" static="no" mutable="no">
+        <type>const <ref refid="classemail_1_1Gid" kindref="compound">Gid</ref></type>
+        <definition>const Gid email::GidObject::gid_</definition>
+        <argsstring></argsstring>
+        <name>gid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid_object.hpp" line="48" column="13" bodyfile="include/email/gid_object.hpp" bodystart="48" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const <ref refid="classemail_1_1Gid" kindref="compound">Gid</ref> &amp;</type>
+        <definition>const Gid&amp; email::GidObject::get_gid</definition>
+        <argsstring>() const</argsstring>
+        <name>get_gid</name>
+        <briefdescription>
+<para>Get the unique ID (GID) for this object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the GID </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid_object.hpp" line="37" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::GidObject::GidObject</definition>
+        <argsstring>()</argsstring>
+        <name>GidObject</name>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid_object.hpp" line="41" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1GidObject_1a8fce88afdc622182418d32b1c43cc17b" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual email::GidObject::~GidObject</definition>
+        <argsstring>()</argsstring>
+        <name>~GidObject</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid_object.hpp" line="43" column="11"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract object with a GID. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>email::GidObject</label>
+        <link refid="classemail_1_1GidObject"/>
+      </node>
+      <node id="6">
+        <label>email::ServiceClient</label>
+        <link refid="classemail_1_1ServiceClient"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>email::Publisher</label>
+        <link refid="classemail_1_1Publisher"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>email::PubSubObject</label>
+        <link refid="classemail_1_1PubSubObject"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>email::Subscription</label>
+        <link refid="classemail_1_1Subscription"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>email::ServiceObject</label>
+        <link refid="classemail_1_1ServiceObject"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>email::ServiceServer</label>
+        <link refid="classemail_1_1ServiceServer"/>
+        <childnode refid="5" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="include/email/gid_object.hpp" line="28" column="1" bodyfile="include/email/gid_object.hpp" bodystart="29" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" virt="non-virtual"><scope>email::GidObject</scope><name>get_gid</name></member>
+      <member refid="classemail_1_1GidObject_1a11dbeba9ef928d13a0b28d2758b75ae3" prot="private" virt="non-virtual"><scope>email::GidObject</scope><name>gid_</name></member>
+      <member refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" prot="protected" virt="non-virtual"><scope>email::GidObject</scope><name>GidObject</name></member>
+      <member refid="classemail_1_1GidObject_1a8fce88afdc622182418d32b1c43cc17b" prot="protected" virt="virtual"><scope>email::GidObject</scope><name>~GidObject</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

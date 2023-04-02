@@ -1,0 +1,25 @@
+.. _exhale_class_classemail_1_1Publisher:
+
+Class Publisher
+===============
+
+- Defined in :ref:`file_include_email_publisher.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public email::PubSubObject`` (:ref:`exhale_class_classemail_1_1PubSubObject`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::Publisher
+   :members:
+   :protected-members:
+   :undoc-members:

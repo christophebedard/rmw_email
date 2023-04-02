@@ -1,0 +1,13 @@
+.. _exhale_function_namespaceemail_1_1utils_1a1426a6b72c22a41e717f2dddb9fe6f47:
+
+Function email::utils::optional_stoul
+=====================================
+
+- Defined in :ref:`file_include_email_utils.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::utils::optional_stoul(const std::string&)

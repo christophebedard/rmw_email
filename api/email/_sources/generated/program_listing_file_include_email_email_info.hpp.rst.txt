@@ -1,0 +1,185 @@
+
+.. _program_listing_file_include_email_email_info.hpp:
+
+Program Listing for File info.hpp
+=================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_email_email_info.hpp>` (``include/email/email/info.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright 2020 Christophe Bedard
+   //
+   // Licensed under the Apache License, Version 2.0 (the "License");
+   // you may not use this file except in compliance with the License.
+   // You may obtain a copy of the License at
+   //
+   //     http://www.apache.org/licenses/LICENSE-2.0
+   //
+   // Unless required by applicable law or agreed to in writing, software
+   // distributed under the License is distributed on an "AS IS" BASIS,
+   // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   // See the License for the specific language governing permissions and
+   // limitations under the License.
+   
+   #ifndef EMAIL__EMAIL__INFO_HPP_
+   #define EMAIL__EMAIL__INFO_HPP_
+   
+   #include <map>
+   #include <memory>
+   #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+   #include <string>
+   #include <vector>
+   
+   #include "spdlog/fmt/fmt.h"
+   
+   #include "email/macros.hpp"
+   
+   namespace email
+   {
+   
+   struct UserInfo
+   {
+     std::string host_smtp;
+     std::string host_imap;
+     std::string username;
+     std::string password;
+     UserInfo(
+       const std::string & host_smtp_,
+       const std::string & host_imap_,
+       const std::string & username_,
+       const std::string & password_)
+     : host_smtp(host_smtp_), host_imap(host_imap_), username(username_), password(password_)
+     {}
+     UserInfo(const UserInfo &) = default;
+     EMAIL_SHARED_PTR_CONST(UserInfo)
+   };
+   
+   struct EmailRecipients
+   {
+     std::vector<std::string> to;
+     std::vector<std::string> cc;
+     std::vector<std::string> bcc;
+     EmailRecipients(
+       const std::vector<std::string> & to_,
+       const std::vector<std::string> & cc_,
+       const std::vector<std::string> & bcc_)
+     : to(to_), cc(cc_), bcc(bcc_)
+     {}
+     explicit EmailRecipients(const std::string & to_)
+     : to({to_}), cc(), bcc()
+     {}
+     EmailRecipients(const EmailRecipients &) = default;
+     EMAIL_SHARED_PTR_CONST(EmailRecipients)
+   };
+   
+   typedef std::map<std::string, std::string> EmailHeaders;
+   
+   typedef EmailHeaders::value_type EmailHeader;
+   
+   struct EmailContent
+   {
+     std::string subject;
+     std::string body;
+     EmailContent(
+       const std::string & subject_,
+       const std::string & body_)
+     : subject(subject_), body(body_)
+     {}
+     EmailContent(const EmailContent &) = default;
+   };
+   
+   struct EmailData
+   {
+     std::string message_id;
+     std::string in_reply_to;
+     std::string from;
+     struct EmailRecipients recipients;
+     struct EmailContent content;
+     EmailHeaders additional_headers;
+     EmailData(
+       const std::string & message_id_,
+       const std::string & in_reply_to_,
+       const std::string & from_,
+       const struct EmailRecipients & recipients_,
+       const struct EmailContent & content_,
+       std::optional<EmailHeaders> additional_headers_ = std::nullopt)
+     : message_id(message_id_),
+       in_reply_to(in_reply_to_),
+       from(from_),
+       recipients(recipients_),
+       content(content_),
+       additional_headers(
+         additional_headers_.has_value() ? additional_headers_.value() : EmailHeaders{})
+     {}
+     EmailData(const EmailData &) = default;
+   };
+   
+   }  // namespace email
+   
+   template<>
+   struct fmt::formatter<email::EmailRecipients>: formatter<string_view>
+   {
+     template<typename FormatContext>
+     auto format(const email::EmailRecipients & r, FormatContext & ctx)
+     {
+       return formatter<string_view>::format(
+         fmt::format(
+           "To: {}\nCc: {}\nBcc: {}",
+           fmt::join(r.to, ","),
+           fmt::join(r.cc, ","),
+           fmt::join(r.bcc, ",")),
+         ctx);
+     }
+   };
+   
+   template<>
+   struct fmt::formatter<email::EmailContent>: formatter<string_view>
+   {
+     template<typename FormatContext>
+     auto format(const email::EmailContent & c, FormatContext & ctx)
+     {
+       return formatter<string_view>::format(
+         fmt::format("Subject: {}\n\n{}\n", c.subject, c.body),
+         ctx);
+     }
+   };
+   
+   template<>
+   struct fmt::formatter<email::EmailHeaders>: formatter<string_view>
+   {
+     template<typename FormatContext>
+     auto format(const email::EmailHeaders & h, FormatContext & ctx)
+     {
+       // TODO(christophebedard) improve this
+       std::string str;
+       bool first = true;
+       for (const auto & [k, v] : h) {
+         if (first) {
+           first = false;
+         } else {
+           str += "\n";
+         }
+         str += fmt::format("{}: {}", k, v);
+       }
+       return formatter<string_view>::format(str, ctx);
+     }
+   };
+   
+   template<>
+   struct fmt::formatter<email::EmailData>: formatter<string_view>
+   {
+     template<typename FormatContext>
+     auto format(const email::EmailData & d, FormatContext & ctx)
+     {
+       return formatter<string_view>::format(
+         fmt::format(
+           "{}\nMessage-Id: {}\nIn-Reply-To: {}\nFrom: {}\n{}\n{}",
+           d.additional_headers, d.message_id, d.in_reply_to, d.from, d.recipients, d.content),
+         ctx);
+     }
+   };
+   
+   #endif  // EMAIL__EMAIL__INFO_HPP_

@@ -1,4 +1,0 @@
-<map id="email::ServiceRequestId" name="email::ServiceRequestId">
-<area shape="rect" id="node1" title="Service request ID, with a sequence number and a client GID." alt="" coords="5,95,185,121"/>
-<area shape="rect" id="node2" href="$classemail_1_1Gid.html" title="Unique ID (GID)." alt="" coords="51,5,140,32"/>
-</map>

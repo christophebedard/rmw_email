@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61:
+
+Typedef email::Logger
+=====================
+
+- Defined in :ref:`file_include_email_log.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: email::Logger

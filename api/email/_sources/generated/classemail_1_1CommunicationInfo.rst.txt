@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1CommunicationInfo:
+
+Class CommunicationInfo
+=======================
+
+- Defined in :ref:`file_include_email_communication_info.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::CommunicationInfo
+   :members:
+   :protected-members:
+   :undoc-members:

@@ -1,0 +1,16 @@
+.. _exhale_struct_structemail_1_1EmailData:
+
+Struct EmailData
+================
+
+- Defined in :ref:`file_include_email_email_info.hpp`
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: email::EmailData
+   :members:
+   :protected-members:
+   :undoc-members:

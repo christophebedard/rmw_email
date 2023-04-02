@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f:
+
+Typedef email::EmailHeaders
+===========================
+
+- Defined in :ref:`file_include_email_email_info.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: email::EmailHeaders

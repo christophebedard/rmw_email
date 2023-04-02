@@ -1,7 +1,0 @@
-.. _page_index:
-
-<tt>email</tt>: email-based middleware
-======================================
-
-.. doxygenpage:: index
-   :content-only:

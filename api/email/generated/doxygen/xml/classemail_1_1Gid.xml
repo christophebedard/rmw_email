@@ -1,0 +1,219 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1Gid" kind="class" language="C++" prot="public">
+    <compoundname>email::Gid</compoundname>
+    <includes local="no">gid.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1Gid_1a62dae307b12f63573598cd248a9b320a" prot="private" static="no" mutable="no">
+        <type>const <ref refid="namespaceemail_1a75eac80413e3a15a1adff727b822a70c" kindref="member">GidValue</ref></type>
+        <definition>const GidValue email::Gid::value_</definition>
+        <argsstring></argsstring>
+        <name>value_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="98" column="18" bodyfile="include/email/gid.hpp" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Gid_1a499978aa0fb35138798bb02465dd9906" prot="private" static="no" mutable="no">
+        <type>const std::string</type>
+        <definition>const std::string email::Gid::value_string_</definition>
+        <argsstring></argsstring>
+        <name>value_string_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="99" column="21" bodyfile="include/email/gid.hpp" bodystart="99" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classemail_1_1Gid_1a7b577f26c3c1c5b652871313b4b378ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classemail_1_1Gid" kindref="compound">Gid</ref></type>
+        <definition>static Gid email::Gid::new_gid</definition>
+        <argsstring>()</argsstring>
+        <name>new_gid</name>
+        <briefdescription>
+<para>Get a new GID. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="43" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Gid_1a335e1b70ba71daad276439074fd84726" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::optional&lt; <ref refid="classemail_1_1Gid" kindref="compound">Gid</ref> &gt;</type>
+        <definition>static std::optional&lt;Gid&gt; email::Gid::from_string</definition>
+        <argsstring>(const std::string &amp;str)</argsstring>
+        <name>from_string</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>str</declname>
+        </param>
+        <briefdescription>
+<para>Get a GID object from a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>The string should have been generated using <ref refid="classemail_1_1Gid_1a9e27fd06dfa8c387fdee7a0cea89dcac" kindref="member">to_string()</ref>.</para>
+<para><simplesect kind="return"><para>the GID object, or <computeroutput>std::nullopt</computeroutput> if it fails </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="85" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1Gid_1abecaf9fb1ba2a8c1eb96f44225c70a2b" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::Gid::Gid</definition>
+        <argsstring>(const GidValue value)</argsstring>
+        <name>Gid</name>
+        <param>
+          <type>const <ref refid="namespaceemail_1a75eac80413e3a15a1adff727b822a70c" kindref="member">GidValue</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>To create a new GID, see Gid::new().</para>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>value</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the value for this GID </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="52" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Gid_1ace01480d09f409d1b6dea1eae7d657cc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::Gid::Gid</definition>
+        <argsstring>(const Gid &amp;)=default</argsstring>
+        <name>Gid</name>
+        <param>
+          <type>const <ref refid="classemail_1_1Gid" kindref="compound">Gid</ref> &amp;</type>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="55" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Gid_1a3e9a180384b627de0cb19ae24c7ca7df" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual email::Gid::~Gid</definition>
+        <argsstring>()</argsstring>
+        <name>~Gid</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="58" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Gid_1aa4ac19221b7be24f6ff62aeb60d44cf2" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceemail_1a75eac80413e3a15a1adff727b822a70c" kindref="member">GidValue</ref></type>
+        <definition>GidValue email::Gid::value</definition>
+        <argsstring>() const</argsstring>
+        <name>value</name>
+        <briefdescription>
+<para>Get the GID value. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the value </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="66" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Gid_1a9e27fd06dfa8c387fdee7a0cea89dcac" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string &amp;</type>
+        <definition>const std::string&amp; email::Gid::to_string</definition>
+        <argsstring>() const</argsstring>
+        <name>to_string</name>
+        <briefdescription>
+<para>Get the GID as a string. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This string can be converted back to a GID using <ref refid="classemail_1_1Gid_1a335e1b70ba71daad276439074fd84726" kindref="member">from_string()</ref>. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="74" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classemail_1_1Gid_1a897ca9c7356af66aad704f79a885b965" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="namespaceemail_1a75eac80413e3a15a1adff727b822a70c" kindref="member">GidValue</ref></type>
+        <definition>static GidValue email::Gid::new_value</definition>
+        <argsstring>()</argsstring>
+        <name>new_value</name>
+        <briefdescription>
+<para>Get a new value. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="91" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Gid_1ae435991a798bb89d76171fe811cc441c" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>static std::string email::Gid::to_string</definition>
+        <argsstring>(const GidValue value)</argsstring>
+        <name>to_string</name>
+        <param>
+          <type>const <ref refid="namespaceemail_1a75eac80413e3a15a1adff727b822a70c" kindref="member">GidValue</ref></type>
+          <declname>value</declname>
+        </param>
+        <briefdescription>
+<para>Convert a GID value to a string. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/gid.hpp" line="96" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Unique ID (GID). </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Wrapper for unique ID (aka GID). </para>
+    </detaileddescription>
+    <location file="include/email/gid.hpp" line="36" column="1" bodyfile="include/email/gid.hpp" bodystart="37" bodyend="100"/>
+    <listofallmembers>
+      <member refid="classemail_1_1Gid_1a335e1b70ba71daad276439074fd84726" prot="public" virt="non-virtual"><scope>email::Gid</scope><name>from_string</name></member>
+      <member refid="classemail_1_1Gid_1abecaf9fb1ba2a8c1eb96f44225c70a2b" prot="public" virt="non-virtual"><scope>email::Gid</scope><name>Gid</name></member>
+      <member refid="classemail_1_1Gid_1ace01480d09f409d1b6dea1eae7d657cc" prot="public" virt="non-virtual"><scope>email::Gid</scope><name>Gid</name></member>
+      <member refid="classemail_1_1Gid_1a7b577f26c3c1c5b652871313b4b378ba" prot="public" virt="non-virtual"><scope>email::Gid</scope><name>new_gid</name></member>
+      <member refid="classemail_1_1Gid_1a897ca9c7356af66aad704f79a885b965" prot="private" virt="non-virtual"><scope>email::Gid</scope><name>new_value</name></member>
+      <member refid="classemail_1_1Gid_1a9e27fd06dfa8c387fdee7a0cea89dcac" prot="public" virt="non-virtual"><scope>email::Gid</scope><name>to_string</name></member>
+      <member refid="classemail_1_1Gid_1ae435991a798bb89d76171fe811cc441c" prot="private" virt="non-virtual"><scope>email::Gid</scope><name>to_string</name></member>
+      <member refid="classemail_1_1Gid_1aa4ac19221b7be24f6ff62aeb60d44cf2" prot="public" virt="non-virtual"><scope>email::Gid</scope><name>value</name></member>
+      <member refid="classemail_1_1Gid_1a62dae307b12f63573598cd248a9b320a" prot="private" virt="non-virtual"><scope>email::Gid</scope><name>value_</name></member>
+      <member refid="classemail_1_1Gid_1a499978aa0fb35138798bb02465dd9906" prot="private" virt="non-virtual"><scope>email::Gid</scope><name>value_string_</name></member>
+      <member refid="classemail_1_1Gid_1a3e9a180384b627de0cb19ae24c7ca7df" prot="public" virt="virtual"><scope>email::Gid</scope><name>~Gid</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

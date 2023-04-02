@@ -1,0 +1,85 @@
+
+.. _file_include_email_subscription.hpp:
+
+File subscription.hpp
+=====================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/subscription.hpp``)
+-----------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_subscription.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``chrono``
+
+- ``email/email/info.hpp`` (:ref:`file_include_email_email_info.hpp`)
+
+- ``email/log.hpp`` (:ref:`file_include_email_log.hpp`)
+
+- ``email/macros.hpp`` (:ref:`file_include_email_macros.hpp`)
+
+- ``email/message_info.hpp`` (:ref:`file_include_email_message_info.hpp`)
+
+- ``email/pub_sub.hpp`` (:ref:`file_include_email_pub_sub.hpp`)
+
+- ``email/safe_queue.hpp`` (:ref:`file_include_email_safe_queue.hpp`)
+
+- ``email/subscription_handler.hpp`` (:ref:`file_include_email_subscription_handler.hpp`)
+
+- ``email/visibility_control.hpp`` (:ref:`file_include_email_visibility_control.hpp`)
+
+- ``memory``
+
+- ``optional``
+
+- ``string``
+
+- ``utility``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_email.hpp`
+
+- :ref:`file_include_email_wait.hpp`
+
+- :ref:`file_include_email_wait_set.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classemail_1_1Subscription`
+

@@ -1,0 +1,13 @@
+.. _exhale_typedef_namespaceemail_1a75eac80413e3a15a1adff727b822a70c:
+
+Typedef email::GidValue
+=======================
+
+- Defined in :ref:`file_include_email_gid.hpp`
+
+
+Typedef Documentation
+---------------------
+
+
+.. doxygentypedef:: email::GidValue

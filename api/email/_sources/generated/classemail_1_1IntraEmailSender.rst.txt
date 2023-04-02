@@ -1,0 +1,25 @@
+.. _exhale_class_classemail_1_1IntraEmailSender:
+
+Class IntraEmailSender
+======================
+
+- Defined in :ref:`file_include_email_email_intra_sender.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public email::EmailSender`` (:ref:`exhale_class_classemail_1_1EmailSender`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::IntraEmailSender
+   :members:
+   :protected-members:
+   :undoc-members:

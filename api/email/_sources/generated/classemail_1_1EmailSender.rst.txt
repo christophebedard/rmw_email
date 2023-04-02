@@ -1,0 +1,26 @@
+.. _exhale_class_classemail_1_1EmailSender:
+
+Class EmailSender
+=================
+
+- Defined in :ref:`file_include_email_email_sender.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public email::CurlEmailSender`` (:ref:`exhale_class_classemail_1_1CurlEmailSender`)
+- ``public email::IntraEmailSender`` (:ref:`exhale_class_classemail_1_1IntraEmailSender`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::EmailSender
+   :members:
+   :protected-members:
+   :undoc-members:

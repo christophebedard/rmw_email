@@ -1,0 +1,75 @@
+
+.. _file_include_email_email_curl_receiver.hpp:
+
+File curl_receiver.hpp
+======================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email_email>` (``include/email/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/email/curl_receiver.hpp``)
+------------------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_email_curl_receiver.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``atomic``
+
+- ``chrono``
+
+- ``curl/curl.h``
+
+- ``email/curl/executor.hpp`` (:ref:`file_include_email_curl_executor.hpp`)
+
+- ``email/email/info.hpp`` (:ref:`file_include_email_email_info.hpp`)
+
+- ``email/email/receiver.hpp`` (:ref:`file_include_email_email_receiver.hpp`)
+
+- ``email/log.hpp`` (:ref:`file_include_email_log.hpp`)
+
+- ``email/macros.hpp`` (:ref:`file_include_email_macros.hpp`)
+
+- ``email/visibility_control.hpp`` (:ref:`file_include_email_visibility_control.hpp`)
+
+- ``memory``
+
+- ``optional``
+
+- ``regex``
+
+- ``string``
+
+
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classemail_1_1CurlEmailReceiver`
+

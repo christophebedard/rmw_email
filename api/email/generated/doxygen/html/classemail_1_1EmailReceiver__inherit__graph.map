@@ -1,0 +1,5 @@
+<map id="email::EmailReceiver" name="email::EmailReceiver">
+<area shape="rect" id="node1" title="Abstract email receiver." alt="" coords="125,5,286,32"/>
+<area shape="rect" id="node2" href="$classemail_1_1CurlEmailReceiver.html" title="Email reception wrapper for curl." alt="" coords="5,80,192,107"/>
+<area shape="rect" id="node3" href="$classemail_1_1IntraEmailReceiver.html" title="Intraprocess email receiver." alt="" coords="217,80,407,107"/>
+</map>

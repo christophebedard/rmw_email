@@ -1,0 +1,15 @@
+Welcome to the documentation for email
+======================================
+
+.. toctree::
+   :maxdepth: 2
+
+   email <generated/index>
+
+
+Indices and Search
+==================
+
+* :ref:`genindex`
+* :ref:`search`
+

@@ -1,0 +1,39 @@
+
+.. _namespace_email__utils__payload:
+
+Namespace email::utils::payload
+===============================
+
+
+Utilities for building email payloads according to RFC 5322. 
+
+
+
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+
+
+
+Detailed Description
+--------------------
+
+See: https://tools.ietf.org/html/rfc5322 
+
+
+
+
+
+Functions
+---------
+
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1ac522857948a8c609ea73e96600cb8e2a`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1a455c37a8a129ddcf90c1835f001c0579`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1_1payload_1ae288cd99e7a54273aea6372c959f76c9`

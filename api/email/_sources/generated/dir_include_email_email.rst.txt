@@ -1,0 +1,30 @@
+.. _dir_include_email_email:
+
+
+Directory email
+===============
+
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``include/email/email``
+
+
+Files
+-----
+
+- :ref:`file_include_email_email_curl_receiver.hpp`
+- :ref:`file_include_email_email_curl_sender.hpp`
+- :ref:`file_include_email_email_handler.hpp`
+- :ref:`file_include_email_email_info.hpp`
+- :ref:`file_include_email_email_intra_receiver.hpp`
+- :ref:`file_include_email_email_intra_sender.hpp`
+- :ref:`file_include_email_email_payload_utils.hpp`
+- :ref:`file_include_email_email_polling_manager.hpp`
+- :ref:`file_include_email_email_receiver.hpp`
+- :ref:`file_include_email_email_response_utils.hpp`
+- :ref:`file_include_email_email_sender.hpp`
+
+

@@ -1,0 +1,26 @@
+.. _exhale_class_classemail_1_1CurlExecutor:
+
+Class CurlExecutor
+==================
+
+- Defined in :ref:`file_include_email_curl_executor.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Derived Types
+*************
+
+- ``public email::CurlEmailReceiver`` (:ref:`exhale_class_classemail_1_1CurlEmailReceiver`)
+- ``public email::CurlEmailSender`` (:ref:`exhale_class_classemail_1_1CurlEmailSender`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::CurlExecutor
+   :members:
+   :protected-members:
+   :undoc-members:

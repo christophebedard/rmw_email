@@ -1,0 +1,188 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1EmailSender" kind="class" language="C++" prot="public" abstract="yes">
+    <compoundname>email::EmailSender</compoundname>
+    <derivedcompoundref refid="classemail_1_1CurlEmailSender" prot="public" virt="non-virtual">email::CurlEmailSender</derivedcompoundref>
+    <derivedcompoundref refid="classemail_1_1IntraEmailSender" prot="public" virt="non-virtual">email::IntraEmailSender</derivedcompoundref>
+    <includes local="no">sender.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1EmailSender_1a6a067e65d5a0c78bd30217eaab577420" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::EmailSender::EmailSender</definition>
+        <argsstring>()</argsstring>
+        <name>EmailSender</name>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/sender.hpp" line="39" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1EmailSender_1a84b1193de252540aca30a78973f30ff9" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type></type>
+        <definition>virtual email::EmailSender::~EmailSender</definition>
+        <argsstring>()</argsstring>
+        <name>~EmailSender</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/sender.hpp" line="42" column="11"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1EmailSender_1a12487f6d865d3839438cfb0814bbf1ec" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool email::EmailSender::send</definition>
+        <argsstring>(const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt)=0</argsstring>
+        <name>send</name>
+        <reimplementedby refid="classemail_1_1CurlEmailSender_1a8aacb118cf3750a293f1b48e8c035252">send</reimplementedby>
+        <reimplementedby refid="classemail_1_1IntraEmailSender_1acf49287658ab7a3325ac99b4d6eb68ee">send</reimplementedby>
+        <param>
+          <type>const struct <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &amp;</type>
+          <declname>content</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref> &gt;</type>
+          <declname>additional_headers</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Send an email. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>content</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the content </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>additional_headers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the optional additional headers to include in the email </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/sender.hpp" line="53" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1EmailSender_1ad7b5de33bdb15b17f88cfccde80aa881" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
+        <type>bool</type>
+        <definition>virtual bool email::EmailSender::reply</definition>
+        <argsstring>(const struct EmailContent &amp;content, const struct EmailData &amp;email, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt)=0</argsstring>
+        <name>reply</name>
+        <reimplementedby refid="classemail_1_1CurlEmailSender_1a1abbf80344254931d8107ef757a2a13a">reply</reimplementedby>
+        <reimplementedby refid="classemail_1_1IntraEmailSender_1acf01f816b22eee5c16173f6c7dedaafd">reply</reimplementedby>
+        <param>
+          <type>const struct <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &amp;</type>
+          <declname>content</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &amp;</type>
+          <declname>email</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref> &gt;</type>
+          <declname>additional_headers</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Reply to an email. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>content</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the content </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>email</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the email to reply to </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>additional_headers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the optional additional headers to include in the email </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/sender.hpp" line="67" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classemail_1_1EmailSender_1af10fd3a823d5f5355f6cd3a784a7d3d8" prot="protected" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
+        <definition>static std::shared_ptr&lt;Logger&gt; email::EmailSender::logger</definition>
+        <argsstring>()</argsstring>
+        <name>logger</name>
+        <briefdescription>
+<para>Get logger. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/sender.hpp" line="76" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Abstract email sender. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>Sends emails. Only the email subject &amp; body can change from one sent email to another. </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>email::IntraEmailSender</label>
+        <link refid="classemail_1_1IntraEmailSender"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>email::CurlEmailSender</label>
+        <link refid="classemail_1_1CurlEmailSender"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>email::EmailSender</label>
+        <link refid="classemail_1_1EmailSender"/>
+      </node>
+    </inheritancegraph>
+    <location file="include/email/email/sender.hpp" line="34" column="1" bodyfile="include/email/email/sender.hpp" bodystart="35" bodyend="80"/>
+    <listofallmembers>
+      <member refid="classemail_1_1EmailSender_1a6a067e65d5a0c78bd30217eaab577420" prot="public" virt="non-virtual"><scope>email::EmailSender</scope><name>EmailSender</name></member>
+      <member refid="classemail_1_1EmailSender_1af10fd3a823d5f5355f6cd3a784a7d3d8" prot="protected" virt="non-virtual"><scope>email::EmailSender</scope><name>logger</name></member>
+      <member refid="classemail_1_1EmailSender_1ad7b5de33bdb15b17f88cfccde80aa881" prot="public" virt="pure-virtual"><scope>email::EmailSender</scope><name>reply</name></member>
+      <member refid="classemail_1_1EmailSender_1a12487f6d865d3839438cfb0814bbf1ec" prot="public" virt="pure-virtual"><scope>email::EmailSender</scope><name>send</name></member>
+      <member refid="classemail_1_1EmailSender_1a84b1193de252540aca30a78973f30ff9" prot="public" virt="virtual"><scope>email::EmailSender</scope><name>~EmailSender</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

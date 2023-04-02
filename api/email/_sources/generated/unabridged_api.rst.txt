@@ -1,0 +1,905 @@
+
+Reference
+---------
+
+Namespaces
+**********
+
+
+.. toctree::
+   :maxdepth: 1
+
+   namespace_email.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   namespace_email__log.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   namespace_email__utils.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   namespace_email__utils__payload.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   namespace_email__utils__response.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   namespace_fmt.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   namespace_std.rst
+
+Classes and Structs
+*******************
+
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1ConnectionInfo.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1CurlEmailSender_1_1UploadData.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1EmailContent.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1EmailData.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1EmailRecipients.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1ProtocolInfo.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1ServiceRequest.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1ServiceRequestId.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structemail_1_1UserInfo.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01email_1_1EmailContent_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01email_1_1EmailData_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01email_1_1Gid_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01email_1_1Timestamp_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   structfmt_1_1formatter_3_01YAML_1_1Node_01_4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1CommunicationInfo.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1Context.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ContextAlreadyInitializedError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ContextError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ContextInitFailedError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ContextNotInitializedError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1CurlContext.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1CurlEmailReceiver.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1CurlEmailSender.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1CurlExecutor.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1EmailHandler.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1EmailReceiver.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1EmailSender.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1Gid.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1GidObject.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1GuardCondition.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1GuardConditionAlreadyInUseError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1IntraEmailReceiver.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1IntraEmailSender.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1log_1_1LoggingError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1log_1_1LoggingNotInitializedError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1MessageInfo.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1NamedObject.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ObjectNameInvalidError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1Options.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1PollingManager.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1Publisher.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1PubSubObject.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1SafeMap.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1SafeQueue.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ServiceClient.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ServiceHandler.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ServiceInfo.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ServiceNameInvalidError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ServiceObject.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1ServiceServer.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1Subscription.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1SubscriptionHandler.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1Timestamp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1TopicNameInvalidError.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   classemail_1_1WaitSet.rst
+
+Enums
+*****
+
+
+.. toctree::
+   :maxdepth: 1
+
+   enum_namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8f.rst
+
+Functions
+*********
+
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a32664596f7a3d0177434519dc03ea38d.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a31064318c3c135912c70c384f25d3305.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1log_1a70e2c4b9640f8b10a086f14269d4681d.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1log_1aba50b69230431fca149b16fe3fbcaa9c.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1log_1aae637767284f0246349f0c09c4a7b30f.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1log_1ab7f5f3d63616c0073e304d2b20f86841.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a7a0e2779940792a4753a9b163fd1bbc4.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a40a0b74a4dfabc0575e10367ff64f14f.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a48891b8793ba17bf280aef8d8c62f392.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1ae02d06fc8aab9fc0e6c0e2f08e4bb976.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a2a5c92f770d0c27fefe339dd2ba426a1.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a205d62958aa3a9111c4c17da561743fc.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a1426a6b72c22a41e717f2dddb9fe6f47.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1payload_1ac522857948a8c609ea73e96600cb8e2a.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1payload_1a455c37a8a129ddcf90c1835f001c0579.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1payload_1ae288cd99e7a54273aea6372c959f76c9.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a88a5169377c5fdee4455ee6b38723745.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1response_1a6b5d710f645d106f79a0c1d15c7f9d75.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1response_1a653d46e023a23fecac67b8b95e32ff6b.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1response_1a5a53dc0d1ceb86baec63678cc7dc060b.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1response_1a30fbb8f3e4152b10b3998d176b5212d0.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1_1response_1a86761af16b95987441640bea6861132a.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1aef6154f77c351ae81abb1544e8a5f3fd.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a36d04ae0600a820016e9a547222bad1a.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a6de7445821178c24df09d19ede5b3700.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a3f1ec15b0fb2fe7708248d9144068e69.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1abb5cc15dac76b938b897a32a94d29387.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1_1utils_1a82ee838f6167a4af1146f59b82a26933.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1ab5721e49aa88b793a84361690e62cff6.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1ae337962e644aa83d44bb241471fcb5a2.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1aa59c37dd2056e5079d933232a16a3396.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a03feb199db737e274a1e6f0750d203a6.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1ad0a6b760f7e08068416acceebb60a199.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a7dfbb8a3972445ace7e5b33b3b8cf18e.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1ad5dd2091a29213c9aa3859d817376d10.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1afdc469e72e9b1ab69445fdb82082f050.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a79fde927095f94957025da12c6283edb.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   function_namespaceemail_1a2cdbe450415e49215d4a2d869eb577e7.rst
+
+Defines
+*******
+
+
+.. toctree::
+   :maxdepth: 1
+
+   define_macros_8hpp_1a976d2e468dffeeeb1bf3ca99c127fa4e.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_visibility__control_8hpp_1a94c93836ac70e948a23100bef086e18d.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_visibility__control_8hpp_1a43b93e86e1237b12352cbe1a0bf6037b.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_visibility__control_8hpp_1a6d306507fc30a742b84e4618b31f0a06.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_visibility__control_8hpp_1a5c16dda9cae66fb57f21b90ad814a120.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_macros_8hpp_1ad5446eac67f26846b66708ecf55bf0aa.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_macros_8hpp_1a63182df5328e6f5ffc3eb22859132adf.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_lttng_8hpp_1a41a6d81b1a679e3ef9d0f0ada1e3cbd3.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   define_macros_8hpp_1afb828ba1d458a13870c719025fcbf806.rst
+
+Typedefs
+********
+
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespaceemail_1a79f0f6247c3270688400eb20c9564c96.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespaceemail_1a75eac80413e3a15a1adff727b822a70c.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   typedef_namespaceemail_1a0de800b4ba159d6e3892ce756a690103.rst
+
+Directories
+***********
+
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_include.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_include_email.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_include_email_curl.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   dir_include_email_email.rst
+
+Files
+*****
+
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_communication_info.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_context.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_curl_context.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_curl_receiver.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_curl_sender.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_curl_executor.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_gid.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_gid_object.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_guard_condition.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_handler.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_curl_info.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_info.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_init.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_intra_receiver.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_intra_sender.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_log.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_lttng.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_macros.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_message_info.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_named_object.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_options.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_payload_utils.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_polling_manager.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_pub_sub.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_publisher.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_receiver.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_response_utils.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_safe_map.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_safe_queue.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_email_sender.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_service.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_service_client.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_service_handler.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_service_info.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_service_request.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_service_server.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_subscription.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_subscription_handler.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_timestamp.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_utils.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_visibility_control.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_wait.hpp.rst
+
+.. toctree::
+   :maxdepth: 1
+
+   file_include_email_wait_set.hpp.rst

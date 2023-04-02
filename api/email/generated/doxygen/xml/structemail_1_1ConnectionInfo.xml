@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="structemail_1_1ConnectionInfo" kind="struct" language="C++" prot="public">
+    <compoundname>email::ConnectionInfo</compoundname>
+    <includes local="no">info.hpp</includes>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structemail_1_1ConnectionInfo_1a2432cbfd520eba7169a0da728998b0ea" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::ConnectionInfo::host</definition>
+        <argsstring></argsstring>
+        <name>host</name>
+        <briefdescription>
+<para>Host name without protocol or port. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/curl/info.hpp" line="27" column="15" bodyfile="include/email/curl/info.hpp" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structemail_1_1ConnectionInfo_1ae80c12163b0f5c970949cd2ba916c101" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::ConnectionInfo::username</definition>
+        <argsstring></argsstring>
+        <name>username</name>
+        <briefdescription>
+<para>Username (i.e. email). </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/curl/info.hpp" line="29" column="15" bodyfile="include/email/curl/info.hpp" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structemail_1_1ConnectionInfo_1a3be0ffc294c7adbd3789080f627d7101" prot="public" static="no" mutable="no">
+        <type>std::string</type>
+        <definition>std::string email::ConnectionInfo::password</definition>
+        <argsstring></argsstring>
+        <name>password</name>
+        <briefdescription>
+<para>Password. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/curl/info.hpp" line="31" column="15" bodyfile="include/email/curl/info.hpp" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Info for connecting to server. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="include/email/curl/info.hpp" line="24" column="1" bodyfile="include/email/curl/info.hpp" bodystart="25" bodyend="32"/>
+    <listofallmembers>
+      <member refid="structemail_1_1ConnectionInfo_1a2432cbfd520eba7169a0da728998b0ea" prot="public" virt="non-virtual"><scope>email::ConnectionInfo</scope><name>host</name></member>
+      <member refid="structemail_1_1ConnectionInfo_1a3be0ffc294c7adbd3789080f627d7101" prot="public" virt="non-virtual"><scope>email::ConnectionInfo</scope><name>password</name></member>
+      <member refid="structemail_1_1ConnectionInfo_1ae80c12163b0f5c970949cd2ba916c101" prot="public" virt="non-virtual"><scope>email::ConnectionInfo</scope><name>username</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

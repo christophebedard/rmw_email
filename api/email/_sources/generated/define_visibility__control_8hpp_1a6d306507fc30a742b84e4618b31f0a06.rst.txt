@@ -1,0 +1,13 @@
+.. _exhale_define_visibility__control_8hpp_1a6d306507fc30a742b84e4618b31f0a06:
+
+Define EMAIL_LOCAL
+==================
+
+- Defined in :ref:`file_include_email_visibility_control.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: EMAIL_LOCAL

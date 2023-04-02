@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>File safe_queue.hpp &mdash; email 0.8.0 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/collapsible-lists/css/tree_view.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js"></script>
+        <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Program Listing for File safe_queue.hpp" href="program_listing_file_include_email_safe_queue.hpp.html" />
+    <link rel="prev" title="Program Listing for File safe_map.hpp" href="program_listing_file_include_email_safe_map.hpp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            email
+          </a>
+              <div class="version">
+                0.8
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">email</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#class-hierarchy">Class Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#file-hierarchy">File Hierarchy</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#reference">Reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="index.html#namespaces">Namespaces</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="namespace_email.html">Namespace email</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email.html#classes">Classes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email.html#functions">Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_email__log.html">Namespace email::log</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__log.html#classes">Classes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__log.html#enums">Enums</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__log.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_email__utils.html">Namespace email::utils</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__utils.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__utils.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_email__utils__payload.html">Namespace email::utils::payload</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__utils__payload.html#detailed-description">Detailed Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__utils__payload.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_email__utils__response.html">Namespace email::utils::response</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__utils__response.html#detailed-description">Detailed Description</a></li>
+<li class="toctree-l5"><a class="reference internal" href="namespace_email__utils__response.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_fmt.html">Namespace fmt</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="namespace_fmt.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="namespace_std.html">Namespace std</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#classes-and-structs">Classes and Structs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1ConnectionInfo.html">Struct ConnectionInfo</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1ConnectionInfo.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1CurlEmailSender_1_1UploadData.html">Struct CurlEmailSender::UploadData</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1CurlEmailSender_1_1UploadData.html#nested-relationships">Nested Relationships</a></li>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1CurlEmailSender_1_1UploadData.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1EmailContent.html">Struct EmailContent</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1EmailContent.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1EmailData.html">Struct EmailData</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1EmailData.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1EmailRecipients.html">Struct EmailRecipients</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1EmailRecipients.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1ProtocolInfo.html">Struct ProtocolInfo</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1ProtocolInfo.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1ServiceRequest.html">Struct ServiceRequest</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1ServiceRequest.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1ServiceRequestId.html">Struct ServiceRequestId</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1ServiceRequestId.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structemail_1_1UserInfo.html">Struct UserInfo</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structemail_1_1UserInfo.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailContent_01_4.html">Template Struct formatter&lt; email::EmailContent &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailContent_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailContent_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailContent_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailData_01_4.html">Template Struct formatter&lt; email::EmailData &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailData_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailData_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailData_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4.html">Template Struct formatter&lt; email::EmailHeaders &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4.html">Template Struct formatter&lt; email::EmailRecipients &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Gid_01_4.html">Template Struct formatter&lt; email::Gid &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Gid_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Gid_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Gid_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4.html">Template Struct formatter&lt; email::Timestamp &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html">Template Struct formatter&lt; rcpputils::fs::path &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="structfmt_1_1formatter_3_01YAML_1_1Node_01_4.html">Template Struct formatter&lt; YAML::Node &gt;</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01YAML_1_1Node_01_4.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="structfmt_1_1formatter_3_01YAML_1_1Node_01_4.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="structfmt_1_1formatter_3_01YAML_1_1Node_01_4.html#struct-documentation">Struct Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1CommunicationInfo.html">Class CommunicationInfo</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CommunicationInfo.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1Context.html">Class Context</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Context.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ContextAlreadyInitializedError.html">Class ContextAlreadyInitializedError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextAlreadyInitializedError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ContextAlreadyInitializedError.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextAlreadyInitializedError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ContextError.html">Class ContextError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ContextError.html#base-type">Base Type</a></li>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ContextError.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ContextInitFailedError.html">Class ContextInitFailedError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextInitFailedError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ContextInitFailedError.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextInitFailedError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ContextNotInitializedError.html">Class ContextNotInitializedError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextNotInitializedError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ContextNotInitializedError.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ContextNotInitializedError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1CurlContext.html">Class CurlContext</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlContext.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1CurlEmailReceiver.html">Class CurlEmailReceiver</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlEmailReceiver.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1CurlEmailReceiver.html#base-types">Base Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlEmailReceiver.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1CurlEmailSender.html">Class CurlEmailSender</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlEmailSender.html#nested-relationships">Nested Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1CurlEmailSender.html#nested-types">Nested Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlEmailSender.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1CurlEmailSender.html#base-types">Base Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlEmailSender.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1CurlExecutor.html">Class CurlExecutor</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlExecutor.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1CurlExecutor.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1CurlExecutor.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1EmailHandler.html">Class EmailHandler</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1EmailHandler.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1EmailHandler.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1EmailHandler.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1EmailReceiver.html">Class EmailReceiver</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1EmailReceiver.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1EmailReceiver.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1EmailReceiver.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1EmailSender.html">Class EmailSender</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1EmailSender.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1EmailSender.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1EmailSender.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1Gid.html">Class Gid</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Gid.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1GidObject.html">Class GidObject</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1GidObject.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1GidObject.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1GidObject.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1GuardCondition.html">Class GuardCondition</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1GuardCondition.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1GuardConditionAlreadyInUseError.html">Class GuardConditionAlreadyInUseError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1GuardConditionAlreadyInUseError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1GuardConditionAlreadyInUseError.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1GuardConditionAlreadyInUseError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1IntraEmailReceiver.html">Class IntraEmailReceiver</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1IntraEmailReceiver.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1IntraEmailReceiver.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1IntraEmailReceiver.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1IntraEmailSender.html">Class IntraEmailSender</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1IntraEmailSender.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1IntraEmailSender.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1IntraEmailSender.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1log_1_1LoggingError.html">Class LoggingError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1log_1_1LoggingError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1log_1_1LoggingError.html#base-type">Base Type</a></li>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1log_1_1LoggingError.html#derived-type">Derived Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1log_1_1LoggingError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1log_1_1LoggingNotInitializedError.html">Class LoggingNotInitializedError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1log_1_1LoggingNotInitializedError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1log_1_1LoggingNotInitializedError.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1log_1_1LoggingNotInitializedError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1MessageInfo.html">Class MessageInfo</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1MessageInfo.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1NamedObject.html">Class NamedObject</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1NamedObject.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1NamedObject.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1NamedObject.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ObjectNameInvalidError.html">Class ObjectNameInvalidError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ObjectNameInvalidError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ObjectNameInvalidError.html#base-type">Base Type</a></li>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ObjectNameInvalidError.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ObjectNameInvalidError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1Options.html">Class Options</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Options.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1PollingManager.html">Class PollingManager</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1PollingManager.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1Publisher.html">Class Publisher</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Publisher.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1Publisher.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Publisher.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1PubSubObject.html">Class PubSubObject</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1PubSubObject.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1PubSubObject.html#base-types">Base Types</a></li>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1PubSubObject.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1PubSubObject.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1SafeMap.html">Template Class SafeMap</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1SafeMap.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1SafeQueue.html">Template Class SafeQueue</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1SafeQueue.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ServiceClient.html">Class ServiceClient</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceClient.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ServiceClient.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceClient.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ServiceHandler.html">Class ServiceHandler</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceHandler.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ServiceHandler.html#base-types">Base Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceHandler.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ServiceInfo.html">Class ServiceInfo</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceInfo.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ServiceNameInvalidError.html">Class ServiceNameInvalidError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceNameInvalidError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ServiceNameInvalidError.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceNameInvalidError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ServiceObject.html">Class ServiceObject</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceObject.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ServiceObject.html#base-types">Base Types</a></li>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ServiceObject.html#derived-types">Derived Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceObject.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1ServiceServer.html">Class ServiceServer</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceServer.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1ServiceServer.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1ServiceServer.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1Subscription.html">Class Subscription</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Subscription.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1Subscription.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Subscription.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1SubscriptionHandler.html">Class SubscriptionHandler</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1SubscriptionHandler.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1SubscriptionHandler.html#base-types">Base Types</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1SubscriptionHandler.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1Timestamp.html">Class Timestamp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1Timestamp.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1TopicNameInvalidError.html">Class TopicNameInvalidError</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1TopicNameInvalidError.html#inheritance-relationships">Inheritance Relationships</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="classemail_1_1TopicNameInvalidError.html#base-type">Base Type</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1TopicNameInvalidError.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="classemail_1_1WaitSet.html">Class WaitSet</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="classemail_1_1WaitSet.html#class-documentation">Class Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#enums">Enums</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="enum_namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8f.html">Enum Level</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="enum_namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8f.html#enum-documentation">Enum Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#functions">Functions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a32664596f7a3d0177434519dc03ea38d.html">Function email::get_global_context</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a32664596f7a3d0177434519dc03ea38d.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1.html">Function email::init()</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a31064318c3c135912c70c384f25d3305.html">Function email::init(int, char const *const)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a31064318c3c135912c70c384f25d3305.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e.html">Function email::log::create</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce.html">Function email::log::get_or_create</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1log_1a70e2c4b9640f8b10a086f14269d4681d.html">Function email::log::init</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1log_1a70e2c4b9640f8b10a086f14269d4681d.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1log_1aba50b69230431fca149b16fe3fbcaa9c.html">Function email::log::init_from_env</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1log_1aba50b69230431fca149b16fe3fbcaa9c.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1log_1aae637767284f0246349f0c09c4a7b30f.html">Function email::log::remove</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1log_1aae637767284f0246349f0c09c4a7b30f.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1log_1ab7f5f3d63616c0073e304d2b20f86841.html">Function email::log::shutdown</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1log_1ab7f5f3d63616c0073e304d2b20f86841.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a7a0e2779940792a4753a9b163fd1bbc4.html">Function email::shutdown</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a7a0e2779940792a4753a9b163fd1bbc4.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a40a0b74a4dfabc0575e10367ff64f14f.html">Function email::utils::full_url</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a40a0b74a4dfabc0575e10367ff64f14f.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a48891b8793ba17bf280aef8d8c62f392.html">Function email::utils::get_env_var</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a48891b8793ba17bf280aef8d8c62f392.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1ae02d06fc8aab9fc0e6c0e2f08e4bb976.html">Function email::utils::get_env_var_or_default</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1ae02d06fc8aab9fc0e6c0e2f08e4bb976.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a2a5c92f770d0c27fefe339dd2ba426a1.html">Function email::utils::optional_stoi</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a2a5c92f770d0c27fefe339dd2ba426a1.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a205d62958aa3a9111c4c17da561743fc.html">Function email::utils::optional_stoll</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a205d62958aa3a9111c4c17da561743fc.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a1426a6b72c22a41e717f2dddb9fe6f47.html">Function email::utils::optional_stoul</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a1426a6b72c22a41e717f2dddb9fe6f47.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d.html">Function email::utils::payload::build_payload(const std::vector&lt;std::string&gt;&amp;, const std::vector&lt;std::string&gt;&amp;, const std::vector&lt;std::string&gt;&amp;, const struct EmailContent&amp;, std::optional&lt;EmailHeaders&gt;, std::optional&lt;std::string&gt;)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1ac522857948a8c609ea73e96600cb8e2a.html">Function email::utils::payload::build_payload(EmailRecipients::SharedPtrConst, const struct EmailContent&amp;, std::optional&lt;EmailHeaders&gt;, std::optional&lt;std::string&gt;)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1ac522857948a8c609ea73e96600cb8e2a.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1a455c37a8a129ddcf90c1835f001c0579.html">Function email::utils::payload::cut_string_if_newline</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1a455c37a8a129ddcf90c1835f001c0579.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1ae288cd99e7a54273aea6372c959f76c9.html">Function email::utils::payload::join_list</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1payload_1ae288cd99e7a54273aea6372c959f76c9.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a88a5169377c5fdee4455ee6b38723745.html">Function email::utils::read_file</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a88a5169377c5fdee4455ee6b38723745.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a6b5d710f645d106f79a0c1d15c7f9d75.html">Function email::utils::response::get_email_content_from_response</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a6b5d710f645d106f79a0c1d15c7f9d75.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a653d46e023a23fecac67b8b95e32ff6b.html">Function email::utils::response::get_email_data_from_response</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a653d46e023a23fecac67b8b95e32ff6b.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a5a53dc0d1ceb86baec63678cc7dc060b.html">Function email::utils::response::get_email_headers_from_response</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a5a53dc0d1ceb86baec63678cc7dc060b.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a30fbb8f3e4152b10b3998d176b5212d0.html">Function email::utils::response::get_header_value</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a30fbb8f3e4152b10b3998d176b5212d0.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a86761af16b95987441640bea6861132a.html">Function email::utils::response::get_nextuid_from_response</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1_1response_1a86761af16b95987441640bea6861132a.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1.html">Function email::utils::split_email_list(const std::string&amp;, const bool)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1aef6154f77c351ae81abb1544e8a5f3fd.html">Function email::utils::split_email_list(const YAML::Node&amp;)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1aef6154f77c351ae81abb1544e8a5f3fd.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a36d04ae0600a820016e9a547222bad1a.html">Template Function email::utils::string_format</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a36d04ae0600a820016e9a547222bad1a.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a6de7445821178c24df09d19ede5b3700.html">Function email::utils::thread_append_name</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a6de7445821178c24df09d19ede5b3700.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a3f1ec15b0fb2fe7708248d9144068e69.html">Function email::utils::thread_get_name</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a3f1ec15b0fb2fe7708248d9144068e69.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1abb5cc15dac76b938b897a32a94d29387.html">Function email::utils::thread_set_name</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1abb5cc15dac76b938b897a32a94d29387.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1_1utils_1a82ee838f6167a4af1146f59b82a26933.html">Function email::utils::yaml_to_string</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1_1utils_1a82ee838f6167a4af1146f59b82a26933.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1ab5721e49aa88b793a84361690e62cff6.html">Function email::wait_for_message(Subscription *, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1ab5721e49aa88b793a84361690e62cff6.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1ae337962e644aa83d44bb241471fcb5a2.html">Function email::wait_for_message(std::shared_ptr&lt;Subscription&gt;, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1ae337962e644aa83d44bb241471fcb5a2.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1aa59c37dd2056e5079d933232a16a3396.html">Function email::wait_for_message_with_info(Subscription *, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1aa59c37dd2056e5079d933232a16a3396.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a03feb199db737e274a1e6f0750d203a6.html">Function email::wait_for_message_with_info(std::shared_ptr&lt;Subscription&gt;, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a03feb199db737e274a1e6f0750d203a6.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1ad0a6b760f7e08068416acceebb60a199.html">Function email::wait_for_request(ServiceServer *, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1ad0a6b760f7e08068416acceebb60a199.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a7dfbb8a3972445ace7e5b33b3b8cf18e.html">Function email::wait_for_request(std::shared_ptr&lt;ServiceServer&gt;, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a7dfbb8a3972445ace7e5b33b3b8cf18e.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1ad5dd2091a29213c9aa3859d817376d10.html">Function email::wait_for_request_with_info(ServiceServer *, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1ad5dd2091a29213c9aa3859d817376d10.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1afdc469e72e9b1ab69445fdb82082f050.html">Function email::wait_for_request_with_info(std::shared_ptr&lt;ServiceServer&gt;, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1afdc469e72e9b1ab69445fdb82082f050.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9.html">Function email::wait_for_response(const SequenceNumber, ServiceClient *, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0.html">Function email::wait_for_response(const SequenceNumber, std::shared_ptr&lt;ServiceClient&gt;, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a79fde927095f94957025da12c6283edb.html">Function email::wait_for_response_with_info(const SequenceNumber, ServiceClient *, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a79fde927095f94957025da12c6283edb.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="function_namespaceemail_1a2cdbe450415e49215d4a2d869eb577e7.html">Function email::wait_for_response_with_info(const SequenceNumber, std::shared_ptr&lt;ServiceClient&gt;, const std::chrono::milliseconds)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="function_namespaceemail_1a2cdbe450415e49215d4a2d869eb577e7.html#function-documentation">Function Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#defines">Defines</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="define_macros_8hpp_1a976d2e468dffeeeb1bf3ca99c127fa4e.html">Define EMAIL_DISABLE_COPY</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_macros_8hpp_1a976d2e468dffeeeb1bf3ca99c127fa4e.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_visibility__control_8hpp_1a94c93836ac70e948a23100bef086e18d.html">Define EMAIL_EXPORT</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_visibility__control_8hpp_1a94c93836ac70e948a23100bef086e18d.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_visibility__control_8hpp_1a43b93e86e1237b12352cbe1a0bf6037b.html">Define EMAIL_IMPORT</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_visibility__control_8hpp_1a43b93e86e1237b12352cbe1a0bf6037b.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_visibility__control_8hpp_1a6d306507fc30a742b84e4618b31f0a06.html">Define EMAIL_LOCAL</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_visibility__control_8hpp_1a6d306507fc30a742b84e4618b31f0a06.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75.html">Define EMAIL_PUBLIC</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_visibility__control_8hpp_1a5c16dda9cae66fb57f21b90ad814a120.html">Define EMAIL_PUBLIC_TYPE</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_visibility__control_8hpp_1a5c16dda9cae66fb57f21b90ad814a120.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_macros_8hpp_1ad5446eac67f26846b66708ecf55bf0aa.html">Define EMAIL_SHARED_PTR</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_macros_8hpp_1ad5446eac67f26846b66708ecf55bf0aa.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_macros_8hpp_1a63182df5328e6f5ffc3eb22859132adf.html">Define EMAIL_SHARED_PTR_CONST</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_macros_8hpp_1a63182df5328e6f5ffc3eb22859132adf.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_lttng_8hpp_1a41a6d81b1a679e3ef9d0f0ada1e3cbd3.html">Define EMAIL_TRACEPOINT</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_lttng_8hpp_1a41a6d81b1a679e3ef9d0f0ada1e3cbd3.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="define_macros_8hpp_1afb828ba1d458a13870c719025fcbf806.html">Define EMAIL_WEAK_PTR</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="define_macros_8hpp_1afb828ba1d458a13870c719025fcbf806.html#define-documentation">Define Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#typedefs">Typedefs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="typedef_namespaceemail_1a79f0f6247c3270688400eb20c9564c96.html">Typedef email::EmailHeader</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="typedef_namespaceemail_1a79f0f6247c3270688400eb20c9564c96.html#typedef-documentation">Typedef Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="typedef_namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f.html">Typedef email::EmailHeaders</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="typedef_namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f.html#typedef-documentation">Typedef Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="typedef_namespaceemail_1a75eac80413e3a15a1adff727b822a70c.html">Typedef email::GidValue</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="typedef_namespaceemail_1a75eac80413e3a15a1adff727b822a70c.html#typedef-documentation">Typedef Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="typedef_namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61.html">Typedef email::Logger</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="typedef_namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61.html#typedef-documentation">Typedef Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="typedef_namespaceemail_1a0de800b4ba159d6e3892ce756a690103.html">Typedef email::SequenceNumber</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="typedef_namespaceemail_1a0de800b4ba159d6e3892ce756a690103.html#typedef-documentation">Typedef Documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#directories">Directories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="dir_include.html">Directory include</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dir_include.html#subdirectories">Subdirectories</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dir_include_email.html">Directory email</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dir_include_email.html#subdirectories">Subdirectories</a></li>
+<li class="toctree-l5"><a class="reference internal" href="dir_include_email.html#files">Files</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dir_include_email_curl.html">Directory curl</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dir_include_email_curl.html#files">Files</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="dir_include_email_email.html">Directory email</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="dir_include_email_email.html#files">Files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html#files">Files</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_communication_info.hpp.html">File communication_info.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_communication_info.hpp.html#definition-include-email-communication-info-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/communication_info.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_communication_info.hpp.html">Program Listing for File communication_info.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_communication_info.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_communication_info.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_communication_info.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_communication_info.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_context.hpp.html">File context.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_context.hpp.html#definition-include-email-context-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/context.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_context.hpp.html">Program Listing for File context.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_context.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_context.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_context.hpp.html#classes">Classes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_context.hpp.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_curl_context.hpp.html">File context.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_context.hpp.html#definition-include-email-curl-context-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/curl/context.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_curl_context.hpp.html">Program Listing for File context.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_context.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_context.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_context.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_context.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_curl_receiver.hpp.html">File curl_receiver.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_receiver.hpp.html#definition-include-email-email-curl-receiver-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/curl_receiver.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_curl_receiver.hpp.html">Program Listing for File curl_receiver.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_receiver.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_receiver.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_receiver.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_curl_sender.hpp.html">File curl_sender.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_sender.hpp.html#definition-include-email-email-curl-sender-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/curl_sender.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_curl_sender.hpp.html">Program Listing for File curl_sender.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_sender.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_sender.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_curl_sender.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email.hpp.html">File email.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email.hpp.html#definition-include-email-email-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email.hpp.html">Program Listing for File email.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email.hpp.html#includes">Includes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_curl_executor.hpp.html">File executor.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_executor.hpp.html#definition-include-email-curl-executor-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/curl/executor.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_curl_executor.hpp.html">Program Listing for File executor.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_executor.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_executor.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_executor.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_executor.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_gid.hpp.html">File gid.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid.hpp.html#definition-include-email-gid-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/gid.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_gid.hpp.html">Program Listing for File gid.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid.hpp.html#classes">Classes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid.hpp.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_gid_object.hpp.html">File gid_object.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid_object.hpp.html#definition-include-email-gid-object-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/gid_object.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_gid_object.hpp.html">Program Listing for File gid_object.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid_object.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid_object.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid_object.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_gid_object.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_guard_condition.hpp.html">File guard_condition.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_guard_condition.hpp.html#definition-include-email-guard-condition-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/guard_condition.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_guard_condition.hpp.html">Program Listing for File guard_condition.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_guard_condition.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_guard_condition.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_guard_condition.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_guard_condition.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_handler.hpp.html">File handler.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_handler.hpp.html#definition-include-email-email-handler-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/handler.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_handler.hpp.html">Program Listing for File handler.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_handler.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_handler.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_handler.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_handler.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_curl_info.hpp.html">File info.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_info.hpp.html#definition-include-email-curl-info-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/curl/info.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_curl_info.hpp.html">Program Listing for File info.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_info.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_info.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_info.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_curl_info.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_info.hpp.html">File info.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_info.hpp.html#definition-include-email-email-info-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/info.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_info.hpp.html">Program Listing for File info.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_info.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_info.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_info.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_info.hpp.html#classes">Classes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_info.hpp.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_init.hpp.html">File init.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_init.hpp.html#definition-include-email-init-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/init.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_init.hpp.html">Program Listing for File init.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_init.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_init.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_init.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_init.hpp.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_intra_receiver.hpp.html">File intra_receiver.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_receiver.hpp.html#definition-include-email-email-intra-receiver-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/intra_receiver.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_intra_receiver.hpp.html">Program Listing for File intra_receiver.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_receiver.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_receiver.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_receiver.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_receiver.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_intra_sender.hpp.html">File intra_sender.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_sender.hpp.html#definition-include-email-email-intra-sender-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/intra_sender.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_intra_sender.hpp.html">Program Listing for File intra_sender.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_sender.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_sender.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_intra_sender.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_log.hpp.html">File log.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#definition-include-email-log-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/log.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_log.hpp.html">Program Listing for File log.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#classes">Classes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#enums">Enums</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#functions">Functions</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_log.hpp.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_lttng.hpp.html">File lttng.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_lttng.hpp.html#definition-include-email-lttng-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/lttng.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_lttng.hpp.html">Program Listing for File lttng.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_lttng.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_lttng.hpp.html#defines">Defines</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_macros.hpp.html">File macros.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_macros.hpp.html#definition-include-email-macros-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/macros.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_macros.hpp.html">Program Listing for File macros.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_macros.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_macros.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_macros.hpp.html#defines">Defines</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_message_info.hpp.html">File message_info.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_message_info.hpp.html#definition-include-email-message-info-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/message_info.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_message_info.hpp.html">Program Listing for File message_info.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_message_info.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_message_info.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_message_info.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_message_info.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_named_object.hpp.html">File named_object.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_named_object.hpp.html#definition-include-email-named-object-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/named_object.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_named_object.hpp.html">Program Listing for File named_object.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_named_object.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_named_object.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_named_object.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_named_object.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_options.hpp.html">File options.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_options.hpp.html#definition-include-email-options-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/options.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_options.hpp.html">Program Listing for File options.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_options.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_options.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_options.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_options.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_payload_utils.hpp.html">File payload_utils.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_payload_utils.hpp.html#definition-include-email-email-payload-utils-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/payload_utils.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_payload_utils.hpp.html">Program Listing for File payload_utils.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_payload_utils.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_payload_utils.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_payload_utils.hpp.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_polling_manager.hpp.html">File polling_manager.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_polling_manager.hpp.html#definition-include-email-email-polling-manager-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/polling_manager.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_polling_manager.hpp.html">Program Listing for File polling_manager.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_polling_manager.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_polling_manager.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_polling_manager.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_polling_manager.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_pub_sub.hpp.html">File pub_sub.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_pub_sub.hpp.html#definition-include-email-pub-sub-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/pub_sub.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_pub_sub.hpp.html">Program Listing for File pub_sub.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_pub_sub.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_pub_sub.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_pub_sub.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_pub_sub.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_publisher.hpp.html">File publisher.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_publisher.hpp.html#definition-include-email-publisher-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/publisher.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_publisher.hpp.html">Program Listing for File publisher.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_publisher.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_publisher.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_publisher.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_publisher.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_receiver.hpp.html">File receiver.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_receiver.hpp.html#definition-include-email-email-receiver-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/receiver.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_receiver.hpp.html">Program Listing for File receiver.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_receiver.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_receiver.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_receiver.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_receiver.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_response_utils.hpp.html">File response_utils.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_response_utils.hpp.html#definition-include-email-email-response-utils-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/response_utils.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_response_utils.hpp.html">Program Listing for File response_utils.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_response_utils.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_response_utils.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_response_utils.hpp.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_safe_map.hpp.html">File safe_map.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_safe_map.hpp.html#definition-include-email-safe-map-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/safe_map.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_safe_map.hpp.html">Program Listing for File safe_map.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_safe_map.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_safe_map.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_safe_map.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_safe_map.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">File safe_queue.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#definition-include-email-safe-queue-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/safe_queue.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_safe_queue.hpp.html">Program Listing for File safe_queue.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_email_sender.hpp.html">File sender.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_sender.hpp.html#definition-include-email-email-sender-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/email/sender.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_email_sender.hpp.html">Program Listing for File sender.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_sender.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_sender.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_sender.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_email_sender.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_service.hpp.html">File service.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service.hpp.html#definition-include-email-service-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/service.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_service.hpp.html">Program Listing for File service.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_service_client.hpp.html">File service_client.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_client.hpp.html#definition-include-email-service-client-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/service_client.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_service_client.hpp.html">Program Listing for File service_client.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_client.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_client.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_client.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_client.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_service_handler.hpp.html">File service_handler.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_handler.hpp.html#definition-include-email-service-handler-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/service_handler.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_service_handler.hpp.html">Program Listing for File service_handler.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_handler.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_handler.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_handler.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_handler.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_service_info.hpp.html">File service_info.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_info.hpp.html#definition-include-email-service-info-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/service_info.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_service_info.hpp.html">Program Listing for File service_info.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_info.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_info.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_info.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_info.hpp.html#classes">Classes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_info.hpp.html#typedefs">Typedefs</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_service_request.hpp.html">File service_request.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_request.hpp.html#definition-include-email-service-request-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/service_request.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_service_request.hpp.html">Program Listing for File service_request.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_request.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_request.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_request.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_request.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_service_server.hpp.html">File service_server.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_server.hpp.html#definition-include-email-service-server-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/service_server.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_service_server.hpp.html">Program Listing for File service_server.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_server.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_server.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_server.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_service_server.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_subscription.hpp.html">File subscription.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription.hpp.html#definition-include-email-subscription-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/subscription.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_subscription.hpp.html">Program Listing for File subscription.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_subscription_handler.hpp.html">File subscription_handler.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription_handler.hpp.html#definition-include-email-subscription-handler-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/subscription_handler.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_subscription_handler.hpp.html">Program Listing for File subscription_handler.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription_handler.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription_handler.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription_handler.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_subscription_handler.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_timestamp.hpp.html">File timestamp.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_timestamp.hpp.html#definition-include-email-timestamp-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/timestamp.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_timestamp.hpp.html">Program Listing for File timestamp.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_timestamp.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_timestamp.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_timestamp.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_timestamp.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_utils.hpp.html">File utils.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_utils.hpp.html#definition-include-email-utils-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/utils.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_utils.hpp.html">Program Listing for File utils.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_utils.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_utils.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_utils.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_utils.hpp.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_visibility_control.hpp.html">File visibility_control.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_visibility_control.hpp.html#definition-include-email-visibility-control-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/visibility_control.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_visibility_control.hpp.html">Program Listing for File visibility_control.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_visibility_control.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_visibility_control.hpp.html#defines">Defines</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_wait.hpp.html">File wait.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait.hpp.html#definition-include-email-wait-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/wait.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_wait.hpp.html">Program Listing for File wait.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait.hpp.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="file_include_email_wait_set.hpp.html">File wait_set.hpp</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait_set.hpp.html#definition-include-email-wait-set-hpp">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/wait_set.hpp</span></code>)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="program_listing_file_include_email_wait_set.hpp.html">Program Listing for File wait_set.hpp</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait_set.hpp.html#includes">Includes</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait_set.hpp.html#included-by">Included By</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait_set.hpp.html#namespaces">Namespaces</a></li>
+<li class="toctree-l5"><a class="reference internal" href="file_include_email_wait_set.hpp.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">email</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;tt&gt;email&lt;/tt&gt;: email-based middleware</a></li>
+      <li class="breadcrumb-item active">File safe_queue.hpp</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/generated/file_include_email_safe_queue.hpp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-safe-queue-hpp">
+<span id="file-include-email-safe-queue-hpp"></span><h1>File safe_queue.hpp<a class="headerlink" href="#file-safe-queue-hpp" title="Permalink to this heading"></a></h1>
+<p>↰ <a class="reference internal" href="dir_include_email.html#dir-include-email"><span class="std std-ref">Parent directory</span></a> (<code class="docutils literal notranslate"><span class="pre">include/email</span></code>)</p>
+<nav class="contents local" id="contents">
+<p class="topic-title">Contents</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#definition-include-email-safe-queue-hpp" id="id1">Definition (<code class="docutils literal notranslate"><span class="pre">include/email/safe_queue.hpp</span></code>)</a></p></li>
+<li><p><a class="reference internal" href="#includes" id="id2">Includes</a></p></li>
+<li><p><a class="reference internal" href="#included-by" id="id3">Included By</a></p></li>
+<li><p><a class="reference internal" href="#namespaces" id="id4">Namespaces</a></p></li>
+<li><p><a class="reference internal" href="#classes" id="id5">Classes</a></p></li>
+</ul>
+</nav>
+<section id="definition-include-email-safe-queue-hpp">
+<h2>Definition (<code class="docutils literal notranslate"><span class="pre">include/email/safe_queue.hpp</span></code>)<a class="headerlink" href="#definition-include-email-safe-queue-hpp" title="Permalink to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="program_listing_file_include_email_safe_queue.hpp.html">Program Listing for File safe_queue.hpp</a></li>
+</ul>
+</div>
+</section>
+<section id="includes">
+<h2>Includes<a class="headerlink" href="#includes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">email/macros.hpp</span></code> (<a class="reference internal" href="file_include_email_macros.hpp.html#file-include-email-macros-hpp"><span class="std std-ref">File macros.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mutex</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">queue</span></code> (<a class="reference internal" href="#file-include-email-safe-queue-hpp"><span class="std std-ref">File safe_queue.hpp</span></a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">utility</span></code></p></li>
+</ul>
+</section>
+<section id="included-by">
+<h2>Included By<a class="headerlink" href="#included-by" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="file_include_email_email_intra_receiver.hpp.html#file-include-email-email-intra-receiver-hpp"><span class="std std-ref">File intra_receiver.hpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_email_service_handler.hpp.html#file-include-email-service-handler-hpp"><span class="std std-ref">File service_handler.hpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_email_service_server.hpp.html#file-include-email-service-server-hpp"><span class="std std-ref">File service_server.hpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_email_subscription.hpp.html#file-include-email-subscription-hpp"><span class="std std-ref">File subscription.hpp</span></a></p></li>
+<li><p><a class="reference internal" href="file_include_email_subscription_handler.hpp.html#file-include-email-subscription-handler-hpp"><span class="std std-ref">File subscription_handler.hpp</span></a></p></li>
+</ul>
+</section>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="namespace_email.html#namespace-email"><span class="std std-ref">Namespace email</span></a></p></li>
+</ul>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="classemail_1_1SafeQueue.html#exhale-class-classemail-1-1safequeue"><span class="std std-ref">Template Class SafeQueue</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="program_listing_file_include_email_safe_map.hpp.html" class="btn btn-neutral float-left" title="Program Listing for File safe_map.hpp" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="program_listing_file_include_email_safe_queue.hpp.html" class="btn btn-neutral float-right" title="Program Listing for File safe_queue.hpp" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Apache License 2.0.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

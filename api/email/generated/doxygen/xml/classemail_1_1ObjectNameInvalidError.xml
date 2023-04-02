@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1ObjectNameInvalidError" kind="class" language="C++" prot="public">
+    <compoundname>email::ObjectNameInvalidError</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
+    <derivedcompoundref refid="classemail_1_1ServiceNameInvalidError" prot="public" virt="non-virtual">email::ServiceNameInvalidError</derivedcompoundref>
+    <derivedcompoundref refid="classemail_1_1TopicNameInvalidError" prot="public" virt="non-virtual">email::TopicNameInvalidError</derivedcompoundref>
+    <includes local="no">named_object.hpp</includes>
+      <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classemail_1_1ObjectNameInvalidError_1afcb2be70cb184aba3aa9c699b220dab5" prot="protected" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>email::ObjectNameInvalidError::ObjectNameInvalidError</definition>
+        <argsstring>(const std::string &amp;object_type_name, const std::string &amp;object_name, const std::string &amp;reason)</argsstring>
+        <name>ObjectNameInvalidError</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>object_type_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>object_name</declname>
+        </param>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>reason</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/named_object.hpp" line="31" column="12" bodyfile="include/email/named_object.hpp" bodystart="31" bodyend="36"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Error when an object name is invalid. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>email::ServiceNameInvalidError</label>
+        <link refid="classemail_1_1ServiceNameInvalidError"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+      <node id="1">
+        <label>email::ObjectNameInvalidError</label>
+        <link refid="classemail_1_1ObjectNameInvalidError"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>email::TopicNameInvalidError</label>
+        <link refid="classemail_1_1TopicNameInvalidError"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+      <node id="1">
+        <label>email::ObjectNameInvalidError</label>
+        <link refid="classemail_1_1ObjectNameInvalidError"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="include/email/named_object.hpp" line="28" column="1" bodyfile="include/email/named_object.hpp" bodystart="29" bodyend="37"/>
+    <listofallmembers>
+      <member refid="classemail_1_1ObjectNameInvalidError_1afcb2be70cb184aba3aa9c699b220dab5" prot="protected" virt="non-virtual"><scope>email::ObjectNameInvalidError</scope><name>ObjectNameInvalidError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

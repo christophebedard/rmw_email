@@ -1,7 +1,0 @@
-<map id="email::ContextError" name="email::ContextError">
-<area shape="rect" id="node1" title="Generic context error." alt="" coords="192,78,341,105"/>
-<area shape="rect" id="node3" href="$classemail_1_1ContextAlreadyInitializedError.html" title="Error when the context is already initialized." alt="" coords="389,5,621,47"/>
-<area shape="rect" id="node4" href="$classemail_1_1ContextInitFailedError.html" title="Error when the context initialization fails." alt="" coords="417,71,594,112"/>
-<area shape="rect" id="node5" href="$classemail_1_1ContextNotInitializedError.html" title="Error when the context is not initialized." alt="" coords="403,136,608,177"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,78,144,105"/>
-</map>

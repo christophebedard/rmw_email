@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="namespaceemail_1_1utils_1_1payload" kind="namespace" language="C++">
+    <compoundname>email::utils::payload</compoundname>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string email::utils::payload::build_payload</definition>
+        <argsstring>(const std::vector&lt; std::string &gt; &amp;to, const std::vector&lt; std::string &gt; &amp;cc, const std::vector&lt; std::string &gt; &amp;bcc, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</argsstring>
+        <name>build_payload</name>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>to</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>cc</declname>
+        </param>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>bcc</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &amp;</type>
+          <declname>content</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref> &gt;</type>
+          <declname>additional_headers</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reply_ref</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Build curl email payload from recipients and content. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>to</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the &quot;TO&quot; recipients </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>cc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the &quot;CC&quot; recipients </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>bcc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the &quot;BCC&quot; recipients </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>content</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the content of the email </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>additional_headers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the additional headers to include </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reply_ref</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reply reference (Message-ID of the email to reply to) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the payload </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/payload_utils.hpp" line="50" column="1" declfile="include/email/email/payload_utils.hpp" declline="50" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1payload_1ac522857948a8c609ea73e96600cb8e2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string email::utils::payload::build_payload</definition>
+        <argsstring>(EmailRecipients::SharedPtrConst recipients, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</argsstring>
+        <name>build_payload</name>
+        <param>
+          <type>EmailRecipients::SharedPtrConst</type>
+          <declname>recipients</declname>
+        </param>
+        <param>
+          <type>const struct <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &amp;</type>
+          <declname>content</declname>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref> &gt;</type>
+          <declname>additional_headers</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <param>
+          <type>std::optional&lt; std::string &gt;</type>
+          <declname>reply_ref</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <briefdescription>
+<para>Build curl email payload from recipients and content. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>recipients</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the recipients </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>content</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the content of the email </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>additional_headers</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the additional headers to include </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>reply_ref</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the reply reference (Message-ID of the email to reply to) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the payload </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/payload_utils.hpp" line="68" column="1" declfile="include/email/email/payload_utils.hpp" declline="68" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1payload_1ae288cd99e7a54273aea6372c959f76c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>const std::string</type>
+        <definition>const std::string email::utils::payload::join_list</definition>
+        <argsstring>(const std::vector&lt; std::string &gt; &amp;list)</argsstring>
+        <name>join_list</name>
+        <param>
+          <type>const std::vector&lt; std::string &gt; &amp;</type>
+          <declname>list</declname>
+        </param>
+        <briefdescription>
+<para>Create a string list of emails. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>list</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the list/vector of emails </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the list as a string, compatible with RFC 5322 </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/payload_utils.hpp" line="81" column="1" declfile="include/email/email/payload_utils.hpp" declline="81" declcolumn="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1payload_1a455c37a8a129ddcf90c1835f001c0579" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::string</type>
+        <definition>std::string email::utils::payload::cut_string_if_newline</definition>
+        <argsstring>(const std::string &amp;string)</argsstring>
+        <name>cut_string_if_newline</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>string</declname>
+        </param>
+        <briefdescription>
+<para>Cut a string before a newline if needed. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>string</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the string </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>the string cut before a newline, if needed </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/email/payload_utils.hpp" line="90" column="1" declfile="include/email/email/payload_utils.hpp" declline="90" declcolumn="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Utilities for building email payloads according to RFC 5322. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>See: <ulink url="https://tools.ietf.org/html/rfc5322">https://tools.ietf.org/html/rfc5322</ulink> </para>
+    </detaileddescription>
+    <location file="include/email/email/payload_utils.hpp" line="35" column="1"/>
+  </compounddef>
+</doxygen>

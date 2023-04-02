@@ -1,0 +1,5 @@
+<map id="email::EmailData" name="email::EmailData">
+<area shape="rect" id="node1" title="Raw email data with headers." alt="" coords="117,95,252,121"/>
+<area shape="rect" id="node2" href="$structemail_1_1EmailRecipients.html" title="Recipients of an email." alt="" coords="5,5,177,32"/>
+<area shape="rect" id="node3" href="$structemail_1_1EmailContent.html" title="Content of an email." alt="" coords="202,5,357,32"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="email::CurlExecutor" name="email::CurlExecutor">
+<area shape="rect" id="node1" title="Abstract class for executing commands using curl." alt="" coords="127,5,276,32"/>
+<area shape="rect" id="node2" href="$classemail_1_1CurlEmailReceiver.html" title="Email reception wrapper for curl." alt="" coords="5,80,192,107"/>
+<area shape="rect" id="node3" href="$classemail_1_1CurlEmailSender.html" title="Email sending wrapper for curl." alt="" coords="217,80,391,107"/>
+</map>

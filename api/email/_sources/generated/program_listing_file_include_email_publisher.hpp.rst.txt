@@ -1,0 +1,71 @@
+
+.. _program_listing_file_include_email_publisher.hpp:
+
+Program Listing for File publisher.hpp
+======================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_email_publisher.hpp>` (``include/email/publisher.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright 2020-2021 Christophe Bedard
+   //
+   // Licensed under the Apache License, Version 2.0 (the "License");
+   // you may not use this file except in compliance with the License.
+   // You may obtain a copy of the License at
+   //
+   //     http://www.apache.org/licenses/LICENSE-2.0
+   //
+   // Unless required by applicable law or agreed to in writing, software
+   // distributed under the License is distributed on an "AS IS" BASIS,
+   // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   // See the License for the specific language governing permissions and
+   // limitations under the License.
+   
+   #ifndef EMAIL__PUBLISHER_HPP_
+   #define EMAIL__PUBLISHER_HPP_
+   
+   #include <memory>
+   #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+   #include <string>
+   
+   #include "email/email/info.hpp"
+   #include "email/email/sender.hpp"
+   #include "email/log.hpp"
+   #include "email/macros.hpp"
+   #include "email/pub_sub.hpp"
+   #include "email/visibility_control.hpp"
+   
+   namespace email
+   {
+   
+   
+   class Publisher : public PubSubObject
+   {
+   public:
+   
+     EMAIL_PUBLIC
+     explicit Publisher(const std::string & topic_name);
+   
+     EMAIL_PUBLIC
+     virtual ~Publisher();
+   
+   
+     EMAIL_PUBLIC
+     void
+     publish(
+       const std::string & message,
+       std::optional<EmailHeaders> additional_headers = std::nullopt);
+   
+   private:
+     EMAIL_DISABLE_COPY(Publisher)
+   
+     std::shared_ptr<Logger> logger_;
+     std::shared_ptr<EmailSender> sender_;
+   };
+   
+   }  // namespace email
+   
+   #endif  // EMAIL__PUBLISHER_HPP_

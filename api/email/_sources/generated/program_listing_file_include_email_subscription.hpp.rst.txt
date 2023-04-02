@@ -1,0 +1,83 @@
+
+.. _program_listing_file_include_email_subscription.hpp:
+
+Program Listing for File subscription.hpp
+=========================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_email_subscription.hpp>` (``include/email/subscription.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright 2020-2021 Christophe Bedard
+   //
+   // Licensed under the Apache License, Version 2.0 (the "License");
+   // you may not use this file except in compliance with the License.
+   // You may obtain a copy of the License at
+   //
+   //     http://www.apache.org/licenses/LICENSE-2.0
+   //
+   // Unless required by applicable law or agreed to in writing, software
+   // distributed under the License is distributed on an "AS IS" BASIS,
+   // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   // See the License for the specific language governing permissions and
+   // limitations under the License.
+   
+   #ifndef EMAIL__SUBSCRIPTION_HPP_
+   #define EMAIL__SUBSCRIPTION_HPP_
+   
+   #include <chrono>
+   #include <memory>
+   #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
+   #include <string>
+   #include <utility>
+   
+   #include "email/email/info.hpp"
+   #include "email/log.hpp"
+   #include "email/macros.hpp"
+   #include "email/message_info.hpp"
+   #include "email/pub_sub.hpp"
+   #include "email/safe_queue.hpp"
+   #include "email/subscription_handler.hpp"
+   #include "email/visibility_control.hpp"
+   
+   namespace email
+   {
+   
+   
+   class Subscription : public PubSubObject
+   {
+   public:
+   
+     EMAIL_PUBLIC
+     explicit Subscription(const std::string & topic_name);
+   
+     EMAIL_PUBLIC
+     virtual ~Subscription();
+   
+   
+     EMAIL_PUBLIC
+     bool
+     has_message() const;
+   
+   
+     EMAIL_PUBLIC
+     std::optional<std::string>
+     get_message();
+   
+   
+     EMAIL_PUBLIC
+     std::optional<std::pair<std::string, MessageInfo>>
+     get_message_with_info();
+   
+   private:
+     EMAIL_DISABLE_COPY(Subscription)
+   
+     std::shared_ptr<Logger> logger_;
+     SubscriptionHandler::MessageQueue::SharedPtr messages_;
+   };
+   
+   }  // namespace email
+   
+   #endif  // EMAIL__SUBSCRIPTION_HPP_

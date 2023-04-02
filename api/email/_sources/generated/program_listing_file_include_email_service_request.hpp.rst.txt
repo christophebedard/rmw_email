@@ -1,0 +1,65 @@
+
+.. _program_listing_file_include_email_service_request.hpp:
+
+Program Listing for File service_request.hpp
+============================================
+
+|exhale_lsh| :ref:`Return to documentation for file <file_include_email_service_request.hpp>` (``include/email/service_request.hpp``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. code-block:: cpp
+
+   // Copyright 2020-2021 Christophe Bedard
+   //
+   // Licensed under the Apache License, Version 2.0 (the "License");
+   // you may not use this file except in compliance with the License.
+   // You may obtain a copy of the License at
+   //
+   //     http://www.apache.org/licenses/LICENSE-2.0
+   //
+   // Unless required by applicable law or agreed to in writing, software
+   // distributed under the License is distributed on an "AS IS" BASIS,
+   // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   // See the License for the specific language governing permissions and
+   // limitations under the License.
+   
+   #ifndef EMAIL__SERVICE_REQUEST_HPP_
+   #define EMAIL__SERVICE_REQUEST_HPP_
+   
+   #include <string>
+   
+   #include "email/gid.hpp"
+   #include "email/service_info.hpp"
+   
+   namespace email
+   {
+   
+   struct ServiceRequestId
+   {
+     SequenceNumber sequence_number;
+     Gid client_gid;
+     ServiceRequestId(const SequenceNumber sequence_number_, const Gid & client_gid_)
+     : sequence_number(sequence_number_),
+       client_gid(client_gid_)
+     {}
+     ServiceRequestId(const ServiceRequestId &) = default;
+   };
+   
+   struct ServiceRequest
+   {
+     ServiceRequestId id;
+     std::string content;
+     ServiceRequest(
+       const SequenceNumber sequence_number_,
+       const Gid & client_gid_,
+       const std::string & content_)
+     : id(sequence_number_, client_gid_),
+       content(content_)
+     {}
+     ServiceRequest(const ServiceRequest &) = default;
+   };
+   
+   }  // namespace email
+   
+   #endif  // EMAIL__SERVICE_REQUEST_HPP_

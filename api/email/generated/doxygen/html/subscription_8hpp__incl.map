@@ -1,0 +1,40 @@
+<map id="include/email/subscription.hpp" name="include/email/subscription.hpp">
+<area shape="rect" id="node1" title=" " alt="" coords="1351,5,1572,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="2905,423,2972,449"/>
+<area shape="rect" id="node3" title=" " alt="" coords="2635,587,2712,613"/>
+<area shape="rect" id="node4" title=" " alt="" coords="1375,587,1449,613"/>
+<area shape="rect" id="node5" title=" " alt="" coords="564,587,623,613"/>
+<area shape="rect" id="node6" title=" " alt="" coords="1550,251,1610,278"/>
+<area shape="rect" id="node7" href="$email_2info_8hpp.html" title=" " alt="" coords="2724,423,2881,449"/>
+<area shape="rect" id="node11" href="$macros_8hpp.html" title=" " alt="" coords="2269,505,2408,531"/>
+<area shape="rect" id="node12" href="$log_8hpp.html" title=" " alt="" coords="1599,423,1710,449"/>
+<area shape="rect" id="node19" href="$visibility__control_8hpp.html" title=" " alt="" coords="1053,587,1251,613"/>
+<area shape="rect" id="node20" href="$message__info_8hpp.html" title=" " alt="" coords="1069,251,1251,278"/>
+<area shape="rect" id="node24" href="$pub__sub_8hpp.html" title=" " alt="" coords="318,251,463,278"/>
+<area shape="rect" id="node28" href="$safe__queue_8hpp.html" title=" " alt="" coords="1601,169,1767,196"/>
+<area shape="rect" id="node31" href="$subscription__handler_8hpp.html" title=" " alt="" coords="1815,80,1958,121"/>
+<area shape="rect" id="node8" title=" " alt="" coords="2941,505,2992,531"/>
+<area shape="rect" id="node9" title=" " alt="" coords="2547,587,2610,613"/>
+<area shape="rect" id="node10" title=" " alt="" coords="2736,505,2867,531"/>
+<area shape="rect" id="node13" title=" " alt="" coords="170,587,257,613"/>
+<area shape="rect" id="node14" title=" " alt="" coords="1747,497,1898,539"/>
+<area shape="rect" id="node15" title=" " alt="" coords="1599,505,1723,531"/>
+<area shape="rect" id="node16" title=" " alt="" coords="1037,505,1169,531"/>
+<area shape="rect" id="node17" title=" " alt="" coords="2067,587,2199,613"/>
+<area shape="rect" id="node18" href="$utils_8hpp.html" title=" " alt="" coords="2025,505,2143,531"/>
+<area shape="rect" id="node21" href="$communication__info_8hpp.html" title=" " alt="" coords="1018,333,1182,375"/>
+<area shape="rect" id="node22" href="$gid_8hpp.html" title=" " alt="" coords="885,423,995,449"/>
+<area shape="rect" id="node23" href="$timestamp_8hpp.html" title=" " alt="" coords="1108,423,1271,449"/>
+<area shape="rect" id="node25" title=" " alt="" coords="80,505,139,531"/>
+<area shape="rect" id="node26" href="$gid__object_8hpp.html" title=" " alt="" coords="783,341,942,367"/>
+<area shape="rect" id="node27" href="$named__object_8hpp.html" title=" " alt="" coords="119,423,302,449"/>
+<area shape="rect" id="node29" title=" " alt="" coords="1836,341,1900,367"/>
+<area shape="rect" id="node30" title=" " alt="" coords="1634,251,1697,278"/>
+<area shape="rect" id="node32" title=" " alt="" coords="1975,169,2099,196"/>
+<area shape="rect" id="node33" href="$handler_8hpp.html" title=" " alt="" coords="2762,169,2942,196"/>
+<area shape="rect" id="node35" href="$polling__manager_8hpp.html" title=" " alt="" coords="2261,244,2409,285"/>
+<area shape="rect" id="node34" title=" " alt="" coords="2633,423,2700,449"/>
+<area shape="rect" id="node36" title=" " alt="" coords="2677,341,2763,367"/>
+<area shape="rect" id="node37" title=" " alt="" coords="2228,341,2292,367"/>
+<area shape="rect" id="node38" href="$receiver_8hpp.html" title=" " alt="" coords="2316,341,2500,367"/>
+</map>

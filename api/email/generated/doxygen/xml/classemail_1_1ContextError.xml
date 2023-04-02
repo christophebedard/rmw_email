@@ -1,0 +1,79 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1ContextError" kind="class" language="C++" prot="public">
+    <compoundname>email::ContextError</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
+    <derivedcompoundref refid="classemail_1_1ContextAlreadyInitializedError" prot="public" virt="non-virtual">email::ContextAlreadyInitializedError</derivedcompoundref>
+    <derivedcompoundref refid="classemail_1_1ContextInitFailedError" prot="public" virt="non-virtual">email::ContextInitFailedError</derivedcompoundref>
+    <derivedcompoundref refid="classemail_1_1ContextNotInitializedError" prot="public" virt="non-virtual">email::ContextNotInitializedError</derivedcompoundref>
+    <includes local="no">context.hpp</includes>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1ContextError_1aff88898a3f013d39dc254b1d0e29656c" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
+        <type></type>
+        <definition>email::ContextError::ContextError</definition>
+        <argsstring>(const std::string &amp;msg)</argsstring>
+        <name>ContextError</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>msg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="42" column="12" bodyfile="include/email/context.hpp" bodystart="42" bodyend="44"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Generic context error. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>email::ContextError</label>
+        <link refid="classemail_1_1ContextError"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+      <node id="5">
+        <label>email::ContextNotInitializedError</label>
+        <link refid="classemail_1_1ContextNotInitializedError"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>email::ContextAlreadyInitializedError</label>
+        <link refid="classemail_1_1ContextAlreadyInitializedError"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>email::ContextInitFailedError</label>
+        <link refid="classemail_1_1ContextInitFailedError"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>email::ContextError</label>
+        <link refid="classemail_1_1ContextError"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>std::runtime_error</label>
+      </node>
+    </collaborationgraph>
+    <location file="include/email/context.hpp" line="39" column="1" bodyfile="include/email/context.hpp" bodystart="40" bodyend="45"/>
+    <listofallmembers>
+      <member refid="classemail_1_1ContextError_1aff88898a3f013d39dc254b1d0e29656c" prot="public" virt="non-virtual"><scope>email::ContextError</scope><name>ContextError</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

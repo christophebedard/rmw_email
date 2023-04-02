@@ -1,0 +1,9 @@
+<map id="email::NamedObject" name="email::NamedObject">
+<area shape="rect" id="node1" title="Abstract object with a name." alt="" coords="240,5,396,32"/>
+<area shape="rect" id="node2" href="$classemail_1_1PubSubObject.html" title="Abstract pub or sub object." alt="" coords="149,80,306,107"/>
+<area shape="rect" id="node5" href="$classemail_1_1ServiceObject.html" title="Abstract service object." alt="" coords="330,80,487,107"/>
+<area shape="rect" id="node3" href="$classemail_1_1Publisher.html" title="Message publisher." alt="" coords="5,155,132,181"/>
+<area shape="rect" id="node4" href="$classemail_1_1Subscription.html" title="Message subscription." alt="" coords="157,155,303,181"/>
+<area shape="rect" id="node6" href="$classemail_1_1ServiceClient.html" title="Service client." alt="" coords="331,155,484,181"/>
+<area shape="rect" id="node7" href="$classemail_1_1ServiceServer.html" title="Service server." alt="" coords="509,155,666,181"/>
+</map>

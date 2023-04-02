@@ -1,0 +1,44 @@
+
+.. _file_include_email_lttng.hpp:
+
+File lttng.hpp
+==============
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/lttng.hpp``)
+----------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_lttng.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``email/config.hpp``
+
+
+
+
+
+
+Defines
+-------
+
+
+- :ref:`exhale_define_lttng_8hpp_1a41a6d81b1a679e3ef9d0f0ada1e3cbd3`
+

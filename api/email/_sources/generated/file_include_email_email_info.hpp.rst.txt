@@ -1,0 +1,130 @@
+
+.. _file_include_email_email_info.hpp:
+
+File info.hpp
+=============
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email_email>` (``include/email/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/email/info.hpp``)
+---------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_email_info.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``email/macros.hpp`` (:ref:`file_include_email_macros.hpp`)
+
+- ``map`` (:ref:`file_include_email_safe_map.hpp`)
+
+- ``memory``
+
+- ``optional``
+
+- ``spdlog/fmt/fmt.h``
+
+- ``string``
+
+- ``vector``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_communication_info.hpp`
+
+- :ref:`file_include_email_context.hpp`
+
+- :ref:`file_include_email_email_curl_receiver.hpp`
+
+- :ref:`file_include_email_email_curl_sender.hpp`
+
+- :ref:`file_include_email_email_handler.hpp`
+
+- :ref:`file_include_email_email_intra_receiver.hpp`
+
+- :ref:`file_include_email_email_intra_sender.hpp`
+
+- :ref:`file_include_email_email_payload_utils.hpp`
+
+- :ref:`file_include_email_email_polling_manager.hpp`
+
+- :ref:`file_include_email_email_receiver.hpp`
+
+- :ref:`file_include_email_email_response_utils.hpp`
+
+- :ref:`file_include_email_email_sender.hpp`
+
+- :ref:`file_include_email_message_info.hpp`
+
+- :ref:`file_include_email_options.hpp`
+
+- :ref:`file_include_email_publisher.hpp`
+
+- :ref:`file_include_email_service_handler.hpp`
+
+- :ref:`file_include_email_service_info.hpp`
+
+- :ref:`file_include_email_service_server.hpp`
+
+- :ref:`file_include_email_subscription.hpp`
+
+- :ref:`file_include_email_subscription_handler.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_struct_structemail_1_1EmailContent`
+
+- :ref:`exhale_struct_structemail_1_1EmailData`
+
+- :ref:`exhale_struct_structemail_1_1EmailRecipients`
+
+- :ref:`exhale_struct_structemail_1_1UserInfo`
+
+- :ref:`exhale_struct_structfmt_1_1formatter_3_01email_1_1EmailContent_01_4`
+
+- :ref:`exhale_struct_structfmt_1_1formatter_3_01email_1_1EmailData_01_4`
+
+- :ref:`exhale_struct_structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4`
+
+- :ref:`exhale_struct_structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4`
+
+
+Typedefs
+--------
+
+
+- :ref:`exhale_typedef_namespaceemail_1a79f0f6247c3270688400eb20c9564c96`
+
+- :ref:`exhale_typedef_namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f`
+

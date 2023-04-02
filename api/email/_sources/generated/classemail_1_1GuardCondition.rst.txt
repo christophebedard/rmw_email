@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1GuardCondition:
+
+Class GuardCondition
+====================
+
+- Defined in :ref:`file_include_email_guard_condition.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::GuardCondition
+   :members:
+   :protected-members:
+   :undoc-members:

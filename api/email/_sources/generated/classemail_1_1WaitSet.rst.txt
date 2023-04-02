@@ -1,0 +1,16 @@
+.. _exhale_class_classemail_1_1WaitSet:
+
+Class WaitSet
+=============
+
+- Defined in :ref:`file_include_email_wait_set.hpp`
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::WaitSet
+   :members:
+   :protected-members:
+   :undoc-members:

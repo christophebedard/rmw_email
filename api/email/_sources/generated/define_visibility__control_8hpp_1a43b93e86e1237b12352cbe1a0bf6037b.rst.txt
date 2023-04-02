@@ -1,0 +1,13 @@
+.. _exhale_define_visibility__control_8hpp_1a43b93e86e1237b12352cbe1a0bf6037b:
+
+Define EMAIL_IMPORT
+===================
+
+- Defined in :ref:`file_include_email_visibility_control.hpp`
+
+
+Define Documentation
+--------------------
+
+
+.. doxygendefine:: EMAIL_IMPORT

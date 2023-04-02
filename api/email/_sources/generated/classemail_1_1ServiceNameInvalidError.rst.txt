@@ -1,0 +1,25 @@
+.. _exhale_class_classemail_1_1ServiceNameInvalidError:
+
+Class ServiceNameInvalidError
+=============================
+
+- Defined in :ref:`file_include_email_service.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public email::ObjectNameInvalidError`` (:ref:`exhale_class_classemail_1_1ObjectNameInvalidError`)
+
+
+Class Documentation
+-------------------
+
+
+.. doxygenclass:: email::ServiceNameInvalidError
+   :members:
+   :protected-members:
+   :undoc-members:

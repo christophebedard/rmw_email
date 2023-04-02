@@ -1,0 +1,71 @@
+
+.. _file_include_email_safe_queue.hpp:
+
+File safe_queue.hpp
+===================
+
+|exhale_lsh| :ref:`Parent directory <dir_include_email>` (``include/email``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+.. contents:: Contents
+   :local:
+   :backlinks: none
+
+Definition (``include/email/safe_queue.hpp``)
+---------------------------------------------
+
+
+.. toctree::
+   :maxdepth: 1
+
+   program_listing_file_include_email_safe_queue.hpp.rst
+
+
+
+
+
+Includes
+--------
+
+
+- ``email/macros.hpp`` (:ref:`file_include_email_macros.hpp`)
+
+- ``mutex``
+
+- ``queue`` (:ref:`file_include_email_safe_queue.hpp`)
+
+- ``utility``
+
+
+
+Included By
+-----------
+
+
+- :ref:`file_include_email_email_intra_receiver.hpp`
+
+- :ref:`file_include_email_service_handler.hpp`
+
+- :ref:`file_include_email_service_server.hpp`
+
+- :ref:`file_include_email_subscription.hpp`
+
+- :ref:`file_include_email_subscription_handler.hpp`
+
+
+
+
+Namespaces
+----------
+
+
+- :ref:`namespace_email`
+
+
+Classes
+-------
+
+
+- :ref:`exhale_class_classemail_1_1SafeQueue`
+

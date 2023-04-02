@@ -1,0 +1,55 @@
+.. _dir_include_email:
+
+
+Directory email
+===============
+
+
+|exhale_lsh| :ref:`Parent directory <dir_include>` (``include``)
+
+.. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
+
+*Directory path:* ``include/email``
+
+Subdirectories
+--------------
+
+- :ref:`dir_include_email_curl`
+- :ref:`dir_include_email_email`
+
+
+Files
+-----
+
+- :ref:`file_include_email_communication_info.hpp`
+- :ref:`file_include_email_context.hpp`
+- :ref:`file_include_email_email.hpp`
+- :ref:`file_include_email_gid.hpp`
+- :ref:`file_include_email_gid_object.hpp`
+- :ref:`file_include_email_guard_condition.hpp`
+- :ref:`file_include_email_init.hpp`
+- :ref:`file_include_email_log.hpp`
+- :ref:`file_include_email_lttng.hpp`
+- :ref:`file_include_email_macros.hpp`
+- :ref:`file_include_email_message_info.hpp`
+- :ref:`file_include_email_named_object.hpp`
+- :ref:`file_include_email_options.hpp`
+- :ref:`file_include_email_pub_sub.hpp`
+- :ref:`file_include_email_publisher.hpp`
+- :ref:`file_include_email_safe_map.hpp`
+- :ref:`file_include_email_safe_queue.hpp`
+- :ref:`file_include_email_service.hpp`
+- :ref:`file_include_email_service_client.hpp`
+- :ref:`file_include_email_service_handler.hpp`
+- :ref:`file_include_email_service_info.hpp`
+- :ref:`file_include_email_service_request.hpp`
+- :ref:`file_include_email_service_server.hpp`
+- :ref:`file_include_email_subscription.hpp`
+- :ref:`file_include_email_subscription_handler.hpp`
+- :ref:`file_include_email_timestamp.hpp`
+- :ref:`file_include_email_utils.hpp`
+- :ref:`file_include_email_visibility_control.hpp`
+- :ref:`file_include_email_wait.hpp`
+- :ref:`file_include_email_wait_set.hpp`
+
+

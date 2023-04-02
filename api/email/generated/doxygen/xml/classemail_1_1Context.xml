@@ -1,0 +1,459 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+  <compounddef id="classemail_1_1Context" kind="class" language="C++" prot="public">
+    <compoundname>email::Context</compoundname>
+    <includes local="no">context.hpp</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classemail_1_1Context_1a1ef8b036366d1d409813fce7c4903548" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool email::Context::is_valid_</definition>
+        <argsstring></argsstring>
+        <name>is_valid_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="189" column="8" bodyfile="include/email/context.hpp" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Context_1ab9f49009c8606d07076bf93328bb4f3c" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Options&gt; email::Context::options_</definition>
+        <argsstring></argsstring>
+        <name>options_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="190" column="19" bodyfile="include/email/context.hpp" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Context_1aeb60bac46dd8f7d4f1db042bbbd22246" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Logger&gt; email::Context::logger_</definition>
+        <argsstring></argsstring>
+        <name>logger_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="191" column="19" bodyfile="include/email/context.hpp" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Context_1a0299dd17eb4f8966473308e58352d5ad" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;EmailReceiver&gt; email::Context::receiver_</definition>
+        <argsstring></argsstring>
+        <name>receiver_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="192" column="19" bodyfile="include/email/context.hpp" bodystart="192" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Context_1ab7b2b090934305574d72f92089c09ef8" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailSender" kindref="compound">EmailSender</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;EmailSender&gt; email::Context::sender_</definition>
+        <argsstring></argsstring>
+        <name>sender_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="193" column="19" bodyfile="include/email/context.hpp" bodystart="193" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Context_1a117f416e64be993e3bb58df2fa1e0a0c" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1PollingManager" kindref="compound">PollingManager</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;PollingManager&gt; email::Context::polling_manager_</definition>
+        <argsstring></argsstring>
+        <name>polling_manager_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="194" column="19" bodyfile="include/email/context.hpp" bodystart="194" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Context_1af937501e8fc574747ff1419249692753" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1SubscriptionHandler" kindref="compound">SubscriptionHandler</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;SubscriptionHandler&gt; email::Context::subscription_handler_</definition>
+        <argsstring></argsstring>
+        <name>subscription_handler_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="195" column="19" bodyfile="include/email/context.hpp" bodystart="195" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classemail_1_1Context_1adcbd7ee50373bed0d2e222bd74d23745" prot="private" static="no" mutable="no">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1ServiceHandler" kindref="compound">ServiceHandler</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;ServiceHandler&gt; email::Context::service_handler_</definition>
+        <argsstring></argsstring>
+        <name>service_handler_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="196" column="19" bodyfile="include/email/context.hpp" bodystart="196" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1Context_1a83781e2984ad65b512ae6e8575e4bb40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::Context::Context</definition>
+        <argsstring>()</argsstring>
+        <name>Context</name>
+        <briefdescription>
+<para>Constructor. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Not to be used directly: use <computeroutput><ref refid="namespaceemail_1a32664596f7a3d0177434519dc03ea38d" kindref="member">get_global_context()</ref></computeroutput> instead. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="86" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a468df36ab9aafe4451b8ceaf5bf7fced" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>email::Context::~Context</definition>
+        <argsstring>()</argsstring>
+        <name>~Context</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="88" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a5cb569c5c2022ad609434a0407e5d12a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::Context::init</definition>
+        <argsstring>()</argsstring>
+        <name>init</name>
+        <briefdescription>
+<para>Initialize context using config file. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Shouldn&apos;t be called directly: use <computeroutput><ref refid="namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1" kindref="member">email::init()</ref></computeroutput> instead.</para>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextInitFailedError" kindref="compound">ContextInitFailedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context initialization failed </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextAlreadyInitializedError" kindref="compound">ContextAlreadyInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context is already intialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="98" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1ad3b1f40974f3d60bad995af07afcdad9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::Context::init</definition>
+        <argsstring>(int argc, char const *const argv[])</argsstring>
+        <name>init</name>
+        <param>
+          <type>int</type>
+          <declname>argc</declname>
+        </param>
+        <param>
+          <type>char const *const</type>
+          <declname>argv</declname>
+          <array>[]</array>
+        </param>
+        <briefdescription>
+<para>Initialize context using commandline arguments. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Shouldn&apos;t be called directly: use <computeroutput>email::init(argc, argv)</computeroutput> instead.</para>
+<para>The process will exit with error code 1 if parsing of CLI options fails.</para>
+<para><parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextInitFailedError" kindref="compound">ContextInitFailedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context initialization failed </para>
+</parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextAlreadyInitializedError" kindref="compound">ContextAlreadyInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context is already intialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="109" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1acd290417c0afb3a27f635a7e7ad34b1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::Context::shutdown</definition>
+        <argsstring>()</argsstring>
+        <name>shutdown</name>
+        <briefdescription>
+<para>Shut down context. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This should be called at the end before context destruction. However, it shouldn&apos;t be called directly: use <computeroutput><ref refid="namespaceemail_1a7a0e2779940792a4753a9b163fd1bbc4" kindref="member">email::shutdown()</ref></computeroutput> instead.</para>
+<para><simplesect kind="return"><para>true if successful, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="118" column="8"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a3cfe3bd2a1d5ab27c9c249474b13f4a3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool email::Context::is_valid</definition>
+        <argsstring>() const</argsstring>
+        <name>is_valid</name>
+        <briefdescription>
+<para>Get context validity status. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="125" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a5e93b3ce58fa2cd5f99bb11f87a42129" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;Options&gt; email::Context::get_options</definition>
+        <argsstring>() const</argsstring>
+        <name>get_options</name>
+        <briefdescription>
+<para>Get options. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the options </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextNotInitializedError" kindref="compound">ContextNotInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context has not been initialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="134" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a2754eb1610b656e5f2938d4c498660e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;EmailReceiver&gt; email::Context::get_receiver</definition>
+        <argsstring>() const</argsstring>
+        <name>get_receiver</name>
+        <briefdescription>
+<para>Get the email reception object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will have been initialized.</para>
+<para><simplesect kind="return"><para>the <computeroutput><ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref></computeroutput> object </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextNotInitializedError" kindref="compound">ContextNotInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context has not been initialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="144" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a418192e88b8dc0abc13f9a4a2cf69d7f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailSender" kindref="compound">EmailSender</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;EmailSender&gt; email::Context::get_sender</definition>
+        <argsstring>() const</argsstring>
+        <name>get_sender</name>
+        <briefdescription>
+<para>Get the email sender object. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will have been initialized.</para>
+<para><simplesect kind="return"><para>the <computeroutput><ref refid="classemail_1_1EmailSender" kindref="compound">EmailSender</ref></computeroutput> object </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextNotInitializedError" kindref="compound">ContextNotInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context has not been initialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="154" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a60a73157c8f1dc0029bbbc519f4a5ffd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1PollingManager" kindref="compound">PollingManager</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;PollingManager&gt; email::Context::get_polling_manager</definition>
+        <argsstring>() const</argsstring>
+        <name>get_polling_manager</name>
+        <briefdescription>
+<para>Get the polling manager. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Will have been started.</para>
+<para><simplesect kind="return"><para>the <computeroutput><ref refid="classemail_1_1PollingManager" kindref="compound">PollingManager</ref></computeroutput> object </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextNotInitializedError" kindref="compound">ContextNotInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context has not been initialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="164" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1abeaf1ab14e801b1ae8f2d15bee3c8bd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1SubscriptionHandler" kindref="compound">SubscriptionHandler</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;SubscriptionHandler&gt; email::Context::get_subscription_handler</definition>
+        <argsstring>() const</argsstring>
+        <name>get_subscription_handler</name>
+        <briefdescription>
+<para>Get the subscription handler. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the <computeroutput><ref refid="classemail_1_1SubscriptionHandler" kindref="compound">SubscriptionHandler</ref></computeroutput> object </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextNotInitializedError" kindref="compound">ContextNotInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context has not been initialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="172" column="3"/>
+      </memberdef>
+      <memberdef kind="function" id="classemail_1_1Context_1a92ea51482059927667585017b1730dd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::shared_ptr&lt; <ref refid="classemail_1_1ServiceHandler" kindref="compound">ServiceHandler</ref> &gt;</type>
+        <definition>std::shared_ptr&lt;ServiceHandler&gt; email::Context::get_service_handler</definition>
+        <argsstring>() const</argsstring>
+        <name>get_service_handler</name>
+        <briefdescription>
+<para>Get the service handler. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>the <computeroutput><ref refid="classemail_1_1ServiceHandler" kindref="compound">ServiceHandler</ref></computeroutput> object </para>
+</simplesect>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername><ref refid="classemail_1_1ContextNotInitializedError" kindref="compound">ContextNotInitializedError</ref></parametername>
+</parameternamelist>
+<parameterdescription>
+<para>if context has not been initialized </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="180" column="3"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classemail_1_1Context_1a59671e9aa08f56d4517a2ff1978808b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void email::Context::init_common</definition>
+        <argsstring>()</argsstring>
+        <name>init_common</name>
+        <briefdescription>
+<para>Perform common init tasks. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="include/email/context.hpp" line="187" column="3"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para><ref refid="classemail_1_1Context" kindref="compound">Context</ref> object with global resources. </para>
+    </briefdescription>
+    <detaileddescription>
+<para>It gets initialized only once. It owns global objects which get created &amp; initialized. </para>
+    </detaileddescription>
+    <location file="include/email/context.hpp" line="79" column="1" bodyfile="include/email/context.hpp" bodystart="80" bodyend="197"/>
+    <listofallmembers>
+      <member refid="classemail_1_1Context_1a83781e2984ad65b512ae6e8575e4bb40" prot="public" virt="non-virtual"><scope>email::Context</scope><name>Context</name></member>
+      <member refid="classemail_1_1Context_1a5e93b3ce58fa2cd5f99bb11f87a42129" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_options</name></member>
+      <member refid="classemail_1_1Context_1a60a73157c8f1dc0029bbbc519f4a5ffd" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_polling_manager</name></member>
+      <member refid="classemail_1_1Context_1a2754eb1610b656e5f2938d4c498660e5" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_receiver</name></member>
+      <member refid="classemail_1_1Context_1a418192e88b8dc0abc13f9a4a2cf69d7f" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_sender</name></member>
+      <member refid="classemail_1_1Context_1a92ea51482059927667585017b1730dd0" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_service_handler</name></member>
+      <member refid="classemail_1_1Context_1abeaf1ab14e801b1ae8f2d15bee3c8bd3" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_subscription_handler</name></member>
+      <member refid="classemail_1_1Context_1a5cb569c5c2022ad609434a0407e5d12a" prot="public" virt="non-virtual"><scope>email::Context</scope><name>init</name></member>
+      <member refid="classemail_1_1Context_1ad3b1f40974f3d60bad995af07afcdad9" prot="public" virt="non-virtual"><scope>email::Context</scope><name>init</name></member>
+      <member refid="classemail_1_1Context_1a59671e9aa08f56d4517a2ff1978808b7" prot="private" virt="non-virtual"><scope>email::Context</scope><name>init_common</name></member>
+      <member refid="classemail_1_1Context_1a3cfe3bd2a1d5ab27c9c249474b13f4a3" prot="public" virt="non-virtual"><scope>email::Context</scope><name>is_valid</name></member>
+      <member refid="classemail_1_1Context_1a1ef8b036366d1d409813fce7c4903548" prot="private" virt="non-virtual"><scope>email::Context</scope><name>is_valid_</name></member>
+      <member refid="classemail_1_1Context_1aeb60bac46dd8f7d4f1db042bbbd22246" prot="private" virt="non-virtual"><scope>email::Context</scope><name>logger_</name></member>
+      <member refid="classemail_1_1Context_1ab9f49009c8606d07076bf93328bb4f3c" prot="private" virt="non-virtual"><scope>email::Context</scope><name>options_</name></member>
+      <member refid="classemail_1_1Context_1a117f416e64be993e3bb58df2fa1e0a0c" prot="private" virt="non-virtual"><scope>email::Context</scope><name>polling_manager_</name></member>
+      <member refid="classemail_1_1Context_1a0299dd17eb4f8966473308e58352d5ad" prot="private" virt="non-virtual"><scope>email::Context</scope><name>receiver_</name></member>
+      <member refid="classemail_1_1Context_1ab7b2b090934305574d72f92089c09ef8" prot="private" virt="non-virtual"><scope>email::Context</scope><name>sender_</name></member>
+      <member refid="classemail_1_1Context_1adcbd7ee50373bed0d2e222bd74d23745" prot="private" virt="non-virtual"><scope>email::Context</scope><name>service_handler_</name></member>
+      <member refid="classemail_1_1Context_1acd290417c0afb3a27f635a7e7ad34b1a" prot="public" virt="non-virtual"><scope>email::Context</scope><name>shutdown</name></member>
+      <member refid="classemail_1_1Context_1af937501e8fc574747ff1419249692753" prot="private" virt="non-virtual"><scope>email::Context</scope><name>subscription_handler_</name></member>
+      <member refid="classemail_1_1Context_1a468df36ab9aafe4451b8ceaf5bf7fced" prot="public" virt="non-virtual"><scope>email::Context</scope><name>~Context</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>
