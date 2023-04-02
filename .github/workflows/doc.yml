@@ -11,22 +11,17 @@ jobs:
     - name: Set up Python 3
       uses: actions/setup-python@v4
       with:
-        python-version: 3.8
+        python-version: '3.10'
     - name: Install dependencies
       run: |
         sudo apt-get update
         sudo apt-get install -y doxygen pandoc plantuml
         pip3 install pandoc-plantuml-filter
-    - name: Get gen_docs
-      uses: actions/checkout@v3
-      with:
-        repository: christophebedard/gen_docs
-        ref: master
-        fetch-depth: 0
-        path: gen_docs/
-    - name: Install gen_docs dependencies
+        wget https://github.com/plantuml/plantuml/releases/download/v1.2023.5/plantuml-1.2023.5.jar
+        chmod +x plantuml-*.jar
+    - name: Install rosdoc2
       run: |
-        pip3 install -r gen_docs/requirements.txt
+        pip3 install -U git+https://github.com/ros-infrastructure/rosdoc2.git@main
     - name: Checkout gh-pages branch
       uses: actions/checkout@v3
       with:
@@ -38,19 +33,19 @@ jobs:
       with:
         ref: rolling
         fetch-depth: 0
-        path: repos/rolling/
+        path: rmw_email
     - name: Gen API docs
       run: |
-        python3 gen_docs/gen_docs.py --config gh-pages/gen_docs.yml --skip-clone
+        rosdoc2 build --package-path rmw_email/email/
     - name: Gen design docs
       run: |
         mkdir -p pandoc/email/ && cd pandoc/email/
-        sed -i '/christophebedard.com/d' ../../repos/rolling/email/doc/design.md
-        pandoc ../../repos/rolling/email/doc/design.md --filter pandoc-plantuml > index.html
+        sed -i '/christophebedard.com/d' ../../rmw_email/email/doc/design.md
+        PLANTUML_BIN="$(pwd)/../../plantuml-1.2023.5.jar" pandoc ../../rmw_email/email/doc/design.md --filter pandoc-plantuml > index.html
     - name: Copy docs to gh-pages
       run: |
         rm -rf gh-pages/api/
-        mv -T output/rolling/ gh-pages/api/
+        mv docs_output/ gh-pages/api/
         rm -rf gh-pages/design/
         mv -T pandoc/ gh-pages/design/
     - name: Commit and push to gh-pages branch
