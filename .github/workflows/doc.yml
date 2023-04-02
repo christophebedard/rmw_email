@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Set up Python 3
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v4
       with:
         python-version: 3.8
     - name: Install dependencies
@@ -18,7 +18,7 @@ jobs:
         sudo apt-get install -y doxygen pandoc plantuml
         pip3 install pandoc-plantuml-filter
     - name: Get gen_docs
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: christophebedard/gen_docs
         ref: master
@@ -28,13 +28,13 @@ jobs:
       run: |
         pip3 install -r gen_docs/requirements.txt
     - name: Checkout gh-pages branch
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: gh-pages
         fetch-depth: 0
         path: gh-pages/
     - name: Checkout repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         ref: rolling
         fetch-depth: 0
