@@ -76,6 +76,10 @@ public:
   std::optional<Timestamp>
   from_string(const std::string & timestamp);
 
+  EMAIL_PUBLIC
+  bool
+  operator==(const Timestamp & rhs) const;
+
 private:
   int64_t nanoseconds_;
 };
