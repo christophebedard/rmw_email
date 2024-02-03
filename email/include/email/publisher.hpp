@@ -24,6 +24,7 @@
 #include "email/log.hpp"
 #include "email/macros.hpp"
 #include "email/pub_sub.hpp"
+#include "email/timestamp.hpp"
 #include "email/visibility_control.hpp"
 
 namespace email
@@ -50,12 +51,14 @@ public:
   /**
    * \param message the message
    * \param additional_headers the additional headers to include
+   * \param timestamp the timestamp to associate to this publication
    */
   EMAIL_PUBLIC
   void
   publish(
     const std::string & message,
-    std::optional<EmailHeaders> additional_headers = std::nullopt);
+    std::optional<EmailHeaders> additional_headers = std::nullopt,
+    std::optional<Timestamp> timestamp = std::nullopt);
 
 private:
   EMAIL_DISABLE_COPY(Publisher)
