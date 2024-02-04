@@ -48,10 +48,13 @@ Publisher::~Publisher()
 }
 
 void
-Publisher::publish(const std::string & message, std::optional<EmailHeaders> additional_headers)
+Publisher::publish(
+  const std::string & message,
+  std::optional<EmailHeaders> additional_headers,
+  std::optional<Timestamp> timestamp)
 {
   logger_->debug("publish");
-  const Timestamp source_timestamp = Timestamp::now();
+  const Timestamp source_timestamp = timestamp.value_or(Timestamp::now());
   // Add GID and source timestamp to headers
   EmailHeaders headers = {
     {MessageInfo::HEADER_PUBLISHER_GID, get_gid().to_string()},

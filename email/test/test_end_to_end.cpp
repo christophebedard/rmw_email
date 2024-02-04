@@ -103,7 +103,8 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub)
   EXPECT_FALSE(sub2.get_message().has_value());
 
   pub1.publish("some message");
-  pub2.publish("some other message");
+  const auto ts2 = email::Timestamp::now();
+  pub2.publish("some other message", std::nullopt, ts2);
 
   email::WaitSet waitset;
   waitset.add_subscription(&sub1);
@@ -131,6 +132,7 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub)
   EXPECT_EQ(pub1.get_gid().value(), info_1.publisher_gid().value());
   EXPECT_EQ(pub2.get_gid().value(), info_2.publisher_gid().value());
   EXPECT_LT(info_1.source_timestamp().nanoseconds(), info_2.source_timestamp().nanoseconds());
+  EXPECT_EQ(info_2.source_timestamp(), ts2);
   EXPECT_LT(info_1.source_timestamp().nanoseconds(), info_1.received_timestamp().nanoseconds());
   EXPECT_LT(info_2.source_timestamp().nanoseconds(), info_2.received_timestamp().nanoseconds());
 
