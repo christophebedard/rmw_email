@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::response::get_email_headers_from_response(const std::string&)
+   :project: email Doxygen Project

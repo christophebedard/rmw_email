@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::log::shutdown()
+   :project: email Doxygen Project

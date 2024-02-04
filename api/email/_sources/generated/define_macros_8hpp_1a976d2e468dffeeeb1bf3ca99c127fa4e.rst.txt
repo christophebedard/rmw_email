@@ -11,3 +11,4 @@ Define Documentation
 
 
 .. doxygendefine:: EMAIL_DISABLE_COPY
+   :project: email Doxygen Project

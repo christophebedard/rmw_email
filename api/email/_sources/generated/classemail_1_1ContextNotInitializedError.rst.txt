@@ -20,6 +20,7 @@ Class Documentation
 
 
 .. doxygenclass:: email::ContextNotInitializedError
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

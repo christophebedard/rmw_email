@@ -8,6 +8,7 @@ File timestamp.hpp
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -48,6 +49,8 @@ Included By
 - :ref:`file_include_email_communication_info.hpp`
 
 - :ref:`file_include_email_message_info.hpp`
+
+- :ref:`file_include_email_publisher.hpp`
 
 - :ref:`file_include_email_service_info.hpp`
 

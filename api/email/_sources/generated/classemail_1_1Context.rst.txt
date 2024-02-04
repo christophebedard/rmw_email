@@ -11,6 +11,7 @@ Class Documentation
 
 
 .. doxygenclass:: email::Context
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

@@ -11,3 +11,4 @@ Typedef Documentation
 
 
 .. doxygentypedef:: email::Logger
+   :project: email Doxygen Project

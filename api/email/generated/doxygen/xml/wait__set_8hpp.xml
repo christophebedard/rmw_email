@@ -35,10 +35,10 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="37">
+      <node id="38">
         <label>functional</label>
       </node>
-      <node id="41">
+      <node id="42">
         <label>queue</label>
       </node>
       <node id="45">
@@ -64,13 +64,13 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="46" relation="include">
         </childnode>
@@ -134,14 +134,14 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="49" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="32">
+      <node id="33">
         <label>email/service.hpp</label>
         <link refid="service_8hpp"/>
         <childnode refid="26" relation="include">
@@ -194,23 +194,23 @@
         </childnode>
         <childnode refid="21" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
         <childnode refid="33" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="40">
+      <node id="41">
         <label>email/safe_queue.hpp</label>
         <link refid="safe__queue_8hpp"/>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="42" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -220,12 +220,12 @@
       <node id="6">
         <label>stdexcept</label>
       </node>
-      <node id="30">
+      <node id="31">
         <label>email/safe_map.hpp</label>
         <link refid="safe__map_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
@@ -241,7 +241,7 @@
       <node id="26">
         <label>regex</label>
       </node>
-      <node id="43">
+      <node id="44">
         <label>email/communication_info.hpp</label>
         <link refid="communication__info_8hpp"/>
         <childnode refid="13" relation="include">
@@ -252,7 +252,7 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -281,28 +281,28 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="33">
+      <node id="34">
         <label>email/service_handler.hpp</label>
         <link refid="service__handler_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
@@ -310,11 +310,11 @@
         </childnode>
         <childnode refid="17" relation="include">
         </childnode>
-        <childnode refid="30" relation="include">
+        <childnode refid="31" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -378,7 +378,7 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="35">
+      <node id="36">
         <label>email/email/handler.hpp</label>
         <link refid="handler_8hpp"/>
         <childnode refid="16" relation="include">
@@ -387,7 +387,7 @@
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
       </node>
       <node id="11">
@@ -396,18 +396,18 @@
       <node id="9">
         <label>spdlog/spdlog.h</label>
       </node>
-      <node id="42">
+      <node id="43">
         <label>email/service_info.hpp</label>
         <link refid="service__info_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -424,30 +424,30 @@
       <node id="23">
         <label>spdlog/fmt/fmt.h</label>
       </node>
-      <node id="36">
+      <node id="37">
         <label>email/email/polling_manager.hpp</label>
         <link refid="polling__manager_8hpp"/>
         <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="37" relation="include">
+        <childnode refid="38" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="38" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="40" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -466,21 +466,21 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="31" relation="include">
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="34" relation="include">
+        <childnode refid="35" relation="include">
         </childnode>
         <childnode refid="20" relation="include">
         </childnode>
-        <childnode refid="35" relation="include">
+        <childnode refid="36" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
-        <childnode refid="36" relation="include">
+        <childnode refid="37" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
         </childnode>
@@ -498,10 +498,10 @@
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
+        <childnode refid="43" relation="include">
         </childnode>
       </node>
-      <node id="44">
+      <node id="30">
         <label>email/timestamp.hpp</label>
         <link refid="timestamp_8hpp"/>
         <childnode refid="13" relation="include">
@@ -515,7 +515,7 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="39">
+      <node id="40">
         <label>email/email/receiver.hpp</label>
         <link refid="receiver_8hpp"/>
         <childnode refid="16" relation="include">
@@ -535,10 +535,10 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="34">
+      <node id="35">
         <label>unordered_map</label>
       </node>
-      <node id="31">
+      <node id="32">
         <label>mutex</label>
       </node>
       <node id="29">
@@ -576,7 +576,7 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="38">
+      <node id="39">
         <label>thread</label>
       </node>
       <node id="3">
@@ -601,6 +601,8 @@
         </childnode>
         <childnode refid="25" relation="include">
         </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
@@ -609,13 +611,13 @@
         <link refid="message__info_8hpp"/>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="43" relation="include">
+        <childnode refid="44" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="27" relation="include">
         </childnode>
-        <childnode refid="44" relation="include">
+        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>

@@ -11,3 +11,4 @@ Define Documentation
 
 
 .. doxygendefine:: EMAIL_SHARED_PTR_CONST
+   :project: email Doxygen Project

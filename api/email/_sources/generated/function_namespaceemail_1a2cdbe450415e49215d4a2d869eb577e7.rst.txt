@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::wait_for_response_with_info(const SequenceNumber, std::shared_ptr<ServiceClient>, const std::chrono::milliseconds)
+   :project: email Doxygen Project

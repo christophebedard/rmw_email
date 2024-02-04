@@ -11,3 +11,4 @@ Define Documentation
 
 
 .. doxygendefine:: EMAIL_PUBLIC
+   :project: email Doxygen Project

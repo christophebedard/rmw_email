@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::yaml_to_string(const YAML::Node&)
+   :project: email Doxygen Project

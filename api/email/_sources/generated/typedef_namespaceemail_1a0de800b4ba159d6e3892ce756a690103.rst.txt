@@ -11,3 +11,4 @@ Typedef Documentation
 
 
 .. doxygentypedef:: email::SequenceNumber
+   :project: email Doxygen Project

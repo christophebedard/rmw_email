@@ -11,6 +11,7 @@ Struct Documentation
 
 
 .. doxygenstruct:: email::EmailData
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

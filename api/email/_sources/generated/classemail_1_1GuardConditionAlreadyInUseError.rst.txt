@@ -20,6 +20,7 @@ Class Documentation
 
 
 .. doxygenclass:: email::GuardConditionAlreadyInUseError
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

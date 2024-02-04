@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::full_url(const std::string&, const std::string&, const int)
+   :project: email Doxygen Project

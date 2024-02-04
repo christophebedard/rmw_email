@@ -109,9 +109,9 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a38811fe95dd19f2f704e589b34251682"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acaafeeb59a87dde27dc82c57090781ba"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#acaafeeb59a87dde27dc82c57090781ba">~Publisher</a> ()</td></tr>
 <tr class="separator:acaafeeb59a87dde27dc82c57090781ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe640abb7111f5ac3aa3588a7e643bb1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#afe640abb7111f5ac3aa3588a7e643bb1">publish</a> (const std::string &amp;message, std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt)</td></tr>
-<tr class="memdesc:afe640abb7111f5ac3aa3588a7e643bb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish message.  <a href="classemail_1_1Publisher.html#afe640abb7111f5ac3aa3588a7e643bb1">More...</a><br /></td></tr>
-<tr class="separator:afe640abb7111f5ac3aa3588a7e643bb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54c103a25f64211d2e57ef9799dd4687"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1Publisher.html#a54c103a25f64211d2e57ef9799dd4687">publish</a> (const std::string &amp;message, std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt; additional_headers=std::nullopt, std::optional&lt; <a class="el" href="classemail_1_1Timestamp.html">Timestamp</a> &gt; timestamp=std::nullopt)</td></tr>
+<tr class="memdesc:a54c103a25f64211d2e57ef9799dd4687"><td class="mdescLeft">&#160;</td><td class="mdescRight">Publish message.  <a href="classemail_1_1Publisher.html#a54c103a25f64211d2e57ef9799dd4687">More...</a><br /></td></tr>
+<tr class="separator:a54c103a25f64211d2e57ef9799dd4687"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classemail_1_1PubSubObject"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classemail_1_1PubSubObject')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classemail_1_1PubSubObject.html">email::PubSubObject</a></td></tr>
 <tr class="memitem:a00a22d18eebc82496581344c21e02c32 inherit pub_methods_classemail_1_1PubSubObject"><td class="memItemLeft" align="right" valign="top">const std::string &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classemail_1_1PubSubObject.html#a00a22d18eebc82496581344c21e02c32">get_topic_name</a> () const</td></tr>
 <tr class="memdesc:a00a22d18eebc82496581344c21e02c32 inherit pub_methods_classemail_1_1PubSubObject"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the topic name.  <a href="classemail_1_1PubSubObject.html#a00a22d18eebc82496581344c21e02c32">More...</a><br /></td></tr>
@@ -212,8 +212,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="afe640abb7111f5ac3aa3588a7e643bb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe640abb7111f5ac3aa3588a7e643bb1">&#9670;&nbsp;</a></span>publish()</h2>
+<a id="a54c103a25f64211d2e57ef9799dd4687"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54c103a25f64211d2e57ef9799dd4687">&#9670;&nbsp;</a></span>publish()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -228,7 +228,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::optional&lt; <a class="el" href="namespaceemail.html#ae41e6fb7cb5a3b87ee3effdc2aa2065f">EmailHeaders</a> &gt;&#160;</td>
-          <td class="paramname"><em>additional_headers</em> = <code>std::nullopt</code>&#160;</td>
+          <td class="paramname"><em>additional_headers</em> = <code>std::nullopt</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::optional&lt; <a class="el" href="classemail_1_1Timestamp.html">Timestamp</a> &gt;&#160;</td>
+          <td class="paramname"><em>timestamp</em> = <code>std::nullopt</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -243,6 +249,7 @@ Additional Inherited Members</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">message</td><td>the message </td></tr>
     <tr><td class="paramname">additional_headers</td><td>the additional headers to include </td></tr>
+    <tr><td class="paramname">timestamp</td><td>the timestamp to associate to this publication </td></tr>
   </table>
   </dd>
 </dl>

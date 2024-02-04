@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::wait_for_request(std::shared_ptr<ServiceServer>, const std::chrono::milliseconds)
+   :project: email Doxygen Project

@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::log::init(const Level&)
+   :project: email Doxygen Project

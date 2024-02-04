@@ -36,6 +36,7 @@ Program Listing for File publisher.hpp
    #include "email/log.hpp"
    #include "email/macros.hpp"
    #include "email/pub_sub.hpp"
+   #include "email/timestamp.hpp"
    #include "email/visibility_control.hpp"
    
    namespace email
@@ -57,7 +58,8 @@ Program Listing for File publisher.hpp
      void
      publish(
        const std::string & message,
-       std::optional<EmailHeaders> additional_headers = std::nullopt);
+       std::optional<EmailHeaders> additional_headers = std::nullopt,
+       std::optional<Timestamp> timestamp = std::nullopt);
    
    private:
      EMAIL_DISABLE_COPY(Publisher)

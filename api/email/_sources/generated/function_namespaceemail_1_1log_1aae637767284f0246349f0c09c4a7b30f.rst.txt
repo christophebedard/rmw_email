@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::log::remove(const std::shared_ptr<Logger>&)
+   :project: email Doxygen Project

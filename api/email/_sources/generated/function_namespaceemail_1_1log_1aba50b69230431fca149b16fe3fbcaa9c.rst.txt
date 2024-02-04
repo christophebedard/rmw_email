@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::log::init_from_env()
+   :project: email Doxygen Project

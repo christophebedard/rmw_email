@@ -11,3 +11,4 @@ Typedef Documentation
 
 
 .. doxygentypedef:: email::EmailHeader
+   :project: email Doxygen Project

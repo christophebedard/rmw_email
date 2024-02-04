@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::thread_set_name(const char *)
+   :project: email Doxygen Project

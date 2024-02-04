@@ -17,6 +17,7 @@ Struct Documentation
 
 
 .. doxygenstruct:: email::CurlEmailSender::UploadData
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

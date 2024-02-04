@@ -11,3 +11,4 @@ Define Documentation
 
 
 .. doxygendefine:: EMAIL_TRACEPOINT
+   :project: email Doxygen Project

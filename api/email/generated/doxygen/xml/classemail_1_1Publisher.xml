@@ -16,7 +16,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/publisher.hpp" line="63" column="19" bodyfile="include/email/publisher.hpp" bodystart="63" bodyend="-1"/>
+        <location file="include/email/publisher.hpp" line="66" column="19" bodyfile="include/email/publisher.hpp" bodystart="66" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classemail_1_1Publisher_1aea353787a7c1e635022373ad03595b83" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailSender" kindref="compound">EmailSender</ref> &gt;</type>
@@ -29,7 +29,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/publisher.hpp" line="64" column="19" bodyfile="include/email/publisher.hpp" bodystart="64" bodyend="-1"/>
+        <location file="include/email/publisher.hpp" line="67" column="19" bodyfile="include/email/publisher.hpp" bodystart="67" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-func">
@@ -59,7 +59,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/publisher.hpp" line="44" column="12"/>
+        <location file="include/email/publisher.hpp" line="45" column="12"/>
       </memberdef>
       <memberdef kind="function" id="classemail_1_1Publisher_1acaafeeb59a87dde27dc82c57090781ba" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type></type>
@@ -72,12 +72,12 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/publisher.hpp" line="47" column="11"/>
+        <location file="include/email/publisher.hpp" line="48" column="11"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Publisher_1afe640abb7111f5ac3aa3588a7e643bb1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Publisher_1a54c103a25f64211d2e57ef9799dd4687" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void email::Publisher::publish</definition>
-        <argsstring>(const std::string &amp;message, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt)</argsstring>
+        <argsstring>(const std::string &amp;message, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; Timestamp &gt; timestamp=std::nullopt)</argsstring>
         <name>publish</name>
         <param>
           <type>const std::string &amp;</type>
@@ -86,6 +86,11 @@
         <param>
           <type>std::optional&lt; <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref> &gt;</type>
           <declname>additional_headers</declname>
+          <defval>std::nullopt</defval>
+        </param>
+        <param>
+          <type>std::optional&lt; <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &gt;</type>
+          <declname>timestamp</declname>
           <defval>std::nullopt</defval>
         </param>
         <briefdescription>
@@ -108,12 +113,20 @@
 <para>the additional headers to include </para>
 </parameterdescription>
 </parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername>timestamp</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the timestamp to associate to this publication </para>
+</parameterdescription>
+</parameteritem>
 </parameterlist>
 </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/publisher.hpp" line="56" column="3"/>
+        <location file="include/email/publisher.hpp" line="58" column="3"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -170,7 +183,7 @@
         <link refid="classemail_1_1NamedObject"/>
       </node>
     </collaborationgraph>
-    <location file="include/email/publisher.hpp" line="36" column="1" bodyfile="include/email/publisher.hpp" bodystart="37" bodyend="65"/>
+    <location file="include/email/publisher.hpp" line="37" column="1" bodyfile="include/email/publisher.hpp" bodystart="38" bodyend="68"/>
     <listofallmembers>
       <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" virt="non-virtual"><scope>email::Publisher</scope><name>get_gid</name></member>
       <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" virt="non-virtual"><scope>email::Publisher</scope><name>get_object_name</name></member>
@@ -179,7 +192,7 @@
       <member refid="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" virt="non-virtual"><scope>email::Publisher</scope><name>has_newline</name></member>
       <member refid="classemail_1_1Publisher_1a101adc71cdd9cf36fa94507440490b62" prot="private" virt="non-virtual"><scope>email::Publisher</scope><name>logger_</name></member>
       <member refid="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" prot="protected" virt="non-virtual"><scope>email::Publisher</scope><name>NamedObject</name></member>
-      <member refid="classemail_1_1Publisher_1afe640abb7111f5ac3aa3588a7e643bb1" prot="public" virt="non-virtual"><scope>email::Publisher</scope><name>publish</name></member>
+      <member refid="classemail_1_1Publisher_1a54c103a25f64211d2e57ef9799dd4687" prot="public" virt="non-virtual"><scope>email::Publisher</scope><name>publish</name></member>
       <member refid="classemail_1_1Publisher_1a38811fe95dd19f2f704e589b34251682" prot="public" virt="non-virtual"><scope>email::Publisher</scope><name>Publisher</name></member>
       <member refid="classemail_1_1PubSubObject_1a601bed08338a20e2d63e2332661a61e5" prot="protected" virt="non-virtual"><scope>email::Publisher</scope><name>PubSubObject</name></member>
       <member refid="classemail_1_1Publisher_1aea353787a7c1e635022373ad03595b83" prot="private" virt="non-virtual"><scope>email::Publisher</scope><name>sender_</name></member>

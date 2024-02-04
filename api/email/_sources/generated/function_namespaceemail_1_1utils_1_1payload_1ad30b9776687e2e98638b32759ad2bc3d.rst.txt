@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::payload::build_payload(const std::vector<std::string>&, const std::vector<std::string>&, const std::vector<std::string>&, const struct EmailContent&, std::optional<EmailHeaders>, std::optional<std::string>)
+   :project: email Doxygen Project

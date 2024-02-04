@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::log::get_or_create(const std::string&)
+   :project: email Doxygen Project

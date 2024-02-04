@@ -147,9 +147,9 @@ Functions
 
 - :ref:`exhale_function_namespaceemail_1a7dfbb8a3972445ace7e5b33b3b8cf18e`
 
-- :ref:`exhale_function_namespaceemail_1ad5dd2091a29213c9aa3859d817376d10`
-
 - :ref:`exhale_function_namespaceemail_1afdc469e72e9b1ab69445fdb82082f050`
+
+- :ref:`exhale_function_namespaceemail_1ad5dd2091a29213c9aa3859d817376d10`
 
 - :ref:`exhale_function_namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9`
 

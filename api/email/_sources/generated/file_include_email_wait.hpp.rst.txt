@@ -8,6 +8,7 @@ File wait.hpp
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -89,9 +90,9 @@ Functions
 
 - :ref:`exhale_function_namespaceemail_1afdc469e72e9b1ab69445fdb82082f050`
 
-- :ref:`exhale_function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0`
-
 - :ref:`exhale_function_namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9`
+
+- :ref:`exhale_function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0`
 
 - :ref:`exhale_function_namespaceemail_1a79fde927095f94957025da12c6283edb`
 

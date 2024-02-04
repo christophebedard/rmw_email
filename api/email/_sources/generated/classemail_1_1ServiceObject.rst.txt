@@ -28,6 +28,7 @@ Class Documentation
 
 
 .. doxygenclass:: email::ServiceObject
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

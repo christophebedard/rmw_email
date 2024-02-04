@@ -11,3 +11,4 @@ Enum Documentation
 
 
 .. doxygenenum:: email::log::Level
+   :project: email Doxygen Project

@@ -11,3 +11,4 @@ Typedef Documentation
 
 
 .. doxygentypedef:: email::GidValue
+   :project: email Doxygen Project

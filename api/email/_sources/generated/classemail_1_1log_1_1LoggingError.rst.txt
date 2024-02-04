@@ -26,6 +26,7 @@ Class Documentation
 
 
 .. doxygenclass:: email::log::LoggingError
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

@@ -304,7 +304,7 @@
     <member refid="classemail_1_1Publisher_1aea353787a7c1e635022373ad03595b83" kind="variable"><name>sender_</name></member>
     <member refid="classemail_1_1Publisher_1a38811fe95dd19f2f704e589b34251682" kind="function"><name>Publisher</name></member>
     <member refid="classemail_1_1Publisher_1acaafeeb59a87dde27dc82c57090781ba" kind="function"><name>~Publisher</name></member>
-    <member refid="classemail_1_1Publisher_1afe640abb7111f5ac3aa3588a7e643bb1" kind="function"><name>publish</name></member>
+    <member refid="classemail_1_1Publisher_1a54c103a25f64211d2e57ef9799dd4687" kind="function"><name>publish</name></member>
   </compound>
   <compound refid="classemail_1_1PubSubObject" kind="class"><name>email::PubSubObject</name>
     <member refid="classemail_1_1PubSubObject_1a00a22d18eebc82496581344c21e02c32" kind="function"><name>get_topic_name</name></member>
@@ -446,6 +446,7 @@
     <member refid="classemail_1_1Timestamp_1accbcf82dcfd93ec893527ad9131c0889" kind="function"><name>~Timestamp</name></member>
     <member refid="classemail_1_1Timestamp_1ab32931c11f5356865899e3c828327feb" kind="function"><name>nanoseconds</name></member>
     <member refid="classemail_1_1Timestamp_1aacf325af0fe8a37d9661686cc8c4e9bf" kind="function"><name>to_string</name></member>
+    <member refid="classemail_1_1Timestamp_1a66dbe0ec833be6521572bbc901fa1751" kind="function"><name>operator==</name></member>
   </compound>
   <compound refid="classemail_1_1TopicNameInvalidError" kind="class"><name>email::TopicNameInvalidError</name>
     <member refid="classemail_1_1TopicNameInvalidError_1a6910edce78abbe9533f223b3fc5cfb5b" kind="function"><name>TopicNameInvalidError</name></member>

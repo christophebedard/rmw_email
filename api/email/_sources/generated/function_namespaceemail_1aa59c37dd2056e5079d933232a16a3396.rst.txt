@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::wait_for_message_with_info(Subscription *, const std::chrono::milliseconds)
+   :project: email Doxygen Project

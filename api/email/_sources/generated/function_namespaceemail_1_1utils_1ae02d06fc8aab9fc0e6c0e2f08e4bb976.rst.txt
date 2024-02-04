@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::get_env_var_or_default(const std::string&, const std::string&)
+   :project: email Doxygen Project

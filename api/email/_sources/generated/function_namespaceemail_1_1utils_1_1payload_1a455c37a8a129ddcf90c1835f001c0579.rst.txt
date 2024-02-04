@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::payload::cut_string_if_newline(const std::string&)
+   :project: email Doxygen Project

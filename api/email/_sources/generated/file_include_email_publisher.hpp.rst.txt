@@ -8,6 +8,7 @@ File publisher.hpp
 
 .. |exhale_lsh| unicode:: U+021B0 .. UPWARDS ARROW WITH TIP LEFTWARDS
 
+
 .. contents:: Contents
    :local:
    :backlinks: none
@@ -38,6 +39,8 @@ Includes
 - ``email/macros.hpp`` (:ref:`file_include_email_macros.hpp`)
 
 - ``email/pub_sub.hpp`` (:ref:`file_include_email_pub_sub.hpp`)
+
+- ``email/timestamp.hpp`` (:ref:`file_include_email_timestamp.hpp`)
 
 - ``email/visibility_control.hpp`` (:ref:`file_include_email_visibility_control.hpp`)
 

@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::get_global_context()
+   :project: email Doxygen Project

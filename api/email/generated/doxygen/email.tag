@@ -553,6 +553,7 @@
     <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
     <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
     <includes id="pub__sub_8hpp" name="pub_sub.hpp" local="yes" imported="no">email/pub_sub.hpp</includes>
+    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" imported="no">email/timestamp.hpp</includes>
     <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
     <class kind="class">email::Publisher</class>
     <namespace>email</namespace>
@@ -2220,8 +2221,8 @@
       <type>void</type>
       <name>publish</name>
       <anchorfile>classemail_1_1Publisher.html</anchorfile>
-      <anchor>afe640abb7111f5ac3aa3588a7e643bb1</anchor>
-      <arglist>(const std::string &amp;message, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt)</arglist>
+      <anchor>a54c103a25f64211d2e57ef9799dd4687</anchor>
+      <arglist>(const std::string &amp;message, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; Timestamp &gt; timestamp=std::nullopt)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -2932,6 +2933,13 @@
       <anchorfile>classemail_1_1Timestamp.html</anchorfile>
       <anchor>aacf325af0fe8a37d9661686cc8c4e9bf</anchor>
       <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>operator==</name>
+      <anchorfile>classemail_1_1Timestamp.html</anchorfile>
+      <anchor>a66dbe0ec833be6521572bbc901fa1751</anchor>
+      <arglist>(const Timestamp &amp;rhs) const</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static Timestamp</type>

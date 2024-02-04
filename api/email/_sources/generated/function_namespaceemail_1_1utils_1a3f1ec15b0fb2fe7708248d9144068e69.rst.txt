@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::thread_get_name(char *, size_t)
+   :project: email Doxygen Project

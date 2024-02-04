@@ -9,6 +9,7 @@
     <includes refid="visibility__control_8hpp" local="yes">email/visibility_control.hpp</includes>
     <includedby refid="communication__info_8hpp" local="yes">include/email/communication_info.hpp</includedby>
     <includedby refid="message__info_8hpp" local="yes">include/email/message_info.hpp</includedby>
+    <includedby refid="publisher_8hpp" local="yes">include/email/publisher.hpp</includedby>
     <includedby refid="service__info_8hpp" local="yes">include/email/service_info.hpp</includedby>
     <incdepgraph>
       <node id="3">
@@ -150,12 +151,22 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
         <childnode refid="10" relation="include">
         </childnode>
       </node>
       <node id="9">
         <label>include/email/context.hpp</label>
         <link refid="context_8hpp"/>
+      </node>
+      <node id="15">
+        <label>include/email/publisher.hpp</label>
+        <link refid="publisher_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
       </node>
       <node id="3">
         <label>include/email/message_info.hpp</label>
@@ -238,23 +249,27 @@
 <codeline lineno="76"><highlight class="normal"><sp/><sp/>std::optional&lt;Timestamp&gt;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1Timestamp_1a9576b9bd5328f436b0cf00ca4e7be128" kindref="member">from_string</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>timestamp);</highlight></codeline>
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="80"><highlight class="normal"><sp/><sp/>int64_t<sp/>nanoseconds_;</highlight></codeline>
-<codeline lineno="81"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1Timestamp_1a66dbe0ec833be6521572bbc901fa1751" kindref="member">operator==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>&amp;<sp/>rhs)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"></highlight></codeline>
-<codeline lineno="83"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>email</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal"></highlight></codeline>
-<codeline lineno="86"><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
-<codeline lineno="87" refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;<ref refid="namespaceemail" kindref="compound">email</ref>::Timestamp&gt;:<sp/>formatter&lt;string_view&gt;</highlight></codeline>
-<codeline lineno="88"><highlight class="normal">{</highlight></codeline>
-<codeline lineno="89"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="90"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">email::Timestamp</ref><sp/>&amp;<sp/>ts,<sp/>FormatContext<sp/>&amp;<sp/>ctx)</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>formatter&lt;string_view&gt;::format(ts.<ref refid="classemail_1_1Timestamp_1aacf325af0fe8a37d9661686cc8c4e9bf" kindref="member">to_string</ref>(),<sp/>ctx);</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="94"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>EMAIL__TIMESTAMP_HPP_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/>int64_t<sp/>nanoseconds_;</highlight></codeline>
+<codeline lineno="85"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>email</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
+<codeline lineno="91" refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;<ref refid="namespaceemail" kindref="compound">email</ref>::Timestamp&gt;:<sp/>formatter&lt;string_view&gt;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal">{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">email::Timestamp</ref><sp/>&amp;<sp/>ts,<sp/>FormatContext<sp/>&amp;<sp/>ctx)</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>formatter&lt;string_view&gt;::format(ts.<ref refid="classemail_1_1Timestamp_1aacf325af0fe8a37d9661686cc8c4e9bf" kindref="member">to_string</ref>(),<sp/>ctx);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="98"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/></highlight><highlight class="comment">//<sp/>EMAIL__TIMESTAMP_HPP_</highlight><highlight class="normal"></highlight></codeline>
     </programlisting>
     <location file="include/email/timestamp.hpp"/>
   </compounddef>

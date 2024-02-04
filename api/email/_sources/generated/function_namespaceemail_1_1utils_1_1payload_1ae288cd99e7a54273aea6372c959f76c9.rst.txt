@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::utils::payload::join_list(const std::vector<std::string>&)
+   :project: email Doxygen Project

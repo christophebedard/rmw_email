@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['messagequeue_663',['MessageQueue',['../classemail_1_1SubscriptionHandler.html#a074215e7cbbd40683d3760a914b0d265',1,'email::SubscriptionHandler']]]
+  ['messagequeue_665',['MessageQueue',['../classemail_1_1SubscriptionHandler.html#a074215e7cbbd40683d3760a914b0d265',1,'email::SubscriptionHandler']]]
 ];

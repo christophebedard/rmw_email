@@ -11,3 +11,4 @@ Function Documentation
 
 
 .. doxygenfunction:: email::init(int, char const *const)
+   :project: email Doxygen Project

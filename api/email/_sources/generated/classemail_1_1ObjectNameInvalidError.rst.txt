@@ -27,6 +27,7 @@ Class Documentation
 
 
 .. doxygenclass:: email::ObjectNameInvalidError
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:

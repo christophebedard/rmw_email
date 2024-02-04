@@ -11,3 +11,4 @@ Define Documentation
 
 
 .. doxygendefine:: EMAIL_EXPORT
+   :project: email Doxygen Project

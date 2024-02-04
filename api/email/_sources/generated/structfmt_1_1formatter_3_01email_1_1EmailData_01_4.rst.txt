@@ -20,6 +20,7 @@ Struct Documentation
 
 
 .. doxygenstruct:: fmt::formatter< email::EmailData >
+   :project: email Doxygen Project
    :members:
    :protected-members:
    :undoc-members:
