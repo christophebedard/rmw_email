@@ -23,9 +23,7 @@ int main()
   email::init();
   email::Subscription sub("/my_topic");
   std::cout << "waiting for message on topic '" << sub.get_topic_name() << "'..." << std::endl;
-  auto message_with_info = email::wait_for_message_with_info(&sub);
-  auto message = message_with_info.first;
-  auto msg_info = message_with_info.second;
+  const auto [message, msg_info] = email::wait_for_message_with_info(&sub);
   std::cout << "got message: " << message << std::endl;
   std::cout << "message info:" << std::endl <<
     "\tsource timestamp  : " << fmt::format("{}", msg_info.source_timestamp()) << std::endl <<

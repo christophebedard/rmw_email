@@ -84,9 +84,7 @@ extern "C" rmw_ret_t rmw_take_request(
     return ret;
   }
   *taken = true;
-  auto request_with_info = request_with_info_opt.value();
-  const struct email::ServiceRequest request = request_with_info.first;
-  const email::ServiceInfo info = request_with_info.second;
+  const auto [request, info] = request_with_info_opt.value();
 
   // Convert YAML string back to request
   rcutils_allocator_t allocator = rcutils_get_default_allocator();

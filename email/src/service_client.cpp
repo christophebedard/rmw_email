@@ -97,8 +97,7 @@ ServiceClient::get_response_with_info(const SequenceNumber sequence_number)
   if (it == responses_->cend()) {
     return std::nullopt;
   }
-  const auto email_data = it->second.first;
-  const auto info = it->second.second;
+  const auto [email_data, info] = it->second;
   const std::string response = email_data.content.body;
   responses_->erase(it);
   return {{response, info}};
@@ -112,8 +111,7 @@ ServiceClient::get_response_with_info()
   if (it == responses_->end()) {
     return std::nullopt;
   }
-  const auto email_data = it->second.first;
-  const auto info = it->second.second;
+  const auto [email_data, info] = it->second;
   const std::string response = email_data.content.body;
   responses_->erase(it);
   return {{response, info}};
