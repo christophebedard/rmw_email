@@ -84,9 +84,9 @@ Functions
 
 - :ref:`exhale_function_namespaceemail_1_1utils_1a88a5169377c5fdee4455ee6b38723745`
 
-- :ref:`exhale_function_namespaceemail_1_1utils_1aef6154f77c351ae81abb1544e8a5f3fd`
-
 - :ref:`exhale_function_namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1aef6154f77c351ae81abb1544e8a5f3fd`
 
 - :ref:`exhale_function_namespaceemail_1_1utils_1a36d04ae0600a820016e9a547222bad1a`
 
