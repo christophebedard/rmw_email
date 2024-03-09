@@ -77,8 +77,8 @@ public:
   from_string(const std::string & timestamp);
 
   EMAIL_PUBLIC
-  bool
-  operator==(const Timestamp & rhs) const;
+  auto
+  operator<=>(const Timestamp &) const = default;
 
 private:
   int64_t nanoseconds_;

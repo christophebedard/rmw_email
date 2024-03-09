@@ -59,10 +59,10 @@ Timestamp::from_string(const std::string & timestamp)
   return Timestamp(nanoseconds_opt.value());
 }
 
-bool
-Timestamp::operator==(const Timestamp & rhs) const
-{
-  return nanoseconds() == rhs.nanoseconds();
-}
+// bool
+// Timestamp::operator==(const Timestamp & rhs) const
+// {
+//   return nanoseconds() == rhs.nanoseconds();
+// }
 
 }  // namespace email

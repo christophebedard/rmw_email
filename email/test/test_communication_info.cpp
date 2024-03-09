@@ -29,9 +29,9 @@ TEST(TestMessageInfo, init)
   auto ts_received = email::Timestamp::now();
   auto pub_gid = email::Gid::new_gid();
   auto msg_info = email::MessageInfo(ts_source, ts_received, pub_gid);
-  EXPECT_EQ(ts_source.nanoseconds(), msg_info.source_timestamp().nanoseconds());
-  EXPECT_EQ(ts_received.nanoseconds(), msg_info.received_timestamp().nanoseconds());
-  EXPECT_EQ(pub_gid.value(), msg_info.publisher_gid().value());
+  EXPECT_EQ(ts_source, msg_info.source_timestamp());
+  EXPECT_EQ(ts_received, msg_info.received_timestamp());
+  EXPECT_EQ(pub_gid, msg_info.publisher_gid());
 }
 
 TEST(TestMessageInfo, from_headers)
@@ -72,9 +72,9 @@ TEST(TestServiceInfo, init)
   auto client_gid = email::Gid::new_gid();
   auto sequence_number = 42u;
   auto srv_info = email::ServiceInfo(ts_source, ts_received, client_gid, sequence_number);
-  EXPECT_EQ(ts_source.nanoseconds(), srv_info.source_timestamp().nanoseconds());
-  EXPECT_EQ(ts_received.nanoseconds(), srv_info.received_timestamp().nanoseconds());
-  EXPECT_EQ(client_gid.value(), srv_info.client_gid().value());
+  EXPECT_EQ(ts_source, srv_info.source_timestamp());
+  EXPECT_EQ(ts_received, srv_info.received_timestamp());
+  EXPECT_EQ(client_gid, srv_info.client_gid());
   EXPECT_EQ(sequence_number, srv_info.sequence_number());
 }
 

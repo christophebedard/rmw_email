@@ -29,9 +29,9 @@ TEST(TestGid, gid)
   EXPECT_NE(0u, gid1.value());
   EXPECT_NE(0u, gid2.value());
   EXPECT_NE(0u, gid3.value());
-  EXPECT_NE(gid1.value(), gid2.value());
-  EXPECT_NE(gid1.value(), gid3.value());
-  EXPECT_NE(gid2.value(), gid3.value());
+  EXPECT_NE(gid1, gid2);
+  EXPECT_NE(gid1, gid3);
+  EXPECT_NE(gid2, gid3);
   EXPECT_FALSE(gid1.to_string().empty());
   EXPECT_FALSE(gid2.to_string().empty());
   EXPECT_FALSE(gid3.to_string().empty());
@@ -51,7 +51,8 @@ TEST(TestGid, string)
   auto gid_str_opt = email::Gid::from_string(str);
 
   ASSERT_TRUE(gid_str_opt.has_value());
-  EXPECT_EQ(gid.value(), gid_str_opt.value().value());
+  EXPECT_EQ(gid, gid_str_opt.value());
+  EXPECT_STREQ(gid.to_string().c_str(), gid_str_opt.value().to_string().c_str());
 
   EXPECT_FALSE(email::Gid::from_string("abc").has_value());
 }

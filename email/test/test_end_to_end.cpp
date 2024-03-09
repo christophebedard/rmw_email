@@ -125,12 +125,12 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub)
 
   EXPECT_STREQ(msg_1.c_str(), "some message");
   EXPECT_STREQ(msg_2.c_str(), "some other message");
-  EXPECT_EQ(pub1.get_gid().value(), info_1.publisher_gid().value());
-  EXPECT_EQ(pub2.get_gid().value(), info_2.publisher_gid().value());
-  EXPECT_LT(info_1.source_timestamp().nanoseconds(), info_2.source_timestamp().nanoseconds());
+  EXPECT_EQ(pub1.get_gid(), info_1.publisher_gid());
+  EXPECT_EQ(pub2.get_gid(), info_2.publisher_gid());
+  EXPECT_LT(info_1.source_timestamp(), info_2.source_timestamp());
   EXPECT_EQ(info_2.source_timestamp(), ts2);
-  EXPECT_LT(info_1.source_timestamp().nanoseconds(), info_1.received_timestamp().nanoseconds());
-  EXPECT_LT(info_2.source_timestamp().nanoseconds(), info_2.received_timestamp().nanoseconds());
+  EXPECT_LT(info_1.source_timestamp(), info_1.received_timestamp());
+  EXPECT_LT(info_2.source_timestamp(), info_2.received_timestamp());
 
   pub1.publish("eh-oh!");
   waitset.add_subscription(&sub1);
@@ -205,19 +205,19 @@ TEST_F(TestEndToEnd, intraprocess_service)
   EXPECT_EQ(seq1, req_info_1.sequence_number());
   EXPECT_EQ(seq2, req_2.id.sequence_number);
   EXPECT_EQ(seq2, req_info_2.sequence_number());
-  EXPECT_EQ(client1.get_gid().value(), req_info_1.client_gid().value());
-  EXPECT_EQ(client1.get_gid().value(), req_1.id.client_gid.value());
-  EXPECT_EQ(client2.get_gid().value(), req_info_2.client_gid().value());
-  EXPECT_EQ(client2.get_gid().value(), req_2.id.client_gid.value());
+  EXPECT_EQ(client1.get_gid(), req_info_1.client_gid());
+  EXPECT_EQ(client1.get_gid(), req_1.id.client_gid);
+  EXPECT_EQ(client2.get_gid(), req_info_2.client_gid());
+  EXPECT_EQ(client2.get_gid(), req_2.id.client_gid);
   EXPECT_LT(
-    req_info_1.source_timestamp().nanoseconds(),
-    req_info_2.source_timestamp().nanoseconds());
+    req_info_1.source_timestamp(),
+    req_info_2.source_timestamp());
   EXPECT_LT(
-    req_info_1.source_timestamp().nanoseconds(),
-    req_info_1.received_timestamp().nanoseconds());
+    req_info_1.source_timestamp(),
+    req_info_1.received_timestamp());
   EXPECT_LT(
-    req_info_2.source_timestamp().nanoseconds(),
-    req_info_2.received_timestamp().nanoseconds());
+    req_info_2.source_timestamp(),
+    req_info_2.received_timestamp());
 
   server1.send_response(req_1.id, "a super response");
   server2.send_response(req_2.id, "an awesome response");
@@ -244,17 +244,17 @@ TEST_F(TestEndToEnd, intraprocess_service)
   EXPECT_STREQ(res_2.c_str(), "an awesome response");
   EXPECT_EQ(seq1, res_info_1.sequence_number());
   EXPECT_EQ(seq2, res_info_2.sequence_number());
-  EXPECT_EQ(client1.get_gid().value(), res_info_1.client_gid().value());
-  EXPECT_EQ(client2.get_gid().value(), res_info_2.client_gid().value());
+  EXPECT_EQ(client1.get_gid(), res_info_1.client_gid());
+  EXPECT_EQ(client2.get_gid(), res_info_2.client_gid());
   EXPECT_LT(
-    res_info_1.source_timestamp().nanoseconds(),
-    res_info_2.source_timestamp().nanoseconds());
+    res_info_1.source_timestamp(),
+    res_info_2.source_timestamp());
   EXPECT_LT(
-    res_info_1.source_timestamp().nanoseconds(),
-    res_info_1.received_timestamp().nanoseconds());
+    res_info_1.source_timestamp(),
+    res_info_1.received_timestamp());
   EXPECT_LT(
-    res_info_2.source_timestamp().nanoseconds(),
-    res_info_2.received_timestamp().nanoseconds());
+    res_info_2.source_timestamp(),
+    res_info_2.received_timestamp());
 
   email::SequenceNumber seq3 = client1.send_request("tubbytoast, please");
   EXPECT_NE(seq1, seq3);
@@ -267,7 +267,7 @@ TEST_F(TestEndToEnd, intraprocess_service)
   auto req_3 = req_3_opt.value();
   EXPECT_STREQ(req_3.content.c_str(), "tubbytoast, please");
   EXPECT_EQ(seq3, req_3.id.sequence_number);
-  EXPECT_EQ(client1.get_gid().value(), req_3.id.client_gid.value());
+  EXPECT_EQ(client1.get_gid(), req_3.id.client_gid);
   server1.send_response(req_3.id, "your tubbytoast");
   waitset.add_client(&client1);
   EXPECT_FALSE(waitset.wait());

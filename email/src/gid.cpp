@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <atomic>
+#include <compare>  // NOLINT cpplint mistakes <compare> for a C system header
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <random>
 #include <string>
@@ -75,5 +76,13 @@ Gid::to_string(const GidValue value)
 {
   return std::to_string(value);
 }
+
+// // std::strong_ordering
+// auto
+// Gid::operator<=>(const Gid & rhs) const
+// {
+//   // Don't check the string representation, it should be the same
+//   return value() <=> rhs.value();
+// }
 
 }  // namespace email

@@ -21,12 +21,12 @@
 TEST(TestTimestamp, init)
 {
   email::Timestamp ts1 = email::Timestamp::now();
-  EXPECT_NE(0u, ts1.nanoseconds());
+  EXPECT_NE(ts1.nanoseconds(), 0);
 
   email::Timestamp ts2 = email::Timestamp::now();
-  EXPECT_NE(0u, ts2.nanoseconds());
+  EXPECT_NE(ts2.nanoseconds(), 0);
 
-  EXPECT_LT(ts1.nanoseconds(), ts2.nanoseconds());
+  EXPECT_LT(ts1, ts2);
 }
 
 TEST(TestTimestamp, string)
@@ -35,7 +35,7 @@ TEST(TestTimestamp, string)
   auto str = ts.to_string();
   auto ts_str_opt = email::Timestamp::from_string(str);
   ASSERT_TRUE(ts_str_opt.has_value());
-  EXPECT_EQ(ts.nanoseconds(), ts_str_opt.value().nanoseconds());
+  EXPECT_EQ(ts, ts_str_opt.value());
 
   EXPECT_FALSE(email::Timestamp::from_string("abc").has_value());
 }

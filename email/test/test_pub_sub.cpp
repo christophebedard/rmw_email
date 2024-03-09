@@ -45,6 +45,6 @@ TEST(TestPubSub, gid)
   // Just check that they don't have the same GID
   PubSubObjectStub o1("/my_topic");
   PubSubObjectStub o2("/my_other_topic");
-  EXPECT_NE(o1.get_gid().value(), o2.get_gid().value());
+  EXPECT_NE(o1.get_gid(), o2.get_gid());
   EXPECT_STRNE(o1.get_gid().to_string().c_str(), o2.get_gid().to_string().c_str());
 }

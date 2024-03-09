@@ -15,6 +15,7 @@
 #ifndef EMAIL__GID_HPP_
 #define EMAIL__GID_HPP_
 
+#include <compare>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 
@@ -83,6 +84,11 @@ public:
   static
   std::optional<Gid>
   from_string(const std::string & str);
+
+  EMAIL_PUBLIC
+  // std::strong_ordering
+  auto
+  operator<=>(const Gid & rhs) const = default;
 
 private:
   /// Get a new value.
