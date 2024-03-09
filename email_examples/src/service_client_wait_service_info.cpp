@@ -28,14 +28,12 @@ int main()
     request_content << std::endl;
   auto sequence_number = client.send_request(request_content);
   std::cout << "waiting for response..." << std::endl;
-  auto response_with_info = email::wait_for_response_with_info(sequence_number, &client);
-  auto response = response_with_info.first;
-  auto request_info = response_with_info.second;
+  const auto [response, req_info] = email::wait_for_response_with_info(sequence_number, &client);
   std::cout << "response: " << response << std::endl;
   std::cout << "request info:" << std::endl <<
-    "\tsource timestamp  : " << fmt::format("{}", request_info.source_timestamp()) << std::endl <<
-    "\treceived timestamp: " << fmt::format("{}", request_info.received_timestamp()) << std::endl <<
-    "\tclient GID        : " << request_info.client_gid().to_string() << std::endl;
+    "\tsource timestamp  : " << fmt::format("{}", req_info.source_timestamp()) << std::endl <<
+    "\treceived timestamp: " << fmt::format("{}", req_info.received_timestamp()) << std::endl <<
+    "\tclient GID        : " << req_info.client_gid().to_string() << std::endl;
   email::shutdown();
   return 0;
 }

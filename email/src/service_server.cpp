@@ -73,9 +73,7 @@ ServiceServer::get_request_with_info()
   if (!has_request()) {
     return std::nullopt;
   }
-  const auto request = requests_->dequeue();
-  const auto email_data = request.first;
-  const auto info = request.second;
+  const auto [email_data, info] = requests_->dequeue();
   // Put raw request data in a map so that we can
   // fetch & use it when sending our response
   requests_raw_.insert({info.sequence_number(), email_data});

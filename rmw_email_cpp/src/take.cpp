@@ -57,9 +57,7 @@ rmw_ret_t rmw_take(
     *taken = false;
   } else {
     *taken = true;
-    auto msg_with_info = msg_with_info_opt.value();
-    const std::string & msg_yaml = msg_with_info.first;
-    const email::MessageInfo msg_info = msg_with_info.second;
+    const auto & [msg_yaml, msg_info] = msg_with_info_opt.value();
 
     // Convert YAML string back to message
     rcutils_allocator_t allocator = rcutils_get_default_allocator();

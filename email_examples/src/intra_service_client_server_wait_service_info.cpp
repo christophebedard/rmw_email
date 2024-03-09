@@ -34,9 +34,7 @@ int main()
 
   std::cout << "waiting for request for service '" << server.get_service_name() << "'..." <<
     std::endl;
-  auto request_with_info = email::wait_for_request_with_info(&server);
-  auto request = request_with_info.first;
-  auto request_info = request_with_info.second;
+  const auto [request, request_info] = email::wait_for_request_with_info(&server);
   std::cout << "got request!" << std::endl <<
     "\tsequence number: " << request.id.sequence_number << std::endl <<
     "\trequest        : " << request.content << std::endl;
@@ -51,9 +49,7 @@ int main()
   server.send_response(request.id, response_content);
 
   std::cout << "waiting for response..." << std::endl;
-  auto response_with_info = email::wait_for_response_with_info(sequence_number, &client);
-  auto response = response_with_info.first;
-  auto resp_info = response_with_info.second;
+  const auto [response, resp_info] = email::wait_for_response_with_info(sequence_number, &client);
   std::cout << "response: " << response << std::endl;
   std::cout << "request info:" << std::endl <<
     "\tsource timestamp  : " << fmt::format("{}", resp_info.source_timestamp()) << std::endl <<

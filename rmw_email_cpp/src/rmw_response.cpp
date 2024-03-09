@@ -90,9 +90,7 @@ extern "C" rmw_ret_t rmw_take_response(
     return ret;
   }
   *taken = true;
-  auto response_with_info = response_with_info_opt.value();
-  const std::string response = response_with_info.first;
-  const email::ServiceInfo info = response_with_info.second;
+  const auto [response, info] = response_with_info_opt.value();
 
   // Convert YAML string back to response
   rcutils_allocator_t allocator = rcutils_get_default_allocator();

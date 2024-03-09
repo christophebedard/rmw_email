@@ -120,12 +120,8 @@ TEST_F(TestEndToEnd, intraprocess_pub_sub)
   auto msg_with_info_2_opt = sub2.get_message_with_info();
   ASSERT_TRUE(msg_with_info_1_opt.has_value());
   ASSERT_TRUE(msg_with_info_2_opt.has_value());
-  auto msg_with_info_1 = msg_with_info_1_opt.value();
-  auto msg_with_info_2 = msg_with_info_2_opt.value();
-  auto msg_1 = msg_with_info_1.first;
-  auto msg_2 = msg_with_info_2.first;
-  auto info_1 = msg_with_info_1.second;
-  auto info_2 = msg_with_info_2.second;
+  auto [msg_1, info_1] = msg_with_info_1_opt.value();
+  auto [msg_2, info_2] = msg_with_info_2_opt.value();
 
   EXPECT_STREQ(msg_1.c_str(), "some message");
   EXPECT_STREQ(msg_2.c_str(), "some other message");
@@ -200,12 +196,8 @@ TEST_F(TestEndToEnd, intraprocess_service)
   auto req_with_info_2_opt = server2.get_request_with_info();
   ASSERT_TRUE(req_with_info_1_opt.has_value());
   ASSERT_TRUE(req_with_info_2_opt.has_value());
-  auto req_with_info_1 = req_with_info_1_opt.value();
-  auto req_with_info_2 = req_with_info_2_opt.value();
-  auto req_1 = req_with_info_1.first;
-  auto req_2 = req_with_info_2.first;
-  auto req_info_1 = req_with_info_1.second;
-  auto req_info_2 = req_with_info_2.second;
+  auto [req_1, req_info_1] = req_with_info_1_opt.value();
+  auto [req_2, req_info_2] = req_with_info_2_opt.value();
 
   EXPECT_STREQ(req_1.content.c_str(), "a super request");
   EXPECT_STREQ(req_2.content.c_str(), "an awesome request");
@@ -245,12 +237,8 @@ TEST_F(TestEndToEnd, intraprocess_service)
   auto res_with_info_2_opt = client2.get_response_with_info();
   ASSERT_TRUE(res_with_info_1_opt.has_value());
   ASSERT_TRUE(res_with_info_2_opt.has_value());
-  auto res_with_info_1 = res_with_info_1_opt.value();
-  auto res_with_info_2 = res_with_info_2_opt.value();
-  auto res_1 = res_with_info_1.first;
-  auto res_2 = res_with_info_2.first;
-  auto res_info_1 = res_with_info_1.second;
-  auto res_info_2 = res_with_info_2.second;
+  auto [res_1, res_info_1] = res_with_info_1_opt.value();
+  auto [res_2, res_info_2] = res_with_info_2_opt.value();
 
   EXPECT_STREQ(res_1.c_str(), "a super response");
   EXPECT_STREQ(res_2.c_str(), "an awesome response");
