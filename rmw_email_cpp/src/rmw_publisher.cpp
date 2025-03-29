@@ -85,7 +85,8 @@ static rmw_publisher_t * _create_publisher(
   rmw_publisher->can_loan_messages = false;
 
   cleanup_rmw_publisher.cancel();
-  TRACEPOINT(rmw_publisher_init, static_cast<const void *>(rmw_publisher), pub->gid.data);
+  TRACETOOLS_TRACEPOINT(
+    rmw_publisher_init, static_cast<const void *>(rmw_publisher), pub->gid.data);
   return rmw_publisher;
 }
 
