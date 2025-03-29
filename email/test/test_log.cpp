@@ -14,6 +14,7 @@
 
 #include <gtest/gtest.h>
 
+#include <filesystem>
 #include <memory>
 #include <string>
 
@@ -78,12 +79,12 @@ TEST(TestLog, get)
 
 TEST(TestLog, file)
 {
-  auto temp_dir = rcpputils::fs::create_temp_directory("TestLog_file");
+  auto temp_dir = rcpputils::fs::create_temporary_directory("TestLog_file");
   auto logfile_path = temp_dir / "log";
   EXPECT_TRUE(rcutils_set_env("EMAIL_LOG_FILE", logfile_path.string().c_str()));
   email::log::init_from_env();
 
   email::log::shutdown();
   EXPECT_TRUE(rcutils_set_env("EMAIL_LOG_FILE", nullptr));
-  EXPECT_TRUE(rcpputils::fs::remove_all(temp_dir));
+  EXPECT_TRUE(std::filesystem::remove_all(temp_dir));
 }

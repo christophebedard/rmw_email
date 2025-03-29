@@ -15,11 +15,11 @@
 #ifndef EMAIL__LOG_HPP_
 #define EMAIL__LOG_HPP_
 
+#include <filesystem>
 #include <memory>
 #include <stdexcept>
 #include <string>
 
-#include "rcpputils/filesystem_helper.hpp"
 #include "spdlog/spdlog.h"
 #include "spdlog/fmt/ostr.h"
 #include "yaml-cpp/yaml.h"
@@ -118,12 +118,12 @@ shutdown();
 }  // namespace log
 }  // namespace email
 
-/// Formatting for rcpputils::fs::path objects.
+/// Formatting for std::filesystem::path objects.
 template<>
-struct fmt::formatter<rcpputils::fs::path>: formatter<string_view>
+struct fmt::formatter<std::filesystem::path>: formatter<string_view>
 {
   template<typename FormatContext>
-  auto format(const rcpputils::fs::path & p, FormatContext & ctx)
+  auto format(const std::filesystem::path & p, FormatContext & ctx)
   {
     return formatter<string_view>::format(p.string(), ctx);
   }
