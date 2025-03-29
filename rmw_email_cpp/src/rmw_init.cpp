@@ -41,7 +41,6 @@ extern "C" rmw_ret_t rmw_init_options_init(
   init_options->implementation_identifier = rmw_email_cpp::identifier;
   init_options->allocator = allocator;
   init_options->impl = nullptr;
-  init_options->localhost_only = RMW_LOCALHOST_ONLY_DEFAULT;
   init_options->domain_id = RMW_DEFAULT_DOMAIN_ID;
   init_options->enclave = NULL;
   init_options->security_options = rmw_get_zero_initialized_security_options();
