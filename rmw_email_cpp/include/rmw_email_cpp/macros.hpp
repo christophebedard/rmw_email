@@ -21,11 +21,13 @@
 #define RET_NULL_X(var, code) do {if (!var) {RET_ERR_X(#var " is null", code);}} while (0)
 #define RET_ALLOC_X(var, code) do {if (!var) {RET_ERR_X("failed to allocate " #var, code);} \
 } while (0)
+// *INDENT-OFF* (prevent uncrustify from making unnecessary blankspace changes in the macro)
 #define RET_WRONG_IMPLID_X(var, code) do { \
-    if ((var)->implementation_identifier != rmw_email_cpp::identifier) { \
-      RET_ERR_X(#var " not from this implementation", code); \
-    } \
+  if ((var)->implementation_identifier != rmw_email_cpp::identifier) { \
+    RET_ERR_X(#var " not from this implementation", code); \
+  } \
 } while (0)
+// *INDENT-ON*
 #define RET_NULL(var) RET_NULL_X(var, return RMW_RET_ERROR)
 #define RET_WRONG_IMPLID(var) RET_WRONG_IMPLID_X(var, return RMW_RET_INCORRECT_RMW_IMPLEMENTATION)
 
