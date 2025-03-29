@@ -6,6 +6,9 @@
   <description>ROS 2 middleware (rmw) implementation using email in C++.</description>
   <maintainer email="bedard.christophe@gmail.com">Christophe Bedard</maintainer>
   <license>Apache License 2.0</license>
+  <url type="website">https://github.com/christophebedard/rmw_email</url>
+  <url type="repository">https://github.com/christophebedard/rmw_email</url>
+  <url type="bugtracker">https://github.com/christophebedard/rmw_email/issues</url>
   <author email="bedard.christophe@gmail.com">Christophe Bedard</author>
 
   <buildtool_depend>ament_cmake_ros</buildtool_depend>
