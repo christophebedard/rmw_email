@@ -15,6 +15,7 @@
 #include <pthread.h>
 
 #include <cassert>
+#include <cstring>
 #include <fstream>
 #include <sstream>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -157,7 +158,7 @@ thread_set_name(const char * name)
   char name_buffer[name_max_len] = "";
   // Copy only up to, but excluding, the mandatory null character,
   // otherwise the destination string isn't null-terminated
-  (void)strncpy(name_buffer, name, sizeof(name_buffer) - 1);
+  (void)std::strncpy(name_buffer, name, sizeof(name_buffer) - 1);
   (void)pthread_setname_np(pthread_self(), name_buffer);
 #elif defined(__APPLE__)
   (void)pthread_setname_np(name);
@@ -178,13 +179,13 @@ thread_append_name(const char * suffix)
   thread_get_name(name_buffer, name_max_len);
 
   // Figure out where we should add the suffix
-  size_t name_len_limit = name_max_len - strlen(suffix) - 1;
-  size_t name_len = strlen(name_buffer);
+  size_t name_len_limit = name_max_len - std::strlen(suffix) - 1;
+  size_t name_len = std::strlen(name_buffer);
   if (name_len > name_len_limit) {
     name_len = name_len_limit;
   }
 
-  (void)strncpy(name_buffer + name_len, suffix, name_max_len - name_len);
+  (void)std::strncpy(name_buffer + name_len, suffix, name_max_len - name_len);
   thread_set_name(name_buffer);
 #else
 #warning "thread_append_name not supported for this platform"

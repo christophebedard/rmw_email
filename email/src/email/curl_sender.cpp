@@ -66,7 +66,7 @@ CurlEmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, vo
   if (!data) {
     return 0;
   }
-  size_t len = strlen(data);
+  size_t len = std::strlen(data);
   if (len > max_size) {
     len = max_size;
     logger()->debug("truncated to len={}", len);

@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <cstring>
+
 #include "email/subscription.hpp"
 #include "rcpputils/scope_exit.hpp"
 #include "rmw/allocators.h"
@@ -75,9 +77,10 @@ static rmw_subscription_t * _create_subscription(
 
   rmw_subscription->implementation_identifier = rmw_email_cpp::identifier;
   rmw_subscription->data = sub;
-  rmw_subscription->topic_name = reinterpret_cast<char *>(rmw_allocate(strlen(topic_name) + 1));
+  rmw_subscription->topic_name = reinterpret_cast<char *>(
+    rmw_allocate(std::strlen(topic_name) + 1));
   RET_ALLOC_X(rmw_subscription->topic_name, return nullptr);
-  memcpy(const_cast<char *>(rmw_subscription->topic_name), topic_name, strlen(topic_name) + 1);
+  memcpy(const_cast<char *>(rmw_subscription->topic_name), topic_name, std::strlen(topic_name) + 1);
   rmw_subscription->options = *subscription_options;
   rmw_subscription->can_loan_messages = false;
 
@@ -102,7 +105,7 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
     return nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(type_supports, nullptr);
   RMW_CHECK_ARGUMENT_FOR_NULL(topic_name, nullptr);
-  if (0 == strlen(topic_name)) {
+  if (0 == std::strlen(topic_name)) {
     RMW_SET_ERROR_MSG("topic_name argument is an empty string");
     return nullptr;
   }
