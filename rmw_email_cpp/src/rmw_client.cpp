@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <cstring>
+
 #include "email/service_client.hpp"
 #include "rcpputils/scope_exit.hpp"
 #include "rmw/allocators.h"
@@ -84,9 +86,10 @@ extern "C" rmw_client_t * rmw_create_client(
     });
   rmw_client->implementation_identifier = rmw_email_cpp::identifier;
   rmw_client->data = rmw_email_client;
-  rmw_client->service_name = reinterpret_cast<const char *>(rmw_allocate(strlen(service_name) + 1));
+  rmw_client->service_name = reinterpret_cast<const char *>(
+    rmw_allocate(std::strlen(service_name) + 1));
   RET_NULL_X(rmw_client->service_name, rmw_client_free(rmw_client); return nullptr);
-  memcpy(const_cast<char *>(rmw_client->service_name), service_name, strlen(service_name) + 1);
+  memcpy(const_cast<char *>(rmw_client->service_name), service_name, std::strlen(service_name) + 1);
 
   cleanup_rmw_client.cancel();
   cleanup_rmw_email_client.cancel();
