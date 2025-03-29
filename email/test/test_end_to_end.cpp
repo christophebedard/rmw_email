@@ -14,6 +14,7 @@
 
 #include <gtest/gtest.h>
 
+#include <filesystem>
 #include <fstream>
 #include <memory>
 #include <set>
@@ -21,7 +22,6 @@
 
 #include "email/context.hpp"
 #include "email/email.hpp"
-#include "rcpputils/filesystem_helper.hpp"
 #include "rcutils/env.h"
 #include "rcutils/testing/fault_injection.h"
 
@@ -31,7 +31,7 @@ public:
   void SetUp()
   {
     config_file =
-      rcpputils::fs::temp_directory_path() / "TestEndToEnd.email.yml";
+      std::filesystem::temp_directory_path() / "TestEndToEnd.email.yml";
     ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", config_file.string().c_str()));
     std::ofstream config_file_stream;
     config_file_stream = std::ofstream(config_file.string().c_str());
@@ -57,11 +57,11 @@ email:
   {
     EXPECT_TRUE(email::shutdown());
 
-    EXPECT_TRUE(rcpputils::fs::remove(config_file));
+    EXPECT_TRUE(std::filesystem::remove(config_file));
     ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
   }
 
-  rcpputils::fs::path config_file;
+  std::filesystem::path config_file;
 };
 
 TEST_F(TestEndToEnd, intraprocess_init)

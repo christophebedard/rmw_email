@@ -16,12 +16,12 @@
 #define EMAIL__OPTIONS_HPP_
 
 #include <chrono>
+#include <filesystem>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
 #include <regex>
 #include <string>
 
-#include "rcpputils/filesystem_helper.hpp"
 #include "yaml-cpp/yaml.h"
 
 #include "email/email/info.hpp"
@@ -139,7 +139,7 @@ public:
    */
   static
   std::optional<std::shared_ptr<Options>>
-  parse_options_file(const rcpputils::fs::path & file_path);
+  parse_options_file(const std::filesystem::path & file_path);
 
 private:
   /// Implementation for `yaml_to_options_impl` that may throw.

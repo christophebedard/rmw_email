@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <chrono>
+#include <filesystem>
 #include <iostream>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -20,7 +21,6 @@
 #include <string>
 #include <vector>
 
-#include "rcpputils/filesystem_helper.hpp"
 #include "rcutils/env.h"
 #include "yaml-cpp/yaml.h"
 
@@ -199,10 +199,10 @@ Options::yaml_to_options(YAML::Node node)
 }
 
 std::optional<std::shared_ptr<Options>>
-Options::parse_options_file(const rcpputils::fs::path & file_path)
+Options::parse_options_file(const std::filesystem::path & file_path)
 {
   logger()->debug("parsing options file: {}", file_path);
-  if (file_path.is_directory() || !file_path.exists()) {
+  if (std::filesystem::is_directory(file_path) || !std::filesystem::exists(file_path)) {
     logger()->debug("options file path does not exist or is not a file: {}", file_path);
     return std::nullopt;
   }
@@ -223,7 +223,7 @@ Options::parse_options_from_file()
   // First try using path from environment variable or the default value
   const std::string config_file_path = utils::get_env_var_or_default(
     Options::ENV_VAR_CONFIG_FILE,
-    (rcpputils::fs::current_path() / Options::CONFIG_FILE_DEFAULT_NAME).string());
+    (std::filesystem::current_path() / Options::CONFIG_FILE_DEFAULT_NAME).string());
 
   // Value can't be empty here because the default value is used if the env var is empty
   auto options = Options::parse_options_file(config_file_path);
@@ -231,10 +231,10 @@ Options::parse_options_from_file()
     // Try reading backup config file
     // Use file path from environment variable if defined,
     // otherwise use the default name relative to the home directory
-    const rcpputils::fs::path backup_file_path =
+    const std::filesystem::path backup_file_path =
       utils::get_env_var_or_default(
       Options::ENV_VAR_CONFIG_FILE_DEFAULT_PATH,
-      (rcpputils::fs::path(rcutils_get_home_dir()) / Options::CONFIG_FILE_DEFAULT_NAME).string());
+      (std::filesystem::path(rcutils_get_home_dir()) / Options::CONFIG_FILE_DEFAULT_NAME).string());
     logger()->debug("trying backup config file path: {}", backup_file_path);
     options = Options::parse_options_file(backup_file_path);
     if (!options) {

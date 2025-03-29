@@ -15,6 +15,7 @@
 #include <gtest/gtest.h>
 
 #include <chrono>
+#include <filesystem>
 #include <fstream>
 #include <memory>
 #include <string>
@@ -39,7 +40,7 @@ public:
     email::log::shutdown();
   }
 
-  rcpputils::fs::path tmp{rcpputils::fs::temp_directory_path()};
+  std::filesystem::path tmp{std::filesystem::temp_directory_path()};
 };
 
 TEST_F(TestOptions, yaml_to_options)
@@ -154,12 +155,12 @@ TEST_F(TestOptions, yaml_to_options_intraprocess)
 
 TEST_F(TestOptions, parse_options_file)
 {
-  rcpputils::fs::path file;
+  std::filesystem::path file;
 
   // Exists, but directory
-  file = rcpputils::fs::create_temp_directory("TestOptions-parse_options_file-dir-");
+  file = rcpputils::fs::create_temporary_directory("TestOptions-parse_options_file-dir-");
   EXPECT_FALSE(email::Options::parse_options_file(file).has_value());
-  EXPECT_TRUE(rcpputils::fs::remove(file));
+  EXPECT_TRUE(std::filesystem::remove(file));
 
   // File, but doesn't exist
   file = tmp / "TestOptions-parse_options_file-not-created";
@@ -173,19 +174,19 @@ TEST_F(TestOptions, parse_options_file)
   file_stream << "DIPSY" << std::endl;
   file_stream.close();
   EXPECT_FALSE(email::Options::parse_options_file(file).has_value());
-  EXPECT_TRUE(rcpputils::fs::remove(file));
+  EXPECT_TRUE(std::filesystem::remove(file));
 
   file_stream = std::ofstream(file.string().c_str());
   file_stream << "{DIPSY" << std::endl;
   file_stream.close();
   EXPECT_FALSE(email::Options::parse_options_file(file).has_value());
-  EXPECT_TRUE(rcpputils::fs::remove(file));
+  EXPECT_TRUE(std::filesystem::remove(file));
 }
 
 TEST_F(TestOptions, parse_options_from_file)
 {
   // Good file
-  rcpputils::fs::path file = tmp / "TestOptions-parse_options_from_file.email.yml";
+  std::filesystem::path file = tmp / "TestOptions-parse_options_from_file.email.yml";
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", file.string().c_str()));
   std::ofstream file_stream;
   file_stream = std::ofstream(file.string().c_str());
@@ -216,7 +217,7 @@ email:
   EXPECT_STREQ("to@email.com", options_val->get_recipients().value()->to[0].c_str());
   EXPECT_FALSE(options_val->intraprocess());
 
-  EXPECT_TRUE(rcpputils::fs::remove(file));
+  EXPECT_TRUE(std::filesystem::remove(file));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
 
   // Bad default file
@@ -228,14 +229,14 @@ email:
   options = email::Options::parse_options_from_file();
   EXPECT_FALSE(options.has_value());
 
-  EXPECT_TRUE(rcpputils::fs::remove(file));
+  EXPECT_TRUE(std::filesystem::remove(file));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE_DEFAULT_PATH", NULL));
 }
 
 TEST_F(TestOptions, parse_options_from_file_intraprocess)
 {
   // Good file
-  rcpputils::fs::path file = tmp / "TestOptions-parse_options_from_file_intraprocess.email.yml";
+  std::filesystem::path file = tmp / "TestOptions-parse_options_from_file_intraprocess.email.yml";
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", file.string().c_str()));
   std::ofstream file_stream;
   file_stream = std::ofstream(file.string().c_str());
@@ -257,7 +258,7 @@ email:
   EXPECT_FALSE(options_val->get_recipients().has_value());
   EXPECT_FALSE(options_val->polling_period().has_value());
 
-  EXPECT_TRUE(rcpputils::fs::remove(file));
+  EXPECT_TRUE(std::filesystem::remove(file));
   ASSERT_TRUE(rcutils_set_env("EMAIL_CONFIG_FILE", NULL));
 }
 
