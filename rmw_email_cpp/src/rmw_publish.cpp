@@ -56,7 +56,7 @@ extern "C" rmw_ret_t rmw_publish(
   const std::string msg_yaml = rmw_email_cpp::msg_to_yaml(rmw_email_pub, ros_message);
   assert(!msg_yaml.empty());
   const email::Timestamp source_timestamp = email::Timestamp::now();
-  TRACEPOINT(
+  TRACETOOLS_TRACEPOINT(
     rmw_publish,
     static_cast<const void *>(publisher),
     ros_message,

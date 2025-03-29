@@ -76,7 +76,7 @@ rmw_ret_t rmw_take(
     }
   }
 
-  TRACEPOINT(
+  TRACETOOLS_TRACEPOINT(
     rmw_take,
     static_cast<const void *>(subscription),
     ros_message,

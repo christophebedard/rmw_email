@@ -82,7 +82,8 @@ static rmw_subscription_t * _create_subscription(
   rmw_subscription->can_loan_messages = false;
 
   cleanup_rmw_subscription.cancel();
-  TRACEPOINT(rmw_subscription_init, static_cast<const void *>(rmw_subscription), sub->gid.data);
+  TRACETOOLS_TRACEPOINT(
+    rmw_subscription_init, static_cast<const void *>(rmw_subscription), sub->gid.data);
   return rmw_subscription;
 }
 
