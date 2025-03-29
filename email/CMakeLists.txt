@@ -18,6 +18,7 @@ find_package(rcutils REQUIRED)
 find_package(spdlog_vendor REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml_cpp_vendor REQUIRED)
+find_package(yaml-cpp REQUIRED)
 
 set(CURL_USE_VENDOR TRUE)
 # TODO(christophebedard) switch to using system curl when possible,
@@ -96,18 +97,17 @@ if(CURL_USE_VENDOR)
 else()
   target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
 endif()
-ament_target_dependencies(${PROJECT_NAME}
-  rcpputils
-  rcutils
-  spdlog
-  yaml_cpp_vendor
+target_link_libraries(${PROJECT_NAME}
+  rcpputils::rcpputils
+  rcutils::rcutils
+  spdlog::spdlog
+  yaml-cpp::yaml-cpp
 )
 if(WIN32)
   # Causes the visibility macros to use dllexport rather than dllimport
   # which is appropriate when building the dll but not consuming it.
   target_compile_definitions(${PROJECT_NAME} PRIVATE "EMAIL_BUILDING_DLL")
 endif()
-target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
 if(EMAIL_HAS_LTTNG_TRACING)
   target_link_libraries(${PROJECT_NAME} ${LTTNG_LIBRARIES})
 endif()
@@ -124,6 +124,7 @@ ament_export_dependencies(
   spdlog_vendor
   spdlog
   yaml_cpp_vendor
+  yaml-cpp
 )
 ament_export_targets(${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_export_libraries(${PROJECT_NAME})
