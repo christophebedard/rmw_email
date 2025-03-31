@@ -14,6 +14,7 @@
 
 #include <gtest/gtest.h>
 
+#include <cstring>
 #include <optional> // NOLINT cpplint mistakes <optional> for a C system header
 #include <string>
 #include <vector>
@@ -153,19 +154,19 @@ TEST(TestUtils, thread_get_set_name)
   email::utils::thread_set_name(name);
   email::utils::thread_get_name(buffer, max_len);
   EXPECT_STREQ(name, buffer);
-  memset(buffer, 0, sizeof(buffer));
+  std::memset(buffer, 0, sizeof(buffer));
 
   char name_long[] = "1234567890123451234";
   email::utils::thread_set_name(name_long);
   email::utils::thread_get_name(buffer, max_len);
   EXPECT_STREQ(name, buffer);
-  memset(buffer, 0, sizeof(buffer));
+  std::memset(buffer, 0, sizeof(buffer));
 
   char name_short[] = "tinky winky";
   email::utils::thread_set_name(name_short);
   email::utils::thread_get_name(buffer, max_len);
   EXPECT_STREQ(name_short, buffer);
-  memset(buffer, 0, sizeof(buffer));
+  std::memset(buffer, 0, sizeof(buffer));
 
   email::utils::thread_set_name(current_name);
 

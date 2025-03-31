@@ -14,6 +14,7 @@
 
 #include <yaml-cpp/yaml.h>
 
+#include <algorithm>
 #include <string>
 
 #include "dynmsg/message_reading.hpp"
@@ -75,7 +76,7 @@ bool yaml_to_msg(
   if (!ros_msg.data && !ros_msg.type_info) {
     return false;
   }
-  memcpy(ros_message, ros_msg.data, members->size_of_);
+  std::copy(ros_msg.data, ros_msg.data + members->size_of_, static_cast<uint8_t *>(ros_message));
   // TODO(christophebedard) figure out if/how/when to deallocate C messages
   // ros_message_destroy_with_allocator(&ros_msg, allocator);
   return true;

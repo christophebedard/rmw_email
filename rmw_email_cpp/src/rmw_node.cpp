@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <algorithm>
 #include <cstring>
 
 #include "rcpputils/scope_exit.hpp"
@@ -93,13 +94,16 @@ extern "C" rmw_node_t * rmw_create_node(
   // Set up node name
   node->name = static_cast<const char *>(rmw_allocate(sizeof(char) * std::strlen(name) + 1));
   RET_ALLOC_X(node->name, return nullptr);
-  memcpy(const_cast<char *>(node->name), name, std::strlen(name) + 1);
+  std::copy(name, name + std::strlen(name) + 1, const_cast<char *>(node->name));
 
   // Set up node namespace
   node->namespace_ =
     static_cast<const char *>(rmw_allocate(sizeof(char) * std::strlen(namespace_) + 1));
   RET_ALLOC_X(node->namespace_, return nullptr);
-  memcpy(const_cast<char *>(node->namespace_), namespace_, std::strlen(namespace_) + 1);
+  std::copy(
+    namespace_,
+    namespace_ + std::strlen(namespace_) + 1,
+    const_cast<char *>(node->namespace_));
 
   cleanup_rmw_email_node.cancel();
   cleanup_node.cancel();

@@ -14,6 +14,7 @@
 
 #include <curl/curl.h>
 
+#include <algorithm>
 #include <cstring>
 #include <memory>
 #include <optional>  // NOLINT cpplint mistakes <optional> for a C system header
@@ -71,7 +72,7 @@ CurlEmailSender::read_payload_callback(void * ptr, size_t size, size_t nmemb, vo
     len = max_size;
     logger()->debug("truncated to len={}", len);
   }
-  memcpy(ptr, data, len);
+  std::copy(data, data + len, static_cast<char *>(ptr));
   upload_ctx->lines_read += len;
   return len;
 }

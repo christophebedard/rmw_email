@@ -12,6 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <algorithm>
 #include <cstring>
 
 #include "email/publisher.hpp"
@@ -82,7 +83,10 @@ static rmw_publisher_t * _create_publisher(
   rmw_publisher->data = pub;
   rmw_publisher->topic_name = reinterpret_cast<char *>(rmw_allocate(std::strlen(topic_name) + 1));
   RET_ALLOC_X(rmw_publisher->topic_name, return nullptr);
-  memcpy(const_cast<char *>(rmw_publisher->topic_name), topic_name, std::strlen(topic_name) + 1);
+  std::copy(
+    topic_name,
+    topic_name + std::strlen(topic_name) + 1,
+    const_cast<char *>(rmw_publisher->topic_name));
   rmw_publisher->options = *publisher_options;
   rmw_publisher->can_loan_messages = false;
 
