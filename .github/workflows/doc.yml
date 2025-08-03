@@ -1,5 +1,6 @@
 name: Documentation
 on:
+  pull_request:
   push:
     branches:
       - rolling
@@ -28,7 +29,7 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v4
       with:
-        ref: rolling
+        ref: christophebedard/fix-design-docs-gen
         fetch-depth: 0
         path: rmw_email
     - name: Gen API docs
@@ -39,17 +40,17 @@ jobs:
         mkdir -p pandoc/email/ && cd pandoc/email/
         sed -i '/christophebedard.com/d' ../../rmw_email/email/doc/design.md
         pandoc ../../rmw_email/email/doc/design.md --filter pandoc-plantuml > index.html
-    - name: Copy docs to gh-pages
-      run: |
-        rm -rf gh-pages/api/
-        mv docs_output/ gh-pages/api/
-        rm -rf gh-pages/design/
-        mv -T pandoc/ gh-pages/design/
-    - name: Commit and push to gh-pages branch
-      run: |
-        cd gh-pages
-        git config --global user.email "3717345+christophebedard@users.noreply.github.com"
-        git config --global user.name "Christophe Bedard [bot]"
-        git add .
-        git commit -m "Update docs"
-        git push origin gh-pages
+    # - name: Copy docs to gh-pages
+    #   run: |
+    #     rm -rf gh-pages/api/
+    #     mv docs_output/ gh-pages/api/
+    #     rm -rf gh-pages/design/
+    #     mv -T pandoc/ gh-pages/design/
+    # - name: Commit and push to gh-pages branch
+    #   run: |
+    #     cd gh-pages
+    #     git config --global user.email "3717345+christophebedard@users.noreply.github.com"
+    #     git config --global user.name "Christophe Bedard [bot]"
+    #     git add .
+    #     git commit -m "Update docs"
+    #     git push origin gh-pages
