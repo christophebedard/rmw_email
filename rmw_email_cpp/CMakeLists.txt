@@ -46,7 +46,7 @@ if(NOT TRACETOOLS_DISABLED)
 endif()
 configure_file(include/${PROJECT_NAME}/config.hpp.in include/${PROJECT_NAME}/config.hpp)
 
-set(${PROJECT_NAME}_SOURCES
+add_library(${PROJECT_NAME}
   src/conversion.cpp
   src/gid.cpp
   src/guard_condition.cpp
@@ -84,34 +84,36 @@ set(${PROJECT_NAME}_SOURCES
   src/rmw_wait.cpp
 )
 
-add_library(${PROJECT_NAME} ${${PROJECT_NAME}_SOURCES})
-
-ament_target_dependencies(${PROJECT_NAME}
-  email
-  dynmsg
-  rcutils
-  rcpputils
-  rosidl_runtime_c
-  rosidl_runtime_cpp
-  rosidl_typesupport_introspection_c
-  rosidl_typesupport_introspection_cpp
-  rmw
-  tracetools
+target_link_libraries(${PROJECT_NAME} PUBLIC
+  dynmsg::dynmsg
+  email::email
+  rcutils::rcutils
+  rcpputils::rcpputils
+  rmw::rmw
+  rosidl_runtime_c::rosidl_runtime_c
+  rosidl_runtime_cpp::rosidl_runtime_cpp
+  rosidl_typesupport_introspection_c::rosidl_typesupport_introspection_c
+  rosidl_typesupport_introspection_cpp::rosidl_typesupport_introspection_cpp
+)
+target_link_libraries(${PROJECT_NAME} PRIVATE
+  tracetools::tracetools
 )
 target_include_directories(${PROJECT_NAME} PRIVATE
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/include>"
 )
 
-ament_export_dependencies(dynmsg)
-ament_export_dependencies(rcutils)
-ament_export_dependencies(rcpputils)
-ament_export_dependencies(rmw)
-ament_export_dependencies(rosidl_runtime_c)
-ament_export_dependencies(rosidl_runtime_cpp)
-ament_export_dependencies(rosidl_typesupport_introspection_c)
-ament_export_dependencies(rosidl_typesupport_introspection_cpp)
-ament_export_dependencies(tracetools)
+ament_export_dependencies(
+  dynmsg
+  rcutils
+  rcpputils
+  rmw
+  rosidl_runtime_c
+  rosidl_runtime_cpp
+  rosidl_typesupport_introspection_c
+  rosidl_typesupport_introspection_cpp
+  tracetools
+)
 
 configure_rmw_library(${PROJECT_NAME})
 ament_export_libraries(${PROJECT_NAME})
@@ -140,7 +142,7 @@ if(BUILD_TESTING)
     src/gid.cpp
     src/identifier.cpp
   )
-  ament_target_dependencies(test_gid email rmw)
+  target_link_libraries(test_gid email::email rmw::rmw)
   target_include_directories(test_gid PRIVATE include/)
 endif()
 
