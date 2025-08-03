@@ -14,11 +14,8 @@ jobs:
         python-version: '3.10'
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y doxygen pandoc plantuml
-        pip3 install pandoc-plantuml-filter
-        wget https://github.com/plantuml/plantuml/releases/download/v1.2023.5/plantuml-1.2023.5.jar
-        chmod +x plantuml-*.jar
+        sudo apt update
+        sudo apt install -y doxygen pandoc plantuml pandoc-plantuml-filter
     - name: Install rosdoc2
       run: |
         pip3 install -U git+https://github.com/ros-infrastructure/rosdoc2.git@main
@@ -41,7 +38,7 @@ jobs:
       run: |
         mkdir -p pandoc/email/ && cd pandoc/email/
         sed -i '/christophebedard.com/d' ../../rmw_email/email/doc/design.md
-        PLANTUML_BIN="$(pwd)/../../plantuml-1.2023.5.jar" pandoc ../../rmw_email/email/doc/design.md --filter pandoc-plantuml > index.html
+        pandoc ../../rmw_email/email/doc/design.md --filter pandoc-plantuml > index.html
     - name: Copy docs to gh-pages
       run: |
         rm -rf gh-pages/api/
