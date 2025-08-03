@@ -12,7 +12,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   add_compile_options(/W4)
 endif()
 
-find_package(ament_cmake_ros REQUIRED)
+find_package(ament_cmake REQUIRED)
 find_package(rcpputils REQUIRED)
 find_package(rcutils REQUIRED)
 find_package(spdlog_vendor REQUIRED)
@@ -118,7 +118,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 )
 ament_export_include_directories(include)
 ament_export_dependencies(
-  ament_cmake_ros
   rcpputils
   rcutils
   spdlog_vendor

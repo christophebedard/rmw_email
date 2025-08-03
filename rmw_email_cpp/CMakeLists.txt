@@ -11,7 +11,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
   add_compile_options(/W4)
 endif()
 
-find_package(ament_cmake_ros REQUIRED)
+find_package(ament_cmake REQUIRED)
 
 # Try to find 'email' and skip building this if not found
 find_package(email QUIET)
