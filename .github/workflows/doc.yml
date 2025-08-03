@@ -36,7 +36,7 @@ jobs:
         path: rmw_email
     - name: Gen API docs
       run: |
-        rosdoc2 build --package-path rmw_email/email/
+        rosdoc2 build --output-directory docs_output --package-path rmw_email/email/
     - name: Gen design docs
       run: |
         mkdir -p pandoc/email/ && cd pandoc/email/
