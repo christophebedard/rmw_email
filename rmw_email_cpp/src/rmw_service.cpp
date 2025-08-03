@@ -149,3 +149,29 @@ extern "C" rmw_ret_t rmw_service_server_is_available(
   *is_available = true;
   return RMW_RET_OK;
 }
+
+extern "C" rmw_ret_t rmw_count_services(
+  const rmw_node_t * node,
+  const char * service_name,
+  size_t * count)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(node, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    node,
+    node->implementation_identifier,
+    rmw_email_cpp::identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_ARGUMENT_FOR_NULL(service_name, RMW_RET_INVALID_ARGUMENT);
+
+  // Validate service name
+  const rmw_qos_profile_t qos{.avoid_ros_namespace_conventions = false};
+  rmw_ret_t ret = rmw_email_cpp::validate_service_name(service_name, &qos);
+  if (RMW_RET_OK != ret) {
+    return ret;
+  }
+
+  RMW_CHECK_ARGUMENT_FOR_NULL(count, RMW_RET_INVALID_ARGUMENT);
+  // TODO(christophebedard) figure out
+  *count = 1u;
+  return RMW_RET_OK;
+}
