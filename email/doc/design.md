@@ -402,7 +402,7 @@ ServiceClient "0..*" o-- WaitSet
 ServiceServer "0..*" o-- WaitSet
 GuardCondition "0..*" o-- "0..1" WaitSet
 
-class wait. {
+class wait {
    .. Subscription ..
    +wait_for_message(Subscription * subscription, milliseconds timeout): string
    +wait_for_message_with_info(Subscription * subscription, milliseconds timeout): pair<string, MessageInfo>
