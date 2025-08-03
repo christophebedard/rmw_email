@@ -12,6 +12,7 @@
   <author email="bedard.christophe@gmail.com">Christophe Bedard</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <buildtool_depend>ament_cmake_ros_core</buildtool_depend>
 
   <depend>dynmsg</depend>
   <depend>email</depend>
