@@ -8,7 +8,7 @@
   <license>Apache License 2.0</license>
   <author email="bedard.christophe@gmail.com">Christophe Bedard</author>
 
-  <buildtool_depend>ament_cmake_ros</buildtool_depend>
+  <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>email</depend>
 

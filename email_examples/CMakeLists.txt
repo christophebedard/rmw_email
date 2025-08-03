@@ -14,7 +14,7 @@ endif()
 
 include(cmake/add_example.cmake)
 
-find_package(ament_cmake_ros REQUIRED)
+find_package(ament_cmake REQUIRED)
 find_package(email REQUIRED)
 
 # Examples & executables for testing the lib
