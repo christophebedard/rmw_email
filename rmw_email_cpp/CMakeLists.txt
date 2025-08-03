@@ -12,6 +12,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "MSVC")
 endif()
 
 find_package(ament_cmake REQUIRED)
+find_package(ament_cmake_ros_core REQUIRED)
 
 # Try to find 'email' and skip building this if not found
 find_package(email QUIET)
