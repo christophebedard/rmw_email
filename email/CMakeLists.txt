@@ -50,7 +50,7 @@ endif()
 configure_file(include/${PROJECT_NAME}/config.hpp.in include/${PROJECT_NAME}/config.hpp)
 
 # Lib
-set(SOURCES
+add_library(${PROJECT_NAME} SHARED
   src/communication_info.cpp
   src/context.cpp
   src/curl/context.cpp
@@ -70,6 +70,7 @@ set(SOURCES
   src/guard_condition.cpp
   src/init.cpp
   src/log.cpp
+  $<IF:$<BOOL:${EMAIL_HAS_LTTNG_TRACING}>,src/lttng.cpp,>
   src/message_info.cpp
   src/named_object.cpp
   src/options.cpp
@@ -88,17 +89,11 @@ set(SOURCES
   src/wait_set.cpp
 )
 
-if(EMAIL_HAS_LTTNG_TRACING)
-  list(APPEND SOURCES src/lttng.cpp)
-endif()
-
-add_library(${PROJECT_NAME} SHARED ${SOURCES})
-if(CURL_USE_VENDOR)
-  ament_target_dependencies(${PROJECT_NAME} libcurl_vendor)
-else()
-  target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES})
-endif()
-target_link_libraries(${PROJECT_NAME}
+target_link_libraries(${PROJECT_NAME} PRIVATE
+  $<IF:$<BOOL:${CURL_USE_VENDOR}>,CURL::libcurl,${CURL_LIBRARIES}>
+  $<IF:$<BOOL:${EMAIL_HAS_LTTNG_TRACING}>,${LTTNG_LIBRARIES},>
+)
+target_link_libraries(${PROJECT_NAME} PUBLIC
   rcpputils::rcpputils
   rcutils::rcutils
   spdlog::spdlog
@@ -108,9 +103,6 @@ if(WIN32)
   # Causes the visibility macros to use dllexport rather than dllimport
   # which is appropriate when building the dll but not consuming it.
   target_compile_definitions(${PROJECT_NAME} PRIVATE "EMAIL_BUILDING_DLL")
-endif()
-if(EMAIL_HAS_LTTNG_TRACING)
-  target_link_libraries(${PROJECT_NAME} ${LTTNG_LIBRARIES})
 endif()
 target_include_directories(${PROJECT_NAME} PUBLIC
   "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"

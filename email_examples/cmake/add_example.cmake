@@ -24,8 +24,8 @@ macro(add_example name)
   add_executable(${name}
     src/${name}.cpp
   )
-  ament_target_dependencies(${name}
-    email
+  target_link_libraries(${name} PRIVATE
+    email::email
   )
   install(TARGETS
     ${name}
