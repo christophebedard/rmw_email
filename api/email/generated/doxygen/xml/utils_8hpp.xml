@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="utils_8hpp" kind="file" language="C++">
     <compoundname>utils.hpp</compoundname>
     <includes local="no">memory</includes>
@@ -30,47 +30,33 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>email/visibility_control.hpp</label>
+        <link refid="visibility__control_8hpp"/>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
       <node id="4">
         <label>stdexcept</label>
       </node>
       <node id="5">
         <label>string</label>
       </node>
-      <node id="7">
-        <label>yaml-cpp/yaml.h</label>
-      </node>
-      <node id="3">
-        <label>optional</label>
-      </node>
       <node id="6">
         <label>vector</label>
       </node>
-      <node id="2">
-        <label>memory</label>
-      </node>
-      <node id="8">
-        <label>email/visibility_control.hpp</label>
-        <link refid="visibility__control_8hpp"/>
+      <node id="7">
+        <label>yaml-cpp/yaml.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="12">
-        <label>include/email/email.hpp</label>
-        <link refid="email_8hpp"/>
-      </node>
-      <node id="15">
-        <label>include/email/service_server.hpp</label>
-        <link refid="service__server_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>include/email/email/curl_receiver.hpp</label>
-        <link refid="curl__receiver_8hpp"/>
+      <node id="3">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
       </node>
       <node id="2">
         <label>include/email/curl/context.hpp</label>
@@ -80,12 +66,66 @@
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/email/utils.hpp</label>
-        <link refid="utils_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="4">
+        <label>include/email/curl/executor.hpp</label>
+        <link refid="executor_8hpp"/>
+        <childnode refid="5" relation="include">
         </childnode>
-        <childnode refid="7" relation="include">
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/email/email.hpp</label>
+        <link refid="email_8hpp"/>
+      </node>
+      <node id="5">
+        <label>include/email/email/curl_receiver.hpp</label>
+        <link refid="curl__receiver_8hpp"/>
+      </node>
+      <node id="6">
+        <label>include/email/email/curl_sender.hpp</label>
+        <link refid="curl__sender_8hpp"/>
+      </node>
+      <node id="9">
+        <label>include/email/email/handler.hpp</label>
+        <link refid="handler_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/email/email/intra_receiver.hpp</label>
+        <link refid="intra__receiver_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+      </node>
+      <node id="20">
+        <label>include/email/email/intra_sender.hpp</label>
+        <link refid="intra__sender_8hpp"/>
+      </node>
+      <node id="8">
+        <label>include/email/email/polling_manager.hpp</label>
+        <link refid="polling__manager_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>include/email/email/receiver.hpp</label>
+        <link refid="receiver_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
         </childnode>
       </node>
       <node id="21">
@@ -98,50 +138,6 @@
         <childnode refid="20" relation="include">
         </childnode>
         <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>include/email/subscription.hpp</label>
-        <link refid="subscription_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/email/curl/executor.hpp</label>
-        <link refid="executor_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>include/email/service_handler.hpp</label>
-        <link refid="service__handler_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="15" relation="include">
         </childnode>
@@ -186,40 +182,58 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>include/email/email/handler.hpp</label>
-        <link refid="handler_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/email/email/curl_sender.hpp</label>
-        <link refid="curl__sender_8hpp"/>
-      </node>
-      <node id="19">
-        <label>include/email/email/intra_receiver.hpp</label>
-        <link refid="intra__receiver_8hpp"/>
-        <childnode refid="20" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>include/email/email/polling_manager.hpp</label>
-        <link refid="polling__manager_8hpp"/>
+      <node id="24">
+        <label>include/email/options.hpp</label>
+        <link refid="options_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+      </node>
+      <node id="22">
+        <label>include/email/publisher.hpp</label>
+        <link refid="publisher_8hpp"/>
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
+      </node>
+      <node id="11">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/email/service_handler.hpp</label>
+        <link refid="service__handler_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="15">
+        <label>include/email/service_server.hpp</label>
+        <link refid="service__server_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/email/subscription.hpp</label>
+        <link refid="subscription_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
         </childnode>
       </node>
       <node id="16">
@@ -230,38 +244,24 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="18">
-        <label>include/email/email/receiver.hpp</label>
-        <link refid="receiver_8hpp"/>
-        <childnode refid="3" relation="include">
+      <node id="1">
+        <label>include/email/utils.hpp</label>
+        <link refid="utils_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="20">
-        <label>include/email/email/intra_sender.hpp</label>
-        <link refid="intra__sender_8hpp"/>
-      </node>
-      <node id="3">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
-      </node>
-      <node id="22">
-        <label>include/email/publisher.hpp</label>
-        <link refid="publisher_8hpp"/>
+      <node id="13">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
         <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
       </node>
-      <node id="24">
-        <label>include/email/options.hpp</label>
-        <link refid="options_8hpp"/>
-        <childnode refid="3" relation="include">
+      <node id="14">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -331,17 +331,17 @@
 <codeline lineno="78"><highlight class="normal"></highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="83"><highlight class="normal">std::optional&lt;std::string&gt;</highlight></codeline>
-<codeline lineno="84"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a88a5169377c5fdee4455ee6b38723745" kindref="member">read_file</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>path);</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1ae3d4c984287d92db2a90319ba0ff6762" kindref="member">read_file</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>path);</highlight></codeline>
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="87"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="93"><highlight class="normal">std::vector&lt;std::string&gt;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1" kindref="member">split_email_list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>list,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>has_space_after_comma<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a9ac0b492df90bd936e286b50f51ef68e" kindref="member">split_email_list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>list,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>has_space_after_comma<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="102"><highlight class="normal">std::vector&lt;std::string&gt;</highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1" kindref="member">split_email_list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>YAML::Node<sp/>&amp;<sp/>node);</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a9ac0b492df90bd936e286b50f51ef68e" kindref="member">split_email_list</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>YAML::Node<sp/>&amp;<sp/>node);</highlight></codeline>
 <codeline lineno="104"><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
@@ -356,17 +356,17 @@
 <codeline lineno="128"><highlight class="normal"></highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="133"><highlight class="normal">std::optional&lt;uint32_t&gt;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a1426a6b72c22a41e717f2dddb9fe6f47" kindref="member">optional_stoul</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>str);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1ab9cbd8c73d22d42b906e858e79901da7" kindref="member">optional_stoul</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>str);</highlight></codeline>
 <codeline lineno="135"><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="142"><highlight class="normal">std::optional&lt;int&gt;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a2a5c92f770d0c27fefe339dd2ba426a1" kindref="member">optional_stoi</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>str);</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a43baabdc6dccb93ef791c8b86b095df7" kindref="member">optional_stoi</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>str);</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="151"><highlight class="normal">std::optional&lt;int64_t&gt;</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a205d62958aa3a9111c4c17da561743fc" kindref="member">optional_stoll</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>str);</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><ref refid="namespaceemail_1_1utils_1a84320d04aefddcdd33d752c89783f4b6" kindref="member">optional_stoll</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>str);</highlight></codeline>
 <codeline lineno="153"><highlight class="normal"></highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>

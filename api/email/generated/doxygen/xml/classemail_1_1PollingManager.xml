@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1PollingManager" kind="class" language="C++" prot="public">
     <compoundname>email::PollingManager</compoundname>
     <includes local="no">polling_manager.hpp</includes>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classemail_1_1PollingManager_1afa05fad5b42110b2dfcda3f5103d0de6" prot="public" static="no">
         <type>std::function&lt; void(const struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &amp;)&gt;</type>
         <definition>using email::PollingManager::HandlerFunction =  std::function&lt;void (const struct EmailData &amp;)&gt;</definition>
         <argsstring></argsstring>
         <name>HandlerFunction</name>
+        <qualifiedname>email::PollingManager::HandlerFunction</qualifiedname>
         <briefdescription>
 <para>Alias for handler function. </para>
         </briefdescription>
@@ -18,13 +19,14 @@
         </inbodydescription>
         <location file="include/email/email/polling_manager.hpp" line="56" column="3" bodyfile="include/email/email/polling_manager.hpp" bodystart="56" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1PollingManager_1a6a1e7d02e1aecbf3dafe8f23ee054b6d" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref> &gt;</type>
         <definition>std::shared_ptr&lt;EmailReceiver&gt; email::PollingManager::receiver_</definition>
         <argsstring></argsstring>
         <name>receiver_</name>
+        <qualifiedname>email::PollingManager::receiver_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -38,6 +40,7 @@
         <definition>const std::optional&lt;std::chrono::nanoseconds&gt; email::PollingManager::polling_period_</definition>
         <argsstring></argsstring>
         <name>polling_period_</name>
+        <qualifiedname>email::PollingManager::polling_period_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -51,6 +54,7 @@
         <definition>bool email::PollingManager::has_started_</definition>
         <argsstring></argsstring>
         <name>has_started_</name>
+        <qualifiedname>email::PollingManager::has_started_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -64,6 +68,7 @@
         <definition>std::atomic_bool email::PollingManager::do_shutdown_</definition>
         <argsstring></argsstring>
         <name>do_shutdown_</name>
+        <qualifiedname>email::PollingManager::do_shutdown_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -77,6 +82,7 @@
         <definition>std::thread email::PollingManager::thread_</definition>
         <argsstring></argsstring>
         <name>thread_</name>
+        <qualifiedname>email::PollingManager::thread_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -90,6 +96,7 @@
         <definition>std::mutex email::PollingManager::handlers_mutex_</definition>
         <argsstring></argsstring>
         <name>handlers_mutex_</name>
+        <qualifiedname>email::PollingManager::handlers_mutex_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -103,6 +110,7 @@
         <definition>std::vector&lt;HandlerFunction&gt; email::PollingManager::handlers_</definition>
         <argsstring></argsstring>
         <name>handlers_</name>
+        <qualifiedname>email::PollingManager::handlers_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -116,6 +124,7 @@
         <definition>std::shared_ptr&lt;Logger&gt; email::PollingManager::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::PollingManager::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -124,13 +133,14 @@
         </inbodydescription>
         <location file="include/email/email/polling_manager.hpp" line="96" column="19" bodyfile="include/email/email/polling_manager.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1PollingManager_1a21701ede1e27783c03b8f4103f057387" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::PollingManager::PollingManager</definition>
         <argsstring>(std::shared_ptr&lt; EmailReceiver &gt; receiver, const std::optional&lt; std::chrono::nanoseconds &gt; polling_period)</argsstring>
         <name>PollingManager</name>
+        <qualifiedname>email::PollingManager::PollingManager</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref> &gt;</type>
           <declname>receiver</declname>
@@ -171,6 +181,7 @@
         <definition>email::PollingManager::~PollingManager</definition>
         <argsstring>()</argsstring>
         <name>~PollingManager</name>
+        <qualifiedname>email::PollingManager::~PollingManager</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -184,6 +195,7 @@
         <definition>void email::PollingManager::register_handler</definition>
         <argsstring>(const HandlerFunction &amp;handler)</argsstring>
         <name>register_handler</name>
+        <qualifiedname>email::PollingManager::register_handler</qualifiedname>
         <param>
           <type>const <ref refid="classemail_1_1PollingManager_1afa05fad5b42110b2dfcda3f5103d0de6" kindref="member">HandlerFunction</ref> &amp;</type>
           <declname>handler</declname>
@@ -213,6 +225,7 @@
         <definition>bool email::PollingManager::has_started</definition>
         <argsstring>() const</argsstring>
         <name>has_started</name>
+        <qualifiedname>email::PollingManager::has_started</qualifiedname>
         <briefdescription>
 <para>Get status. </para>
         </briefdescription>
@@ -230,6 +243,7 @@
         <definition>void email::PollingManager::start</definition>
         <argsstring>()</argsstring>
         <name>start</name>
+        <qualifiedname>email::PollingManager::start</qualifiedname>
         <briefdescription>
 <para>Start manager. </para>
         </briefdescription>
@@ -244,6 +258,7 @@
         <definition>void email::PollingManager::shutdown</definition>
         <argsstring>()</argsstring>
         <name>shutdown</name>
+        <qualifiedname>email::PollingManager::shutdown</qualifiedname>
         <briefdescription>
 <para>Shut down manager and internal thread. </para>
         </briefdescription>
@@ -253,13 +268,14 @@
         </inbodydescription>
         <location file="include/email/email/polling_manager.hpp" line="80" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classemail_1_1PollingManager_1a716352b352b0e550db0e0f97e07c0946" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void email::PollingManager::poll_thread</definition>
         <argsstring>()</argsstring>
         <name>poll_thread</name>
+        <qualifiedname>email::PollingManager::poll_thread</qualifiedname>
         <briefdescription>
 <para>Thread function for polling for new emails. </para>
         </briefdescription>
@@ -269,7 +285,7 @@
         </inbodydescription>
         <location file="include/email/email/polling_manager.hpp" line="87" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Manager for polling for new emails. </para>
     </briefdescription>

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="macros_8hpp" kind="file" language="C++">
     <compoundname>macros.hpp</compoundname>
     <includes local="no">memory</includes>
@@ -42,6 +42,54 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="8">
+        <label>include/email/communication_info.hpp</label>
+        <link refid="communication__info_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
+      </node>
+      <node id="3">
+        <label>include/email/curl/context.hpp</label>
+        <link refid="curl_2context_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/email/curl/executor.hpp</label>
+        <link refid="executor_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/email/email.hpp</label>
+        <link refid="email_8hpp"/>
+      </node>
+      <node id="5">
+        <label>include/email/email/curl_receiver.hpp</label>
+        <link refid="curl__receiver_8hpp"/>
+      </node>
+      <node id="6">
+        <label>include/email/email/curl_sender.hpp</label>
+        <link refid="curl__sender_8hpp"/>
+      </node>
+      <node id="20">
+        <label>include/email/email/handler.hpp</label>
+        <link refid="handler_8hpp"/>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
       <node id="7">
         <label>include/email/email/info.hpp</label>
         <link refid="email_2info_8hpp"/>
@@ -86,31 +134,47 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>include/email/email.hpp</label>
-        <link refid="email_8hpp"/>
-      </node>
-      <node id="18">
-        <label>include/email/service_server.hpp</label>
-        <link refid="service__server_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
+      <node id="21">
+        <label>include/email/email/intra_receiver.hpp</label>
+        <link refid="intra__receiver_8hpp"/>
+        <childnode refid="22" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>include/email/email/curl_receiver.hpp</label>
-        <link refid="curl__receiver_8hpp"/>
+      <node id="22">
+        <label>include/email/email/intra_sender.hpp</label>
+        <link refid="intra__sender_8hpp"/>
       </node>
-      <node id="3">
-        <label>include/email/curl/context.hpp</label>
-        <link refid="curl_2context_8hpp"/>
+      <node id="23">
+        <label>include/email/email/payload_utils.hpp</label>
+        <link refid="payload__utils_8hpp"/>
+      </node>
+      <node id="24">
+        <label>include/email/email/polling_manager.hpp</label>
+        <link refid="polling__manager_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="20" relation="include">
         </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>include/email/email/receiver.hpp</label>
+        <link refid="receiver_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="26">
+        <label>include/email/email/response_utils.hpp</label>
+        <link refid="response__utils_8hpp"/>
       </node>
       <node id="27">
         <label>include/email/email/sender.hpp</label>
@@ -122,96 +186,6 @@
         <childnode refid="22" relation="include">
         </childnode>
         <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>include/email/subscription.hpp</label>
-        <link refid="subscription_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/email/curl/executor.hpp</label>
-        <link refid="executor_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="33">
-        <label>include/email/service.hpp</label>
-        <link refid="service_8hpp"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-      </node>
-      <node id="31">
-        <label>include/email/gid_object.hpp</label>
-        <link refid="gid__object_8hpp"/>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="37">
-        <label>include/email/safe_queue.hpp</label>
-        <link refid="safe__queue_8hpp"/>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>include/email/safe_map.hpp</label>
-        <link refid="safe__map_8hpp"/>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>include/email/communication_info.hpp</label>
-        <link refid="communication__info_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>include/email/service_handler.hpp</label>
-        <link refid="service__handler_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
         </childnode>
         <childnode refid="18" relation="include">
         </childnode>
@@ -234,6 +208,20 @@
         <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>include/email/gid_object.hpp</label>
+        <link refid="gid__object_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="34">
+        <label>include/email/guard_condition.hpp</label>
+        <link refid="guard__condition_8hpp"/>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="1">
@@ -294,34 +282,94 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="34">
-        <label>include/email/guard_condition.hpp</label>
-        <link refid="guard__condition_8hpp"/>
-        <childnode refid="13" relation="include">
+      <node id="9">
+        <label>include/email/message_info.hpp</label>
+        <link refid="message__info_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="20">
-        <label>include/email/email/handler.hpp</label>
-        <link refid="handler_8hpp"/>
+      <node id="35">
+        <label>include/email/named_object.hpp</label>
+        <link refid="named__object_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+      </node>
+      <node id="29">
+        <label>include/email/options.hpp</label>
+        <link refid="options_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="32">
+        <label>include/email/pub_sub.hpp</label>
+        <link refid="pub__sub_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="28">
+        <label>include/email/publisher.hpp</label>
+        <link refid="publisher_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>include/email/safe_map.hpp</label>
+        <link refid="safe__map_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
         <childnode refid="17" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>include/email/safe_queue.hpp</label>
+        <link refid="safe__queue_8hpp"/>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>include/email/email/curl_sender.hpp</label>
-        <link refid="curl__sender_8hpp"/>
-      </node>
-      <node id="21">
-        <label>include/email/email/intra_receiver.hpp</label>
-        <link refid="intra__receiver_8hpp"/>
-        <childnode refid="22" relation="include">
+      <node id="33">
+        <label>include/email/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
-      <node id="12">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
+      <node id="16">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
         <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/email/service_handler.hpp</label>
+        <link refid="service__handler_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -338,16 +386,32 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="24">
-        <label>include/email/email/polling_manager.hpp</label>
-        <link refid="polling__manager_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="19">
+        <label>include/email/service_request.hpp</label>
+        <link refid="service__request_8hpp"/>
+        <childnode refid="18" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="12" relation="include">
         </childnode>
-        <childnode refid="17" relation="include">
+      </node>
+      <node id="18">
+        <label>include/email/service_server.hpp</label>
+        <link refid="service__server_8hpp"/>
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="14" relation="include">
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/email/subscription.hpp</label>
+        <link refid="subscription_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="14">
@@ -356,14 +420,6 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>include/email/service_request.hpp</label>
-        <link refid="service__request_8hpp"/>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="38">
@@ -378,76 +434,20 @@
         <childnode refid="15" relation="include">
         </childnode>
       </node>
-      <node id="23">
-        <label>include/email/email/payload_utils.hpp</label>
-        <link refid="payload__utils_8hpp"/>
-      </node>
-      <node id="25">
-        <label>include/email/email/receiver.hpp</label>
-        <link refid="receiver_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="22">
-        <label>include/email/email/intra_sender.hpp</label>
-        <link refid="intra__sender_8hpp"/>
-      </node>
-      <node id="35">
-        <label>include/email/named_object.hpp</label>
-        <link refid="named__object_8hpp"/>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
-      </node>
-      <node id="32">
-        <label>include/email/pub_sub.hpp</label>
-        <link refid="pub__sub_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="26">
-        <label>include/email/email/response_utils.hpp</label>
-        <link refid="response__utils_8hpp"/>
-      </node>
-      <node id="28">
-        <label>include/email/publisher.hpp</label>
-        <link refid="publisher_8hpp"/>
+      <node id="12">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
       </node>
-      <node id="9">
-        <label>include/email/message_info.hpp</label>
-        <link refid="message__info_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="29">
-        <label>include/email/options.hpp</label>
-        <link refid="options_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="13">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
-      <sectiondef kind="define">
+    <sectiondef kind="define">
       <memberdef kind="define" id="macros_8hpp_1a63182df5328e6f5ffc3eb22859132adf" prot="public" static="no">
         <name>EMAIL_SHARED_PTR_CONST</name>
         <param><defname>name</defname></param>
@@ -458,7 +458,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/macros.hpp" line="20" column="9" bodyfile="include/email/macros.hpp" bodystart="20" bodyend="-1"/>
+        <location file="include/email/macros.hpp" line="20" column="9" bodyfile="include/email/macros.hpp" bodystart="20" bodyend="21"/>
       </memberdef>
       <memberdef kind="define" id="macros_8hpp_1a976d2e468dffeeeb1bf3ca99c127fa4e" prot="public" static="no">
         <name>EMAIL_DISABLE_COPY</name>
@@ -473,7 +473,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/macros.hpp" line="28" column="9" bodyfile="include/email/macros.hpp" bodystart="28" bodyend="-1"/>
+        <location file="include/email/macros.hpp" line="28" column="9" bodyfile="include/email/macros.hpp" bodystart="28" bodyend="30"/>
       </memberdef>
       <memberdef kind="define" id="macros_8hpp_1ad5446eac67f26846b66708ecf55bf0aa" prot="public" static="no">
         <name>EMAIL_SHARED_PTR</name>
@@ -486,7 +486,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/macros.hpp" line="35" column="9" bodyfile="include/email/macros.hpp" bodystart="35" bodyend="-1"/>
+        <location file="include/email/macros.hpp" line="35" column="9" bodyfile="include/email/macros.hpp" bodystart="35" bodyend="36"/>
       </memberdef>
       <memberdef kind="define" id="macros_8hpp_1afb828ba1d458a13870c719025fcbf806" prot="public" static="no">
         <name>EMAIL_WEAK_PTR</name>
@@ -499,9 +499,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/macros.hpp" line="41" column="9" bodyfile="include/email/macros.hpp" bodystart="41" bodyend="-1"/>
+        <location file="include/email/macros.hpp" line="41" column="9" bodyfile="include/email/macros.hpp" bodystart="41" bodyend="42"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

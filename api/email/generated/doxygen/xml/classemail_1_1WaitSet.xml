@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1WaitSet" kind="class" language="C++" prot="public">
     <compoundname>email::WaitSet</compoundname>
     <includes local="no">wait_set.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1WaitSet_1adbbb882f56651e379f91c849d066e55d" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; email::WaitSet::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::WaitSet::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::vector&lt;Subscription *&gt; email::WaitSet::subscriptions_</definition>
         <argsstring></argsstring>
         <name>subscriptions_</name>
+        <qualifiedname>email::WaitSet::subscriptions_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>std::vector&lt;ServiceClient *&gt; email::WaitSet::clients_</definition>
         <argsstring></argsstring>
         <name>clients_</name>
+        <qualifiedname>email::WaitSet::clients_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>std::vector&lt;ServiceServer *&gt; email::WaitSet::servers_</definition>
         <argsstring></argsstring>
         <name>servers_</name>
+        <qualifiedname>email::WaitSet::servers_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>std::vector&lt;GuardCondition *&gt; email::WaitSet::guard_conditions_</definition>
         <argsstring></argsstring>
         <name>guard_conditions_</name>
+        <qualifiedname>email::WaitSet::guard_conditions_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -69,13 +74,14 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="185" column="15" bodyfile="include/email/wait_set.hpp" bodystart="185" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1WaitSet_1a1f9b0ab4f1191682198dcfd2746ee1eb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::WaitSet::WaitSet</definition>
         <argsstring>()</argsstring>
         <name>WaitSet</name>
+        <qualifiedname>email::WaitSet::WaitSet</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
@@ -90,6 +96,7 @@
         <definition>email::WaitSet::~WaitSet</definition>
         <argsstring>()</argsstring>
         <name>~WaitSet</name>
+        <qualifiedname>email::WaitSet::~WaitSet</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -103,6 +110,7 @@
         <definition>bool email::WaitSet::wait</definition>
         <argsstring>(const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait</name>
+        <qualifiedname>email::WaitSet::wait</qualifiedname>
         <param>
           <type>const std::chrono::milliseconds</type>
           <declname>timeout</declname>
@@ -138,6 +146,7 @@
         <definition>void email::WaitSet::add_subscription</definition>
         <argsstring>(Subscription *subscription)</argsstring>
         <name>add_subscription</name>
+        <qualifiedname>email::WaitSet::add_subscription</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1Subscription" kindref="compound">Subscription</ref> *</type>
           <declname>subscription</declname>
@@ -157,6 +166,7 @@
         <definition>void email::WaitSet::add_client</definition>
         <argsstring>(ServiceClient *client)</argsstring>
         <name>add_client</name>
+        <qualifiedname>email::WaitSet::add_client</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1ServiceClient" kindref="compound">ServiceClient</ref> *</type>
           <declname>client</declname>
@@ -176,6 +186,7 @@
         <definition>void email::WaitSet::add_server</definition>
         <argsstring>(ServiceServer *server)</argsstring>
         <name>add_server</name>
+        <qualifiedname>email::WaitSet::add_server</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1ServiceServer" kindref="compound">ServiceServer</ref> *</type>
           <declname>server</declname>
@@ -195,6 +206,7 @@
         <definition>void email::WaitSet::add_guard_condition</definition>
         <argsstring>(GuardCondition *guard_condition)</argsstring>
         <name>add_guard_condition</name>
+        <qualifiedname>email::WaitSet::add_guard_condition</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1GuardCondition" kindref="compound">GuardCondition</ref> *</type>
           <declname>guard_condition</declname>
@@ -209,11 +221,12 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="100" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1WaitSet_1a14e663661e0c5667a7ede299a0b3552d" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1WaitSet_1a5dd2903ad4839750a9089f3d8d309974" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="classemail_1_1Subscription" kindref="compound">Subscription</ref> * &gt; &amp;</type>
-        <definition>const std::vector&lt;Subscription *&gt;&amp; email::WaitSet::get_subscriptions</definition>
+        <definition>const std::vector&lt; Subscription * &gt; &amp; email::WaitSet::get_subscriptions</definition>
         <argsstring>() const</argsstring>
         <name>get_subscriptions</name>
+        <qualifiedname>email::WaitSet::get_subscriptions</qualifiedname>
         <briefdescription>
 <para>Get the subscriptions. </para>
         </briefdescription>
@@ -223,11 +236,12 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="105" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1WaitSet_1a290d51b59a3929a55f57082628456942" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1WaitSet_1a7b8f5ba5db1b183db0c1c0a512e2d472" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="classemail_1_1ServiceClient" kindref="compound">ServiceClient</ref> * &gt; &amp;</type>
-        <definition>const std::vector&lt;ServiceClient *&gt;&amp; email::WaitSet::get_clients</definition>
+        <definition>const std::vector&lt; ServiceClient * &gt; &amp; email::WaitSet::get_clients</definition>
         <argsstring>() const</argsstring>
         <name>get_clients</name>
+        <qualifiedname>email::WaitSet::get_clients</qualifiedname>
         <briefdescription>
 <para>Get the clients. </para>
         </briefdescription>
@@ -237,11 +251,12 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="110" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1WaitSet_1adb793cb528d1c21a889f247ee64deef8" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1WaitSet_1a5dbacc452ee901804198744322b78197" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="classemail_1_1ServiceServer" kindref="compound">ServiceServer</ref> * &gt; &amp;</type>
-        <definition>const std::vector&lt;ServiceServer *&gt;&amp; email::WaitSet::get_servers</definition>
+        <definition>const std::vector&lt; ServiceServer * &gt; &amp; email::WaitSet::get_servers</definition>
         <argsstring>() const</argsstring>
         <name>get_servers</name>
+        <qualifiedname>email::WaitSet::get_servers</qualifiedname>
         <briefdescription>
 <para>Get the servers. </para>
         </briefdescription>
@@ -251,11 +266,12 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="115" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1WaitSet_1afb3e6df1fbaad0de2ac18dc3c20afd9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1WaitSet_1acc8438d4b40cac5cfe7326f442ec2f47" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::vector&lt; <ref refid="classemail_1_1GuardCondition" kindref="compound">GuardCondition</ref> * &gt; &amp;</type>
-        <definition>const std::vector&lt;GuardCondition *&gt;&amp; email::WaitSet::get_guard_conditions</definition>
+        <definition>const std::vector&lt; GuardCondition * &gt; &amp; email::WaitSet::get_guard_conditions</definition>
         <argsstring>() const</argsstring>
         <name>get_guard_conditions</name>
+        <qualifiedname>email::WaitSet::get_guard_conditions</qualifiedname>
         <briefdescription>
 <para>Get the guard conditions. </para>
         </briefdescription>
@@ -270,6 +286,7 @@
         <definition>void email::WaitSet::clear</definition>
         <argsstring>()</argsstring>
         <name>clear</name>
+        <qualifiedname>email::WaitSet::clear</qualifiedname>
         <briefdescription>
 <para>Clear the wait set content. </para>
         </briefdescription>
@@ -280,13 +297,14 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="128" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-static-func">
+    </sectiondef>
+    <sectiondef kind="private-static-func">
       <memberdef kind="function" id="classemail_1_1WaitSet_1a6f285fa0126ce3a2e653ff792bcb44c0" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>static void email::WaitSet::check_guard_condition</definition>
         <argsstring>(GuardCondition *guard_condition)</argsstring>
         <name>check_guard_condition</name>
+        <qualifiedname>email::WaitSet::check_guard_condition</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1GuardCondition" kindref="compound">GuardCondition</ref> *</type>
           <declname>guard_condition</declname>
@@ -325,6 +343,7 @@
         <definition>static void email::WaitSet::release_guard_conditions</definition>
         <argsstring>(std::vector&lt; GuardCondition * &gt; &amp;guard_condition)</argsstring>
         <name>release_guard_conditions</name>
+        <qualifiedname>email::WaitSet::release_guard_conditions</qualifiedname>
         <param>
           <type>std::vector&lt; <ref refid="classemail_1_1GuardCondition" kindref="compound">GuardCondition</ref> * &gt; &amp;</type>
           <declname>guard_condition</declname>
@@ -349,8 +368,8 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="153" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classemail_1_1WaitSet_1a0675e2b056dd69d4bbe68f0287897ca2" prot="private" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -361,6 +380,7 @@
         <definition>void email::WaitSet::apply_status</definition>
         <argsstring>(std::vector&lt; T &gt; &amp;objects, const std::vector&lt; bool &gt; &amp;ready)</argsstring>
         <name>apply_status</name>
+        <qualifiedname>email::WaitSet::apply_status</qualifiedname>
         <param>
           <type>std::vector&lt; T &gt; &amp;</type>
           <declname>objects</declname>
@@ -406,11 +426,12 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="166" column="3" bodyfile="include/email/wait_set.hpp" bodystart="166" bodyend="173"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1WaitSet_1aee87e2f80de8f7ee23031980dc4de50d" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1WaitSet_1ad28f6e33cb7ac142089426325ba8376a" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::function&lt; bool()&gt;</type>
-        <definition>std::function&lt;bool()&gt; email::WaitSet::get_loop_predicate</definition>
+        <definition>std::function&lt; bool()&gt; email::WaitSet::get_loop_predicate</definition>
         <argsstring>(std::chrono::nanoseconds timeout_ns, std::chrono::steady_clock::time_point start)</argsstring>
         <name>get_loop_predicate</name>
+        <qualifiedname>email::WaitSet::get_loop_predicate</qualifiedname>
         <param>
           <type>std::chrono::nanoseconds</type>
           <declname>timeout_ns</declname>
@@ -428,7 +449,7 @@
         </inbodydescription>
         <location file="include/email/wait_set.hpp" line="177" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Wait set. </para>
     </briefdescription>
@@ -445,11 +466,11 @@
       <member refid="classemail_1_1WaitSet_1a6f285fa0126ce3a2e653ff792bcb44c0" prot="private" virt="non-virtual"><scope>email::WaitSet</scope><name>check_guard_condition</name></member>
       <member refid="classemail_1_1WaitSet_1a7fa89429ff3e7928dd747c75e7ba2e58" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>clear</name></member>
       <member refid="classemail_1_1WaitSet_1a458007f3f534c5020901bda0e53dbf42" prot="private" virt="non-virtual"><scope>email::WaitSet</scope><name>clients_</name></member>
-      <member refid="classemail_1_1WaitSet_1a290d51b59a3929a55f57082628456942" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_clients</name></member>
-      <member refid="classemail_1_1WaitSet_1afb3e6df1fbaad0de2ac18dc3c20afd9a" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_guard_conditions</name></member>
-      <member refid="classemail_1_1WaitSet_1aee87e2f80de8f7ee23031980dc4de50d" prot="private" virt="non-virtual"><scope>email::WaitSet</scope><name>get_loop_predicate</name></member>
-      <member refid="classemail_1_1WaitSet_1adb793cb528d1c21a889f247ee64deef8" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_servers</name></member>
-      <member refid="classemail_1_1WaitSet_1a14e663661e0c5667a7ede299a0b3552d" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_subscriptions</name></member>
+      <member refid="classemail_1_1WaitSet_1a7b8f5ba5db1b183db0c1c0a512e2d472" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_clients</name></member>
+      <member refid="classemail_1_1WaitSet_1acc8438d4b40cac5cfe7326f442ec2f47" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_guard_conditions</name></member>
+      <member refid="classemail_1_1WaitSet_1ad28f6e33cb7ac142089426325ba8376a" prot="private" virt="non-virtual"><scope>email::WaitSet</scope><name>get_loop_predicate</name></member>
+      <member refid="classemail_1_1WaitSet_1a5dbacc452ee901804198744322b78197" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_servers</name></member>
+      <member refid="classemail_1_1WaitSet_1a5dd2903ad4839750a9089f3d8d309974" prot="public" virt="non-virtual"><scope>email::WaitSet</scope><name>get_subscriptions</name></member>
       <member refid="classemail_1_1WaitSet_1a4323de22b3adf284c0e1876bfe467f66" prot="private" virt="non-virtual"><scope>email::WaitSet</scope><name>guard_conditions_</name></member>
       <member refid="classemail_1_1WaitSet_1adbbb882f56651e379f91c849d066e55d" prot="private" virt="non-virtual"><scope>email::WaitSet</scope><name>logger_</name></member>
       <member refid="classemail_1_1WaitSet_1a66e385af8b9e986c9e01ce80e6f80995" prot="private" virt="non-virtual"><scope>email::WaitSet</scope><name>release_guard_conditions</name></member>

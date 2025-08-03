@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1EmailHandler" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>email::EmailHandler</compoundname>
     <derivedcompoundref refid="classemail_1_1ServiceHandler" prot="public" virt="non-virtual">email::ServiceHandler</derivedcompoundref>
     <derivedcompoundref refid="classemail_1_1SubscriptionHandler" prot="public" virt="non-virtual">email::SubscriptionHandler</derivedcompoundref>
     <includes local="no">handler.hpp</includes>
-      <sectiondef kind="protected-attrib">
+    <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classemail_1_1EmailHandler_1a3a2341fe5a385c0948851ffc602b68ff" prot="protected" static="no" mutable="no">
         <type>std::atomic_bool</type>
         <definition>std::atomic_bool email::EmailHandler::registered_</definition>
         <argsstring></argsstring>
         <name>registered_</name>
+        <qualifiedname>email::EmailHandler::registered_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,13 +20,14 @@
         </inbodydescription>
         <location file="include/email/email/handler.hpp" line="61" column="20" bodyfile="include/email/email/handler.hpp" bodystart="61" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1EmailHandler_1a4760f8a9513bc50c2d453644da51ab1e" prot="public" static="no" const="no" explicit="no" inline="no" virt="pure-virtual">
         <type>void</type>
         <definition>virtual void email::EmailHandler::register_handler</definition>
         <argsstring>(std::shared_ptr&lt; PollingManager &gt; polling_manager)=0</argsstring>
         <name>register_handler</name>
+        <qualifiedname>email::EmailHandler::register_handler</qualifiedname>
         <reimplementedby refid="classemail_1_1ServiceHandler_1a1ffdec6079165b77924bc0e7e4fc7382">register_handler</reimplementedby>
         <reimplementedby refid="classemail_1_1SubscriptionHandler_1aa57488fcda9056d279f87d474306525a">register_handler</reimplementedby>
         <param>
@@ -57,6 +59,7 @@
         <definition>virtual void email::EmailHandler::handle</definition>
         <argsstring>(const struct EmailData &amp;data)=0</argsstring>
         <name>handle</name>
+        <qualifiedname>email::EmailHandler::handle</qualifiedname>
         <reimplementedby refid="classemail_1_1ServiceHandler_1a19fc6c955eeecce3e61e7b4efd9fa174">handle</reimplementedby>
         <reimplementedby refid="classemail_1_1SubscriptionHandler_1a59ca1ab4299475b961cdbb7baf252da8">handle</reimplementedby>
         <param>
@@ -83,13 +86,14 @@
         </inbodydescription>
         <location file="include/email/email/handler.hpp" line="53" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-func">
+    </sectiondef>
+    <sectiondef kind="protected-func">
       <memberdef kind="function" id="classemail_1_1EmailHandler_1ae11713a20d4aa3bf7a9913e8853f3c24" prot="protected" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::EmailHandler::EmailHandler</definition>
         <argsstring>()</argsstring>
         <name>EmailHandler</name>
+        <qualifiedname>email::EmailHandler::EmailHandler</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
@@ -104,6 +108,7 @@
         <definition>virtual email::EmailHandler::~EmailHandler</definition>
         <argsstring>()</argsstring>
         <name>~EmailHandler</name>
+        <qualifiedname>email::EmailHandler::~EmailHandler</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -112,7 +117,7 @@
         </inbodydescription>
         <location file="include/email/email/handler.hpp" line="59" column="11"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Generic email handler. </para>
     </briefdescription>
@@ -120,15 +125,15 @@
 <para>Gets new emails and handles them by conditionally passing them on. </para>
     </detaileddescription>
     <inheritancegraph>
+      <node id="1">
+        <label>email::EmailHandler</label>
+        <link refid="classemail_1_1EmailHandler"/>
+      </node>
       <node id="2">
         <label>email::ServiceHandler</label>
         <link refid="classemail_1_1ServiceHandler"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="1">
-        <label>email::EmailHandler</label>
-        <link refid="classemail_1_1EmailHandler"/>
       </node>
       <node id="3">
         <label>email::SubscriptionHandler</label>

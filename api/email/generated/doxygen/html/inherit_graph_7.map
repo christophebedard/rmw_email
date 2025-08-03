@@ -1,3 +1,10 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structemail_1_1EmailData.html" title="Raw email data with headers." alt="" coords="5,5,140,32"/>
+<area shape="rect" id="Node000000" href="$classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="5,5,160,31"/>
+<area shape="rect" id="Node000001" href="$classemail_1_1ServiceHandler.html" title="Email handler for service servers." alt="" coords="224,8,391,33"/>
+<area shape="poly" id="edge7_Node000000_Node000001" title=" " alt="" coords="174,16,224,17,224,22,174,22"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1SubscriptionHandler.html" title="Email handler for subscriptions." alt="" coords="208,59,407,84"/>
+<area shape="poly" id="edge8_Node000000_Node000003" title=" " alt="" coords="151,31,254,56,253,61,150,37"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="10,55,155,95"/>
+<area shape="poly" id="edge9_Node000002_Node000001" title=" " alt="" coords="168,52,254,31,255,36,169,57"/>
+<area shape="poly" id="edge10_Node000002_Node000003" title=" " alt="" coords="169,71,208,70,208,76,169,76"/>
 </map>

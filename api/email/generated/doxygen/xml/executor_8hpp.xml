@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="executor_8hpp" kind="file" language="C++">
     <compoundname>executor.hpp</compoundname>
     <includes refid="curl_2context_8hpp" local="yes">email/curl/context.hpp</includes>
@@ -9,9 +9,6 @@
     <includedby refid="curl__receiver_8hpp" local="yes">include/email/email/curl_receiver.hpp</includedby>
     <includedby refid="curl__sender_8hpp" local="yes">include/email/email/curl_sender.hpp</includedby>
     <incdepgraph>
-      <node id="4">
-        <label>atomic</label>
-      </node>
       <node id="2">
         <label>email/curl/context.hpp</label>
         <link refid="curl_2context_8hpp"/>
@@ -32,30 +29,6 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>email/utils.hpp</label>
-        <link refid="utils_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>email/curl/info.hpp</label>
-        <link refid="curl_2info_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
       <node id="1">
         <label>include/email/curl/executor.hpp</label>
         <link refid="executor_8hpp"/>
@@ -68,34 +41,22 @@
         <childnode refid="17" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>stdexcept</label>
-      </node>
-      <node id="6">
-        <label>string</label>
-      </node>
-      <node id="18">
-        <label>email/macros.hpp</label>
-        <link refid="macros_8hpp"/>
-        <childnode refid="5" relation="include">
+      <node id="7">
+        <label>email/curl/info.hpp</label>
+        <link refid="curl_2info_8hpp"/>
+        <childnode refid="6" relation="include">
         </childnode>
-      </node>
-      <node id="12">
-        <label>spdlog/fmt/ostr.h</label>
-      </node>
-      <node id="3">
-        <label>curl/curl.h</label>
       </node>
       <node id="8">
         <label>email/log.hpp</label>
         <link refid="log_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="6" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
         </childnode>
         <childnode refid="11" relation="include">
         </childnode>
@@ -106,34 +67,69 @@
         <childnode refid="14" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>yaml-cpp/yaml.h</label>
+      <node id="18">
+        <label>email/macros.hpp</label>
+        <link refid="macros_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
-      <node id="11">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="10">
-        <label>rcpputils/filesystem_helper.hpp</label>
-      </node>
-      <node id="15">
-        <label>optional</label>
-      </node>
-      <node id="16">
-        <label>vector</label>
-      </node>
-      <node id="5">
-        <label>memory</label>
+      <node id="14">
+        <label>email/utils.hpp</label>
+        <link refid="utils_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
       </node>
       <node id="17">
         <label>email/visibility_control.hpp</label>
         <link refid="visibility__control_8hpp"/>
       </node>
+      <node id="4">
+        <label>atomic</label>
+      </node>
+      <node id="3">
+        <label>curl/curl.h</label>
+      </node>
+      <node id="9">
+        <label>filesystem</label>
+      </node>
+      <node id="5">
+        <label>memory</label>
+      </node>
+      <node id="15">
+        <label>optional</label>
+      </node>
+      <node id="12">
+        <label>spdlog/fmt/ostr.h</label>
+      </node>
+      <node id="11">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="10">
+        <label>stdexcept</label>
+      </node>
+      <node id="6">
+        <label>string</label>
+      </node>
+      <node id="16">
+        <label>vector</label>
+      </node>
+      <node id="13">
+        <label>yaml-cpp/yaml.h</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="2">
-        <label>include/email/email/curl_receiver.hpp</label>
-        <link refid="curl__receiver_8hpp"/>
-      </node>
       <node id="1">
         <label>include/email/curl/executor.hpp</label>
         <link refid="executor_8hpp"/>
@@ -141,6 +137,10 @@
         </childnode>
         <childnode refid="3" relation="include">
         </childnode>
+      </node>
+      <node id="2">
+        <label>include/email/email/curl_receiver.hpp</label>
+        <link refid="curl__receiver_8hpp"/>
       </node>
       <node id="3">
         <label>include/email/email/curl_sender.hpp</label>
@@ -195,7 +195,7 @@
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"></highlight></codeline>
-<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1CurlExecutor_1a1e0617765bd8951450ad9aa9f6ae2174" kindref="member">CurlExecutor</ref>(</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1CurlExecutor" kindref="compound">CurlExecutor</ref>(</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1ConnectionInfo" kindref="compound">ConnectionInfo</ref><sp/>&amp;<sp/>connection_info,</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1ProtocolInfo" kindref="compound">ProtocolInfo</ref><sp/>&amp;<sp/>protocol_info,</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>curl_verbose);</highlight></codeline>

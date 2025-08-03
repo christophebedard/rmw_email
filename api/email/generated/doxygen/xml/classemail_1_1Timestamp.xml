@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1Timestamp" kind="class" language="C++" prot="public">
     <compoundname>email::Timestamp</compoundname>
     <includes local="no">timestamp.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1Timestamp_1a117f409f2606da5f1f1be16893cc0936" prot="private" static="no" mutable="no">
         <type>int64_t</type>
         <definition>int64_t email::Timestamp::nanoseconds_</definition>
         <argsstring></argsstring>
         <name>nanoseconds_</name>
+        <qualifiedname>email::Timestamp::nanoseconds_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -17,13 +18,14 @@
         </inbodydescription>
         <location file="include/email/timestamp.hpp" line="84" column="11" bodyfile="include/email/timestamp.hpp" bodystart="84" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
+    </sectiondef>
+    <sectiondef kind="public-static-func">
       <memberdef kind="function" id="classemail_1_1Timestamp_1acd6a1543ca548deb496e54f7d4dd616c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref></type>
         <definition>static Timestamp email::Timestamp::now</definition>
         <argsstring>()</argsstring>
         <name>now</name>
+        <qualifiedname>email::Timestamp::now</qualifiedname>
         <briefdescription>
 <para>Get a new timestamp pointing to now from the Unix epoch. </para>
         </briefdescription>
@@ -33,11 +35,12 @@
         </inbodydescription>
         <location file="include/email/timestamp.hpp" line="40" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Timestamp_1a9576b9bd5328f436b0cf00ca4e7be128" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Timestamp_1aab585d275ebc69194efa42ed7e6b3aa6" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &gt;</type>
-        <definition>static std::optional&lt;Timestamp&gt; email::Timestamp::from_string</definition>
+        <definition>static std::optional&lt; Timestamp &gt; email::Timestamp::from_string</definition>
         <argsstring>(const std::string &amp;timestamp)</argsstring>
         <name>from_string</name>
+        <qualifiedname>email::Timestamp::from_string</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>timestamp</declname>
@@ -55,13 +58,14 @@
         </inbodydescription>
         <location file="include/email/timestamp.hpp" line="77" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1Timestamp_1a653badfe8b13db09b2b6d3b41368a973" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::Timestamp::Timestamp</definition>
         <argsstring>(const int64_t nanoseconds)</argsstring>
         <name>Timestamp</name>
+        <qualifiedname>email::Timestamp::Timestamp</qualifiedname>
         <param>
           <type>const int64_t</type>
           <declname>nanoseconds</declname>
@@ -90,6 +94,7 @@
         <definition>email::Timestamp::Timestamp</definition>
         <argsstring>(const Timestamp &amp;)=default</argsstring>
         <name>Timestamp</name>
+        <qualifiedname>email::Timestamp::Timestamp</qualifiedname>
         <param>
           <type>const <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &amp;</type>
         </param>
@@ -106,6 +111,7 @@
         <definition>email::Timestamp::~Timestamp</definition>
         <argsstring>()</argsstring>
         <name>~Timestamp</name>
+        <qualifiedname>email::Timestamp::~Timestamp</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -119,6 +125,7 @@
         <definition>int64_t email::Timestamp::nanoseconds</definition>
         <argsstring>() const</argsstring>
         <name>nanoseconds</name>
+        <qualifiedname>email::Timestamp::nanoseconds</qualifiedname>
         <briefdescription>
 <para>Get the number of nanoseconds. </para>
         </briefdescription>
@@ -133,11 +140,12 @@
         <definition>std::string email::Timestamp::to_string</definition>
         <argsstring>() const</argsstring>
         <name>to_string</name>
+        <qualifiedname>email::Timestamp::to_string</qualifiedname>
         <briefdescription>
 <para>Convert the timestamp to a string. </para>
         </briefdescription>
         <detaileddescription>
-<para>This string can be converted back to a timestamp using <ref refid="classemail_1_1Timestamp_1a9576b9bd5328f436b0cf00ca4e7be128" kindref="member">from_string()</ref>. </para>
+<para>This string can be converted back to a timestamp using <ref refid="classemail_1_1Timestamp_1aab585d275ebc69194efa42ed7e6b3aa6" kindref="member">from_string()</ref>. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -148,6 +156,7 @@
         <definition>bool email::Timestamp::operator==</definition>
         <argsstring>(const Timestamp &amp;rhs) const</argsstring>
         <name>operator==</name>
+        <qualifiedname>email::Timestamp::operator==</qualifiedname>
         <param>
           <type>const <ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> &amp;</type>
           <declname>rhs</declname>
@@ -160,7 +169,7 @@
         </inbodydescription>
         <location file="include/email/timestamp.hpp" line="81" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref> with nanoseconds. </para>
     </briefdescription>
@@ -169,7 +178,7 @@
     </detaileddescription>
     <location file="include/email/timestamp.hpp" line="33" column="1" bodyfile="include/email/timestamp.hpp" bodystart="34" bodyend="85"/>
     <listofallmembers>
-      <member refid="classemail_1_1Timestamp_1a9576b9bd5328f436b0cf00ca4e7be128" prot="public" virt="non-virtual"><scope>email::Timestamp</scope><name>from_string</name></member>
+      <member refid="classemail_1_1Timestamp_1aab585d275ebc69194efa42ed7e6b3aa6" prot="public" virt="non-virtual"><scope>email::Timestamp</scope><name>from_string</name></member>
       <member refid="classemail_1_1Timestamp_1ab32931c11f5356865899e3c828327feb" prot="public" virt="non-virtual"><scope>email::Timestamp</scope><name>nanoseconds</name></member>
       <member refid="classemail_1_1Timestamp_1a117f409f2606da5f1f1be16893cc0936" prot="private" virt="non-virtual"><scope>email::Timestamp</scope><name>nanoseconds_</name></member>
       <member refid="classemail_1_1Timestamp_1acd6a1543ca548deb496e54f7d4dd616c" prot="public" virt="non-virtual"><scope>email::Timestamp</scope><name>now</name></member>

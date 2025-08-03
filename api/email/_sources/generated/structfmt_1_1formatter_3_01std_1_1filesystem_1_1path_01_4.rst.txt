@@ -1,0 +1,26 @@
+.. _exhale_struct_structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4:
+
+Template Struct formatter< std::filesystem::path >
+==================================================
+
+- Defined in :ref:`file_include_email_log.hpp`
+
+
+Inheritance Relationships
+-------------------------
+
+Base Type
+*********
+
+- ``public formatter< string_view >``
+
+
+Struct Documentation
+--------------------
+
+
+.. doxygenstruct:: fmt::formatter< std::filesystem::path >
+   :project: email Doxygen Project
+   :members:
+   :protected-members:
+   :undoc-members:

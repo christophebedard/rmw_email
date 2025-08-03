@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structemail_1_1EmailContent" kind="struct" language="C++" prot="public">
     <compoundname>email::EmailContent</compoundname>
     <includes local="no">info.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structemail_1_1EmailContent_1a77bd9eb7cbea591d799bcc305e43b611" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string email::EmailContent::subject</definition>
         <argsstring></argsstring>
         <name>subject</name>
+        <qualifiedname>email::EmailContent::subject</qualifiedname>
         <briefdescription>
 <para>Subject, which should be one line without any newlines. </para>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>std::string email::EmailContent::body</definition>
         <argsstring></argsstring>
         <name>body</name>
+        <qualifiedname>email::EmailContent::body</qualifiedname>
         <briefdescription>
 <para>Body/content, which may have multiple lines. </para>
         </briefdescription>
@@ -32,13 +34,14 @@
         </inbodydescription>
         <location file="include/email/email/info.hpp" line="92" column="15" bodyfile="include/email/email/info.hpp" bodystart="92" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structemail_1_1EmailContent_1af724d227f2cde94a19ca2881ca257d54" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::EmailContent::EmailContent</definition>
         <argsstring>(const std::string &amp;subject_, const std::string &amp;body_)</argsstring>
         <name>EmailContent</name>
+        <qualifiedname>email::EmailContent::EmailContent</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>subject_</declname>
@@ -61,6 +64,7 @@
         <definition>email::EmailContent::EmailContent</definition>
         <argsstring>(const EmailContent &amp;)=default</argsstring>
         <name>EmailContent</name>
+        <qualifiedname>email::EmailContent::EmailContent</qualifiedname>
         <param>
           <type>const <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &amp;</type>
         </param>
@@ -73,7 +77,7 @@
         </inbodydescription>
         <location file="include/email/email/info.hpp" line="100" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Content of an email. </para>
     </briefdescription>

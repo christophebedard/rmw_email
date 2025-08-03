@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1SubscriptionHandler" kind="class" language="C++" prot="public">
     <compoundname>email::SubscriptionHandler</compoundname>
     <basecompoundref refid="classemail_1_1EmailHandler" prot="public" virt="non-virtual">email::EmailHandler</basecompoundref>
     <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; SubscriptionHandler &gt;</basecompoundref>
     <includes local="no">subscription_handler.hpp</includes>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classemail_1_1SubscriptionHandler_1a074215e7cbbd40683d3760a914b0d265" prot="public" static="no">
         <type><ref refid="classemail_1_1SafeQueue" kindref="compound">SafeQueue</ref>&lt; std::pair&lt; std::string, <ref refid="classemail_1_1MessageInfo" kindref="compound">MessageInfo</ref> &gt; &gt;</type>
         <definition>using email::SubscriptionHandler::MessageQueue =  SafeQueue&lt;std::pair&lt;std::string, MessageInfo&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>MessageQueue</name>
+        <qualifiedname>email::SubscriptionHandler::MessageQueue</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,13 +20,14 @@
         </inbodydescription>
         <location file="include/email/subscription_handler.hpp" line="45" column="3" bodyfile="include/email/subscription_handler.hpp" bodystart="45" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1SubscriptionHandler_1ace86640f404d16de569d29e7f24b004a" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; email::SubscriptionHandler::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::SubscriptionHandler::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -39,6 +41,7 @@
         <definition>std::mutex email::SubscriptionHandler::subscriptions_mutex_</definition>
         <argsstring></argsstring>
         <name>subscriptions_mutex_</name>
+        <qualifiedname>email::SubscriptionHandler::subscriptions_mutex_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -52,6 +55,7 @@
         <definition>std::unordered_multimap&lt;std::string, MessageQueue::WeakPtr&gt; email::SubscriptionHandler::subscriptions_</definition>
         <argsstring></argsstring>
         <name>subscriptions_</name>
+        <qualifiedname>email::SubscriptionHandler::subscriptions_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -60,13 +64,14 @@
         </inbodydescription>
         <location file="include/email/subscription_handler.hpp" line="81" column="27" bodyfile="include/email/subscription_handler.hpp" bodystart="81" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1SubscriptionHandler_1a4f580d0f7505ff64e14b7e74ee38861c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::SubscriptionHandler::SubscriptionHandler</definition>
         <argsstring>()</argsstring>
         <name>SubscriptionHandler</name>
+        <qualifiedname>email::SubscriptionHandler::SubscriptionHandler</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
@@ -81,6 +86,7 @@
         <definition>virtual email::SubscriptionHandler::~SubscriptionHandler</definition>
         <argsstring>()</argsstring>
         <name>~SubscriptionHandler</name>
+        <qualifiedname>email::SubscriptionHandler::~SubscriptionHandler</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -94,6 +100,7 @@
         <definition>void email::SubscriptionHandler::register_subscription</definition>
         <argsstring>(const std::string &amp;topic_name, MessageQueue::WeakPtr message_queue)</argsstring>
         <name>register_subscription</name>
+        <qualifiedname>email::SubscriptionHandler::register_subscription</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>topic_name</declname>
@@ -135,6 +142,7 @@
         <definition>virtual void email::SubscriptionHandler::register_handler</definition>
         <argsstring>(std::shared_ptr&lt; PollingManager &gt; polling_manager)</argsstring>
         <name>register_handler</name>
+        <qualifiedname>email::SubscriptionHandler::register_handler</qualifiedname>
         <reimplements refid="classemail_1_1EmailHandler_1a4760f8a9513bc50c2d453644da51ab1e">register_handler</reimplements>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1PollingManager" kindref="compound">PollingManager</ref> &gt;</type>
@@ -165,6 +173,7 @@
         <definition>virtual void email::SubscriptionHandler::handle</definition>
         <argsstring>(const struct EmailData &amp;data)</argsstring>
         <name>handle</name>
+        <qualifiedname>email::SubscriptionHandler::handle</qualifiedname>
         <reimplements refid="classemail_1_1EmailHandler_1a4f58d53157b09b2b8e70a77538f2b37f">handle</reimplements>
         <param>
           <type>const struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &amp;</type>
@@ -180,7 +189,7 @@
         </inbodydescription>
         <location file="include/email/subscription_handler.hpp" line="74" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Email handler for subscriptions. </para>
     </briefdescription>
@@ -192,9 +201,6 @@
         <label>email::EmailHandler</label>
         <link refid="classemail_1_1EmailHandler"/>
       </node>
-      <node id="3">
-        <label>std::enable_shared_from_this&lt; SubscriptionHandler &gt;</label>
-      </node>
       <node id="1">
         <label>email::SubscriptionHandler</label>
         <link refid="classemail_1_1SubscriptionHandler"/>
@@ -202,6 +208,9 @@
         </childnode>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::enable_shared_from_this&lt; SubscriptionHandler &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -209,9 +218,6 @@
         <label>email::EmailHandler</label>
         <link refid="classemail_1_1EmailHandler"/>
       </node>
-      <node id="3">
-        <label>std::enable_shared_from_this&lt; SubscriptionHandler &gt;</label>
-      </node>
       <node id="1">
         <label>email::SubscriptionHandler</label>
         <link refid="classemail_1_1SubscriptionHandler"/>
@@ -219,6 +225,9 @@
         </childnode>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::enable_shared_from_this&lt; SubscriptionHandler &gt;</label>
       </node>
     </collaborationgraph>
     <location file="include/email/subscription_handler.hpp" line="41" column="1" bodyfile="include/email/subscription_handler.hpp" bodystart="43" bodyend="82"/>

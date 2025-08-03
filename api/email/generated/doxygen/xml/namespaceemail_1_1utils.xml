@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="namespaceemail_1_1utils" kind="namespace" language="C++">
     <compoundname>email::utils</compoundname>
     <innernamespace refid="namespaceemail_1_1utils_1_1payload">email::utils::payload</innernamespace>
     <innernamespace refid="namespaceemail_1_1utils_1_1response">email::utils::response</innernamespace>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="namespaceemail_1_1utils_1a36d04ae0600a820016e9a547222bad1a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -17,6 +17,7 @@
         <definition>std::string email::utils::string_format</definition>
         <argsstring>(const std::string &amp;format, Args... args)</argsstring>
         <name>string_format</name>
+        <qualifiedname>email::utils::string_format</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>format</declname>
@@ -68,6 +69,7 @@
         <definition>std::string email::utils::get_env_var</definition>
         <argsstring>(const std::string &amp;env_var)</argsstring>
         <name>get_env_var</name>
+        <qualifiedname>email::utils::get_env_var</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>env_var</declname>
@@ -107,6 +109,7 @@
         <definition>std::string email::utils::get_env_var_or_default</definition>
         <argsstring>(const std::string &amp;env_var, const std::string &amp;default_value)</argsstring>
         <name>get_env_var_or_default</name>
+        <qualifiedname>email::utils::get_env_var_or_default</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>env_var</declname>
@@ -154,11 +157,12 @@
         </inbodydescription>
         <location file="include/email/utils.hpp" line="75" column="1" declfile="include/email/utils.hpp" declline="75" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1a88a5169377c5fdee4455ee6b38723745" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1ae3d4c984287d92db2a90319ba0ff6762" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
-        <definition>std::optional&lt;std::string&gt; email::utils::read_file</definition>
+        <definition>std::optional&lt; std::string &gt; email::utils::read_file</definition>
         <argsstring>(const std::string &amp;path)</argsstring>
         <name>read_file</name>
+        <qualifiedname>email::utils::read_file</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>path</declname>
@@ -184,11 +188,12 @@
         </inbodydescription>
         <location file="include/email/utils.hpp" line="84" column="1" declfile="include/email/utils.hpp" declline="84" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1a9ac0b492df90bd936e286b50f51ef68e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; email::utils::split_email_list</definition>
+        <definition>std::vector&lt; std::string &gt; email::utils::split_email_list</definition>
         <argsstring>(const std::string &amp;list, const bool has_space_after_comma=false)</argsstring>
         <name>split_email_list</name>
+        <qualifiedname>email::utils::split_email_list</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>list</declname>
@@ -227,11 +232,12 @@
         </inbodydescription>
         <location file="include/email/utils.hpp" line="94" column="1" declfile="include/email/utils.hpp" declline="94" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1aef6154f77c351ae81abb1544e8a5f3fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1aa2e1972a23478feaa1165b8148c67388" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::vector&lt; std::string &gt;</type>
-        <definition>std::vector&lt;std::string&gt; email::utils::split_email_list</definition>
+        <definition>std::vector&lt; std::string &gt; email::utils::split_email_list</definition>
         <argsstring>(const YAML::Node &amp;node)</argsstring>
         <name>split_email_list</name>
+        <qualifiedname>email::utils::split_email_list</qualifiedname>
         <param>
           <type>const YAML::Node &amp;</type>
           <declname>node</declname>
@@ -262,6 +268,7 @@
         <definition>std::string email::utils::yaml_to_string</definition>
         <argsstring>(const YAML::Node &amp;node)</argsstring>
         <name>yaml_to_string</name>
+        <qualifiedname>email::utils::yaml_to_string</qualifiedname>
         <param>
           <type>const YAML::Node &amp;</type>
           <declname>node</declname>
@@ -292,6 +299,7 @@
         <definition>std::string email::utils::full_url</definition>
         <argsstring>(const std::string &amp;protocol, const std::string &amp;host, const int port)</argsstring>
         <name>full_url</name>
+        <qualifiedname>email::utils::full_url</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>protocol</declname>
@@ -342,11 +350,12 @@
         </inbodydescription>
         <location file="include/email/utils.hpp" line="125" column="1" declfile="include/email/utils.hpp" declline="125" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1a1426a6b72c22a41e717f2dddb9fe6f47" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1ab9cbd8c73d22d42b906e858e79901da7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; uint32_t &gt;</type>
-        <definition>std::optional&lt;uint32_t&gt; email::utils::optional_stoul</definition>
+        <definition>std::optional&lt; uint32_t &gt; email::utils::optional_stoul</definition>
         <argsstring>(const std::string &amp;str)</argsstring>
         <name>optional_stoul</name>
+        <qualifiedname>email::utils::optional_stoul</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>str</declname>
@@ -372,11 +381,12 @@
         </inbodydescription>
         <location file="include/email/utils.hpp" line="134" column="1" declfile="include/email/utils.hpp" declline="134" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1a2a5c92f770d0c27fefe339dd2ba426a1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1a43baabdc6dccb93ef791c8b86b095df7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; int &gt;</type>
-        <definition>std::optional&lt;int&gt; email::utils::optional_stoi</definition>
+        <definition>std::optional&lt; int &gt; email::utils::optional_stoi</definition>
         <argsstring>(const std::string &amp;str)</argsstring>
         <name>optional_stoi</name>
+        <qualifiedname>email::utils::optional_stoi</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>str</declname>
@@ -402,11 +412,12 @@
         </inbodydescription>
         <location file="include/email/utils.hpp" line="143" column="1" declfile="include/email/utils.hpp" declline="143" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1a205d62958aa3a9111c4c17da561743fc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1a84320d04aefddcdd33d752c89783f4b6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; int64_t &gt;</type>
-        <definition>std::optional&lt;int64_t&gt; email::utils::optional_stoll</definition>
+        <definition>std::optional&lt; int64_t &gt; email::utils::optional_stoll</definition>
         <argsstring>(const std::string &amp;str)</argsstring>
         <name>optional_stoll</name>
+        <qualifiedname>email::utils::optional_stoll</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>str</declname>
@@ -437,6 +448,7 @@
         <definition>void email::utils::thread_get_name</definition>
         <argsstring>(char *name, size_t len)</argsstring>
         <name>thread_get_name</name>
+        <qualifiedname>email::utils::thread_get_name</qualifiedname>
         <param>
           <type>char *</type>
           <declname>name</declname>
@@ -478,6 +490,7 @@
         <definition>void email::utils::thread_set_name</definition>
         <argsstring>(const char *name)</argsstring>
         <name>thread_set_name</name>
+        <qualifiedname>email::utils::thread_set_name</qualifiedname>
         <param>
           <type>const char *</type>
           <declname>name</declname>
@@ -507,6 +520,7 @@
         <definition>void email::utils::thread_append_name</definition>
         <argsstring>(const char *suffix)</argsstring>
         <name>thread_append_name</name>
+        <qualifiedname>email::utils::thread_append_name</qualifiedname>
         <param>
           <type>const char *</type>
           <declname>suffix</declname>
@@ -531,7 +545,7 @@
         </inbodydescription>
         <location file="include/email/utils.hpp" line="183" column="1" declfile="include/email/utils.hpp" declline="183" declcolumn="1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

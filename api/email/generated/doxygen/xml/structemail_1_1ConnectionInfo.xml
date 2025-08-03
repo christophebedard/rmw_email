@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structemail_1_1ConnectionInfo" kind="struct" language="C++" prot="public">
     <compoundname>email::ConnectionInfo</compoundname>
     <includes local="no">info.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structemail_1_1ConnectionInfo_1a2432cbfd520eba7169a0da728998b0ea" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string email::ConnectionInfo::host</definition>
         <argsstring></argsstring>
         <name>host</name>
+        <qualifiedname>email::ConnectionInfo::host</qualifiedname>
         <briefdescription>
 <para>Host name without protocol or port. </para>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>std::string email::ConnectionInfo::username</definition>
         <argsstring></argsstring>
         <name>username</name>
+        <qualifiedname>email::ConnectionInfo::username</qualifiedname>
         <briefdescription>
 <para>Username (i.e. email). </para>
         </briefdescription>
@@ -37,6 +39,7 @@
         <definition>std::string email::ConnectionInfo::password</definition>
         <argsstring></argsstring>
         <name>password</name>
+        <qualifiedname>email::ConnectionInfo::password</qualifiedname>
         <briefdescription>
 <para>Password. </para>
         </briefdescription>
@@ -46,7 +49,7 @@
         </inbodydescription>
         <location file="include/email/curl/info.hpp" line="31" column="15" bodyfile="include/email/curl/info.hpp" bodystart="31" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Info for connecting to server. </para>
     </briefdescription>

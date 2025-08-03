@@ -1,8 +1,14 @@
 <map id="include/email/curl/info.hpp" name="include/email/curl/info.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="167,5,306,47"/>
-<area shape="rect" id="node2" href="$curl_2context_8hpp.html" title=" " alt="" coords="114,95,253,136"/>
-<area shape="rect" id="node4" href="$executor_8hpp.html" title=" " alt="" coords="221,184,359,225"/>
-<area shape="rect" id="node3" href="$context_8hpp.html" title=" " alt="" coords="5,191,196,218"/>
-<area shape="rect" id="node5" href="$curl__receiver_8hpp.html" title=" " alt="" coords="128,273,279,315"/>
-<area shape="rect" id="node6" href="$curl__sender_8hpp.html" title=" " alt="" coords="303,273,453,315"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="167,5,306,45"/>
+<area shape="rect" id="Node000002" href="$curl_2context_8hpp.html" title=" " alt="" coords="114,93,253,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="220,58,197,95,193,92,215,56"/>
+<area shape="rect" id="Node000004" href="$executor_8hpp.html" title=" " alt="" coords="221,181,359,221"/>
+<area shape="poly" id="edge6_Node000001_Node000004" title=" " alt="" coords="254,57,267,93,289,181,284,182,262,94,249,59"/>
+<area shape="rect" id="Node000003" href="$context_8hpp.html" title=" " alt="" coords="5,189,196,214"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="158,145,114,190,110,186,154,141"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="219,140,268,179,265,183,216,144"/>
+<area shape="rect" id="Node000005" href="$curl__receiver_8hpp.html" title=" " alt="" coords="128,269,279,309"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="263,233,224,271,221,267,259,229"/>
+<area shape="rect" id="Node000006" href="$curl__sender_8hpp.html" title=" " alt="" coords="303,269,453,309"/>
+<area shape="poly" id="edge5_Node000004_Node000006" title=" " alt="" coords="321,229,360,267,357,271,318,233"/>
 </map>

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structemail_1_1EmailRecipients" kind="struct" language="C++" prot="public">
     <compoundname>email::EmailRecipients</compoundname>
     <includes local="no">info.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structemail_1_1EmailRecipients_1a0f5c1ef98bc6030b7026b9ff7250e466" prot="public" static="no" mutable="no">
         <type>std::vector&lt; std::string &gt;</type>
         <definition>std::vector&lt;std::string&gt; email::EmailRecipients::to</definition>
         <argsstring></argsstring>
         <name>to</name>
+        <qualifiedname>email::EmailRecipients::to</qualifiedname>
         <briefdescription>
 <para>The &quot;to&quot; emails. </para>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>std::vector&lt;std::string&gt; email::EmailRecipients::cc</definition>
         <argsstring></argsstring>
         <name>cc</name>
+        <qualifiedname>email::EmailRecipients::cc</qualifiedname>
         <briefdescription>
 <para>The &quot;cc&quot; emails. </para>
         </briefdescription>
@@ -37,6 +39,7 @@
         <definition>std::vector&lt;std::string&gt; email::EmailRecipients::bcc</definition>
         <argsstring></argsstring>
         <name>bcc</name>
+        <qualifiedname>email::EmailRecipients::bcc</qualifiedname>
         <briefdescription>
 <para>The &quot;bcc&quot; emails. </para>
         </briefdescription>
@@ -46,13 +49,14 @@
         </inbodydescription>
         <location file="include/email/email/info.hpp" line="63" column="15" bodyfile="include/email/email/info.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structemail_1_1EmailRecipients_1a879ed18bb87c9a7b45d4cd050eb636e0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::EmailRecipients::EmailRecipients</definition>
         <argsstring>(const std::vector&lt; std::string &gt; &amp;to_, const std::vector&lt; std::string &gt; &amp;cc_, const std::vector&lt; std::string &gt; &amp;bcc_)</argsstring>
         <name>EmailRecipients</name>
+        <qualifiedname>email::EmailRecipients::EmailRecipients</qualifiedname>
         <param>
           <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>to_</declname>
@@ -79,6 +83,7 @@
         <definition>email::EmailRecipients::EmailRecipients</definition>
         <argsstring>(const std::string &amp;to_)</argsstring>
         <name>EmailRecipients</name>
+        <qualifiedname>email::EmailRecipients::EmailRecipients</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>to_</declname>
@@ -97,6 +102,7 @@
         <definition>email::EmailRecipients::EmailRecipients</definition>
         <argsstring>(const EmailRecipients &amp;)=default</argsstring>
         <name>EmailRecipients</name>
+        <qualifiedname>email::EmailRecipients::EmailRecipients</qualifiedname>
         <param>
           <type>const <ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref> &amp;</type>
         </param>
@@ -109,7 +115,7 @@
         </inbodydescription>
         <location file="include/email/email/info.hpp" line="76" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Recipients of an email. </para>
     </briefdescription>

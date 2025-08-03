@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceemail_1a3463ccf40571a4d49e4ffce46a97aefb:
+
+Function email::get_global_context
+==================================
+
+- Defined in :ref:`file_include_email_context.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::get_global_context()
+   :project: email Doxygen Project

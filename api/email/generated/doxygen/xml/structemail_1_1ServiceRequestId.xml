@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structemail_1_1ServiceRequestId" kind="struct" language="C++" prot="public">
     <compoundname>email::ServiceRequestId</compoundname>
     <includes local="no">service_request.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structemail_1_1ServiceRequestId_1aebfd4e4852b50376f5748d53fc343dc1" prot="public" static="no" mutable="no">
         <type><ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
         <definition>SequenceNumber email::ServiceRequestId::sequence_number</definition>
         <argsstring></argsstring>
         <name>sequence_number</name>
+        <qualifiedname>email::ServiceRequestId::sequence_number</qualifiedname>
         <briefdescription>
 <para>Sequence number of the request. </para>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>Gid email::ServiceRequestId::client_gid</definition>
         <argsstring></argsstring>
         <name>client_gid</name>
+        <qualifiedname>email::ServiceRequestId::client_gid</qualifiedname>
         <briefdescription>
 <para>GID of the service client that made the request. </para>
         </briefdescription>
@@ -32,13 +34,14 @@
         </inbodydescription>
         <location file="include/email/service_request.hpp" line="32" column="7" bodyfile="include/email/service_request.hpp" bodystart="32" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structemail_1_1ServiceRequestId_1a4ecb68274a8a59ed1c03d5b2d6f8be9a" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::ServiceRequestId::ServiceRequestId</definition>
         <argsstring>(const SequenceNumber sequence_number_, const Gid &amp;client_gid_)</argsstring>
         <name>ServiceRequestId</name>
+        <qualifiedname>email::ServiceRequestId::ServiceRequestId</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
           <declname>sequence_number_</declname>
@@ -61,6 +64,7 @@
         <definition>email::ServiceRequestId::ServiceRequestId</definition>
         <argsstring>(const ServiceRequestId &amp;)=default</argsstring>
         <name>ServiceRequestId</name>
+        <qualifiedname>email::ServiceRequestId::ServiceRequestId</qualifiedname>
         <param>
           <type>const <ref refid="structemail_1_1ServiceRequestId" kindref="compound">ServiceRequestId</ref> &amp;</type>
         </param>
@@ -73,7 +77,7 @@
         </inbodydescription>
         <location file="include/email/service_request.hpp" line="39" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Service request ID, with a sequence number and a client GID. </para>
     </briefdescription>

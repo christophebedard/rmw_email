@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="payload__utils_8hpp" kind="file" language="C++">
     <compoundname>payload_utils.hpp</compoundname>
     <includes local="no">memory</includes>
@@ -28,30 +28,6 @@
         <childnode refid="10" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>string</label>
-      </node>
-      <node id="8">
-        <label>map</label>
-      </node>
-      <node id="4">
-        <label>regex</label>
-      </node>
-      <node id="10">
-        <label>email/macros.hpp</label>
-        <link refid="macros_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>optional</label>
-      </node>
-      <node id="6">
-        <label>vector</label>
-      </node>
-      <node id="9">
-        <label>spdlog/fmt/fmt.h</label>
-      </node>
       <node id="1">
         <label>include/email/email/payload_utils.hpp</label>
         <link refid="payload__utils_8hpp"/>
@@ -70,12 +46,36 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>memory</label>
+      <node id="10">
+        <label>email/macros.hpp</label>
+        <link refid="macros_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
       </node>
       <node id="11">
         <label>email/visibility_control.hpp</label>
         <link refid="visibility__control_8hpp"/>
+      </node>
+      <node id="8">
+        <label>map</label>
+      </node>
+      <node id="2">
+        <label>memory</label>
+      </node>
+      <node id="3">
+        <label>optional</label>
+      </node>
+      <node id="4">
+        <label>regex</label>
+      </node>
+      <node id="9">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
       </node>
     </incdepgraph>
     <innernamespace refid="namespaceemail">email</innernamespace>

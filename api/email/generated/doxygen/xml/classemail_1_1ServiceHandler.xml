@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1ServiceHandler" kind="class" language="C++" prot="public">
     <compoundname>email::ServiceHandler</compoundname>
     <basecompoundref refid="classemail_1_1EmailHandler" prot="public" virt="non-virtual">email::EmailHandler</basecompoundref>
     <basecompoundref prot="public" virt="non-virtual">std::enable_shared_from_this&lt; ServiceHandler &gt;</basecompoundref>
     <includes local="no">service_handler.hpp</includes>
-      <sectiondef kind="public-type">
+    <sectiondef kind="public-type">
       <memberdef kind="typedef" id="classemail_1_1ServiceHandler_1ae3c029c330a62190ed1c6f5d99fcd22c" prot="public" static="no">
         <type><ref refid="classemail_1_1SafeMap" kindref="compound">SafeMap</ref>&lt; <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref>, std::pair&lt; struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref>, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt; &gt;</type>
         <definition>using email::ServiceHandler::ResponseMap =  SafeMap&lt;SequenceNumber, std::pair&lt;struct EmailData, ServiceInfo&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>ResponseMap</name>
+        <qualifiedname>email::ServiceHandler::ResponseMap</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -24,6 +25,7 @@
         <definition>using email::ServiceHandler::RequestQueue =  SafeQueue&lt;std::pair&lt;struct EmailData, ServiceInfo&gt; &gt;</definition>
         <argsstring></argsstring>
         <name>RequestQueue</name>
+        <qualifiedname>email::ServiceHandler::RequestQueue</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -32,13 +34,14 @@
         </inbodydescription>
         <location file="include/email/service_handler.hpp" line="52" column="3" bodyfile="include/email/service_handler.hpp" bodystart="52" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-attrib">
+    </sectiondef>
+    <sectiondef kind="public-static-attrib">
       <memberdef kind="variable" id="classemail_1_1ServiceHandler_1af8bc3076e7f671a33407a8cfd461ff0e" prot="public" static="yes" constexpr="yes" mutable="no">
         <type>constexpr auto</type>
         <definition>constexpr auto email::ServiceHandler::HEADER_SEQUENCE_NUMBER</definition>
         <argsstring></argsstring>
         <name>HEADER_SEQUENCE_NUMBER</name>
+        <qualifiedname>email::ServiceHandler::HEADER_SEQUENCE_NUMBER</qualifiedname>
         <initializer>= &quot;Request-Sequence-Number&quot;</initializer>
         <briefdescription>
 <para>Custom header name for service request sequence number. </para>
@@ -50,13 +53,14 @@
         </inbodydescription>
         <location file="include/email/service_handler.hpp" line="96" column="25" bodyfile="include/email/service_handler.hpp" bodystart="96" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1ServiceHandler_1aaa0f2708de43e5b8878937caf93cb235" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; email::ServiceHandler::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::ServiceHandler::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -70,6 +74,7 @@
         <definition>std::mutex email::ServiceHandler::mutex_clients_</definition>
         <argsstring></argsstring>
         <name>mutex_clients_</name>
+        <qualifiedname>email::ServiceHandler::mutex_clients_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -83,6 +88,7 @@
         <definition>std::unordered_map&lt;GidValue, ResponseMap::WeakPtr&gt; email::ServiceHandler::clients_</definition>
         <argsstring></argsstring>
         <name>clients_</name>
+        <qualifiedname>email::ServiceHandler::clients_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -96,6 +102,7 @@
         <definition>std::unordered_map&lt;GidValue, SequenceNumber&gt; email::ServiceHandler::clients_last_seq_</definition>
         <argsstring></argsstring>
         <name>clients_last_seq_</name>
+        <qualifiedname>email::ServiceHandler::clients_last_seq_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -109,6 +116,7 @@
         <definition>std::mutex email::ServiceHandler::mutex_servers_</definition>
         <argsstring></argsstring>
         <name>mutex_servers_</name>
+        <qualifiedname>email::ServiceHandler::mutex_servers_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -122,6 +130,7 @@
         <definition>std::unordered_multimap&lt;std::string, RequestQueue::WeakPtr&gt; email::ServiceHandler::servers_</definition>
         <argsstring></argsstring>
         <name>servers_</name>
+        <qualifiedname>email::ServiceHandler::servers_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -130,13 +139,14 @@
         </inbodydescription>
         <location file="include/email/service_handler.hpp" line="106" column="27" bodyfile="include/email/service_handler.hpp" bodystart="106" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1ServiceHandler_1ac8b733ebb32ee7203ad714aedd911601" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::ServiceHandler::ServiceHandler</definition>
         <argsstring>()</argsstring>
         <name>ServiceHandler</name>
+        <qualifiedname>email::ServiceHandler::ServiceHandler</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
@@ -151,6 +161,7 @@
         <definition>virtual email::ServiceHandler::~ServiceHandler</definition>
         <argsstring>()</argsstring>
         <name>~ServiceHandler</name>
+        <qualifiedname>email::ServiceHandler::~ServiceHandler</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -164,6 +175,7 @@
         <definition>void email::ServiceHandler::register_service_client</definition>
         <argsstring>(const Gid &amp;gid, ResponseMap::WeakPtr response_map)</argsstring>
         <name>register_service_client</name>
+        <qualifiedname>email::ServiceHandler::register_service_client</qualifiedname>
         <param>
           <type>const <ref refid="classemail_1_1Gid" kindref="compound">Gid</ref> &amp;</type>
           <declname>gid</declname>
@@ -204,6 +216,7 @@
         <definition>void email::ServiceHandler::register_service_server</definition>
         <argsstring>(const std::string &amp;service_name, RequestQueue::WeakPtr request_queue)</argsstring>
         <name>register_service_server</name>
+        <qualifiedname>email::ServiceHandler::register_service_server</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>service_name</declname>
@@ -244,6 +257,7 @@
         <definition>virtual void email::ServiceHandler::register_handler</definition>
         <argsstring>(std::shared_ptr&lt; PollingManager &gt; polling_manager)</argsstring>
         <name>register_handler</name>
+        <qualifiedname>email::ServiceHandler::register_handler</qualifiedname>
         <reimplements refid="classemail_1_1EmailHandler_1a4760f8a9513bc50c2d453644da51ab1e">register_handler</reimplements>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1PollingManager" kindref="compound">PollingManager</ref> &gt;</type>
@@ -274,6 +288,7 @@
         <definition>virtual void email::ServiceHandler::handle</definition>
         <argsstring>(const struct EmailData &amp;data)</argsstring>
         <name>handle</name>
+        <qualifiedname>email::ServiceHandler::handle</qualifiedname>
         <reimplements refid="classemail_1_1EmailHandler_1a4f58d53157b09b2b8e70a77538f2b37f">handle</reimplements>
         <param>
           <type>const struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &amp;</type>
@@ -289,7 +304,7 @@
         </inbodydescription>
         <location file="include/email/service_handler.hpp" line="89" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Email handler for service servers. </para>
     </briefdescription>
@@ -298,6 +313,10 @@
 <para>There can be more than one service server for the same service name. All service servers may get the request and respond, but only the first response will be used by the original service client; the rest will be discarded. </para>
     </detaileddescription>
     <inheritancegraph>
+      <node id="2">
+        <label>email::EmailHandler</label>
+        <link refid="classemail_1_1EmailHandler"/>
+      </node>
       <node id="1">
         <label>email::ServiceHandler</label>
         <link refid="classemail_1_1ServiceHandler"/>
@@ -305,16 +324,16 @@
         </childnode>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>email::EmailHandler</label>
-        <link refid="classemail_1_1EmailHandler"/>
       </node>
       <node id="3">
         <label>std::enable_shared_from_this&lt; ServiceHandler &gt;</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="2">
+        <label>email::EmailHandler</label>
+        <link refid="classemail_1_1EmailHandler"/>
+      </node>
       <node id="1">
         <label>email::ServiceHandler</label>
         <link refid="classemail_1_1ServiceHandler"/>
@@ -322,10 +341,6 @@
         </childnode>
         <childnode refid="3" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>email::EmailHandler</label>
-        <link refid="classemail_1_1EmailHandler"/>
       </node>
       <node id="3">
         <label>std::enable_shared_from_this&lt; ServiceHandler &gt;</label>

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structemail_1_1ProtocolInfo" kind="struct" language="C++" prot="public">
     <compoundname>email::ProtocolInfo</compoundname>
     <includes local="no">info.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structemail_1_1ProtocolInfo_1ad0780b8e284c99614dd3112bb9d1a851" prot="public" static="no" mutable="no">
         <type>std::string</type>
         <definition>std::string email::ProtocolInfo::protocol</definition>
         <argsstring></argsstring>
         <name>protocol</name>
+        <qualifiedname>email::ProtocolInfo::protocol</qualifiedname>
         <briefdescription>
 <para>Protocol, i.e. &quot;&lt;protocol&gt;://&quot;. </para>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>int email::ProtocolInfo::port</definition>
         <argsstring></argsstring>
         <name>port</name>
+        <qualifiedname>email::ProtocolInfo::port</qualifiedname>
         <briefdescription>
 <para>Port. </para>
         </briefdescription>
@@ -32,7 +34,7 @@
         </inbodydescription>
         <location file="include/email/curl/info.hpp" line="40" column="7" bodyfile="include/email/curl/info.hpp" bodystart="40" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Info for a standard protocol. </para>
     </briefdescription>

@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1Subscription" kind="class" language="C++" prot="public">
     <compoundname>email::Subscription</compoundname>
     <basecompoundref refid="classemail_1_1PubSubObject" prot="public" virt="non-virtual">email::PubSubObject</basecompoundref>
     <includes local="no">subscription.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1Subscription_1a52ded81c000febb91203ae09d94e2db1" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; email::Subscription::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::Subscription::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,6 +24,7 @@
         <definition>SubscriptionHandler::MessageQueue::SharedPtr email::Subscription::messages_</definition>
         <argsstring></argsstring>
         <name>messages_</name>
+        <qualifiedname>email::Subscription::messages_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -31,13 +33,14 @@
         </inbodydescription>
         <location file="include/email/subscription.hpp" line="86" column="48" bodyfile="include/email/subscription.hpp" bodystart="86" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1Subscription_1aafc179a5eb735b80831c5be18c23dd71" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::Subscription::Subscription</definition>
         <argsstring>(const std::string &amp;topic_name)</argsstring>
         <name>Subscription</name>
+        <qualifiedname>email::Subscription::Subscription</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>topic_name</declname>
@@ -66,6 +69,7 @@
         <definition>virtual email::Subscription::~Subscription</definition>
         <argsstring>()</argsstring>
         <name>~Subscription</name>
+        <qualifiedname>email::Subscription::~Subscription</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -79,6 +83,7 @@
         <definition>bool email::Subscription::has_message</definition>
         <argsstring>() const</argsstring>
         <name>has_message</name>
+        <qualifiedname>email::Subscription::has_message</qualifiedname>
         <briefdescription>
 <para>Check if the subscription has a message. </para>
         </briefdescription>
@@ -91,11 +96,12 @@
         </inbodydescription>
         <location file="include/email/subscription.hpp" line="60" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Subscription_1a859e4294eabcfd55e07d115c93c3681b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Subscription_1ae1f718b845198817b7da9acc302f63d6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
-        <definition>std::optional&lt;std::string&gt; email::Subscription::get_message</definition>
+        <definition>std::optional&lt; std::string &gt; email::Subscription::get_message</definition>
         <argsstring>()</argsstring>
         <name>get_message</name>
+        <qualifiedname>email::Subscription::get_message</qualifiedname>
         <briefdescription>
 <para>Get a message if there is one. </para>
         </briefdescription>
@@ -109,11 +115,12 @@
         </inbodydescription>
         <location file="include/email/subscription.hpp" line="70" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Subscription_1a85751be20bb1ffb135879a968f4d518a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Subscription_1aca92384aa376d70176e9734b6c852d22" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::pair&lt; std::string, <ref refid="classemail_1_1MessageInfo" kindref="compound">MessageInfo</ref> &gt; &gt;</type>
-        <definition>std::optional&lt;std::pair&lt;std::string, MessageInfo&gt; &gt; email::Subscription::get_message_with_info</definition>
+        <definition>std::optional&lt; std::pair&lt; std::string, MessageInfo &gt; &gt; email::Subscription::get_message_with_info</definition>
         <argsstring>()</argsstring>
         <name>get_message_with_info</name>
+        <qualifiedname>email::Subscription::get_message_with_info</qualifiedname>
         <briefdescription>
 <para>Get a message with info if there is one. </para>
         </briefdescription>
@@ -127,7 +134,7 @@
         </inbodydescription>
         <location file="include/email/subscription.hpp" line="80" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Message subscription. </para>
     </briefdescription>
@@ -139,6 +146,10 @@
         <label>email::GidObject</label>
         <link refid="classemail_1_1GidObject"/>
       </node>
+      <node id="4">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
       <node id="2">
         <label>email::PubSubObject</label>
         <link refid="classemail_1_1PubSubObject"/>
@@ -152,10 +163,6 @@
         <link refid="classemail_1_1Subscription"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="4">
-        <label>email::NamedObject</label>
-        <link refid="classemail_1_1NamedObject"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -163,6 +170,10 @@
         <label>email::GidObject</label>
         <link refid="classemail_1_1GidObject"/>
       </node>
+      <node id="4">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
       <node id="2">
         <label>email::PubSubObject</label>
         <link refid="classemail_1_1PubSubObject"/>
@@ -177,18 +188,14 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>email::NamedObject</label>
-        <link refid="classemail_1_1NamedObject"/>
-      </node>
     </collaborationgraph>
     <location file="include/email/subscription.hpp" line="41" column="1" bodyfile="include/email/subscription.hpp" bodystart="42" bodyend="87"/>
     <listofallmembers>
-      <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_gid</name></member>
-      <member refid="classemail_1_1Subscription_1a859e4294eabcfd55e07d115c93c3681b" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_message</name></member>
-      <member refid="classemail_1_1Subscription_1a85751be20bb1ffb135879a968f4d518a" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_message_with_info</name></member>
-      <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" virt="non-virtual"><scope>email::Subscription</scope><name>get_object_name</name></member>
-      <member refid="classemail_1_1PubSubObject_1a00a22d18eebc82496581344c21e02c32" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_topic_name</name></member>
+      <member refid="classemail_1_1GidObject_1a593879303ef39c0a6c98c8f5e1f3a65c" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_gid</name></member>
+      <member refid="classemail_1_1Subscription_1ae1f718b845198817b7da9acc302f63d6" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_message</name></member>
+      <member refid="classemail_1_1Subscription_1aca92384aa376d70176e9734b6c852d22" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_message_with_info</name></member>
+      <member refid="classemail_1_1NamedObject_1a38236c2a6195ff5afec84161e1cf5056" prot="protected" virt="non-virtual"><scope>email::Subscription</scope><name>get_object_name</name></member>
+      <member refid="classemail_1_1PubSubObject_1a364a7bc9cf516f657bced8561655a85b" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>get_topic_name</name></member>
       <member refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" prot="protected" virt="non-virtual"><scope>email::Subscription</scope><name>GidObject</name></member>
       <member refid="classemail_1_1Subscription_1aa839176898e4ce3c244020eb3134adb9" prot="public" virt="non-virtual"><scope>email::Subscription</scope><name>has_message</name></member>
       <member refid="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" virt="non-virtual"><scope>email::Subscription</scope><name>has_newline</name></member>

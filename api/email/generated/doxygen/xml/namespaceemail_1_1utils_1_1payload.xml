@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="namespaceemail_1_1utils_1_1payload" kind="namespace" language="C++">
     <compoundname>email::utils::payload</compoundname>
-      <sectiondef kind="func">
+    <sectiondef kind="func">
       <memberdef kind="function" id="namespaceemail_1_1utils_1_1payload_1ad30b9776687e2e98638b32759ad2bc3d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string</type>
         <definition>const std::string email::utils::payload::build_payload</definition>
         <argsstring>(const std::vector&lt; std::string &gt; &amp;to, const std::vector&lt; std::string &gt; &amp;cc, const std::vector&lt; std::string &gt; &amp;bcc, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</argsstring>
         <name>build_payload</name>
+        <qualifiedname>email::utils::payload::build_payload</qualifiedname>
         <param>
           <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>to</declname>
@@ -100,6 +101,7 @@
         <definition>const std::string email::utils::payload::build_payload</definition>
         <argsstring>(EmailRecipients::SharedPtrConst recipients, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</argsstring>
         <name>build_payload</name>
+        <qualifiedname>email::utils::payload::build_payload</qualifiedname>
         <param>
           <type>EmailRecipients::SharedPtrConst</type>
           <declname>recipients</declname>
@@ -168,6 +170,7 @@
         <definition>const std::string email::utils::payload::join_list</definition>
         <argsstring>(const std::vector&lt; std::string &gt; &amp;list)</argsstring>
         <name>join_list</name>
+        <qualifiedname>email::utils::payload::join_list</qualifiedname>
         <param>
           <type>const std::vector&lt; std::string &gt; &amp;</type>
           <declname>list</declname>
@@ -198,6 +201,7 @@
         <definition>std::string email::utils::payload::cut_string_if_newline</definition>
         <argsstring>(const std::string &amp;string)</argsstring>
         <name>cut_string_if_newline</name>
+        <qualifiedname>email::utils::payload::cut_string_if_newline</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>string</declname>
@@ -223,7 +227,7 @@
         </inbodydescription>
         <location file="include/email/email/payload_utils.hpp" line="90" column="1" declfile="include/email/email/payload_utils.hpp" declline="90" declcolumn="1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Utilities for building email payloads according to RFC 5322. </para>
     </briefdescription>

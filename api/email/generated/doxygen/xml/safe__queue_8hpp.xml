@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="safe__queue_8hpp" kind="file" language="C++">
     <compoundname>safe_queue.hpp</compoundname>
     <includes local="no">mutex</includes>
@@ -12,8 +12,11 @@
     <includedby refid="subscription_8hpp" local="yes">include/email/subscription.hpp</includedby>
     <includedby refid="subscription__handler_8hpp" local="yes">include/email/subscription_handler.hpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>queue</label>
+      <node id="5">
+        <label>email/macros.hpp</label>
+        <link refid="macros_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
       </node>
       <node id="1">
         <label>include/email/safe_queue.hpp</label>
@@ -27,26 +30,71 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>email/macros.hpp</label>
-        <link refid="macros_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>utility</label>
+      <node id="6">
+        <label>memory</label>
       </node>
       <node id="2">
         <label>mutex</label>
       </node>
-      <node id="6">
-        <label>memory</label>
+      <node id="3">
+        <label>queue</label>
+      </node>
+      <node id="4">
+        <label>utility</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="5">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
+      </node>
       <node id="7">
         <label>include/email/email.hpp</label>
         <link refid="email_8hpp"/>
+      </node>
+      <node id="2">
+        <label>include/email/email/intra_receiver.hpp</label>
+        <link refid="intra__receiver_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/email/email/intra_sender.hpp</label>
+        <link refid="intra__sender_8hpp"/>
+      </node>
+      <node id="1">
+        <label>include/email/safe_queue.hpp</label>
+        <link refid="safe__queue_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/email/service_handler.hpp</label>
+        <link refid="service__handler_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>include/email/service_server.hpp</label>
@@ -68,58 +116,6 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/email/safe_queue.hpp</label>
-        <link refid="safe__queue_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/email/service_handler.hpp</label>
-        <link refid="service__handler_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>include/email/email/intra_receiver.hpp</label>
-        <link refid="intra__receiver_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
       <node id="12">
         <label>include/email/subscription_handler.hpp</label>
         <link refid="subscription__handler_8hpp"/>
@@ -128,13 +124,17 @@
         <childnode refid="11" relation="include">
         </childnode>
       </node>
-      <node id="3">
-        <label>include/email/email/intra_sender.hpp</label>
-        <link refid="intra__sender_8hpp"/>
+      <node id="8">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
-      <node id="5">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
+      <node id="9">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classemail_1_1SafeQueue" prot="public">email::SafeQueue</innerclass>
@@ -206,7 +206,7 @@
 <codeline lineno="66"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>&amp;</highlight></codeline>
-<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeQueue_1ab982a1cb410d935efe1a438c80bffa97" kindref="member">front</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeQueue_1ac27c1e01a529560211990f84e3fdd889" kindref="member">front</ref>()</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="70"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/>std::scoped_lock&lt;std::mutex&gt;<sp/>lock(queue_mutex_);</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>queue_.front();</highlight></codeline>
@@ -215,7 +215,7 @@
 <codeline lineno="75"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T</highlight></codeline>
 <codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeQueue_1abbc26904adc2e3180df5c12e16bc5307" kindref="member">dequeue</ref>()</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
-<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>message<sp/>=<sp/><ref refid="classemail_1_1SafeQueue_1ab982a1cb410d935efe1a438c80bffa97" kindref="member">front</ref>();</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>T<sp/>message<sp/>=<sp/><ref refid="classemail_1_1SafeQueue_1ac27c1e01a529560211990f84e3fdd889" kindref="member">front</ref>();</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classemail_1_1SafeQueue_1a9a939e531527ca5d84da0586f1341532" kindref="member">pop</ref>();</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>message;</highlight></codeline>
 <codeline lineno="81"><highlight class="normal"><sp/><sp/>}</highlight></codeline>

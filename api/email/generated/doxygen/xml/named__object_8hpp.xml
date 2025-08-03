@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="named__object_8hpp" kind="file" language="C++">
     <compoundname>named_object.hpp</compoundname>
     <includes local="no">regex</includes>
@@ -9,15 +9,6 @@
     <includedby refid="pub__sub_8hpp" local="yes">include/email/pub_sub.hpp</includedby>
     <includedby refid="service_8hpp" local="yes">include/email/service.hpp</includedby>
     <incdepgraph>
-      <node id="3">
-        <label>stdexcept</label>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
-      <node id="2">
-        <label>regex</label>
-      </node>
       <node id="5">
         <label>email/macros.hpp</label>
         <link refid="macros_8hpp"/>
@@ -39,61 +30,20 @@
       <node id="6">
         <label>memory</label>
       </node>
+      <node id="2">
+        <label>regex</label>
+      </node>
+      <node id="3">
+        <label>stdexcept</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="4">
         <label>include/email/email.hpp</label>
         <link refid="email_8hpp"/>
-      </node>
-      <node id="10">
-        <label>include/email/service_server.hpp</label>
-        <link refid="service__server_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="8">
-        <label>include/email/subscription.hpp</label>
-        <link refid="subscription_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/email/service.hpp</label>
-        <link refid="service_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
       </node>
       <node id="1">
         <label>include/email/named_object.hpp</label>
@@ -117,6 +67,56 @@
         <childnode refid="4" relation="include">
         </childnode>
         <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/email/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/email/service_server.hpp</label>
+        <link refid="service__server_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/email/subscription.hpp</label>
+        <link refid="subscription_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -157,7 +157,7 @@
 <codeline lineno="28" refid="classemail_1_1ObjectNameInvalidError" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classemail_1_1ObjectNameInvalidError" kindref="compound">ObjectNameInvalidError</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::runtime_error</highlight></codeline>
 <codeline lineno="29"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="30"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1ObjectNameInvalidError_1afcb2be70cb184aba3aa9c699b220dab5" kindref="member">ObjectNameInvalidError</ref>(</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1ObjectNameInvalidError" kindref="compound">ObjectNameInvalidError</ref>(</highlight></codeline>
 <codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>object_type_name,</highlight></codeline>
 <codeline lineno="33"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>object_name,</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>reason)</highlight></codeline>
@@ -171,10 +171,10 @@
 <codeline lineno="46"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" kindref="member">get_object_name</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1NamedObject_1a38236c2a6195ff5afec84161e1cf5056" kindref="member">get_object_name</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"></highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" kindref="member">NamedObject</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1NamedObject" kindref="compound">NamedObject</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>name);</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="60"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1NamedObject_1ab6de668d7cc2c1eefda15c5822599a46" kindref="member">~NamedObject</ref>();</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"></highlight></codeline>

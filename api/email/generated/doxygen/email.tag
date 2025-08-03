@@ -1,70 +1,109 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
-<tagfile doxygen_version="1.9.1">
+<tagfile doxygen_version="1.9.8">
   <compound kind="file">
     <name>communication_info.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>communication__info_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" imported="no">email/timestamp.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" import="no" module="no" objc="no">email/timestamp.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::CommunicationInfo</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>context.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>context_8hpp.html</filename>
-    <includes id="curl_2context_8hpp" name="context.hpp" local="yes" imported="no">email/curl/context.hpp</includes>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" imported="no">email/email/polling_manager.hpp</includes>
-    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" imported="no">email/email/receiver.hpp</includes>
-    <includes id="sender_8hpp" name="sender.hpp" local="yes" imported="no">email/email/sender.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="options_8hpp" name="options.hpp" local="yes" imported="no">email/options.hpp</includes>
-    <includes id="service__handler_8hpp" name="service_handler.hpp" local="yes" imported="no">email/service_handler.hpp</includes>
-    <includes id="subscription__handler_8hpp" name="subscription_handler.hpp" local="yes" imported="no">email/subscription_handler.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="curl_2context_8hpp" name="context.hpp" local="yes" import="no" module="no" objc="no">email/curl/context.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" import="no" module="no" objc="no">email/email/polling_manager.hpp</includes>
+    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" import="no" module="no" objc="no">email/email/receiver.hpp</includes>
+    <includes id="sender_8hpp" name="sender.hpp" local="yes" import="no" module="no" objc="no">email/email/sender.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="options_8hpp" name="options.hpp" local="yes" import="no" module="no" objc="no">email/options.hpp</includes>
+    <includes id="service__handler_8hpp" name="service_handler.hpp" local="yes" import="no" module="no" objc="no">email/service_handler.hpp</includes>
+    <includes id="subscription__handler_8hpp" name="subscription_handler.hpp" local="yes" import="no" module="no" objc="no">email/subscription_handler.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::ContextError</class>
     <class kind="class">email::ContextNotInitializedError</class>
     <class kind="class">email::ContextAlreadyInitializedError</class>
     <class kind="class">email::ContextInitFailedError</class>
     <class kind="class">email::Context</class>
     <namespace>email</namespace>
-    <member kind="function">
-      <type>std::shared_ptr&lt; Context &gt;</type>
-      <name>get_global_context</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a32664596f7a3d0177434519dc03ea38d</anchor>
-      <arglist>()</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>context.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/curl/</path>
+    <path>include/email/curl/</path>
     <filename>curl_2context_8hpp.html</filename>
-    <includes id="curl_2info_8hpp" name="info.hpp" local="yes" imported="no">email/curl/info.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="utils_8hpp" name="utils.hpp" local="yes" imported="no">email/utils.hpp</includes>
+    <includes id="curl_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/curl/info.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="utils_8hpp" name="utils.hpp" local="yes" import="no" module="no" objc="no">email/utils.hpp</includes>
     <class kind="class">email::CurlContext</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>executor.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/curl/</path>
+    <path>include/email/curl/</path>
     <filename>executor_8hpp.html</filename>
-    <includes id="curl_2context_8hpp" name="context.hpp" local="yes" imported="no">email/curl/context.hpp</includes>
-    <includes id="curl_2info_8hpp" name="info.hpp" local="yes" imported="no">email/curl/info.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="curl_2context_8hpp" name="context.hpp" local="yes" import="no" module="no" objc="no">email/curl/context.hpp</includes>
+    <includes id="curl_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/curl/info.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::CurlExecutor</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
+    <name>email.hpp</name>
+    <path>include/email/</path>
+    <filename>email_8hpp.html</filename>
+    <includes id="init_8hpp" name="init.hpp" local="yes" import="no" module="no" objc="no">email/init.hpp</includes>
+    <includes id="publisher_8hpp" name="publisher.hpp" local="yes" import="no" module="no" objc="no">email/publisher.hpp</includes>
+    <includes id="service__client_8hpp" name="service_client.hpp" local="yes" import="no" module="no" objc="no">email/service_client.hpp</includes>
+    <includes id="service__server_8hpp" name="service_server.hpp" local="yes" import="no" module="no" objc="no">email/service_server.hpp</includes>
+    <includes id="subscription_8hpp" name="subscription.hpp" local="yes" import="no" module="no" objc="no">email/subscription.hpp</includes>
+    <includes id="wait_8hpp" name="wait.hpp" local="yes" import="no" module="no" objc="no">email/wait.hpp</includes>
+    <includes id="wait__set_8hpp" name="wait_set.hpp" local="yes" import="no" module="no" objc="no">email/wait_set.hpp</includes>
+  </compound>
+  <compound kind="file">
+    <name>curl_receiver.hpp</name>
+    <path>include/email/email/</path>
+    <filename>curl__receiver_8hpp.html</filename>
+    <includes id="executor_8hpp" name="executor.hpp" local="yes" import="no" module="no" objc="no">email/curl/executor.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" import="no" module="no" objc="no">email/email/receiver.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
+    <class kind="class">email::CurlEmailReceiver</class>
+    <namespace>email</namespace>
+  </compound>
+  <compound kind="file">
+    <name>curl_sender.hpp</name>
+    <path>include/email/email/</path>
+    <filename>curl__sender_8hpp.html</filename>
+    <includes id="executor_8hpp" name="executor.hpp" local="yes" import="no" module="no" objc="no">email/curl/executor.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="sender_8hpp" name="sender.hpp" local="yes" import="no" module="no" objc="no">email/email/sender.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
+    <class kind="class">email::CurlEmailSender</class>
+    <namespace>email</namespace>
+  </compound>
+  <compound kind="file">
+    <name>handler.hpp</name>
+    <path>include/email/email/</path>
+    <filename>handler_8hpp.html</filename>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" import="no" module="no" objc="no">email/email/polling_manager.hpp</includes>
+    <class kind="class">email::EmailHandler</class>
+    <namespace>email</namespace>
+  </compound>
+  <compound kind="file">
     <name>info.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/curl/</path>
+    <path>include/email/curl/</path>
     <filename>curl_2info_8hpp.html</filename>
     <class kind="struct">email::ConnectionInfo</class>
     <class kind="struct">email::ProtocolInfo</class>
@@ -72,9 +111,9 @@
   </compound>
   <compound kind="file">
     <name>info.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>email_2info_8hpp.html</filename>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
     <class kind="struct">email::UserInfo</class>
     <class kind="struct">email::EmailRecipients</class>
     <class kind="struct">email::EmailContent</class>
@@ -84,380 +123,137 @@
     <class kind="struct">fmt::formatter&lt; email::EmailHeaders &gt;</class>
     <class kind="struct">fmt::formatter&lt; email::EmailData &gt;</class>
     <namespace>email</namespace>
-    <member kind="typedef">
-      <type>std::map&lt; std::string, std::string &gt;</type>
-      <name>EmailHeaders</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>ae41e6fb7cb5a3b87ee3effdc2aa2065f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="typedef">
-      <type>EmailHeaders::value_type</type>
-      <name>EmailHeader</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a79f0f6247c3270688400eb20c9564c96</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="file">
-    <name>email.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
-    <filename>email_8hpp.html</filename>
-    <includes id="init_8hpp" name="init.hpp" local="yes" imported="no">email/init.hpp</includes>
-    <includes id="publisher_8hpp" name="publisher.hpp" local="yes" imported="no">email/publisher.hpp</includes>
-    <includes id="service__client_8hpp" name="service_client.hpp" local="yes" imported="no">email/service_client.hpp</includes>
-    <includes id="service__server_8hpp" name="service_server.hpp" local="yes" imported="no">email/service_server.hpp</includes>
-    <includes id="subscription_8hpp" name="subscription.hpp" local="yes" imported="no">email/subscription.hpp</includes>
-    <includes id="wait_8hpp" name="wait.hpp" local="yes" imported="no">email/wait.hpp</includes>
-    <includes id="wait__set_8hpp" name="wait_set.hpp" local="yes" imported="no">email/wait_set.hpp</includes>
-  </compound>
-  <compound kind="file">
-    <name>curl_receiver.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
-    <filename>curl__receiver_8hpp.html</filename>
-    <includes id="executor_8hpp" name="executor.hpp" local="yes" imported="no">email/curl/executor.hpp</includes>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" imported="no">email/email/receiver.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
-    <class kind="class">email::CurlEmailReceiver</class>
-    <namespace>email</namespace>
-  </compound>
-  <compound kind="file">
-    <name>curl_sender.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
-    <filename>curl__sender_8hpp.html</filename>
-    <includes id="executor_8hpp" name="executor.hpp" local="yes" imported="no">email/curl/executor.hpp</includes>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="sender_8hpp" name="sender.hpp" local="yes" imported="no">email/email/sender.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
-    <class kind="class">email::CurlEmailSender</class>
-    <namespace>email</namespace>
-  </compound>
-  <compound kind="file">
-    <name>handler.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
-    <filename>handler_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" imported="no">email/email/polling_manager.hpp</includes>
-    <class kind="class">email::EmailHandler</class>
-    <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>intra_receiver.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>intra__receiver_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" imported="no">email/email/receiver.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" imported="no">email/safe_queue.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" import="no" module="no" objc="no">email/email/receiver.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" import="no" module="no" objc="no">email/safe_queue.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::IntraEmailReceiver</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>intra_sender.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>intra__sender_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="intra__receiver_8hpp" name="intra_receiver.hpp" local="yes" imported="no">email/email/intra_receiver.hpp</includes>
-    <includes id="sender_8hpp" name="sender.hpp" local="yes" imported="no">email/email/sender.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="intra__receiver_8hpp" name="intra_receiver.hpp" local="yes" import="no" module="no" objc="no">email/email/intra_receiver.hpp</includes>
+    <includes id="sender_8hpp" name="sender.hpp" local="yes" import="no" module="no" objc="no">email/email/sender.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::IntraEmailSender</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>payload_utils.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>payload__utils_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <namespace>email</namespace>
     <namespace>email::utils</namespace>
     <namespace>email::utils::payload</namespace>
-    <member kind="function">
-      <type>const std::string</type>
-      <name>build_payload</name>
-      <anchorfile>namespaceemail_1_1utils_1_1payload.html</anchorfile>
-      <anchor>ad30b9776687e2e98638b32759ad2bc3d</anchor>
-      <arglist>(const std::vector&lt; std::string &gt; &amp;to, const std::vector&lt; std::string &gt; &amp;cc, const std::vector&lt; std::string &gt; &amp;bcc, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</arglist>
-    </member>
-    <member kind="function">
-      <type>const std::string</type>
-      <name>build_payload</name>
-      <anchorfile>namespaceemail_1_1utils_1_1payload.html</anchorfile>
-      <anchor>ac522857948a8c609ea73e96600cb8e2a</anchor>
-      <arglist>(EmailRecipients::SharedPtrConst recipients, const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt, std::optional&lt; std::string &gt; reply_ref=std::nullopt)</arglist>
-    </member>
-    <member kind="function">
-      <type>const std::string</type>
-      <name>join_list</name>
-      <anchorfile>namespaceemail_1_1utils_1_1payload.html</anchorfile>
-      <anchor>ae288cd99e7a54273aea6372c959f76c9</anchor>
-      <arglist>(const std::vector&lt; std::string &gt; &amp;list)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>cut_string_if_newline</name>
-      <anchorfile>namespaceemail_1_1utils_1_1payload.html</anchorfile>
-      <anchor>a455c37a8a129ddcf90c1835f001c0579</anchor>
-      <arglist>(const std::string &amp;string)</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>polling_manager.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>polling__manager_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" imported="no">email/email/receiver.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="receiver_8hpp" name="receiver.hpp" local="yes" import="no" module="no" objc="no">email/email/receiver.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::PollingManager</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>receiver.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>receiver_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::EmailReceiver</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>response_utils.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>response__utils_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <namespace>email</namespace>
     <namespace>email::utils</namespace>
     <namespace>email::utils::response</namespace>
-    <member kind="function">
-      <type>std::optional&lt; int &gt;</type>
-      <name>get_nextuid_from_response</name>
-      <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a86761af16b95987441640bea6861132a</anchor>
-      <arglist>(const std::string &amp;response)</arglist>
-    </member>
-    <member kind="function">
-      <type>EmailHeaders</type>
-      <name>get_email_headers_from_response</name>
-      <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a5a53dc0d1ceb86baec63678cc7dc060b</anchor>
-      <arglist>(const std::string &amp;response)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::optional&lt; struct EmailContent &gt;</type>
-      <name>get_email_content_from_response</name>
-      <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a6b5d710f645d106f79a0c1d15c7f9d75</anchor>
-      <arglist>(const std::string &amp;response, EmailHeaders &amp;headers)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::optional&lt; struct EmailData &gt;</type>
-      <name>get_email_data_from_response</name>
-      <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a653d46e023a23fecac67b8b95e32ff6b</anchor>
-      <arglist>(const std::string &amp;response)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::optional&lt; std::string &gt;</type>
-      <name>get_header_value</name>
-      <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a30fbb8f3e4152b10b3998d176b5212d0</anchor>
-      <arglist>(const std::string &amp;header_name, const EmailHeaders &amp;headers)</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>sender.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/email/</path>
+    <path>include/email/email/</path>
     <filename>sender_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::EmailSender</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>gid.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>gid_8hpp.html</filename>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::Gid</class>
     <class kind="struct">fmt::formatter&lt; email::Gid &gt;</class>
     <namespace>email</namespace>
-    <member kind="typedef">
-      <type>uint32_t</type>
-      <name>GidValue</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a75eac80413e3a15a1adff727b822a70c</anchor>
-      <arglist></arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>gid_object.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>gid__object_8hpp.html</filename>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
     <class kind="class">email::GidObject</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>guard_condition.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>guard__condition_8hpp.html</filename>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::GuardConditionAlreadyInUseError</class>
     <class kind="class">email::GuardCondition</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>init.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>init_8hpp.html</filename>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <namespace>email</namespace>
-    <member kind="function">
-      <type>void</type>
-      <name>init</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a3d225be7f22f802190fb1f2e49f5b1d1</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>init</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a31064318c3c135912c70c384f25d3305</anchor>
-      <arglist>(int argc, char const *const argv[])</arglist>
-    </member>
-    <member kind="function">
-      <type>bool</type>
-      <name>shutdown</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a7a0e2779940792a4753a9b163fd1bbc4</anchor>
-      <arglist>()</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>log.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>log_8hpp.html</filename>
-    <includes id="utils_8hpp" name="utils.hpp" local="yes" imported="no">email/utils.hpp</includes>
+    <includes id="utils_8hpp" name="utils.hpp" local="yes" import="no" module="no" objc="no">email/utils.hpp</includes>
     <class kind="class">email::log::LoggingError</class>
     <class kind="class">email::log::LoggingNotInitializedError</class>
-    <class kind="struct">fmt::formatter&lt; rcpputils::fs::path &gt;</class>
+    <class kind="struct">fmt::formatter&lt; std::filesystem::path &gt;</class>
     <class kind="struct">fmt::formatter&lt; YAML::Node &gt;</class>
     <namespace>email</namespace>
     <namespace>email::log</namespace>
-    <member kind="typedef">
-      <type>spdlog::logger</type>
-      <name>Logger</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a8d76c558a86ae3983f1b8f138c036e61</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumeration">
-      <type></type>
-      <name>Level</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a76b9f7af528d9d5b684c7dd13770eb8f</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>debug</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a76b9f7af528d9d5b684c7dd13770eb8fab854c88759c3923a679b84586ca1197c</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>info</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a76b9f7af528d9d5b684c7dd13770eb8faa7c9183950be07c0f6e85a5b10a45087</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>warn</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a76b9f7af528d9d5b684c7dd13770eb8fa3e9bbe69f71687a336604c2482f4366c</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>error</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a76b9f7af528d9d5b684c7dd13770eb8faba726552e49985a6cc8f897f16e99793</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>fatal</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a76b9f7af528d9d5b684c7dd13770eb8fa6df5a6c39d2a59dd7477e58e07c0bffa</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="enumvalue">
-      <name>off</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a76b9f7af528d9d5b684c7dd13770eb8fa0d42315cc89e99a312b0445743128878</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>init</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a70e2c4b9640f8b10a086f14269d4681d</anchor>
-      <arglist>(const Level &amp;level)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>init_from_env</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>aba50b69230431fca149b16fe3fbcaa9c</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>std::shared_ptr&lt; Logger &gt;</type>
-      <name>create</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a82cb3ebe95d6b4e4bc16fd417bf65b8e</anchor>
-      <arglist>(const std::string &amp;name)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::shared_ptr&lt; Logger &gt;</type>
-      <name>get_or_create</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>ab5f6effef314d9faef6dee3b4d78f4ce</anchor>
-      <arglist>(const std::string &amp;name)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>remove</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>aae637767284f0246349f0c09c4a7b30f</anchor>
-      <arglist>(const std::shared_ptr&lt; Logger &gt; &amp;logger)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>shutdown</name>
-      <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>ab7f5f3d63616c0073e304d2b20f86841</anchor>
-      <arglist>()</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>lttng.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>lttng_8hpp.html</filename>
     <member kind="define">
       <type>#define</type>
@@ -469,7 +265,7 @@
   </compound>
   <compound kind="file">
     <name>macros.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>macros_8hpp.html</filename>
     <member kind="define">
       <type>#define</type>
@@ -502,318 +298,213 @@
   </compound>
   <compound kind="file">
     <name>message_info.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>message__info_8hpp.html</filename>
-    <includes id="communication__info_8hpp" name="communication_info.hpp" local="yes" imported="no">email/communication_info.hpp</includes>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" imported="no">email/timestamp.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="communication__info_8hpp" name="communication_info.hpp" local="yes" import="no" module="no" objc="no">email/communication_info.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" import="no" module="no" objc="no">email/timestamp.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::MessageInfo</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>named_object.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>named__object_8hpp.html</filename>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
     <class kind="class">email::ObjectNameInvalidError</class>
     <class kind="class">email::NamedObject</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>options.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>options_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::Options</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>pub_sub.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>pub__sub_8hpp.html</filename>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="gid__object_8hpp" name="gid_object.hpp" local="yes" imported="no">email/gid_object.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="named__object_8hpp" name="named_object.hpp" local="yes" imported="no">email/named_object.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="gid__object_8hpp" name="gid_object.hpp" local="yes" import="no" module="no" objc="no">email/gid_object.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="named__object_8hpp" name="named_object.hpp" local="yes" import="no" module="no" objc="no">email/named_object.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::TopicNameInvalidError</class>
     <class kind="class">email::PubSubObject</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>publisher.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>publisher_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="sender_8hpp" name="sender.hpp" local="yes" imported="no">email/email/sender.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="pub__sub_8hpp" name="pub_sub.hpp" local="yes" imported="no">email/pub_sub.hpp</includes>
-    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" imported="no">email/timestamp.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="sender_8hpp" name="sender.hpp" local="yes" import="no" module="no" objc="no">email/email/sender.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="pub__sub_8hpp" name="pub_sub.hpp" local="yes" import="no" module="no" objc="no">email/pub_sub.hpp</includes>
+    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" import="no" module="no" objc="no">email/timestamp.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::Publisher</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>safe_map.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>safe__map_8hpp.html</filename>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
     <class kind="class">email::SafeMap</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>safe_queue.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>safe__queue_8hpp.html</filename>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
     <class kind="class">email::SafeQueue</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>service.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>service_8hpp.html</filename>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="gid__object_8hpp" name="gid_object.hpp" local="yes" imported="no">email/gid_object.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="named__object_8hpp" name="named_object.hpp" local="yes" imported="no">email/named_object.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="gid__object_8hpp" name="gid_object.hpp" local="yes" import="no" module="no" objc="no">email/gid_object.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="named__object_8hpp" name="named_object.hpp" local="yes" import="no" module="no" objc="no">email/named_object.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::ServiceNameInvalidError</class>
     <class kind="class">email::ServiceObject</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>service_client.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>service__client_8hpp.html</filename>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="publisher_8hpp" name="publisher.hpp" local="yes" imported="no">email/publisher.hpp</includes>
-    <includes id="safe__map_8hpp" name="safe_map.hpp" local="yes" imported="no">email/safe_map.hpp</includes>
-    <includes id="service_8hpp" name="service.hpp" local="yes" imported="no">email/service.hpp</includes>
-    <includes id="service__handler_8hpp" name="service_handler.hpp" local="yes" imported="no">email/service_handler.hpp</includes>
-    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" imported="no">email/service_info.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="publisher_8hpp" name="publisher.hpp" local="yes" import="no" module="no" objc="no">email/publisher.hpp</includes>
+    <includes id="safe__map_8hpp" name="safe_map.hpp" local="yes" import="no" module="no" objc="no">email/safe_map.hpp</includes>
+    <includes id="service_8hpp" name="service.hpp" local="yes" import="no" module="no" objc="no">email/service.hpp</includes>
+    <includes id="service__handler_8hpp" name="service_handler.hpp" local="yes" import="no" module="no" objc="no">email/service_handler.hpp</includes>
+    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" import="no" module="no" objc="no">email/service_info.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::ServiceClient</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>service_handler.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>service__handler_8hpp.html</filename>
-    <includes id="handler_8hpp" name="handler.hpp" local="yes" imported="no">email/email/handler.hpp</includes>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" imported="no">email/email/polling_manager.hpp</includes>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="safe__map_8hpp" name="safe_map.hpp" local="yes" imported="no">email/safe_map.hpp</includes>
-    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" imported="no">email/safe_queue.hpp</includes>
-    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" imported="no">email/service_info.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="handler_8hpp" name="handler.hpp" local="yes" import="no" module="no" objc="no">email/email/handler.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" import="no" module="no" objc="no">email/email/polling_manager.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="safe__map_8hpp" name="safe_map.hpp" local="yes" import="no" module="no" objc="no">email/safe_map.hpp</includes>
+    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" import="no" module="no" objc="no">email/safe_queue.hpp</includes>
+    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" import="no" module="no" objc="no">email/service_info.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::ServiceHandler</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>service_info.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>service__info_8hpp.html</filename>
-    <includes id="communication__info_8hpp" name="communication_info.hpp" local="yes" imported="no">email/communication_info.hpp</includes>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" imported="no">email/timestamp.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="communication__info_8hpp" name="communication_info.hpp" local="yes" import="no" module="no" objc="no">email/communication_info.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="timestamp_8hpp" name="timestamp.hpp" local="yes" import="no" module="no" objc="no">email/timestamp.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::ServiceInfo</class>
     <namespace>email</namespace>
-    <member kind="typedef">
-      <type>int64_t</type>
-      <name>SequenceNumber</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a0de800b4ba159d6e3892ce756a690103</anchor>
-      <arglist></arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>service_request.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>service__request_8hpp.html</filename>
-    <includes id="gid_8hpp" name="gid.hpp" local="yes" imported="no">email/gid.hpp</includes>
-    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" imported="no">email/service_info.hpp</includes>
+    <includes id="gid_8hpp" name="gid.hpp" local="yes" import="no" module="no" objc="no">email/gid.hpp</includes>
+    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" import="no" module="no" objc="no">email/service_info.hpp</includes>
     <class kind="struct">email::ServiceRequestId</class>
     <class kind="struct">email::ServiceRequest</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>service_server.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>service__server_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="sender_8hpp" name="sender.hpp" local="yes" imported="no">email/email/sender.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" imported="no">email/safe_queue.hpp</includes>
-    <includes id="service_8hpp" name="service.hpp" local="yes" imported="no">email/service.hpp</includes>
-    <includes id="service__handler_8hpp" name="service_handler.hpp" local="yes" imported="no">email/service_handler.hpp</includes>
-    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" imported="no">email/service_info.hpp</includes>
-    <includes id="service__request_8hpp" name="service_request.hpp" local="yes" imported="no">email/service_request.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="sender_8hpp" name="sender.hpp" local="yes" import="no" module="no" objc="no">email/email/sender.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" import="no" module="no" objc="no">email/safe_queue.hpp</includes>
+    <includes id="service_8hpp" name="service.hpp" local="yes" import="no" module="no" objc="no">email/service.hpp</includes>
+    <includes id="service__handler_8hpp" name="service_handler.hpp" local="yes" import="no" module="no" objc="no">email/service_handler.hpp</includes>
+    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" import="no" module="no" objc="no">email/service_info.hpp</includes>
+    <includes id="service__request_8hpp" name="service_request.hpp" local="yes" import="no" module="no" objc="no">email/service_request.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::ServiceServer</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>subscription.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>subscription_8hpp.html</filename>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="message__info_8hpp" name="message_info.hpp" local="yes" imported="no">email/message_info.hpp</includes>
-    <includes id="pub__sub_8hpp" name="pub_sub.hpp" local="yes" imported="no">email/pub_sub.hpp</includes>
-    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" imported="no">email/safe_queue.hpp</includes>
-    <includes id="subscription__handler_8hpp" name="subscription_handler.hpp" local="yes" imported="no">email/subscription_handler.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="message__info_8hpp" name="message_info.hpp" local="yes" import="no" module="no" objc="no">email/message_info.hpp</includes>
+    <includes id="pub__sub_8hpp" name="pub_sub.hpp" local="yes" import="no" module="no" objc="no">email/pub_sub.hpp</includes>
+    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" import="no" module="no" objc="no">email/safe_queue.hpp</includes>
+    <includes id="subscription__handler_8hpp" name="subscription_handler.hpp" local="yes" import="no" module="no" objc="no">email/subscription_handler.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::Subscription</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>subscription_handler.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>subscription__handler_8hpp.html</filename>
-    <includes id="handler_8hpp" name="handler.hpp" local="yes" imported="no">email/email/handler.hpp</includes>
-    <includes id="email_2info_8hpp" name="info.hpp" local="yes" imported="no">email/email/info.hpp</includes>
-    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" imported="no">email/email/polling_manager.hpp</includes>
-    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" imported="no">email/safe_queue.hpp</includes>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="message__info_8hpp" name="message_info.hpp" local="yes" imported="no">email/message_info.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="handler_8hpp" name="handler.hpp" local="yes" import="no" module="no" objc="no">email/email/handler.hpp</includes>
+    <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
+    <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" import="no" module="no" objc="no">email/email/polling_manager.hpp</includes>
+    <includes id="safe__queue_8hpp" name="safe_queue.hpp" local="yes" import="no" module="no" objc="no">email/safe_queue.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="message__info_8hpp" name="message_info.hpp" local="yes" import="no" module="no" objc="no">email/message_info.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::SubscriptionHandler</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>timestamp.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>timestamp_8hpp.html</filename>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::Timestamp</class>
     <class kind="struct">fmt::formatter&lt; email::Timestamp &gt;</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
     <name>utils.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>utils_8hpp.html</filename>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <namespace>email</namespace>
     <namespace>email::utils</namespace>
-    <member kind="function">
-      <type>std::string</type>
-      <name>string_format</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a36d04ae0600a820016e9a547222bad1a</anchor>
-      <arglist>(const std::string &amp;format, Args... args)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>get_env_var</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a48891b8793ba17bf280aef8d8c62f392</anchor>
-      <arglist>(const std::string &amp;env_var)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>get_env_var_or_default</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>ae02d06fc8aab9fc0e6c0e2f08e4bb976</anchor>
-      <arglist>(const std::string &amp;env_var, const std::string &amp;default_value)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::optional&lt; std::string &gt;</type>
-      <name>read_file</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a88a5169377c5fdee4455ee6b38723745</anchor>
-      <arglist>(const std::string &amp;path)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::vector&lt; std::string &gt;</type>
-      <name>split_email_list</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a45df7fc739ac9b6a5f5f8dd28eec92e1</anchor>
-      <arglist>(const std::string &amp;list, const bool has_space_after_comma=false)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::vector&lt; std::string &gt;</type>
-      <name>split_email_list</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>aef6154f77c351ae81abb1544e8a5f3fd</anchor>
-      <arglist>(const YAML::Node &amp;node)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>yaml_to_string</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a82ee838f6167a4af1146f59b82a26933</anchor>
-      <arglist>(const YAML::Node &amp;node)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>full_url</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a40a0b74a4dfabc0575e10367ff64f14f</anchor>
-      <arglist>(const std::string &amp;protocol, const std::string &amp;host, const int port)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::optional&lt; uint32_t &gt;</type>
-      <name>optional_stoul</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a1426a6b72c22a41e717f2dddb9fe6f47</anchor>
-      <arglist>(const std::string &amp;str)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::optional&lt; int &gt;</type>
-      <name>optional_stoi</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a2a5c92f770d0c27fefe339dd2ba426a1</anchor>
-      <arglist>(const std::string &amp;str)</arglist>
-    </member>
-    <member kind="function">
-      <type>std::optional&lt; int64_t &gt;</type>
-      <name>optional_stoll</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a205d62958aa3a9111c4c17da561743fc</anchor>
-      <arglist>(const std::string &amp;str)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>thread_get_name</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a3f1ec15b0fb2fe7708248d9144068e69</anchor>
-      <arglist>(char *name, size_t len)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>thread_set_name</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>abb5cc15dac76b938b897a32a94d29387</anchor>
-      <arglist>(const char *name)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>thread_append_name</name>
-      <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a6de7445821178c24df09d19ede5b3700</anchor>
-      <arglist>(const char *suffix)</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>visibility_control.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>visibility__control_8hpp.html</filename>
     <member kind="define">
       <type>#define</type>
@@ -853,112 +544,28 @@
   </compound>
   <compound kind="file">
     <name>wait.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>wait_8hpp.html</filename>
-    <includes id="message__info_8hpp" name="message_info.hpp" local="yes" imported="no">email/message_info.hpp</includes>
-    <includes id="service__client_8hpp" name="service_client.hpp" local="yes" imported="no">email/service_client.hpp</includes>
-    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" imported="no">email/service_info.hpp</includes>
-    <includes id="service__request_8hpp" name="service_request.hpp" local="yes" imported="no">email/service_request.hpp</includes>
-    <includes id="service__server_8hpp" name="service_server.hpp" local="yes" imported="no">email/service_server.hpp</includes>
-    <includes id="subscription_8hpp" name="subscription.hpp" local="yes" imported="no">email/subscription.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="message__info_8hpp" name="message_info.hpp" local="yes" import="no" module="no" objc="no">email/message_info.hpp</includes>
+    <includes id="service__client_8hpp" name="service_client.hpp" local="yes" import="no" module="no" objc="no">email/service_client.hpp</includes>
+    <includes id="service__info_8hpp" name="service_info.hpp" local="yes" import="no" module="no" objc="no">email/service_info.hpp</includes>
+    <includes id="service__request_8hpp" name="service_request.hpp" local="yes" import="no" module="no" objc="no">email/service_request.hpp</includes>
+    <includes id="service__server_8hpp" name="service_server.hpp" local="yes" import="no" module="no" objc="no">email/service_server.hpp</includes>
+    <includes id="subscription_8hpp" name="subscription.hpp" local="yes" import="no" module="no" objc="no">email/subscription.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <namespace>email</namespace>
-    <member kind="function">
-      <type>std::pair&lt; std::string, MessageInfo &gt;</type>
-      <name>wait_for_message_with_info</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>aa59c37dd2056e5079d933232a16a3396</anchor>
-      <arglist>(Subscription *subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; std::string, MessageInfo &gt;</type>
-      <name>wait_for_message_with_info</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a03feb199db737e274a1e6f0750d203a6</anchor>
-      <arglist>(std::shared_ptr&lt; Subscription &gt; subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>wait_for_message</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>ab5721e49aa88b793a84361690e62cff6</anchor>
-      <arglist>(Subscription *subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>wait_for_message</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>ae337962e644aa83d44bb241471fcb5a2</anchor>
-      <arglist>(std::shared_ptr&lt; Subscription &gt; subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; std::string, ServiceInfo &gt;</type>
-      <name>wait_for_response_with_info</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a79fde927095f94957025da12c6283edb</anchor>
-      <arglist>(const SequenceNumber sequence_number, ServiceClient *client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; std::string, ServiceInfo &gt;</type>
-      <name>wait_for_response_with_info</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a2cdbe450415e49215d4a2d869eb577e7</anchor>
-      <arglist>(const SequenceNumber sequence_number, std::shared_ptr&lt; ServiceClient &gt; client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>wait_for_response</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a5f80f51854175a635e2ce28ec401e8a9</anchor>
-      <arglist>(const SequenceNumber sequence_number, ServiceClient *client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::string</type>
-      <name>wait_for_response</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a81ce8fcb498eb5e3074e69043bccbff0</anchor>
-      <arglist>(const SequenceNumber sequence_number, std::shared_ptr&lt; ServiceClient &gt; client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; struct ServiceRequest, ServiceInfo &gt;</type>
-      <name>wait_for_request_with_info</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>ad5dd2091a29213c9aa3859d817376d10</anchor>
-      <arglist>(ServiceServer *server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>std::pair&lt; struct ServiceRequest, ServiceInfo &gt;</type>
-      <name>wait_for_request_with_info</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>afdc469e72e9b1ab69445fdb82082f050</anchor>
-      <arglist>(std::shared_ptr&lt; ServiceServer &gt; server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>struct ServiceRequest</type>
-      <name>wait_for_request</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>ad0a6b760f7e08068416acceebb60a199</anchor>
-      <arglist>(ServiceServer *server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
-    <member kind="function">
-      <type>struct ServiceRequest</type>
-      <name>wait_for_request</name>
-      <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a7dfbb8a3972445ace7e5b33b3b8cf18e</anchor>
-      <arglist>(std::shared_ptr&lt; ServiceServer &gt; server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
-    </member>
   </compound>
   <compound kind="file">
     <name>wait_set.hpp</name>
-    <path>/home/runner/work/rmw_email/rmw_email/rmw_email/email/include/email/</path>
+    <path>include/email/</path>
     <filename>wait__set_8hpp.html</filename>
-    <includes id="log_8hpp" name="log.hpp" local="yes" imported="no">email/log.hpp</includes>
-    <includes id="guard__condition_8hpp" name="guard_condition.hpp" local="yes" imported="no">email/guard_condition.hpp</includes>
-    <includes id="service__client_8hpp" name="service_client.hpp" local="yes" imported="no">email/service_client.hpp</includes>
-    <includes id="service__server_8hpp" name="service_server.hpp" local="yes" imported="no">email/service_server.hpp</includes>
-    <includes id="subscription_8hpp" name="subscription.hpp" local="yes" imported="no">email/subscription.hpp</includes>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" imported="no">email/macros.hpp</includes>
-    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" imported="no">email/visibility_control.hpp</includes>
+    <includes id="log_8hpp" name="log.hpp" local="yes" import="no" module="no" objc="no">email/log.hpp</includes>
+    <includes id="guard__condition_8hpp" name="guard_condition.hpp" local="yes" import="no" module="no" objc="no">email/guard_condition.hpp</includes>
+    <includes id="service__client_8hpp" name="service_client.hpp" local="yes" import="no" module="no" objc="no">email/service_client.hpp</includes>
+    <includes id="service__server_8hpp" name="service_server.hpp" local="yes" import="no" module="no" objc="no">email/service_server.hpp</includes>
+    <includes id="subscription_8hpp" name="subscription.hpp" local="yes" import="no" module="no" objc="no">email/subscription.hpp</includes>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <includes id="visibility__control_8hpp" name="visibility_control.hpp" local="yes" import="no" module="no" objc="no">email/visibility_control.hpp</includes>
     <class kind="class">email::WaitSet</class>
     <namespace>email</namespace>
   </compound>
@@ -990,28 +597,28 @@
       <type>const Timestamp &amp;</type>
       <name>source_timestamp</name>
       <anchorfile>classemail_1_1CommunicationInfo.html</anchorfile>
-      <anchor>a690cb702fb6fd6767d0fc2915a21084c</anchor>
+      <anchor>ad5a3e58b3359fe80026b3edda2eb2d27</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const Timestamp &amp;</type>
       <name>received_timestamp</name>
       <anchorfile>classemail_1_1CommunicationInfo.html</anchorfile>
-      <anchor>a51f763fcc089f6bba8234c9193d476bf</anchor>
+      <anchor>a7680c09d74680518b190fa4a54301b0d</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const Gid &amp;</type>
       <name>source_gid</name>
       <anchorfile>classemail_1_1CommunicationInfo.html</anchorfile>
-      <anchor>a0e848c80f65edbbb7f3a1df3af47ab9d</anchor>
+      <anchor>adc2a497fe7cc3fcd4554aec85e2a8b60</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::optional&lt; CommunicationInfo &gt;</type>
       <name>from_headers</name>
       <anchorfile>classemail_1_1CommunicationInfo.html</anchorfile>
-      <anchor>ad3cff0500c8627f61a85cd745e049403</anchor>
+      <anchor>a3b2b08b6102d87d4315b212337925274</anchor>
       <arglist>(const EmailHeaders &amp;headers, const std::string &amp;source_gid_header)</arglist>
     </member>
     <member kind="variable" static="yes">
@@ -1096,42 +703,42 @@
       <type>std::shared_ptr&lt; Options &gt;</type>
       <name>get_options</name>
       <anchorfile>classemail_1_1Context.html</anchorfile>
-      <anchor>a5e93b3ce58fa2cd5f99bb11f87a42129</anchor>
+      <anchor>a9a34b949ef1dda4a0254307d1ec1ab27</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; EmailReceiver &gt;</type>
       <name>get_receiver</name>
       <anchorfile>classemail_1_1Context.html</anchorfile>
-      <anchor>a2754eb1610b656e5f2938d4c498660e5</anchor>
+      <anchor>a37d9674f898d578556425d08efe0388f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; EmailSender &gt;</type>
       <name>get_sender</name>
       <anchorfile>classemail_1_1Context.html</anchorfile>
-      <anchor>a418192e88b8dc0abc13f9a4a2cf69d7f</anchor>
+      <anchor>a88d2f24e3743fe55a62308d71c25f19c</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; PollingManager &gt;</type>
       <name>get_polling_manager</name>
       <anchorfile>classemail_1_1Context.html</anchorfile>
-      <anchor>a60a73157c8f1dc0029bbbc519f4a5ffd</anchor>
+      <anchor>a0f41255169afb5c54614c643d6b67828</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; SubscriptionHandler &gt;</type>
       <name>get_subscription_handler</name>
       <anchorfile>classemail_1_1Context.html</anchorfile>
-      <anchor>abeaf1ab14e801b1ae8f2d15bee3c8bd3</anchor>
+      <anchor>a369e767c25126c93c5e906cfdd74fc0f</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; ServiceHandler &gt;</type>
       <name>get_service_handler</name>
       <anchorfile>classemail_1_1Context.html</anchorfile>
-      <anchor>a92ea51482059927667585017b1730dd0</anchor>
+      <anchor>a5c434a2ebf84b30b02b802a2058b92e3</anchor>
       <arglist>() const</arglist>
     </member>
   </compound>
@@ -1224,21 +831,21 @@
       <type>CURL *</type>
       <name>get_handle</name>
       <anchorfile>classemail_1_1CurlContext.html</anchorfile>
-      <anchor>aac5561bf32e05ce657b348fcfd2f2e01</anchor>
+      <anchor>a7c4ddae652cee608eb8250e3e678fd25</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const std::string &amp;</type>
       <name>get_full_url</name>
       <anchorfile>classemail_1_1CurlContext.html</anchorfile>
-      <anchor>a14124af9ca8da6dece85f64e79689469</anchor>
+      <anchor>adfb523822439589295d3b7440c0dcb4c</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const struct ConnectionInfo &amp;</type>
       <name>get_connection_info</name>
       <anchorfile>classemail_1_1CurlContext.html</anchorfile>
-      <anchor>a167a9a69eebe08cf168048c3319f4b23</anchor>
+      <anchor>a5dff748f15cc8e8b9c334f4da307da64</anchor>
       <arglist>() const</arglist>
     </member>
   </compound>
@@ -1265,7 +872,7 @@
       <type>virtual std::optional&lt; struct EmailData &gt;</type>
       <name>get_email</name>
       <anchorfile>classemail_1_1CurlEmailReceiver.html</anchorfile>
-      <anchor>a7d020227e4a7e769e886310d6f27f653</anchor>
+      <anchor>aa15ce310c0a70d0bb35a20b458bb78cd</anchor>
       <arglist>(std::optional&lt; std::chrono::nanoseconds &gt; polling_period=std::nullopt)</arglist>
     </member>
     <member kind="function" protection="protected" virtualness="virtual">
@@ -1522,7 +1129,7 @@
       <type>virtual std::optional&lt; struct EmailData &gt;</type>
       <name>get_email</name>
       <anchorfile>classemail_1_1EmailReceiver.html</anchorfile>
-      <anchor>a39b6a8bb1b4ca5da66b76a5a317d6e6b</anchor>
+      <anchor>a27ee72b9bc73d9dfda4631acda34f84a</anchor>
       <arglist>(std::optional&lt; std::chrono::nanoseconds &gt; polling_period=std::nullopt)=0</arglist>
     </member>
     <member kind="variable" protection="protected">
@@ -1621,7 +1228,7 @@
       <type>static std::shared_ptr&lt; Logger &gt;</type>
       <name>logger</name>
       <anchorfile>classemail_1_1EmailSender.html</anchorfile>
-      <anchor>af10fd3a823d5f5355f6cd3a784a7d3d8</anchor>
+      <anchor>a62a51f457f6344d74184764c1e06b40c</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -1692,14 +1299,14 @@
     </member>
   </compound>
   <compound kind="struct">
-    <name>fmt::formatter&lt; rcpputils::fs::path &gt;</name>
-    <filename>structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html</filename>
+    <name>fmt::formatter&lt; std::filesystem::path &gt;</name>
+    <filename>structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4.html</filename>
     <member kind="function">
       <type>auto</type>
       <name>format</name>
-      <anchorfile>structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html</anchorfile>
-      <anchor>ab6180187d5aef0dc33458706c9e718c1</anchor>
-      <arglist>(const rcpputils::fs::path &amp;p, FormatContext &amp;ctx)</arglist>
+      <anchorfile>structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4.html</anchorfile>
+      <anchor>a52a727d34ab84d3dd1af2ec073e6928e</anchor>
+      <arglist>(const std::filesystem::path &amp;p, FormatContext &amp;ctx)</arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -1748,7 +1355,7 @@
       <type>const std::string &amp;</type>
       <name>to_string</name>
       <anchorfile>classemail_1_1Gid.html</anchorfile>
-      <anchor>a9e27fd06dfa8c387fdee7a0cea89dcac</anchor>
+      <anchor>a85c5504293da342827c927b7948061e0</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" static="yes">
@@ -1762,7 +1369,7 @@
       <type>static std::optional&lt; Gid &gt;</type>
       <name>from_string</name>
       <anchorfile>classemail_1_1Gid.html</anchorfile>
-      <anchor>a335e1b70ba71daad276439074fd84726</anchor>
+      <anchor>a48926b08ccfe258ff2d60983a7f059aa</anchor>
       <arglist>(const std::string &amp;str)</arglist>
     </member>
   </compound>
@@ -1773,7 +1380,7 @@
       <type>const Gid &amp;</type>
       <name>get_gid</name>
       <anchorfile>classemail_1_1GidObject.html</anchorfile>
-      <anchor>a8606636aba92bce5b2c81ae0e0289d8e</anchor>
+      <anchor>a593879303ef39c0a6c98c8f5e1f3a65c</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -1870,7 +1477,7 @@
       <type>virtual std::optional&lt; struct EmailData &gt;</type>
       <name>get_email</name>
       <anchorfile>classemail_1_1IntraEmailReceiver.html</anchorfile>
-      <anchor>a2046c9a7ce1774fa43c0a5dc9cea340a</anchor>
+      <anchor>a766ebde9f75c9629d87fe41f3bac35c0</anchor>
       <arglist>(std::optional&lt; std::chrono::nanoseconds &gt; polling_period=std::nullopt)</arglist>
     </member>
     <member kind="function">
@@ -1965,28 +1572,28 @@
       <type>const Timestamp &amp;</type>
       <name>source_timestamp</name>
       <anchorfile>classemail_1_1MessageInfo.html</anchorfile>
-      <anchor>ab24b647d3cb643b22d3c4795786dac92</anchor>
+      <anchor>a1babe6664e6499d3eb29d457cc10ec23</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const Timestamp &amp;</type>
       <name>received_timestamp</name>
       <anchorfile>classemail_1_1MessageInfo.html</anchorfile>
-      <anchor>a8512b1b86f29c443fc6ae57668dda502</anchor>
+      <anchor>a2af0bad0aaf5f2b0c2528cc4bd62d436</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const Gid &amp;</type>
       <name>publisher_gid</name>
       <anchorfile>classemail_1_1MessageInfo.html</anchorfile>
-      <anchor>acd94687199ad591af14bdf2f4c08276e</anchor>
+      <anchor>a9c52e2ebec5054304058cca47804dd5d</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::optional&lt; MessageInfo &gt;</type>
       <name>from_headers</name>
       <anchorfile>classemail_1_1MessageInfo.html</anchorfile>
-      <anchor>a80ee636f9d57b53f46ed026135c396f4</anchor>
+      <anchor>addb4126438f29b54a7ebb227016f3d58</anchor>
       <arglist>(const EmailHeaders &amp;headers)</arglist>
     </member>
     <member kind="variable" static="yes">
@@ -2004,7 +1611,7 @@
       <type>const std::string &amp;</type>
       <name>get_object_name</name>
       <anchorfile>classemail_1_1NamedObject.html</anchorfile>
-      <anchor>a73cb596f0cb6c525566738fea946ae3a</anchor>
+      <anchor>a38236c2a6195ff5afec84161e1cf5056</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -2068,14 +1675,14 @@
       <type>std::optional&lt; UserInfo::SharedPtrConst &gt;</type>
       <name>get_user_info</name>
       <anchorfile>classemail_1_1Options.html</anchorfile>
-      <anchor>ad3aab8a980c818d44f7b4c453456dd2e</anchor>
+      <anchor>a7ef6995201eef31bc97d15c80fab492e</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; EmailRecipients::SharedPtrConst &gt;</type>
       <name>get_recipients</name>
       <anchorfile>classemail_1_1Options.html</anchorfile>
-      <anchor>ae706e9b4864156502045cbba7d0fd018</anchor>
+      <anchor>a63c81742899c861094ce0ea285379917</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -2096,36 +1703,36 @@
       <type>std::optional&lt; std::chrono::nanoseconds &gt;</type>
       <name>polling_period</name>
       <anchorfile>classemail_1_1Options.html</anchorfile>
-      <anchor>a1db5c0402e0349f0430dc108460a6728</anchor>
+      <anchor>a6bccfff6dd728fdebf1649bbd6fb6ec4</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt;</type>
       <name>parse_options_from_args</name>
       <anchorfile>classemail_1_1Options.html</anchorfile>
-      <anchor>a80b79667d350d2ed10d22537580b2bc8</anchor>
+      <anchor>ae8f02b491104aba76d2f3807ca7c8ca2</anchor>
       <arglist>(int argc, char const *const argv[])</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt;</type>
       <name>parse_options_from_file</name>
       <anchorfile>classemail_1_1Options.html</anchorfile>
-      <anchor>aecc89940a2c5923d049cf22d4a11a521</anchor>
+      <anchor>a3f4c4e2921e1726b09418eac45b0ddd9</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt;</type>
       <name>yaml_to_options</name>
       <anchorfile>classemail_1_1Options.html</anchorfile>
-      <anchor>a3c2b027f4ad3a89de10a415afeaca4db</anchor>
+      <anchor>a23b2043fe1248e59f29493b6fcce64c7</anchor>
       <arglist>(YAML::Node)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt;</type>
       <name>parse_options_file</name>
       <anchorfile>classemail_1_1Options.html</anchorfile>
-      <anchor>a0414d9ab8ccd80f7e31ddfd49899c12c</anchor>
-      <arglist>(const rcpputils::fs::path &amp;file_path)</arglist>
+      <anchor>a5ea65aacf362e78800b7ad6c078598e3</anchor>
+      <arglist>(const std::filesystem::path &amp;file_path)</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -2234,7 +1841,7 @@
       <type>const std::string &amp;</type>
       <name>get_topic_name</name>
       <anchorfile>classemail_1_1PubSubObject.html</anchorfile>
-      <anchor>a00a22d18eebc82496581344c21e02c32</anchor>
+      <anchor>a364a7bc9cf516f657bced8561655a85b</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -2255,8 +1862,8 @@
   <compound kind="class">
     <name>email::SafeMap</name>
     <filename>classemail_1_1SafeMap.html</filename>
-    <templarg></templarg>
-    <templarg></templarg>
+    <templarg>class K</templarg>
+    <templarg>class T</templarg>
     <member kind="function">
       <type></type>
       <name>SafeMap</name>
@@ -2296,7 +1903,7 @@
       <type>std::map&lt; K, T &gt;::const_iterator</type>
       <name>find</name>
       <anchorfile>classemail_1_1SafeMap.html</anchorfile>
-      <anchor>aff4db055c899b8d4103fed639fc6f300</anchor>
+      <anchor>a7ccb51f07425ace7a7d8e9e6f426b0b8</anchor>
       <arglist>(const K &amp;k) const</arglist>
     </member>
     <member kind="function">
@@ -2317,42 +1924,42 @@
       <type>std::pair&lt; typename std::map&lt; K, T &gt;::const_iterator, typename std::map&lt; K, T &gt;::const_iterator &gt;</type>
       <name>equal_range</name>
       <anchorfile>classemail_1_1SafeMap.html</anchorfile>
-      <anchor>af0f1ce1776d7e4c46b24b07d72d23ec9</anchor>
+      <anchor>ac34b6601eafe0b5d2392b3c8420b0435</anchor>
       <arglist>(const K &amp;k) const</arglist>
     </member>
     <member kind="function">
       <type>std::map&lt; K, T &gt;::iterator</type>
       <name>begin</name>
       <anchorfile>classemail_1_1SafeMap.html</anchorfile>
-      <anchor>a3e3ced069a9413c52681a03948893587</anchor>
+      <anchor>a6865d21a3c3ba9647032192cae0554dc</anchor>
       <arglist>() noexcept</arglist>
     </member>
     <member kind="function">
       <type>std::map&lt; K, T &gt;::iterator</type>
       <name>end</name>
       <anchorfile>classemail_1_1SafeMap.html</anchorfile>
-      <anchor>a60b6d858638f84927240c6923a301661</anchor>
+      <anchor>af36ccc820b89f957e61c2f78ec080f26</anchor>
       <arglist>() noexcept</arglist>
     </member>
     <member kind="function">
       <type>std::map&lt; K, T &gt;::const_iterator</type>
       <name>cbegin</name>
       <anchorfile>classemail_1_1SafeMap.html</anchorfile>
-      <anchor>a504fe23def42764bc68fbd39c7a51b90</anchor>
+      <anchor>a5b5a751c36115ef5d33384e8298d22fd</anchor>
       <arglist>() const noexcept</arglist>
     </member>
     <member kind="function">
       <type>std::map&lt; K, T &gt;::const_iterator</type>
       <name>cend</name>
       <anchorfile>classemail_1_1SafeMap.html</anchorfile>
-      <anchor>aaf04df2a744013504ee3137e3f7a21ec</anchor>
+      <anchor>ab3bb2b435ea289b9a78be99132d4e315</anchor>
       <arglist>() const noexcept</arglist>
     </member>
   </compound>
   <compound kind="class">
     <name>email::SafeQueue</name>
     <filename>classemail_1_1SafeQueue.html</filename>
-    <templarg></templarg>
+    <templarg>class T</templarg>
     <member kind="function">
       <type></type>
       <name>SafeQueue</name>
@@ -2392,64 +1999,11 @@
       <type>const T &amp;</type>
       <name>front</name>
       <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>ab982a1cb410d935efe1a438c80bffa97</anchor>
+      <anchor>ac27c1e01a529560211990f84e3fdd889</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const T</type>
-      <name>dequeue</name>
-      <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>abbc26904adc2e3180df5c12e16bc5307</anchor>
-      <arglist>()</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>SafeQueue&lt; struct email::EmailData &gt;</name>
-    <filename>classemail_1_1SafeQueue.html</filename>
-    <member kind="function">
-      <type></type>
-      <name>SafeQueue</name>
-      <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>a22036feff6b0264298c3b8780f318fed</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type></type>
-      <name>~SafeQueue</name>
-      <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>add6639ea70ecb072ff4472af0a674471</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>bool</type>
-      <name>empty</name>
-      <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>a548ee01f7a0733d5f8760bf85c762d68</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>push</name>
-      <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>af490c5923c3e2567357ba39580b01729</anchor>
-      <arglist>(const struct email::EmailData &amp;element)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>pop</name>
-      <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>a9a939e531527ca5d84da0586f1341532</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>const struct email::EmailData &amp;</type>
-      <name>front</name>
-      <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
-      <anchor>ab982a1cb410d935efe1a438c80bffa97</anchor>
-      <arglist>() const</arglist>
-    </member>
-    <member kind="function">
-      <type>const struct email::EmailData</type>
       <name>dequeue</name>
       <anchorfile>classemail_1_1SafeQueue.html</anchorfile>
       <anchor>abbc26904adc2e3180df5c12e16bc5307</anchor>
@@ -2506,21 +2060,21 @@
       <type>std::optional&lt; std::string &gt;</type>
       <name>get_response</name>
       <anchorfile>classemail_1_1ServiceClient.html</anchorfile>
-      <anchor>a71b844e2b5f1ff60f059d7658f9c11df</anchor>
+      <anchor>a210277b2aac1a44492aa1fc0f2be44db</anchor>
       <arglist>(const SequenceNumber sequence_number)</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; std::pair&lt; std::string, ServiceInfo &gt; &gt;</type>
       <name>get_response_with_info</name>
       <anchorfile>classemail_1_1ServiceClient.html</anchorfile>
-      <anchor>abfc9d9d393aefa5052e6940e9125782b</anchor>
+      <anchor>a0f701b48291e4d14d2531ce7f1819788</anchor>
       <arglist>(const SequenceNumber sequence_number)</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; std::pair&lt; std::string, ServiceInfo &gt; &gt;</type>
       <name>get_response_with_info</name>
       <anchorfile>classemail_1_1ServiceClient.html</anchorfile>
-      <anchor>acf7b778520df726f526d6de97637038f</anchor>
+      <anchor>a5d9a8f4577d9ea2efe38f9bef0b5bf7b</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -2620,21 +2174,21 @@
       <type>const Timestamp &amp;</type>
       <name>source_timestamp</name>
       <anchorfile>classemail_1_1ServiceInfo.html</anchorfile>
-      <anchor>aa43d1644eb146528c2d6f48231b6c721</anchor>
+      <anchor>a3f673ff52835199f655f46ca0e1ace0d</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const Timestamp &amp;</type>
       <name>received_timestamp</name>
       <anchorfile>classemail_1_1ServiceInfo.html</anchorfile>
-      <anchor>a3c0d5e5899c80a2a989056d1ed70c441</anchor>
+      <anchor>a4292be51ce7432a5195f20e0e9742fc3</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const Gid &amp;</type>
       <name>client_gid</name>
       <anchorfile>classemail_1_1ServiceInfo.html</anchorfile>
-      <anchor>ad77d23bb1f88131cda1583b1afb2441a</anchor>
+      <anchor>a004c8b023749954d2157ea4ad84a2e98</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -2648,7 +2202,7 @@
       <type>static std::optional&lt; ServiceInfo &gt;</type>
       <name>from_headers</name>
       <anchorfile>classemail_1_1ServiceInfo.html</anchorfile>
-      <anchor>a34fd237258ec87524ee5edddd1550b21</anchor>
+      <anchor>aad62afbc4493b276b87b0469dd1d518f</anchor>
       <arglist>(const EmailHeaders &amp;headers)</arglist>
     </member>
     <member kind="variable" static="yes">
@@ -2680,7 +2234,7 @@
       <type>const std::string &amp;</type>
       <name>get_service_name</name>
       <anchorfile>classemail_1_1ServiceObject.html</anchorfile>
-      <anchor>a7f96bf4bb03c956939682468cd5dd4ea</anchor>
+      <anchor>a2add48ac3ae9ba677af827373883b71c</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function" protection="protected">
@@ -2791,14 +2345,14 @@
       <type>std::optional&lt; struct ServiceRequest &gt;</type>
       <name>get_request</name>
       <anchorfile>classemail_1_1ServiceServer.html</anchorfile>
-      <anchor>a35e70cc848d14c82cd6185499998af36</anchor>
+      <anchor>af58f2370c9001a6a8260f0e6d508c941</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; std::pair&lt; struct ServiceRequest, ServiceInfo &gt; &gt;</type>
       <name>get_request_with_info</name>
       <anchorfile>classemail_1_1ServiceServer.html</anchorfile>
-      <anchor>a61296d41cf3f59fafcf5aa87e51e81e6</anchor>
+      <anchor>ade32bf40681782f2ae5dfce926910619</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
@@ -2838,14 +2392,14 @@
       <type>std::optional&lt; std::string &gt;</type>
       <name>get_message</name>
       <anchorfile>classemail_1_1Subscription.html</anchorfile>
-      <anchor>a859e4294eabcfd55e07d115c93c3681b</anchor>
+      <anchor>ae1f718b845198817b7da9acc302f63d6</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; std::pair&lt; std::string, MessageInfo &gt; &gt;</type>
       <name>get_message_with_info</name>
       <anchorfile>classemail_1_1Subscription.html</anchorfile>
-      <anchor>a85751be20bb1ffb135879a968f4d518a</anchor>
+      <anchor>aca92384aa376d70176e9734b6c852d22</anchor>
       <arglist>()</arglist>
     </member>
   </compound>
@@ -2952,7 +2506,7 @@
       <type>static std::optional&lt; Timestamp &gt;</type>
       <name>from_string</name>
       <anchorfile>classemail_1_1Timestamp.html</anchorfile>
-      <anchor>a9576b9bd5328f436b0cf00ca4e7be128</anchor>
+      <anchor>aab585d275ebc69194efa42ed7e6b3aa6</anchor>
       <arglist>(const std::string &amp;timestamp)</arglist>
     </member>
   </compound>
@@ -3070,28 +2624,28 @@
       <type>const std::vector&lt; Subscription * &gt; &amp;</type>
       <name>get_subscriptions</name>
       <anchorfile>classemail_1_1WaitSet.html</anchorfile>
-      <anchor>a14e663661e0c5667a7ede299a0b3552d</anchor>
+      <anchor>a5dd2903ad4839750a9089f3d8d309974</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const std::vector&lt; ServiceClient * &gt; &amp;</type>
       <name>get_clients</name>
       <anchorfile>classemail_1_1WaitSet.html</anchorfile>
-      <anchor>a290d51b59a3929a55f57082628456942</anchor>
+      <anchor>a7b8f5ba5db1b183db0c1c0a512e2d472</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const std::vector&lt; ServiceServer * &gt; &amp;</type>
       <name>get_servers</name>
       <anchorfile>classemail_1_1WaitSet.html</anchorfile>
-      <anchor>adb793cb528d1c21a889f247ee64deef8</anchor>
+      <anchor>a5dbacc452ee901804198744322b78197</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const std::vector&lt; GuardCondition * &gt; &amp;</type>
       <name>get_guard_conditions</name>
       <anchorfile>classemail_1_1WaitSet.html</anchorfile>
-      <anchor>afb3e6df1fbaad0de2ac18dc3c20afd9a</anchor>
+      <anchor>acc8438d4b40cac5cfe7326f442ec2f47</anchor>
       <arglist>() const</arglist>
     </member>
     <member kind="function">
@@ -3108,51 +2662,51 @@
     <namespace>email::log</namespace>
     <namespace>email::utils</namespace>
     <class kind="class">email::CommunicationInfo</class>
-    <class kind="class">email::ContextError</class>
-    <class kind="class">email::ContextNotInitializedError</class>
-    <class kind="class">email::ContextAlreadyInitializedError</class>
-    <class kind="class">email::ContextInitFailedError</class>
-    <class kind="class">email::Context</class>
-    <class kind="class">email::CurlContext</class>
-    <class kind="class">email::CurlExecutor</class>
     <class kind="struct">email::ConnectionInfo</class>
-    <class kind="struct">email::ProtocolInfo</class>
+    <class kind="class">email::Context</class>
+    <class kind="class">email::ContextAlreadyInitializedError</class>
+    <class kind="class">email::ContextError</class>
+    <class kind="class">email::ContextInitFailedError</class>
+    <class kind="class">email::ContextNotInitializedError</class>
+    <class kind="class">email::CurlContext</class>
     <class kind="class">email::CurlEmailReceiver</class>
     <class kind="class">email::CurlEmailSender</class>
-    <class kind="class">email::EmailHandler</class>
-    <class kind="struct">email::UserInfo</class>
-    <class kind="struct">email::EmailRecipients</class>
+    <class kind="class">email::CurlExecutor</class>
     <class kind="struct">email::EmailContent</class>
     <class kind="struct">email::EmailData</class>
-    <class kind="class">email::IntraEmailReceiver</class>
-    <class kind="class">email::IntraEmailSender</class>
-    <class kind="class">email::PollingManager</class>
+    <class kind="class">email::EmailHandler</class>
     <class kind="class">email::EmailReceiver</class>
+    <class kind="struct">email::EmailRecipients</class>
     <class kind="class">email::EmailSender</class>
     <class kind="class">email::Gid</class>
     <class kind="class">email::GidObject</class>
-    <class kind="class">email::GuardConditionAlreadyInUseError</class>
     <class kind="class">email::GuardCondition</class>
+    <class kind="class">email::GuardConditionAlreadyInUseError</class>
+    <class kind="class">email::IntraEmailReceiver</class>
+    <class kind="class">email::IntraEmailSender</class>
     <class kind="class">email::MessageInfo</class>
-    <class kind="class">email::ObjectNameInvalidError</class>
     <class kind="class">email::NamedObject</class>
+    <class kind="class">email::ObjectNameInvalidError</class>
     <class kind="class">email::Options</class>
-    <class kind="class">email::TopicNameInvalidError</class>
-    <class kind="class">email::PubSubObject</class>
+    <class kind="class">email::PollingManager</class>
+    <class kind="struct">email::ProtocolInfo</class>
     <class kind="class">email::Publisher</class>
+    <class kind="class">email::PubSubObject</class>
     <class kind="class">email::SafeMap</class>
     <class kind="class">email::SafeQueue</class>
-    <class kind="class">email::ServiceNameInvalidError</class>
-    <class kind="class">email::ServiceObject</class>
     <class kind="class">email::ServiceClient</class>
     <class kind="class">email::ServiceHandler</class>
     <class kind="class">email::ServiceInfo</class>
-    <class kind="struct">email::ServiceRequestId</class>
+    <class kind="class">email::ServiceNameInvalidError</class>
+    <class kind="class">email::ServiceObject</class>
     <class kind="struct">email::ServiceRequest</class>
+    <class kind="struct">email::ServiceRequestId</class>
     <class kind="class">email::ServiceServer</class>
     <class kind="class">email::Subscription</class>
     <class kind="class">email::SubscriptionHandler</class>
     <class kind="class">email::Timestamp</class>
+    <class kind="class">email::TopicNameInvalidError</class>
+    <class kind="struct">email::UserInfo</class>
     <class kind="class">email::WaitSet</class>
     <member kind="typedef">
       <type>std::map&lt; std::string, std::string &gt;</type>
@@ -3193,7 +2747,7 @@
       <type>std::shared_ptr&lt; Context &gt;</type>
       <name>get_global_context</name>
       <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a32664596f7a3d0177434519dc03ea38d</anchor>
+      <anchor>a3463ccf40571a4d49e4ffce46a97aefb</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
@@ -3221,14 +2775,14 @@
       <type>std::pair&lt; std::string, MessageInfo &gt;</type>
       <name>wait_for_message_with_info</name>
       <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>aa59c37dd2056e5079d933232a16a3396</anchor>
+      <anchor>a82e915e42a7b15b7c1affa3af631bd01</anchor>
       <arglist>(Subscription *subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
     </member>
     <member kind="function">
       <type>std::pair&lt; std::string, MessageInfo &gt;</type>
       <name>wait_for_message_with_info</name>
       <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a03feb199db737e274a1e6f0750d203a6</anchor>
+      <anchor>ad50919dbf5a7ffe35c280a6f293558c2</anchor>
       <arglist>(std::shared_ptr&lt; Subscription &gt; subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
     </member>
     <member kind="function">
@@ -3249,14 +2803,14 @@
       <type>std::pair&lt; std::string, ServiceInfo &gt;</type>
       <name>wait_for_response_with_info</name>
       <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a79fde927095f94957025da12c6283edb</anchor>
+      <anchor>a002d8124b87a391ccbd9bdc7903cbb9d</anchor>
       <arglist>(const SequenceNumber sequence_number, ServiceClient *client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
     </member>
     <member kind="function">
       <type>std::pair&lt; std::string, ServiceInfo &gt;</type>
       <name>wait_for_response_with_info</name>
       <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>a2cdbe450415e49215d4a2d869eb577e7</anchor>
+      <anchor>ae48c8339b69ac3f105e701259ca08ad5</anchor>
       <arglist>(const SequenceNumber sequence_number, std::shared_ptr&lt; ServiceClient &gt; client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
     </member>
     <member kind="function">
@@ -3277,14 +2831,14 @@
       <type>std::pair&lt; struct ServiceRequest, ServiceInfo &gt;</type>
       <name>wait_for_request_with_info</name>
       <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>ad5dd2091a29213c9aa3859d817376d10</anchor>
+      <anchor>a3ad14a8a580519f5c9de12246d845cd6</anchor>
       <arglist>(ServiceServer *server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
     </member>
     <member kind="function">
       <type>std::pair&lt; struct ServiceRequest, ServiceInfo &gt;</type>
       <name>wait_for_request_with_info</name>
       <anchorfile>namespaceemail.html</anchorfile>
-      <anchor>afdc469e72e9b1ab69445fdb82082f050</anchor>
+      <anchor>a348e73d7de5081748ca34e7bb29dd30c</anchor>
       <arglist>(std::shared_ptr&lt; ServiceServer &gt; server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</arglist>
     </member>
     <member kind="function">
@@ -3368,14 +2922,14 @@
       <type>std::shared_ptr&lt; Logger &gt;</type>
       <name>create</name>
       <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>a82cb3ebe95d6b4e4bc16fd417bf65b8e</anchor>
+      <anchor>a780c47d49411c5388a6326388efa5262</anchor>
       <arglist>(const std::string &amp;name)</arglist>
     </member>
     <member kind="function">
       <type>std::shared_ptr&lt; Logger &gt;</type>
       <name>get_or_create</name>
       <anchorfile>namespaceemail_1_1log.html</anchorfile>
-      <anchor>ab5f6effef314d9faef6dee3b4d78f4ce</anchor>
+      <anchor>a4d243aa2ccc952cc68d17d55d22c6fca</anchor>
       <arglist>(const std::string &amp;name)</arglist>
     </member>
     <member kind="function">
@@ -3423,21 +2977,21 @@
       <type>std::optional&lt; std::string &gt;</type>
       <name>read_file</name>
       <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a88a5169377c5fdee4455ee6b38723745</anchor>
+      <anchor>ae3d4c984287d92db2a90319ba0ff6762</anchor>
       <arglist>(const std::string &amp;path)</arglist>
     </member>
     <member kind="function">
       <type>std::vector&lt; std::string &gt;</type>
       <name>split_email_list</name>
       <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a45df7fc739ac9b6a5f5f8dd28eec92e1</anchor>
+      <anchor>a9ac0b492df90bd936e286b50f51ef68e</anchor>
       <arglist>(const std::string &amp;list, const bool has_space_after_comma=false)</arglist>
     </member>
     <member kind="function">
       <type>std::vector&lt; std::string &gt;</type>
       <name>split_email_list</name>
       <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>aef6154f77c351ae81abb1544e8a5f3fd</anchor>
+      <anchor>aa2e1972a23478feaa1165b8148c67388</anchor>
       <arglist>(const YAML::Node &amp;node)</arglist>
     </member>
     <member kind="function">
@@ -3458,21 +3012,21 @@
       <type>std::optional&lt; uint32_t &gt;</type>
       <name>optional_stoul</name>
       <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a1426a6b72c22a41e717f2dddb9fe6f47</anchor>
+      <anchor>ab9cbd8c73d22d42b906e858e79901da7</anchor>
       <arglist>(const std::string &amp;str)</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; int &gt;</type>
       <name>optional_stoi</name>
       <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a2a5c92f770d0c27fefe339dd2ba426a1</anchor>
+      <anchor>a43baabdc6dccb93ef791c8b86b095df7</anchor>
       <arglist>(const std::string &amp;str)</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; int64_t &gt;</type>
       <name>optional_stoll</name>
       <anchorfile>namespaceemail_1_1utils.html</anchorfile>
-      <anchor>a205d62958aa3a9111c4c17da561743fc</anchor>
+      <anchor>a84320d04aefddcdd33d752c89783f4b6</anchor>
       <arglist>(const std::string &amp;str)</arglist>
     </member>
     <member kind="function">
@@ -3536,7 +3090,7 @@
       <type>std::optional&lt; int &gt;</type>
       <name>get_nextuid_from_response</name>
       <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a86761af16b95987441640bea6861132a</anchor>
+      <anchor>aeaafc33fedc4101101a8d6be15b7a1ce</anchor>
       <arglist>(const std::string &amp;response)</arglist>
     </member>
     <member kind="function">
@@ -3550,21 +3104,21 @@
       <type>std::optional&lt; struct EmailContent &gt;</type>
       <name>get_email_content_from_response</name>
       <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a6b5d710f645d106f79a0c1d15c7f9d75</anchor>
+      <anchor>a8441f41b41ba87ff7db252d492abaf89</anchor>
       <arglist>(const std::string &amp;response, EmailHeaders &amp;headers)</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; struct EmailData &gt;</type>
       <name>get_email_data_from_response</name>
       <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a653d46e023a23fecac67b8b95e32ff6b</anchor>
+      <anchor>ada6f2e67bbb37bd4b69b7bec391127dd</anchor>
       <arglist>(const std::string &amp;response)</arglist>
     </member>
     <member kind="function">
       <type>std::optional&lt; std::string &gt;</type>
       <name>get_header_value</name>
       <anchorfile>namespaceemail_1_1utils_1_1response.html</anchorfile>
-      <anchor>a30fbb8f3e4152b10b3998d176b5212d0</anchor>
+      <anchor>a262e8f9897375c3ef9c85c54d094d6f7</anchor>
       <arglist>(const std::string &amp;header_name, const EmailHeaders &amp;headers)</arglist>
     </member>
   </compound>

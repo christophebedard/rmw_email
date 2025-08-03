@@ -1,62 +1,63 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="namespaceemail" kind="namespace" language="C++">
     <compoundname>email</compoundname>
     <innerclass refid="classemail_1_1CommunicationInfo" prot="public">email::CommunicationInfo</innerclass>
-    <innerclass refid="classemail_1_1ContextError" prot="public">email::ContextError</innerclass>
-    <innerclass refid="classemail_1_1ContextNotInitializedError" prot="public">email::ContextNotInitializedError</innerclass>
-    <innerclass refid="classemail_1_1ContextAlreadyInitializedError" prot="public">email::ContextAlreadyInitializedError</innerclass>
-    <innerclass refid="classemail_1_1ContextInitFailedError" prot="public">email::ContextInitFailedError</innerclass>
-    <innerclass refid="classemail_1_1Context" prot="public">email::Context</innerclass>
-    <innerclass refid="classemail_1_1CurlContext" prot="public">email::CurlContext</innerclass>
-    <innerclass refid="classemail_1_1CurlExecutor" prot="public">email::CurlExecutor</innerclass>
     <innerclass refid="structemail_1_1ConnectionInfo" prot="public">email::ConnectionInfo</innerclass>
-    <innerclass refid="structemail_1_1ProtocolInfo" prot="public">email::ProtocolInfo</innerclass>
+    <innerclass refid="classemail_1_1Context" prot="public">email::Context</innerclass>
+    <innerclass refid="classemail_1_1ContextAlreadyInitializedError" prot="public">email::ContextAlreadyInitializedError</innerclass>
+    <innerclass refid="classemail_1_1ContextError" prot="public">email::ContextError</innerclass>
+    <innerclass refid="classemail_1_1ContextInitFailedError" prot="public">email::ContextInitFailedError</innerclass>
+    <innerclass refid="classemail_1_1ContextNotInitializedError" prot="public">email::ContextNotInitializedError</innerclass>
+    <innerclass refid="classemail_1_1CurlContext" prot="public">email::CurlContext</innerclass>
     <innerclass refid="classemail_1_1CurlEmailReceiver" prot="public">email::CurlEmailReceiver</innerclass>
     <innerclass refid="classemail_1_1CurlEmailSender" prot="public">email::CurlEmailSender</innerclass>
-    <innerclass refid="classemail_1_1EmailHandler" prot="public">email::EmailHandler</innerclass>
-    <innerclass refid="structemail_1_1UserInfo" prot="public">email::UserInfo</innerclass>
-    <innerclass refid="structemail_1_1EmailRecipients" prot="public">email::EmailRecipients</innerclass>
+    <innerclass refid="classemail_1_1CurlExecutor" prot="public">email::CurlExecutor</innerclass>
     <innerclass refid="structemail_1_1EmailContent" prot="public">email::EmailContent</innerclass>
     <innerclass refid="structemail_1_1EmailData" prot="public">email::EmailData</innerclass>
-    <innerclass refid="classemail_1_1IntraEmailReceiver" prot="public">email::IntraEmailReceiver</innerclass>
-    <innerclass refid="classemail_1_1IntraEmailSender" prot="public">email::IntraEmailSender</innerclass>
-    <innerclass refid="classemail_1_1PollingManager" prot="public">email::PollingManager</innerclass>
+    <innerclass refid="classemail_1_1EmailHandler" prot="public">email::EmailHandler</innerclass>
     <innerclass refid="classemail_1_1EmailReceiver" prot="public">email::EmailReceiver</innerclass>
+    <innerclass refid="structemail_1_1EmailRecipients" prot="public">email::EmailRecipients</innerclass>
     <innerclass refid="classemail_1_1EmailSender" prot="public">email::EmailSender</innerclass>
     <innerclass refid="classemail_1_1Gid" prot="public">email::Gid</innerclass>
     <innerclass refid="classemail_1_1GidObject" prot="public">email::GidObject</innerclass>
-    <innerclass refid="classemail_1_1GuardConditionAlreadyInUseError" prot="public">email::GuardConditionAlreadyInUseError</innerclass>
     <innerclass refid="classemail_1_1GuardCondition" prot="public">email::GuardCondition</innerclass>
+    <innerclass refid="classemail_1_1GuardConditionAlreadyInUseError" prot="public">email::GuardConditionAlreadyInUseError</innerclass>
+    <innerclass refid="classemail_1_1IntraEmailReceiver" prot="public">email::IntraEmailReceiver</innerclass>
+    <innerclass refid="classemail_1_1IntraEmailSender" prot="public">email::IntraEmailSender</innerclass>
     <innerclass refid="classemail_1_1MessageInfo" prot="public">email::MessageInfo</innerclass>
-    <innerclass refid="classemail_1_1ObjectNameInvalidError" prot="public">email::ObjectNameInvalidError</innerclass>
     <innerclass refid="classemail_1_1NamedObject" prot="public">email::NamedObject</innerclass>
+    <innerclass refid="classemail_1_1ObjectNameInvalidError" prot="public">email::ObjectNameInvalidError</innerclass>
     <innerclass refid="classemail_1_1Options" prot="public">email::Options</innerclass>
-    <innerclass refid="classemail_1_1TopicNameInvalidError" prot="public">email::TopicNameInvalidError</innerclass>
-    <innerclass refid="classemail_1_1PubSubObject" prot="public">email::PubSubObject</innerclass>
+    <innerclass refid="classemail_1_1PollingManager" prot="public">email::PollingManager</innerclass>
+    <innerclass refid="structemail_1_1ProtocolInfo" prot="public">email::ProtocolInfo</innerclass>
     <innerclass refid="classemail_1_1Publisher" prot="public">email::Publisher</innerclass>
+    <innerclass refid="classemail_1_1PubSubObject" prot="public">email::PubSubObject</innerclass>
     <innerclass refid="classemail_1_1SafeMap" prot="public">email::SafeMap</innerclass>
     <innerclass refid="classemail_1_1SafeQueue" prot="public">email::SafeQueue</innerclass>
-    <innerclass refid="classemail_1_1ServiceNameInvalidError" prot="public">email::ServiceNameInvalidError</innerclass>
-    <innerclass refid="classemail_1_1ServiceObject" prot="public">email::ServiceObject</innerclass>
     <innerclass refid="classemail_1_1ServiceClient" prot="public">email::ServiceClient</innerclass>
     <innerclass refid="classemail_1_1ServiceHandler" prot="public">email::ServiceHandler</innerclass>
     <innerclass refid="classemail_1_1ServiceInfo" prot="public">email::ServiceInfo</innerclass>
-    <innerclass refid="structemail_1_1ServiceRequestId" prot="public">email::ServiceRequestId</innerclass>
+    <innerclass refid="classemail_1_1ServiceNameInvalidError" prot="public">email::ServiceNameInvalidError</innerclass>
+    <innerclass refid="classemail_1_1ServiceObject" prot="public">email::ServiceObject</innerclass>
     <innerclass refid="structemail_1_1ServiceRequest" prot="public">email::ServiceRequest</innerclass>
+    <innerclass refid="structemail_1_1ServiceRequestId" prot="public">email::ServiceRequestId</innerclass>
     <innerclass refid="classemail_1_1ServiceServer" prot="public">email::ServiceServer</innerclass>
     <innerclass refid="classemail_1_1Subscription" prot="public">email::Subscription</innerclass>
     <innerclass refid="classemail_1_1SubscriptionHandler" prot="public">email::SubscriptionHandler</innerclass>
     <innerclass refid="classemail_1_1Timestamp" prot="public">email::Timestamp</innerclass>
+    <innerclass refid="classemail_1_1TopicNameInvalidError" prot="public">email::TopicNameInvalidError</innerclass>
+    <innerclass refid="structemail_1_1UserInfo" prot="public">email::UserInfo</innerclass>
     <innerclass refid="classemail_1_1WaitSet" prot="public">email::WaitSet</innerclass>
     <innernamespace refid="namespaceemail_1_1log">email::log</innernamespace>
     <innernamespace refid="namespaceemail_1_1utils">email::utils</innernamespace>
-      <sectiondef kind="typedef">
+    <sectiondef kind="typedef">
       <memberdef kind="typedef" id="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" prot="public" static="no">
         <type>std::map&lt; std::string, std::string &gt;</type>
         <definition>typedef std::map&lt;std::string, std::string&gt; email::EmailHeaders</definition>
         <argsstring></argsstring>
         <name>EmailHeaders</name>
+        <qualifiedname>email::EmailHeaders</qualifiedname>
         <briefdescription>
 <para>Email headers, with a header key and a value. </para>
         </briefdescription>
@@ -71,6 +72,7 @@
         <definition>typedef EmailHeaders::value_type email::EmailHeader</definition>
         <argsstring></argsstring>
         <name>EmailHeader</name>
+        <qualifiedname>email::EmailHeader</qualifiedname>
         <briefdescription>
 <para>Email header, with a key and a value. </para>
         </briefdescription>
@@ -85,6 +87,7 @@
         <definition>typedef uint32_t email::GidValue</definition>
         <argsstring></argsstring>
         <name>GidValue</name>
+        <qualifiedname>email::GidValue</qualifiedname>
         <briefdescription>
 <para>Value type for GIDs. </para>
         </briefdescription>
@@ -99,6 +102,7 @@
         <definition>using email::Logger = typedef spdlog::logger</definition>
         <argsstring></argsstring>
         <name>Logger</name>
+        <qualifiedname>email::Logger</qualifiedname>
         <briefdescription>
 <para>Abstract away the logger implementation. </para>
         </briefdescription>
@@ -113,6 +117,7 @@
         <definition>typedef int64_t email::SequenceNumber</definition>
         <argsstring></argsstring>
         <name>SequenceNumber</name>
+        <qualifiedname>email::SequenceNumber</qualifiedname>
         <briefdescription>
 <para>Sequence number type. </para>
         </briefdescription>
@@ -122,13 +127,14 @@
         </inbodydescription>
         <location file="include/email/service_info.hpp" line="30" column="17" bodyfile="include/email/service_info.hpp" bodystart="30" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="namespaceemail_1a32664596f7a3d0177434519dc03ea38d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceemail_1a3463ccf40571a4d49e4ffce46a97aefb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1Context" kindref="compound">Context</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;Context&gt; email::get_global_context</definition>
+        <definition>std::shared_ptr&lt; Context &gt; email::get_global_context</definition>
         <argsstring>()</argsstring>
         <name>get_global_context</name>
+        <qualifiedname>email::get_global_context</qualifiedname>
         <briefdescription>
 <para>Get the global context. </para>
         </briefdescription>
@@ -146,6 +152,7 @@
         <definition>void email::init</definition>
         <argsstring>()</argsstring>
         <name>init</name>
+        <qualifiedname>email::init</qualifiedname>
         <briefdescription>
 <para>Initialize context using config file. </para>
         </briefdescription>
@@ -178,6 +185,7 @@
         <definition>void email::init</definition>
         <argsstring>(int argc, char const *const argv[])</argsstring>
         <name>init</name>
+        <qualifiedname>email::init</qualifiedname>
         <param>
           <type>int</type>
           <declname>argc</declname>
@@ -236,6 +244,7 @@
         <definition>bool email::shutdown</definition>
         <argsstring>()</argsstring>
         <name>shutdown</name>
+        <qualifiedname>email::shutdown</qualifiedname>
         <briefdescription>
 <para>Shut down context. </para>
         </briefdescription>
@@ -249,11 +258,12 @@
         </inbodydescription>
         <location file="include/email/init.hpp" line="51" column="1" declfile="include/email/init.hpp" declline="51" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1aa59c37dd2056e5079d933232a16a3396" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1a82e915e42a7b15b7c1affa3af631bd01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; std::string, <ref refid="classemail_1_1MessageInfo" kindref="compound">MessageInfo</ref> &gt;</type>
-        <definition>std::pair&lt;std::string, MessageInfo&gt; email::wait_for_message_with_info</definition>
+        <definition>std::pair&lt; std::string, MessageInfo &gt; email::wait_for_message_with_info</definition>
         <argsstring>(Subscription *subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_message_with_info</name>
+        <qualifiedname>email::wait_for_message_with_info</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1Subscription" kindref="compound">Subscription</ref> *</type>
           <declname>subscription</declname>
@@ -295,11 +305,12 @@
         </inbodydescription>
         <location file="include/email/wait.hpp" line="45" column="1" declfile="include/email/wait.hpp" declline="45" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1a03feb199db737e274a1e6f0750d203a6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1ad50919dbf5a7ffe35c280a6f293558c2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; std::string, <ref refid="classemail_1_1MessageInfo" kindref="compound">MessageInfo</ref> &gt;</type>
-        <definition>std::pair&lt;std::string, MessageInfo&gt; email::wait_for_message_with_info</definition>
+        <definition>std::pair&lt; std::string, MessageInfo &gt; email::wait_for_message_with_info</definition>
         <argsstring>(std::shared_ptr&lt; Subscription &gt; subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_message_with_info</name>
+        <qualifiedname>email::wait_for_message_with_info</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1Subscription" kindref="compound">Subscription</ref> &gt;</type>
           <declname>subscription</declname>
@@ -326,6 +337,7 @@
         <definition>std::string email::wait_for_message</definition>
         <argsstring>(Subscription *subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_message</name>
+        <qualifiedname>email::wait_for_message</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1Subscription" kindref="compound">Subscription</ref> *</type>
           <declname>subscription</declname>
@@ -372,6 +384,7 @@
         <definition>std::string email::wait_for_message</definition>
         <argsstring>(std::shared_ptr&lt; Subscription &gt; subscription, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_message</name>
+        <qualifiedname>email::wait_for_message</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1Subscription" kindref="compound">Subscription</ref> &gt;</type>
           <declname>subscription</declname>
@@ -393,11 +406,12 @@
         </inbodydescription>
         <location file="include/email/wait.hpp" line="80" column="1" declfile="include/email/wait.hpp" declline="80" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1a79fde927095f94957025da12c6283edb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; std::string, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt;</type>
-        <definition>std::pair&lt;std::string, ServiceInfo&gt; email::wait_for_response_with_info</definition>
+        <definition>std::pair&lt; std::string, ServiceInfo &gt; email::wait_for_response_with_info</definition>
         <argsstring>(const SequenceNumber sequence_number, ServiceClient *client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_response_with_info</name>
+        <qualifiedname>email::wait_for_response_with_info</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
           <declname>sequence_number</declname>
@@ -449,11 +463,12 @@
         </inbodydescription>
         <location file="include/email/wait.hpp" line="95" column="1" declfile="include/email/wait.hpp" declline="95" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1a2cdbe450415e49215d4a2d869eb577e7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1ae48c8339b69ac3f105e701259ca08ad5" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; std::string, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt;</type>
-        <definition>std::pair&lt;std::string, ServiceInfo&gt; email::wait_for_response_with_info</definition>
+        <definition>std::pair&lt; std::string, ServiceInfo &gt; email::wait_for_response_with_info</definition>
         <argsstring>(const SequenceNumber sequence_number, std::shared_ptr&lt; ServiceClient &gt; client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_response_with_info</name>
+        <qualifiedname>email::wait_for_response_with_info</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
           <declname>sequence_number</declname>
@@ -471,7 +486,8 @@
 <para>Get a service reponse with info, waiting until it is available. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="see"><para><ref refid="namespaceemail_1a79fde927095f94957025da12c6283edb" kindref="member">wait_for_response_with_info</ref>( const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref>, <ref refid="classemail_1_1ServiceClient" kindref="compound">ServiceClient</ref> *, const std::chrono::milliseconds) </para>
+<para><simplesect kind="see"><para><ref refid="namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d" kindref="member">wait_for_response_with_info(
+   const SequenceNumber, ServiceClient *, const std::chrono::milliseconds)</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -484,6 +500,7 @@
         <definition>std::string email::wait_for_response</definition>
         <argsstring>(const SequenceNumber sequence_number, ServiceClient *client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_response</name>
+        <qualifiedname>email::wait_for_response</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
           <declname>sequence_number</declname>
@@ -540,6 +557,7 @@
         <definition>std::string email::wait_for_response</definition>
         <argsstring>(const SequenceNumber sequence_number, std::shared_ptr&lt; ServiceClient &gt; client, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_response</name>
+        <qualifiedname>email::wait_for_response</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
           <declname>sequence_number</declname>
@@ -565,11 +583,12 @@
         </inbodydescription>
         <location file="include/email/wait.hpp" line="134" column="1" declfile="include/email/wait.hpp" declline="134" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1ad5dd2091a29213c9aa3859d817376d10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; struct <ref refid="structemail_1_1ServiceRequest" kindref="compound">ServiceRequest</ref>, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt;</type>
-        <definition>std::pair&lt;struct ServiceRequest, ServiceInfo&gt; email::wait_for_request_with_info</definition>
+        <definition>std::pair&lt; struct ServiceRequest, ServiceInfo &gt; email::wait_for_request_with_info</definition>
         <argsstring>(ServiceServer *server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_request_with_info</name>
+        <qualifiedname>email::wait_for_request_with_info</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1ServiceServer" kindref="compound">ServiceServer</ref> *</type>
           <declname>server</declname>
@@ -609,11 +628,12 @@
         </inbodydescription>
         <location file="include/email/wait.hpp" line="149" column="1" declfile="include/email/wait.hpp" declline="149" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1afdc469e72e9b1ab69445fdb82082f050" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1a348e73d7de5081748ca34e7bb29dd30c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::pair&lt; struct <ref refid="structemail_1_1ServiceRequest" kindref="compound">ServiceRequest</ref>, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt;</type>
-        <definition>std::pair&lt;struct ServiceRequest, ServiceInfo&gt; email::wait_for_request_with_info</definition>
+        <definition>std::pair&lt; struct ServiceRequest, ServiceInfo &gt; email::wait_for_request_with_info</definition>
         <argsstring>(std::shared_ptr&lt; ServiceServer &gt; server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_request_with_info</name>
+        <qualifiedname>email::wait_for_request_with_info</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1ServiceServer" kindref="compound">ServiceServer</ref> &gt;</type>
           <declname>server</declname>
@@ -627,7 +647,7 @@
 <para>Get a service request, waiting until one is available. </para>
         </briefdescription>
         <detaileddescription>
-<para><simplesect kind="see"><para><ref refid="namespaceemail_1ad5dd2091a29213c9aa3859d817376d10" kindref="member">wait_for_request_with_info(ServiceServer *, const std::chrono::milliseconds)</ref> </para>
+<para><simplesect kind="see"><para><ref refid="namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6" kindref="member">wait_for_request_with_info(ServiceServer *, const std::chrono::milliseconds)</ref> </para>
 </simplesect>
 </para>
         </detaileddescription>
@@ -640,6 +660,7 @@
         <definition>struct ServiceRequest email::wait_for_request</definition>
         <argsstring>(ServiceServer *server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_request</name>
+        <qualifiedname>email::wait_for_request</qualifiedname>
         <param>
           <type><ref refid="classemail_1_1ServiceServer" kindref="compound">ServiceServer</ref> *</type>
           <declname>server</declname>
@@ -677,13 +698,14 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/wait.hpp" line="159" column="1" declfile="include/email/wait.hpp" declline="159" declcolumn="1"/>
+        <location file="include/email/wait.hpp" line="173" column="1" declfile="include/email/wait.hpp" declline="173" declcolumn="1"/>
       </memberdef>
       <memberdef kind="function" id="namespaceemail_1a7dfbb8a3972445ace7e5b33b3b8cf18e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>struct <ref refid="structemail_1_1ServiceRequest" kindref="compound">ServiceRequest</ref></type>
         <definition>struct ServiceRequest email::wait_for_request</definition>
         <argsstring>(std::shared_ptr&lt; ServiceServer &gt; server, const std::chrono::milliseconds timeout=std::chrono::milliseconds(-1))</argsstring>
         <name>wait_for_request</name>
+        <qualifiedname>email::wait_for_request</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1ServiceServer" kindref="compound">ServiceServer</ref> &gt;</type>
           <declname>server</declname>
@@ -703,9 +725,9 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/wait.hpp" line="159" column="1" declfile="include/email/wait.hpp" declline="159" declcolumn="1"/>
+        <location file="include/email/wait.hpp" line="183" column="1" declfile="include/email/wait.hpp" declline="183" declcolumn="1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

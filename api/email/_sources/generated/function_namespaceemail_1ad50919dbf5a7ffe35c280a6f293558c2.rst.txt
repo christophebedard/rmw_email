@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceemail_1ad50919dbf5a7ffe35c280a6f293558c2:
+
+Function email::wait_for_message_with_info(std::shared_ptr<Subscription>, const std::chrono::milliseconds)
+==========================================================================================================
+
+- Defined in :ref:`file_include_email_wait.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::wait_for_message_with_info(std::shared_ptr<Subscription>, const std::chrono::milliseconds)
+   :project: email Doxygen Project

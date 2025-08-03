@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="email_2info_8hpp" kind="file" language="C++">
     <compoundname>info.hpp</compoundname>
     <includes local="no">map</includes>
@@ -48,32 +48,64 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>string</label>
-      </node>
-      <node id="2">
-        <label>map</label>
-      </node>
       <node id="8">
         <label>email/macros.hpp</label>
         <link refid="macros_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="4">
-        <label>optional</label>
-      </node>
-      <node id="6">
-        <label>vector</label>
-      </node>
-      <node id="7">
-        <label>spdlog/fmt/fmt.h</label>
+      <node id="2">
+        <label>map</label>
       </node>
       <node id="3">
         <label>memory</label>
       </node>
+      <node id="4">
+        <label>optional</label>
+      </node>
+      <node id="7">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="5">
+        <label>string</label>
+      </node>
+      <node id="6">
+        <label>vector</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="2">
+        <label>include/email/communication_info.hpp</label>
+        <link refid="communication__info_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
+      </node>
+      <node id="5">
+        <label>include/email/email.hpp</label>
+        <link refid="email_8hpp"/>
+      </node>
+      <node id="15">
+        <label>include/email/email/curl_receiver.hpp</label>
+        <link refid="curl__receiver_8hpp"/>
+      </node>
+      <node id="16">
+        <label>include/email/email/curl_sender.hpp</label>
+        <link refid="curl__sender_8hpp"/>
+      </node>
+      <node id="17">
+        <label>include/email/email/handler.hpp</label>
+        <link refid="handler_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/email/email/info.hpp</label>
         <link refid="email_2info_8hpp"/>
@@ -118,119 +150,19 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>include/email/email.hpp</label>
-        <link refid="email_8hpp"/>
-      </node>
-      <node id="13">
-        <label>include/email/service_server.hpp</label>
-        <link refid="service__server_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>include/email/email/curl_receiver.hpp</label>
-        <link refid="curl__receiver_8hpp"/>
-      </node>
-      <node id="24">
-        <label>include/email/email/sender.hpp</label>
-        <link refid="sender_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="25" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/email/subscription.hpp</label>
-        <link refid="subscription_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="2">
-        <label>include/email/communication_info.hpp</label>
-        <link refid="communication__info_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>include/email/service_handler.hpp</label>
-        <link refid="service__handler_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="17">
-        <label>include/email/email/handler.hpp</label>
-        <link refid="handler_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>include/email/email/curl_sender.hpp</label>
-        <link refid="curl__sender_8hpp"/>
-      </node>
       <node id="18">
         <label>include/email/email/intra_receiver.hpp</label>
         <link refid="intra__receiver_8hpp"/>
         <childnode refid="19" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
+      <node id="19">
+        <label>include/email/email/intra_sender.hpp</label>
+        <link refid="intra__sender_8hpp"/>
       </node>
-      <node id="10">
-        <label>include/email/service_info.hpp</label>
-        <link refid="service__info_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
+      <node id="20">
+        <label>include/email/email/payload_utils.hpp</label>
+        <link refid="payload__utils_8hpp"/>
       </node>
       <node id="21">
         <label>include/email/email/polling_manager.hpp</label>
@@ -244,26 +176,6 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>include/email/subscription_handler.hpp</label>
-        <link refid="subscription__handler_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="14">
-        <label>include/email/service_request.hpp</label>
-        <link refid="service__request_8hpp"/>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>include/email/email/payload_utils.hpp</label>
-        <link refid="payload__utils_8hpp"/>
-      </node>
       <node id="22">
         <label>include/email/email/receiver.hpp</label>
         <link refid="receiver_8hpp"/>
@@ -276,24 +188,22 @@
         <childnode refid="21" relation="include">
         </childnode>
       </node>
-      <node id="19">
-        <label>include/email/email/intra_sender.hpp</label>
-        <link refid="intra__sender_8hpp"/>
-      </node>
-      <node id="9">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
-      </node>
       <node id="23">
         <label>include/email/email/response_utils.hpp</label>
         <link refid="response__utils_8hpp"/>
       </node>
-      <node id="25">
-        <label>include/email/publisher.hpp</label>
-        <link refid="publisher_8hpp"/>
-        <childnode refid="5" relation="include">
+      <node id="24">
+        <label>include/email/email/sender.hpp</label>
+        <link refid="sender_8hpp"/>
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="16" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="25" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="3">
@@ -310,6 +220,96 @@
         <label>include/email/options.hpp</label>
         <link refid="options_8hpp"/>
         <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>include/email/publisher.hpp</label>
+        <link refid="publisher_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="12">
+        <label>include/email/service_handler.hpp</label>
+        <link refid="service__handler_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/email/service_info.hpp</label>
+        <link refid="service__info_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/email/service_request.hpp</label>
+        <link refid="service__request_8hpp"/>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/email/service_server.hpp</label>
+        <link refid="service__server_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/email/subscription.hpp</label>
+        <link refid="subscription_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/email/subscription_handler.hpp</label>
+        <link refid="subscription__handler_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="7">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="5" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -363,14 +363,14 @@
 <codeline lineno="37"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structemail_1_1UserInfo_1aa810688adcf8ce581af198d138b1a3f5" kindref="member">host_imap</ref>;</highlight></codeline>
 <codeline lineno="39"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structemail_1_1UserInfo_1abe9be20a65e424a216f61fae0cf50078" kindref="member">username</ref>;</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structemail_1_1UserInfo_1adb5cc631ca7e5c0669685b5faf9fcef9" kindref="member">password</ref>;</highlight></codeline>
-<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1UserInfo_1a079c1b6f41d419aac969bf43a9ca81f8" kindref="member">UserInfo</ref>(</highlight></codeline>
+<codeline lineno="43"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1UserInfo" kindref="compound">UserInfo</ref>(</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>host_smtp_,</highlight></codeline>
 <codeline lineno="45"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>host_imap_,</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>username_,</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>password_)</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/>:<sp/><ref refid="structemail_1_1UserInfo_1a9a7c93eb5a5fad244eb3699f361ae666" kindref="member">host_smtp</ref>(host_smtp_),<sp/><ref refid="structemail_1_1UserInfo_1aa810688adcf8ce581af198d138b1a3f5" kindref="member">host_imap</ref>(host_imap_),<sp/><ref refid="structemail_1_1UserInfo_1abe9be20a65e424a216f61fae0cf50078" kindref="member">username</ref>(username_),<sp/><ref refid="structemail_1_1UserInfo_1adb5cc631ca7e5c0669685b5faf9fcef9" kindref="member">password</ref>(password_)</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
-<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1UserInfo_1a079c1b6f41d419aac969bf43a9ca81f8" kindref="member">UserInfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1UserInfo" kindref="compound">UserInfo</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1UserInfo" kindref="compound">UserInfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1UserInfo" kindref="compound">UserInfo</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/><ref refid="macros_8hpp_1a63182df5328e6f5ffc3eb22859132adf" kindref="member">EMAIL_SHARED_PTR_CONST</ref>(<ref refid="structemail_1_1UserInfo" kindref="compound">UserInfo</ref>)</highlight></codeline>
 <codeline lineno="53"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
@@ -379,16 +379,16 @@
 <codeline lineno="59"><highlight class="normal"><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="structemail_1_1EmailRecipients_1a0f5c1ef98bc6030b7026b9ff7250e466" kindref="member">to</ref>;</highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="structemail_1_1EmailRecipients_1a1abf873bc70b6d1ebb3817d7c2977808" kindref="member">cc</ref>;</highlight></codeline>
 <codeline lineno="63"><highlight class="normal"><sp/><sp/>std::vector&lt;std::string&gt;<sp/><ref refid="structemail_1_1EmailRecipients_1a9255bf9879cfa1748d17d142b84fb18f" kindref="member">bcc</ref>;</highlight></codeline>
-<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailRecipients_1a879ed18bb87c9a7b45d4cd050eb636e0" kindref="member">EmailRecipients</ref>(</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref>(</highlight></codeline>
 <codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;<sp/>to_,</highlight></codeline>
 <codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;<sp/>cc_,</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;std::string&gt;<sp/>&amp;<sp/>bcc_)</highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/>:<sp/><ref refid="structemail_1_1EmailRecipients_1a0f5c1ef98bc6030b7026b9ff7250e466" kindref="member">to</ref>(to_),<sp/><ref refid="structemail_1_1EmailRecipients_1a1abf873bc70b6d1ebb3817d7c2977808" kindref="member">cc</ref>(cc_),<sp/><ref refid="structemail_1_1EmailRecipients_1a9255bf9879cfa1748d17d142b84fb18f" kindref="member">bcc</ref>(bcc_)</highlight></codeline>
 <codeline lineno="70"><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
-<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailRecipients_1a879ed18bb87c9a7b45d4cd050eb636e0" kindref="member">EmailRecipients</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>to_)</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>to_)</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/>:<sp/><ref refid="structemail_1_1EmailRecipients_1a0f5c1ef98bc6030b7026b9ff7250e466" kindref="member">to</ref>({to_}),<sp/><ref refid="structemail_1_1EmailRecipients_1a1abf873bc70b6d1ebb3817d7c2977808" kindref="member">cc</ref>(),<sp/><ref refid="structemail_1_1EmailRecipients_1a9255bf9879cfa1748d17d142b84fb18f" kindref="member">bcc</ref>()</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailRecipients_1a879ed18bb87c9a7b45d4cd050eb636e0" kindref="member">EmailRecipients</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"><sp/><sp/><ref refid="macros_8hpp_1a63182df5328e6f5ffc3eb22859132adf" kindref="member">EMAIL_SHARED_PTR_CONST</ref>(<ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref>)</highlight></codeline>
 <codeline lineno="78"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight></codeline>
@@ -400,12 +400,12 @@
 <codeline lineno="88"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structemail_1_1EmailContent_1a77bd9eb7cbea591d799bcc305e43b611" kindref="member">subject</ref>;</highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/>std::string<sp/><ref refid="structemail_1_1EmailContent_1aee35c198a24df4a44429242f2349f252" kindref="member">body</ref>;</highlight></codeline>
-<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailContent_1af724d227f2cde94a19ca2881ca257d54" kindref="member">EmailContent</ref>(</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref>(</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>subject_,</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>body_)</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/>:<sp/><ref refid="structemail_1_1EmailContent_1a77bd9eb7cbea591d799bcc305e43b611" kindref="member">subject</ref>(subject_),<sp/><ref refid="structemail_1_1EmailContent_1aee35c198a24df4a44429242f2349f252" kindref="member">body</ref>(body_)</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailContent_1af724d227f2cde94a19ca2881ca257d54" kindref="member">EmailContent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="101"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104" refid="structemail_1_1EmailData" refkind="compound"><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref></highlight></codeline>
@@ -416,7 +416,7 @@
 <codeline lineno="113"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structemail_1_1EmailRecipients" kindref="compound">EmailRecipients</ref><sp/><ref refid="structemail_1_1EmailData_1a10accb9e498602cf7841471741e41fdd" kindref="member">recipients</ref>;</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal"><ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref><sp/><ref refid="structemail_1_1EmailData_1a04533d7a6670f809da51c335c7449a01" kindref="member">content</ref>;</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref><sp/><ref refid="structemail_1_1EmailData_1aad420bf006f31f4a9f6a95db90581f49" kindref="member">additional_headers</ref>;</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailData_1a9f77470450820644aaa39f4f56cd0600" kindref="member">EmailData</ref>(</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref>(</highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>message_id_,</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>in_reply_to_,</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>from_,</highlight></codeline>
@@ -431,7 +431,7 @@
 <codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="structemail_1_1EmailData_1aad420bf006f31f4a9f6a95db90581f49" kindref="member">additional_headers</ref>(</highlight></codeline>
 <codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>additional_headers_.has_value()<sp/>?<sp/>additional_headers_.value()<sp/>:<sp/><ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref>{})</highlight></codeline>
 <codeline lineno="133"><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailData_1a9f77470450820644aaa39f4f56cd0600" kindref="member">EmailData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="136"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
 <codeline lineno="138"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>email</highlight><highlight class="normal"></highlight></codeline>
@@ -465,7 +465,7 @@
 <codeline lineno="168"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="169"><highlight class="normal"></highlight></codeline>
 <codeline lineno="171"><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
-<codeline lineno="172" refid="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;<ref refid="namespaceemail" kindref="compound">email</ref>::<ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref>&gt;:<sp/>formatter&lt;string_view&gt;</highlight></codeline>
+<codeline lineno="172" refid="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;<ref refid="namespaceemail" kindref="compound">email</ref>::EmailHeaders&gt;:<sp/>formatter&lt;string_view&gt;</highlight></codeline>
 <codeline lineno="173"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
 <codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">email::EmailHeaders</ref><sp/>&amp;<sp/>h,<sp/>FormatContext<sp/>&amp;<sp/>ctx)</highlight></codeline>

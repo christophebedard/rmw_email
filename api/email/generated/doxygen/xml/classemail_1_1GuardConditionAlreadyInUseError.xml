@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1GuardConditionAlreadyInUseError" kind="class" language="C++" prot="public">
     <compoundname>email::GuardConditionAlreadyInUseError</compoundname>
     <basecompoundref prot="public" virt="non-virtual">std::runtime_error</basecompoundref>
     <includes local="no">guard_condition.hpp</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1GuardConditionAlreadyInUseError_1a57d4ab9271b91ef41470c20711ceb732" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::GuardConditionAlreadyInUseError::GuardConditionAlreadyInUseError</definition>
         <argsstring>()</argsstring>
         <name>GuardConditionAlreadyInUseError</name>
+        <qualifiedname>email::GuardConditionAlreadyInUseError::GuardConditionAlreadyInUseError</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,7 +19,7 @@
         </inbodydescription>
         <location file="include/email/guard_condition.hpp" line="33" column="3" bodyfile="include/email/guard_condition.hpp" bodystart="33" bodyend="35"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Guard condition already in use error. </para>
     </briefdescription>

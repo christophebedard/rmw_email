@@ -1,6 +1,11 @@
 <map id="include/email/subscription.hpp" name="include/email/subscription.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="5,5,227,32"/>
-<area shape="rect" id="node2" href="$email_8hpp.html" title=" " alt="" coords="27,169,205,196"/>
-<area shape="rect" id="node3" href="$wait_8hpp.html" title=" " alt="" coords="31,87,201,114"/>
-<area shape="rect" id="node4" href="$wait__set_8hpp.html" title=" " alt="" coords="226,80,369,121"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,227,31"/>
+<area shape="rect" id="Node000002" href="$email_8hpp.html" title=" " alt="" coords="27,167,205,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,39,42,56,21,80,15,99,21,117,33,133,48,146,82,164,79,169,45,150,29,137,16,120,9,99,16,77,39,52,67,34"/>
+<area shape="rect" id="Node000003" href="$wait_8hpp.html" title=" " alt="" coords="31,86,201,111"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,44,119,86,113,86,113,44"/>
+<area shape="rect" id="Node000004" href="$wait__set_8hpp.html" title=" " alt="" coords="226,79,369,119"/>
+<area shape="poly" id="edge4_Node000001_Node000004" title=" " alt="" coords="156,34,255,76,253,81,154,39"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="119,125,119,166,113,166,113,125"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="242,127,144,169,142,164,240,122"/>
 </map>

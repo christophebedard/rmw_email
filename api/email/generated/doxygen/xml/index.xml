@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.1" xml:lang="en-US">
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
   <compound refid="classemail_1_1CommunicationInfo" kind="class"><name>email::CommunicationInfo</name>
     <member refid="classemail_1_1CommunicationInfo_1a622376971c805f20168100d046ac1fa9" kind="variable"><name>HEADER_SOURCE_TIMESTAMP</name></member>
     <member refid="classemail_1_1CommunicationInfo_1a1e0db660d9eb49186b320f4c257ae3f0" kind="variable"><name>source_timestamp_</name></member>
@@ -8,10 +8,10 @@
     <member refid="classemail_1_1CommunicationInfo_1aa83f5465d5c50fe678aa9329afba8e9f" kind="function"><name>CommunicationInfo</name></member>
     <member refid="classemail_1_1CommunicationInfo_1aa2e99492c54b6d24fddfd1fab62ec833" kind="function"><name>CommunicationInfo</name></member>
     <member refid="classemail_1_1CommunicationInfo_1a6e0097239f585e0bfae824fc3ac94f3e" kind="function"><name>~CommunicationInfo</name></member>
-    <member refid="classemail_1_1CommunicationInfo_1a690cb702fb6fd6767d0fc2915a21084c" kind="function"><name>source_timestamp</name></member>
-    <member refid="classemail_1_1CommunicationInfo_1a51f763fcc089f6bba8234c9193d476bf" kind="function"><name>received_timestamp</name></member>
-    <member refid="classemail_1_1CommunicationInfo_1a0e848c80f65edbbb7f3a1df3af47ab9d" kind="function"><name>source_gid</name></member>
-    <member refid="classemail_1_1CommunicationInfo_1ad3cff0500c8627f61a85cd745e049403" kind="function"><name>from_headers</name></member>
+    <member refid="classemail_1_1CommunicationInfo_1ad5a3e58b3359fe80026b3edda2eb2d27" kind="function"><name>source_timestamp</name></member>
+    <member refid="classemail_1_1CommunicationInfo_1a7680c09d74680518b190fa4a54301b0d" kind="function"><name>received_timestamp</name></member>
+    <member refid="classemail_1_1CommunicationInfo_1adc2a497fe7cc3fcd4554aec85e2a8b60" kind="function"><name>source_gid</name></member>
+    <member refid="classemail_1_1CommunicationInfo_1a3b2b08b6102d87d4315b212337925274" kind="function"><name>from_headers</name></member>
   </compound>
   <compound refid="structemail_1_1ConnectionInfo" kind="struct"><name>email::ConnectionInfo</name>
     <member refid="structemail_1_1ConnectionInfo_1a2432cbfd520eba7169a0da728998b0ea" kind="variable"><name>host</name></member>
@@ -33,12 +33,12 @@
     <member refid="classemail_1_1Context_1ad3b1f40974f3d60bad995af07afcdad9" kind="function"><name>init</name></member>
     <member refid="classemail_1_1Context_1acd290417c0afb3a27f635a7e7ad34b1a" kind="function"><name>shutdown</name></member>
     <member refid="classemail_1_1Context_1a3cfe3bd2a1d5ab27c9c249474b13f4a3" kind="function"><name>is_valid</name></member>
-    <member refid="classemail_1_1Context_1a5e93b3ce58fa2cd5f99bb11f87a42129" kind="function"><name>get_options</name></member>
-    <member refid="classemail_1_1Context_1a2754eb1610b656e5f2938d4c498660e5" kind="function"><name>get_receiver</name></member>
-    <member refid="classemail_1_1Context_1a418192e88b8dc0abc13f9a4a2cf69d7f" kind="function"><name>get_sender</name></member>
-    <member refid="classemail_1_1Context_1a60a73157c8f1dc0029bbbc519f4a5ffd" kind="function"><name>get_polling_manager</name></member>
-    <member refid="classemail_1_1Context_1abeaf1ab14e801b1ae8f2d15bee3c8bd3" kind="function"><name>get_subscription_handler</name></member>
-    <member refid="classemail_1_1Context_1a92ea51482059927667585017b1730dd0" kind="function"><name>get_service_handler</name></member>
+    <member refid="classemail_1_1Context_1a9a34b949ef1dda4a0254307d1ec1ab27" kind="function"><name>get_options</name></member>
+    <member refid="classemail_1_1Context_1a37d9674f898d578556425d08efe0388f" kind="function"><name>get_receiver</name></member>
+    <member refid="classemail_1_1Context_1a88d2f24e3743fe55a62308d71c25f19c" kind="function"><name>get_sender</name></member>
+    <member refid="classemail_1_1Context_1a0f41255169afb5c54614c643d6b67828" kind="function"><name>get_polling_manager</name></member>
+    <member refid="classemail_1_1Context_1a369e767c25126c93c5e906cfdd74fc0f" kind="function"><name>get_subscription_handler</name></member>
+    <member refid="classemail_1_1Context_1a5c434a2ebf84b30b02b802a2058b92e3" kind="function"><name>get_service_handler</name></member>
     <member refid="classemail_1_1Context_1a59671e9aa08f56d4517a2ff1978808b7" kind="function"><name>init_common</name></member>
   </compound>
   <compound refid="classemail_1_1ContextAlreadyInitializedError" kind="class"><name>email::ContextAlreadyInitializedError</name>
@@ -65,9 +65,9 @@
     <member refid="classemail_1_1CurlContext_1afecdec140c06377b37f90d5b6e1d08aa" kind="function"><name>init</name></member>
     <member refid="classemail_1_1CurlContext_1a279da87c494f8647d1e688a43bf1ed2a" kind="function"><name>fini</name></member>
     <member refid="classemail_1_1CurlContext_1a0eaa473cb92d0f8a608df01ee33d54ec" kind="function"><name>execute</name></member>
-    <member refid="classemail_1_1CurlContext_1aac5561bf32e05ce657b348fcfd2f2e01" kind="function"><name>get_handle</name></member>
-    <member refid="classemail_1_1CurlContext_1a14124af9ca8da6dece85f64e79689469" kind="function"><name>get_full_url</name></member>
-    <member refid="classemail_1_1CurlContext_1a167a9a69eebe08cf168048c3319f4b23" kind="function"><name>get_connection_info</name></member>
+    <member refid="classemail_1_1CurlContext_1a7c4ddae652cee608eb8250e3e678fd25" kind="function"><name>get_handle</name></member>
+    <member refid="classemail_1_1CurlContext_1adfb523822439589295d3b7440c0dcb4c" kind="function"><name>get_full_url</name></member>
+    <member refid="classemail_1_1CurlContext_1a5dff748f15cc8e8b9c334f4da307da64" kind="function"><name>get_connection_info</name></member>
   </compound>
   <compound refid="classemail_1_1CurlEmailReceiver" kind="class"><name>email::CurlEmailReceiver</name>
     <member refid="classemail_1_1CurlEmailReceiver_1a39c39d9e45f35803da3d5fff4030cbe1" kind="variable"><name>current_uid_</name></member>
@@ -75,11 +75,11 @@
     <member refid="classemail_1_1CurlEmailReceiver_1a33be25c998bddf00b401652083534f29" kind="variable"><name>read_buffer_</name></member>
     <member refid="classemail_1_1CurlEmailReceiver_1a6923b1242fbb12b56ded6e9800c5c252" kind="function"><name>CurlEmailReceiver</name></member>
     <member refid="classemail_1_1CurlEmailReceiver_1a14ff395707e713ab7616fa2c39ee6a6a" kind="function"><name>~CurlEmailReceiver</name></member>
-    <member refid="classemail_1_1CurlEmailReceiver_1a7d020227e4a7e769e886310d6f27f653" kind="function"><name>get_email</name></member>
+    <member refid="classemail_1_1CurlEmailReceiver_1aa15ce310c0a70d0bb35a20b458bb78cd" kind="function"><name>get_email</name></member>
     <member refid="classemail_1_1CurlEmailReceiver_1a5301e5427dedada2756b458137ac0c89" kind="function"><name>init_options</name></member>
-    <member refid="classemail_1_1CurlEmailReceiver_1af4ee04080cafea3ce70e35367dce527e" kind="function"><name>get_nextuid</name></member>
-    <member refid="classemail_1_1CurlEmailReceiver_1a686e075e95517bb657af1a5068788e1d" kind="function"><name>get_email_from_uid</name></member>
-    <member refid="classemail_1_1CurlEmailReceiver_1a7761c4571acb14aed1db5d196710d4fa" kind="function"><name>execute</name></member>
+    <member refid="classemail_1_1CurlEmailReceiver_1a2d2fa14ab0fb750b4893b54f8a1eee67" kind="function"><name>get_nextuid</name></member>
+    <member refid="classemail_1_1CurlEmailReceiver_1ad847006fad05d17b9f3308567a0df614" kind="function"><name>get_email_from_uid</name></member>
+    <member refid="classemail_1_1CurlEmailReceiver_1a2ab7380864421245795a0fce14e8dc71" kind="function"><name>execute</name></member>
     <member refid="classemail_1_1CurlEmailReceiver_1a6bf0dfaf8f34ddaab11772f94e23a988" kind="function"><name>write_callback</name></member>
   </compound>
   <compound refid="classemail_1_1CurlEmailSender" kind="class"><name>email::CurlEmailSender</name>
@@ -132,7 +132,7 @@
     <member refid="classemail_1_1EmailReceiver_1a72726a74b1cd15878e09b792946db159" kind="function"><name>EmailReceiver</name></member>
     <member refid="classemail_1_1EmailReceiver_1a8d5b33a13fa468c0ce8843ffacf950cf" kind="function"><name>~EmailReceiver</name></member>
     <member refid="classemail_1_1EmailReceiver_1acc9eaabaf2588628089e3a9ddffb7de4" kind="function"><name>shutdown</name></member>
-    <member refid="classemail_1_1EmailReceiver_1a39b6a8bb1b4ca5da66b76a5a317d6e6b" kind="function"><name>get_email</name></member>
+    <member refid="classemail_1_1EmailReceiver_1a27ee72b9bc73d9dfda4631acda34f84a" kind="function"><name>get_email</name></member>
   </compound>
   <compound refid="structemail_1_1EmailRecipients" kind="struct"><name>email::EmailRecipients</name>
     <member refid="structemail_1_1EmailRecipients_1a0f5c1ef98bc6030b7026b9ff7250e466" kind="variable"><name>to</name></member>
@@ -147,7 +147,7 @@
     <member refid="classemail_1_1EmailSender_1a84b1193de252540aca30a78973f30ff9" kind="function"><name>~EmailSender</name></member>
     <member refid="classemail_1_1EmailSender_1a12487f6d865d3839438cfb0814bbf1ec" kind="function"><name>send</name></member>
     <member refid="classemail_1_1EmailSender_1ad7b5de33bdb15b17f88cfccde80aa881" kind="function"><name>reply</name></member>
-    <member refid="classemail_1_1EmailSender_1af10fd3a823d5f5355f6cd3a784a7d3d8" kind="function"><name>logger</name></member>
+    <member refid="classemail_1_1EmailSender_1a62a51f457f6344d74184764c1e06b40c" kind="function"><name>logger</name></member>
   </compound>
   <compound refid="structfmt_1_1formatter_3_01email_1_1EmailContent_01_4" kind="struct"><name>fmt::formatter&lt; email::EmailContent &gt;</name>
     <member refid="structfmt_1_1formatter_3_01email_1_1EmailContent_01_4_1a21811966bf13ebcebbb6134043c979bf" kind="function"><name>format</name></member>
@@ -167,8 +167,8 @@
   <compound refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4" kind="struct"><name>fmt::formatter&lt; email::Timestamp &gt;</name>
     <member refid="structfmt_1_1formatter_3_01email_1_1Timestamp_01_4_1a1863002ca9a1269d1f2b2451416ef191" kind="function"><name>format</name></member>
   </compound>
-  <compound refid="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4" kind="struct"><name>fmt::formatter&lt; rcpputils::fs::path &gt;</name>
-    <member refid="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4_1ab6180187d5aef0dc33458706c9e718c1" kind="function"><name>format</name></member>
+  <compound refid="structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4" kind="struct"><name>fmt::formatter&lt; std::filesystem::path &gt;</name>
+    <member refid="structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4_1a52a727d34ab84d3dd1af2ec073e6928e" kind="function"><name>format</name></member>
   </compound>
   <compound refid="structfmt_1_1formatter_3_01YAML_1_1Node_01_4" kind="struct"><name>fmt::formatter&lt; YAML::Node &gt;</name>
     <member refid="structfmt_1_1formatter_3_01YAML_1_1Node_01_4_1a353907f58dfb5520e37fc5fe4b9d4265" kind="function"><name>format</name></member>
@@ -177,18 +177,18 @@
     <member refid="classemail_1_1Gid_1a62dae307b12f63573598cd248a9b320a" kind="variable"><name>value_</name></member>
     <member refid="classemail_1_1Gid_1a499978aa0fb35138798bb02465dd9906" kind="variable"><name>value_string_</name></member>
     <member refid="classemail_1_1Gid_1a7b577f26c3c1c5b652871313b4b378ba" kind="function"><name>new_gid</name></member>
-    <member refid="classemail_1_1Gid_1a335e1b70ba71daad276439074fd84726" kind="function"><name>from_string</name></member>
+    <member refid="classemail_1_1Gid_1a48926b08ccfe258ff2d60983a7f059aa" kind="function"><name>from_string</name></member>
     <member refid="classemail_1_1Gid_1abecaf9fb1ba2a8c1eb96f44225c70a2b" kind="function"><name>Gid</name></member>
     <member refid="classemail_1_1Gid_1ace01480d09f409d1b6dea1eae7d657cc" kind="function"><name>Gid</name></member>
     <member refid="classemail_1_1Gid_1a3e9a180384b627de0cb19ae24c7ca7df" kind="function"><name>~Gid</name></member>
     <member refid="classemail_1_1Gid_1aa4ac19221b7be24f6ff62aeb60d44cf2" kind="function"><name>value</name></member>
-    <member refid="classemail_1_1Gid_1a9e27fd06dfa8c387fdee7a0cea89dcac" kind="function"><name>to_string</name></member>
+    <member refid="classemail_1_1Gid_1a85c5504293da342827c927b7948061e0" kind="function"><name>to_string</name></member>
     <member refid="classemail_1_1Gid_1a897ca9c7356af66aad704f79a885b965" kind="function"><name>new_value</name></member>
     <member refid="classemail_1_1Gid_1ae435991a798bb89d76171fe811cc441c" kind="function"><name>to_string</name></member>
   </compound>
   <compound refid="classemail_1_1GidObject" kind="class"><name>email::GidObject</name>
     <member refid="classemail_1_1GidObject_1a11dbeba9ef928d13a0b28d2758b75ae3" kind="variable"><name>gid_</name></member>
-    <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" kind="function"><name>get_gid</name></member>
+    <member refid="classemail_1_1GidObject_1a593879303ef39c0a6c98c8f5e1f3a65c" kind="function"><name>get_gid</name></member>
     <member refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" kind="function"><name>GidObject</name></member>
     <member refid="classemail_1_1GidObject_1a8fce88afdc622182418d32b1c43cc17b" kind="function"><name>~GidObject</name></member>
   </compound>
@@ -210,7 +210,7 @@
     <member refid="classemail_1_1IntraEmailReceiver_1a5213b6ca39a6145ae2f1b8f9cb6c4ea4" kind="variable"><name>emails_</name></member>
     <member refid="classemail_1_1IntraEmailReceiver_1a931d5a8452bb052bc60d04cb8ff7f674" kind="function"><name>IntraEmailReceiver</name></member>
     <member refid="classemail_1_1IntraEmailReceiver_1a565e517a247aeaadceb180163d29cee1" kind="function"><name>~IntraEmailReceiver</name></member>
-    <member refid="classemail_1_1IntraEmailReceiver_1a2046c9a7ce1774fa43c0a5dc9cea340a" kind="function"><name>get_email</name></member>
+    <member refid="classemail_1_1IntraEmailReceiver_1a766ebde9f75c9629d87fe41f3bac35c0" kind="function"><name>get_email</name></member>
     <member refid="classemail_1_1IntraEmailReceiver_1a804e589d1c329ed4862d01d02a3d74b0" kind="function"><name>receive</name></member>
   </compound>
   <compound refid="classemail_1_1IntraEmailSender" kind="class"><name>email::IntraEmailSender</name>
@@ -235,15 +235,15 @@
     <member refid="classemail_1_1MessageInfo_1adfcdd34961d98458ea77ba578603f568" kind="function"><name>MessageInfo</name></member>
     <member refid="classemail_1_1MessageInfo_1a7bf3afa991c4521cee2dcee15f7d9e39" kind="function"><name>MessageInfo</name></member>
     <member refid="classemail_1_1MessageInfo_1ab2fd3c813c7e203b120f822decc6c059" kind="function"><name>~MessageInfo</name></member>
-    <member refid="classemail_1_1MessageInfo_1ab24b647d3cb643b22d3c4795786dac92" kind="function"><name>source_timestamp</name></member>
-    <member refid="classemail_1_1MessageInfo_1a8512b1b86f29c443fc6ae57668dda502" kind="function"><name>received_timestamp</name></member>
-    <member refid="classemail_1_1MessageInfo_1acd94687199ad591af14bdf2f4c08276e" kind="function"><name>publisher_gid</name></member>
-    <member refid="classemail_1_1MessageInfo_1a80ee636f9d57b53f46ed026135c396f4" kind="function"><name>from_headers</name></member>
+    <member refid="classemail_1_1MessageInfo_1a1babe6664e6499d3eb29d457cc10ec23" kind="function"><name>source_timestamp</name></member>
+    <member refid="classemail_1_1MessageInfo_1a2af0bad0aaf5f2b0c2528cc4bd62d436" kind="function"><name>received_timestamp</name></member>
+    <member refid="classemail_1_1MessageInfo_1a9c52e2ebec5054304058cca47804dd5d" kind="function"><name>publisher_gid</name></member>
+    <member refid="classemail_1_1MessageInfo_1addb4126438f29b54a7ebb227016f3d58" kind="function"><name>from_headers</name></member>
   </compound>
   <compound refid="classemail_1_1NamedObject" kind="class"><name>email::NamedObject</name>
     <member refid="classemail_1_1NamedObject_1a817e47064f17aa35a2e1be38388d7cb2" kind="variable"><name>REGEX_NEWLINE</name></member>
     <member refid="classemail_1_1NamedObject_1a5492f8579731f890e47e247a042ef027" kind="variable"><name>object_name_</name></member>
-    <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" kind="function"><name>get_object_name</name></member>
+    <member refid="classemail_1_1NamedObject_1a38236c2a6195ff5afec84161e1cf5056" kind="function"><name>get_object_name</name></member>
     <member refid="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" kind="function"><name>NamedObject</name></member>
     <member refid="classemail_1_1NamedObject_1ab6de668d7cc2c1eefda15c5822599a46" kind="function"><name>~NamedObject</name></member>
     <member refid="classemail_1_1NamedObject_1ab2b95bd3169bcecfbda7002cbf3c8586" kind="function"><name>validate_name</name></member>
@@ -265,17 +265,17 @@
     <member refid="classemail_1_1Options_1a7f8c1832652eacbda522baa240b4364a" kind="variable"><name>USAGE_CLI_ARGS</name></member>
     <member refid="classemail_1_1Options_1a9e49710bb8d52a05b74a40868ebbb375" kind="function"><name>Options</name></member>
     <member refid="classemail_1_1Options_1aedb8a8691febda54ef6646ea841e0199" kind="function"><name>~Options</name></member>
-    <member refid="classemail_1_1Options_1ad3aab8a980c818d44f7b4c453456dd2e" kind="function"><name>get_user_info</name></member>
-    <member refid="classemail_1_1Options_1ae706e9b4864156502045cbba7d0fd018" kind="function"><name>get_recipients</name></member>
+    <member refid="classemail_1_1Options_1a7ef6995201eef31bc97d15c80fab492e" kind="function"><name>get_user_info</name></member>
+    <member refid="classemail_1_1Options_1a63c81742899c861094ce0ea285379917" kind="function"><name>get_recipients</name></member>
     <member refid="classemail_1_1Options_1afb4cf15d89daec778cb29e4c4cdb5c85" kind="function"><name>curl_verbose</name></member>
     <member refid="classemail_1_1Options_1a289fed51e2e140b89f31b30ec7f34269" kind="function"><name>intraprocess</name></member>
-    <member refid="classemail_1_1Options_1a1db5c0402e0349f0430dc108460a6728" kind="function"><name>polling_period</name></member>
-    <member refid="classemail_1_1Options_1a80b79667d350d2ed10d22537580b2bc8" kind="function"><name>parse_options_from_args</name></member>
-    <member refid="classemail_1_1Options_1aecc89940a2c5923d049cf22d4a11a521" kind="function"><name>parse_options_from_file</name></member>
-    <member refid="classemail_1_1Options_1a3c2b027f4ad3a89de10a415afeaca4db" kind="function"><name>yaml_to_options</name></member>
-    <member refid="classemail_1_1Options_1a0414d9ab8ccd80f7e31ddfd49899c12c" kind="function"><name>parse_options_file</name></member>
-    <member refid="classemail_1_1Options_1abfbf5c7e383fd0f9efcdae9c396cdfc1" kind="function"><name>yaml_to_options_impl</name></member>
-    <member refid="classemail_1_1Options_1aeacc405c42fff6d63f4ca21be4099c04" kind="function"><name>logger</name></member>
+    <member refid="classemail_1_1Options_1a6bccfff6dd728fdebf1649bbd6fb6ec4" kind="function"><name>polling_period</name></member>
+    <member refid="classemail_1_1Options_1ae8f02b491104aba76d2f3807ca7c8ca2" kind="function"><name>parse_options_from_args</name></member>
+    <member refid="classemail_1_1Options_1a3f4c4e2921e1726b09418eac45b0ddd9" kind="function"><name>parse_options_from_file</name></member>
+    <member refid="classemail_1_1Options_1a23b2043fe1248e59f29493b6fcce64c7" kind="function"><name>yaml_to_options</name></member>
+    <member refid="classemail_1_1Options_1a5ea65aacf362e78800b7ad6c078598e3" kind="function"><name>parse_options_file</name></member>
+    <member refid="classemail_1_1Options_1ae01d923cec39abd7ac74b4d32d382e58" kind="function"><name>yaml_to_options_impl</name></member>
+    <member refid="classemail_1_1Options_1a46b18b62fd069e69cd7ada03412935de" kind="function"><name>logger</name></member>
   </compound>
   <compound refid="classemail_1_1PollingManager" kind="class"><name>email::PollingManager</name>
     <member refid="classemail_1_1PollingManager_1afa05fad5b42110b2dfcda3f5103d0de6" kind="typedef"><name>HandlerFunction</name></member>
@@ -307,7 +307,7 @@
     <member refid="classemail_1_1Publisher_1a54c103a25f64211d2e57ef9799dd4687" kind="function"><name>publish</name></member>
   </compound>
   <compound refid="classemail_1_1PubSubObject" kind="class"><name>email::PubSubObject</name>
-    <member refid="classemail_1_1PubSubObject_1a00a22d18eebc82496581344c21e02c32" kind="function"><name>get_topic_name</name></member>
+    <member refid="classemail_1_1PubSubObject_1a364a7bc9cf516f657bced8561655a85b" kind="function"><name>get_topic_name</name></member>
     <member refid="classemail_1_1PubSubObject_1a601bed08338a20e2d63e2332661a61e5" kind="function"><name>PubSubObject</name></member>
     <member refid="classemail_1_1PubSubObject_1a30f73a71f66b22671b2be92884e6c81f" kind="function"><name>~PubSubObject</name></member>
     <member refid="classemail_1_1PubSubObject_1a88516103b3a396e2ae0987efd50815eb" kind="function"><name>validate_name</name></member>
@@ -320,14 +320,14 @@
     <member refid="classemail_1_1SafeMap_1afa02ff889b01bf6b6d7d5907f0effdc1" kind="function"><name>insert</name></member>
     <member refid="classemail_1_1SafeMap_1aed35e5730013f7a427f46896696c443e" kind="function"><name>erase</name></member>
     <member refid="classemail_1_1SafeMap_1a804ed1b4f45d89f4860171b46ecd68a5" kind="function"><name>erase</name></member>
-    <member refid="classemail_1_1SafeMap_1aff4db055c899b8d4103fed639fc6f300" kind="function"><name>find</name></member>
+    <member refid="classemail_1_1SafeMap_1a7ccb51f07425ace7a7d8e9e6f426b0b8" kind="function"><name>find</name></member>
     <member refid="classemail_1_1SafeMap_1a97478e47a15235d9d08a9ea19f789968" kind="function"><name>empty</name></member>
     <member refid="classemail_1_1SafeMap_1a8060a7e82eb56a7c26bb0ec1db3b26cb" kind="function"><name>contains</name></member>
-    <member refid="classemail_1_1SafeMap_1af0f1ce1776d7e4c46b24b07d72d23ec9" kind="function"><name>equal_range</name></member>
-    <member refid="classemail_1_1SafeMap_1a3e3ced069a9413c52681a03948893587" kind="function"><name>begin</name></member>
-    <member refid="classemail_1_1SafeMap_1a60b6d858638f84927240c6923a301661" kind="function"><name>end</name></member>
-    <member refid="classemail_1_1SafeMap_1a504fe23def42764bc68fbd39c7a51b90" kind="function"><name>cbegin</name></member>
-    <member refid="classemail_1_1SafeMap_1aaf04df2a744013504ee3137e3f7a21ec" kind="function"><name>cend</name></member>
+    <member refid="classemail_1_1SafeMap_1ac34b6601eafe0b5d2392b3c8420b0435" kind="function"><name>equal_range</name></member>
+    <member refid="classemail_1_1SafeMap_1a6865d21a3c3ba9647032192cae0554dc" kind="function"><name>begin</name></member>
+    <member refid="classemail_1_1SafeMap_1af36ccc820b89f957e61c2f78ec080f26" kind="function"><name>end</name></member>
+    <member refid="classemail_1_1SafeMap_1a5b5a751c36115ef5d33384e8298d22fd" kind="function"><name>cbegin</name></member>
+    <member refid="classemail_1_1SafeMap_1ab3bb2b435ea289b9a78be99132d4e315" kind="function"><name>cend</name></member>
   </compound>
   <compound refid="classemail_1_1SafeQueue" kind="class"><name>email::SafeQueue</name>
     <member refid="classemail_1_1SafeQueue_1a0ea093bd20b0d0cc1502fdcce80212b2" kind="variable"><name>queue_mutex_</name></member>
@@ -337,7 +337,7 @@
     <member refid="classemail_1_1SafeQueue_1a548ee01f7a0733d5f8760bf85c762d68" kind="function"><name>empty</name></member>
     <member refid="classemail_1_1SafeQueue_1af490c5923c3e2567357ba39580b01729" kind="function"><name>push</name></member>
     <member refid="classemail_1_1SafeQueue_1a9a939e531527ca5d84da0586f1341532" kind="function"><name>pop</name></member>
-    <member refid="classemail_1_1SafeQueue_1ab982a1cb410d935efe1a438c80bffa97" kind="function"><name>front</name></member>
+    <member refid="classemail_1_1SafeQueue_1ac27c1e01a529560211990f84e3fdd889" kind="function"><name>front</name></member>
     <member refid="classemail_1_1SafeQueue_1abbc26904adc2e3180df5c12e16bc5307" kind="function"><name>dequeue</name></member>
   </compound>
   <compound refid="classemail_1_1ServiceClient" kind="class"><name>email::ServiceClient</name>
@@ -350,9 +350,9 @@
     <member refid="classemail_1_1ServiceClient_1ab34679e8f8f5fdfed3b3241a4ada78a6" kind="function"><name>send_request</name></member>
     <member refid="classemail_1_1ServiceClient_1a574ead1860f97d09941cd2b013fb4d37" kind="function"><name>has_response</name></member>
     <member refid="classemail_1_1ServiceClient_1a69bb6e1a7db8495b79aa19e47f0236d7" kind="function"><name>has_response</name></member>
-    <member refid="classemail_1_1ServiceClient_1a71b844e2b5f1ff60f059d7658f9c11df" kind="function"><name>get_response</name></member>
-    <member refid="classemail_1_1ServiceClient_1abfc9d9d393aefa5052e6940e9125782b" kind="function"><name>get_response_with_info</name></member>
-    <member refid="classemail_1_1ServiceClient_1acf7b778520df726f526d6de97637038f" kind="function"><name>get_response_with_info</name></member>
+    <member refid="classemail_1_1ServiceClient_1a210277b2aac1a44492aa1fc0f2be44db" kind="function"><name>get_response</name></member>
+    <member refid="classemail_1_1ServiceClient_1a0f701b48291e4d14d2531ce7f1819788" kind="function"><name>get_response_with_info</name></member>
+    <member refid="classemail_1_1ServiceClient_1a5d9a8f4577d9ea2efe38f9bef0b5bf7b" kind="function"><name>get_response_with_info</name></member>
   </compound>
   <compound refid="classemail_1_1ServiceHandler" kind="class"><name>email::ServiceHandler</name>
     <member refid="classemail_1_1ServiceHandler_1ae3c029c330a62190ed1c6f5d99fcd22c" kind="typedef"><name>ResponseMap</name></member>
@@ -378,17 +378,17 @@
     <member refid="classemail_1_1ServiceInfo_1aefebdb81432c3a220ed9fe493cbb0d80" kind="function"><name>ServiceInfo</name></member>
     <member refid="classemail_1_1ServiceInfo_1a0e61b08f5bc6a1c6c779bc59aeaed8c3" kind="function"><name>ServiceInfo</name></member>
     <member refid="classemail_1_1ServiceInfo_1a771610c25c91d4aab45c9bc8c0d9989c" kind="function"><name>~ServiceInfo</name></member>
-    <member refid="classemail_1_1ServiceInfo_1aa43d1644eb146528c2d6f48231b6c721" kind="function"><name>source_timestamp</name></member>
-    <member refid="classemail_1_1ServiceInfo_1a3c0d5e5899c80a2a989056d1ed70c441" kind="function"><name>received_timestamp</name></member>
-    <member refid="classemail_1_1ServiceInfo_1ad77d23bb1f88131cda1583b1afb2441a" kind="function"><name>client_gid</name></member>
+    <member refid="classemail_1_1ServiceInfo_1a3f673ff52835199f655f46ca0e1ace0d" kind="function"><name>source_timestamp</name></member>
+    <member refid="classemail_1_1ServiceInfo_1a4292be51ce7432a5195f20e0e9742fc3" kind="function"><name>received_timestamp</name></member>
+    <member refid="classemail_1_1ServiceInfo_1a004c8b023749954d2157ea4ad84a2e98" kind="function"><name>client_gid</name></member>
     <member refid="classemail_1_1ServiceInfo_1a5791f0d08dabaa8fe7c8cc1a1cef0326" kind="function"><name>sequence_number</name></member>
-    <member refid="classemail_1_1ServiceInfo_1a34fd237258ec87524ee5edddd1550b21" kind="function"><name>from_headers</name></member>
+    <member refid="classemail_1_1ServiceInfo_1aad62afbc4493b276b87b0469dd1d518f" kind="function"><name>from_headers</name></member>
   </compound>
   <compound refid="classemail_1_1ServiceNameInvalidError" kind="class"><name>email::ServiceNameInvalidError</name>
     <member refid="classemail_1_1ServiceNameInvalidError_1acd75c64744ee8299b87b78697e21cab9" kind="function"><name>ServiceNameInvalidError</name></member>
   </compound>
   <compound refid="classemail_1_1ServiceObject" kind="class"><name>email::ServiceObject</name>
-    <member refid="classemail_1_1ServiceObject_1a7f96bf4bb03c956939682468cd5dd4ea" kind="function"><name>get_service_name</name></member>
+    <member refid="classemail_1_1ServiceObject_1a2add48ac3ae9ba677af827373883b71c" kind="function"><name>get_service_name</name></member>
     <member refid="classemail_1_1ServiceObject_1a6adfe99b703c35e74156ecd4336cd2da" kind="function"><name>ServiceObject</name></member>
     <member refid="classemail_1_1ServiceObject_1a96f6d5e8cd18f0e2ec7f1229fdd6f110" kind="function"><name>~ServiceObject</name></member>
     <member refid="classemail_1_1ServiceObject_1ae83db10cea705d2bea2c61be2f37d912" kind="function"><name>validate_name</name></member>
@@ -413,8 +413,8 @@
     <member refid="classemail_1_1ServiceServer_1abba58df55b0930d3f33741ffa8950d3f" kind="function"><name>ServiceServer</name></member>
     <member refid="classemail_1_1ServiceServer_1aad38fdd9a7af24307b11d0550700a556" kind="function"><name>~ServiceServer</name></member>
     <member refid="classemail_1_1ServiceServer_1a5f9a2b5d05d50b4cfe890ebfd077d509" kind="function"><name>has_request</name></member>
-    <member refid="classemail_1_1ServiceServer_1a35e70cc848d14c82cd6185499998af36" kind="function"><name>get_request</name></member>
-    <member refid="classemail_1_1ServiceServer_1a61296d41cf3f59fafcf5aa87e51e81e6" kind="function"><name>get_request_with_info</name></member>
+    <member refid="classemail_1_1ServiceServer_1af58f2370c9001a6a8260f0e6d508c941" kind="function"><name>get_request</name></member>
+    <member refid="classemail_1_1ServiceServer_1ade32bf40681782f2ae5dfce926910619" kind="function"><name>get_request_with_info</name></member>
     <member refid="classemail_1_1ServiceServer_1a47867e8fbd4b21d56681e39f82635ca3" kind="function"><name>send_response</name></member>
   </compound>
   <compound refid="classemail_1_1Subscription" kind="class"><name>email::Subscription</name>
@@ -423,8 +423,8 @@
     <member refid="classemail_1_1Subscription_1aafc179a5eb735b80831c5be18c23dd71" kind="function"><name>Subscription</name></member>
     <member refid="classemail_1_1Subscription_1a49048c43296a15ca21dd4f929f039a7b" kind="function"><name>~Subscription</name></member>
     <member refid="classemail_1_1Subscription_1aa839176898e4ce3c244020eb3134adb9" kind="function"><name>has_message</name></member>
-    <member refid="classemail_1_1Subscription_1a859e4294eabcfd55e07d115c93c3681b" kind="function"><name>get_message</name></member>
-    <member refid="classemail_1_1Subscription_1a85751be20bb1ffb135879a968f4d518a" kind="function"><name>get_message_with_info</name></member>
+    <member refid="classemail_1_1Subscription_1ae1f718b845198817b7da9acc302f63d6" kind="function"><name>get_message</name></member>
+    <member refid="classemail_1_1Subscription_1aca92384aa376d70176e9734b6c852d22" kind="function"><name>get_message_with_info</name></member>
   </compound>
   <compound refid="classemail_1_1SubscriptionHandler" kind="class"><name>email::SubscriptionHandler</name>
     <member refid="classemail_1_1SubscriptionHandler_1a074215e7cbbd40683d3760a914b0d265" kind="typedef"><name>MessageQueue</name></member>
@@ -440,7 +440,7 @@
   <compound refid="classemail_1_1Timestamp" kind="class"><name>email::Timestamp</name>
     <member refid="classemail_1_1Timestamp_1a117f409f2606da5f1f1be16893cc0936" kind="variable"><name>nanoseconds_</name></member>
     <member refid="classemail_1_1Timestamp_1acd6a1543ca548deb496e54f7d4dd616c" kind="function"><name>now</name></member>
-    <member refid="classemail_1_1Timestamp_1a9576b9bd5328f436b0cf00ca4e7be128" kind="function"><name>from_string</name></member>
+    <member refid="classemail_1_1Timestamp_1aab585d275ebc69194efa42ed7e6b3aa6" kind="function"><name>from_string</name></member>
     <member refid="classemail_1_1Timestamp_1a653badfe8b13db09b2b6d3b41368a973" kind="function"><name>Timestamp</name></member>
     <member refid="classemail_1_1Timestamp_1a3475a215fac8ccfe8241f6c4d18f9a22" kind="function"><name>Timestamp</name></member>
     <member refid="classemail_1_1Timestamp_1accbcf82dcfd93ec893527ad9131c0889" kind="function"><name>~Timestamp</name></member>
@@ -476,15 +476,15 @@
     <member refid="classemail_1_1WaitSet_1a689f385df30394ae47663cb848dcf288" kind="function"><name>add_client</name></member>
     <member refid="classemail_1_1WaitSet_1abdce7e3034e0f5d2bdff3d7870afebca" kind="function"><name>add_server</name></member>
     <member refid="classemail_1_1WaitSet_1a61e5475463ef2475e8a37bdd54eab047" kind="function"><name>add_guard_condition</name></member>
-    <member refid="classemail_1_1WaitSet_1a14e663661e0c5667a7ede299a0b3552d" kind="function"><name>get_subscriptions</name></member>
-    <member refid="classemail_1_1WaitSet_1a290d51b59a3929a55f57082628456942" kind="function"><name>get_clients</name></member>
-    <member refid="classemail_1_1WaitSet_1adb793cb528d1c21a889f247ee64deef8" kind="function"><name>get_servers</name></member>
-    <member refid="classemail_1_1WaitSet_1afb3e6df1fbaad0de2ac18dc3c20afd9a" kind="function"><name>get_guard_conditions</name></member>
+    <member refid="classemail_1_1WaitSet_1a5dd2903ad4839750a9089f3d8d309974" kind="function"><name>get_subscriptions</name></member>
+    <member refid="classemail_1_1WaitSet_1a7b8f5ba5db1b183db0c1c0a512e2d472" kind="function"><name>get_clients</name></member>
+    <member refid="classemail_1_1WaitSet_1a5dbacc452ee901804198744322b78197" kind="function"><name>get_servers</name></member>
+    <member refid="classemail_1_1WaitSet_1acc8438d4b40cac5cfe7326f442ec2f47" kind="function"><name>get_guard_conditions</name></member>
     <member refid="classemail_1_1WaitSet_1a7fa89429ff3e7928dd747c75e7ba2e58" kind="function"><name>clear</name></member>
     <member refid="classemail_1_1WaitSet_1a6f285fa0126ce3a2e653ff792bcb44c0" kind="function"><name>check_guard_condition</name></member>
     <member refid="classemail_1_1WaitSet_1a66e385af8b9e986c9e01ce80e6f80995" kind="function"><name>release_guard_conditions</name></member>
     <member refid="classemail_1_1WaitSet_1a0675e2b056dd69d4bbe68f0287897ca2" kind="function"><name>apply_status</name></member>
-    <member refid="classemail_1_1WaitSet_1aee87e2f80de8f7ee23031980dc4de50d" kind="function"><name>get_loop_predicate</name></member>
+    <member refid="classemail_1_1WaitSet_1ad28f6e33cb7ac142089426325ba8376a" kind="function"><name>get_loop_predicate</name></member>
   </compound>
   <compound refid="namespaceemail" kind="namespace"><name>email</name>
     <member refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kind="typedef"><name>EmailHeaders</name></member>
@@ -492,20 +492,20 @@
     <member refid="namespaceemail_1a75eac80413e3a15a1adff727b822a70c" kind="typedef"><name>GidValue</name></member>
     <member refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kind="typedef"><name>Logger</name></member>
     <member refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kind="typedef"><name>SequenceNumber</name></member>
-    <member refid="namespaceemail_1a32664596f7a3d0177434519dc03ea38d" kind="function"><name>get_global_context</name></member>
+    <member refid="namespaceemail_1a3463ccf40571a4d49e4ffce46a97aefb" kind="function"><name>get_global_context</name></member>
     <member refid="namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1" kind="function"><name>init</name></member>
     <member refid="namespaceemail_1a31064318c3c135912c70c384f25d3305" kind="function"><name>init</name></member>
     <member refid="namespaceemail_1a7a0e2779940792a4753a9b163fd1bbc4" kind="function"><name>shutdown</name></member>
-    <member refid="namespaceemail_1aa59c37dd2056e5079d933232a16a3396" kind="function"><name>wait_for_message_with_info</name></member>
-    <member refid="namespaceemail_1a03feb199db737e274a1e6f0750d203a6" kind="function"><name>wait_for_message_with_info</name></member>
+    <member refid="namespaceemail_1a82e915e42a7b15b7c1affa3af631bd01" kind="function"><name>wait_for_message_with_info</name></member>
+    <member refid="namespaceemail_1ad50919dbf5a7ffe35c280a6f293558c2" kind="function"><name>wait_for_message_with_info</name></member>
     <member refid="namespaceemail_1ab5721e49aa88b793a84361690e62cff6" kind="function"><name>wait_for_message</name></member>
     <member refid="namespaceemail_1ae337962e644aa83d44bb241471fcb5a2" kind="function"><name>wait_for_message</name></member>
-    <member refid="namespaceemail_1a79fde927095f94957025da12c6283edb" kind="function"><name>wait_for_response_with_info</name></member>
-    <member refid="namespaceemail_1a2cdbe450415e49215d4a2d869eb577e7" kind="function"><name>wait_for_response_with_info</name></member>
+    <member refid="namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d" kind="function"><name>wait_for_response_with_info</name></member>
+    <member refid="namespaceemail_1ae48c8339b69ac3f105e701259ca08ad5" kind="function"><name>wait_for_response_with_info</name></member>
     <member refid="namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9" kind="function"><name>wait_for_response</name></member>
     <member refid="namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0" kind="function"><name>wait_for_response</name></member>
-    <member refid="namespaceemail_1ad5dd2091a29213c9aa3859d817376d10" kind="function"><name>wait_for_request_with_info</name></member>
-    <member refid="namespaceemail_1afdc469e72e9b1ab69445fdb82082f050" kind="function"><name>wait_for_request_with_info</name></member>
+    <member refid="namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6" kind="function"><name>wait_for_request_with_info</name></member>
+    <member refid="namespaceemail_1a348e73d7de5081748ca34e7bb29dd30c" kind="function"><name>wait_for_request_with_info</name></member>
     <member refid="namespaceemail_1ad0a6b760f7e08068416acceebb60a199" kind="function"><name>wait_for_request</name></member>
     <member refid="namespaceemail_1a7dfbb8a3972445ace7e5b33b3b8cf18e" kind="function"><name>wait_for_request</name></member>
   </compound>
@@ -519,8 +519,8 @@
     <member refid="namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8fa0d42315cc89e99a312b0445743128878" kind="enumvalue"><name>off</name></member>
     <member refid="namespaceemail_1_1log_1a70e2c4b9640f8b10a086f14269d4681d" kind="function"><name>init</name></member>
     <member refid="namespaceemail_1_1log_1aba50b69230431fca149b16fe3fbcaa9c" kind="function"><name>init_from_env</name></member>
-    <member refid="namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e" kind="function"><name>create</name></member>
-    <member refid="namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce" kind="function"><name>get_or_create</name></member>
+    <member refid="namespaceemail_1_1log_1a780c47d49411c5388a6326388efa5262" kind="function"><name>create</name></member>
+    <member refid="namespaceemail_1_1log_1a4d243aa2ccc952cc68d17d55d22c6fca" kind="function"><name>get_or_create</name></member>
     <member refid="namespaceemail_1_1log_1aae637767284f0246349f0c09c4a7b30f" kind="function"><name>remove</name></member>
     <member refid="namespaceemail_1_1log_1ab7f5f3d63616c0073e304d2b20f86841" kind="function"><name>shutdown</name></member>
   </compound>
@@ -528,14 +528,14 @@
     <member refid="namespaceemail_1_1utils_1a36d04ae0600a820016e9a547222bad1a" kind="function"><name>string_format</name></member>
     <member refid="namespaceemail_1_1utils_1a48891b8793ba17bf280aef8d8c62f392" kind="function"><name>get_env_var</name></member>
     <member refid="namespaceemail_1_1utils_1ae02d06fc8aab9fc0e6c0e2f08e4bb976" kind="function"><name>get_env_var_or_default</name></member>
-    <member refid="namespaceemail_1_1utils_1a88a5169377c5fdee4455ee6b38723745" kind="function"><name>read_file</name></member>
-    <member refid="namespaceemail_1_1utils_1a45df7fc739ac9b6a5f5f8dd28eec92e1" kind="function"><name>split_email_list</name></member>
-    <member refid="namespaceemail_1_1utils_1aef6154f77c351ae81abb1544e8a5f3fd" kind="function"><name>split_email_list</name></member>
+    <member refid="namespaceemail_1_1utils_1ae3d4c984287d92db2a90319ba0ff6762" kind="function"><name>read_file</name></member>
+    <member refid="namespaceemail_1_1utils_1a9ac0b492df90bd936e286b50f51ef68e" kind="function"><name>split_email_list</name></member>
+    <member refid="namespaceemail_1_1utils_1aa2e1972a23478feaa1165b8148c67388" kind="function"><name>split_email_list</name></member>
     <member refid="namespaceemail_1_1utils_1a82ee838f6167a4af1146f59b82a26933" kind="function"><name>yaml_to_string</name></member>
     <member refid="namespaceemail_1_1utils_1a40a0b74a4dfabc0575e10367ff64f14f" kind="function"><name>full_url</name></member>
-    <member refid="namespaceemail_1_1utils_1a1426a6b72c22a41e717f2dddb9fe6f47" kind="function"><name>optional_stoul</name></member>
-    <member refid="namespaceemail_1_1utils_1a2a5c92f770d0c27fefe339dd2ba426a1" kind="function"><name>optional_stoi</name></member>
-    <member refid="namespaceemail_1_1utils_1a205d62958aa3a9111c4c17da561743fc" kind="function"><name>optional_stoll</name></member>
+    <member refid="namespaceemail_1_1utils_1ab9cbd8c73d22d42b906e858e79901da7" kind="function"><name>optional_stoul</name></member>
+    <member refid="namespaceemail_1_1utils_1a43baabdc6dccb93ef791c8b86b095df7" kind="function"><name>optional_stoi</name></member>
+    <member refid="namespaceemail_1_1utils_1a84320d04aefddcdd33d752c89783f4b6" kind="function"><name>optional_stoll</name></member>
     <member refid="namespaceemail_1_1utils_1a3f1ec15b0fb2fe7708248d9144068e69" kind="function"><name>thread_get_name</name></member>
     <member refid="namespaceemail_1_1utils_1abb5cc15dac76b938b897a32a94d29387" kind="function"><name>thread_set_name</name></member>
     <member refid="namespaceemail_1_1utils_1a6de7445821178c24df09d19ede5b3700" kind="function"><name>thread_append_name</name></member>
@@ -547,11 +547,11 @@
     <member refid="namespaceemail_1_1utils_1_1payload_1a455c37a8a129ddcf90c1835f001c0579" kind="function"><name>cut_string_if_newline</name></member>
   </compound>
   <compound refid="namespaceemail_1_1utils_1_1response" kind="namespace"><name>email::utils::response</name>
-    <member refid="namespaceemail_1_1utils_1_1response_1a86761af16b95987441640bea6861132a" kind="function"><name>get_nextuid_from_response</name></member>
+    <member refid="namespaceemail_1_1utils_1_1response_1aeaafc33fedc4101101a8d6be15b7a1ce" kind="function"><name>get_nextuid_from_response</name></member>
     <member refid="namespaceemail_1_1utils_1_1response_1a5a53dc0d1ceb86baec63678cc7dc060b" kind="function"><name>get_email_headers_from_response</name></member>
-    <member refid="namespaceemail_1_1utils_1_1response_1a6b5d710f645d106f79a0c1d15c7f9d75" kind="function"><name>get_email_content_from_response</name></member>
-    <member refid="namespaceemail_1_1utils_1_1response_1a653d46e023a23fecac67b8b95e32ff6b" kind="function"><name>get_email_data_from_response</name></member>
-    <member refid="namespaceemail_1_1utils_1_1response_1a30fbb8f3e4152b10b3998d176b5212d0" kind="function"><name>get_header_value</name></member>
+    <member refid="namespaceemail_1_1utils_1_1response_1a8441f41b41ba87ff7db252d492abaf89" kind="function"><name>get_email_content_from_response</name></member>
+    <member refid="namespaceemail_1_1utils_1_1response_1ada6f2e67bbb37bd4b69b7bec391127dd" kind="function"><name>get_email_data_from_response</name></member>
+    <member refid="namespaceemail_1_1utils_1_1response_1a262e8f9897375c3ef9c85c54d094d6f7" kind="function"><name>get_header_value</name></member>
   </compound>
   <compound refid="namespacefmt" kind="namespace"><name>fmt</name>
   </compound>
@@ -565,10 +565,6 @@
   </compound>
   <compound refid="executor_8hpp" kind="file"><name>executor.hpp</name>
   </compound>
-  <compound refid="curl_2info_8hpp" kind="file"><name>info.hpp</name>
-  </compound>
-  <compound refid="email_2info_8hpp" kind="file"><name>info.hpp</name>
-  </compound>
   <compound refid="email_8hpp" kind="file"><name>email.hpp</name>
   </compound>
   <compound refid="curl__receiver_8hpp" kind="file"><name>curl_receiver.hpp</name>
@@ -576,6 +572,10 @@
   <compound refid="curl__sender_8hpp" kind="file"><name>curl_sender.hpp</name>
   </compound>
   <compound refid="handler_8hpp" kind="file"><name>handler.hpp</name>
+  </compound>
+  <compound refid="curl_2info_8hpp" kind="file"><name>info.hpp</name>
+  </compound>
+  <compound refid="email_2info_8hpp" kind="file"><name>info.hpp</name>
   </compound>
   <compound refid="intra__receiver_8hpp" kind="file"><name>intra_receiver.hpp</name>
   </compound>

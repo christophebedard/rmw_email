@@ -1,11 +1,23 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" title=" " alt="" coords="5,242,89,269"/>
-<area shape="rect" id="node2" href="$structfmt_1_1formatter_3_01YAML_1_1Node_01_4.html" title="Formatting for YAML::Node objects." alt="" coords="148,5,313,47"/>
-<area shape="rect" id="node3" href="$structfmt_1_1formatter_3_01email_1_1EmailContent_01_4.html" title="Formatting for email::EmailContent objects." alt="" coords="147,71,314,112"/>
-<area shape="rect" id="node4" href="$structfmt_1_1formatter_3_01email_1_1EmailData_01_4.html" title="Formatting for email::EmailData objects." alt="" coords="147,136,314,177"/>
-<area shape="rect" id="node5" href="$structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4.html" title="Formatting for email::EmailHeaders objects." alt="" coords="147,201,314,243"/>
-<area shape="rect" id="node6" href="$structfmt_1_1formatter_3_01email_1_1EmailRecipients_01_4.html" title="Formatting for email::EmailRecipients objects." alt="" coords="147,267,314,308"/>
-<area shape="rect" id="node7" href="$structfmt_1_1formatter_3_01email_1_1Gid_01_4.html" title="Formatting for GIDs." alt="" coords="147,332,314,373"/>
-<area shape="rect" id="node8" href="$structfmt_1_1formatter_3_01email_1_1Timestamp_01_4.html" title="Formatting for Timestamp objects." alt="" coords="147,397,314,439"/>
-<area shape="rect" id="node9" href="$structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4.html" title="Formatting for rcpputils::fs::path objects." alt="" coords="137,463,324,504"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,202,144,227"/>
+<area shape="rect" id="Node000001" href="$classemail_1_1ContextError.html" title="Generic context error." alt="" coords="227,113,376,138"/>
+<area shape="poly" id="edge27_Node000000_Node000001" title=" " alt="" coords="106,192,145,169,191,148,232,136,234,141,193,153,148,174,108,197"/>
+<area shape="rect" id="Node000005" href="$classemail_1_1GuardConditionAlreadyInUseError.html" title="Guard condition already in use error." alt="" coords="192,163,411,203"/>
+<area shape="poly" id="edge31_Node000000_Node000005" title=" " alt="" coords="157,200,192,195,192,201,158,206"/>
+<area shape="rect" id="Node000006" href="$classemail_1_1ObjectNameInvalidError.html" title="Error when an object name is invalid." alt="" coords="205,227,397,267"/>
+<area shape="poly" id="edge32_Node000000_Node000006" title=" " alt="" coords="158,224,206,230,205,236,157,229"/>
+<area shape="rect" id="Node000009" href="$classemail_1_1log_1_1LoggingError.html" title="Generic logging error." alt="" coords="213,291,390,317"/>
+<area shape="poly" id="edge35_Node000000_Node000009" title=" " alt="" coords="108,232,148,255,193,276,234,289,232,294,191,281,145,260,106,237"/>
+<area shape="rect" id="Node000002" href="$classemail_1_1ContextAlreadyInitializedError.html" title="Error when the context is already initialized." alt="" coords="459,5,691,45"/>
+<area shape="poly" id="edge28_Node000001_Node000002" title=" " alt="" coords="340,104,458,55,495,43,497,48,460,60,342,109"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1ContextInitFailedError.html" title="Error when the context initialization fails." alt="" coords="487,69,664,109"/>
+<area shape="poly" id="edge29_Node000001_Node000003" title=" " alt="" coords="389,111,486,98,487,104,390,116"/>
+<area shape="rect" id="Node000004" href="$classemail_1_1ContextNotInitializedError.html" title="Error when the context is not initialized." alt="" coords="473,133,678,173"/>
+<area shape="poly" id="edge30_Node000001_Node000004" title=" " alt="" coords="390,132,473,140,472,146,389,137"/>
+<area shape="rect" id="Node000007" href="$classemail_1_1ServiceNameInvalidError.html" title="Error when a service name is invalid." alt="" coords="476,197,675,237"/>
+<area shape="poly" id="edge33_Node000006_Node000007" title=" " alt="" coords="411,232,476,225,476,231,412,238"/>
+<area shape="rect" id="Node000008" href="$classemail_1_1TopicNameInvalidError.html" title="Error when a topic name is invalid." alt="" coords="468,262,683,287"/>
+<area shape="poly" id="edge34_Node000006_Node000008" title=" " alt="" coords="411,255,468,261,467,266,411,260"/>
+<area shape="rect" id="Node000010" href="$classemail_1_1log_1_1LoggingNotInitializedError.html" title="Error when logging is not initialized." alt="" coords="459,312,692,352"/>
+<area shape="poly" id="edge36_Node000009_Node000010" title=" " alt="" coords="404,312,459,317,458,323,403,317"/>
 </map>

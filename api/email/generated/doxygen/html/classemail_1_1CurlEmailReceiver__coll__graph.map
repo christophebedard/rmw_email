@@ -1,6 +1,9 @@
 <map id="email::CurlEmailReceiver" name="email::CurlEmailReceiver">
-<area shape="rect" id="node1" title="Email reception wrapper for curl." alt="" coords="9,171,195,197"/>
-<area shape="rect" id="node2" href="$classemail_1_1EmailReceiver.html" title="Abstract email receiver." alt="" coords="5,95,167,121"/>
-<area shape="rect" id="node3" href="$classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="191,95,341,121"/>
-<area shape="rect" id="node4" href="$classemail_1_1CurlContext.html" title="Basic context wrapper for curl." alt="" coords="194,5,338,32"/>
+<area shape="rect" id="Node000001" title="Email reception wrapper for curl." alt="" coords="9,168,195,193"/>
+<area shape="rect" id="Node000002" href="$classemail_1_1EmailReceiver.html" title="Abstract email receiver." alt="" coords="5,93,167,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,132,102,167,97,168,89,133"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="191,93,341,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="229,127,129,170,127,166,227,122"/>
+<area shape="rect" id="Node000004" href="$classemail_1_1CurlContext.html" title="Basic context wrapper for curl." alt="" coords="194,5,338,31"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="269,45,269,93,263,93,263,45"/>
 </map>

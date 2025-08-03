@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="namespaceemail_1_1utils_1_1response" kind="namespace" language="C++">
     <compoundname>email::utils::response</compoundname>
-      <sectiondef kind="func">
-      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1a86761af16b95987441640bea6861132a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+    <sectiondef kind="func">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1aeaafc33fedc4101101a8d6be15b7a1ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; int &gt;</type>
-        <definition>std::optional&lt;int&gt; email::utils::response::get_nextuid_from_response</definition>
+        <definition>std::optional&lt; int &gt; email::utils::response::get_nextuid_from_response</definition>
         <argsstring>(const std::string &amp;response)</argsstring>
         <name>get_nextuid_from_response</name>
+        <qualifiedname>email::utils::response::get_nextuid_from_response</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>response</declname>
@@ -38,6 +39,7 @@
         <definition>EmailHeaders email::utils::response::get_email_headers_from_response</definition>
         <argsstring>(const std::string &amp;response)</argsstring>
         <name>get_email_headers_from_response</name>
+        <qualifiedname>email::utils::response::get_email_headers_from_response</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>response</declname>
@@ -63,11 +65,12 @@
         </inbodydescription>
         <location file="include/email/email/response_utils.hpp" line="52" column="1" declfile="include/email/email/response_utils.hpp" declline="52" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1a6b5d710f645d106f79a0c1d15c7f9d75" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1a8441f41b41ba87ff7db252d492abaf89" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; struct <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &gt;</type>
-        <definition>std::optional&lt;struct EmailContent&gt; email::utils::response::get_email_content_from_response</definition>
+        <definition>std::optional&lt; struct EmailContent &gt; email::utils::response::get_email_content_from_response</definition>
         <argsstring>(const std::string &amp;response, EmailHeaders &amp;headers)</argsstring>
         <name>get_email_content_from_response</name>
+        <qualifiedname>email::utils::response::get_email_content_from_response</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>response</declname>
@@ -105,11 +108,12 @@
         </inbodydescription>
         <location file="include/email/email/response_utils.hpp" line="62" column="1" declfile="include/email/email/response_utils.hpp" declline="62" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1a653d46e023a23fecac67b8b95e32ff6b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1ada6f2e67bbb37bd4b69b7bec391127dd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &gt;</type>
-        <definition>std::optional&lt;struct EmailData&gt; email::utils::response::get_email_data_from_response</definition>
+        <definition>std::optional&lt; struct EmailData &gt; email::utils::response::get_email_data_from_response</definition>
         <argsstring>(const std::string &amp;response)</argsstring>
         <name>get_email_data_from_response</name>
+        <qualifiedname>email::utils::response::get_email_data_from_response</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>response</declname>
@@ -135,11 +139,12 @@
         </inbodydescription>
         <location file="include/email/email/response_utils.hpp" line="71" column="1" declfile="include/email/email/response_utils.hpp" declline="71" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1a30fbb8f3e4152b10b3998d176b5212d0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1utils_1_1response_1a262e8f9897375c3ef9c85c54d094d6f7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::string &gt;</type>
-        <definition>std::optional&lt;std::string&gt; email::utils::response::get_header_value</definition>
+        <definition>std::optional&lt; std::string &gt; email::utils::response::get_header_value</definition>
         <argsstring>(const std::string &amp;header_name, const EmailHeaders &amp;headers)</argsstring>
         <name>get_header_value</name>
+        <qualifiedname>email::utils::response::get_header_value</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>header_name</declname>
@@ -177,7 +182,7 @@
         </inbodydescription>
         <location file="include/email/email/response_utils.hpp" line="81" column="1" declfile="include/email/email/response_utils.hpp" declline="81" declcolumn="1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Utilities for extracting information from an email formatted according to RFC 5322. </para>
     </briefdescription>

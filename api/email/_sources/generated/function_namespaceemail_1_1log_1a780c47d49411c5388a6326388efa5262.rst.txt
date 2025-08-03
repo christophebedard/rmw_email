@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceemail_1_1log_1a780c47d49411c5388a6326388efa5262:
+
+Function email::log::create
+===========================
+
+- Defined in :ref:`file_include_email_log.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::log::create(const std::string&)
+   :project: email Doxygen Project

@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structemail_1_1ServiceRequest" kind="struct" language="C++" prot="public">
     <compoundname>email::ServiceRequest</compoundname>
     <includes local="no">service_request.hpp</includes>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structemail_1_1ServiceRequest_1a7854c6a65f5a8f8dd6cad195cd826be5" prot="public" static="no" mutable="no">
         <type><ref refid="structemail_1_1ServiceRequestId" kindref="compound">ServiceRequestId</ref></type>
         <definition>ServiceRequestId email::ServiceRequest::id</definition>
         <argsstring></argsstring>
         <name>id</name>
+        <qualifiedname>email::ServiceRequest::id</qualifiedname>
         <briefdescription>
 <para>Request ID. </para>
         </briefdescription>
@@ -23,6 +24,7 @@
         <definition>std::string email::ServiceRequest::content</definition>
         <argsstring></argsstring>
         <name>content</name>
+        <qualifiedname>email::ServiceRequest::content</qualifiedname>
         <briefdescription>
 <para>Content of the request. </para>
         </briefdescription>
@@ -32,13 +34,14 @@
         </inbodydescription>
         <location file="include/email/service_request.hpp" line="48" column="15" bodyfile="include/email/service_request.hpp" bodystart="48" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structemail_1_1ServiceRequest_1ad530cc6cd2cfb64b90397085fdfbdab4" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::ServiceRequest::ServiceRequest</definition>
         <argsstring>(const SequenceNumber sequence_number_, const Gid &amp;client_gid_, const std::string &amp;content_)</argsstring>
         <name>ServiceRequest</name>
+        <qualifiedname>email::ServiceRequest::ServiceRequest</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref></type>
           <declname>sequence_number_</declname>
@@ -65,6 +68,7 @@
         <definition>email::ServiceRequest::ServiceRequest</definition>
         <argsstring>(const ServiceRequest &amp;)=default</argsstring>
         <name>ServiceRequest</name>
+        <qualifiedname>email::ServiceRequest::ServiceRequest</qualifiedname>
         <param>
           <type>const <ref refid="structemail_1_1ServiceRequest" kindref="compound">ServiceRequest</ref> &amp;</type>
         </param>
@@ -77,7 +81,7 @@
         </inbodydescription>
         <location file="include/email/service_request.hpp" line="58" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Service request, with a request ID and some content. </para>
     </briefdescription>
@@ -88,18 +92,18 @@
         <label>email::Gid</label>
         <link refid="classemail_1_1Gid"/>
       </node>
-      <node id="2">
-        <label>email::ServiceRequestId</label>
-        <link refid="structemail_1_1ServiceRequestId"/>
-        <childnode refid="3" relation="usage">
-          <edgelabel>client_gid</edgelabel>
-        </childnode>
-      </node>
       <node id="1">
         <label>email::ServiceRequest</label>
         <link refid="structemail_1_1ServiceRequest"/>
         <childnode refid="2" relation="usage">
           <edgelabel>id</edgelabel>
+        </childnode>
+      </node>
+      <node id="2">
+        <label>email::ServiceRequestId</label>
+        <link refid="structemail_1_1ServiceRequestId"/>
+        <childnode refid="3" relation="usage">
+          <edgelabel>client_gid</edgelabel>
         </childnode>
       </node>
     </collaborationgraph>

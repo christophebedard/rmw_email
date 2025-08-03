@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structfmt_1_1formatter_3_01email_1_1Gid_01_4" kind="struct" language="C++" prot="public">
     <compoundname>fmt::formatter&lt; email::Gid &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
     <includes local="no">gid.hpp</includes>
     <templateparamlist>
     </templateparamlist>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structfmt_1_1formatter_3_01email_1_1Gid_01_4_1a490248b579a465153216af11d87ca89c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -17,6 +17,7 @@
         <definition>auto fmt::formatter&lt; email::Gid &gt;::format</definition>
         <argsstring>(const email::Gid &amp;gid, FormatContext &amp;ctx)</argsstring>
         <name>format</name>
+        <qualifiedname>fmt::formatter&lt; email::Gid &gt;::format</qualifiedname>
         <param>
           <type>const <ref refid="classemail_1_1Gid" kindref="compound">email::Gid</ref> &amp;</type>
           <declname>gid</declname>
@@ -33,7 +34,7 @@
         </inbodydescription>
         <location file="include/email/gid.hpp" line="109" column="8" bodyfile="include/email/gid.hpp" bodystart="109" bodyend="112"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Formatting for GIDs. </para>
     </briefdescription>

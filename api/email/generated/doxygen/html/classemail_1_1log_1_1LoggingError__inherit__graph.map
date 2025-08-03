@@ -1,5 +1,7 @@
 <map id="email::log::LoggingError" name="email::log::LoggingError">
-<area shape="rect" id="node1" title="Generic logging error." alt="" coords="33,80,211,107"/>
-<area shape="rect" id="node3" href="$classemail_1_1log_1_1LoggingNotInitializedError.html" title="Error when logging is not initialized." alt="" coords="5,155,239,196"/>
-<area shape="rect" id="node2" title=" " alt="" coords="53,5,191,32"/>
+<area shape="rect" id="Node000001" title="Generic logging error." alt="" coords="33,79,211,104"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1log_1_1LoggingNotInitializedError.html" title="Error when logging is not initialized." alt="" coords="5,152,239,192"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="125,118,125,152,119,152,119,118"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="53,5,191,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="125,44,125,79,119,79,119,44"/>
 </map>

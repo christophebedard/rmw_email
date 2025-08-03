@@ -1,3 +1,7 @@
+=======
+C++ API
+=======
+
 .. include:: page_index.rst.include
 
 .. include:: class_view_hierarchy.rst.include

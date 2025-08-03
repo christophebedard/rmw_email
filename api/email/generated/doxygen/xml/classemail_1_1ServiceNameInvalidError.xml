@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1ServiceNameInvalidError" kind="class" language="C++" prot="public">
     <compoundname>email::ServiceNameInvalidError</compoundname>
     <basecompoundref refid="classemail_1_1ObjectNameInvalidError" prot="public" virt="non-virtual">email::ObjectNameInvalidError</basecompoundref>
     <includes local="no">service.hpp</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1ServiceNameInvalidError_1acd75c64744ee8299b87b78697e21cab9" prot="public" static="no" const="no" explicit="yes" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::ServiceNameInvalidError::ServiceNameInvalidError</definition>
         <argsstring>(const std::string &amp;service_name, const std::string &amp;reason)</argsstring>
         <name>ServiceNameInvalidError</name>
+        <qualifiedname>email::ServiceNameInvalidError::ServiceNameInvalidError</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>service_name</declname>
@@ -26,13 +27,19 @@
         </inbodydescription>
         <location file="include/email/service.hpp" line="35" column="12" bodyfile="include/email/service.hpp" bodystart="35" bodyend="37"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Error when a service name is invalid. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="2">
+        <label>email::ObjectNameInvalidError</label>
+        <link refid="classemail_1_1ObjectNameInvalidError"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="1">
         <label>email::ServiceNameInvalidError</label>
         <link refid="classemail_1_1ServiceNameInvalidError"/>
@@ -41,15 +48,15 @@
       </node>
       <node id="3">
         <label>std::runtime_error</label>
-      </node>
-      <node id="2">
-        <label>email::ObjectNameInvalidError</label>
-        <link refid="classemail_1_1ObjectNameInvalidError"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="2">
+        <label>email::ObjectNameInvalidError</label>
+        <link refid="classemail_1_1ObjectNameInvalidError"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="1">
         <label>email::ServiceNameInvalidError</label>
         <link refid="classemail_1_1ServiceNameInvalidError"/>
@@ -58,12 +65,6 @@
       </node>
       <node id="3">
         <label>std::runtime_error</label>
-      </node>
-      <node id="2">
-        <label>email::ObjectNameInvalidError</label>
-        <link refid="classemail_1_1ObjectNameInvalidError"/>
-        <childnode refid="3" relation="public-inheritance">
-        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/email/service.hpp" line="32" column="1" bodyfile="include/email/service.hpp" bodystart="33" bodyend="38"/>

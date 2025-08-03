@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="communication__info_8hpp" kind="file" language="C++">
     <compoundname>communication_info.hpp</compoundname>
     <includes local="no">optional</includes>
@@ -11,6 +11,22 @@
     <includedby refid="message__info_8hpp" local="yes">include/email/message_info.hpp</includedby>
     <includedby refid="service__info_8hpp" local="yes">include/email/service_info.hpp</includedby>
     <incdepgraph>
+      <node id="1">
+        <label>include/email/communication_info.hpp</label>
+        <link refid="communication__info_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>email/email/info.hpp</label>
         <link refid="email_2info_8hpp"/>
@@ -27,28 +43,6 @@
         <childnode refid="8" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>string</label>
-      </node>
-      <node id="5">
-        <label>map</label>
-      </node>
-      <node id="1">
-        <label>include/email/communication_info.hpp</label>
-        <link refid="communication__info_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
         </childnode>
       </node>
       <node id="10">
@@ -71,18 +65,6 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="11">
-        <label>spdlog/fmt/ostr.h</label>
-      </node>
-      <node id="2">
-        <label>optional</label>
-      </node>
-      <node id="7">
-        <label>vector</label>
-      </node>
-      <node id="8">
-        <label>spdlog/fmt/fmt.h</label>
-      </node>
       <node id="13">
         <label>email/timestamp.hpp</label>
         <link refid="timestamp_8hpp"/>
@@ -97,18 +79,100 @@
         <childnode refid="12" relation="include">
         </childnode>
       </node>
-      <node id="6">
-        <label>memory</label>
-      </node>
       <node id="12">
         <label>email/visibility_control.hpp</label>
         <link refid="visibility__control_8hpp"/>
       </node>
+      <node id="5">
+        <label>map</label>
+      </node>
+      <node id="6">
+        <label>memory</label>
+      </node>
+      <node id="2">
+        <label>optional</label>
+      </node>
+      <node id="8">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="11">
+        <label>spdlog/fmt/ostr.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
+      </node>
+      <node id="7">
+        <label>vector</label>
+      </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="1">
+        <label>include/email/communication_info.hpp</label>
+        <link refid="communication__info_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
+      </node>
       <node id="4">
         <label>include/email/email.hpp</label>
         <link refid="email_8hpp"/>
+      </node>
+      <node id="2">
+        <label>include/email/message_info.hpp</label>
+        <link refid="message__info_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="10">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/email/service_handler.hpp</label>
+        <link refid="service__handler_8hpp"/>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/email/service_info.hpp</label>
+        <link refid="service__info_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>include/email/service_request.hpp</label>
+        <link refid="service__request_8hpp"/>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
       </node>
       <node id="12">
         <label>include/email/service_server.hpp</label>
@@ -130,60 +194,6 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
-      <node id="10">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/email/communication_info.hpp</label>
-        <link refid="communication__info_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="11">
-        <label>include/email/service_handler.hpp</label>
-        <link refid="service__handler_8hpp"/>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/email/service_info.hpp</label>
-        <link refid="service__info_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-      </node>
       <node id="7">
         <label>include/email/subscription_handler.hpp</label>
         <link refid="subscription__handler_8hpp"/>
@@ -192,26 +202,16 @@
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="13">
-        <label>include/email/service_request.hpp</label>
-        <link refid="service__request_8hpp"/>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+      <node id="5">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
-      </node>
-      <node id="2">
-        <label>include/email/message_info.hpp</label>
-        <link refid="message__info_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+      <node id="6">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="4" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -255,35 +255,35 @@
 <codeline lineno="35"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="36"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1aa83f5465d5c50fe678aa9329afba8e9f" kindref="member">CommunicationInfo</ref>(</highlight></codeline>
-<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>&amp;<sp/><ref refid="classemail_1_1CommunicationInfo_1a690cb702fb6fd6767d0fc2915a21084c" kindref="member">source_timestamp</ref>,</highlight></codeline>
-<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>&amp;<sp/><ref refid="classemail_1_1CommunicationInfo_1a51f763fcc089f6bba8234c9193d476bf" kindref="member">received_timestamp</ref>,</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Gid" kindref="compound">Gid</ref><sp/>&amp;<sp/><ref refid="classemail_1_1CommunicationInfo_1a0e848c80f65edbbb7f3a1df3af47ab9d" kindref="member">source_gid</ref>);</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo" kindref="compound">CommunicationInfo</ref>(</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>&amp;<sp/><ref refid="classemail_1_1CommunicationInfo_1ad5a3e58b3359fe80026b3edda2eb2d27" kindref="member">source_timestamp</ref>,</highlight></codeline>
+<codeline lineno="41"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>&amp;<sp/><ref refid="classemail_1_1CommunicationInfo_1a7680c09d74680518b190fa4a54301b0d" kindref="member">received_timestamp</ref>,</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Gid" kindref="compound">Gid</ref><sp/>&amp;<sp/><ref refid="classemail_1_1CommunicationInfo_1adc2a497fe7cc3fcd4554aec85e2a8b60" kindref="member">source_gid</ref>);</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"></highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1aa83f5465d5c50fe678aa9329afba8e9f" kindref="member">CommunicationInfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1CommunicationInfo" kindref="compound">CommunicationInfo</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo" kindref="compound">CommunicationInfo</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1CommunicationInfo" kindref="compound">CommunicationInfo</ref><sp/>&amp;)<sp/>=<sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"></highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="48"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1a6e0097239f585e0bfae824fc3ac94f3e" kindref="member">~CommunicationInfo</ref>();</highlight></codeline>
 <codeline lineno="49"><highlight class="normal"></highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="52"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1a690cb702fb6fd6767d0fc2915a21084c" kindref="member">source_timestamp</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1ad5a3e58b3359fe80026b3edda2eb2d27" kindref="member">source_timestamp</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="54"><highlight class="normal"></highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1a51f763fcc089f6bba8234c9193d476bf" kindref="member">received_timestamp</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1a7680c09d74680518b190fa4a54301b0d" kindref="member">received_timestamp</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="59"><highlight class="normal"></highlight></codeline>
 <codeline lineno="61"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="62"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Gid" kindref="compound">Gid</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1a0e848c80f65edbbb7f3a1df3af47ab9d" kindref="member">source_gid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1adc2a497fe7cc3fcd4554aec85e2a8b60" kindref="member">source_gid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="64"><highlight class="normal"></highlight></codeline>
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="74"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"><sp/><sp/>std::optional&lt;CommunicationInfo&gt;</highlight></codeline>
-<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1ad3cff0500c8627f61a85cd745e049403" kindref="member">from_headers</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref><sp/>&amp;<sp/>headers,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>source_gid_header);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1CommunicationInfo_1a3b2b08b6102d87d4315b212337925274" kindref="member">from_headers</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">EmailHeaders</ref><sp/>&amp;<sp/>headers,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>source_gid_header);</highlight></codeline>
 <codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>constexpr<sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1CommunicationInfo_1a622376971c805f20168100d046ac1fa9" kindref="member">HEADER_SOURCE_TIMESTAMP</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Source-Timestamp&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1CommunicationInfo_1a622376971c805f20168100d046ac1fa9" kindref="member">HEADER_SOURCE_TIMESTAMP</ref><sp/>=<sp/></highlight><highlight class="stringliteral">&quot;Source-Timestamp&quot;</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="80"><highlight class="normal"></highlight></codeline>
 <codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="82"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Timestamp" kindref="compound">Timestamp</ref><sp/>source_timestamp_;</highlight></codeline>

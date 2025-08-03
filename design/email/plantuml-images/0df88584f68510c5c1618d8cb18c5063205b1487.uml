@@ -1,0 +1,48 @@
+@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+class Subscription
+class ServiceClient
+class ServiceServer
+
+class GuardCondition {
+   +trigger()
+   +triggered(): bool
+   +exchange_in_use(bool in_use): bool
+   +reset()
+}
+
+class WaitSet {
+   +add_subscription(Subscription *)
+   +add_client(ServiceClient *)
+   +add_server(ServiceServer *)
+   +add_guard_condition(GuardCondition *)
+   +get_subscriptions(): vector<Subscription *>
+   +get_clients(): vector<ServiceClient *>
+   +get_servers(): vector<ServiceServer *>
+   +get_guard_conditions(): vector<GuardCondition *>
+   +wait(milliseconds timeout): bool
+   +clear()
+}
+Subscription "0..*" o-- WaitSet
+ServiceClient "0..*" o-- WaitSet
+ServiceServer "0..*" o-- WaitSet
+GuardCondition "0..*" o-- "0..1" WaitSet
+
+class wait {
+   .. Subscription ..
+   +wait_for_message(Subscription * subscription, milliseconds timeout): string
+   +wait_for_message_with_info(Subscription * subscription, milliseconds timeout): pair<string, MessageInfo>
+   .. Service client ..
+   +wait_for_response(SequenceNumber seq, ServiceClient * client, milliseconds timeout): string
+   +wait_for_response_with_info(SequenceNumber seq, ServiceClient * client, milliseconds timeout): pair<string, ServiceInfo>
+   .. Service server ..
+   +wait_for_request(ServiceServer * server, milliseconds timeout): ServiceRequest
+   +wait_for_request_with_info(ServiceServer * server, milliseconds timeout): pair<ServiceRequest, ServiceInfo>
+}
+WaitSet "internally uses" <-- wait
+
+@enduml

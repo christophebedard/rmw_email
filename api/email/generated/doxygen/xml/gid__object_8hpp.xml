@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="gid__object_8hpp" kind="file" language="C++">
     <compoundname>gid_object.hpp</compoundname>
     <includes local="no">optional</includes>
@@ -9,21 +9,6 @@
     <includedby refid="pub__sub_8hpp" local="yes">include/email/pub_sub.hpp</includedby>
     <includedby refid="service_8hpp" local="yes">include/email/service.hpp</includedby>
     <incdepgraph>
-      <node id="1">
-        <label>include/email/gid_object.hpp</label>
-        <link refid="gid__object_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>string</label>
-      </node>
       <node id="4">
         <label>email/gid.hpp</label>
         <link refid="gid_8hpp"/>
@@ -38,30 +23,87 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>include/email/gid_object.hpp</label>
+        <link refid="gid__object_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="6">
         <label>email/macros.hpp</label>
         <link refid="macros_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>spdlog/fmt/ostr.h</label>
-      </node>
-      <node id="2">
-        <label>optional</label>
+      <node id="8">
+        <label>email/visibility_control.hpp</label>
+        <link refid="visibility__control_8hpp"/>
       </node>
       <node id="7">
         <label>memory</label>
       </node>
-      <node id="8">
-        <label>email/visibility_control.hpp</label>
-        <link refid="visibility__control_8hpp"/>
+      <node id="2">
+        <label>optional</label>
+      </node>
+      <node id="5">
+        <label>spdlog/fmt/ostr.h</label>
+      </node>
+      <node id="3">
+        <label>string</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
       <node id="4">
         <label>include/email/email.hpp</label>
         <link refid="email_8hpp"/>
+      </node>
+      <node id="1">
+        <label>include/email/gid_object.hpp</label>
+        <link refid="gid__object_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>include/email/pub_sub.hpp</label>
+        <link refid="pub__sub_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>include/email/publisher.hpp</label>
+        <link refid="publisher_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/email/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
       </node>
       <node id="10">
         <label>include/email/service_server.hpp</label>
@@ -83,58 +125,16 @@
         <childnode refid="7" relation="include">
         </childnode>
       </node>
-      <node id="9">
-        <label>include/email/service.hpp</label>
-        <link refid="service_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/email/gid_object.hpp</label>
-        <link refid="gid__object_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
       <node id="6">
         <label>include/email/wait.hpp</label>
         <link refid="wait_8hpp"/>
         <childnode refid="4" relation="include">
         </childnode>
       </node>
-      <node id="2">
-        <label>include/email/pub_sub.hpp</label>
-        <link refid="pub__sub_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>include/email/publisher.hpp</label>
-        <link refid="publisher_8hpp"/>
+      <node id="7">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
         <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -177,7 +177,7 @@
 <codeline lineno="32"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35"><highlight class="normal"><sp/><sp/><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="36"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1Gid" kindref="compound">Gid</ref><sp/>&amp;</highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" kindref="member">get_gid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="37"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1GidObject_1a593879303ef39c0a6c98c8f5e1f3a65c" kindref="member">get_gid</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="38"><highlight class="normal"></highlight></codeline>
 <codeline lineno="39"><highlight class="normal"></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" kindref="member">GidObject</ref>();</highlight></codeline>

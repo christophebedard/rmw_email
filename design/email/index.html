@@ -8,8 +8,10 @@
 </ol></li>
 <li><a href="#overall-architecture">Overall architecture</a>
 <ol type="1">
-<li><a href="#sending-and-receiving-emails">Sending and receiving emails</a></li>
-<li><a href="#internal-handling-of-emails">Internal handling of emails</a></li>
+<li><a href="#sending-and-receiving-emails">Sending and receiving
+emails</a></li>
+<li><a href="#internal-handling-of-emails">Internal handling of
+emails</a></li>
 <li><a href="#global-context">Global context</a></li>
 </ol></li>
 <li><a href="#waiting-on-messages">Waiting on messages</a></li>
@@ -21,24 +23,48 @@
 </ol>
 <h2 id="use-of-emails">Use of emails</h2>
 <h3 id="as-a-message-container">As a message container</h3>
-<p>Emails are used as a container to send and receive string messages.</p>
-<p>The email subject is used for the topic name or service name. The email body contains the string message.</p>
+<p>Emails are used as a container to send and receive string
+messages.</p>
+<p>The email subject is used for the topic name or service name. The
+email body contains the string message.</p>
 <h3 id="headers">Headers</h3>
-<p>Emails include both standard and non-standard (i.e., custom) headers. Email headers are used to include metadata about each communication instance in a structured way without polluting the content itself (i.e., email body). See <a href="#data-containers"><em>Data containers</em></a>. These custom headers do not have a <code>X-</code> prefix as per <a href="https://datatracker.ietf.org/doc/html/rfc6648">RFC 6648</a>.</p>
-<p>This metadata is thus also used to be able to differentiate between publisher/subscription messages and service requests/responses. See <a href="#overall-architecture"><em>Overall architecture</em></a>.</p>
-<p>The headers of the service response emails are set so that the email is a reply to the original service request email. This is done by setting the values of the <code>In-Reply-To</code> and <code>References</code> headers of the response email to the value of the <code>Message-ID</code> header of the request email. See <a href="https://datatracker.ietf.org/doc/html/rfc5322#page-26">page 26 of RFC 5322</a>.</p>
-<p>The use of these headers also helps differentiate between a service request and a service response.</p>
+<p>Emails include both standard and non-standard (i.e., custom) headers.
+Email headers are used to include metadata about each communication
+instance in a structured way without polluting the content itself (i.e.,
+email body). See <a href="#data-containers"><em>Data
+containers</em></a>. These custom headers do not have a <code>X-</code>
+prefix as per <a
+href="https://datatracker.ietf.org/doc/html/rfc6648">RFC 6648</a>.</p>
+<p>This metadata is thus also used to be able to differentiate between
+publisher/subscription messages and service requests/responses. See <a
+href="#overall-architecture"><em>Overall architecture</em></a>.</p>
+<p>The headers of the service response emails are set so that the email
+is a reply to the original service request email. This is done by
+setting the values of the <code>In-Reply-To</code> and
+<code>References</code> headers of the response email to the value of
+the <code>Message-ID</code> header of the request email. See <a
+href="https://datatracker.ietf.org/doc/html/rfc5322#page-26">page 26 of
+RFC 5322</a>.</p>
+<p>The use of these headers also helps differentiate between a service
+request and a service response.</p>
 <h3 id="polling">Polling</h3>
 <p>To poll for new emails using the IMAP protocol commands, we can:</p>
 <ul>
-<li>first run an <code>EXAMINE INBOX</code> command to get the UID value of the next email
+<li>first run an <code>EXAMINE INBOX</code> command to get the UID value
+of the next email
 <ul>
 <li>a UID is simply a unique identifier for each email
 <ul>
-<li>see <a href="https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.1.1">RFC 3501 section 2.3.1.1</a></li>
+<li>see <a
+href="https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.1.1">RFC
+3501 section 2.3.1.1</a></li>
 </ul></li>
-<li>the next UID value is called <code>UIDNEXT</code> in the command response</li>
-<li>see <a href="https://datatracker.ietf.org/doc/html/rfc3501#section-6.3.2">RFC 3501 section 6.3.2</a> for the <code>EXAMINE</code> command and response</li>
+<li>the next UID value is called <code>UIDNEXT</code> in the command
+response</li>
+<li>see <a
+href="https://datatracker.ietf.org/doc/html/rfc3501#section-6.3.2">RFC
+3501 section 6.3.2</a> for the <code>EXAMINE</code> command and
+response</li>
 </ul></li>
 <li>then periodically try to fetch en email using that UID
 <ul>
@@ -61,40 +87,51 @@
 </ul></li>
 <li>email: sender, receiver
 <ul>
-<li>uses the first layer with <code>libcurl</code> to execute commands to:
+<li>uses the first layer with <code>libcurl</code> to execute commands
+to:
 <ul>
 <li>send emails through <code>smtps</code> (secure SMTP)</li>
 <li>poll for emails through <code>imaps</code> (secure IMAP)</li>
 </ul></li>
-<li>email senders can send an email that is a reply to an email received by an email receiver</li>
+<li>email senders can send an email that is a reply to an email received
+by an email receiver</li>
 <li>see <a href="#use-of-emails"><em>Use of emails</em></a></li>
 </ul></li>
 <li>publisher/subscription and service client/server
 <ul>
 <li>publishers are simply email senders</li>
 <li>subscriptions indirectly use email receivers</li>
-<li>service clients use publishers to send requests and indirectly use email receivers to receive responses</li>
-<li>service servers indirectly use email receivers to receive requests and use email senders to send responses by replying to the request email</li>
+<li>service clients use publishers to send requests and indirectly use
+email receivers to receive responses</li>
+<li>service servers indirectly use email receivers to receive requests
+and use email senders to send responses by replying to the request
+email</li>
 </ul></li>
 </ol>
-<p>For intraprocess communication, a different set of email sender and email receiver is used:</p>
+<p>For intraprocess communication, a different set of email sender and
+email receiver is used:</p>
 <ol type="1">
 <li>intraprocess email sender
 <ul>
 <li>has a reference to the intraprocess email receiver</li>
-<li>when sending or replying, it simply hands the email over to the intraprocess email receiver</li>
+<li>when sending or replying, it simply hands the email over to the
+intraprocess email receiver</li>
 </ul></li>
 <li>intraprocess email receiver
 <ul>
-<li>has a function that receives a new email, adds a random <code>Message-ID</code> header value, and adds it to its queue
+<li>has a function that receives a new email, adds a random
+<code>Message-ID</code> header value, and adds it to its queue
 <ul>
-<li>faking/adding a message ID is required to support downstream logic that depends on email replies</li>
+<li>faking/adding a message ID is required to support downstream logic
+that depends on email replies</li>
 <li>see <a href="#headers"><em>Headers</em></a></li>
 </ul></li>
-<li>when queried for a new email, it simply returns one from its queue if it’s not empty</li>
+<li>when queried for a new email, it simply returns one from its queue
+if it’s not empty</li>
 </ul></li>
 </ol>
-<p><img src="plantuml-images/9efdd7a871cba1c389361bc5c202056f42546e6a.svg" /></p>
+<p><img
+src="plantuml-images/9efdd7a871cba1c389361bc5c202056f42546e6a.svg" /></p>
 <h3 id="internal-handling-of-emails">Internal handling of emails</h3>
 <p>Internal handling of emails/mesages is done as follows:</p>
 <ol type="1">
@@ -110,7 +147,8 @@
 <ul>
 <li>see <a href="#use-of-emails"><em>Use of emails</em></a></li>
 </ul></li>
-<li>if so, they pass it on to the right object(s) that registered with them
+<li>if so, they pass it on to the right object(s) that registered with
+them
 <ul>
 <li>according to topic name or service name</li>
 </ul></li>
@@ -118,47 +156,69 @@
 <li>subscriptions, service clients/servers
 <ul>
 <li>all subscriptions register with the subscription handler</li>
-<li>all service clients and servers register with the service handler</li>
-<li>new messages, service requests or service responses are added to the corresponding queues or maps
+<li>all service clients and servers register with the service
+handler</li>
+<li>new messages, service requests or service responses are added to the
+corresponding queues or maps
 <ul>
 <li>subscriptions have a message queue</li>
 <li>service clients have a response map</li>
 <li>service servers have a request queue</li>
 </ul></li>
-<li>users can either poll the subscription/client/server directly for new messages/requests/responses or wait on it
+<li>users can either poll the subscription/client/server directly for
+new messages/requests/responses or wait on it
 <ul>
-<li>see <a href="#waiting-on-messages"><em>Waiting on messages</em></a></li>
+<li>see <a href="#waiting-on-messages"><em>Waiting on
+messages</em></a></li>
 </ul></li>
 </ul></li>
 </ol>
-<p><img src="plantuml-images/95d3ae5ff72aab1102127f6e8d526f594b1f2acc.svg" /></p>
+<p><img
+src="plantuml-images/95d3ae5ff72aab1102127f6e8d526f594b1f2acc.svg" /></p>
 <h3 id="global-context">Global context</h3>
-<p>A global context owns global objects (i.e., all effectively singletons):</p>
+<p>A global context owns global objects (i.e., all effectively
+singletons):</p>
 <ul>
 <li>options container</li>
 <li>email receiver, email sender</li>
 <li>polling manager</li>
 <li>subscription handler, service handler</li>
 </ul>
-<p>Those objects are made available globally to anything that needs them:</p>
+<p>Those objects are made available globally to anything that needs
+them:</p>
 <ul>
 <li>publishers and service servers to get the email sender</li>
 <li>polling manager to get the email receiver</li>
-<li>subscription handler and service handler to register with the polling manager</li>
-<li>subscriptions and service clients/servers to register with the subscription handler and service handler, respectively</li>
+<li>subscription handler and service handler to register with the
+polling manager</li>
+<li>subscriptions and service clients/servers to register with the
+subscription handler and service handler, respectively</li>
 </ul>
-<p><img src="plantuml-images/e28bccf8db239991888db9751c5af3578e913cc9.svg" /></p>
+<p><img
+src="plantuml-images/e28bccf8db239991888db9751c5af3578e913cc9.svg" /></p>
 <h2 id="waiting-on-messages">Waiting on messages</h2>
-<p>Subscriptions and service clients/servers must be waited on through polling. Wait sets can be used to wait for new messages, service requests or service responses. Some utility functions can be used to wait on a specific entity using a wait set without needing to manually create a wait set for that single entity.</p>
-<p>Wait sets also support guard conditions as simple conditions with triggers. A guard condition cannot be added to more than one wait set at a time.</p>
-<p>Wait sets are empty when created; entities can be added after creation. Wait sets can contain any number of each kind of entity and they can also contain none. Waiting on an empty wait set is valid and is equivalent to a sleep call. Wait sets can be used to wait on the same set of entities multiple times They can also be cleared and re-used to wait on a different set of entities.</p>
+<p>Subscriptions and service clients/servers must be waited on through
+polling. Wait sets can be used to wait for new messages, service
+requests or service responses. Some utility functions can be used to
+wait on a specific entity using a wait set without needing to manually
+create a wait set for that single entity.</p>
+<p>Wait sets also support guard conditions as simple conditions with
+triggers. A guard condition cannot be added to more than one wait set at
+a time.</p>
+<p>Wait sets are empty when created; entities can be added after
+creation. Wait sets can contain any number of each kind of entity and
+they can also contain none. Waiting on an empty wait set is valid and is
+equivalent to a sleep call. Wait sets can be used to wait on the same
+set of entities multiple times They can also be cleared and re-used to
+wait on a different set of entities.</p>
 <p>Waiting can be:</p>
 <ul>
 <li>blocking indefinitely with a negative timeout value</li>
 <li>non-blocking with a timeout value equal to zero</li>
 <li>blocking with a timeout if the value is greater than zero</li>
 </ul>
-<p><img src="plantuml-images/fd9a2b4a022814a23acd6f4e749257b7360bc219.svg" /></p>
+<p><img
+src="plantuml-images/0df88584f68510c5c1618d8cb18c5063205b1487.svg" /></p>
 <h2 id="data-containers">Data containers</h2>
 <h3 id="email">Email</h3>
 <p>Emails contain:</p>
@@ -168,13 +228,16 @@
 <li>body</li>
 <li>headers (metadata)</li>
 </ul>
-<p><img src="plantuml-images/365280eb0175e6fc0e9a5d8df39bf4c03628103d.svg" /></p>
+<p><img
+src="plantuml-images/365280eb0175e6fc0e9a5d8df39bf4c03628103d.svg" /></p>
 <h3 id="messages">Messages</h3>
-<p>Basic metadata is provided for all communication instances (i.e., messages, service requests or service responses):</p>
+<p>Basic metadata is provided for all communication instances (i.e.,
+messages, service requests or service responses):</p>
 <ul>
 <li>source timestamp</li>
 <li>reception timestamp</li>
-<li>GID of the source object (i.e., publisher, service client or service server)
+<li>GID of the source object (i.e., publisher, service client or service
+server)
 <ul>
 <li>a GID is just a unique identifier</li>
 </ul></li>
@@ -183,7 +246,9 @@
 <ul>
 <li>sequence number of the request
 <ul>
-<li>for service responses, this is the sequence number of the original request</li>
+<li>for service responses, this is the sequence number of the original
+request</li>
 </ul></li>
 </ul>
-<p><img src="plantuml-images/003d2593466fc052386bf1969014a069cc2e4f99.svg" /></p>
+<p><img
+src="plantuml-images/003d2593466fc052386bf1969014a069cc2e4f99.svg" /></p>

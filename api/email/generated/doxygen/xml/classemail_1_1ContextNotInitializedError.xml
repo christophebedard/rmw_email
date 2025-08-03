@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1ContextNotInitializedError" kind="class" language="C++" prot="public">
     <compoundname>email::ContextNotInitializedError</compoundname>
     <basecompoundref refid="classemail_1_1ContextError" prot="public" virt="non-virtual">email::ContextError</basecompoundref>
     <includes local="no">context.hpp</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1ContextNotInitializedError_1af8441171b76eac03a72960bee5211620" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::ContextNotInitializedError::ContextNotInitializedError</definition>
         <argsstring>()</argsstring>
         <name>ContextNotInitializedError</name>
+        <qualifiedname>email::ContextNotInitializedError::ContextNotInitializedError</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,7 +19,7 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="51" column="3" bodyfile="include/email/context.hpp" bodystart="51" bodyend="53"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Error when the context is not initialized. </para>
     </briefdescription>
@@ -31,14 +32,14 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>std::runtime_error</label>
-      </node>
       <node id="1">
         <label>email::ContextNotInitializedError</label>
         <link refid="classemail_1_1ContextNotInitializedError"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::runtime_error</label>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -48,14 +49,14 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>std::runtime_error</label>
-      </node>
       <node id="1">
         <label>email::ContextNotInitializedError</label>
         <link refid="classemail_1_1ContextNotInitializedError"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
+      </node>
+      <node id="3">
+        <label>std::runtime_error</label>
       </node>
     </collaborationgraph>
     <location file="include/email/context.hpp" line="48" column="1" bodyfile="include/email/context.hpp" bodystart="49" bodyend="54"/>

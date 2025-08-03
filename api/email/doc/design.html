@@ -1,0 +1,803 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>email design &mdash; email 0.8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=486e5634"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="../_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Documentation" href="../user_docs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            email
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../__links.html">Links</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://index.ros.org/p/email">Rosindex</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/christophebedard/rmw_email">Website</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/christophebedard/rmw_email">Repository</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/christophebedard/rmw_email/issues">Bugtracker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../generated/index.html">C++ API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../generated/index.html#tt-email-tt-email-based-middleware">&lt;tt&gt;email&lt;/tt&gt;: email-based middleware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../generated/index.html#class-hierarchy">Class Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/index.html#file-hierarchy">File Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../generated/index.html#full-c-api">Full C++ API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#enums">Enums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#defines">Defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#typedefs">Typedefs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#directories">Directories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../generated/index.html#files">Files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../__standards.html">Standard Documents</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../__PACKAGE.html">PACKAGE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../__QUALITY_DECLARATION.html">QUALITY_DECLARATION</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../__QUALITY_DECLARATION.html#email-quality-declaration"><code class="docutils literal notranslate"><span class="pre">email</span></code> Quality Declaration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../__QUALITY_DECLARATION.html#version-policy-1">Version Policy [1]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__QUALITY_DECLARATION.html#change-control-process-2">Change Control Process [2]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__QUALITY_DECLARATION.html#documentation-3">Documentation [3]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__QUALITY_DECLARATION.html#testing-4">Testing [4]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__QUALITY_DECLARATION.html#dependencies-5">Dependencies [5]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__QUALITY_DECLARATION.html#platform-support-6">Platform Support [6]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../__QUALITY_DECLARATION.html#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../__QUALITY_DECLARATION.html#current-status">Current Status</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../user_docs.html">Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">email</span></code> design</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">email</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../user_docs.html">Documentation</a></li>
+      <li class="breadcrumb-item active"><code class="docutils literal notranslate"><span class="pre">email</span></code> design</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/doc/design.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="email-design">
+<h1><code class="docutils literal notranslate"><span class="pre">email</span></code> design<a class="headerlink" href="#email-design" title="Link to this heading"></a></h1>
+<p><strong>Note</strong>: for a rendered version of this document, see: https://christophebedard.com/rmw_email/design/email/</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#use-of-emails"><span class="xref myst">Use of emails</span></a></p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#as-a-message-container"><span class="xref myst">As a message container</span></a></p></li>
+<li><p><a class="reference internal" href="#headers"><span class="xref myst">Headers</span></a></p></li>
+<li><p><a class="reference internal" href="#polling"><span class="xref myst">Polling</span></a></p></li>
+</ol>
+</li>
+<li><p><a class="reference internal" href="#overall-architecture"><span class="xref myst">Overall architecture</span></a></p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#sending-and-receiving-emails"><span class="xref myst">Sending and receiving emails</span></a></p></li>
+<li><p><a class="reference internal" href="#internal-handling-of-emails"><span class="xref myst">Internal handling of emails</span></a></p></li>
+<li><p><a class="reference internal" href="#global-context"><span class="xref myst">Global context</span></a></p></li>
+</ol>
+</li>
+<li><p><a class="reference internal" href="#waiting-on-messages"><span class="xref myst">Waiting on messages</span></a></p></li>
+<li><p><a class="reference internal" href="#data-containers"><span class="xref myst">Data containers</span></a></p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#email"><span class="xref myst">Email</span></a></p></li>
+<li><p><a class="reference internal" href="#messages"><span class="xref myst">Messages</span></a></p></li>
+</ol>
+</li>
+</ol>
+<section id="use-of-emails">
+<h2>Use of emails<a class="headerlink" href="#use-of-emails" title="Link to this heading"></a></h2>
+<section id="as-a-message-container">
+<h3>As a message container<a class="headerlink" href="#as-a-message-container" title="Link to this heading"></a></h3>
+<p>Emails are used as a container to send and receive string messages.</p>
+<p>The email subject is used for the topic name or service name.
+The email body contains the string message.</p>
+</section>
+<section id="headers">
+<h3>Headers<a class="headerlink" href="#headers" title="Link to this heading"></a></h3>
+<p>Emails include both standard and non-standard (i.e., custom) headers.
+Email headers are used to include metadata about each communication instance in a structured way without polluting the content itself (i.e., email body).
+See <a class="reference internal" href="#data-containers"><span class="xref myst"><em>Data containers</em></span></a>.
+These custom headers do not have a <code class="docutils literal notranslate"><span class="pre">X-</span></code> prefix as per <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc6648">RFC 6648</a>.</p>
+<p>This metadata is thus also used to be able to differentiate between publisher/subscription messages and service requests/responses.
+See <a class="reference internal" href="#overall-architecture"><span class="xref myst"><em>Overall architecture</em></span></a>.</p>
+<p>The headers of the service response emails are set so that the email is a reply to the original service request email.
+This is done by setting the values of the <code class="docutils literal notranslate"><span class="pre">In-Reply-To</span></code> and <code class="docutils literal notranslate"><span class="pre">References</span></code> headers of the response email to the value of the <code class="docutils literal notranslate"><span class="pre">Message-ID</span></code> header of the request email.
+See <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc5322#page-26">page 26 of RFC 5322</a>.</p>
+<p>The use of these headers also helps differentiate between a service request and a service response.</p>
+</section>
+<section id="polling">
+<h3>Polling<a class="headerlink" href="#polling" title="Link to this heading"></a></h3>
+<p>To poll for new emails using the IMAP protocol commands, we can:</p>
+<ul class="simple">
+<li><p>first run an <code class="docutils literal notranslate"><span class="pre">EXAMINE</span> <span class="pre">INBOX</span></code> command to get the UID value of the next email</p>
+<ul>
+<li><p>a UID is simply a unique identifier for each email</p>
+<ul>
+<li><p>see <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3501#section-2.3.1.1">RFC 3501 section 2.3.1.1</a></p></li>
+</ul>
+</li>
+<li><p>the next UID value is called <code class="docutils literal notranslate"><span class="pre">UIDNEXT</span></code> in the command response</p></li>
+<li><p>see <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc3501#section-6.3.2">RFC 3501 section 6.3.2</a> for the <code class="docutils literal notranslate"><span class="pre">EXAMINE</span></code> command and response</p></li>
+</ul>
+</li>
+<li><p>then periodically try to fetch en email using that UID</p>
+<ul>
+<li><p>if there is no new email, the command will fail</p>
+<ul>
+<li><p>keep trying</p></li>
+</ul>
+</li>
+<li><p>if there is a new email, we increment an internal UID counter</p></li>
+<li><p>then we repeat this step with this new value</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="overall-architecture">
+<h2>Overall architecture<a class="headerlink" href="#overall-architecture" title="Link to this heading"></a></h2>
+<section id="sending-and-receiving-emails">
+<h3>Sending and receiving emails<a class="headerlink" href="#sending-and-receiving-emails" title="Link to this heading"></a></h3>
+<p>There are three main layers to send and receive messages:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">curl</span></code>: context, executor</p>
+<ul class="simple">
+<li><p>does basic <code class="docutils literal notranslate"><span class="pre">libcurl</span></code> initialization</p></li>
+<li><p>connects to remote server</p></li>
+</ul>
+</li>
+<li><p>email: sender, receiver</p>
+<ul class="simple">
+<li><p>uses the first layer with <code class="docutils literal notranslate"><span class="pre">libcurl</span></code> to execute commands to:</p>
+<ul>
+<li><p>send emails through <code class="docutils literal notranslate"><span class="pre">smtps</span></code> (secure SMTP)</p></li>
+<li><p>poll for emails through <code class="docutils literal notranslate"><span class="pre">imaps</span></code> (secure IMAP)</p></li>
+</ul>
+</li>
+<li><p>email senders can send an email that is a reply to an email received by an email receiver</p></li>
+<li><p>see <a class="reference internal" href="#use-of-emails"><span class="xref myst"><em>Use of emails</em></span></a></p></li>
+</ul>
+</li>
+<li><p>publisher/subscription and service client/server</p>
+<ul class="simple">
+<li><p>publishers are simply email senders</p></li>
+<li><p>subscriptions indirectly use email receivers</p></li>
+<li><p>service clients use publishers to send requests and indirectly use email receivers to receive responses</p></li>
+<li><p>service servers indirectly use email receivers to receive requests and use email senders to send responses by replying to the request email</p></li>
+</ul>
+</li>
+</ol>
+<p>For intraprocess communication, a different set of email sender and email receiver is used:</p>
+<ol class="arabic simple">
+<li><p>intraprocess email sender</p>
+<ul class="simple">
+<li><p>has a reference to the intraprocess email receiver</p></li>
+<li><p>when sending or replying, it simply hands the email over to the intraprocess email receiver</p></li>
+</ul>
+</li>
+<li><p>intraprocess email receiver</p>
+<ul class="simple">
+<li><p>has a function that receives a new email, adds a random <code class="docutils literal notranslate"><span class="pre">Message-ID</span></code> header value, and adds it to its queue</p>
+<ul>
+<li><p>faking/adding a message ID is required to support downstream logic that depends on email replies</p></li>
+<li><p>see <a class="reference internal" href="#headers"><span class="xref myst"><em>Headers</em></span></a></p></li>
+</ul>
+</li>
+<li><p>when queried for a new email, it simply returns one from its queue if it’s not empty</p></li>
+</ul>
+</li>
+</ol>
+<div class="highlight-plantuml notranslate"><div class="highlight"><pre><span></span>@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+
+class CurlContext {
+   +init()
+   +fini()
+   +get_handle(): CURL *
+   +execute()
+}
+
+class CurlExecutor {
+   +init()
+   #init_options() {abstract}
+}
+CurlContext *-- CurlExecutor
+
+
+class EmailSender {
+   +send(EmailContent, optional&lt;EmailHeaders&gt;): bool {abstract}
+   +reply(EmailContent, EmailData, optional&lt;EmailHeaders&gt;): bool {abstract}
+}
+
+class CurlEmailSender {
+   +send(EmailContent, optional&lt;EmailHeaders&gt;): bool {abstract}
+   +reply(EmailContent, EmailData, optional&lt;EmailHeaders&gt;): bool {abstract}
+   #init_options() {abstract}
+}
+EmailSender &lt;|-- CurlEmailSender
+CurlExecutor &lt;|-- CurlEmailSender
+
+
+class EmailReceiver {
+   +get_email(nanoseconds polling_period): optional&lt;EmailData&gt; {abstract}
+   +shutdown()
+}
+class CurlEmailReceiver {
+   +get_email(nanoseconds polling_period): optional&lt;EmailData&gt; {abstract
+   #init_options() {abstract}
+   -get_nextuid(): optional&lt;int&gt;
+   -get_email_from_uid(int): optional&lt;EmailData&gt;
+   -execute(optional&lt;string&gt;, url_options, optional&lt;string&gt; custom_request): optional&lt;string&gt;
+}
+EmailReceiver &lt;|-- CurlEmailReceiver
+CurlExecutor &lt;|-- CurlEmailReceiver
+
+
+class IntraEmailReceiver {
+   -emails: queue&lt;EmailData&gt;
+   +get_email(nanoseconds polling_period): optional&lt;EmailData&gt; {abstract}
+   +receive(EmailData data)
+}
+EmailReceiver &lt;|-- IntraEmailReceiver
+
+class IntraEmailSender {
+   +send(EmailContent, optional&lt;EmailHeaders&gt;): bool {abstract}
+   +reply(EmailContent, EmailData, optional&lt;EmailHeaders&gt;): bool {abstract}
+}
+EmailSender &lt;|-- IntraEmailSender
+IntraEmailReceiver o-- IntraEmailSender
+
+EmailSender -right[hidden]- EmailReceiver
+
+@enduml
+</pre></div>
+</div>
+</section>
+<section id="internal-handling-of-emails">
+<h3>Internal handling of emails<a class="headerlink" href="#internal-handling-of-emails" title="Link to this heading"></a></h3>
+<p>Internal handling of emails/mesages is done as follows:</p>
+<ol class="arabic simple">
+<li><p>polling manager</p>
+<ul class="simple">
+<li><p>uses an email receiver to poll for new emails on a thread</p></li>
+<li><p>calls all registered handlers when a new email is received</p></li>
+</ul>
+</li>
+<li><p>handlers: subscription, service client/server</p>
+<ul class="simple">
+<li><p>all handlers register with the polling manager</p></li>
+<li><p>handlers check whether the new email applies to them</p>
+<ul>
+<li><p>see <a class="reference internal" href="#use-of-emails"><span class="xref myst"><em>Use of emails</em></span></a></p></li>
+</ul>
+</li>
+<li><p>if so, they pass it on to the right object(s) that registered with them</p>
+<ul>
+<li><p>according to topic name or service name</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>subscriptions, service clients/servers</p>
+<ul class="simple">
+<li><p>all subscriptions register with the subscription handler</p></li>
+<li><p>all service clients and servers register with the service handler</p></li>
+<li><p>new messages, service requests or service responses are added to the corresponding queues or maps</p>
+<ul>
+<li><p>subscriptions have a message queue</p></li>
+<li><p>service clients have a response map</p></li>
+<li><p>service servers have a request queue</p></li>
+</ul>
+</li>
+<li><p>users can either poll the subscription/client/server directly for new messages/requests/responses or wait on it</p>
+<ul>
+<li><p>see <a class="reference internal" href="#waiting-on-messages"><span class="xref myst"><em>Waiting on messages</em></span></a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="highlight-plantuml notranslate"><div class="highlight"><pre><span></span>@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+
+class EmailSender {
+   +send(EmailContent, optional&lt;EmailHeaders&gt;): bool {abstract}
+   +reply(EmailContent, EmailData, optional&lt;EmailHeaders&gt;): bool {abstract}
+}
+
+class EmailReceiver {
+   +get_email(nanoseconds polling_period): optional&lt;EmailData&gt; {abstract}
+   +shutdown()
+}
+
+
+class PollingManager {
+   -thread
+   -handlers: vector&lt;function&lt;void (EmailData)&gt;&gt;
+   -poll_thread()
+   +start()
+   +shutdown()
+   +register_handler(function&lt;void (EmailData)&gt;)
+}
+EmailReceiver o-- PollingManager
+
+abstract class EmailHandler {
+   +register_handler(shared_ptr&lt;PollingManager&gt;) {abstract}
+   +handle(EmailData) {abstract}
+}
+
+
+class SubscriptionHandler {
+   -subscriptions: map&lt;string, queue&lt;pair&lt;string, MessageInfo&gt;&gt;&gt;
+   +register_subscription(string topic_name, queue&lt;pair&lt;string, MessageInfo&gt;&gt; message_queue)
+   +register_handler(shared_ptr&lt;PollingManager&gt;) {abstract}
+   +handle(EmailData) {abstract}
+}
+EmailHandler &lt;|-- SubscriptionHandler
+PollingManager &quot;registers with&quot; &lt;-- SubscriptionHandler
+
+class ServiceHandler {
+   -clients: map&lt;GidValue, shared_ptr&lt;map&lt;SequenceNumber, pair&lt;EmailData, ServiceInfo&gt;&gt;&gt;&gt;
+   -servers: map&lt;string, shared_ptr&lt;queue&lt;pair&lt;EmailData, ServiceInfo&gt;&gt;&gt;&gt;
+   +register_service_client(Gid, map&lt;SequenceNumber, pair&lt;EmailData, ServiceInfo&gt;&gt; response_map)
+   +register_service_server(string service_name, queue&lt;pair&lt;EmailData, ServiceInfo&gt;&gt; request_queue)
+   +register_handler(shared_ptr&lt;PollingManager&gt;) {abstract}
+   +handle(EmailData) {abstract}
+}
+EmailHandler &lt;|-- ServiceHandler
+PollingManager &quot;registers with&quot; &lt;-- ServiceHandler
+
+
+class GidObject {
+   -gid: Gid
+   +get_gid(): Gid
+}
+class NamedObject {
+   -object_name: string
+   #get_object_name(): string
+   #validate_name() {abstract}
+}
+
+class PubSubObject {
+   +get_topic_name(): string
+   -validate_name() {abstract}
+}
+GidObject &lt;|-- PubSubObject
+NamedObject &lt;|-- PubSubObject
+
+class ServiceObject {
+   +get_service_name(): string
+   -validate_name() {abstract}
+}
+GidObject &lt;|-- ServiceObject
+NamedObject &lt;|-- ServiceObject
+
+
+class Publisher {
+   +publish(string message, optional&lt;EmailHeaders&gt; additional_headers)
+}
+PubSubObject &lt;|-- Publisher
+EmailSender o-- Publisher
+
+class Subscription {
+   -messages: queue&lt;pair&lt;string, MessageInfo&gt;&gt;
+   +has_message(): bool
+   +get_message(): optional&lt;string&gt;
+   +get_message_with_info(): optional&lt;pair&lt;string, MessageInfo&gt;&gt;
+}
+PubSubObject &lt;|-- Subscription
+SubscriptionHandler &quot;registers with&quot; &lt;-- Subscription
+
+
+class ServiceClient {
+   -responses: map&lt;SequenceNumber, pair&lt;EmailData, ServiceInfo&gt;&gt;
+   +send_request(string request, SequenceNumber seq)
+   +send_request(request): SequenceNumber
+   +has_response(SequenceNumber seq): bool
+   +has_response(): bool
+   +get_response(SequenceNumber seq): optional&lt;string&gt;
+   +get_response_with_info(SequenceNumber seq): optional&lt;pair&lt;string, ServiceInfo&gt;&gt;
+   +get_response_with_info(): optional&lt;pair&lt;string, ServiceInfo&gt;&gt;
+}
+ServiceObject &lt;|-- ServiceClient
+Publisher *-- ServiceClient
+ServiceHandler &quot;registers with&quot; &lt;-- ServiceClient
+
+class ServiceServer {
+   -requests: queue&lt;pair&lt;EmailData, ServiceInfo&gt;&gt;
+   +has_request(): bool
+   +get_request(): optional&lt;ServiceRequest&gt;
+   +get_request_with_info(): optional&lt;pair&lt;ServiceRequest, ServiceInfo&gt;&gt;
+   +send_response(ServiceRequestId request_id, string response)
+}
+ServiceObject &lt;|-- ServiceServer
+EmailSender o-- ServiceServer
+ServiceHandler &quot;registers with&quot; &lt;-- ServiceServer
+
+@enduml
+</pre></div>
+</div>
+</section>
+<section id="global-context">
+<h3>Global context<a class="headerlink" href="#global-context" title="Link to this heading"></a></h3>
+<p>A global context owns global objects (i.e., all effectively singletons):</p>
+<ul class="simple">
+<li><p>options container</p></li>
+<li><p>email receiver, email sender</p></li>
+<li><p>polling manager</p></li>
+<li><p>subscription handler, service handler</p></li>
+</ul>
+<p>Those objects are made available globally to anything that needs them:</p>
+<ul class="simple">
+<li><p>publishers and service servers to get the email sender</p></li>
+<li><p>polling manager to get the email receiver</p></li>
+<li><p>subscription handler and service handler to register with the polling manager</p></li>
+<li><p>subscriptions and service clients/servers to register with the subscription handler and service handler, respectively</p></li>
+</ul>
+<div class="highlight-plantuml notranslate"><div class="highlight"><pre><span></span>@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+class Context &lt;&lt;Singleton&gt;&gt; {
+   +get_options(): shared_ptr&lt;Options&gt;
+   +get_receiver(): shared_ptr&lt;EmailReceiver&gt;
+   +get_sender(): shared_ptr&lt;EmailSender&gt;
+   +get_polling_manager(): shared_ptr&lt;PollingManager&gt;
+   +get_subscription_handle(): shared_ptr&lt;SubscriptionHandler&gt;
+   +get_service_handle(): shared_ptr&lt;ServiceHandler&gt;
+}
+Options *-- Context
+EmailReceiver *-- Context
+EmailSender *-- Context
+PollingManager *-- Context
+SubscriptionHandler *-- Context
+ServiceHandler *-- Context
+
+@enduml
+</pre></div>
+</div>
+</section>
+</section>
+<section id="waiting-on-messages">
+<h2>Waiting on messages<a class="headerlink" href="#waiting-on-messages" title="Link to this heading"></a></h2>
+<p>Subscriptions and service clients/servers must be waited on through polling.
+Wait sets can be used to wait for new messages, service requests or service responses.
+Some utility functions can be used to wait on a specific entity using a wait set without needing to manually create a wait set for that single entity.</p>
+<p>Wait sets also support guard conditions as simple conditions with triggers.
+A guard condition cannot be added to more than one wait set at a time.</p>
+<p>Wait sets are empty when created; entities can be added after creation.
+Wait sets can contain any number of each kind of entity and they can also contain none.
+Waiting on an empty wait set is valid and is equivalent to a sleep call.
+Wait sets can be used to wait on the same set of entities multiple times
+They can also be cleared and re-used to wait on a different set of entities.</p>
+<p>Waiting can be:</p>
+<ul class="simple">
+<li><p>blocking indefinitely with a negative timeout value</p></li>
+<li><p>non-blocking with a timeout value equal to zero</p></li>
+<li><p>blocking with a timeout if the value is greater than zero</p></li>
+</ul>
+<div class="highlight-plantuml notranslate"><div class="highlight"><pre><span></span>@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+class Subscription
+class ServiceClient
+class ServiceServer
+
+class GuardCondition {
+   +trigger()
+   +triggered(): bool
+   +exchange_in_use(bool in_use): bool
+   +reset()
+}
+
+class WaitSet {
+   +add_subscription(Subscription *)
+   +add_client(ServiceClient *)
+   +add_server(ServiceServer *)
+   +add_guard_condition(GuardCondition *)
+   +get_subscriptions(): vector&lt;Subscription *&gt;
+   +get_clients(): vector&lt;ServiceClient *&gt;
+   +get_servers(): vector&lt;ServiceServer *&gt;
+   +get_guard_conditions(): vector&lt;GuardCondition *&gt;
+   +wait(milliseconds timeout): bool
+   +clear()
+}
+Subscription &quot;0..*&quot; o-- WaitSet
+ServiceClient &quot;0..*&quot; o-- WaitSet
+ServiceServer &quot;0..*&quot; o-- WaitSet
+GuardCondition &quot;0..*&quot; o-- &quot;0..1&quot; WaitSet
+
+class wait {
+   .. Subscription ..
+   +wait_for_message(Subscription * subscription, milliseconds timeout): string
+   +wait_for_message_with_info(Subscription * subscription, milliseconds timeout): pair&lt;string, MessageInfo&gt;
+   .. Service client ..
+   +wait_for_response(SequenceNumber seq, ServiceClient * client, milliseconds timeout): string
+   +wait_for_response_with_info(SequenceNumber seq, ServiceClient * client, milliseconds timeout): pair&lt;string, ServiceInfo&gt;
+   .. Service server ..
+   +wait_for_request(ServiceServer * server, milliseconds timeout): ServiceRequest
+   +wait_for_request_with_info(ServiceServer * server, milliseconds timeout): pair&lt;ServiceRequest, ServiceInfo&gt;
+}
+WaitSet &quot;internally uses&quot; &lt;-- wait
+
+@enduml
+</pre></div>
+</div>
+</section>
+<section id="data-containers">
+<h2>Data containers<a class="headerlink" href="#data-containers" title="Link to this heading"></a></h2>
+<section id="email">
+<h3>Email<a class="headerlink" href="#email" title="Link to this heading"></a></h3>
+<p>Emails contain:</p>
+<ul class="simple">
+<li><p>recipients</p></li>
+<li><p>subject</p></li>
+<li><p>body</p></li>
+<li><p>headers (metadata)</p></li>
+</ul>
+<div class="highlight-plantuml notranslate"><div class="highlight"><pre><span></span>@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+
+/&#39;
+class ConnectionInfo {
+   +host: string
+   +username: string
+   +password: string
+}
+
+class ProtocolInfo {
+   +protocol: string
+   +port: int
+}
+
+class UserInfo {
+   +host_smtp: string
+   +host_imap: string
+   +username: string
+   +password: string
+}
+&#39;/
+
+class EmailRecipients {
+   +to: vector&lt;string&gt;
+   +cc: vector&lt;string&gt;
+   +bcc: vector&lt;string&gt;
+}
+
+class EmailHeaders &lt;&lt;typedef&gt;&gt; {
+   map&lt;string, string&gt;
+}
+
+class EmailContent {
+   +subject: string
+   +body: string
+}
+
+class EmailData {
+   +message_id: string
+   +in_reply_to: string
+   +from: string
+   +recipients: EmailRecipients
+   +content: EmailContent
+   +additional_headers: EmailHeaders
+}
+EmailRecipients *-- EmailData
+EmailContent *-- EmailData
+EmailHeaders *-- EmailData
+
+@enduml
+</pre></div>
+</div>
+</section>
+<section id="messages">
+<h3>Messages<a class="headerlink" href="#messages" title="Link to this heading"></a></h3>
+<p>Basic metadata is provided for all communication instances (i.e., messages, service requests or service responses):</p>
+<ul class="simple">
+<li><p>source timestamp</p></li>
+<li><p>reception timestamp</p></li>
+<li><p>GID of the source object (i.e., publisher, service client or service server)</p>
+<ul>
+<li><p>a GID is just a unique identifier</p></li>
+</ul>
+</li>
+</ul>
+<p>Additionally, for service requests/responses:</p>
+<ul class="simple">
+<li><p>sequence number of the request</p>
+<ul>
+<li><p>for service responses, this is the sequence number of the original request</p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-plantuml notranslate"><div class="highlight"><pre><span></span>@startuml
+
+hide empty attributes
+hide empty methods
+hide circle
+
+
+class Timestamp {
+   +nanoseconds(): int64_t
+   +to_string(): string
+   +from_string(string timestamp): optional&lt;Timestamp&gt; {static}
+   +now(): Timestamp {static}
+}
+
+class GidValue &lt;&lt;typedef&gt;&gt; {
+   uint32_t
+}
+class Gid {
+   +value(): GidValue
+   +to_string(): string
+   +from_string(string gid): optional&lt;Gid&gt; {static}
+   +new_gid(): Gid {static}
+}
+GidValue *-- Gid
+
+class SequenceNumber &lt;&lt;typedef&gt;&gt; {
+   int64_t
+}
+
+
+class CommunicationInfo {
+   +source_timestamp(): Timestamp
+   +received_timestamp(): Timestamp
+   +source_gid(): Gid
+   +from_headers(EmailHeaders headers, string source_gid_header): optional&lt;CommunicationInfo&gt; {static}
+}
+Timestamp &quot;2&quot; *-- CommunicationInfo
+Gid *-- CommunicationInfo
+
+class MessageInfo {
+   +source_timestamp(): Timestamp
+   +received_timestamp(): Timestamp
+   +publisher_gid(): Gid
+   +from_headers(EmailHeaders headers): optional&lt;MessageInfo&gt; {static}
+}
+CommunicationInfo *-- MessageInfo
+
+class ServiceInfo {
+   +source_timestamp(): Timestamp
+   +received_timestamp(): Timestamp
+   +client_gid(): Gid
+   +sequence_number(): SequenceNumber
+   +from_headers(EmailHeaders headers): optional&lt;ServiceInfo&gt; {static}
+}
+CommunicationInfo *-- ServiceInfo
+SequenceNumber *-- ServiceInfo
+
+class ServiceRequestId {
+   +sequence_number: SequenceNumber
+   +client_gid: Gid
+}
+SequenceNumber *-- ServiceRequestId
+Gid *-- ServiceRequestId
+
+class ServiceRequest {
+   +id: ServiceRequestId
+   +content: string
+}
+ServiceRequestId *-- ServiceRequest
+
+@enduml
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../user_docs.html" class="btn btn-neutral float-left" title="Documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright The &lt;email&gt; Contributors. License: Apache License 2.0.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

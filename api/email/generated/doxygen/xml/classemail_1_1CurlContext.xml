@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1CurlContext" kind="class" language="C++" prot="public">
     <compoundname>email::CurlContext</compoundname>
     <includes local="no">context.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1CurlContext_1ac63ba86094b548b2c5ddb522627daf3b" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; email::CurlContext::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::CurlContext::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>CURL* email::CurlContext::handle_</definition>
         <argsstring></argsstring>
         <name>handle_</name>
+        <qualifiedname>email::CurlContext::handle_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,19 +37,21 @@
         <definition>const struct ConnectionInfo email::CurlContext::connection_info_</definition>
         <argsstring></argsstring>
         <name>connection_info_</name>
+        <qualifiedname>email::CurlContext::connection_info_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/curl/context.hpp" line="100" column="9" bodyfile="include/email/curl/context.hpp" bodystart="101" bodyend="-1"/>
+        <location file="include/email/curl/context.hpp" line="101" column="29" bodyfile="include/email/curl/context.hpp" bodystart="101" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classemail_1_1CurlContext_1a616ac61397dc6d7117576844755d4435" prot="private" static="no" mutable="no">
         <type>const std::string</type>
         <definition>const std::string email::CurlContext::full_url_</definition>
         <argsstring></argsstring>
         <name>full_url_</name>
+        <qualifiedname>email::CurlContext::full_url_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>bool email::CurlContext::curl_verbose_</definition>
         <argsstring></argsstring>
         <name>curl_verbose_</name>
+        <qualifiedname>email::CurlContext::curl_verbose_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,6 +79,7 @@
         <definition>std::atomic_bool email::CurlContext::is_init_</definition>
         <argsstring></argsstring>
         <name>is_init_</name>
+        <qualifiedname>email::CurlContext::is_init_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -82,13 +88,14 @@
         </inbodydescription>
         <location file="include/email/curl/context.hpp" line="104" column="20" bodyfile="include/email/curl/context.hpp" bodystart="104" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1CurlContext_1a05805020a023b47fab92985e7c21ce3e" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::CurlContext::CurlContext</definition>
         <argsstring>(const struct ConnectionInfo &amp;connection_info, const struct ProtocolInfo &amp;protocol_info, const bool curl_verbose)</argsstring>
         <name>CurlContext</name>
+        <qualifiedname>email::CurlContext::CurlContext</qualifiedname>
         <param>
           <type>const struct <ref refid="structemail_1_1ConnectionInfo" kindref="compound">ConnectionInfo</ref> &amp;</type>
           <declname>connection_info</declname>
@@ -141,6 +148,7 @@
         <definition>email::CurlContext::~CurlContext</definition>
         <argsstring>()</argsstring>
         <name>~CurlContext</name>
+        <qualifiedname>email::CurlContext::~CurlContext</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -154,6 +162,7 @@
         <definition>bool email::CurlContext::init</definition>
         <argsstring>()</argsstring>
         <name>init</name>
+        <qualifiedname>email::CurlContext::init</qualifiedname>
         <briefdescription>
 <para>Initialize context. </para>
         </briefdescription>
@@ -171,6 +180,7 @@
         <definition>void email::CurlContext::fini</definition>
         <argsstring>()</argsstring>
         <name>fini</name>
+        <qualifiedname>email::CurlContext::fini</qualifiedname>
         <briefdescription>
 <para>Finalize context. </para>
         </briefdescription>
@@ -185,6 +195,7 @@
         <definition>bool email::CurlContext::execute</definition>
         <argsstring>()</argsstring>
         <name>execute</name>
+        <qualifiedname>email::CurlContext::execute</qualifiedname>
         <briefdescription>
 <para>Execute command. </para>
         </briefdescription>
@@ -198,11 +209,12 @@
         </inbodydescription>
         <location file="include/email/curl/context.hpp" line="71" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1CurlContext_1aac5561bf32e05ce657b348fcfd2f2e01" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1CurlContext_1a7c4ddae652cee608eb8250e3e678fd25" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>CURL *</type>
-        <definition>CURL* email::CurlContext::get_handle</definition>
+        <definition>CURL * email::CurlContext::get_handle</definition>
         <argsstring>() const</argsstring>
         <name>get_handle</name>
+        <qualifiedname>email::CurlContext::get_handle</qualifiedname>
         <briefdescription>
 <para>Get the curl handle. </para>
         </briefdescription>
@@ -216,11 +228,12 @@
         </inbodydescription>
         <location file="include/email/curl/context.hpp" line="80" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1CurlContext_1a14124af9ca8da6dece85f64e79689469" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1CurlContext_1adfb523822439589295d3b7440c0dcb4c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string&amp; email::CurlContext::get_full_url</definition>
+        <definition>const std::string &amp; email::CurlContext::get_full_url</definition>
         <argsstring>() const</argsstring>
         <name>get_full_url</name>
+        <qualifiedname>email::CurlContext::get_full_url</qualifiedname>
         <briefdescription>
 <para>Get the full URL. </para>
         </briefdescription>
@@ -233,11 +246,12 @@
         </inbodydescription>
         <location file="include/email/curl/context.hpp" line="87" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1CurlContext_1a167a9a69eebe08cf168048c3319f4b23" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1CurlContext_1a5dff748f15cc8e8b9c334f4da307da64" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const struct <ref refid="structemail_1_1ConnectionInfo" kindref="compound">ConnectionInfo</ref> &amp;</type>
-        <definition>const struct ConnectionInfo&amp; email::CurlContext::get_connection_info</definition>
+        <definition>const struct ConnectionInfo &amp; email::CurlContext::get_connection_info</definition>
         <argsstring>() const</argsstring>
         <name>get_connection_info</name>
+        <qualifiedname>email::CurlContext::get_connection_info</qualifiedname>
         <briefdescription>
 <para>Get the connection info. </para>
         </briefdescription>
@@ -250,7 +264,7 @@
         </inbodydescription>
         <location file="include/email/curl/context.hpp" line="94" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Basic context wrapper for curl. </para>
     </briefdescription>
@@ -265,9 +279,9 @@
       <member refid="classemail_1_1CurlContext_1a0eaa473cb92d0f8a608df01ee33d54ec" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>execute</name></member>
       <member refid="classemail_1_1CurlContext_1a279da87c494f8647d1e688a43bf1ed2a" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>fini</name></member>
       <member refid="classemail_1_1CurlContext_1a616ac61397dc6d7117576844755d4435" prot="private" virt="non-virtual"><scope>email::CurlContext</scope><name>full_url_</name></member>
-      <member refid="classemail_1_1CurlContext_1a167a9a69eebe08cf168048c3319f4b23" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>get_connection_info</name></member>
-      <member refid="classemail_1_1CurlContext_1a14124af9ca8da6dece85f64e79689469" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>get_full_url</name></member>
-      <member refid="classemail_1_1CurlContext_1aac5561bf32e05ce657b348fcfd2f2e01" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>get_handle</name></member>
+      <member refid="classemail_1_1CurlContext_1a5dff748f15cc8e8b9c334f4da307da64" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>get_connection_info</name></member>
+      <member refid="classemail_1_1CurlContext_1adfb523822439589295d3b7440c0dcb4c" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>get_full_url</name></member>
+      <member refid="classemail_1_1CurlContext_1a7c4ddae652cee608eb8250e3e678fd25" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>get_handle</name></member>
       <member refid="classemail_1_1CurlContext_1abdf4b835dfe67424144da06387d1a285" prot="private" virt="non-virtual"><scope>email::CurlContext</scope><name>handle_</name></member>
       <member refid="classemail_1_1CurlContext_1afecdec140c06377b37f90d5b6e1d08aa" prot="public" virt="non-virtual"><scope>email::CurlContext</scope><name>init</name></member>
       <member refid="classemail_1_1CurlContext_1a8657849943a693852bbc3f590102fa82" prot="private" virt="non-virtual"><scope>email::CurlContext</scope><name>is_init_</name></member>

@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1ServiceServer" kind="class" language="C++" prot="public">
     <compoundname>email::ServiceServer</compoundname>
     <basecompoundref refid="classemail_1_1ServiceObject" prot="public" virt="non-virtual">email::ServiceObject</basecompoundref>
     <includes local="no">service_server.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1ServiceServer_1a2579aa9e76d95074cd0241f4866e31f5" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; email::ServiceServer::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::ServiceServer::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,6 +24,7 @@
         <definition>ServiceHandler::RequestQueue::SharedPtr email::ServiceServer::requests_</definition>
         <argsstring></argsstring>
         <name>requests_</name>
+        <qualifiedname>email::ServiceServer::requests_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -36,6 +38,7 @@
         <definition>std::shared_ptr&lt;EmailSender&gt; email::ServiceServer::sender_</definition>
         <argsstring></argsstring>
         <name>sender_</name>
+        <qualifiedname>email::ServiceServer::sender_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -49,6 +52,7 @@
         <definition>std::map&lt;SequenceNumber, struct EmailData&gt; email::ServiceServer::requests_raw_</definition>
         <argsstring></argsstring>
         <name>requests_raw_</name>
+        <qualifiedname>email::ServiceServer::requests_raw_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -57,13 +61,14 @@
         </inbodydescription>
         <location file="include/email/service_server.hpp" line="95" column="12" bodyfile="include/email/service_server.hpp" bodystart="95" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1ServiceServer_1abba58df55b0930d3f33741ffa8950d3f" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::ServiceServer::ServiceServer</definition>
         <argsstring>(const std::string &amp;service_name)</argsstring>
         <name>ServiceServer</name>
+        <qualifiedname>email::ServiceServer::ServiceServer</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>service_name</declname>
@@ -92,6 +97,7 @@
         <definition>email::ServiceServer::~ServiceServer</definition>
         <argsstring>()</argsstring>
         <name>~ServiceServer</name>
+        <qualifiedname>email::ServiceServer::~ServiceServer</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -105,6 +111,7 @@
         <definition>bool email::ServiceServer::has_request</definition>
         <argsstring>()</argsstring>
         <name>has_request</name>
+        <qualifiedname>email::ServiceServer::has_request</qualifiedname>
         <briefdescription>
 <para>Check if the server has an available request. </para>
         </briefdescription>
@@ -117,11 +124,12 @@
         </inbodydescription>
         <location file="include/email/service_server.hpp" line="62" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1ServiceServer_1a35e70cc848d14c82cd6185499998af36" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1ServiceServer_1af58f2370c9001a6a8260f0e6d508c941" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; struct <ref refid="structemail_1_1ServiceRequest" kindref="compound">ServiceRequest</ref> &gt;</type>
-        <definition>std::optional&lt;struct ServiceRequest&gt; email::ServiceServer::get_request</definition>
+        <definition>std::optional&lt; struct ServiceRequest &gt; email::ServiceServer::get_request</definition>
         <argsstring>()</argsstring>
         <name>get_request</name>
+        <qualifiedname>email::ServiceServer::get_request</qualifiedname>
         <briefdescription>
 <para>Get a request if there is one. </para>
         </briefdescription>
@@ -134,11 +142,12 @@
         </inbodydescription>
         <location file="include/email/service_server.hpp" line="70" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1ServiceServer_1a61296d41cf3f59fafcf5aa87e51e81e6" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1ServiceServer_1ade32bf40681782f2ae5dfce926910619" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::pair&lt; struct <ref refid="structemail_1_1ServiceRequest" kindref="compound">ServiceRequest</ref>, <ref refid="classemail_1_1ServiceInfo" kindref="compound">ServiceInfo</ref> &gt; &gt;</type>
-        <definition>std::optional&lt;std::pair&lt;struct ServiceRequest, ServiceInfo&gt; &gt; email::ServiceServer::get_request_with_info</definition>
+        <definition>std::optional&lt; std::pair&lt; struct ServiceRequest, ServiceInfo &gt; &gt; email::ServiceServer::get_request_with_info</definition>
         <argsstring>()</argsstring>
         <name>get_request_with_info</name>
+        <qualifiedname>email::ServiceServer::get_request_with_info</qualifiedname>
         <briefdescription>
 <para>Get a request with info if there is one. </para>
         </briefdescription>
@@ -156,6 +165,7 @@
         <definition>void email::ServiceServer::send_response</definition>
         <argsstring>(const struct ServiceRequestId &amp;request_id, const std::string &amp;response)</argsstring>
         <name>send_response</name>
+        <qualifiedname>email::ServiceServer::send_response</qualifiedname>
         <param>
           <type>const struct <ref refid="structemail_1_1ServiceRequestId" kindref="compound">ServiceRequestId</ref> &amp;</type>
           <declname>request_id</declname>
@@ -191,7 +201,7 @@
         </inbodydescription>
         <location file="include/email/service_server.hpp" line="87" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Service server. </para>
     </briefdescription>
@@ -203,6 +213,10 @@
         <label>email::GidObject</label>
         <link refid="classemail_1_1GidObject"/>
       </node>
+      <node id="4">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
       <node id="2">
         <label>email::ServiceObject</label>
         <link refid="classemail_1_1ServiceObject"/>
@@ -216,10 +230,6 @@
         <link refid="classemail_1_1ServiceServer"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="4">
-        <label>email::NamedObject</label>
-        <link refid="classemail_1_1NamedObject"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
@@ -227,6 +237,10 @@
         <label>email::GidObject</label>
         <link refid="classemail_1_1GidObject"/>
       </node>
+      <node id="4">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
+      </node>
       <node id="2">
         <label>email::ServiceObject</label>
         <link refid="classemail_1_1ServiceObject"/>
@@ -241,18 +255,14 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="4">
-        <label>email::NamedObject</label>
-        <link refid="classemail_1_1NamedObject"/>
-      </node>
     </collaborationgraph>
     <location file="include/email/service_server.hpp" line="43" column="1" bodyfile="include/email/service_server.hpp" bodystart="44" bodyend="96"/>
     <listofallmembers>
-      <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_gid</name></member>
-      <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_object_name</name></member>
-      <member refid="classemail_1_1ServiceServer_1a35e70cc848d14c82cd6185499998af36" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_request</name></member>
-      <member refid="classemail_1_1ServiceServer_1a61296d41cf3f59fafcf5aa87e51e81e6" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_request_with_info</name></member>
-      <member refid="classemail_1_1ServiceObject_1a7f96bf4bb03c956939682468cd5dd4ea" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_service_name</name></member>
+      <member refid="classemail_1_1GidObject_1a593879303ef39c0a6c98c8f5e1f3a65c" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_gid</name></member>
+      <member refid="classemail_1_1NamedObject_1a38236c2a6195ff5afec84161e1cf5056" prot="protected" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_object_name</name></member>
+      <member refid="classemail_1_1ServiceServer_1af58f2370c9001a6a8260f0e6d508c941" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_request</name></member>
+      <member refid="classemail_1_1ServiceServer_1ade32bf40681782f2ae5dfce926910619" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_request_with_info</name></member>
+      <member refid="classemail_1_1ServiceObject_1a2add48ac3ae9ba677af827373883b71c" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>get_service_name</name></member>
       <member refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" prot="protected" virt="non-virtual"><scope>email::ServiceServer</scope><name>GidObject</name></member>
       <member refid="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" virt="non-virtual"><scope>email::ServiceServer</scope><name>has_newline</name></member>
       <member refid="classemail_1_1ServiceServer_1a5f9a2b5d05d50b4cfe890ebfd077d509" prot="public" virt="non-virtual"><scope>email::ServiceServer</scope><name>has_request</name></member>

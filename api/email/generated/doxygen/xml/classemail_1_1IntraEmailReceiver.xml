@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1IntraEmailReceiver" kind="class" language="C++" prot="public">
     <compoundname>email::IntraEmailReceiver</compoundname>
     <basecompoundref refid="classemail_1_1EmailReceiver" prot="public" virt="non-virtual">email::EmailReceiver</basecompoundref>
     <includes local="no">intra_receiver.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1IntraEmailReceiver_1a5213b6ca39a6145ae2f1b8f9cb6c4ea4" prot="private" static="no" mutable="no">
         <type><ref refid="classemail_1_1SafeQueue" kindref="compound">SafeQueue</ref>&lt; struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &gt;</type>
         <definition>SafeQueue&lt;struct EmailData&gt; email::IntraEmailReceiver::emails_</definition>
         <argsstring></argsstring>
         <name>emails_</name>
+        <qualifiedname>email::IntraEmailReceiver::emails_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,13 +19,14 @@
         </inbodydescription>
         <location file="include/email/email/intra_receiver.hpp" line="63" column="13" bodyfile="include/email/email/intra_receiver.hpp" bodystart="63" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1IntraEmailReceiver_1a931d5a8452bb052bc60d04cb8ff7f674" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::IntraEmailReceiver::IntraEmailReceiver</definition>
         <argsstring>()</argsstring>
         <name>IntraEmailReceiver</name>
+        <qualifiedname>email::IntraEmailReceiver::IntraEmailReceiver</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
@@ -39,6 +41,7 @@
         <definition>virtual email::IntraEmailReceiver::~IntraEmailReceiver</definition>
         <argsstring>()</argsstring>
         <name>~IntraEmailReceiver</name>
+        <qualifiedname>email::IntraEmailReceiver::~IntraEmailReceiver</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -47,12 +50,13 @@
         </inbodydescription>
         <location file="include/email/email/intra_receiver.hpp" line="43" column="11"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1IntraEmailReceiver_1a2046c9a7ce1774fa43c0a5dc9cea340a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+      <memberdef kind="function" id="classemail_1_1IntraEmailReceiver_1a766ebde9f75c9629d87fe41f3bac35c0" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
         <type>std::optional&lt; struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &gt;</type>
-        <definition>virtual std::optional&lt;struct EmailData&gt; email::IntraEmailReceiver::get_email</definition>
+        <definition>virtual std::optional&lt; struct EmailData &gt; email::IntraEmailReceiver::get_email</definition>
         <argsstring>(std::optional&lt; std::chrono::nanoseconds &gt; polling_period=std::nullopt)</argsstring>
         <name>get_email</name>
-        <reimplements refid="classemail_1_1EmailReceiver_1a39b6a8bb1b4ca5da66b76a5a317d6e6b">get_email</reimplements>
+        <qualifiedname>email::IntraEmailReceiver::get_email</qualifiedname>
+        <reimplements refid="classemail_1_1EmailReceiver_1a27ee72b9bc73d9dfda4631acda34f84a">get_email</reimplements>
         <param>
           <type>std::optional&lt; std::chrono::nanoseconds &gt;</type>
           <declname>polling_period</declname>
@@ -87,6 +91,7 @@
         <definition>void email::IntraEmailReceiver::receive</definition>
         <argsstring>(const struct EmailData &amp;data)</argsstring>
         <name>receive</name>
+        <qualifiedname>email::IntraEmailReceiver::receive</qualifiedname>
         <param>
           <type>const struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &amp;</type>
           <declname>data</declname>
@@ -111,7 +116,7 @@
         </inbodydescription>
         <location file="include/email/email/intra_receiver.hpp" line="58" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Intraprocess email receiver. </para>
     </briefdescription>
@@ -147,7 +152,7 @@
       <member refid="classemail_1_1EmailReceiver_1aaea4bf463066dac619bdfad0849f9d40" prot="protected" virt="non-virtual"><scope>email::IntraEmailReceiver</scope><name>do_shutdown_</name></member>
       <member refid="classemail_1_1EmailReceiver_1a72726a74b1cd15878e09b792946db159" prot="public" virt="non-virtual"><scope>email::IntraEmailReceiver</scope><name>EmailReceiver</name></member>
       <member refid="classemail_1_1IntraEmailReceiver_1a5213b6ca39a6145ae2f1b8f9cb6c4ea4" prot="private" virt="non-virtual"><scope>email::IntraEmailReceiver</scope><name>emails_</name></member>
-      <member refid="classemail_1_1IntraEmailReceiver_1a2046c9a7ce1774fa43c0a5dc9cea340a" prot="public" virt="virtual"><scope>email::IntraEmailReceiver</scope><name>get_email</name></member>
+      <member refid="classemail_1_1IntraEmailReceiver_1a766ebde9f75c9629d87fe41f3bac35c0" prot="public" virt="virtual"><scope>email::IntraEmailReceiver</scope><name>get_email</name></member>
       <member refid="classemail_1_1IntraEmailReceiver_1a931d5a8452bb052bc60d04cb8ff7f674" prot="public" virt="non-virtual"><scope>email::IntraEmailReceiver</scope><name>IntraEmailReceiver</name></member>
       <member refid="classemail_1_1EmailReceiver_1a5bdc7fcdd8d02a1070b8d45d80caf0c3" prot="protected" virt="non-virtual"><scope>email::IntraEmailReceiver</scope><name>logger_</name></member>
       <member refid="classemail_1_1IntraEmailReceiver_1a804e589d1c329ed4862d01d02a3d74b0" prot="public" virt="non-virtual"><scope>email::IntraEmailReceiver</scope><name>receive</name></member>

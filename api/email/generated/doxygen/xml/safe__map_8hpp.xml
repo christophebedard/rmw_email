@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="safe__map_8hpp" kind="file" language="C++">
     <compoundname>safe_map.hpp</compoundname>
     <includes local="no">map</includes>
@@ -9,6 +9,12 @@
     <includedby refid="service__client_8hpp" local="yes">include/email/service_client.hpp</includedby>
     <includedby refid="service__handler_8hpp" local="yes">include/email/service_handler.hpp</includedby>
     <incdepgraph>
+      <node id="5">
+        <label>email/macros.hpp</label>
+        <link refid="macros_8hpp"/>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
       <node id="1">
         <label>include/email/safe_map.hpp</label>
         <link refid="safe__map_8hpp"/>
@@ -24,35 +30,31 @@
       <node id="2">
         <label>map</label>
       </node>
-      <node id="5">
-        <label>email/macros.hpp</label>
-        <link refid="macros_8hpp"/>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>utility</label>
+      <node id="6">
+        <label>memory</label>
       </node>
       <node id="3">
         <label>mutex</label>
       </node>
-      <node id="6">
-        <label>memory</label>
+      <node id="4">
+        <label>utility</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
+      <node id="7">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
+      </node>
       <node id="3">
         <label>include/email/email.hpp</label>
         <link refid="email_8hpp"/>
       </node>
-      <node id="8">
-        <label>include/email/service_server.hpp</label>
-        <link refid="service__server_8hpp"/>
-        <childnode refid="3" relation="include">
+      <node id="1">
+        <label>include/email/safe_map.hpp</label>
+        <link refid="safe__map_8hpp"/>
+        <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="6" relation="include">
         </childnode>
       </node>
       <node id="2">
@@ -65,20 +67,6 @@
         <childnode refid="5" relation="include">
         </childnode>
       </node>
-      <node id="1">
-        <label>include/email/safe_map.hpp</label>
-        <link refid="safe__map_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="5">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
       <node id="6">
         <label>include/email/service_handler.hpp</label>
         <link refid="service__handler_8hpp"/>
@@ -89,15 +77,27 @@
         <childnode refid="8" relation="include">
         </childnode>
       </node>
+      <node id="8">
+        <label>include/email/service_server.hpp</label>
+        <link refid="service__server_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
       <node id="4">
         <label>include/email/wait.hpp</label>
         <link refid="wait_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
       </node>
-      <node id="7">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
+      <node id="5">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classemail_1_1SafeMap" prot="public">email::SafeMap</innerclass>
@@ -169,7 +169,7 @@
 <codeline lineno="67"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="69"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::map&lt;K,<sp/>T&gt;::const_iterator</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1aff4db055c899b8d4103fed639fc6f300" kindref="member">find</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;<sp/>k)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1a7ccb51f07425ace7a7d8e9e6f426b0b8" kindref="member">find</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;<sp/>k)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="71"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>std::scoped_lock&lt;std::mutex&gt;<sp/>lock(map_mutex_);</highlight></codeline>
 <codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>map_.find(k);</highlight></codeline>
@@ -190,35 +190,35 @@
 <codeline lineno="88"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="89"><highlight class="normal"></highlight></codeline>
 <codeline lineno="90"><highlight class="normal"><sp/><sp/>std::pair&lt;typename<sp/>std::map&lt;K,<sp/>T&gt;::const_iterator,<sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::map&lt;K,<sp/>T&gt;::const_iterator&gt;</highlight></codeline>
-<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1af0f1ce1776d7e4c46b24b07d72d23ec9" kindref="member">equal_range</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;<sp/>k)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1ac34b6601eafe0b5d2392b3c8420b0435" kindref="member">equal_range</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>K<sp/>&amp;<sp/>k)</highlight><highlight class="keyword"><sp/>const</highlight></codeline>
 <codeline lineno="92"><highlight class="keyword"><sp/><sp/></highlight><highlight class="normal">{</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/>std::scoped_lock&lt;std::mutex&gt;<sp/>lock(map_mutex_);</highlight></codeline>
 <codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>map_.equal_range(k);</highlight></codeline>
 <codeline lineno="95"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::map&lt;K,<sp/>T&gt;::iterator</highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1a3e3ced069a9413c52681a03948893587" kindref="member">begin</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1a6865d21a3c3ba9647032192cae0554dc" kindref="member">begin</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="99"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/>std::scoped_lock&lt;std::mutex&gt;<sp/>lock(map_mutex_);</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>map_.begin();</highlight></codeline>
 <codeline lineno="102"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"></highlight></codeline>
 <codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::map&lt;K,<sp/>T&gt;::iterator</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1a60b6d858638f84927240c6923a301661" kindref="member">end</ref>()<sp/>noexcept</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1af36ccc820b89f957e61c2f78ec080f26" kindref="member">end</ref>()<sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="106"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/>std::scoped_lock&lt;std::mutex&gt;<sp/>lock(map_mutex_);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>map_.end();</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::map&lt;K,<sp/>T&gt;::const_iterator</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1a504fe23def42764bc68fbd39c7a51b90" kindref="member">cbegin</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1a5b5a751c36115ef5d33384e8298d22fd" kindref="member">cbegin</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="113"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/>std::scoped_lock&lt;std::mutex&gt;<sp/>lock(map_mutex_);</highlight></codeline>
 <codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>map_.cbegin();</highlight></codeline>
 <codeline lineno="116"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="117"><highlight class="normal"></highlight></codeline>
 <codeline lineno="118"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>std::map&lt;K,<sp/>T&gt;::const_iterator</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1aaf04df2a744013504ee3137e3f7a21ec" kindref="member">cend</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1SafeMap_1ab3bb2b435ea289b9a78be99132d4e315" kindref="member">cend</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">noexcept</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/>std::scoped_lock&lt;std::mutex&gt;<sp/>lock(map_mutex_);</highlight></codeline>
 <codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>map_.cend();</highlight></codeline>

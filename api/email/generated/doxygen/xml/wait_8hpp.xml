@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="wait_8hpp" kind="file" language="C++">
     <compoundname>wait.hpp</compoundname>
     <includes local="no">chrono</includes>
@@ -15,8 +15,33 @@
     <includes refid="visibility__control_8hpp" local="yes">email/visibility_control.hpp</includes>
     <includedby refid="email_8hpp" local="yes">include/email/email.hpp</includedby>
     <incdepgraph>
-      <node id="37">
-        <label>atomic</label>
+      <node id="8">
+        <label>email/communication_info.hpp</label>
+        <link refid="communication__info_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="36">
+        <label>email/email/handler.hpp</label>
+        <link refid="handler_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="38" relation="include">
+        </childnode>
       </node>
       <node id="9">
         <label>email/email/info.hpp</label>
@@ -36,62 +61,54 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="39">
-        <label>functional</label>
-      </node>
-      <node id="43">
-        <label>queue</label>
-      </node>
-      <node id="46">
-        <label>email/service_server.hpp</label>
-        <link refid="service__server_8hpp"/>
+      <node id="38">
+        <label>email/email/polling_manager.hpp</label>
+        <link refid="polling__manager_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
+        <childnode refid="39" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
+        <childnode refid="40" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="26" relation="include">
+        <childnode refid="41" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="33" relation="include">
-        </childnode>
-        <childnode refid="34" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="24">
-        <label>email/utils.hpp</label>
-        <link refid="utils_8hpp"/>
+      <node id="41">
+        <label>email/email/receiver.hpp</label>
+        <link refid="receiver_8hpp"/>
+        <childnode refid="37" relation="include">
+        </childnode>
+        <childnode refid="2" relation="include">
+        </childnode>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="4" relation="include">
+        <childnode refid="19" relation="include">
         </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
+        <childnode refid="13" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -112,52 +129,16 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="47">
-        <label>email/subscription.hpp</label>
-        <link refid="subscription_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
+      <node id="14">
+        <label>email/gid.hpp</label>
+        <link refid="gid_8hpp"/>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
+        <childnode refid="15" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="42" relation="include">
-        </childnode>
-        <childnode refid="48" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="33">
-        <label>email/service.hpp</label>
-        <link refid="service_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -172,6 +153,148 @@
         <childnode refid="14" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>email/log.hpp</label>
+        <link refid="log_8hpp"/>
+        <childnode refid="20" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="22" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+        <childnode refid="23" relation="include">
+        </childnode>
+        <childnode refid="24" relation="include">
+        </childnode>
+      </node>
+      <node id="13">
+        <label>email/macros.hpp</label>
+        <link refid="macros_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>email/message_info.hpp</label>
+        <link refid="message__info_8hpp"/>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="30">
+        <label>email/named_object.hpp</label>
+        <link refid="named__object_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="27">
+        <label>email/pub_sub.hpp</label>
+        <link refid="pub__sub_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="25">
+        <label>email/publisher.hpp</label>
+        <link refid="publisher_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="26" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="17" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="31">
+        <label>email/safe_map.hpp</label>
+        <link refid="safe__map_8hpp"/>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="42">
+        <label>email/safe_queue.hpp</label>
+        <link refid="safe__queue_8hpp"/>
+        <childnode refid="32" relation="include">
+        </childnode>
+        <childnode refid="43" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="33">
+        <label>email/service.hpp</label>
+        <link refid="service_8hpp"/>
+        <childnode refid="28" relation="include">
+        </childnode>
+        <childnode refid="21" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="29" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="30" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
         </childnode>
       </node>
       <node id="18">
@@ -202,58 +325,6 @@
         <childnode refid="34" relation="include">
         </childnode>
         <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="42">
-        <label>email/safe_queue.hpp</label>
-        <link refid="safe__queue_8hpp"/>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="43" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="20">
-        <label>stdexcept</label>
-      </node>
-      <node id="31">
-        <label>email/safe_map.hpp</label>
-        <link refid="safe__map_8hpp"/>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
-      <node id="10">
-        <label>map</label>
-      </node>
-      <node id="28">
-        <label>regex</label>
-      </node>
-      <node id="8">
-        <label>email/communication_info.hpp</label>
-        <link refid="communication__info_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -296,93 +367,6 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="14">
-        <label>email/gid.hpp</label>
-        <link refid="gid_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>email/macros.hpp</label>
-        <link refid="macros_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-      </node>
-      <node id="15">
-        <label>spdlog/fmt/ostr.h</label>
-      </node>
-      <node id="19">
-        <label>email/log.hpp</label>
-        <link refid="log_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="22" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-        <childnode refid="23" relation="include">
-        </childnode>
-        <childnode refid="24" relation="include">
-        </childnode>
-      </node>
-      <node id="36">
-        <label>email/email/handler.hpp</label>
-        <link refid="handler_8hpp"/>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="38" relation="include">
-        </childnode>
-      </node>
-      <node id="23">
-        <label>yaml-cpp/yaml.h</label>
-      </node>
-      <node id="22">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="1">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-        <childnode refid="45" relation="include">
-        </childnode>
-        <childnode refid="46" relation="include">
-        </childnode>
-        <childnode refid="47" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
       <node id="44">
         <label>email/service_info.hpp</label>
         <link refid="service__info_8hpp"/>
@@ -399,52 +383,81 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="21">
-        <label>rcpputils/filesystem_helper.hpp</label>
-      </node>
-      <node id="7">
-        <label>optional</label>
-      </node>
-      <node id="11">
-        <label>vector</label>
-      </node>
-      <node id="12">
-        <label>spdlog/fmt/fmt.h</label>
-      </node>
-      <node id="38">
-        <label>email/email/polling_manager.hpp</label>
-        <link refid="polling__manager_8hpp"/>
-        <childnode refid="37" relation="include">
+      <node id="45">
+        <label>email/service_request.hpp</label>
+        <link refid="service__request_8hpp"/>
+        <childnode refid="4" relation="include">
         </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+      </node>
+      <node id="46">
+        <label>email/service_server.hpp</label>
+        <link refid="service__server_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="39" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="32" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="40" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
+        <childnode refid="5" relation="include">
         </childnode>
         <childnode refid="9" relation="include">
         </childnode>
-        <childnode refid="41" relation="include">
+        <childnode refid="26" relation="include">
         </childnode>
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="13" relation="include">
         </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="33" relation="include">
+        </childnode>
+        <childnode refid="34" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="5">
-        <label>utility</label>
+      <node id="47">
+        <label>email/subscription.hpp</label>
+        <link refid="subscription_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="19" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="27" relation="include">
+        </childnode>
+        <childnode refid="42" relation="include">
+        </childnode>
+        <childnode refid="48" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
       </node>
       <node id="48">
         <label>email/subscription_handler.hpp</label>
@@ -478,16 +491,6 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="45">
-        <label>email/service_request.hpp</label>
-        <link refid="service__request_8hpp"/>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="44" relation="include">
-        </childnode>
-      </node>
       <node id="17">
         <label>email/timestamp.hpp</label>
         <link refid="timestamp_8hpp"/>
@@ -502,109 +505,20 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="41">
-        <label>email/email/receiver.hpp</label>
-        <link refid="receiver_8hpp"/>
-        <childnode refid="37" relation="include">
-        </childnode>
-        <childnode refid="2" relation="include">
-        </childnode>
+      <node id="24">
+        <label>email/utils.hpp</label>
+        <link refid="utils_8hpp"/>
         <childnode refid="3" relation="include">
         </childnode>
         <childnode refid="7" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="35">
-        <label>unordered_map</label>
-      </node>
-      <node id="32">
-        <label>mutex</label>
-      </node>
-      <node id="30">
-        <label>email/named_object.hpp</label>
-        <link refid="named__object_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
+        <childnode refid="21" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
-        <childnode refid="13" relation="include">
+        <childnode refid="11" relation="include">
         </childnode>
-      </node>
-      <node id="2">
-        <label>chrono</label>
-      </node>
-      <node id="27">
-        <label>email/pub_sub.hpp</label>
-        <link refid="pub__sub_8hpp"/>
-        <childnode refid="28" relation="include">
-        </childnode>
-        <childnode refid="20" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="29" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="30" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="40">
-        <label>thread</label>
-      </node>
-      <node id="3">
-        <label>memory</label>
-      </node>
-      <node id="25">
-        <label>email/publisher.hpp</label>
-        <link refid="publisher_8hpp"/>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="26" relation="include">
-        </childnode>
-        <childnode refid="19" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-        <childnode refid="27" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
-        </childnode>
-        <childnode refid="16" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>email/message_info.hpp</label>
-        <link refid="message__info_8hpp"/>
-        <childnode refid="7" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-        <childnode refid="17" relation="include">
+        <childnode refid="23" relation="include">
         </childnode>
         <childnode refid="16" relation="include">
         </childnode>
@@ -612,6 +526,92 @@
       <node id="16">
         <label>email/visibility_control.hpp</label>
         <link refid="visibility__control_8hpp"/>
+      </node>
+      <node id="1">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="44" relation="include">
+        </childnode>
+        <childnode refid="45" relation="include">
+        </childnode>
+        <childnode refid="46" relation="include">
+        </childnode>
+        <childnode refid="47" relation="include">
+        </childnode>
+        <childnode refid="16" relation="include">
+        </childnode>
+      </node>
+      <node id="37">
+        <label>atomic</label>
+      </node>
+      <node id="2">
+        <label>chrono</label>
+      </node>
+      <node id="20">
+        <label>filesystem</label>
+      </node>
+      <node id="39">
+        <label>functional</label>
+      </node>
+      <node id="10">
+        <label>map</label>
+      </node>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="32">
+        <label>mutex</label>
+      </node>
+      <node id="7">
+        <label>optional</label>
+      </node>
+      <node id="43">
+        <label>queue</label>
+      </node>
+      <node id="28">
+        <label>regex</label>
+      </node>
+      <node id="12">
+        <label>spdlog/fmt/fmt.h</label>
+      </node>
+      <node id="15">
+        <label>spdlog/fmt/ostr.h</label>
+      </node>
+      <node id="22">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="21">
+        <label>stdexcept</label>
+      </node>
+      <node id="4">
+        <label>string</label>
+      </node>
+      <node id="40">
+        <label>thread</label>
+      </node>
+      <node id="35">
+        <label>unordered_map</label>
+      </node>
+      <node id="5">
+        <label>utility</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+      <node id="23">
+        <label>yaml-cpp/yaml.h</label>
       </node>
     </incdepgraph>
     <invincdepgraph>
@@ -668,14 +668,14 @@
 <codeline lineno="35"><highlight class="normal"></highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="44"><highlight class="normal">std::pair&lt;std::string,<sp/>MessageInfo&gt;</highlight></codeline>
-<codeline lineno="45"><highlight class="normal"><ref refid="namespaceemail_1aa59c37dd2056e5079d933232a16a3396" kindref="member">wait_for_message_with_info</ref>(</highlight></codeline>
+<codeline lineno="45"><highlight class="normal"><ref refid="namespaceemail_1a82e915e42a7b15b7c1affa3af631bd01" kindref="member">wait_for_message_with_info</ref>(</highlight></codeline>
 <codeline lineno="46"><highlight class="normal"><sp/><sp/>Subscription<sp/>*<sp/>subscription,</highlight></codeline>
 <codeline lineno="47"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::chrono::milliseconds<sp/>timeout<sp/>=<sp/>std::chrono::milliseconds(-1));</highlight></codeline>
 <codeline lineno="48"><highlight class="normal"></highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="54"><highlight class="normal">std::pair&lt;std::string,<sp/>MessageInfo&gt;</highlight></codeline>
-<codeline lineno="55"><highlight class="normal"><ref refid="namespaceemail_1aa59c37dd2056e5079d933232a16a3396" kindref="member">wait_for_message_with_info</ref>(</highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><ref refid="namespaceemail_1a82e915e42a7b15b7c1affa3af631bd01" kindref="member">wait_for_message_with_info</ref>(</highlight></codeline>
 <codeline lineno="56"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;Subscription&gt;<sp/>subscription,</highlight></codeline>
 <codeline lineno="57"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::chrono::milliseconds<sp/>timeout<sp/>=<sp/>std::chrono::milliseconds(-1));</highlight></codeline>
 <codeline lineno="58"><highlight class="normal"></highlight></codeline>
@@ -696,7 +696,7 @@
 <codeline lineno="85"><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="94"><highlight class="normal">std::pair&lt;std::string,<sp/>ServiceInfo&gt;</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><ref refid="namespaceemail_1a79fde927095f94957025da12c6283edb" kindref="member">wait_for_response_with_info</ref>(</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><ref refid="namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d" kindref="member">wait_for_response_with_info</ref>(</highlight></codeline>
 <codeline lineno="96"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref><sp/>sequence_number,</highlight></codeline>
 <codeline lineno="97"><highlight class="normal"><sp/><sp/>ServiceClient<sp/>*<sp/>client,</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::chrono::milliseconds<sp/>timeout<sp/>=<sp/>std::chrono::milliseconds(-1));</highlight></codeline>
@@ -704,7 +704,7 @@
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
 <codeline lineno="105"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="106"><highlight class="normal">std::pair&lt;std::string,<sp/>ServiceInfo&gt;</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><ref refid="namespaceemail_1a79fde927095f94957025da12c6283edb" kindref="member">wait_for_response_with_info</ref>(</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><ref refid="namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d" kindref="member">wait_for_response_with_info</ref>(</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1a0de800b4ba159d6e3892ce756a690103" kindref="member">SequenceNumber</ref><sp/>sequence_number,</highlight></codeline>
 <codeline lineno="109"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;ServiceClient&gt;<sp/>client,</highlight></codeline>
 <codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::chrono::milliseconds<sp/>timeout<sp/>=<sp/>std::chrono::milliseconds(-1));</highlight></codeline>
@@ -728,14 +728,14 @@
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
 <codeline lineno="147"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="148"><highlight class="normal">std::pair&lt;struct<sp/>ServiceRequest,<sp/>ServiceInfo&gt;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><ref refid="namespaceemail_1ad5dd2091a29213c9aa3859d817376d10" kindref="member">wait_for_request_with_info</ref>(</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><ref refid="namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6" kindref="member">wait_for_request_with_info</ref>(</highlight></codeline>
 <codeline lineno="150"><highlight class="normal"><sp/><sp/>ServiceServer<sp/>*<sp/>server,</highlight></codeline>
 <codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::chrono::milliseconds<sp/>timeout<sp/>=<sp/>std::chrono::milliseconds(-1));</highlight></codeline>
 <codeline lineno="152"><highlight class="normal"></highlight></codeline>
 <codeline lineno="154"><highlight class="normal"></highlight></codeline>
 <codeline lineno="157"><highlight class="normal"><ref refid="visibility__control_8hpp_1a87d02dff5661f1945bc5f4a77097bf75" kindref="member">EMAIL_PUBLIC</ref></highlight></codeline>
 <codeline lineno="158"><highlight class="normal">std::pair&lt;struct<sp/>ServiceRequest,<sp/>ServiceInfo&gt;</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><ref refid="namespaceemail_1ad5dd2091a29213c9aa3859d817376d10" kindref="member">wait_for_request_with_info</ref>(</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><ref refid="namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6" kindref="member">wait_for_request_with_info</ref>(</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"><sp/><sp/>std::shared_ptr&lt;ServiceServer&gt;<sp/>server,</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::chrono::milliseconds<sp/>timeout<sp/>=<sp/>std::chrono::milliseconds(-1));</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>

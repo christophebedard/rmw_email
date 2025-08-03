@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="log_8hpp" kind="file" language="C++">
     <compoundname>log.hpp</compoundname>
+    <includes local="no">filesystem</includes>
     <includes local="no">memory</includes>
     <includes local="no">stdexcept</includes>
     <includes local="no">string</includes>
-    <includes local="yes">rcpputils/filesystem_helper.hpp</includes>
     <includes local="yes">spdlog/spdlog.h</includes>
     <includes local="yes">spdlog/fmt/ostr.h</includes>
     <includes local="yes">yaml-cpp/yaml.h</includes>
@@ -26,33 +26,6 @@
     <includedby refid="subscription__handler_8hpp" local="yes">include/email/subscription_handler.hpp</includedby>
     <includedby refid="wait__set_8hpp" local="yes">include/email/wait_set.hpp</includedby>
     <incdepgraph>
-      <node id="9">
-        <label>email/utils.hpp</label>
-        <link refid="utils_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
-        <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="8" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-      </node>
-      <node id="3">
-        <label>stdexcept</label>
-      </node>
-      <node id="4">
-        <label>string</label>
-      </node>
-      <node id="7">
-        <label>spdlog/fmt/ostr.h</label>
-      </node>
       <node id="1">
         <label>include/email/log.hpp</label>
         <link refid="log_8hpp"/>
@@ -73,47 +46,60 @@
         <childnode refid="9" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>yaml-cpp/yaml.h</label>
-      </node>
-      <node id="6">
-        <label>spdlog/spdlog.h</label>
-      </node>
-      <node id="5">
-        <label>rcpputils/filesystem_helper.hpp</label>
-      </node>
-      <node id="10">
-        <label>optional</label>
-      </node>
-      <node id="11">
-        <label>vector</label>
-      </node>
-      <node id="2">
-        <label>memory</label>
+      <node id="9">
+        <label>email/utils.hpp</label>
+        <link refid="utils_8hpp"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
       </node>
       <node id="12">
         <label>email/visibility_control.hpp</label>
         <link refid="visibility__control_8hpp"/>
       </node>
-    </incdepgraph>
-    <invincdepgraph>
-      <node id="11">
-        <label>include/email/email.hpp</label>
-        <link refid="email_8hpp"/>
+      <node id="2">
+        <label>filesystem</label>
       </node>
-      <node id="14">
-        <label>include/email/service_server.hpp</label>
-        <link refid="service__server_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
+      <node id="3">
+        <label>memory</label>
+      </node>
+      <node id="10">
+        <label>optional</label>
+      </node>
+      <node id="7">
+        <label>spdlog/fmt/ostr.h</label>
+      </node>
+      <node id="6">
+        <label>spdlog/spdlog.h</label>
+      </node>
+      <node id="4">
+        <label>stdexcept</label>
       </node>
       <node id="5">
-        <label>include/email/email/curl_receiver.hpp</label>
-        <link refid="curl__receiver_8hpp"/>
+        <label>string</label>
+      </node>
+      <node id="11">
+        <label>vector</label>
+      </node>
+      <node id="8">
+        <label>yaml-cpp/yaml.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
       </node>
       <node id="3">
         <label>include/email/curl/context.hpp</label>
@@ -121,6 +107,68 @@
         <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>include/email/curl/executor.hpp</label>
+        <link refid="executor_8hpp"/>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="11">
+        <label>include/email/email.hpp</label>
+        <link refid="email_8hpp"/>
+      </node>
+      <node id="5">
+        <label>include/email/email/curl_receiver.hpp</label>
+        <link refid="curl__receiver_8hpp"/>
+      </node>
+      <node id="6">
+        <label>include/email/email/curl_sender.hpp</label>
+        <link refid="curl__sender_8hpp"/>
+      </node>
+      <node id="8">
+        <label>include/email/email/handler.hpp</label>
+        <link refid="handler_8hpp"/>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="18">
+        <label>include/email/email/intra_receiver.hpp</label>
+        <link refid="intra__receiver_8hpp"/>
+        <childnode refid="19" relation="include">
+        </childnode>
+      </node>
+      <node id="19">
+        <label>include/email/email/intra_sender.hpp</label>
+        <link refid="intra__sender_8hpp"/>
+      </node>
+      <node id="7">
+        <label>include/email/email/polling_manager.hpp</label>
+        <link refid="polling__manager_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+        <childnode refid="9" relation="include">
+        </childnode>
+        <childnode refid="15" relation="include">
+        </childnode>
+      </node>
+      <node id="17">
+        <label>include/email/email/receiver.hpp</label>
+        <link refid="receiver_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="18" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
         </childnode>
       </node>
       <node id="20">
@@ -133,50 +181,6 @@
         <childnode refid="19" relation="include">
         </childnode>
         <childnode refid="21" relation="include">
-        </childnode>
-        <childnode refid="14" relation="include">
-        </childnode>
-      </node>
-      <node id="16">
-        <label>include/email/subscription.hpp</label>
-        <link refid="subscription_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="4">
-        <label>include/email/curl/executor.hpp</label>
-        <link refid="executor_8hpp"/>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="6" relation="include">
-        </childnode>
-      </node>
-      <node id="10">
-        <label>include/email/service_client.hpp</label>
-        <link refid="service__client_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-        <childnode refid="12" relation="include">
-        </childnode>
-        <childnode refid="13" relation="include">
-        </childnode>
-      </node>
-      <node id="13">
-        <label>include/email/wait_set.hpp</label>
-        <link refid="wait__set_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="9">
-        <label>include/email/service_handler.hpp</label>
-        <link refid="service__handler_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="10" relation="include">
         </childnode>
         <childnode refid="14" relation="include">
         </childnode>
@@ -221,40 +225,58 @@
         <childnode refid="13" relation="include">
         </childnode>
       </node>
-      <node id="8">
-        <label>include/email/email/handler.hpp</label>
-        <link refid="handler_8hpp"/>
-        <childnode refid="9" relation="include">
-        </childnode>
-        <childnode refid="15" relation="include">
-        </childnode>
-      </node>
-      <node id="6">
-        <label>include/email/email/curl_sender.hpp</label>
-        <link refid="curl__sender_8hpp"/>
-      </node>
-      <node id="18">
-        <label>include/email/email/intra_receiver.hpp</label>
-        <link refid="intra__receiver_8hpp"/>
-        <childnode refid="19" relation="include">
-        </childnode>
-      </node>
-      <node id="12">
-        <label>include/email/wait.hpp</label>
-        <link refid="wait_8hpp"/>
-        <childnode refid="11" relation="include">
-        </childnode>
-      </node>
-      <node id="7">
-        <label>include/email/email/polling_manager.hpp</label>
-        <link refid="polling__manager_8hpp"/>
+      <node id="23">
+        <label>include/email/options.hpp</label>
+        <link refid="options_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
-        <childnode refid="8" relation="include">
+      </node>
+      <node id="21">
+        <label>include/email/publisher.hpp</label>
+        <link refid="publisher_8hpp"/>
+        <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="9" relation="include">
+        <childnode refid="10" relation="include">
         </childnode>
-        <childnode refid="15" relation="include">
+      </node>
+      <node id="10">
+        <label>include/email/service_client.hpp</label>
+        <link refid="service__client_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="9">
+        <label>include/email/service_handler.hpp</label>
+        <link refid="service__handler_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="10" relation="include">
+        </childnode>
+        <childnode refid="14" relation="include">
+        </childnode>
+      </node>
+      <node id="14">
+        <label>include/email/service_server.hpp</label>
+        <link refid="service__server_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
+        </childnode>
+      </node>
+      <node id="16">
+        <label>include/email/subscription.hpp</label>
+        <link refid="subscription_8hpp"/>
+        <childnode refid="11" relation="include">
+        </childnode>
+        <childnode refid="12" relation="include">
+        </childnode>
+        <childnode refid="13" relation="include">
         </childnode>
       </node>
       <node id="15">
@@ -265,44 +287,22 @@
         <childnode refid="16" relation="include">
         </childnode>
       </node>
-      <node id="17">
-        <label>include/email/email/receiver.hpp</label>
-        <link refid="receiver_8hpp"/>
-        <childnode refid="2" relation="include">
-        </childnode>
-        <childnode refid="5" relation="include">
-        </childnode>
-        <childnode refid="18" relation="include">
-        </childnode>
-        <childnode refid="7" relation="include">
-        </childnode>
-      </node>
-      <node id="19">
-        <label>include/email/email/intra_sender.hpp</label>
-        <link refid="intra__sender_8hpp"/>
-      </node>
-      <node id="2">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
-      </node>
-      <node id="21">
-        <label>include/email/publisher.hpp</label>
-        <link refid="publisher_8hpp"/>
+      <node id="12">
+        <label>include/email/wait.hpp</label>
+        <link refid="wait_8hpp"/>
         <childnode refid="11" relation="include">
         </childnode>
-        <childnode refid="10" relation="include">
-        </childnode>
       </node>
-      <node id="23">
-        <label>include/email/options.hpp</label>
-        <link refid="options_8hpp"/>
-        <childnode refid="2" relation="include">
+      <node id="13">
+        <label>include/email/wait_set.hpp</label>
+        <link refid="wait__set_8hpp"/>
+        <childnode refid="11" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
     <innerclass refid="classemail_1_1log_1_1LoggingError" prot="public">email::log::LoggingError</innerclass>
     <innerclass refid="classemail_1_1log_1_1LoggingNotInitializedError" prot="public">email::log::LoggingNotInitializedError</innerclass>
-    <innerclass refid="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4" prot="public">fmt::formatter&lt; rcpputils::fs::path &gt;</innerclass>
+    <innerclass refid="structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4" prot="public">fmt::formatter&lt; std::filesystem::path &gt;</innerclass>
     <innerclass refid="structfmt_1_1formatter_3_01YAML_1_1Node_01_4" prot="public">fmt::formatter&lt; YAML::Node &gt;</innerclass>
     <innernamespace refid="namespaceemail">email</innernamespace>
     <innernamespace refid="namespaceemail_1_1log">email::log</innernamespace>
@@ -328,11 +328,11 @@
 <codeline lineno="15"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>EMAIL__LOG_HPP_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="16"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>EMAIL__LOG_HPP_</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="17"><highlight class="normal"></highlight></codeline>
-<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;rcpputils/filesystem_helper.hpp&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;filesystem&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;memory&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;stdexcept&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;string&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
 <codeline lineno="23"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;spdlog/spdlog.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="24"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;spdlog/fmt/ostr.h&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="25"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;yaml-cpp/yaml.h&quot;</highlight><highlight class="normal"></highlight></codeline>
@@ -342,7 +342,7 @@
 <codeline lineno="29"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceemail" kindref="compound">email</ref></highlight></codeline>
 <codeline lineno="30"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="31"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="keyword">using</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref><sp/>=<sp/>spdlog::logger;</highlight></codeline>
+<codeline lineno="33"><highlight class="keyword">using<sp/></highlight><highlight class="normal"><ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref><sp/>=<sp/>spdlog::logger;</highlight></codeline>
 <codeline lineno="34"><highlight class="normal"></highlight></codeline>
 <codeline lineno="35" refid="namespaceemail_1_1log" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">log</highlight></codeline>
 <codeline lineno="36"><highlight class="normal">{</highlight></codeline>
@@ -350,7 +350,7 @@
 <codeline lineno="39" refid="classemail_1_1log_1_1LoggingError" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classemail_1_1log_1_1LoggingError" kindref="compound">LoggingError</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/>std::runtime_error</highlight></codeline>
 <codeline lineno="40"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="41"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1log_1_1LoggingError_1ac54a103a90bf6885137353f84bd01896" kindref="member">LoggingError</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>msg)</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">explicit</highlight><highlight class="normal"><sp/><ref refid="classemail_1_1log_1_1LoggingError" kindref="compound">LoggingError</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>msg)</highlight></codeline>
 <codeline lineno="43"><highlight class="normal"><sp/><sp/>:<sp/>std::runtime_error(msg)</highlight></codeline>
 <codeline lineno="44"><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
 <codeline lineno="45"><highlight class="normal">};</highlight></codeline>
@@ -359,7 +359,7 @@
 <codeline lineno="49"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="50"><highlight class="normal"></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="51"><highlight class="normal"><sp/><sp/><ref refid="classemail_1_1log_1_1LoggingNotInitializedError_1a52a8bd2fa6ca2951b2661130dc8e05c2" kindref="member">LoggingNotInitializedError</ref>()</highlight></codeline>
-<codeline lineno="52"><highlight class="normal"><sp/><sp/>:<sp/><ref refid="classemail_1_1log_1_1LoggingError_1ac54a103a90bf6885137353f84bd01896" kindref="member">LoggingError</ref>(</highlight><highlight class="stringliteral">&quot;logging<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">)</highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/>:<sp/><ref refid="classemail_1_1log_1_1LoggingError" kindref="compound">LoggingError</ref>(</highlight><highlight class="stringliteral">&quot;logging<sp/>not<sp/>initialized&quot;</highlight><highlight class="normal">)</highlight></codeline>
 <codeline lineno="53"><highlight class="normal"><sp/><sp/>{}</highlight></codeline>
 <codeline lineno="54"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="55"><highlight class="normal"></highlight></codeline>
@@ -375,7 +375,7 @@
 <codeline lineno="66"><highlight class="normal"></highlight></codeline>
 <codeline lineno="68"><highlight class="normal"></highlight></codeline>
 <codeline lineno="72"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="73"><highlight class="normal"><ref refid="namespaceemail_1_1log_1a70e2c4b9640f8b10a086f14269d4681d" kindref="member">init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8f" kindref="member">Level</ref><sp/>&amp;<sp/>level);</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><ref refid="namespaceemail_1a3d225be7f22f802190fb1f2e49f5b1d1" kindref="member">init</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8f" kindref="member">Level</ref><sp/>&amp;<sp/>level);</highlight></codeline>
 <codeline lineno="74"><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight></codeline>
 <codeline lineno="79"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
@@ -383,11 +383,11 @@
 <codeline lineno="81"><highlight class="normal"></highlight></codeline>
 <codeline lineno="83"><highlight class="normal"></highlight></codeline>
 <codeline lineno="91"><highlight class="normal">std::shared_ptr&lt;Logger&gt;</highlight></codeline>
-<codeline lineno="92"><highlight class="normal"><ref refid="namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><ref refid="namespaceemail_1_1log_1a780c47d49411c5388a6326388efa5262" kindref="member">create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>name);</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
 <codeline lineno="103"><highlight class="normal">std::shared_ptr&lt;Logger&gt;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><ref refid="namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce" kindref="member">get_or_create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>name);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><ref refid="namespaceemail_1_1log_1a4d243aa2ccc952cc68d17d55d22c6fca" kindref="member">get_or_create</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;<sp/>name);</highlight></codeline>
 <codeline lineno="105"><highlight class="normal"></highlight></codeline>
 <codeline lineno="107"><highlight class="normal"></highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"></highlight></codeline>
@@ -400,10 +400,10 @@
 <codeline lineno="119"><highlight class="normal">}<sp/><sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>email</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="120"><highlight class="normal"></highlight></codeline>
 <codeline lineno="122"><highlight class="keyword">template</highlight><highlight class="normal">&lt;&gt;</highlight></codeline>
-<codeline lineno="123" refid="structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;rcpputils::fs::path&gt;:<sp/>formatter&lt;string_view&gt;</highlight></codeline>
+<codeline lineno="123" refid="structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">fmt::formatter&lt;std::filesystem::path&gt;:<sp/>formatter&lt;string_view&gt;</highlight></codeline>
 <codeline lineno="124"><highlight class="normal">{</highlight></codeline>
 <codeline lineno="125"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal">&lt;</highlight><highlight class="keyword">typename</highlight><highlight class="normal"><sp/>FormatContext&gt;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>rcpputils::fs::path<sp/>&amp;<sp/>p,<sp/>FormatContext<sp/>&amp;<sp/>ctx)</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>format(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::filesystem::path<sp/>&amp;<sp/>p,<sp/>FormatContext<sp/>&amp;<sp/>ctx)</highlight></codeline>
 <codeline lineno="127"><highlight class="normal"><sp/><sp/>{</highlight></codeline>
 <codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>formatter&lt;string_view&gt;::format(p.string(),<sp/>ctx);</highlight></codeline>
 <codeline lineno="129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>

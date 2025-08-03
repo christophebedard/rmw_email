@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1Context" kind="class" language="C++" prot="public">
     <compoundname>email::Context</compoundname>
     <includes local="no">context.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1Context_1a1ef8b036366d1d409813fce7c4903548" prot="private" static="no" mutable="no">
         <type>bool</type>
         <definition>bool email::Context::is_valid_</definition>
         <argsstring></argsstring>
         <name>is_valid_</name>
+        <qualifiedname>email::Context::is_valid_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::shared_ptr&lt;Options&gt; email::Context::options_</definition>
         <argsstring></argsstring>
         <name>options_</name>
+        <qualifiedname>email::Context::options_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>std::shared_ptr&lt;Logger&gt; email::Context::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::Context::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>std::shared_ptr&lt;EmailReceiver&gt; email::Context::receiver_</definition>
         <argsstring></argsstring>
         <name>receiver_</name>
+        <qualifiedname>email::Context::receiver_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>std::shared_ptr&lt;EmailSender&gt; email::Context::sender_</definition>
         <argsstring></argsstring>
         <name>sender_</name>
+        <qualifiedname>email::Context::sender_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -74,6 +79,7 @@
         <definition>std::shared_ptr&lt;PollingManager&gt; email::Context::polling_manager_</definition>
         <argsstring></argsstring>
         <name>polling_manager_</name>
+        <qualifiedname>email::Context::polling_manager_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -87,6 +93,7 @@
         <definition>std::shared_ptr&lt;SubscriptionHandler&gt; email::Context::subscription_handler_</definition>
         <argsstring></argsstring>
         <name>subscription_handler_</name>
+        <qualifiedname>email::Context::subscription_handler_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -100,6 +107,7 @@
         <definition>std::shared_ptr&lt;ServiceHandler&gt; email::Context::service_handler_</definition>
         <argsstring></argsstring>
         <name>service_handler_</name>
+        <qualifiedname>email::Context::service_handler_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -108,18 +116,19 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="196" column="19" bodyfile="include/email/context.hpp" bodystart="196" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1Context_1a83781e2984ad65b512ae6e8575e4bb40" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::Context::Context</definition>
         <argsstring>()</argsstring>
         <name>Context</name>
+        <qualifiedname>email::Context::Context</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
         <detaileddescription>
-<para>Not to be used directly: use <computeroutput><ref refid="namespaceemail_1a32664596f7a3d0177434519dc03ea38d" kindref="member">get_global_context()</ref></computeroutput> instead. </para>
+<para>Not to be used directly: use <computeroutput><ref refid="namespaceemail_1a3463ccf40571a4d49e4ffce46a97aefb" kindref="member">get_global_context()</ref></computeroutput> instead. </para>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
@@ -130,6 +139,7 @@
         <definition>email::Context::~Context</definition>
         <argsstring>()</argsstring>
         <name>~Context</name>
+        <qualifiedname>email::Context::~Context</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -143,6 +153,7 @@
         <definition>void email::Context::init</definition>
         <argsstring>()</argsstring>
         <name>init</name>
+        <qualifiedname>email::Context::init</qualifiedname>
         <briefdescription>
 <para>Initialize context using config file. </para>
         </briefdescription>
@@ -176,6 +187,7 @@
         <definition>void email::Context::init</definition>
         <argsstring>(int argc, char const *const argv[])</argsstring>
         <name>init</name>
+        <qualifiedname>email::Context::init</qualifiedname>
         <param>
           <type>int</type>
           <declname>argc</declname>
@@ -219,6 +231,7 @@
         <definition>bool email::Context::shutdown</definition>
         <argsstring>()</argsstring>
         <name>shutdown</name>
+        <qualifiedname>email::Context::shutdown</qualifiedname>
         <briefdescription>
 <para>Shut down context. </para>
         </briefdescription>
@@ -237,6 +250,7 @@
         <definition>bool email::Context::is_valid</definition>
         <argsstring>() const</argsstring>
         <name>is_valid</name>
+        <qualifiedname>email::Context::is_valid</qualifiedname>
         <briefdescription>
 <para>Get context validity status. </para>
         </briefdescription>
@@ -249,11 +263,12 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="125" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Context_1a5e93b3ce58fa2cd5f99bb11f87a42129" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Context_1a9a34b949ef1dda4a0254307d1ec1ab27" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;Options&gt; email::Context::get_options</definition>
+        <definition>std::shared_ptr&lt; Options &gt; email::Context::get_options</definition>
         <argsstring>() const</argsstring>
         <name>get_options</name>
+        <qualifiedname>email::Context::get_options</qualifiedname>
         <briefdescription>
 <para>Get options. </para>
         </briefdescription>
@@ -275,11 +290,12 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="134" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Context_1a2754eb1610b656e5f2938d4c498660e5" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Context_1a37d9674f898d578556425d08efe0388f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailReceiver" kindref="compound">EmailReceiver</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;EmailReceiver&gt; email::Context::get_receiver</definition>
+        <definition>std::shared_ptr&lt; EmailReceiver &gt; email::Context::get_receiver</definition>
         <argsstring>() const</argsstring>
         <name>get_receiver</name>
+        <qualifiedname>email::Context::get_receiver</qualifiedname>
         <briefdescription>
 <para>Get the email reception object. </para>
         </briefdescription>
@@ -302,11 +318,12 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="144" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Context_1a418192e88b8dc0abc13f9a4a2cf69d7f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Context_1a88d2f24e3743fe55a62308d71c25f19c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1EmailSender" kindref="compound">EmailSender</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;EmailSender&gt; email::Context::get_sender</definition>
+        <definition>std::shared_ptr&lt; EmailSender &gt; email::Context::get_sender</definition>
         <argsstring>() const</argsstring>
         <name>get_sender</name>
+        <qualifiedname>email::Context::get_sender</qualifiedname>
         <briefdescription>
 <para>Get the email sender object. </para>
         </briefdescription>
@@ -329,11 +346,12 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="154" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Context_1a60a73157c8f1dc0029bbbc519f4a5ffd" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Context_1a0f41255169afb5c54614c643d6b67828" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1PollingManager" kindref="compound">PollingManager</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;PollingManager&gt; email::Context::get_polling_manager</definition>
+        <definition>std::shared_ptr&lt; PollingManager &gt; email::Context::get_polling_manager</definition>
         <argsstring>() const</argsstring>
         <name>get_polling_manager</name>
+        <qualifiedname>email::Context::get_polling_manager</qualifiedname>
         <briefdescription>
 <para>Get the polling manager. </para>
         </briefdescription>
@@ -356,11 +374,12 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="164" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Context_1abeaf1ab14e801b1ae8f2d15bee3c8bd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Context_1a369e767c25126c93c5e906cfdd74fc0f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1SubscriptionHandler" kindref="compound">SubscriptionHandler</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;SubscriptionHandler&gt; email::Context::get_subscription_handler</definition>
+        <definition>std::shared_ptr&lt; SubscriptionHandler &gt; email::Context::get_subscription_handler</definition>
         <argsstring>() const</argsstring>
         <name>get_subscription_handler</name>
+        <qualifiedname>email::Context::get_subscription_handler</qualifiedname>
         <briefdescription>
 <para>Get the subscription handler. </para>
         </briefdescription>
@@ -382,11 +401,12 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="172" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Context_1a92ea51482059927667585017b1730dd0" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Context_1a5c434a2ebf84b30b02b802a2058b92e3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1ServiceHandler" kindref="compound">ServiceHandler</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;ServiceHandler&gt; email::Context::get_service_handler</definition>
+        <definition>std::shared_ptr&lt; ServiceHandler &gt; email::Context::get_service_handler</definition>
         <argsstring>() const</argsstring>
         <name>get_service_handler</name>
+        <qualifiedname>email::Context::get_service_handler</qualifiedname>
         <briefdescription>
 <para>Get the service handler. </para>
         </briefdescription>
@@ -408,13 +428,14 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="180" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classemail_1_1Context_1a59671e9aa08f56d4517a2ff1978808b7" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void email::Context::init_common</definition>
         <argsstring>()</argsstring>
         <name>init_common</name>
+        <qualifiedname>email::Context::init_common</qualifiedname>
         <briefdescription>
 <para>Perform common init tasks. </para>
         </briefdescription>
@@ -424,7 +445,7 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="187" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para><ref refid="classemail_1_1Context" kindref="compound">Context</ref> object with global resources. </para>
     </briefdescription>
@@ -434,12 +455,12 @@
     <location file="include/email/context.hpp" line="79" column="1" bodyfile="include/email/context.hpp" bodystart="80" bodyend="197"/>
     <listofallmembers>
       <member refid="classemail_1_1Context_1a83781e2984ad65b512ae6e8575e4bb40" prot="public" virt="non-virtual"><scope>email::Context</scope><name>Context</name></member>
-      <member refid="classemail_1_1Context_1a5e93b3ce58fa2cd5f99bb11f87a42129" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_options</name></member>
-      <member refid="classemail_1_1Context_1a60a73157c8f1dc0029bbbc519f4a5ffd" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_polling_manager</name></member>
-      <member refid="classemail_1_1Context_1a2754eb1610b656e5f2938d4c498660e5" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_receiver</name></member>
-      <member refid="classemail_1_1Context_1a418192e88b8dc0abc13f9a4a2cf69d7f" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_sender</name></member>
-      <member refid="classemail_1_1Context_1a92ea51482059927667585017b1730dd0" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_service_handler</name></member>
-      <member refid="classemail_1_1Context_1abeaf1ab14e801b1ae8f2d15bee3c8bd3" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_subscription_handler</name></member>
+      <member refid="classemail_1_1Context_1a9a34b949ef1dda4a0254307d1ec1ab27" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_options</name></member>
+      <member refid="classemail_1_1Context_1a0f41255169afb5c54614c643d6b67828" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_polling_manager</name></member>
+      <member refid="classemail_1_1Context_1a37d9674f898d578556425d08efe0388f" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_receiver</name></member>
+      <member refid="classemail_1_1Context_1a88d2f24e3743fe55a62308d71c25f19c" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_sender</name></member>
+      <member refid="classemail_1_1Context_1a5c434a2ebf84b30b02b802a2058b92e3" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_service_handler</name></member>
+      <member refid="classemail_1_1Context_1a369e767c25126c93c5e906cfdd74fc0f" prot="public" virt="non-virtual"><scope>email::Context</scope><name>get_subscription_handler</name></member>
       <member refid="classemail_1_1Context_1a5cb569c5c2022ad609434a0407e5d12a" prot="public" virt="non-virtual"><scope>email::Context</scope><name>init</name></member>
       <member refid="classemail_1_1Context_1ad3b1f40974f3d60bad995af07afcdad9" prot="public" virt="non-virtual"><scope>email::Context</scope><name>init</name></member>
       <member refid="classemail_1_1Context_1a59671e9aa08f56d4517a2ff1978808b7" prot="private" virt="non-virtual"><scope>email::Context</scope><name>init_common</name></member>

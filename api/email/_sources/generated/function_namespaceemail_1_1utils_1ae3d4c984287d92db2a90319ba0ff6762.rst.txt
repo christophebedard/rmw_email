@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceemail_1_1utils_1ae3d4c984287d92db2a90319ba0ff6762:
+
+Function email::utils::read_file
+================================
+
+- Defined in :ref:`file_include_email_utils.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::utils::read_file(const std::string&)
+   :project: email Doxygen Project

@@ -1,5 +1,7 @@
 <map id="include/email/curl/executor.hpp" name="include/email/curl/executor.hpp">
-<area shape="rect" id="node1" title=" " alt="" coords="98,5,237,47"/>
-<area shape="rect" id="node2" href="$curl__receiver_8hpp.html" title=" " alt="" coords="5,95,156,136"/>
-<area shape="rect" id="node3" href="$curl__sender_8hpp.html" title=" " alt="" coords="180,95,331,136"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="98,5,237,45"/>
+<area shape="rect" id="Node000002" href="$curl__receiver_8hpp.html" title=" " alt="" coords="5,93,156,133"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,57,102,95,98,91,137,53"/>
+<area shape="rect" id="Node000003" href="$curl__sender_8hpp.html" title=" " alt="" coords="180,93,331,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="199,53,238,91,234,95,195,57"/>
 </map>

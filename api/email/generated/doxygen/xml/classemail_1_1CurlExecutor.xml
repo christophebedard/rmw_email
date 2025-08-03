@@ -1,16 +1,17 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1CurlExecutor" kind="class" language="C++" prot="public" abstract="yes">
     <compoundname>email::CurlExecutor</compoundname>
     <derivedcompoundref refid="classemail_1_1CurlEmailReceiver" prot="public" virt="non-virtual">email::CurlEmailReceiver</derivedcompoundref>
     <derivedcompoundref refid="classemail_1_1CurlEmailSender" prot="public" virt="non-virtual">email::CurlEmailSender</derivedcompoundref>
     <includes local="no">executor.hpp</includes>
-      <sectiondef kind="protected-attrib">
+    <sectiondef kind="protected-attrib">
       <memberdef kind="variable" id="classemail_1_1CurlExecutor_1a676e59d46679416f46930f314f760b0d" prot="protected" static="no" mutable="no">
         <type><ref refid="classemail_1_1CurlContext" kindref="compound">CurlContext</ref></type>
         <definition>CurlContext email::CurlExecutor::context_</definition>
         <argsstring></argsstring>
         <name>context_</name>
+        <qualifiedname>email::CurlExecutor::context_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -19,13 +20,14 @@
         </inbodydescription>
         <location file="include/email/curl/executor.hpp" line="73" column="15" bodyfile="include/email/curl/executor.hpp" bodystart="73" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-attrib">
+    </sectiondef>
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1CurlExecutor_1a13ca025cb2e3b84c6e1da21cd6fe05be" prot="private" static="no" mutable="no">
         <type>bool</type>
         <definition>bool email::CurlExecutor::is_valid_</definition>
         <argsstring></argsstring>
         <name>is_valid_</name>
+        <qualifiedname>email::CurlExecutor::is_valid_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -34,13 +36,14 @@
         </inbodydescription>
         <location file="include/email/curl/executor.hpp" line="78" column="8" bodyfile="include/email/curl/executor.hpp" bodystart="78" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1CurlExecutor_1aa00b5d609f9ebeead4f82afaf5f0e3f1" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool email::CurlExecutor::init</definition>
         <argsstring>()</argsstring>
         <name>init</name>
+        <qualifiedname>email::CurlExecutor::init</qualifiedname>
         <briefdescription>
 <para>Initialize executor. </para>
         </briefdescription>
@@ -58,6 +61,7 @@
         <definition>bool email::CurlExecutor::is_valid</definition>
         <argsstring>() const</argsstring>
         <name>is_valid</name>
+        <qualifiedname>email::CurlExecutor::is_valid</qualifiedname>
         <briefdescription>
 <para>Get validity status of the executor. </para>
         </briefdescription>
@@ -77,13 +81,14 @@
         </inbodydescription>
         <location file="include/email/curl/executor.hpp" line="47" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-func">
+    </sectiondef>
+    <sectiondef kind="protected-func">
       <memberdef kind="function" id="classemail_1_1CurlExecutor_1a1e0617765bd8951450ad9aa9f6ae2174" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::CurlExecutor::CurlExecutor</definition>
         <argsstring>(const struct ConnectionInfo &amp;connection_info, const struct ProtocolInfo &amp;protocol_info, const bool curl_verbose)</argsstring>
         <name>CurlExecutor</name>
+        <qualifiedname>email::CurlExecutor::CurlExecutor</qualifiedname>
         <param>
           <type>const struct <ref refid="structemail_1_1ConnectionInfo" kindref="compound">ConnectionInfo</ref> &amp;</type>
           <declname>connection_info</declname>
@@ -136,6 +141,7 @@
         <definition>virtual email::CurlExecutor::~CurlExecutor</definition>
         <argsstring>()</argsstring>
         <name>~CurlExecutor</name>
+        <qualifiedname>email::CurlExecutor::~CurlExecutor</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -149,6 +155,7 @@
         <definition>virtual bool email::CurlExecutor::init_options</definition>
         <argsstring>()=0</argsstring>
         <name>init_options</name>
+        <qualifiedname>email::CurlExecutor::init_options</qualifiedname>
         <reimplementedby refid="classemail_1_1CurlEmailReceiver_1a5301e5427dedada2756b458137ac0c89">init_options</reimplementedby>
         <reimplementedby refid="classemail_1_1CurlEmailSender_1a2d3d8d8ad4f4f94e2ac3aaabab3b86c1">init_options</reimplementedby>
         <briefdescription>
@@ -164,7 +171,7 @@
         </inbodydescription>
         <location file="include/email/curl/executor.hpp" line="71" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Abstract class for executing commands using curl. </para>
     </briefdescription>
@@ -172,15 +179,15 @@
 <para>Owns a curl context object for setting parameters before executing commands. </para>
     </detaileddescription>
     <inheritancegraph>
-      <node id="3">
-        <label>email::CurlEmailSender</label>
-        <link refid="classemail_1_1CurlEmailSender"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
-      </node>
       <node id="2">
         <label>email::CurlEmailReceiver</label>
         <link refid="classemail_1_1CurlEmailReceiver"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>email::CurlEmailSender</label>
+        <link refid="classemail_1_1CurlEmailSender"/>
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>

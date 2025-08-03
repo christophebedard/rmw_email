@@ -1,5 +1,7 @@
 <map id="email::CurlEmailReceiver" name="email::CurlEmailReceiver">
-<area shape="rect" id="node1" title="Email reception wrapper for curl." alt="" coords="82,80,269,107"/>
-<area shape="rect" id="node2" href="$classemail_1_1EmailReceiver.html" title="Abstract email receiver." alt="" coords="5,5,167,32"/>
-<area shape="rect" id="node3" href="$classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="191,5,341,32"/>
+<area shape="rect" id="Node000001" title="Email reception wrapper for curl." alt="" coords="82,79,269,104"/>
+<area shape="rect" id="Node000002" href="$classemail_1_1EmailReceiver.html" title="Abstract email receiver." alt="" coords="5,5,167,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,37,162,76,159,81,109,41"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1CurlExecutor.html" title="Abstract class for executing commands using curl." alt="" coords="191,5,341,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="242,41,192,81,189,76,239,37"/>
 </map>

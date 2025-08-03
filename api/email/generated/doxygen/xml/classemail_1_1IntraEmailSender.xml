@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1IntraEmailSender" kind="class" language="C++" prot="public">
     <compoundname>email::IntraEmailSender</compoundname>
     <basecompoundref refid="classemail_1_1EmailSender" prot="public" virt="non-virtual">email::EmailSender</basecompoundref>
     <includes local="no">intra_sender.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1IntraEmailSender_1a4e47a77dc1e005c1466e7049901a143b" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="classemail_1_1IntraEmailReceiver" kindref="compound">IntraEmailReceiver</ref> &gt;</type>
         <definition>std::shared_ptr&lt;IntraEmailReceiver&gt; email::IntraEmailSender::receiver_</definition>
         <argsstring></argsstring>
         <name>receiver_</name>
+        <qualifiedname>email::IntraEmailSender::receiver_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -23,6 +24,7 @@
         <definition>const std::string email::IntraEmailSender::from_</definition>
         <argsstring></argsstring>
         <name>from_</name>
+        <qualifiedname>email::IntraEmailSender::from_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -36,21 +38,23 @@
         <definition>const struct EmailRecipients email::IntraEmailSender::recipients_</definition>
         <argsstring></argsstring>
         <name>recipients_</name>
+        <qualifiedname>email::IntraEmailSender::recipients_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="include/email/email/intra_sender.hpp" line="70" column="21" bodyfile="include/email/email/intra_sender.hpp" bodystart="71" bodyend="-1"/>
+        <location file="include/email/email/intra_sender.hpp" line="71" column="30" bodyfile="include/email/email/intra_sender.hpp" bodystart="71" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1IntraEmailSender_1adb317c2f33b19f554f508463530c800c" prot="public" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::IntraEmailSender::IntraEmailSender</definition>
         <argsstring>(std::shared_ptr&lt; IntraEmailReceiver &gt; receiver)</argsstring>
         <name>IntraEmailSender</name>
+        <qualifiedname>email::IntraEmailSender::IntraEmailSender</qualifiedname>
         <param>
           <type>std::shared_ptr&lt; <ref refid="classemail_1_1IntraEmailReceiver" kindref="compound">IntraEmailReceiver</ref> &gt;</type>
           <declname>receiver</declname>
@@ -79,6 +83,7 @@
         <definition>virtual email::IntraEmailSender::~IntraEmailSender</definition>
         <argsstring>()</argsstring>
         <name>~IntraEmailSender</name>
+        <qualifiedname>email::IntraEmailSender::~IntraEmailSender</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -92,6 +97,7 @@
         <definition>virtual bool email::IntraEmailSender::send</definition>
         <argsstring>(const struct EmailContent &amp;content, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt)</argsstring>
         <name>send</name>
+        <qualifiedname>email::IntraEmailSender::send</qualifiedname>
         <reimplements refid="classemail_1_1EmailSender_1a12487f6d865d3839438cfb0814bbf1ec">send</reimplements>
         <param>
           <type>const struct <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &amp;</type>
@@ -136,6 +142,7 @@
         <definition>virtual bool email::IntraEmailSender::reply</definition>
         <argsstring>(const struct EmailContent &amp;content, const struct EmailData &amp;email, std::optional&lt; EmailHeaders &gt; additional_headers=std::nullopt)</argsstring>
         <name>reply</name>
+        <qualifiedname>email::IntraEmailSender::reply</qualifiedname>
         <reimplements refid="classemail_1_1EmailSender_1ad7b5de33bdb15b17f88cfccde80aa881">reply</reimplements>
         <param>
           <type>const struct <ref refid="structemail_1_1EmailContent" kindref="compound">EmailContent</ref> &amp;</type>
@@ -187,13 +194,14 @@
         </inbodydescription>
         <location file="include/email/email/intra_sender.hpp" line="57" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classemail_1_1IntraEmailSender_1acdcd14da7af440fa29d8c28848cf930c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>bool</type>
         <definition>bool email::IntraEmailSender::send_email_data</definition>
         <argsstring>(const struct EmailData &amp;data)</argsstring>
         <name>send_email_data</name>
+        <qualifiedname>email::IntraEmailSender::send_email_data</qualifiedname>
         <param>
           <type>const struct <ref refid="structemail_1_1EmailData" kindref="compound">EmailData</ref> &amp;</type>
           <declname>data</declname>
@@ -207,7 +215,7 @@
         </inbodydescription>
         <location file="include/email/email/intra_sender.hpp" line="67" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Intraprocess email sender. </para>
     </briefdescription>
@@ -215,27 +223,27 @@
 <para>Simply builds an email object and sends it to the intraprocess email receiver. </para>
     </detaileddescription>
     <inheritancegraph>
+      <node id="2">
+        <label>email::EmailSender</label>
+        <link refid="classemail_1_1EmailSender"/>
+      </node>
       <node id="1">
         <label>email::IntraEmailSender</label>
         <link refid="classemail_1_1IntraEmailSender"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>email::EmailSender</label>
-        <link refid="classemail_1_1EmailSender"/>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="2">
+        <label>email::EmailSender</label>
+        <link refid="classemail_1_1EmailSender"/>
+      </node>
       <node id="1">
         <label>email::IntraEmailSender</label>
         <link refid="classemail_1_1IntraEmailSender"/>
         <childnode refid="2" relation="public-inheritance">
         </childnode>
-      </node>
-      <node id="2">
-        <label>email::EmailSender</label>
-        <link refid="classemail_1_1EmailSender"/>
       </node>
     </collaborationgraph>
     <location file="include/email/email/intra_sender.hpp" line="34" column="1" bodyfile="include/email/email/intra_sender.hpp" bodystart="35" bodyend="72"/>
@@ -243,7 +251,7 @@
       <member refid="classemail_1_1EmailSender_1a6a067e65d5a0c78bd30217eaab577420" prot="public" virt="non-virtual"><scope>email::IntraEmailSender</scope><name>EmailSender</name></member>
       <member refid="classemail_1_1IntraEmailSender_1a03df28380c1239b4487982932bdd0790" prot="private" virt="non-virtual"><scope>email::IntraEmailSender</scope><name>from_</name></member>
       <member refid="classemail_1_1IntraEmailSender_1adb317c2f33b19f554f508463530c800c" prot="public" virt="non-virtual"><scope>email::IntraEmailSender</scope><name>IntraEmailSender</name></member>
-      <member refid="classemail_1_1EmailSender_1af10fd3a823d5f5355f6cd3a784a7d3d8" prot="protected" virt="non-virtual"><scope>email::IntraEmailSender</scope><name>logger</name></member>
+      <member refid="classemail_1_1EmailSender_1a62a51f457f6344d74184764c1e06b40c" prot="protected" virt="non-virtual"><scope>email::IntraEmailSender</scope><name>logger</name></member>
       <member refid="classemail_1_1IntraEmailSender_1a4e47a77dc1e005c1466e7049901a143b" prot="private" virt="non-virtual"><scope>email::IntraEmailSender</scope><name>receiver_</name></member>
       <member refid="classemail_1_1IntraEmailSender_1a9fe3e7d246a35dfdc08633e4951a2087" prot="private" virt="non-virtual"><scope>email::IntraEmailSender</scope><name>recipients_</name></member>
       <member refid="classemail_1_1IntraEmailSender_1acf01f816b22eee5c16173f6c7dedaafd" prot="public" virt="virtual"><scope>email::IntraEmailSender</scope><name>reply</name></member>

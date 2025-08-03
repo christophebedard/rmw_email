@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4" kind="struct" language="C++" prot="public">
     <compoundname>fmt::formatter&lt; email::EmailHeaders &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
     <includes local="no">info.hpp</includes>
     <templateparamlist>
     </templateparamlist>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structfmt_1_1formatter_3_01email_1_1EmailHeaders_01_4_1a5f916790af4e6e756ecd373b29814f45" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -17,6 +17,7 @@
         <definition>auto fmt::formatter&lt; email::EmailHeaders &gt;::format</definition>
         <argsstring>(const email::EmailHeaders &amp;h, FormatContext &amp;ctx)</argsstring>
         <name>format</name>
+        <qualifiedname>fmt::formatter&lt; email::EmailHeaders &gt;::format</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">email::EmailHeaders</ref> &amp;</type>
           <declname>h</declname>
@@ -33,7 +34,7 @@
         </inbodydescription>
         <location file="include/email/email/info.hpp" line="175" column="8" bodyfile="include/email/email/info.hpp" bodystart="175" bodyend="189"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Formatting for <ref refid="namespaceemail_1ae41e6fb7cb5a3b87ee3effdc2aa2065f" kindref="member">email::EmailHeaders</ref> objects. </para>
     </briefdescription>

@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structemail_1_1CurlEmailSender_1_1UploadData" kind="struct" language="C++" prot="private">
     <compoundname>email::CurlEmailSender::UploadData</compoundname>
-      <sectiondef kind="public-attrib">
+    <sectiondef kind="public-attrib">
       <memberdef kind="variable" id="structemail_1_1CurlEmailSender_1_1UploadData_1aba27d646d3c00aadbde8ba73604b1be1" prot="public" static="no" mutable="no">
         <type>const char *</type>
         <definition>const char* email::CurlEmailSender::UploadData::payload</definition>
         <argsstring></argsstring>
         <name>payload</name>
+        <qualifiedname>email::CurlEmailSender::UploadData::payload</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -21,6 +22,7 @@
         <definition>size_t email::CurlEmailSender::UploadData::lines_read</definition>
         <argsstring></argsstring>
         <name>lines_read</name>
+        <qualifiedname>email::CurlEmailSender::UploadData::lines_read</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -29,7 +31,7 @@
         </inbodydescription>
         <location file="include/email/email/curl_sender.hpp" line="93" column="12" bodyfile="include/email/email/curl_sender.hpp" bodystart="93" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Utility struct for uploading data with curl. </para>
     </briefdescription>

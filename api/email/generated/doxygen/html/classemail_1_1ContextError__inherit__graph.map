@@ -1,7 +1,11 @@
 <map id="email::ContextError" name="email::ContextError">
-<area shape="rect" id="node1" title="Generic context error." alt="" coords="192,78,341,105"/>
-<area shape="rect" id="node3" href="$classemail_1_1ContextAlreadyInitializedError.html" title="Error when the context is already initialized." alt="" coords="389,5,621,47"/>
-<area shape="rect" id="node4" href="$classemail_1_1ContextInitFailedError.html" title="Error when the context initialization fails." alt="" coords="417,71,594,112"/>
-<area shape="rect" id="node5" href="$classemail_1_1ContextNotInitializedError.html" title="Error when the context is not initialized." alt="" coords="403,136,608,177"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,78,144,105"/>
+<area shape="rect" id="Node000001" title="Generic context error." alt="" coords="192,77,341,102"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1ContextAlreadyInitializedError.html" title="Error when the context is already initialized." alt="" coords="389,5,621,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="328,70,429,43,431,48,329,76"/>
+<area shape="rect" id="Node000004" href="$classemail_1_1ContextInitFailedError.html" title="Error when the context initialization fails." alt="" coords="417,69,594,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="355,87,417,87,417,92,355,92"/>
+<area shape="rect" id="Node000005" href="$classemail_1_1ContextNotInitializedError.html" title="Error when the context is not initialized." alt="" coords="403,133,608,173"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="329,103,431,131,429,136,328,108"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,77,144,102"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="158,87,192,87,192,92,158,92"/>
 </map>

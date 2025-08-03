@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1PubSubObject" kind="class" language="C++" prot="public">
     <compoundname>email::PubSubObject</compoundname>
     <basecompoundref refid="classemail_1_1GidObject" prot="public" virt="non-virtual">email::GidObject</basecompoundref>
@@ -7,12 +7,13 @@
     <derivedcompoundref refid="classemail_1_1Publisher" prot="public" virt="non-virtual">email::Publisher</derivedcompoundref>
     <derivedcompoundref refid="classemail_1_1Subscription" prot="public" virt="non-virtual">email::Subscription</derivedcompoundref>
     <includes local="no">pub_sub.hpp</includes>
-      <sectiondef kind="public-func">
-      <memberdef kind="function" id="classemail_1_1PubSubObject_1a00a22d18eebc82496581344c21e02c32" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classemail_1_1PubSubObject_1a364a7bc9cf516f657bced8561655a85b" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>const std::string &amp;</type>
-        <definition>const std::string&amp; email::PubSubObject::get_topic_name</definition>
+        <definition>const std::string &amp; email::PubSubObject::get_topic_name</definition>
         <argsstring>() const</argsstring>
         <name>get_topic_name</name>
+        <qualifiedname>email::PubSubObject::get_topic_name</qualifiedname>
         <briefdescription>
 <para>Get the topic name. </para>
         </briefdescription>
@@ -25,13 +26,14 @@
         </inbodydescription>
         <location file="include/email/pub_sub.hpp" line="53" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="protected-func">
+    </sectiondef>
+    <sectiondef kind="protected-func">
       <memberdef kind="function" id="classemail_1_1PubSubObject_1a601bed08338a20e2d63e2332661a61e5" prot="protected" static="no" const="no" explicit="yes" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::PubSubObject::PubSubObject</definition>
         <argsstring>(const std::string &amp;topic_name)</argsstring>
         <name>PubSubObject</name>
+        <qualifiedname>email::PubSubObject::PubSubObject</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>topic_name</declname>
@@ -70,6 +72,7 @@
         <definition>virtual email::PubSubObject::~PubSubObject</definition>
         <argsstring>()</argsstring>
         <name>~PubSubObject</name>
+        <qualifiedname>email::PubSubObject::~PubSubObject</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -78,13 +81,14 @@
         </inbodydescription>
         <location file="include/email/pub_sub.hpp" line="65" column="11"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-func">
+    </sectiondef>
+    <sectiondef kind="private-func">
       <memberdef kind="function" id="classemail_1_1PubSubObject_1a88516103b3a396e2ae0987efd50815eb" prot="private" static="no" const="yes" explicit="no" inline="no" virt="virtual">
         <type>void</type>
         <definition>virtual void email::PubSubObject::validate_name</definition>
         <argsstring>() const</argsstring>
         <name>validate_name</name>
+        <qualifiedname>email::PubSubObject::validate_name</qualifiedname>
         <reimplements refid="classemail_1_1NamedObject_1ab2b95bd3169bcecfbda7002cbf3c8586">validate_name</reimplements>
         <briefdescription>
 <para>Validate the topic name and throw an error with an explanation if it is not valid. </para>
@@ -105,7 +109,7 @@
         </inbodydescription>
         <location file="include/email/pub_sub.hpp" line="76" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Abstract pub or sub object. </para>
     </briefdescription>
@@ -117,11 +121,9 @@
         <label>email::GidObject</label>
         <link refid="classemail_1_1GidObject"/>
       </node>
-      <node id="4">
-        <label>email::Publisher</label>
-        <link refid="classemail_1_1Publisher"/>
-        <childnode refid="1" relation="public-inheritance">
-        </childnode>
+      <node id="3">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
       </node>
       <node id="1">
         <label>email::PubSubObject</label>
@@ -129,6 +131,12 @@
         <childnode refid="2" relation="public-inheritance">
         </childnode>
         <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>email::Publisher</label>
+        <link refid="classemail_1_1Publisher"/>
+        <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
       <node id="5">
@@ -137,15 +145,15 @@
         <childnode refid="1" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>email::NamedObject</label>
-        <link refid="classemail_1_1NamedObject"/>
-      </node>
     </inheritancegraph>
     <collaborationgraph>
       <node id="2">
         <label>email::GidObject</label>
         <link refid="classemail_1_1GidObject"/>
+      </node>
+      <node id="3">
+        <label>email::NamedObject</label>
+        <link refid="classemail_1_1NamedObject"/>
       </node>
       <node id="1">
         <label>email::PubSubObject</label>
@@ -155,16 +163,12 @@
         <childnode refid="3" relation="public-inheritance">
         </childnode>
       </node>
-      <node id="3">
-        <label>email::NamedObject</label>
-        <link refid="classemail_1_1NamedObject"/>
-      </node>
     </collaborationgraph>
     <location file="include/email/pub_sub.hpp" line="44" column="1" bodyfile="include/email/pub_sub.hpp" bodystart="45" bodyend="77"/>
     <listofallmembers>
-      <member refid="classemail_1_1GidObject_1a8606636aba92bce5b2c81ae0e0289d8e" prot="public" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_gid</name></member>
-      <member refid="classemail_1_1NamedObject_1a73cb596f0cb6c525566738fea946ae3a" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_object_name</name></member>
-      <member refid="classemail_1_1PubSubObject_1a00a22d18eebc82496581344c21e02c32" prot="public" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_topic_name</name></member>
+      <member refid="classemail_1_1GidObject_1a593879303ef39c0a6c98c8f5e1f3a65c" prot="public" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_gid</name></member>
+      <member refid="classemail_1_1NamedObject_1a38236c2a6195ff5afec84161e1cf5056" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_object_name</name></member>
+      <member refid="classemail_1_1PubSubObject_1a364a7bc9cf516f657bced8561655a85b" prot="public" virt="non-virtual"><scope>email::PubSubObject</scope><name>get_topic_name</name></member>
       <member refid="classemail_1_1GidObject_1a29ebb428c2827e00fe71660de6721c5e" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>GidObject</name></member>
       <member refid="classemail_1_1NamedObject_1a41b4dd034b6ebdbf1bbde94d595d30fa" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>has_newline</name></member>
       <member refid="classemail_1_1NamedObject_1a0f9a29567389176f23b61b8d0d71e774" prot="protected" virt="non-virtual"><scope>email::PubSubObject</scope><name>NamedObject</name></member>

@@ -1,3 +1,18 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classemail_1_1Gid.html" title="Unique ID (GID)." alt="" coords="5,5,95,32"/>
+<area shape="rect" id="Node000000" href="$classemail_1_1GidObject.html" title="Abstract object with a GID." alt="" coords="18,55,149,80"/>
+<area shape="rect" id="Node000001" href="$classemail_1_1PubSubObject.html" title="Abstract pub or sub object." alt="" coords="209,55,367,80"/>
+<area shape="poly" id="edge11_Node000000_Node000001" title=" " alt="" coords="163,65,209,65,209,70,163,70"/>
+<area shape="rect" id="Node000005" href="$classemail_1_1ServiceObject.html" title="Abstract service object." alt="" coords="209,104,367,129"/>
+<area shape="poly" id="edge14_Node000000_Node000005" title=" " alt="" coords="150,81,235,101,234,107,149,86"/>
+<area shape="rect" id="Node000002" href="$classemail_1_1Publisher.html" title="Message publisher." alt="" coords="430,5,557,31"/>
+<area shape="poly" id="edge12_Node000001_Node000002" title=" " alt="" coords="354,49,439,28,440,33,355,54"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1Subscription.html" title="Message subscription." alt="" coords="420,55,567,80"/>
+<area shape="poly" id="edge13_Node000001_Node000003" title=" " alt="" coords="381,65,419,65,419,70,381,70"/>
+<area shape="rect" id="Node000006" href="$classemail_1_1ServiceClient.html" title="Service client." alt="" coords="417,104,570,129"/>
+<area shape="poly" id="edge15_Node000005_Node000006" title=" " alt="" coords="380,114,416,114,416,119,380,119"/>
+<area shape="rect" id="Node000007" href="$classemail_1_1ServiceServer.html" title="Service server." alt="" coords="415,153,572,179"/>
+<area shape="poly" id="edge16_Node000005_Node000007" title=" " alt="" coords="355,130,440,151,439,156,354,135"/>
+<area shape="rect" id="Node000004" href="$classemail_1_1NamedObject.html" title="Abstract object with a name." alt="" coords="5,104,161,129"/>
+<area shape="poly" id="edge17_Node000004_Node000001" title=" " alt="" coords="149,98,234,77,235,83,150,103"/>
+<area shape="poly" id="edge18_Node000004_Node000005" title=" " alt="" coords="175,114,209,114,209,119,175,119"/>
 </map>

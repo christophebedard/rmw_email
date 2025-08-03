@@ -1,5 +1,7 @@
 <map id="email::EmailData" name="email::EmailData">
-<area shape="rect" id="node1" title="Raw email data with headers." alt="" coords="117,95,252,121"/>
-<area shape="rect" id="node2" href="$structemail_1_1EmailRecipients.html" title="Recipients of an email." alt="" coords="5,5,177,32"/>
-<area shape="rect" id="node3" href="$structemail_1_1EmailContent.html" title="Content of an email." alt="" coords="202,5,357,32"/>
+<area shape="rect" id="Node000001" title="Raw email data with headers." alt="" coords="117,93,252,119"/>
+<area shape="rect" id="Node000002" href="$structemail_1_1EmailRecipients.html" title="Recipients of an email." alt="" coords="5,5,177,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="116,38,173,91,170,95,112,42"/>
+<area shape="rect" id="Node000003" href="$structemail_1_1EmailContent.html" title="Content of an email." alt="" coords="202,5,357,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="258,42,200,95,196,91,254,38"/>
 </map>

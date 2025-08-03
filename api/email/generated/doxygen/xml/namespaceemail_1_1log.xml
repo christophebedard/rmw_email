@@ -1,13 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="namespaceemail_1_1log" kind="namespace" language="C++">
     <compoundname>email::log</compoundname>
     <innerclass refid="classemail_1_1log_1_1LoggingError" prot="public">email::log::LoggingError</innerclass>
     <innerclass refid="classemail_1_1log_1_1LoggingNotInitializedError" prot="public">email::log::LoggingNotInitializedError</innerclass>
-      <sectiondef kind="enum">
+    <sectiondef kind="enum">
       <memberdef kind="enum" id="namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8f" prot="public" static="no" strong="no">
         <type></type>
         <name>Level</name>
+        <qualifiedname>email::log::Level</qualifiedname>
         <enumvalue id="namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8fab854c88759c3923a679b84586ca1197c" prot="public">
           <name>debug</name>
           <briefdescription>
@@ -59,13 +60,14 @@
         </inbodydescription>
         <location file="include/email/log.hpp" line="57" column="1" bodyfile="include/email/log.hpp" bodystart="58" bodyend="65"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="func">
+    </sectiondef>
+    <sectiondef kind="func">
       <memberdef kind="function" id="namespaceemail_1_1log_1a70e2c4b9640f8b10a086f14269d4681d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void email::log::init</definition>
         <argsstring>(const Level &amp;level)</argsstring>
         <name>init</name>
+        <qualifiedname>email::log::init</qualifiedname>
         <param>
           <type>const <ref refid="namespaceemail_1_1log_1a76b9f7af528d9d5b684c7dd13770eb8f" kindref="member">Level</ref> &amp;</type>
           <declname>level</declname>
@@ -103,6 +105,7 @@
         <definition>void email::log::init_from_env</definition>
         <argsstring>()</argsstring>
         <name>init_from_env</name>
+        <qualifiedname>email::log::init_from_env</qualifiedname>
         <briefdescription>
 <para>Initialize logging using environment variable value for the logging level. </para>
         </briefdescription>
@@ -122,11 +125,12 @@
         </inbodydescription>
         <location file="include/email/log.hpp" line="80" column="1" declfile="include/email/log.hpp" declline="80" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1log_1a780c47d49411c5388a6326388efa5262" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;Logger&gt; email::log::create</definition>
+        <definition>std::shared_ptr&lt; Logger &gt; email::log::create</definition>
         <argsstring>(const std::string &amp;name)</argsstring>
         <name>create</name>
+        <qualifiedname>email::log::create</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>name</declname>
@@ -154,11 +158,12 @@
         </inbodydescription>
         <location file="include/email/log.hpp" line="92" column="1" declfile="include/email/log.hpp" declline="92" declcolumn="1"/>
       </memberdef>
-      <memberdef kind="function" id="namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespaceemail_1_1log_1a4d243aa2ccc952cc68d17d55d22c6fca" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
-        <definition>std::shared_ptr&lt;Logger&gt; email::log::get_or_create</definition>
+        <definition>std::shared_ptr&lt; Logger &gt; email::log::get_or_create</definition>
         <argsstring>(const std::string &amp;name)</argsstring>
         <name>get_or_create</name>
+        <qualifiedname>email::log::get_or_create</qualifiedname>
         <param>
           <type>const std::string &amp;</type>
           <declname>name</declname>
@@ -191,6 +196,7 @@
         <definition>void email::log::remove</definition>
         <argsstring>(const std::shared_ptr&lt; Logger &gt; &amp;logger)</argsstring>
         <name>remove</name>
+        <qualifiedname>email::log::remove</qualifiedname>
         <param>
           <type>const std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt; &amp;</type>
           <declname>logger</declname>
@@ -228,6 +234,7 @@
         <definition>void email::log::shutdown</definition>
         <argsstring>()</argsstring>
         <name>shutdown</name>
+        <qualifiedname>email::log::shutdown</qualifiedname>
         <briefdescription>
 <para>Shutdown and finalize. </para>
         </briefdescription>
@@ -237,7 +244,7 @@
         </inbodydescription>
         <location file="include/email/log.hpp" line="116" column="1" declfile="include/email/log.hpp" declline="116" declcolumn="1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

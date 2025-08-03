@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1GuardCondition" kind="class" language="C++" prot="public">
     <compoundname>email::GuardCondition</compoundname>
     <includes local="no">guard_condition.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1GuardCondition_1abe6d05bc0057bb638856e7dba6015f9b" prot="private" static="no" mutable="no">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
         <definition>std::shared_ptr&lt;Logger&gt; email::GuardCondition::logger_</definition>
         <argsstring></argsstring>
         <name>logger_</name>
+        <qualifiedname>email::GuardCondition::logger_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::atomic&lt;bool&gt; email::GuardCondition::in_use_</definition>
         <argsstring></argsstring>
         <name>in_use_</name>
+        <qualifiedname>email::GuardCondition::in_use_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>std::atomic&lt;bool&gt; email::GuardCondition::triggered_</definition>
         <argsstring></argsstring>
         <name>triggered_</name>
+        <qualifiedname>email::GuardCondition::triggered_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -43,13 +46,14 @@
         </inbodydescription>
         <location file="include/email/guard_condition.hpp" line="74" column="15" bodyfile="include/email/guard_condition.hpp" bodystart="74" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1GuardCondition_1aad2ca2fad5110992f0ab770fc9767a86" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::GuardCondition::GuardCondition</definition>
         <argsstring>()</argsstring>
         <name>GuardCondition</name>
+        <qualifiedname>email::GuardCondition::GuardCondition</qualifiedname>
         <briefdescription>
 <para>Constructor. </para>
         </briefdescription>
@@ -64,6 +68,7 @@
         <definition>email::GuardCondition::~GuardCondition</definition>
         <argsstring>()</argsstring>
         <name>~GuardCondition</name>
+        <qualifiedname>email::GuardCondition::~GuardCondition</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -77,6 +82,7 @@
         <definition>void email::GuardCondition::trigger</definition>
         <argsstring>()</argsstring>
         <name>trigger</name>
+        <qualifiedname>email::GuardCondition::trigger</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -90,6 +96,7 @@
         <definition>bool email::GuardCondition::triggered</definition>
         <argsstring>() const</argsstring>
         <name>triggered</name>
+        <qualifiedname>email::GuardCondition::triggered</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -103,6 +110,7 @@
         <definition>bool email::GuardCondition::exchange_in_use</definition>
         <argsstring>(bool in_use)</argsstring>
         <name>exchange_in_use</name>
+        <qualifiedname>email::GuardCondition::exchange_in_use</qualifiedname>
         <param>
           <type>bool</type>
           <declname>in_use</declname>
@@ -120,6 +128,7 @@
         <definition>void email::GuardCondition::reset</definition>
         <argsstring>()</argsstring>
         <name>reset</name>
+        <qualifiedname>email::GuardCondition::reset</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -128,7 +137,7 @@
         </inbodydescription>
         <location file="include/email/guard_condition.hpp" line="67" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Guard condition. </para>
     </briefdescription>

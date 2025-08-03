@@ -32,9 +32,9 @@ Includes
 
 - ``email/utils.hpp`` (:ref:`file_include_email_utils.hpp`)
 
-- ``memory``
+- ``filesystem``
 
-- ``rcpputils/filesystem_helper.hpp``
+- ``memory``
 
 - ``spdlog/fmt/ostr.h``
 
@@ -98,7 +98,7 @@ Classes
 -------
 
 
-- :ref:`exhale_struct_structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4`
+- :ref:`exhale_struct_structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4`
 
 - :ref:`exhale_struct_structfmt_1_1formatter_3_01YAML_1_1Node_01_4`
 
@@ -118,9 +118,9 @@ Functions
 ---------
 
 
-- :ref:`exhale_function_namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e`
+- :ref:`exhale_function_namespaceemail_1_1log_1a780c47d49411c5388a6326388efa5262`
 
-- :ref:`exhale_function_namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce`
+- :ref:`exhale_function_namespaceemail_1_1log_1a4d243aa2ccc952cc68d17d55d22c6fca`
 
 - :ref:`exhale_function_namespaceemail_1_1log_1a70e2c4b9640f8b10a086f14269d4681d`
 

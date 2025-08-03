@@ -1,5 +1,7 @@
 <map id="email::ServiceRequest" name="email::ServiceRequest">
-<area shape="rect" id="node1" title="Service request, with a request ID and some content." alt="" coords="11,184,179,211"/>
-<area shape="rect" id="node2" href="$structemail_1_1ServiceRequestId.html" title="Service request ID, with a sequence number and a client GID." alt="" coords="5,95,185,121"/>
-<area shape="rect" id="node3" href="$classemail_1_1Gid.html" title="Unique ID (GID)." alt="" coords="51,5,140,32"/>
+<area shape="rect" id="Node000001" title="Service request, with a request ID and some content." alt="" coords="11,181,179,207"/>
+<area shape="rect" id="Node000002" href="$structemail_1_1ServiceRequestId.html" title="Service request ID, with a sequence number and a client GID." alt="" coords="5,93,185,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,133,98,181,93,181,93,133"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1Gid.html" title="Unique ID (GID)." alt="" coords="51,5,140,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="98,45,98,93,93,93,93,45"/>
 </map>

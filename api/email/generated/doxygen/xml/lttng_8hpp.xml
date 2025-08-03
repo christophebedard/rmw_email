@@ -1,20 +1,20 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="lttng_8hpp" kind="file" language="C++">
     <compoundname>lttng.hpp</compoundname>
     <includes local="yes">email/config.hpp</includes>
     <incdepgraph>
-      <node id="2">
-        <label>email/config.hpp</label>
-      </node>
       <node id="1">
         <label>include/email/lttng.hpp</label>
         <link refid="lttng_8hpp"/>
         <childnode refid="2" relation="include">
         </childnode>
       </node>
+      <node id="2">
+        <label>email/config.hpp</label>
+      </node>
     </incdepgraph>
-      <sectiondef kind="define">
+    <sectiondef kind="define">
       <memberdef kind="define" id="lttng_8hpp_1a41a6d81b1a679e3ef9d0f0ada1e3cbd3" prot="public" static="no">
         <name>EMAIL_TRACEPOINT</name>
         <param><defname>event_name</defname></param>
@@ -28,7 +28,7 @@
         </inbodydescription>
         <location file="include/email/lttng.hpp" line="24" column="9" bodyfile="include/email/lttng.hpp" bodystart="24" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
     </briefdescription>
     <detaileddescription>

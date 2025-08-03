@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d:
+
+Function email::wait_for_response_with_info(const SequenceNumber, ServiceClient \*, const std::chrono::milliseconds)
+====================================================================================================================
+
+- Defined in :ref:`file_include_email_wait.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::wait_for_response_with_info(const SequenceNumber, ServiceClient *, const std::chrono::milliseconds)
+   :project: email Doxygen Project

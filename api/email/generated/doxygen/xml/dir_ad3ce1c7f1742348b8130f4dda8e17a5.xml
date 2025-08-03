@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="dir_ad3ce1c7f1742348b8130f4dda8e17a5" kind="dir">
     <compoundname>include/email</compoundname>
     <innerdir refid="dir_0a571530ab715c042e6dcc1943a3a21e">include/email/curl</innerdir>

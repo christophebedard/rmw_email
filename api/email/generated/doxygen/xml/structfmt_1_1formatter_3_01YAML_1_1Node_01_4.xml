@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="structfmt_1_1formatter_3_01YAML_1_1Node_01_4" kind="struct" language="C++" prot="public">
     <compoundname>fmt::formatter&lt; YAML::Node &gt;</compoundname>
     <basecompoundref prot="public" virt="non-virtual">formatter&lt; string_view &gt;</basecompoundref>
     <includes local="no">log.hpp</includes>
     <templateparamlist>
     </templateparamlist>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="structfmt_1_1formatter_3_01YAML_1_1Node_01_4_1a353907f58dfb5520e37fc5fe4b9d4265" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <templateparamlist>
           <param>
@@ -17,6 +17,7 @@
         <definition>auto fmt::formatter&lt; YAML::Node &gt;::format</definition>
         <argsstring>(const YAML::Node &amp;node, FormatContext &amp;ctx)</argsstring>
         <name>format</name>
+        <qualifiedname>fmt::formatter&lt; YAML::Node &gt;::format</qualifiedname>
         <param>
           <type>const YAML::Node &amp;</type>
           <declname>node</declname>
@@ -33,7 +34,7 @@
         </inbodydescription>
         <location file="include/email/log.hpp" line="137" column="8" bodyfile="include/email/log.hpp" bodystart="137" bodyend="140"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Formatting for YAML::Node objects. </para>
     </briefdescription>

@@ -1,0 +1,5 @@
+QUALITY_DECLARATION
+)))))))))))))))))))
+
+.. include:: QUALITY_DECLARATION.md
+   :parser: myst_parser.sphinx_

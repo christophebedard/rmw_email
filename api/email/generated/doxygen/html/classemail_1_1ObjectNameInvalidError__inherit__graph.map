@@ -1,6 +1,9 @@
 <map id="email::ObjectNameInvalidError" name="email::ObjectNameInvalidError">
-<area shape="rect" id="node1" title="Error when an object name is invalid." alt="" coords="123,80,315,121"/>
-<area shape="rect" id="node3" href="$classemail_1_1ServiceNameInvalidError.html" title="Error when a service name is invalid." alt="" coords="5,169,204,211"/>
-<area shape="rect" id="node4" href="$classemail_1_1TopicNameInvalidError.html" title="Error when a topic name is invalid." alt="" coords="228,177,443,203"/>
-<area shape="rect" id="node2" title=" " alt="" coords="150,5,289,32"/>
+<area shape="rect" id="Node000001" title="Error when an object name is invalid." alt="" coords="123,79,315,119"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1ServiceNameInvalidError.html" title="Error when a service name is invalid." alt="" coords="5,167,204,207"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,129,132,169,128,164,181,125"/>
+<area shape="rect" id="Node000004" href="$classemail_1_1TopicNameInvalidError.html" title="Error when a topic name is invalid." alt="" coords="228,174,443,199"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="258,125,321,172,318,176,255,129"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="150,5,289,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="222,44,222,79,217,79,217,44"/>
 </map>

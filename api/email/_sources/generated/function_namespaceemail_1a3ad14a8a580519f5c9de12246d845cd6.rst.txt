@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6:
+
+Function email::wait_for_request_with_info(ServiceServer \*, const std::chrono::milliseconds)
+=============================================================================================
+
+- Defined in :ref:`file_include_email_wait.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::wait_for_request_with_info(ServiceServer *, const std::chrono::milliseconds)
+   :project: email Doxygen Project

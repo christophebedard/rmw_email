@@ -1,15 +1,16 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1ContextAlreadyInitializedError" kind="class" language="C++" prot="public">
     <compoundname>email::ContextAlreadyInitializedError</compoundname>
     <basecompoundref refid="classemail_1_1ContextError" prot="public" virt="non-virtual">email::ContextError</basecompoundref>
     <includes local="no">context.hpp</includes>
-      <sectiondef kind="public-func">
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1ContextAlreadyInitializedError_1a3a59f50c7a27533d9190128c41740e08" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
         <type></type>
         <definition>email::ContextAlreadyInitializedError::ContextAlreadyInitializedError</definition>
         <argsstring>()</argsstring>
         <name>ContextAlreadyInitializedError</name>
+        <qualifiedname>email::ContextAlreadyInitializedError::ContextAlreadyInitializedError</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -18,13 +19,19 @@
         </inbodydescription>
         <location file="include/email/context.hpp" line="60" column="3" bodyfile="include/email/context.hpp" bodystart="60" bodyend="62"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para>Error when the context is already initialized. </para>
     </briefdescription>
     <detaileddescription>
     </detaileddescription>
     <inheritancegraph>
+      <node id="1">
+        <label>email::ContextAlreadyInitializedError</label>
+        <link refid="classemail_1_1ContextAlreadyInitializedError"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>email::ContextError</label>
         <link refid="classemail_1_1ContextError"/>
@@ -33,15 +40,15 @@
       </node>
       <node id="3">
         <label>std::runtime_error</label>
-      </node>
-      <node id="1">
-        <label>email::ContextAlreadyInitializedError</label>
-        <link refid="classemail_1_1ContextAlreadyInitializedError"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
       </node>
     </inheritancegraph>
     <collaborationgraph>
+      <node id="1">
+        <label>email::ContextAlreadyInitializedError</label>
+        <link refid="classemail_1_1ContextAlreadyInitializedError"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
       <node id="2">
         <label>email::ContextError</label>
         <link refid="classemail_1_1ContextError"/>
@@ -50,12 +57,6 @@
       </node>
       <node id="3">
         <label>std::runtime_error</label>
-      </node>
-      <node id="1">
-        <label>email::ContextAlreadyInitializedError</label>
-        <link refid="classemail_1_1ContextAlreadyInitializedError"/>
-        <childnode refid="2" relation="public-inheritance">
-        </childnode>
       </node>
     </collaborationgraph>
     <location file="include/email/context.hpp" line="57" column="1" bodyfile="include/email/context.hpp" bodystart="58" bodyend="63"/>

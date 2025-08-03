@@ -1,5 +1,7 @@
 <map id="email::SubscriptionHandler" name="email::SubscriptionHandler">
-<area shape="rect" id="node1" title="Email handler for subscriptions." alt="" coords="97,95,295,121"/>
-<area shape="rect" id="node2" href="$classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="5,13,160,39"/>
-<area shape="rect" id="node3" title=" " alt="" coords="185,5,437,47"/>
+<area shape="rect" id="Node000001" title="Email handler for subscriptions." alt="" coords="97,93,295,119"/>
+<area shape="rect" id="Node000002" href="$classemail_1_1EmailHandler.html" title="Generic email handler." alt="" coords="5,13,160,38"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="112,44,181,91,178,95,109,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="185,5,437,45"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="273,55,214,95,211,91,270,51"/>
 </map>

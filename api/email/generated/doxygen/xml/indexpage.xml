@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="indexpage" kind="page">
     <compoundname>index</compoundname>
     <title>&lt;tt&gt;email&lt;/tt&gt;: email-based middleware</title>
@@ -77,11 +77,11 @@
 </para>
 </listitem><listitem><para>Wait-related utilities<itemizedlist>
 <listitem><para><ref refid="namespaceemail_1ab5721e49aa88b793a84361690e62cff6" kindref="member">email::wait_for_message()</ref></para>
-</listitem><listitem><para><ref refid="namespaceemail_1aa59c37dd2056e5079d933232a16a3396" kindref="member">email::wait_for_message_with_info()</ref></para>
+</listitem><listitem><para><ref refid="namespaceemail_1a82e915e42a7b15b7c1affa3af631bd01" kindref="member">email::wait_for_message_with_info()</ref></para>
 </listitem><listitem><para><ref refid="namespaceemail_1ad0a6b760f7e08068416acceebb60a199" kindref="member">email::wait_for_request()</ref></para>
-</listitem><listitem><para><ref refid="namespaceemail_1ad5dd2091a29213c9aa3859d817376d10" kindref="member">email::wait_for_request_with_info()</ref></para>
+</listitem><listitem><para><ref refid="namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6" kindref="member">email::wait_for_request_with_info()</ref></para>
 </listitem><listitem><para><ref refid="namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9" kindref="member">email::wait_for_response()</ref></para>
-</listitem><listitem><para><ref refid="namespaceemail_1a79fde927095f94957025da12c6283edb" kindref="member">email::wait_for_response_with_info()</ref></para>
+</listitem><listitem><para><ref refid="namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d" kindref="member">email::wait_for_response_with_info()</ref></para>
 </listitem><listitem><para><ref refid="wait_8hpp" kindref="compound">email/wait.hpp</ref></para>
 </listitem></itemizedlist>
 </para>
@@ -90,8 +90,8 @@
 <para>Finally, there is a logging component:</para>
 <para><itemizedlist>
 <listitem><para>Logging<itemizedlist>
-<listitem><para><ref refid="namespaceemail_1_1log_1a82cb3ebe95d6b4e4bc16fd417bf65b8e" kindref="member">email::log::create()</ref></para>
-</listitem><listitem><para><ref refid="namespaceemail_1_1log_1ab5f6effef314d9faef6dee3b4d78f4ce" kindref="member">email::log::get_or_create()</ref></para>
+<listitem><para><ref refid="namespaceemail_1_1log_1a780c47d49411c5388a6326388efa5262" kindref="member">email::log::create()</ref></para>
+</listitem><listitem><para><ref refid="namespaceemail_1_1log_1a4d243aa2ccc952cc68d17d55d22c6fca" kindref="member">email::log::get_or_create()</ref></para>
 </listitem><listitem><para><ref refid="log_8hpp" kindref="compound">email/log.hpp</ref></para>
 </listitem></itemizedlist>
 </para>

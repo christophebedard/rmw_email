@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="curl_2info_8hpp" kind="file" language="C++">
     <compoundname>info.hpp</compoundname>
     <includes local="no">string</includes>
@@ -17,22 +17,14 @@
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="5">
-        <label>include/email/email/curl_receiver.hpp</label>
-        <link refid="curl__receiver_8hpp"/>
+      <node id="3">
+        <label>include/email/context.hpp</label>
+        <link refid="context_8hpp"/>
       </node>
       <node id="2">
         <label>include/email/curl/context.hpp</label>
         <link refid="curl_2context_8hpp"/>
         <childnode refid="3" relation="include">
-        </childnode>
-        <childnode refid="4" relation="include">
-        </childnode>
-      </node>
-      <node id="1">
-        <label>include/email/curl/info.hpp</label>
-        <link refid="curl_2info_8hpp"/>
-        <childnode refid="2" relation="include">
         </childnode>
         <childnode refid="4" relation="include">
         </childnode>
@@ -45,13 +37,21 @@
         <childnode refid="6" relation="include">
         </childnode>
       </node>
+      <node id="1">
+        <label>include/email/curl/info.hpp</label>
+        <link refid="curl_2info_8hpp"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>include/email/email/curl_receiver.hpp</label>
+        <link refid="curl__receiver_8hpp"/>
+      </node>
       <node id="6">
         <label>include/email/email/curl_sender.hpp</label>
         <link refid="curl__sender_8hpp"/>
-      </node>
-      <node id="3">
-        <label>include/email/context.hpp</label>
-        <link refid="context_8hpp"/>
       </node>
     </invincdepgraph>
     <innerclass refid="structemail_1_1ConnectionInfo" prot="public">email::ConnectionInfo</innerclass>

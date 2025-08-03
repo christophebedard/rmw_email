@@ -1,0 +1,517 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QUALITY_DECLARATION &mdash; email 0.8.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/collapsible-lists/css/tree_view.css?v=a885cde7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=486e5634"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/collapsible-lists/js/CollapsibleLists.compressed.js?v=73120307"></script>
+      <script src="_static/collapsible-lists/js/apply-collapsible-lists.js?v=660e4f45"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Documentation" href="user_docs.html" />
+    <link rel="prev" title="PACKAGE" href="__PACKAGE.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            email
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="__links.html">Links</a><ul>
+<li class="toctree-l2"><a class="reference external" href="https://index.ros.org/p/email">Rosindex</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/christophebedard/rmw_email">Website</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/christophebedard/rmw_email">Repository</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://github.com/christophebedard/rmw_email/issues">Bugtracker</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="generated/index.html">C++ API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="generated/index.html#tt-email-tt-email-based-middleware">&lt;tt&gt;email&lt;/tt&gt;: email-based middleware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="generated/index.html#class-hierarchy">Class Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/index.html#file-hierarchy">File Hierarchy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="generated/index.html#full-c-api">Full C++ API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#classes-and-structs">Classes and Structs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#enums">Enums</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#defines">Defines</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#typedefs">Typedefs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#directories">Directories</a></li>
+<li class="toctree-l4"><a class="reference internal" href="generated/index.html#files">Files</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="__standards.html">Standard Documents</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="__PACKAGE.html">PACKAGE</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">QUALITY_DECLARATION</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#email-quality-declaration"><code class="docutils literal notranslate"><span class="pre">email</span></code> Quality Declaration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#version-policy-1">Version Policy [1]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#change-control-process-2">Change Control Process [2]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentation-3">Documentation [3]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-4">Testing [4]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dependencies-5">Dependencies [5]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#platform-support-6">Platform Support [6]</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#security">Security</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#current-status">Current Status</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_docs.html">Documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="doc/design.html"><code class="docutils literal notranslate"><span class="pre">email</span></code> design</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">email</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="__standards.html">Standard Documents</a></li>
+      <li class="breadcrumb-item active">QUALITY_DECLARATION</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/__QUALITY_DECLARATION.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quality-declaration">
+<h1>QUALITY_DECLARATION<a class="headerlink" href="#quality-declaration" title="Link to this heading"></a></h1>
+<p>This document is a declaration of software quality for the <code class="docutils literal notranslate"><span class="pre">email</span></code> package, based on the guidelines in <a class="reference external" href="https://www.ros.org/reps/rep-2004.html">REP-2004</a>.</p>
+<section id="email-quality-declaration">
+<h2><code class="docutils literal notranslate"><span class="pre">email</span></code> Quality Declaration<a class="headerlink" href="#email-quality-declaration" title="Link to this heading"></a></h2>
+<p>The package <code class="docutils literal notranslate"><span class="pre">email</span></code> claims to be in the <strong>Quality Level 4</strong> category.</p>
+<p>Below are the rationales, notes, and caveats for this claim, organized by each requirement listed in the <a class="reference external" href="https://www.ros.org/reps/rep-2004.html">Package Quality Categories in REP-2004</a>.</p>
+<section id="version-policy-1">
+<h3>Version Policy [1]<a class="headerlink" href="#version-policy-1" title="Link to this heading"></a></h3>
+<section id="version-scheme-1-i">
+<h4>Version Scheme [1.i]<a class="headerlink" href="#version-scheme-1-i" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> uses <code class="docutils literal notranslate"><span class="pre">semver</span></code> according to the recommendation for ROS Core packages in the <a class="reference external" href="https://docs.ros.org/en/rolling/Contributing/Developer-Guide.html#versioning">ROS 2 Developer Guide</a>.</p>
+</section>
+<section id="version-stability-1-ii">
+<h4>Version Stability [1.ii]<a class="headerlink" href="#version-stability-1-ii" title="Link to this heading"></a></h4>
+<!-- no -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> is not yet at a stable version, i.e. <code class="docutils literal notranslate"><span class="pre">&lt;</span> <span class="pre">1.0.0</span></code>.
+The current version can be found in its <a class="reference download internal" download="" href="_downloads/34ae68f4adad56c25c5bc05dcb64794e/package.xml"><span class="xref download myst">package.xml</span></a>, and its change history can be found in its <a class="reference internal" href="#CHANGELOG.rst"><span class="xref myst">CHANGELOG</span></a>.</p>
+</section>
+<section id="public-api-declaration-1-iii">
+<h4>Public API Declaration [1.iii]<a class="headerlink" href="#public-api-declaration-1-iii" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p>All symbols in the installed headers that are declared with <a class="reference internal" href="#./include/email/visibility_control.hpp"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">EMAIL_PUBLIC</span></code></span></a> are considered part of the public API.</p>
+</section>
+<section id="api-stability-within-a-released-ros-distribution-1-iv-1-vi">
+<h4>API Stability Within a Released ROS Distribution [1.iv]/[1.vi]<a class="headerlink" href="#api-stability-within-a-released-ros-distribution-1-iv-1-vi" title="Link to this heading"></a></h4>
+<!-- no -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> could break public API within a released ROS distribution, i.e. there might be major releases once the ROS distribution is released.</p>
+</section>
+<section id="abi-stability-within-a-released-ros-distribution-1-v-1-vi">
+<h4>ABI Stability Within a Released ROS Distribution [1.v]/[1.vi]<a class="headerlink" href="#abi-stability-within-a-released-ros-distribution-1-v-1-vi" title="Link to this heading"></a></h4>
+<!-- no -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> contains C++ code and therefore must be concerned with ABI stability, and might not maintain ABI stability within a ROS distribution.</p>
+</section>
+</section>
+<section id="change-control-process-2">
+<h3>Change Control Process [2]<a class="headerlink" href="#change-control-process-2" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> follows most of the recommended guidelines for ROS Core packages in the <a class="reference external" href="https://docs.ros.org/en/rolling/Contributing/Developer-Guide.html#change-control-process">ROS 2 Developer Guide</a>.</p>
+<section id="change-requests-2-i">
+<h4>Change Requests [2.i]<a class="headerlink" href="#change-requests-2-i" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p>All changes will occur through a pull request, check <a class="reference external" href="https://docs.ros.org/en/rolling/Contributing/Developer-Guide.html#change-control-process">ROS 2 Developer Guide</a> for additional information.</p>
+</section>
+<section id="contributor-origin-2-ii">
+<h4>Contributor Origin [2.ii]<a class="headerlink" href="#contributor-origin-2-ii" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p>This package uses DCO as its confirmation of contributor origin policy.
+There is an <a class="reference internal" href="#../.github/workflows/dco.yml"><span class="xref myst">automated DCO check</span></a> for change requests.
+More information can be found in <a class="reference internal" href="#../CONTRIBUTING.md"><span class="xref myst">CONTRIBUTING</span></a>.</p>
+</section>
+<section id="peer-review-policy-2-iii">
+<h4>Peer Review Policy [2.iii]<a class="headerlink" href="#peer-review-policy-2-iii" title="Link to this heading"></a></h4>
+<!-- no -->
+<p>Not all pull requests are currently peer-reviewed.</p>
+<!-- , check [ROS 2 Developer Guide](https://docs.ros.org/en/rolling/Contributing/Developer-Guide.html#change-control-process) for additional information. -->
+</section>
+<section id="continuous-integration-2-iv">
+<h4>Continuous Integration [2.iv]<a class="headerlink" href="#continuous-integration-2-iv" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p>All pull requests must pass CI on Ubuntu.</p>
+</section>
+<section id="documentation-policy-2-v">
+<h4>Documentation Policy [2.v]<a class="headerlink" href="#documentation-policy-2-v" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p>All pull requests must resolve related documentation changes before merging.</p>
+</section>
+</section>
+<section id="documentation-3">
+<h3>Documentation [3]<a class="headerlink" href="#documentation-3" title="Link to this heading"></a></h3>
+<section id="feature-documentation-3-i">
+<h4>Feature Documentation [3.i]<a class="headerlink" href="#feature-documentation-3-i" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> has a <a class="reference external" href="https://christophebedard.com/rmw_email/api/email/">feature list</a> and each item in the list links to the corresponding feature documentation.
+There is documentation for all of the features, and new features require documentation before being added.</p>
+</section>
+<section id="public-api-documentation-3-ii">
+<h4>Public API Documentation [3.ii]<a class="headerlink" href="#public-api-documentation-3-ii" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code>’s API <a class="reference external" href="https://christophebedard.com/rmw_email/api/email/">is publicly available</a>.</p>
+</section>
+<section id="license-3-iii">
+<h4>License [3.iii]<a class="headerlink" href="#license-3-iii" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p>The license for <code class="docutils literal notranslate"><span class="pre">email</span></code> is Apache 2.0, and a summary is in each source file, the type is declared in the <a class="reference download internal" download="" href="_downloads/34ae68f4adad56c25c5bc05dcb64794e/package.xml"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">package.xml</span></code></span></a> manifest file, and a full copy of the license is in the <a class="reference internal" href="#../LICENSE"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">LICENSE</span></code></span></a> file.</p>
+<p>There is an automated test using <a class="reference external" href="https://github.com/ament/ament_lint/tree/rolling/ament_copyright"><code class="docutils literal notranslate"><span class="pre">ament_copyright</span></code></a> through <code class="docutils literal notranslate"><span class="pre">ament_lint_common</span></code> that ensures each file has a license statement.</p>
+</section>
+<section id="copyright-statements-3-iv">
+<h4>Copyright Statements [3.iv]<a class="headerlink" href="#copyright-statements-3-iv" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p>The copyright holders each provide a statement of copyright in each source code file in <code class="docutils literal notranslate"><span class="pre">email</span></code>.</p>
+<p>There is an automated test using <a class="reference external" href="https://github.com/ament/ament_lint/tree/rolling/ament_copyright"><code class="docutils literal notranslate"><span class="pre">ament_copyright</span></code></a> through <code class="docutils literal notranslate"><span class="pre">ament_lint_common</span></code> that ensures each file has a license statement.</p>
+</section>
+</section>
+<section id="testing-4">
+<h3>Testing [4]<a class="headerlink" href="#testing-4" title="Link to this heading"></a></h3>
+<section id="feature-testing-4-i">
+<h4>Feature Testing [4.i]<a class="headerlink" href="#feature-testing-4-i" title="Link to this heading"></a></h4>
+<!-- no -->
+<p>Not all features in <code class="docutils literal notranslate"><span class="pre">email</span></code> currently have tests which simulate typical usage.
+Some tests are located in the <a class="reference internal" href="#./test"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">test</span></code></span></a> directory.</p>
+</section>
+<section id="public-api-testing-4-ii">
+<h4>Public API Testing [4.ii]<a class="headerlink" href="#public-api-testing-4-ii" title="Link to this heading"></a></h4>
+<!-- no -->
+<p>Not all parts of the public API have tests.
+Some tests are located in the <a class="reference internal" href="#./test"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">test</span></code></span></a> directory.
+The tests aim to cover both typical usage and corner cases, but are quantified by contributing to code coverage.</p>
+</section>
+<section id="coverage-4-iii">
+<h4>Coverage [4.iii]<a class="headerlink" href="#coverage-4-iii" title="Link to this heading"></a></h4>
+<!-- yes & yes -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> tries to follow the recommendations for ROS Core packages in the <a class="reference external" href="https://docs.ros.org/en/rolling/Contributing/Developer-Guide.html#code-coverage">ROS 2 Developer Guide</a>, and opts to use line coverage instead of branch coverage.</p>
+<p>This includes:</p>
+<ul class="simple">
+<li><p>tracking and reporting line coverage statistics</p></li>
+<li><p>achieving and maintaining a reasonable branch line coverage (90-100%)</p></li>
+<li><p>no lines are manually skipped in coverage calculations (unless it is for technical reasons)</p></li>
+</ul>
+<p>Changes are required to make a best effort to keep or increase coverage before being accepted, but decreases are allowed if properly justified and accepted by reviewers.</p>
+<p>Current coverage statistics can be viewed <a class="reference external" href="https://app.codecov.io/gh/christophebedard/rmw_email">here</a> and in the <a class="reference external" href="https://github.com/christophebedard/rmw_email/actions/workflows/ci.yml">latest <em>Test</em> workflow</a>.
+<code class="docutils literal notranslate"><span class="pre">email</span></code> has a line coverage <code class="docutils literal notranslate"><span class="pre">&gt;=</span> <span class="pre">90%</span></code>, which is calculated over all non-test directories within <code class="docutils literal notranslate"><span class="pre">email</span></code>.</p>
+</section>
+<section id="performance-4-iv">
+<h4>Performance [4.iv]<a class="headerlink" href="#performance-4-iv" title="Link to this heading"></a></h4>
+<!-- no -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> has no performance tests.</p>
+</section>
+<section id="linters-and-static-analysis-4-v">
+<h4>Linters and Static Analysis [4.v]<a class="headerlink" href="#linters-and-static-analysis-4-v" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> uses and passes all the ROS 2 standard linters and static analysis tools for a C++ package as described in the <a class="reference external" href="https://docs.ros.org/en/rolling/Contributing/Developer-Guide.html#linters-and-static-analysis">ROS 2 Developer Guide</a>.
+Passing implies there are no linter/static errors when testing against CI of supported platforms.</p>
+<p>Currently, the latest test results can be seen <a class="reference external" href="https://github.com/christophebedard/rmw_email/actions/workflows/ci.yml">here</a>.</p>
+</section>
+</section>
+<section id="dependencies-5">
+<h3>Dependencies [5]<a class="headerlink" href="#dependencies-5" title="Link to this heading"></a></h3>
+<p>Below are evaluations of each of <code class="docutils literal notranslate"><span class="pre">email</span></code>’s run-time and build-time dependencies that have been determined to influence the quality.</p>
+<p>It has several “buildtool” dependencies, which do not affect the resulting quality of the package, because they do not contribute to the public library API.</p>
+<p>It also has several test dependencies, which do not affect the resulting quality of the package, because they are only used to build and run the test code.</p>
+<section id="direct-and-optional-runtime-ros-dependencies-5-i-5-ii">
+<h4>Direct and Optional Runtime ROS Dependencies [5.i]/[5.ii]<a class="headerlink" href="#direct-and-optional-runtime-ros-dependencies-5-i-5-ii" title="Link to this heading"></a></h4>
+<!-- yes -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> has the following runtime ROS dependencies:</p>
+<section id="rcpputils">
+<h5><code class="docutils literal notranslate"><span class="pre">rcpputils</span></code><a class="headerlink" href="#rcpputils" title="Link to this heading"></a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">rcpputils</span></code> package provides an API which contains common utilities and data structures useful when programming in C++.</p>
+<p>It is <strong>Quality Level 1</strong>, see its <a class="reference external" href="https://github.com/ros2/rcpputils/blob/rolling/QUALITY_DECLARATION.md">Quality Declaration document</a>.</p>
+</section>
+<section id="rcutils">
+<h5><code class="docutils literal notranslate"><span class="pre">rcutils</span></code><a class="headerlink" href="#rcutils" title="Link to this heading"></a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">rcutils</span></code> package provides an API which contains common utilities and data structures useful when programming in C.</p>
+<p>It is <strong>Quality Level 1</strong>, see its <a class="reference external" href="https://github.com/ros2/rcutils/blob/rolling/QUALITY_DECLARATION.md">Quality Declaration document</a>.</p>
+</section>
+</section>
+<section id="direct-runtime-non-ros-dependency-5-iii">
+<h4>Direct Runtime non-ROS Dependency [5.iii]<a class="headerlink" href="#direct-runtime-non-ros-dependency-5-iii" title="Link to this heading"></a></h4>
+<!-- no -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> has the following run-time or build-time dependencies:</p>
+<section id="libcurl">
+<h5><code class="docutils literal notranslate"><span class="pre">libcurl</span></code><a class="headerlink" href="#libcurl" title="Link to this heading"></a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">libcurl</span></code> library, possibly through the <code class="docutils literal notranslate"><span class="pre">libcurl_vendor</span></code> package, provides a C API for multiprotocol file transfer.</p>
+<p>It currently has no quality declaration.</p>
+</section>
+<section id="yaml-cpp">
+<h5><code class="docutils literal notranslate"><span class="pre">yaml-cpp</span></code><a class="headerlink" href="#yaml-cpp" title="Link to this heading"></a></h5>
+<p>The <code class="docutils literal notranslate"><span class="pre">yaml-cpp</span></code> library, possibly through the <code class="docutils literal notranslate"><span class="pre">yaml_cpp_vendor</span></code> package, provides an API for parsing and emitting YAML in C++.</p>
+<p>It currently has no quality declaration.</p>
+</section>
+</section>
+</section>
+<section id="platform-support-6">
+<h3>Platform Support [6]<a class="headerlink" href="#platform-support-6" title="Link to this heading"></a></h3>
+<!-- no -->
+<p><code class="docutils literal notranslate"><span class="pre">email</span></code> does not currently officially support all of the tier 1 platforms as described in <a class="reference external" href="https://www.ros.org/reps/rep-2000.html#support-tiers">REP-2000</a>.</p>
+</section>
+<section id="security">
+<h3>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h3>
+<section id="vulnerability-disclosure-policy-7-i">
+<h4>Vulnerability Disclosure Policy [7.i]<a class="headerlink" href="#vulnerability-disclosure-policy-7-i" title="Link to this heading"></a></h4>
+<!-- no -->
+<p>This package has no formal Vulnerability Disclosure Policy, but it will try to conform to the policy described in <a class="reference external" href="https://www.ros.org/reps/rep-2006.html">REP-2006</a>.
+Use the email address available on the profile of the owner of this repository.
+~~Submit your vulnerability report using <code class="docutils literal notranslate"><span class="pre">email</span></code> directly or using ROS 2 with <code class="docutils literal notranslate"><span class="pre">rmw_email_cpp</span></code> by publishing a <code class="docutils literal notranslate"><span class="pre">std_msgs/String</span></code> message.~~</p>
+</section>
+</section>
+</section>
+<section id="current-status">
+<h2>Current Status<a class="headerlink" href="#current-status" title="Link to this heading"></a></h2>
+<p>The table below compares the requirements in REP-2004 with the current state of the <code class="docutils literal notranslate"><span class="pre">email</span></code> package.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Number</p></th>
+<th class="head"><p>Requirement</p></th>
+<th class="head"><p>Current state</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Version policy</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>1.i</p></td>
+<td><p>Version policy</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>1.ii</p></td>
+<td><p>Stable version</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.iii</p></td>
+<td><p>Strictly declared public API</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>1.iv</p></td>
+<td><p>API stability policy</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.v</p></td>
+<td><p>ABI stability policy</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-even"><td><p>1.vi</p></td>
+<td><p>API/ABI stablility policy within ROS distribution</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Change control process</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2.i</p></td>
+<td><p>All changes occur through change request</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.ii</p></td>
+<td><p>Confirmation of contributor origin</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>2.iii</p></td>
+<td><p>Peer review policy</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>2.iv</p></td>
+<td><p>CI policy for change requests</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>2.v</p></td>
+<td><p>Documentation policy for change requests</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><strong>Documentation</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>3.i</p></td>
+<td><p>Per feature documentation</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.ii</p></td>
+<td><p>Public API documentation</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>3.iii</p></td>
+<td><p>Declared license(s)</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.iv</p></td>
+<td><p>Copyright in source files</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>3.v.a</p></td>
+<td><p>Quality declaration linked to from README</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.v.b</p></td>
+<td><p>Centralized declaration available for peer review</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>3.v.c</p></td>
+<td><p>References any Level N lists the package belongs to</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p><strong>Testing</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>4.i</p></td>
+<td><p>Feature items tests</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.ii</p></td>
+<td><p>Public API tests</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-even"><td><p>4.iii.a</p></td>
+<td><p>Using coverage</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.iii.b</p></td>
+<td><p>Coverage policy</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>4.iv.a</p></td>
+<td><p>Performance tests</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.iv.b</p></td>
+<td><p>Performance tests policy</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-even"><td><p>4.v.a</p></td>
+<td><p>Code style enforcement (linters)</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>4.v.b</p></td>
+<td><p>Use of static analysis tools</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p><strong>Dependencies</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>5.i</p></td>
+<td><p>Must not have lower level ROS dependencies</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-even"><td><p>5.ii</p></td>
+<td><p>Optional ROS lower level dependencies</p></td>
+<td><p>✓</p></td>
+</tr>
+<tr class="row-odd"><td><p>5.iii</p></td>
+<td><p>Justifies quality use of non-ROS dependencies</p></td>
+<td><p>x *</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p><strong>Platform Support</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>6.i</p></td>
+<td><p>Support targets tier 1 ROS platforms</p></td>
+<td><p>x</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p><strong>Security</strong></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>7.i</p></td>
+<td><p>Vulnerability Disclosure Policy</p></td>
+<td><p>x</p></td>
+</tr>
+</tbody>
+</table>
+<p>Comparing this table to the <a class="reference external" href="https://www.ros.org/reps/rep-2004.html#quality-level-comparison-chart">Quality Level Comparison Chart of REP-2004</a> led us to conclude that this package qualifies for Quality Level 4.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="__PACKAGE.html" class="btn btn-neutral float-left" title="PACKAGE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="user_docs.html" class="btn btn-neutral float-right" title="Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright The &lt;email&gt; Contributors. License: Apache License 2.0.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

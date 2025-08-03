@@ -1,15 +1,32 @@
-Welcome to the documentation for email
-======================================
+.. GENERATED_CONTENT by rosdoc2.verbs.build.builders.sphinx_builder.
+
+email
+=====
+
+Pub/sub and service middleware using emails.
+
+
 
 .. toctree::
    :maxdepth: 2
 
-   email <generated/index>
+   Links <__links>
+
+   C++ API <generated/index>
 
 
-Indices and Search
-==================
 
-* :ref:`genindex`
-* :ref:`search`
+   Standard Documents <__standards>
 
+.. toctree::
+   :titlesonly:
+   :maxdepth: 2
+
+   Documentation <user_docs>
+
+
+
+.. toctree::
+   :hidden:
+
+   genindex

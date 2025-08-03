@@ -1,14 +1,15 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.1" xml:lang="en-US">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
   <compounddef id="classemail_1_1Options" kind="class" language="C++" prot="public">
     <compoundname>email::Options</compoundname>
     <includes local="no">options.hpp</includes>
-      <sectiondef kind="private-attrib">
+    <sectiondef kind="private-attrib">
       <memberdef kind="variable" id="classemail_1_1Options_1a99a32e69fa21e31b76f704dba13fabb3" prot="private" static="no" mutable="no">
         <type>std::optional&lt; UserInfo::SharedPtrConst &gt;</type>
         <definition>std::optional&lt;UserInfo::SharedPtrConst&gt; email::Options::user_info_</definition>
         <argsstring></argsstring>
         <name>user_info_</name>
+        <qualifiedname>email::Options::user_info_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -22,6 +23,7 @@
         <definition>std::optional&lt;EmailRecipients::SharedPtrConst&gt; email::Options::recipients_</definition>
         <argsstring></argsstring>
         <name>recipients_</name>
+        <qualifiedname>email::Options::recipients_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -35,6 +37,7 @@
         <definition>const bool email::Options::curl_verbose_</definition>
         <argsstring></argsstring>
         <name>curl_verbose_</name>
+        <qualifiedname>email::Options::curl_verbose_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -48,6 +51,7 @@
         <definition>const bool email::Options::intraprocess_</definition>
         <argsstring></argsstring>
         <name>intraprocess_</name>
+        <qualifiedname>email::Options::intraprocess_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -61,6 +65,7 @@
         <definition>const std::optional&lt;std::chrono::nanoseconds&gt; email::Options::polling_period_</definition>
         <argsstring></argsstring>
         <name>polling_period_</name>
+        <qualifiedname>email::Options::polling_period_</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -69,13 +74,14 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="162" column="23" bodyfile="include/email/options.hpp" bodystart="162" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-static-attrib">
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
       <memberdef kind="variable" id="classemail_1_1Options_1afcb9a3b14dbc25cb5a4906adf54993a7" prot="private" static="yes" constexpr="yes" mutable="no">
         <type>constexpr const char *</type>
         <definition>constexpr const char* email::Options::ENV_VAR_CURL_VERBOSE</definition>
         <argsstring></argsstring>
         <name>ENV_VAR_CURL_VERBOSE</name>
+        <qualifiedname>email::Options::ENV_VAR_CURL_VERBOSE</qualifiedname>
         <initializer>= &quot;EMAIL_CURL_VERBOSE&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -90,6 +96,7 @@
         <definition>constexpr const char* email::Options::ENV_VAR_CONFIG_FILE</definition>
         <argsstring></argsstring>
         <name>ENV_VAR_CONFIG_FILE</name>
+        <qualifiedname>email::Options::ENV_VAR_CONFIG_FILE</qualifiedname>
         <initializer>= &quot;EMAIL_CONFIG_FILE&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -104,6 +111,7 @@
         <definition>constexpr const char* email::Options::ENV_VAR_CONFIG_FILE_DEFAULT_PATH</definition>
         <argsstring></argsstring>
         <name>ENV_VAR_CONFIG_FILE_DEFAULT_PATH</name>
+        <qualifiedname>email::Options::ENV_VAR_CONFIG_FILE_DEFAULT_PATH</qualifiedname>
         <initializer>=
     &quot;EMAIL_CONFIG_FILE_DEFAULT_PATH&quot;</initializer>
         <briefdescription>
@@ -119,6 +127,7 @@
         <definition>constexpr const char* email::Options::CONFIG_FILE_DEFAULT_NAME</definition>
         <argsstring></argsstring>
         <name>CONFIG_FILE_DEFAULT_NAME</name>
+        <qualifiedname>email::Options::CONFIG_FILE_DEFAULT_NAME</qualifiedname>
         <initializer>= &quot;email.yml&quot;</initializer>
         <briefdescription>
         </briefdescription>
@@ -133,6 +142,7 @@
         <definition>constexpr const char* email::Options::USAGE_CLI_ARGS</definition>
         <argsstring></argsstring>
         <name>USAGE_CLI_ARGS</name>
+        <qualifiedname>email::Options::USAGE_CLI_ARGS</qualifiedname>
         <initializer>=
     &quot;usage: HOST_SMTP HOST_IMAP EMAIL PASSWORD EMAIL_TO [-v|--curl-verbose]&quot;</initializer>
         <briefdescription>
@@ -143,13 +153,14 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="169" column="32" bodyfile="include/email/options.hpp" bodystart="169" bodyend="-1"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-func">
+    </sectiondef>
+    <sectiondef kind="public-func">
       <memberdef kind="function" id="classemail_1_1Options_1a9e49710bb8d52a05b74a40868ebbb375" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type></type>
         <definition>email::Options::Options</definition>
         <argsstring>(std::optional&lt; UserInfo::SharedPtrConst &gt; user_info, std::optional&lt; EmailRecipients::SharedPtrConst &gt; recipients, const bool curl_verbose, const bool intraprocess, const std::optional&lt; std::chrono::nanoseconds &gt; polling_period)</argsstring>
         <name>Options</name>
+        <qualifiedname>email::Options::Options</qualifiedname>
         <param>
           <type>std::optional&lt; UserInfo::SharedPtrConst &gt;</type>
           <declname>user_info</declname>
@@ -228,6 +239,7 @@
         <definition>email::Options::~Options</definition>
         <argsstring>()</argsstring>
         <name>~Options</name>
+        <qualifiedname>email::Options::~Options</qualifiedname>
         <briefdescription>
         </briefdescription>
         <detaileddescription>
@@ -236,11 +248,12 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="63" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Options_1ad3aab8a980c818d44f7b4c453456dd2e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Options_1a7ef6995201eef31bc97d15c80fab492e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; UserInfo::SharedPtrConst &gt;</type>
-        <definition>std::optional&lt;UserInfo::SharedPtrConst&gt; email::Options::get_user_info</definition>
+        <definition>std::optional&lt; UserInfo::SharedPtrConst &gt; email::Options::get_user_info</definition>
         <argsstring>() const</argsstring>
         <name>get_user_info</name>
+        <qualifiedname>email::Options::get_user_info</qualifiedname>
         <briefdescription>
 <para>Get user information data. </para>
         </briefdescription>
@@ -253,11 +266,12 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="71" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Options_1ae706e9b4864156502045cbba7d0fd018" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Options_1a63c81742899c861094ce0ea285379917" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; EmailRecipients::SharedPtrConst &gt;</type>
-        <definition>std::optional&lt;EmailRecipients::SharedPtrConst&gt; email::Options::get_recipients</definition>
+        <definition>std::optional&lt; EmailRecipients::SharedPtrConst &gt; email::Options::get_recipients</definition>
         <argsstring>() const</argsstring>
         <name>get_recipients</name>
+        <qualifiedname>email::Options::get_recipients</qualifiedname>
         <briefdescription>
 <para>Get email recipient data. </para>
         </briefdescription>
@@ -275,6 +289,7 @@
         <definition>bool email::Options::curl_verbose</definition>
         <argsstring>() const</argsstring>
         <name>curl_verbose</name>
+        <qualifiedname>email::Options::curl_verbose</qualifiedname>
         <briefdescription>
 <para>Get the curl verbose status. </para>
         </briefdescription>
@@ -292,6 +307,7 @@
         <definition>bool email::Options::intraprocess</definition>
         <argsstring>() const</argsstring>
         <name>intraprocess</name>
+        <qualifiedname>email::Options::intraprocess</qualifiedname>
         <briefdescription>
 <para>Get the intraprocess status. </para>
         </briefdescription>
@@ -304,11 +320,12 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="95" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Options_1a1db5c0402e0349f0430dc108460a6728" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Options_1a6bccfff6dd728fdebf1649bbd6fb6ec4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::chrono::nanoseconds &gt;</type>
-        <definition>std::optional&lt;std::chrono::nanoseconds&gt; email::Options::polling_period</definition>
+        <definition>std::optional&lt; std::chrono::nanoseconds &gt; email::Options::polling_period</definition>
         <argsstring>() const</argsstring>
         <name>polling_period</name>
+        <qualifiedname>email::Options::polling_period</qualifiedname>
         <briefdescription>
 <para>Get the polling period value. </para>
         </briefdescription>
@@ -321,13 +338,14 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="103" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classemail_1_1Options_1a80b79667d350d2ed10d22537580b2bc8" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classemail_1_1Options_1ae8f02b491104aba76d2f3807ca7c8ca2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt; &gt;</type>
-        <definition>static std::optional&lt;std::shared_ptr&lt;Options&gt; &gt; email::Options::parse_options_from_args</definition>
+        <definition>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt; email::Options::parse_options_from_args</definition>
         <argsstring>(int argc, char const *const argv[])</argsstring>
         <name>parse_options_from_args</name>
+        <qualifiedname>email::Options::parse_options_from_args</qualifiedname>
         <param>
           <type>int</type>
           <declname>argc</declname>
@@ -366,11 +384,12 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="113" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Options_1aecc89940a2c5923d049cf22d4a11a521" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Options_1a3f4c4e2921e1726b09418eac45b0ddd9" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt; &gt;</type>
-        <definition>static std::optional&lt;std::shared_ptr&lt;Options&gt; &gt; email::Options::parse_options_from_file</definition>
+        <definition>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt; email::Options::parse_options_from_file</definition>
         <argsstring>()</argsstring>
         <name>parse_options_from_file</name>
+        <qualifiedname>email::Options::parse_options_from_file</qualifiedname>
         <briefdescription>
 <para>Parse options from config file. </para>
         </briefdescription>
@@ -384,11 +403,12 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="124" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Options_1a3c2b027f4ad3a89de10a415afeaca4db" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Options_1a23b2043fe1248e59f29493b6fcce64c7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt; &gt;</type>
-        <definition>static std::optional&lt;std::shared_ptr&lt;Options&gt; &gt; email::Options::yaml_to_options</definition>
+        <definition>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt; email::Options::yaml_to_options</definition>
         <argsstring>(YAML::Node)</argsstring>
         <name>yaml_to_options</name>
+        <qualifiedname>email::Options::yaml_to_options</qualifiedname>
         <param>
           <type>YAML::Node</type>
         </param>
@@ -404,13 +424,14 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="133" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Options_1a0414d9ab8ccd80f7e31ddfd49899c12c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Options_1a5ea65aacf362e78800b7ad6c078598e3" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt; &gt;</type>
-        <definition>static std::optional&lt;std::shared_ptr&lt;Options&gt; &gt; email::Options::parse_options_file</definition>
-        <argsstring>(const rcpputils::fs::path &amp;file_path)</argsstring>
+        <definition>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt; email::Options::parse_options_file</definition>
+        <argsstring>(const std::filesystem::path &amp;file_path)</argsstring>
         <name>parse_options_file</name>
+        <qualifiedname>email::Options::parse_options_file</qualifiedname>
         <param>
-          <type>const rcpputils::fs::path &amp;</type>
+          <type>const std::filesystem::path &amp;</type>
           <declname>file_path</declname>
         </param>
         <briefdescription>
@@ -434,13 +455,14 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="142" column="3"/>
       </memberdef>
-      </sectiondef>
-      <sectiondef kind="private-static-func">
-      <memberdef kind="function" id="classemail_1_1Options_1abfbf5c7e383fd0f9efcdae9c396cdfc1" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classemail_1_1Options_1ae01d923cec39abd7ac74b4d32d382e58" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::optional&lt; std::shared_ptr&lt; <ref refid="classemail_1_1Options" kindref="compound">Options</ref> &gt; &gt;</type>
-        <definition>static std::optional&lt;std::shared_ptr&lt;Options&gt; &gt; email::Options::yaml_to_options_impl</definition>
+        <definition>static std::optional&lt; std::shared_ptr&lt; Options &gt; &gt; email::Options::yaml_to_options_impl</definition>
         <argsstring>(YAML::Node)</argsstring>
         <name>yaml_to_options_impl</name>
+        <qualifiedname>email::Options::yaml_to_options_impl</qualifiedname>
         <param>
           <type>YAML::Node</type>
         </param>
@@ -463,11 +485,12 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="151" column="3"/>
       </memberdef>
-      <memberdef kind="function" id="classemail_1_1Options_1aeacc405c42fff6d63f4ca21be4099c04" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classemail_1_1Options_1a46b18b62fd069e69cd7ada03412935de" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::shared_ptr&lt; <ref refid="namespaceemail_1a8d76c558a86ae3983f1b8f138c036e61" kindref="member">Logger</ref> &gt;</type>
-        <definition>static std::shared_ptr&lt;Logger&gt; email::Options::logger</definition>
+        <definition>static std::shared_ptr&lt; Logger &gt; email::Options::logger</definition>
         <argsstring>()</argsstring>
         <name>logger</name>
+        <qualifiedname>email::Options::logger</qualifiedname>
         <briefdescription>
 <para>Get logger. </para>
         </briefdescription>
@@ -477,7 +500,7 @@
         </inbodydescription>
         <location file="include/email/options.hpp" line="156" column="3"/>
       </memberdef>
-      </sectiondef>
+    </sectiondef>
     <briefdescription>
 <para><ref refid="classemail_1_1Options" kindref="compound">Options</ref> container and parsing methods. </para>
     </briefdescription>
@@ -492,22 +515,22 @@
       <member refid="classemail_1_1Options_1ac147abcd670624a322bc6edfdd96386d" prot="private" virt="non-virtual"><scope>email::Options</scope><name>ENV_VAR_CONFIG_FILE</name></member>
       <member refid="classemail_1_1Options_1a6d45372f1cb360bc3415066e6fa23d60" prot="private" virt="non-virtual"><scope>email::Options</scope><name>ENV_VAR_CONFIG_FILE_DEFAULT_PATH</name></member>
       <member refid="classemail_1_1Options_1afcb9a3b14dbc25cb5a4906adf54993a7" prot="private" virt="non-virtual"><scope>email::Options</scope><name>ENV_VAR_CURL_VERBOSE</name></member>
-      <member refid="classemail_1_1Options_1ae706e9b4864156502045cbba7d0fd018" prot="public" virt="non-virtual"><scope>email::Options</scope><name>get_recipients</name></member>
-      <member refid="classemail_1_1Options_1ad3aab8a980c818d44f7b4c453456dd2e" prot="public" virt="non-virtual"><scope>email::Options</scope><name>get_user_info</name></member>
+      <member refid="classemail_1_1Options_1a63c81742899c861094ce0ea285379917" prot="public" virt="non-virtual"><scope>email::Options</scope><name>get_recipients</name></member>
+      <member refid="classemail_1_1Options_1a7ef6995201eef31bc97d15c80fab492e" prot="public" virt="non-virtual"><scope>email::Options</scope><name>get_user_info</name></member>
       <member refid="classemail_1_1Options_1a289fed51e2e140b89f31b30ec7f34269" prot="public" virt="non-virtual"><scope>email::Options</scope><name>intraprocess</name></member>
       <member refid="classemail_1_1Options_1a7509e5f9a8a3152033164c5a60609831" prot="private" virt="non-virtual"><scope>email::Options</scope><name>intraprocess_</name></member>
-      <member refid="classemail_1_1Options_1aeacc405c42fff6d63f4ca21be4099c04" prot="private" virt="non-virtual"><scope>email::Options</scope><name>logger</name></member>
+      <member refid="classemail_1_1Options_1a46b18b62fd069e69cd7ada03412935de" prot="private" virt="non-virtual"><scope>email::Options</scope><name>logger</name></member>
       <member refid="classemail_1_1Options_1a9e49710bb8d52a05b74a40868ebbb375" prot="public" virt="non-virtual"><scope>email::Options</scope><name>Options</name></member>
-      <member refid="classemail_1_1Options_1a0414d9ab8ccd80f7e31ddfd49899c12c" prot="public" virt="non-virtual"><scope>email::Options</scope><name>parse_options_file</name></member>
-      <member refid="classemail_1_1Options_1a80b79667d350d2ed10d22537580b2bc8" prot="public" virt="non-virtual"><scope>email::Options</scope><name>parse_options_from_args</name></member>
-      <member refid="classemail_1_1Options_1aecc89940a2c5923d049cf22d4a11a521" prot="public" virt="non-virtual"><scope>email::Options</scope><name>parse_options_from_file</name></member>
-      <member refid="classemail_1_1Options_1a1db5c0402e0349f0430dc108460a6728" prot="public" virt="non-virtual"><scope>email::Options</scope><name>polling_period</name></member>
+      <member refid="classemail_1_1Options_1a5ea65aacf362e78800b7ad6c078598e3" prot="public" virt="non-virtual"><scope>email::Options</scope><name>parse_options_file</name></member>
+      <member refid="classemail_1_1Options_1ae8f02b491104aba76d2f3807ca7c8ca2" prot="public" virt="non-virtual"><scope>email::Options</scope><name>parse_options_from_args</name></member>
+      <member refid="classemail_1_1Options_1a3f4c4e2921e1726b09418eac45b0ddd9" prot="public" virt="non-virtual"><scope>email::Options</scope><name>parse_options_from_file</name></member>
+      <member refid="classemail_1_1Options_1a6bccfff6dd728fdebf1649bbd6fb6ec4" prot="public" virt="non-virtual"><scope>email::Options</scope><name>polling_period</name></member>
       <member refid="classemail_1_1Options_1a9755f7c5f650632fed5dfb52342a6ed4" prot="private" virt="non-virtual"><scope>email::Options</scope><name>polling_period_</name></member>
       <member refid="classemail_1_1Options_1a9f489d90e0760528aa9c4f1938684fcf" prot="private" virt="non-virtual"><scope>email::Options</scope><name>recipients_</name></member>
       <member refid="classemail_1_1Options_1a7f8c1832652eacbda522baa240b4364a" prot="private" virt="non-virtual"><scope>email::Options</scope><name>USAGE_CLI_ARGS</name></member>
       <member refid="classemail_1_1Options_1a99a32e69fa21e31b76f704dba13fabb3" prot="private" virt="non-virtual"><scope>email::Options</scope><name>user_info_</name></member>
-      <member refid="classemail_1_1Options_1a3c2b027f4ad3a89de10a415afeaca4db" prot="public" virt="non-virtual"><scope>email::Options</scope><name>yaml_to_options</name></member>
-      <member refid="classemail_1_1Options_1abfbf5c7e383fd0f9efcdae9c396cdfc1" prot="private" virt="non-virtual"><scope>email::Options</scope><name>yaml_to_options_impl</name></member>
+      <member refid="classemail_1_1Options_1a23b2043fe1248e59f29493b6fcce64c7" prot="public" virt="non-virtual"><scope>email::Options</scope><name>yaml_to_options</name></member>
+      <member refid="classemail_1_1Options_1ae01d923cec39abd7ac74b4d32d382e58" prot="private" virt="non-virtual"><scope>email::Options</scope><name>yaml_to_options_impl</name></member>
       <member refid="classemail_1_1Options_1aedb8a8691febda54ef6646ea841e0199" prot="public" virt="non-virtual"><scope>email::Options</scope><name>~Options</name></member>
     </listofallmembers>
   </compounddef>

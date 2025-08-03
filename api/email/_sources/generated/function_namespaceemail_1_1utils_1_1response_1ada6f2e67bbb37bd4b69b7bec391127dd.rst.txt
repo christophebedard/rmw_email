@@ -1,0 +1,14 @@
+.. _exhale_function_namespaceemail_1_1utils_1_1response_1ada6f2e67bbb37bd4b69b7bec391127dd:
+
+Function email::utils::response::get_email_data_from_response
+=============================================================
+
+- Defined in :ref:`file_include_email_email_response_utils.hpp`
+
+
+Function Documentation
+----------------------
+
+
+.. doxygenfunction:: email::utils::response::get_email_data_from_response(const std::string&)
+   :project: email Doxygen Project

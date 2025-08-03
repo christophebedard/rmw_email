@@ -1,6 +1,9 @@
 <map id="email::Subscription" name="email::Subscription">
-<area shape="rect" id="node1" title="Message subscription." alt="" coords="81,155,228,181"/>
-<area shape="rect" id="node2" href="$classemail_1_1PubSubObject.html" title="Abstract pub or sub object." alt="" coords="76,80,233,107"/>
-<area shape="rect" id="node3" href="$classemail_1_1GidObject.html" title="Abstract object with a GID." alt="" coords="5,5,136,32"/>
-<area shape="rect" id="node4" href="$classemail_1_1NamedObject.html" title="Abstract object with a name." alt="" coords="161,5,317,32"/>
+<area shape="rect" id="Node000001" title="Message subscription." alt="" coords="81,152,228,177"/>
+<area shape="rect" id="Node000002" href="$classemail_1_1PubSubObject.html" title="Abstract pub or sub object." alt="" coords="76,79,233,104"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="157,118,157,152,152,152,152,118"/>
+<area shape="rect" id="Node000003" href="$classemail_1_1GidObject.html" title="Abstract object with a GID." alt="" coords="5,5,136,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="96,38,143,76,139,80,93,42"/>
+<area shape="rect" id="Node000004" href="$classemail_1_1NamedObject.html" title="Abstract object with a name." alt="" coords="161,5,317,31"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="216,42,170,80,167,76,213,38"/>
 </map>

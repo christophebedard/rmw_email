@@ -29,6 +29,6 @@ Classes
 
 - :ref:`exhale_struct_structfmt_1_1formatter_3_01email_1_1Timestamp_01_4`
 
-- :ref:`exhale_struct_structfmt_1_1formatter_3_01rcpputils_1_1fs_1_1path_01_4`
+- :ref:`exhale_struct_structfmt_1_1formatter_3_01std_1_1filesystem_1_1path_01_4`
 
 - :ref:`exhale_struct_structfmt_1_1formatter_3_01YAML_1_1Node_01_4`
