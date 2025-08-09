@@ -40,9 +40,9 @@ Functions
 
 - :ref:`exhale_function_namespaceemail_1_1utils_1ae3d4c984287d92db2a90319ba0ff6762`
 
-- :ref:`exhale_function_namespaceemail_1_1utils_1a9ac0b492df90bd936e286b50f51ef68e`
-
 - :ref:`exhale_function_namespaceemail_1_1utils_1aa2e1972a23478feaa1165b8148c67388`
+
+- :ref:`exhale_function_namespaceemail_1_1utils_1a9ac0b492df90bd936e286b50f51ef68e`
 
 - :ref:`exhale_function_namespaceemail_1_1utils_1a36d04ae0600a820016e9a547222bad1a`
 
