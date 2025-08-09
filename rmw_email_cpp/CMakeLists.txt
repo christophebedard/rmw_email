@@ -59,6 +59,7 @@ add_library(${PROJECT_NAME}
   src/type_support.cpp
 
   src/rmw_client.cpp
+  src/rmw_dynamic_message_type_support.cpp
   src/rmw_event.cpp
   src/rmw_gid.cpp
   src/rmw_get_service_names_and_types.cpp
