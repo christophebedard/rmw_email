@@ -38,6 +38,23 @@ extern "C" rmw_ret_t rmw_get_gid_for_publisher(
   return RMW_RET_OK;
 }
 
+extern "C" rmw_ret_t rmw_get_gid_for_client(const rmw_client_t * client, rmw_gid_t * gid)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(client, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    client,
+    client->implementation_identifier,
+    rmw_email_cpp::identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_ARGUMENT_FOR_NULL(gid, RMW_RET_INVALID_ARGUMENT);
+
+  auto rmw_email_client = static_cast<rmw_email_client_t *>(client->data);
+  email::ServiceClient * email_client = rmw_email_client->email_client;
+  rmw_gid_t rmw_client_gid = rmw_email_cpp::convert_gid(email_client->get_gid());
+  rmw_email_cpp::copy_gids(gid, &rmw_client_gid);
+  return RMW_RET_OK;
+}
+
 extern "C" rmw_ret_t rmw_compare_gids_equal(
   const rmw_gid_t * gid1,
   const rmw_gid_t * gid2,

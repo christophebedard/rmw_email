@@ -148,3 +148,46 @@ extern "C" rmw_ret_t rmw_count_clients(
   *count = 1u;
   return RMW_RET_OK;
 }
+
+extern "C" rmw_ret_t rmw_client_set_on_new_response_callback(
+  rmw_client_t * client,
+  rmw_event_callback_t callback,
+  const void * user_data)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(client, RMW_RET_INVALID_ARGUMENT);
+  static_cast<void>(callback);
+  static_cast<void>(user_data);
+  return RMW_RET_UNSUPPORTED;
+}
+
+extern "C" rmw_ret_t rmw_client_request_publisher_get_actual_qos(
+  const rmw_client_t * client,
+  rmw_qos_profile_t * qos)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(client, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    client,
+    client->implementation_identifier,
+    rmw_email_cpp::identifier,
+    return RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_ARGUMENT_FOR_NULL(qos, RMW_RET_INVALID_ARGUMENT);
+
+  // TODO(christophebedard) figure out
+  return RMW_RET_OK;
+}
+
+extern "C" rmw_ret_t rmw_client_response_subscription_get_actual_qos(
+  const rmw_client_t * client,
+  rmw_qos_profile_t * qos)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(client, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    client,
+    client->implementation_identifier,
+    rmw_email_cpp::identifier,
+    return RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_ARGUMENT_FOR_NULL(qos, RMW_RET_INVALID_ARGUMENT);
+
+  // TODO(christophebedard) figure out
+  return RMW_RET_OK;
+}
