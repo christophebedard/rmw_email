@@ -56,6 +56,29 @@
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
+    <name>info.hpp</name>
+    <path>include/email/curl/</path>
+    <filename>curl_2info_8hpp.html</filename>
+    <class kind="struct">email::ConnectionInfo</class>
+    <class kind="struct">email::ProtocolInfo</class>
+    <namespace>email</namespace>
+  </compound>
+  <compound kind="file">
+    <name>info.hpp</name>
+    <path>include/email/email/</path>
+    <filename>email_2info_8hpp.html</filename>
+    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
+    <class kind="struct">email::UserInfo</class>
+    <class kind="struct">email::EmailRecipients</class>
+    <class kind="struct">email::EmailContent</class>
+    <class kind="struct">email::EmailData</class>
+    <class kind="struct">fmt::formatter&lt; email::EmailRecipients &gt;</class>
+    <class kind="struct">fmt::formatter&lt; email::EmailContent &gt;</class>
+    <class kind="struct">fmt::formatter&lt; email::EmailHeaders &gt;</class>
+    <class kind="struct">fmt::formatter&lt; email::EmailData &gt;</class>
+    <namespace>email</namespace>
+  </compound>
+  <compound kind="file">
     <name>email.hpp</name>
     <path>include/email/</path>
     <filename>email_8hpp.html</filename>
@@ -99,29 +122,6 @@
     <includes id="email_2info_8hpp" name="info.hpp" local="yes" import="no" module="no" objc="no">email/email/info.hpp</includes>
     <includes id="polling__manager_8hpp" name="polling_manager.hpp" local="yes" import="no" module="no" objc="no">email/email/polling_manager.hpp</includes>
     <class kind="class">email::EmailHandler</class>
-    <namespace>email</namespace>
-  </compound>
-  <compound kind="file">
-    <name>info.hpp</name>
-    <path>include/email/curl/</path>
-    <filename>curl_2info_8hpp.html</filename>
-    <class kind="struct">email::ConnectionInfo</class>
-    <class kind="struct">email::ProtocolInfo</class>
-    <namespace>email</namespace>
-  </compound>
-  <compound kind="file">
-    <name>info.hpp</name>
-    <path>include/email/email/</path>
-    <filename>email_2info_8hpp.html</filename>
-    <includes id="macros_8hpp" name="macros.hpp" local="yes" import="no" module="no" objc="no">email/macros.hpp</includes>
-    <class kind="struct">email::UserInfo</class>
-    <class kind="struct">email::EmailRecipients</class>
-    <class kind="struct">email::EmailContent</class>
-    <class kind="struct">email::EmailData</class>
-    <class kind="struct">fmt::formatter&lt; email::EmailRecipients &gt;</class>
-    <class kind="struct">fmt::formatter&lt; email::EmailContent &gt;</class>
-    <class kind="struct">fmt::formatter&lt; email::EmailHeaders &gt;</class>
-    <class kind="struct">fmt::formatter&lt; email::EmailData &gt;</class>
     <namespace>email</namespace>
   </compound>
   <compound kind="file">
