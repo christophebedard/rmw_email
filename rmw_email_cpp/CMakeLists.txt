@@ -60,6 +60,7 @@ add_library(${PROJECT_NAME}
 
   src/rmw_client.cpp
   src/rmw_event.cpp
+  src/rmw_features.cpp
   src/rmw_gid.cpp
   src/rmw_get_service_names_and_types.cpp
   src/rmw_get_topic_endpoint_info.cpp

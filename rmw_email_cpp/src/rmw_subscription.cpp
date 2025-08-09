@@ -215,3 +215,44 @@ extern "C" rmw_ret_t rmw_count_subscribers(
   *count = 1u;
   return RMW_RET_OK;
 }
+
+extern "C" rmw_ret_t rmw_subscription_set_on_new_message_callback(
+  rmw_subscription_t * subscription,
+  rmw_event_callback_t callback,
+  const void * user_data)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(subscription, RMW_RET_INVALID_ARGUMENT);
+  static_cast<void>(callback);
+  static_cast<void>(user_data);
+  return RMW_RET_UNSUPPORTED;
+}
+
+extern "C" rmw_ret_t rmw_subscription_set_content_filter(
+  rmw_subscription_t * subscription,
+  const rmw_subscription_content_filter_options_t * options)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(subscription, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    subscription,
+    subscription->implementation_identifier,
+    rmw_email_cpp::identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_ARGUMENT_FOR_NULL(options, RMW_RET_INVALID_ARGUMENT);
+  return RMW_RET_UNSUPPORTED;
+}
+
+extern "C" rmw_ret_t rmw_subscription_get_content_filter(
+  const rmw_subscription_t * subscription,
+  rcutils_allocator_t * allocator,
+  rmw_subscription_content_filter_options_t * options)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(subscription, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_TYPE_IDENTIFIERS_MATCH(
+    subscription,
+    subscription->implementation_identifier,
+    rmw_email_cpp::identifier,
+    return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
+  RMW_CHECK_ARGUMENT_FOR_NULL(allocator, RMW_RET_INVALID_ARGUMENT);
+  RMW_CHECK_ARGUMENT_FOR_NULL(options, RMW_RET_INVALID_ARGUMENT);
+  return RMW_RET_UNSUPPORTED;
+}

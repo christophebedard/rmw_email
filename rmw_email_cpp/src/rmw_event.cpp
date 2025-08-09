@@ -96,3 +96,21 @@ extern "C" rmw_ret_t rmw_take_event(
   // Do nothing, should not be called because there shouldn't be any events
   return RMW_RET_OK;
 }
+
+extern "C" bool rmw_event_type_is_supported(rmw_event_type_t rmw_event_type)
+{
+  static_cast<void>(rmw_event_type);
+  // Unsupported
+  return false;
+}
+
+extern "C" rmw_ret_t rmw_event_set_callback(
+  rmw_event_t * event,
+  rmw_event_callback_t callback,
+  const void * user_data)
+{
+  RMW_CHECK_ARGUMENT_FOR_NULL(event, RMW_RET_INVALID_ARGUMENT);
+  static_cast<void>(callback);
+  static_cast<void>(user_data);
+  return RMW_RET_UNSUPPORTED;
+}
