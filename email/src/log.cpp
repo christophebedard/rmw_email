@@ -140,7 +140,7 @@ init(const Level & level)
     sinks.push_back(sink_file);
   }
 
-  root_logger = std::make_shared<spdlog::logger>("root", sinks.begin(), sinks.end());
+  root_logger = std::make_shared<spdlog::logger>("root_email", sinks.begin(), sinks.end());
   root_logger->set_level(spdlog::level::debug);
   spdlog::register_logger(root_logger);
   root_logger->flush_on(spdlog::level::warn);

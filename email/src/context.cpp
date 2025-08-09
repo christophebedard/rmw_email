@@ -101,7 +101,7 @@ Context::init_common()
 {
   is_valid_ = true;
   log::init_from_env();
-  spdlog::get("root")->debug("logging initialized");
+  spdlog::get("root_email")->debug("logging initialized");
   logger_ = log::create("Context");
 
   logger_->debug("intraprocess: {}", options_->intraprocess());
