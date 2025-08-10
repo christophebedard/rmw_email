@@ -40,7 +40,7 @@ public:
 
   /// Get validity status of the executor.
   /**
-   * \param true if valid, false otherwise
+   * \return true if valid, false otherwise
    */
   EMAIL_PUBLIC
   bool
