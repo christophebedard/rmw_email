@@ -66,15 +66,8 @@
 <para>Get validity status of the executor. </para>
         </briefdescription>
         <detaileddescription>
-<para><parameterlist kind="param"><parameteritem>
-<parameternamelist>
-<parametername>true</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>if valid, false otherwise </para>
-</parameterdescription>
-</parameteritem>
-</parameterlist>
+<para><simplesect kind="return"><para>true if valid, false otherwise </para>
+</simplesect>
 </para>
         </detaileddescription>
         <inbodydescription>
