@@ -120,8 +120,8 @@ ament_export_dependencies(
 configure_rmw_library(${PROJECT_NAME})
 ament_export_libraries(${PROJECT_NAME})
 register_rmw_implementation(
-  "c:rosidl_typesupport_c:rosidl_typesupport_introspection_c"
-  "cpp:rosidl_typesupport_cpp:rosidl_typesupport_introspection_cpp"
+  "c:rosidl_typesupport_introspection_c"
+  "cpp:rosidl_typesupport_introspection_cpp"
 )
 
 install(
