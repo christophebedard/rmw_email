@@ -151,13 +151,13 @@ Functions
 
 - :ref:`exhale_function_namespaceemail_1a348e73d7de5081748ca34e7bb29dd30c`
 
-- :ref:`exhale_function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0`
-
 - :ref:`exhale_function_namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9`
 
-- :ref:`exhale_function_namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d`
+- :ref:`exhale_function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0`
 
 - :ref:`exhale_function_namespaceemail_1ae48c8339b69ac3f105e701259ca08ad5`
+
+- :ref:`exhale_function_namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d`
 
 
 Typedefs
