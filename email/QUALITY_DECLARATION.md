@@ -169,7 +169,7 @@ It is **Quality Level 1**, see its [Quality Declaration document](https://github
 
 #### `libcurl`
 
-The `libcurl` library, possibly through the `libcurl_vendor` package, provides a C API for multiprotocol file transfer.
+The `libcurl` library provides a C API for multiprotocol file transfer.
 
 It currently has no quality declaration.
 
