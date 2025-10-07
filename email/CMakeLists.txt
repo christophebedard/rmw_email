@@ -20,16 +20,7 @@ find_package(spdlog_vendor REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml_cpp_vendor REQUIRED)
 find_package(yaml-cpp REQUIRED)
-
-set(CURL_USE_VENDOR TRUE)
-# TODO(christophebedard) switch to using system curl when possible,
-# but for now using the vendor package makes it easier for Windows
-#find_package(CURL)
-if(CURL_USE_VENDOR OR NOT CURL_FOUND)
-  message(STATUS "using libcurl_vendor")
-  find_package(libcurl_vendor REQUIRED)
-  set(CURL_USE_VENDOR TRUE)
-endif()
+find_package(CURL REQUIRED)
 message(STATUS "Found CURL version: ${CURL_VERSION_STRING}")
 message(STATUS "Using CURL include dir(s): ${CURL_INCLUDE_DIRS}")
 message(STATUS "Using CURL lib(s): ${CURL_LIBRARIES}")
@@ -90,7 +81,7 @@ add_library(${PROJECT_NAME} SHARED
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
-  $<IF:$<BOOL:${CURL_USE_VENDOR}>,CURL::libcurl,${CURL_LIBRARIES}>
+  CURL::libcurl
   $<IF:$<BOOL:${EMAIL_HAS_LTTNG_TRACING}>,${LTTNG_LIBRARIES},>
 )
 target_link_libraries(${PROJECT_NAME} PUBLIC
@@ -120,11 +111,7 @@ ament_export_dependencies(
 )
 ament_export_targets(${PROJECT_NAME} HAS_LIBRARY_TARGET)
 ament_export_libraries(${PROJECT_NAME})
-if(CURL_USE_VENDOR)
-  ament_export_dependencies(libcurl_vendor)
-else()
-  ament_export_libraries(${CURL_LIBRARIES})
-endif()
+ament_export_libraries(${CURL_LIBRARIES})
 
 install(
   DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include/ ${CMAKE_CURRENT_BINARY_DIR}/include/
