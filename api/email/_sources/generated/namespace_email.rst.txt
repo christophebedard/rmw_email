@@ -143,21 +143,21 @@ Functions
 
 - :ref:`exhale_function_namespaceemail_1ad50919dbf5a7ffe35c280a6f293558c2`
 
-- :ref:`exhale_function_namespaceemail_1ad0a6b760f7e08068416acceebb60a199`
-
 - :ref:`exhale_function_namespaceemail_1a7dfbb8a3972445ace7e5b33b3b8cf18e`
 
-- :ref:`exhale_function_namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6`
+- :ref:`exhale_function_namespaceemail_1ad0a6b760f7e08068416acceebb60a199`
 
 - :ref:`exhale_function_namespaceemail_1a348e73d7de5081748ca34e7bb29dd30c`
+
+- :ref:`exhale_function_namespaceemail_1a3ad14a8a580519f5c9de12246d845cd6`
 
 - :ref:`exhale_function_namespaceemail_1a5f80f51854175a635e2ce28ec401e8a9`
 
 - :ref:`exhale_function_namespaceemail_1a81ce8fcb498eb5e3074e69043bccbff0`
 
-- :ref:`exhale_function_namespaceemail_1ae48c8339b69ac3f105e701259ca08ad5`
-
 - :ref:`exhale_function_namespaceemail_1a002d8124b87a391ccbd9bdc7903cbb9d`
+
+- :ref:`exhale_function_namespaceemail_1ae48c8339b69ac3f105e701259ca08ad5`
 
 
 Typedefs

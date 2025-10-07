@@ -565,10 +565,6 @@
   </compound>
   <compound refid="executor_8hpp" kind="file"><name>executor.hpp</name>
   </compound>
-  <compound refid="curl_2info_8hpp" kind="file"><name>info.hpp</name>
-  </compound>
-  <compound refid="email_2info_8hpp" kind="file"><name>info.hpp</name>
-  </compound>
   <compound refid="email_8hpp" kind="file"><name>email.hpp</name>
   </compound>
   <compound refid="curl__receiver_8hpp" kind="file"><name>curl_receiver.hpp</name>
@@ -576,6 +572,10 @@
   <compound refid="curl__sender_8hpp" kind="file"><name>curl_sender.hpp</name>
   </compound>
   <compound refid="handler_8hpp" kind="file"><name>handler.hpp</name>
+  </compound>
+  <compound refid="curl_2info_8hpp" kind="file"><name>info.hpp</name>
+  </compound>
+  <compound refid="email_2info_8hpp" kind="file"><name>info.hpp</name>
   </compound>
   <compound refid="intra__receiver_8hpp" kind="file"><name>intra_receiver.hpp</name>
   </compound>

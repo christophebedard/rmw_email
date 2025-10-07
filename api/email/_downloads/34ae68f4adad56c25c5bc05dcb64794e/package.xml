@@ -17,8 +17,7 @@
   <build_depend>spdlog_vendor</build_depend>
   <build_depend>spdlog</build_depend>
 
-  <!-- Only actually used if libcurl isn't found on the system -->
-  <depend>libcurl_vendor</depend>
+  <depend>libcurl-dev</depend>
   <depend>rcpputils</depend>
   <depend>rcutils</depend>
   <depend>yaml_cpp_vendor</depend>
