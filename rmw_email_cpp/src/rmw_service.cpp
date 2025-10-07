@@ -49,10 +49,10 @@ extern "C" rmw_service_t * rmw_create_service(
     return nullptr;
   }
 
-  // Validate type support
-  const rosidl_service_type_support_t * valid_type_support =
-    rmw_email_cpp::validate_type_support_service(type_support);
-  if (nullptr == valid_type_support) {
+  // Get type support
+  const rosidl_service_type_support_t * concrete_type_support =
+    rmw_email_cpp::get_concrete_type_support_service(type_support);
+  if (nullptr == concrete_type_support) {
     return nullptr;
   }
 
@@ -76,7 +76,7 @@ extern "C" rmw_service_t * rmw_create_service(
       delete rmw_email_server;
     });
   rmw_email_server->email_server = email_server;
-  rmw_email_server->type_supports = *valid_type_support;
+  rmw_email_server->type_supports = *concrete_type_support;
 
   rmw_service_t * rmw_service = rmw_service_allocate();
   RET_NULL_X(rmw_service, return nullptr);

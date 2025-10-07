@@ -26,7 +26,7 @@
 namespace rmw_email_cpp
 {
 
-const rosidl_message_type_support_t * validate_type_support_message(
+const rosidl_message_type_support_t * get_concrete_type_support_message(
   const rosidl_message_type_support_t * type_support)
 {
   const rosidl_message_type_support_t * ts = nullptr;
@@ -57,7 +57,7 @@ const rosidl_message_type_support_t * validate_type_support_message(
   return nullptr;
 }
 
-const rosidl_service_type_support_t * validate_type_support_service(
+const rosidl_service_type_support_t * get_concrete_type_support_service(
   const rosidl_service_type_support_t * type_support)
 {
   const rosidl_service_type_support_t * ts = nullptr;
