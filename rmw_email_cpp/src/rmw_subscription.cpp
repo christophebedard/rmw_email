@@ -115,10 +115,10 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
     return nullptr;
   }
 
-  // Validate type support
-  const rosidl_message_type_support_t * valid_type_support =
-    rmw_email_cpp::validate_type_support_message(type_supports);
-  if (nullptr == valid_type_support) {
+  // Get type support
+  const rosidl_message_type_support_t * concrete_type_support =
+    rmw_email_cpp::get_concrete_type_support_message(type_supports);
+  if (nullptr == concrete_type_support) {
     return nullptr;
   }
 
@@ -127,7 +127,7 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
     return nullptr;
   }
 
-  return _create_subscription(topic_name, subscription_options, valid_type_support);
+  return _create_subscription(topic_name, subscription_options, concrete_type_support);
 }
 
 static rmw_ret_t _destroy_subscription(rmw_subscription_t * subscription)
