@@ -29,6 +29,7 @@ namespace rmw_email_cpp
 const rosidl_message_type_support_t * get_concrete_type_support_message(
   const rosidl_message_type_support_t * type_support)
 {
+  // Try to get C type support first
   const rosidl_message_type_support_t * ts = nullptr;
   ts = get_message_typesupport_handle(
     type_support,
@@ -36,15 +37,18 @@ const rosidl_message_type_support_t * get_concrete_type_support_message(
   if (ts) {
     return ts;
   }
+  // Error will be set, so fetch & clear it
   rcutils_error_string_t error_c = rcutils_get_error_string();
   rcutils_reset_error();
 
+  // Otherwise try to get C++ type support
   ts = get_message_typesupport_handle(
     type_support,
     rosidl_typesupport_introspection_cpp::typesupport_identifier);
   if (ts) {
     return ts;
   }
+  // If neither worked, report both C & C++ errors
   rcutils_error_string_t error_cpp = rcutils_get_error_string();
   rcutils_reset_error();
 
