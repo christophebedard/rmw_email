@@ -20,7 +20,10 @@
 
 #include "rmw_email_cpp/identifier.hpp"
 
-static rmw_ret_t _init_rmw_event(
+namespace
+{
+
+rmw_ret_t init_rmw_event(
   rmw_event_t * rmw_event,
   rmw_event_type_t event_type,
   void * data,
@@ -42,6 +45,8 @@ static rmw_ret_t _init_rmw_event(
   return RMW_RET_OK;
 }
 
+}  // namespace
+
 extern "C" rmw_ret_t rmw_publisher_event_init(
   rmw_event_t * rmw_event,
   const rmw_publisher_t * publisher,
@@ -53,7 +58,7 @@ extern "C" rmw_ret_t rmw_publisher_event_init(
     rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
-  return _init_rmw_event(
+  return init_rmw_event(
     rmw_event,
     event_type,
     publisher->data,
@@ -72,7 +77,7 @@ extern "C" rmw_ret_t rmw_subscription_event_init(
     rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
-  return _init_rmw_event(
+  return init_rmw_event(
     rmw_event,
     event_type,
     subscription->data,

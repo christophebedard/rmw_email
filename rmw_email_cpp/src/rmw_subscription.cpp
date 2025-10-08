@@ -49,7 +49,10 @@ extern "C" rmw_ret_t rmw_fini_subscription_allocation(rmw_subscription_allocatio
   return RMW_RET_UNSUPPORTED;
 }
 
-static rmw_subscription_t * _create_subscription(
+namespace
+{
+
+rmw_subscription_t * create_subscription(
   const char * topic_name,
   const rmw_subscription_options_t * subscription_options,
   const rosidl_message_type_support_t * type_supports)
@@ -90,6 +93,19 @@ static rmw_subscription_t * _create_subscription(
   return rmw_subscription;
 }
 
+rmw_ret_t destroy_subscription(rmw_subscription_t * subscription)
+{
+  rmw_email_sub_t * sub = static_cast<rmw_email_sub_t *>(subscription->data);
+  email::Subscription * email_sub = sub->email_sub;
+  delete email_sub;
+  delete sub;
+  rmw_free(const_cast<char *>(subscription->topic_name));
+  rmw_subscription_free(subscription);
+  return RMW_RET_OK;
+}
+
+}  // namespace
+
 extern "C" rmw_subscription_t * rmw_create_subscription(
   const rmw_node_t * node,
   const rosidl_message_type_support_t * type_supports,
@@ -127,18 +143,7 @@ extern "C" rmw_subscription_t * rmw_create_subscription(
     return nullptr;
   }
 
-  return _create_subscription(topic_name, subscription_options, concrete_type_support);
-}
-
-static rmw_ret_t _destroy_subscription(rmw_subscription_t * subscription)
-{
-  rmw_email_sub_t * sub = static_cast<rmw_email_sub_t *>(subscription->data);
-  email::Subscription * email_sub = sub->email_sub;
-  delete email_sub;
-  delete sub;
-  rmw_free(const_cast<char *>(subscription->topic_name));
-  rmw_subscription_free(subscription);
-  return RMW_RET_OK;
+  return create_subscription(topic_name, subscription_options, concrete_type_support);
 }
 
 extern "C" rmw_ret_t rmw_destroy_subscription(rmw_node_t * node, rmw_subscription_t * subscription)
@@ -156,7 +161,7 @@ extern "C" rmw_ret_t rmw_destroy_subscription(rmw_node_t * node, rmw_subscriptio
     rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
-  return _destroy_subscription(subscription);
+  return destroy_subscription(subscription);
 }
 
 extern "C" rmw_ret_t rmw_subscription_count_matched_publishers(
