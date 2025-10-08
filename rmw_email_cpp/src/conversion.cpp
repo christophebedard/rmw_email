@@ -117,6 +117,10 @@ std::string msg_to_yaml(
   const rmw_email_pub_t * publisher,
   const void * msg)
 {
+  // We already have the concrete type support handle here for the publisher, but we don't know if
+  // it's C or C++. Since C/C++ are treated differently, we need to know which one it is.
+  // Try to get the C type support handle from it, which will return the same handle/pointer if it's
+  // C, otherwise it will return nullptr, in which case we try C++.
   const rosidl_message_type_support_t * ts = nullptr;
   ts = get_message_typesupport_handle(
     &publisher->type_supports,
