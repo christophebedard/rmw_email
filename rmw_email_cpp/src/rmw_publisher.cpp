@@ -49,10 +49,13 @@ extern "C" rmw_ret_t rmw_fini_publisher_allocation(rmw_publisher_allocation_t * 
   return RMW_RET_UNSUPPORTED;
 }
 
+namespace
+{
+
 /**
  * Helper for creating an rmw publisher.
  */
-static rmw_publisher_t * _create_publisher(
+rmw_publisher_t * create_publisher(
   const char * topic_name,
   const rmw_publisher_options_t * publisher_options,
   const rosidl_message_type_support_t * type_supports)
@@ -92,7 +95,7 @@ static rmw_publisher_t * _create_publisher(
   return rmw_publisher;
 }
 
-static rmw_ret_t _destroy_publisher(rmw_publisher_t * publisher)
+rmw_ret_t destroy_publisher(rmw_publisher_t * publisher)
 {
   auto pub = static_cast<rmw_email_pub_t *>(publisher->data);
   if (nullptr != pub) {
@@ -104,6 +107,8 @@ static rmw_ret_t _destroy_publisher(rmw_publisher_t * publisher)
   rmw_publisher_free(publisher);
   return RMW_RET_OK;
 }
+
+}  // namespace
 
 extern "C" rmw_publisher_t * rmw_create_publisher(
   const rmw_node_t * node,
@@ -142,7 +147,7 @@ extern "C" rmw_publisher_t * rmw_create_publisher(
     return nullptr;
   }
 
-  return _create_publisher(topic_name, publisher_options, concrete_type_support);
+  return create_publisher(topic_name, publisher_options, concrete_type_support);
 }
 
 extern "C" rmw_ret_t rmw_destroy_publisher(rmw_node_t * node, rmw_publisher_t * publisher)
@@ -160,7 +165,7 @@ extern "C" rmw_ret_t rmw_destroy_publisher(rmw_node_t * node, rmw_publisher_t * 
     rmw_email_cpp::identifier,
     return RMW_RET_INCORRECT_RMW_IMPLEMENTATION);
 
-  return _destroy_publisher(publisher);
+  return destroy_publisher(publisher);
 }
 
 extern "C" rmw_ret_t rmw_publisher_count_matched_subscriptions(
